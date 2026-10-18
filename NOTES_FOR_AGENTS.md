@@ -10,21 +10,28 @@ How to maintain it:
 
 ## 1. Where things stand (2026-10-18)
 
-- **Phase:** Month 1 ends 2026-10-20. Month 1 started on the date the first credit deposit landed, provisionally 2026-09-21 (D-01). Most Month-1 work is re-planned into Month 2; the dated calendar is in `CONTEXT.md` §8.
+- **Current priority: pilot first (D-18).** A one-disease proof of concept on A20 haploinsufficiency runs now, under `POC_DESIGN.md`, before the pre-registration is frozen. If you are the session executing the pilot, `POC_DESIGN.md` is your protocol; work through its §8 checklist.
+- **Phase:** Month 1 ends 2026-10-20 (provisional start 2026-09-21, D-01). The dated calendar is in `CONTEXT.md` §8.
 - **Done:**
   - working rules: `CLAUDE.md`, `INSTRUCTIONS.md`, `CONTEXT.md`;
   - the grant application and award email (`grant/`);
   - background literature (`background/`, compiled 2026-10-16 in Cowork);
   - `DECISIONS.md` and `BUDGET.md`;
-  - pre-registration draft v0.3 (`preregistration/analysis_plan.md`), not frozen. D-02 to D-07 are decided.
-  - a digest of the claude.ai Project chats (`docs/claude-ai-threads.md`) and the pre-grant concept chat (`background/origins/`), both added from claude.ai on 2026-10-18.
-- **Not started:**
-  - case-report corpus;
-  - reference snapshots and dated ClinVar/OMIM counts;
-  - open-access coverage check;
-  - outreach drafts;
-  - any pipeline code, and any extraction runs.
-- **Blocking the pre-registration freeze:** D-08 to D-12, and D-17. The freeze is now planned for Month 2. Read *Open decisions* in `DECISIONS.md` before starting work.
+  - pre-registration draft v0.5 (`preregistration/analysis_plan.md`), not frozen. D-01 to D-07 and D-18 are decided;
+  - a digest of the claude.ai Project chats (`docs/claude-ai-threads.md`) and the pre-grant concept chat (`background/origins/`), both added from claude.ai on 2026-10-18;
+  - **pilot Stages 0–2, built and tested offline** by the session "Rarelink POC study design" (merged from branch `claude/zealous-meitner-k7moex`). That covers:
+    - the `pipeline/` skeleton with isolation guard and tests;
+    - the corpus scripts;
+    - the SLIDERS Anthropic adapter (`pipeline/extract/sliders_adapter/`);
+    - the HA20 config and schema;
+    - 24 tests (`uv sync && uv run pytest`).
+- **Not run yet:** any part of the pilot that needs the network or a model. That means the corpus, the three-paper smoke test, extraction, the reference snapshot and concordance.
+- **What the pilot needs from Jimmy:**
+  - the research domains allowed (the list is in §3);
+  - `ANTHROPIC_API_KEY` added as an environment secret;
+  - then a **new** session, because environment changes reach only new sessions.
+- **Billing.** The pilot calls the API, which the award's claude.ai credits may not cover (D-17).
+- **Blocking the pre-registration freeze:** the pilot report (D-18), then D-08 to D-12, D-17 and D-19. Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**
   - Everything up to 2026-10-18 is on `main`, merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
@@ -35,16 +42,26 @@ How to maintain it:
 
 ## 2. Next steps, in order, once unblocked
 
-1. **Network access** (§3). Everything below depends on it, and the re-planned Month 2 (2026-10-21 to 2026-11-20) has no slack for a long wait.
-2. **Corpus search for A20 haploinsufficiency** (the pilot disease, D-06), as set out in pre-registration §5.1:
-   - save query strings, dates and hit counts in `data/literature/ha20/search.md`;
-   - keep a screening log;
-   - keep a manifest with access status for every paper;
-   - never use ClinVar or OMIM citations to find papers.
-3. **Reference snapshots** into `data/reference/`, each with a manifest and checksums: a ClinVar release, HPO, Mondo and `phenotype.hpoa`. Then compute dated per-gene counts by script to replace the provisional numbers in `CONTEXT.md` §4. OMIM waits for D-12.
-4. **Open-access coverage per disease.** This feeds D-08.
-5. **Outreach drafts** to the Monarch and ClinVar maintainers, for Jimmy to send.
-6. **Month 2:** build the pipeline with all model calls behind one small interface, so the access route can change (D-17).
+1. **Network access and the API key** (§3; D-17 for billing). Everything below depends on them.
+2. **The pilot, `POC_DESIGN.md` Stages 1–7:**
+   - corpus (runbook: `data/literature/ha20/README.md`);
+   - three-paper smoke test;
+   - two full extraction runs;
+   - phenopackets;
+   - gatekeeper, plus the 50-claim audit rated by Jimmy;
+   - ClinVar concordance and completeness;
+   - the pilot report.
+   Stay within the approved ceiling: $1,000, hard stop $1,500 (`BUDGET.md`).
+3. **Apply the merge-time notes** at the top of `POC_DESIGN.md`:
+   - report pilot results with and without ClinVar-seeded papers (D-19);
+   - remember HA20 is a development disease (D-18);
+   - log spend with the account it billed to (D-17).
+4. **In parallel, for the six-disease study:**
+   - corpus search for the other five diseases (pre-registration §5.1);
+   - reference snapshots and dated per-gene counts to replace the provisional numbers in `CONTEXT.md` §4;
+   - open-access coverage per disease (feeds D-08);
+   - outreach drafts to the Monarch and ClinVar maintainers, for Jimmy to send.
+5. **After the pilot report:** fold its findings into the pre-registration (`POC_DESIGN.md` §7 lists what it hands over), resolve the remaining open decisions, and freeze.
 
 Offered but not yet requested: a draft introduction for the program's Discourse cohort thread.
 
@@ -65,22 +82,31 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - `git push` and `git fetch` to GitHub
 - (`github.com` web pages return 403 to curl.)
 
+**Domains the pilot needs.** The pilot session listed these for Jimmy to allow on 2026-10-18: `eutils.ncbi.nlm.nih.gov`, `www.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `ftp.ncbi.nlm.nih.gov`, `www.ebi.ac.uk`, `europepmc.org`, `api.unpaywall.org`, `rest.variantvalidator.org`, `www.omim.org`, `api.omim.org`, `purl.obolibrary.org`, `raw.githubusercontent.com`, `objects.githubusercontent.com`.
+- Publisher PDFs found through Unpaywall sit on arbitrary hosts, so some will still be refused. The pipeline records those as not fetched.
+- `api.anthropic.com` is already reachable. The API key is a separate environment secret (`ANTHROPIC_API_KEY`); it was not set as of 2026-10-18.
+
 **Checking and fixing:**
 - `curl -sS "$HTTPS_PROXY/__agentproxy/status"` lists recent refusals.
 - The fix is Jimmy's: in the cloud environment's settings, open Network access and add the hosts under Allowed domains (https://code.claude.com/docs/en/cloud-environments#network-access).
+- Settings changes reach only sessions started afterwards.
+
+**The safety check on Bash can error temporarily.** On 2026-10-18 the safety check that approves Bash commands returned no verdict several times in a row. That is an error, not a refusal. Retry once; if it keeps failing, use the Read, Edit and Grep tools and the GitHub connector, which don't need it.
 - Until then, don't work around a block with mocked data or data recalled from memory.
 - Never disable TLS verification or unset the proxy.
 
 **Cowork had the same limits.** The Cowork workspace used on 2026-10-16 couldn't reach PubMed, PMC, Europe PMC, arXiv or publisher sites either. The background papers were downloaded on Jimmy's own machine with `background/fetch_papers.sh` (`background/README.md`).
 
-**Python:** numpy and pandas are preinstalled; scipy is not. Run `pip install -r requirements.txt` before the audit scripts.
+**Python:**
+- The pipeline is a `uv` project (`pyproject.toml`, `uv.lock`, Python ≥ 3.11). Run `uv sync && uv run pytest`.
+- `requirements.txt` covers only the two audit scripts (scipy, which isn't preinstalled; numpy and pandas are).
 
 ## 4. Working with Jimmy
 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-18**.
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-20**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
@@ -114,6 +140,7 @@ These come from pre-registration §5.3. Keep all of them out of `pipeline/`:
 - prompts or outputs from the AutoOMIM project;
 - database annotations in VariantValidator responses (pass only the normalization fields);
 - natural-history comparator papers, which are held out for the bias arm;
+- ClinVar-cited PMIDs as corpus seeds. The pilot does this on the harness side with tags (`seed_source = clinvar_citations`); report results with and without those papers (D-19);
 - scoring prompt or scaffold changes against ClinVar or OMIM during development (D-07). Tune only against the papers themselves.
 
 ## 7. Conventions that worked

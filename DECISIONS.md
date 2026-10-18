@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.4 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Still blocking the freeze: D-08 to D-12, and D-17.
+**Pre-registration status:** draft v0.5 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -13,6 +13,29 @@ How to use this file:
 
 ## Open decisions
 
+### Needed now, for the pilot
+
+**D-17 · How the pipeline calls Claude** (opened 2026-10-18)
+- **The problem:**
+  - The grant assumed extraction, gatekeeper, concordance and bias runs would call Claude from code. The application gave a Console org ID for API credits.
+  - The award email says the credits sit on a claude.ai account and work across chat, Claude Code, Cowork and Claude Science. It doesn't mention API usage.
+- **Now urgent:** the pilot's code calls the Anthropic API with an `ANTHROPIC_API_KEY` (pilot decision 2, below). Unless Bailey confirms the award covers API calls, the pilot's model spend (estimated $200–400, ceiling $1,000) bills to whichever account owns the key, not to the grant credits.
+- **Why it matters beyond the pilot:** most of the core budget (lines 1–3, 5 and 6) is model runs inside the pipeline. The route also affects two parts of the plan:
+  - pinning the model ID and settings (§6.1);
+  - the identical-scaffold comparison with an open-weight model (§7.5), which is simplest when both models are called from code.
+- **Options:**
+  - Run the pipeline's model calls through a claude.ai surface the credits cover, such as Claude Code running the pipeline scripts, or Claude Science. This works only if that surface supports the batch runs and logging the plan needs.
+  - Use the API with separate funding not covered by the award.
+  - Ask Bailey whether the credits can cover API calls from the pipeline.
+- **Recommendation:** Jimmy asks Bailey before adding the key (Claude does not contact anyone). If the answer is slow, the pilot can still go ahead on a separately funded key, logged in `BUDGET.md` with the account it billed to. The pilot's SLIDERS adapter already keeps model calls behind one provider setting, so the route can change later without touching extraction logic.
+
+**D-19 · ClinVar-cited papers as corpus seeds** (opened 2026-10-18)
+- **The conflict:** the pilot's Stage 1 adds the PMIDs ClinVar cites for *TNFAIP3* to the corpus search. This is done on the harness side, and the papers are tagged `seed_source = clinvar_citations`. The pre-registration draft (§5.1) excludes ClinVar and OMIM citation lists from corpus building.
+- **Why it matters:** papers ClinVar already cites are more likely to agree with ClinVar. Seeding from them inflates concordance and hides gap variants.
+- **Recommendation:**
+  - For the pilot, keep the ClinVar-seeded papers but report every result with and without them; the tags make this cheap.
+  - Use the difference between the two to set the rule for the six-disease study before the freeze.
+
 ### Needed before the pre-registration can be frozen
 
 **D-08 · Substitute-disease trigger**
@@ -21,7 +44,7 @@ How to use this file:
 - **Constraint:** decided before extraction, on access grounds only.
 
 **D-09 · Registry and timing**
-- **Recommendation:** register on OSF, publicly. Freeze before the Month-2 development phase starts.
+- **Recommendation:** register on OSF, publicly. Freeze after the pilot report and before the six-disease run (D-18).
 - **Alternatives:** an embargoed OSF registration, or attaching the plan to a preprint.
 
 **D-10 · Open-weight comparison: model, disease(s), compute**
@@ -38,24 +61,13 @@ How to use this file:
   - Who rates the 250-claim audit (two raters plus a tie-breaker is drafted)?
   - Which optional add-ons can the panel afford: a pre-gatekeeper sample, gatekeeper calibration, a false-abstention check, an open-weight audit sample, discordance triage?
 - **Status:** needs the panel's availability. No time estimate is given here because none has been measured.
+- **Pilot:** Jimmy rates the pilot's 50 claims himself (pilot decision 5). The panel is reserved for the 250-claim audit and Month-4 adjudication.
 
 **D-12 · OMIM access route**
 - **The problem:** omim.org blocks automated reading. The archived terms bar redistribution without a license (`grant_claim_checks.md` §13).
 - **Options:** request API or download access; read the current terms by hand; or limit OMIM concordance to what can be lawfully obtained.
 - **Blocks:** the OMIM half of concordance (O2) and the OMIM gap definition (O3).
-
-**D-17 · How the pipeline calls Claude** (opened 2026-10-18)
-- **The problem:**
-  - The grant assumed extraction, gatekeeper, concordance and bias runs would call Claude from code. The application gave a Console org ID for API credits.
-  - The award email says the credits sit on a claude.ai account and work across chat, Claude Code, Cowork and Claude Science. It doesn't mention API usage.
-- **Why it matters:** most of the core budget (lines 1–3, 5 and 6) is model runs inside the pipeline. The route also affects two parts of the plan:
-  - pinning the model ID and settings (§6.1);
-  - the identical-scaffold comparison with an open-weight model (§7.5), which is simplest when both models are called from code.
-- **Options:**
-  - Run the pipeline's model calls through a claude.ai surface the credits cover, such as Claude Code running the pipeline scripts, or Claude Science. This works only if that surface supports the batch runs and logging the plan needs.
-  - Use the API with separate funding not covered by the award.
-  - Ask Bailey whether the credits can cover API calls from the pipeline.
-- **Recommendation:** Jimmy asks Bailey first (Claude does not contact anyone). Meanwhile, the pipeline keeps all model calls behind one small interface, so the access route can change without touching extraction logic.
+- **Progress:** the pilot session drafted the access request (`reports/drafts/omim_access_request.md`), for Jimmy to submit (pilot decision 4). Its terms table is blank because omim.org was unreachable. Until access arrives, the pilot's concordance is ClinVar-only.
 
 ### Needed later
 
@@ -89,6 +101,25 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-18 · D-18 decided: pilot first, on A20 haploinsufficiency
+- **Decided by:** Jimmy ("can we first do a pilot for 1 specific disease as proof of concept first NOW", then "yes" to recording it).
+- **Decision:** run the one-disease proof of concept in `POC_DESIGN.md` now, before freezing the pre-registration and before the six-disease study.
+- **Sequence:**
+  1. the pilot (`POC_DESIGN.md` Stages 0–7);
+  2. the pilot report, with a go/no-go;
+  3. update and freeze the pre-registration;
+  4. the six-disease run.
+- **A20 haploinsufficiency in the full study:** HA20 is re-extracted under the frozen plan but reported separately. Headline (pooled) concordance uses the other five diseases, because the pipeline will have been tuned on HA20, including after seeing its ClinVar disagreements.
+- **What this replaces:**
+  - the order in the D-01 re-plan, where Month 2 froze the plan first and then ran development. The pilot now comes first and the freeze follows its report;
+  - D-06's development set of 20% of the HA20 corpus. The pilot uses the whole HA20 corpus.
+- **Commitment check:** `CONTEXT.md` says the design is pre-registered before extraction. A one-disease pilot before the freeze is consistent with that if:
+  - it is reported as a pilot;
+  - it is listed in the plan's prior-knowledge section;
+  - HA20 is kept out of the headline results.
+- **Branches combined:** the pilot branch (`claude/zealous-meitner-k7moex`) was merged into `main` with this decision, so the next pilot session starts with both lines of work.
+- **Status:** not a pre-registration deviation; the plan is not frozen.
+
 ### 2026-10-18 · D-01 decided: Month 1 starts on the date the first deposit landed
 - **Decided by:** Jimmy, accepting Claude's recommendation ("go with your recommendation on D-01").
 - **Start date:** provisionally **2026-09-21**, the scheduled deposit date. Replace it with the actual landing date from claude.ai Settings > Usage once Jimmy confirms it.
@@ -111,6 +142,34 @@ How to use this file:
   - `main` (claude.ai Project chats) added its own `DECISIONS.md` and `BUDGET.md`, the repo-as-source-of-truth decision, the chat digest `docs/claude-ai-threads.md` and `background/origins/`.
 - **How they were combined:** `main` was merged into the branch and the branch into `main`. Both sides' entries are kept: `main`'s two decision entries are below, and its budget notes are folded into `BUDGET.md`.
 - **Follow-up for Jimmy:** the claude.ai Project mirror needs a refresh with the new files. This session has no access to the Project.
+
+### 2026-10-18 · Pilot Stages 1 and 2 built offline; model runs deferred (from the pilot session; merged in)
+- **Decided by:** Claude (pilot session), for Jimmy's information.
+- **Status:** Stage 0 is complete. Stages 1 and 2 are implemented and unit-tested, but their network- and model-dependent steps have not run.
+  - The cloud environment denies NCBI E-utilities, PMC, Europe PMC, Unpaywall, omim.org and VariantValidator, and holds no `ANTHROPIC_API_KEY`.
+  - Either allow those hosts and add the key in the environment settings, or run the runbook in `data/literature/ha20/README.md` and the Stage 2 smoke test on the Mac mini.
+  - No spend has occurred.
+- **SLIDERS adaptation** (pilot decision 2 follow-through):
+  - The public code is pinned at upstream commit `b66094d` (2026-04-14) and patched with an `anthropic` provider built on `langchain-anthropic` over the official SDK.
+  - Structured output uses Claude's JSON-schema mode, because current models reject forced tool calls.
+  - Sampling parameters are dropped and `effort` is set per role.
+  - Server-side refusal fallbacks and automatic prompt caching are on by default.
+  - The patch is self-contained, so it can be offered upstream later.
+- **Schema** (`POC_DESIGN.md` §3.5 follow-through): the pinned schema is fully specified, so SLIDERS skips its schema-completion model call. The three-state checklist table carries "not reported" explicitly.
+
+### 2026-10-18 · Pilot study design approved with six decisions (from the pilot session; merged in)
+- **Decided by:** Jimmy (chat, 2026-10-18).
+- **Decision:** `POC_DESIGN.md` is the protocol for the first end-to-end run of the pipeline on one disease. It is a working document, not the pre-registration, and changes nothing pre-registered. Jimmy answered six open decisions and the design was updated to match:
+  1. **POC disease: A20 haploinsufficiency (*TNFAIP3*).** Alexander disease is the natural first disease for the full Month-2 run.
+  2. **SLIDERS on Claude: fork the public code and add an Anthropic provider** using the official SDK. No contact with the Lam lab for now; offer the adapter upstream later (external contact needs separate approval).
+  3. **Reviews and meta-analyses are included in the extraction corpus, flagged `study_type = review`.** The reconciliation agent must merge re-reported patients; rows sourced only from reviews are kept but flagged `review_only`. Completeness against El Hani 2024 is computed on primary-paper rows only, so the benchmark is not scored against itself. If deduplication suffers, exclusion is reconsidered as a logged change.
+  4. **OMIM access: Claude drafts the API access request and a summary of the current terms for Jimmy to submit.** Nothing is sent without Jimmy. Until access arrives, the POC concordance runs against ClinVar only.
+  5. **POC audit: Jimmy rates the 50 claims himself.** The adjudication panel is held for the 250-claim audit and Month-4 adjudication.
+  6. **POC spend ceiling: $1,000, hard stop $1,500.** Drawn from the extraction and gatekeeper lines; stop and ask before exceeding $1,000.
+- **How these connect to the rest of this file** (added at merge):
+  - decision 4 is reflected under D-12, and decision 5 under D-11;
+  - decision 2 is where D-17 bites, because the adapter calls the API;
+  - decision 3 differs from the pre-registration draft's *proposed* exclusion of reviews (§5.1). That proposal will follow what the pilot shows.
 
 ### 2026-10-18 · Award details recorded (D-01 partly resolved)
 - **Source:** award email from Bailey (Anthropic AI for Science program), sent 2026-08-31, saved as `grant/AWARD_EMAIL.md`. The sent date was confirmed by Jimmy.

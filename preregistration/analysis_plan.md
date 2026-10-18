@@ -1,17 +1,18 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.4, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.5, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
-> - v0.4 applies D-01 (Month-1 start date) and the re-planned timeline in §12.
+> - v0.4 applied D-01 (Month-1 start date) and the re-planned timeline in §12.
+> - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
 >
 > - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
 > - Items marked **(D-nn, decided)** are settled; the decision and its date are in `DECISIONS.md`.
 > - Items marked **[proposed]** are Claude's defaults. Accept, change or delete each one.
 > - Everything else restates commitments already made in `CONTEXT.md` and the grant application. Changing those after freezing is a deviation (`INSTRUCTIONS.md` §1.4).
 >
-> Until the plan is frozen, edits to this draft are ordinary revisions, not deviations. **Freezing** means: all [D-nn] items resolved, the file tagged in git (e.g. `prereg-v1.0`), and the same text registered with the chosen registry [D-09]. Freezing happens before any extraction run on study-corpus papers, including the development phase in §6.5.
+> Until the plan is frozen, edits to this draft are ordinary revisions, not deviations. **Freezing** means: all [D-nn] items resolved, the file tagged in git (e.g. `prereg-v1.0`), and the same text registered with the chosen registry [D-09]. Freezing happens after the one-disease pilot (§6.5, D-18) and before any extraction run for the six-disease study.
 
 Structure follows the usual sections of a preregistration for analysis of existing data (study information, data, prior knowledge, variables, analysis plan). Check the registry's current template when the venue is chosen [D-09] and re-map sections if needed.
 
@@ -82,6 +83,8 @@ A pilot disease is replaced only if, after screening (§5.1), its accessible ful
 **Search [proposed].** For each disease, search PubMed and Europe PMC (including full text) from database inception to a single search date that is recorded. Queries combine the gene symbol with disease names and synonyms, taken from Mondo, Orphanet and the GeneReviews chapter. Add backward citation searching of the key reviews: `grossi2024_axd_meta`, `almarzanovoa2018_lad1_review`, `elhani2024_ha20_177`, `didiasova2020_ssadh_update`, `brambatti2019_danon_gender`, `koseki2021_tangier_review`. Exact query strings are saved in `data/literature/<disease>/search.md` with the date run and the hit count.
 
 **Not used to build the corpus:** ClinVar and OMIM citation lists, or any index queried by ClinVar variant IDs. A corpus built from database citations would bias concordance upward and gap discovery downward. LitVar (`allot2023_litvar2`) may be queried by gene symbol only, and every PMID records which source found it. After extraction, the harness reports what share of the corpus is cited by ClinVar or OMIM (§7.2.5).
+
+The pilot (§6.5) departs from this rule: it seeds its search with ClinVar-cited PMIDs, tagged so they can be separated. The recommendation is to report pilot results with and without those papers, and to set the rule for the six-disease study before freezing [D-19].
 
 **Eligibility [proposed].**
 - *Include:* primary publications (case reports, case series, cohort papers) that report individual-level genotype and/or phenotype for at least one person with the pilot disease. Any publication year.
@@ -179,21 +182,22 @@ A second Claude read checks each value strictly against its cited span: is the v
 
 Before that, a deterministic check confirms that every span occurs verbatim in the source text (after whitespace normalization). This check runs on **all** values, not a sample. Any span not found is reported as a fabricated-span count.
 
-### 6.5 Development phase and pipeline freeze
+### 6.5 Development phase: the one-disease pilot, then the pipeline freeze
 
-Prompts, the scaffold and normalization code are developed on a **development set**. The pilot disease is A20 haploinsufficiency (D-06, decided). It was chosen because its corpus is entirely open-access era (described in 2016) and a 65-article systematic review (`elhani2024_ha20_177`) gives a completeness check.
+Prompts, the scaffold and normalization code are developed in a one-disease pilot on A20 haploinsufficiency (D-06, D-18, decided). The pilot runs under its own protocol (`POC_DESIGN.md`) before this plan is frozen. HA20 was chosen because its corpus is entirely open-access era (described in 2016) and a 65-article systematic review (`elhani2024_ha20_177`) gives a completeness check.
 
-The development set is a random subset of the HA20 corpus: [proposed] 20% of eligible reports, at least 10, drawn by script with a recorded seed.
+**How the pilot touches the data.** The pilot uses the whole HA20 corpus. It is scored against ClinVar (and OMIM, if access exists) to test the harness end to end. Prompts or schemas may change after its per-variant misses are seen. Because of that:
+- **HA20 is a development disease, not a test disease.** In the six-disease study it is re-extracted with the frozen pipeline but reported separately. Headline pooled figures use the other five diseases (§7).
+- **The pilot is recorded before freezing.** Its results, including what was seen of HA20's concordance, are summarized in §10.
+- **The optional LAD-I stress test** (`POC_DESIGN.md` Stage 9), if it runs, makes those ten papers development papers. The study then reports LAD-I with and without them.
 
-During development:
-- Outputs are checked by humans against the source text and by the span check.
-- They are **never** scored against ClinVar or OMIM, which would be tuning on the test set.
+**What the pilot hands to the freeze.** The pilot's findings set:
+- the frozen pipeline (`pipeline-v1.0`);
+- the final schema and prompts;
+- the cost model;
+- the open choices listed in `POC_DESIGN.md` §7.
 
-At the end of development the pipeline is tagged (`pipeline-v1.0`) and run on the full HA20 corpus, development papers included. A cost estimate for the other five diseases then goes to Dr. Lin for approval before scaling (`INSTRUCTIONS.md` §3).
-
-Cost per paper on HA20 may not carry over to diseases covered by long case series. So the estimate scales HA20's measured cost per input token by each remaining corpus's token count, rather than by paper count. Token counts can be measured without running a model.
-
-A sensitivity analysis excludes HA20.
+A cost estimate for the six-disease run then goes to Dr. Lin for approval before scaling (`INSTRUCTIONS.md` §3). Cost per paper on HA20 may not carry over to diseases covered by long case series, so the estimate scales HA20's measured cost per input token by each corpus's token count, rather than by paper count. Token counts can be measured without running a model.
 
 **Changes after the freeze (D-07, decided).** The frozen pipeline's results are primary. Any later fix (e.g. a normalization bug) is logged in `DECISIONS.md`, the affected analyses are re-run, and both versions are reported. This is stricter than the grant's budget assumed, which allowed re-runs "as normalization improves". The reason is that fixes chosen by looking at concordance misses would inflate concordance.
 
@@ -209,7 +213,7 @@ Every record is checked against the phenopacket v2 schema and with CohortValidat
   - Wilson intervals for simple proportions (`brown2001_binomial_ci`);
   - exact Clopper–Pearson for the audit;
   - publication-cluster bootstrap (10,000 resamples, recorded seed) wherever observations are nested within papers.
-- Results are reported per disease and pooled.
+- Results are reported per disease. Headline pooled figures use the five diseases other than A20 haploinsufficiency, which was used to develop the pipeline (§6.5, D-18). HA20 is reported separately, and pooled figures that include it are given as a secondary analysis.
 - There is one confirmatory test (O1), so no multiplicity correction is applied to it. Everything else is estimation and is labeled as such.
 
 ### 7.1 O1: Unsupported-value audit (primary, confirmatory)
@@ -414,7 +418,7 @@ Stated so readers can judge the risk of data-informed choices.
 
 - **Aggregate ClinVar counts per gene** (MyVariant.info, ClinVar Miner) and **proxy OMIM counts** were seen at application time. No variant-level comparison between literature and ClinVar/OMIM has been made for any pilot gene.
 - **Review figures** for patient and variant counts were read and checked on 2026-10-16 (`background/grant_claim_checks.md`). The fact-check found two figures contradicted or only roughly supported (Tangier, Danon). It also found that "408 phenopacket-store cohorts" has no published source. Since then, a further check found that the impact statement's "genotypes for 184 LAD-I patients whose variants were published but never structured" equals 323 − 139. By the fact-check's reading of `almarzanovoa2018_lad1_review`, those 184 are the patients *without* a reported genotype. This needs checking against the review [D-14]; it affects what gap closure can mean for LAD-I.
-- **No extraction has been run.** No pilot papers have been processed by the pipeline, which does not yet exist.
+- **Extraction.** As of 2026-10-18 no extraction has been run. The pilot's code is built and tested offline but has not processed any paper. A one-disease pilot on A20 haploinsufficiency (`POC_DESIGN.md`) runs before this plan is frozen (D-18). Its results, including any ClinVar concordance seen for HA20, will be summarized here before freezing.
 - **AutoOMIM.** The team has worked with OMIM-style content through the AutoOMIM collaboration, which is why §5.3 excludes it.
 - **The grant mentions "our own internal experience"** with Claude's precision. This is not used as evidence here.
 
@@ -429,17 +433,17 @@ Stated so readers can judge the risk of data-informed choices.
 
 ## 12. Timeline (D-01, decided)
 
-Month 1 starts on the date the first credit deposit landed, provisionally 2026-09-21. The dates below shift if the actual landing date differs. Month-1 work still undone at the end of Month 1 moves into Month 2, and extraction overlaps with concordance in Month 3 (`CONTEXT.md` §8).
+Month 1 starts on the date the first credit deposit landed, provisionally 2026-09-21; the dates below shift if the actual landing date differs. Pilot first (D-18): the one-disease pilot runs in Month 2, and this plan is frozen after the pilot report. Extraction then overlaps with concordance in Month 3 (`CONTEXT.md` §8).
 
 | When | Dates (provisional) | Step |
 |---|---|---|
-| Month 1 | 2026-09-21 to 2026-10-20 | Setup; background literature; this plan drafted |
-| Month 2 | 2026-10-21 to 2026-11-20 | Resolve remaining [D-nn]; corpus search and screening; reference snapshots and dated counts; freeze and register this plan. Then the development phase on A20 haploinsufficiency → `pipeline-v1.0` → full HA20 run → cost estimate approved |
-| Month 3 | 2026-11-21 to 2026-12-20 | Extraction on the other five diseases; concordance (O2) on each disease as it finishes; audit sample drawn once all six are done |
+| Month 1 | 2026-09-21 to 2026-10-20 | Setup; background literature; this plan drafted; pilot design and code built (`POC_DESIGN.md` Stages 0–2) |
+| Month 2 | 2026-10-21 to 2026-11-20 | The pilot on A20 haploinsufficiency (`POC_DESIGN.md` Stages 1–7) and its report. In parallel: corpus search and screening for the other five diseases, reference snapshots and dated counts. Then resolve the remaining [D-nn], fold in the pilot's findings, and freeze and register this plan |
+| Month 3 | 2026-11-21 to 2026-12-20 | `pipeline-v1.0` on all six diseases (HA20 re-extracted and reported separately); concordance (O2) on each disease as it finishes; audit sample drawn once all six are done |
 | Month 4 | 2026-12-21 to 2027-01-20 | Audit ratings (O1); gap-variant adjudication (O3); efficiency logging (O5) |
 | Month 5 | 2027-01-21 to 2027-02-20 | Submissions after sign-off; bias arm and memorization probe (O4); model comparison |
 | Month 6 | 2027-02-21 to 2027-03-20 | Write-up; all results published whether favorable or not |
 
 ## 13. Decisions needed before freezing
 
-See `DECISIONS.md` → *Open decisions*. Still blocking this plan: D-08 to D-12, and D-17. D-01 to D-07 were decided on 2026-10-18. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.
+See `DECISIONS.md` → *Open decisions*. Still blocking this plan: D-08 to D-12, D-17 and D-19, plus the pilot report (D-18). D-01 to D-07 and D-18 were decided on 2026-10-18. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.

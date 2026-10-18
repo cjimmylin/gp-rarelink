@@ -110,7 +110,7 @@ Points a coding session needs:
 | PDFs not yet fetched (or fetch status unrecorded) | `background/README.md` |
 | Date of the early concept chat unknown | `background/origins/early_concept_conversation.md` |
 | Project custom instructions must be re-pasted when `INSTRUCTIONS.md` changes | `DECISIONS.md` |
-| Month 1 tasks. The pre-registration is drafted (v0.3, not frozen). Not started: per-disease corpus, direct dated ClinVar/OMIM counts, Monarch/ClinVar outreach drafts | `NOTES_FOR_AGENTS.md` §1–2; `INSTRUCTIONS.md` §6 |
+| Month 1 tasks, re-planned (D-18, pilot first). The HA20 pilot is built but not yet run (`POC_DESIGN.md`). The pre-registration is drafted (v0.5) and is frozen after the pilot. Not started: corpora for the other diseases, direct dated ClinVar/OMIM counts, Monarch/ClinVar outreach drafts | `NOTES_FOR_AGENTS.md` §1–2; `DECISIONS.md` D-18 |
 
 ## Keeping this current
 

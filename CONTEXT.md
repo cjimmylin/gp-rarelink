@@ -116,15 +116,15 @@ Success = high concordance with a low-false-positive workflow. New database find
 | 5 | Prepare submissions; bias analysis |
 | 6 | Write up results for publication and review |
 
-### Provisional dates and re-plan (D-01, 2026-10-18)
+### Provisional dates and re-plan (D-01 and D-18, 2026-10-18)
 
-The table above is the timeline as committed in the application. Dates assume Month 1 started on 2026-09-21; shift them if the first deposit landed on a different day. The re-plan absorbs Month-1 work that was still undone when Month 1 ended.
+The table above is the timeline as committed in the application. Dates assume Month 1 started on 2026-09-21; shift them if the first deposit landed on a different day. The re-plan absorbs Month-1 work that was still undone when Month 1 ended. Under D-18, a one-disease pilot on A20 haploinsufficiency (`POC_DESIGN.md`) runs first, and the pre-registration is frozen after the pilot report.
 
 | Month | Dates | Work after the re-plan |
 |---|---|---|
-| 1 | 2026-09-21 to 2026-10-20 | Setup, background literature, pre-registration draft |
-| 2 | 2026-10-21 to 2026-11-20 | Finish Month-1 work: corpus search and screening, reference snapshots and dated counts, open-access check, outreach drafts, freeze the pre-registration. Then the A20 haploinsufficiency development phase and pilot run |
-| 3 | 2026-11-21 to 2026-12-20 | Extraction on the other five diseases; concordance on each disease as it finishes |
+| 1 | 2026-09-21 to 2026-10-20 | Setup, background literature, pre-registration draft, pilot design and code |
+| 2 | 2026-10-21 to 2026-11-20 | The pilot on A20 haploinsufficiency and its report. In parallel: corpus search and screening for the other five diseases, reference snapshots and dated counts, open-access check, outreach drafts. Then freeze the pre-registration |
+| 3 | 2026-11-21 to 2026-12-20 | Extraction on all six diseases with the frozen pipeline (HA20 reported separately); concordance on each disease as it finishes |
 | 4 | 2026-12-21 to 2027-01-20 | Adjudication of gap variants; audit ratings. Spans the December holidays, so check panel availability (D-11) |
 | 5 | 2027-01-21 to 2027-02-20 | Submissions after sign-off; bias analysis; model comparison |
 | 6 | 2027-02-21 to 2027-03-20 | Write-up. The first deposit expires 2027-03-21 |

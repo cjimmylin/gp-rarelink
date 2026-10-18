@@ -1,0 +1,37 @@
+# Model prices used by pipeline.common.cost to turn token usage into dollars.
+# Units: USD per million tokens. Anthropic first-party API rates.
+#
+# Provenance: the Claude API reference bundled with Claude Code (price table
+# cached 2026-10-06). Stage 0 of POC_DESIGN.md requires re-reading the live
+# pricing page on a networked machine; when that is done, set `verified_on`
+# to that date and fill any field still marked null.
+#
+# cost.py refuses to price a usage component whose price is null, so a null
+# here is a loud failure, not a silent zero.
+
+source: "Claude API reference skill, price table cached 2026-10-06"
+read_on: "2026-10-18"
+verified_on: null   # set when checked against the live pricing page
+
+models:
+  claude-opus-5-5:
+    input: 4.00
+    output: 20.00
+    cache_read: 0.20
+    cache_write_5m: null   # verify on the live page before any run that writes cache
+  claude-sonnet-5-5:
+    input: 2.00
+    output: 10.00
+    cache_read: 0.20
+    cache_write_5m: null
+  claude-haiku-5-5:
+    # Prices for prompts up to 100K tokens; $0.50 / $2.50 beyond. cost.py
+    # applies the flat base tier and warns if any single request exceeds 100K
+    # input tokens.
+    input: 0.10
+    output: 0.50
+    cache_read: null
+    cache_write_5m: null
+    long_prompt_threshold_tokens: 100000
+    long_prompt_input: 0.50
+    long_prompt_output: 2.50
