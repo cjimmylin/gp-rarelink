@@ -85,15 +85,30 @@ def cdna_key(s) -> str | None:
     return m.group(0) if m else None
 
 
+AA = r"(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter|Sec|[ACDEFGHIKLMNPQRSTVWY])"
+BARE_PROTEIN = re.compile(rf"^\(?({AA}\d+(?:{AA}|\*|X)?(?:fs(?:\*|X|Ter)?\d*)?|{AA}\d+(?:{AA}|\*|X))\)?$")
+
+
 def protein_key(s) -> str | None:
+    """Protein change with notation folded: 'p.(Arg271Ter)', 'p.R271*', 'R271X' and 'Arg271Ter' all give 'p.R271*'.
+
+    Bare forms without 'p.' are accepted when the whole string looks like a protein
+    change (amino acid, position, amino acid or stop or frameshift), since reviews
+    often print them that way.
+    """
     if s in MISSING:
         return None
     s = re.sub(r"\s+", "", str(s))
     s = s.split(":")[-1]
     m = re.search(r"p\.\(?([^,;]+?)\)?$", s) or re.search(r"p\.\(?([A-Za-z*0-9_]+(?:fs\*?\d*|fsX\d*|fsTer\d*)?)", s)
-    if not m:
-        return None
-    body = m.group(1).replace("(", "").replace(")", "")
+    if m:
+        body = m.group(1)
+    else:
+        b = BARE_PROTEIN.match(s)
+        if not b:
+            return None
+        body = b.group(1)
+    body = body.replace("(", "").replace(")", "")
     body = re.sub(r"(?i)(ala|arg|asn|asp|cys|gln|glu|gly|his|ile|leu|lys|met|phe|pro|ser|thr|trp|tyr|val|ter|sec)",
                   lambda x: AA3[x.group(1).lower()], body)
     body = body.replace("X", "*")

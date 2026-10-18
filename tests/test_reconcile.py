@@ -36,6 +36,10 @@ def jats(pmid, refs):
 def test_variant_keys_fold_notation():
     assert rc.protein_key("p.(Arg271Ter)") == rc.protein_key("p.R271*") == rc.protein_key("p.R271X") == "p.R271*"
     assert rc.cdna_key("NM_006290.4: c.811 C>T") == rc.cdna_key("c.811C>T") == "c.811c>t"
+    # bare protein changes, as reviews often print them
+    assert rc.protein_key("Leu227Ter") == rc.protein_key("p.Leu227*") == "p.L227*"
+    assert rc.protein_key("Phe224Ser fs*4") == rc.protein_key("p.Phe224Serfs*4")
+    assert rc.protein_key("c.680T>A") is None and rc.protein_key("exon 7-8 deletion") is None
 
 
 def test_resolve_by_number_and_by_author_year():
