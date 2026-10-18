@@ -84,4 +84,4 @@ Estimate method for scaling extraction:
 |---|---|---|---|---|---|---|
 | 2026-10-18 | Pilot (POC) on A20 haploinsufficiency, all model-calling stages | Extraction (mostly), gatekeeper, harness, bias arm | `POC_DESIGN.md` §5. Per-stage rows to be added before each run, after Stage 2 measures per-paper cost | $200–400; ceiling $1,000; hard stop $1,500 | Jimmy (chat, 2026-10-18) | — |
 
-**Pilot billing (D-17).** The pilot calls the Anthropic API with an API key. Unless Anthropic confirms the award covers API usage, this spend bills to the key's account rather than the grant credits. Log it in the ledger either way, and say which account it billed to.
+**Pilot billing (D-20).** The pilot runs with Claude Code helper agents, not the API. Its model use is therefore Claude Code usage on whichever claude.ai account runs the session, which counts against the award if that is the funded account (D-15). Each stage logs the session's own list-price usage estimate before and after. Jimmy reconciles the totals against Settings > Usage. If the SLIDERS/API route is used later, D-17 applies to that spend.

@@ -101,6 +101,22 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-18 · D-20 decided: the pilot runs with Claude Code agents, no API key
+- **Decided by:** Jimmy ("yes - run the pilot this way now and record it as D-20").
+- **Decision:** the HA20 pilot's model work is done by Claude Code helper agents inside a Claude Code session, not through the Anthropic API. That covers study-type screening, per-paper extraction into the pinned schema, the gatekeeper and the memorization probe. Everything without a model stays as scripts: corpus fetch, span check, merging, normalization, phenopackets and concordance. The route is described at the top of `POC_DESIGN.md`.
+- **Why:** no API key is needed, and Claude Code is covered by the award's claude.ai credits. That avoids the API billing question (D-17) for the pilot, provided the session runs on the funded account (D-15).
+- **What it gives up:**
+  - **Not the SLIDERS code.** This is a home-built version of the SLIDERS method, which `POC_DESIGN.md` §6 already allows as a fallback if reported as such.
+  - **Looser model pinning.** The model is chosen per helper agent (Opus) and the model actually served is recorded, but settings can't be fixed as tightly as API calls allow.
+  - **Coarser cost tracking.** Cost is session-level, not per call, so "$ per paper" is an estimate.
+  - **No open-weight comparison in this scaffold.** Claude Code can't host an open-weight model.
+- **Kept for later:** the SLIDERS Anthropic adapter (`pipeline/extract/sliders_adapter/`), for when D-17 is settled. Running both routes on the same HA20 papers would show what SLIDERS adds.
+- **Isolation:**
+  - Helper agents get only their paper, the schema and the extraction rules. Their prompts are saved and hashed.
+  - `data/reference/` stays absent while extraction runs, so the guard holds.
+  - The ClinVar-cited seed list (D-19) is built outside the repo, and only PMIDs are written into it.
+- **Status:** a change of method for the pilot only. Nothing pre-registered changes.
+
 ### 2026-10-18 · D-18 decided: pilot first, on A20 haploinsufficiency
 - **Decided by:** Jimmy ("can we first do a pilot for 1 specific disease as proof of concept first NOW", then "yes" to recording it).
 - **Decision:** run the one-disease proof of concept in `POC_DESIGN.md` now, before freezing the pre-registration and before the six-disease study.

@@ -13,6 +13,22 @@ context.*
 > - **No contact (Jimmy).** No contact with anyone by any channel (`CLAUDE.md`). Draft messages; Jimmy sends them.
 > - **Current state of the plan and the open decisions:** `NOTES_FOR_AGENTS.md`, `DECISIONS.md` and `preregistration/analysis_plan.md` (draft v0.5).
 
+> **D-20 route (Jimmy, 2026-10-18): the pilot runs with Claude Code agents, without an API key.** Where a stage below says "model call", "Haiku", "SLIDERS run" or "`ANTHROPIC_API_KEY`", use the route below instead. The gates, checks, schema, rules and ceilings are unchanged.
+> - **Stage 1, study type and relevance.** A Claude Code helper agent reads title and abstract and assigns:
+>   - `study_type` (same five labels);
+>   - `reports_ha20_individuals` (yes / no / unclear), because the PubMed query also returns unrelated *TNFAIP3* papers.
+>
+>   `pipeline/extract/corpus/claude_code_screen.py` exports the batch and imports the labels (`study_type_method = claude_code`). A paper enters the extraction corpus if its study type qualifies and relevance is yes or unclear. "Unclear" papers are confirmed or dropped at extraction. Abstracts stay in a git-ignored working file. Token counts are chars/4 estimates, flagged as such.
+> - **Stages 2–3, extraction.** One Claude Code helper agent (Opus) per paper. It gets the paper's Markdown file, `schema_ha20.json` and `prompts/extraction_rules_v1.md`, and nothing else.
+>   - It writes `data/extracted/ha20/<run_id>/per_paper/<pmid>.json`: the pinned tables, with a verbatim span and the PMID on every non-null cell.
+>   - The prompt text is saved under `pipeline/extract/claude_code/prompts/`, and its hash is recorded in the run manifest, along with the model each agent was asked for.
+>   - Merging across papers (§3.6) is a deterministic script, not a model step.
+> - **Stage 5, gatekeeper.** Separate helper agents check claims against their span and source paragraph, without seeing the extractor's reasoning.
+> - **Stage 8, probe.** A helper agent answers closed-book, with tools off by instruction.
+> - **Cost.** Recorded per stage from the session's own usage metadata (list-price estimates), and reconciled by Jimmy against claude.ai Settings > Usage. The $1,000 ceiling and $1,500 hard stop still apply.
+> - **Isolation.** `data/reference/` stays absent while extraction runs. The ClinVar-cited seed PMIDs (D-19) are pulled into a temporary directory outside the repo; only the PMID list is kept.
+> - **Reporting.** The pilot report calls this "SLIDERS-style extraction with Claude Code agents", not SLIDERS (§6 risk table).
+
 This document is the operational protocol for the first end-to-end run of the
 GP-RareLink pipeline on one disease. It is **not** the pre-registration; the
 pre-registration (`preregistration/`) is frozen separately before the Month-2

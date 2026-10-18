@@ -26,11 +26,8 @@ How to maintain it:
     - the HA20 config and schema;
     - 24 tests (`uv sync && uv run pytest`).
 - **Not run yet:** any part of the pilot that needs the network or a model. That means the corpus, the three-paper smoke test, extraction, the reference snapshot and concordance.
-- **What the pilot needs from Jimmy:**
-  - the research domains allowed (the list is in §3);
-  - `ANTHROPIC_API_KEY` added as an environment secret;
-  - then a **new** session, because environment changes reach only new sessions.
-- **Billing.** The pilot calls the API, which the award's claude.ai credits may not cover (D-17).
+- **How the pilot runs (D-20).** Claude Code helper agents do the model work. No API key is needed; see the D-20 box at the top of `POC_DESIGN.md`.
+- **Network (re-tested 2026-10-18, later the same day).** The research domains are now allowed: NCBI E-utilities, PMC, Europe PMC REST, VariantValidator, ClinVar FTP and purl.obolibrary.org all answer. The europepmc.org website itself still returns 403, but the REST API works.
 - **Blocking the pre-registration freeze:** the pilot report (D-18), then D-08 to D-12, D-17 and D-19. Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**
   - Everything up to 2026-10-18 is on `main`, merged with Jimmy's approval. Start new work from `main`.
@@ -106,7 +103,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-20**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-21**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
