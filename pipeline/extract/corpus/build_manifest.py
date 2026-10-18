@@ -27,7 +27,7 @@ from pipeline.extract.corpus.pubmed_parse import parse_pubmed_xml, study_type_fr
 MANIFEST_COLUMNS = [
     "pmid", "pmcid", "doi", "first_author", "year", "journal", "title",
     "publication_types", "study_type_provisional", "study_type", "study_type_method",
-    "study_type_human_check", "in_extraction_corpus",
+    "study_type_human_check", "relevance", "in_extraction_corpus",
     "seed_sources", "access_status", "fulltext_format", "retrieved_at", "sha256", "license", "notes",
 ]
 IN_CORPUS_TYPES = {"case report", "case series/cohort", "review/meta-analysis"}

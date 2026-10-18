@@ -101,6 +101,66 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-18 · D-21 decided: smoke test accepted; group-statement rule; Stage 3 spend approved
+- **Decided by:** Jimmy ("approve and merge"), replying to the three gate questions in `reports/poc_stage2_smoke_findings.md`. Recorded as approving all three as recommended; Jimmy to correct if he meant less.
+- **Smoke output usable:** the Stage 2 human gate is passed.
+- **Group-statement rule:** a feature may be marked absent from a group statement only when the paper names the group explicitly (e.g. "only Pt3 of the four"). Such rows are tagged as inferred. A narrower absence never excludes a broader checklist item (e.g. "no arthritis" does not exclude "arthritis or arthralgia").
+- **Stage 3 spend:** one full extraction run plus a 15-paper repeat for stability, estimated at about $381 at most (`runs/poc-ha20-smoke-1/stage3_estimate.json`), within the pilot ceiling. The gatekeeper (Stage 5) is estimated separately after the run.
+- **Merge:** the branch is merged into `main`.
+
+### 2026-10-18 · Parallel Stage 1 runs reconciled (Claude's call)
+- **What happened:** two sessions ran Stage 1 on the same day without knowing about each other.
+  - The pilot session (branch `claude/zealous-meitner-k7moex`) ran 18:00–18:36 UTC: 584 records, 123 in the corpus, 61 with full text.
+  - This session ran from 20:22 UTC: 838 records, 153 in the corpus, 76 with full text.
+  - This session synced with `main` only and missed the other branch.
+- **How they compare:**
+  - 583 of the pilot's 584 records are in this session's manifest; the exception is the GeneReviews chapter, which has no usable full text.
+  - The corpora share 114 papers. This session has 39 more; the pilot has 9 more.
+  - One of the pilot's extra 9 is clearly relevant: 31767699, an HA20 letter with no abstract that this session's screening labelled "other".
+  - The pilot fetched 4 full texts this session lacked (31767699, 33619160, 33864888, 42889152), through `efetch db=pmc`.
+- **Call:**
+  - Stage 3 runs on the union of both corpora's papers that have full text (80).
+  - The 9 pilot-only papers are added to this manifest with a note.
+  - The pilot's `efetch db=pmc` fallback is ported so the 4 texts are fetched reproducibly here.
+  - The pilot branch's committed full-text Markdown files are **not** brought over; full text stays out of git.
+- **Still on the pilot branch, not merged:** its manifest and labels, its spot-check sheets (Jimmy was labelling them in that session), its Bookshelf parser, and the committed full-text Markdown, which should be removed before that branch is ever merged.
+
+### 2026-10-18 · Decisions recorded in the pilot session, carried over from its branch
+These were recorded on `claude/zealous-meitner-k7moex` between 18:22 and 18:36 UTC and are copied here so they aren't lost. Where a later decision supersedes one, that is noted.
+- **Unblocking Stage 1** (Jimmy, chat):
+  - The research hosts were allowed. omim.org still refuses automated reads (HTTP 403).
+  - `jimmy.lin@raregenomics.org` may be sent as the tool-identification contact to NCBI E-utilities and Unpaywall. It lives in the environment (`NCBI_EMAIL`, `UNPAYWALL_EMAIL`), not in code.
+  - Jimmy will read the OMIM terms and register for API access this week. Until then, concordance is ClinVar-only.
+  - The 20-row study-type spot-check was deferred, with the Stage 1 gate provisional until it is filled.
+- **Model steps on Claude Code credits only; no API key for now** (Jimmy, chat):
+  - Classification ran inside Claude Code on Jimmy's credits.
+  - The smoke test and all extraction were to wait for an API key. **Superseded by D-20**: extraction now runs with Claude Code agents.
+  - The entry also says "the grant's credits are Console API credits". **Corrected by the award email**: the credits are claude.ai usage credits (see `CONTEXT.md` and D-17).
+- **Stage 1 gate Q1 not met on first pass; corpus rule tightened** (reported to Jimmy):
+  - 61 of 123 papers had full text (49.6%). 11 more are open access on hosts the cloud can't reach; 42 are paywalled.
+  - A relevance label was added to the corpus rule; this session's screening uses the same idea.
+- **POC proceeds on the open-access corpus; no spend until a key exists** (Jimmy, chat):
+  - No library request and no local fetch of unreachable PDFs for now; coverage is revisited when the six-disease run is planned.
+  - When a key exists, a scripted classifier re-labels the manifest so the corpus is re-runnable.
+  - The spot-checks are done in chat with Jimmy.
+  - **"No spend until a key exists" is superseded by D-20 and D-21.**
+
+### 2026-10-18 · D-20 decided: the pilot runs with Claude Code agents, no API key
+- **Decided by:** Jimmy ("yes - run the pilot this way now and record it as D-20").
+- **Decision:** the HA20 pilot's model work is done by Claude Code helper agents inside a Claude Code session, not through the Anthropic API. That covers study-type screening, per-paper extraction into the pinned schema, the gatekeeper and the memorization probe. Everything without a model stays as scripts: corpus fetch, span check, merging, normalization, phenopackets and concordance. The route is described at the top of `POC_DESIGN.md`.
+- **Why:** no API key is needed, and Claude Code is covered by the award's claude.ai credits. That avoids the API billing question (D-17) for the pilot, provided the session runs on the funded account (D-15).
+- **What it gives up:**
+  - **Not the SLIDERS code.** This is a home-built version of the SLIDERS method, which `POC_DESIGN.md` §6 already allows as a fallback if reported as such.
+  - **Looser model pinning.** The model is chosen per helper agent (Opus) and the model actually served is recorded, but settings can't be fixed as tightly as API calls allow.
+  - **Coarser cost tracking.** Cost is session-level, not per call, so "$ per paper" is an estimate.
+  - **No open-weight comparison in this scaffold.** Claude Code can't host an open-weight model.
+- **Kept for later:** the SLIDERS Anthropic adapter (`pipeline/extract/sliders_adapter/`), for when D-17 is settled. Running both routes on the same HA20 papers would show what SLIDERS adds.
+- **Isolation:**
+  - Helper agents get only their paper, the schema and the extraction rules. Their prompts are saved and hashed.
+  - `data/reference/` stays absent while extraction runs, so the guard holds.
+  - The ClinVar-cited seed list (D-19) is built outside the repo, and only PMIDs are written into it.
+- **Status:** a change of method for the pilot only. Nothing pre-registered changes.
+
 ### 2026-10-18 · D-18 decided: pilot first, on A20 haploinsufficiency
 - **Decided by:** Jimmy ("can we first do a pilot for 1 specific disease as proof of concept first NOW", then "yes" to recording it).
 - **Decision:** run the one-disease proof of concept in `POC_DESIGN.md` now, before freezing the pre-registration and before the six-disease study.

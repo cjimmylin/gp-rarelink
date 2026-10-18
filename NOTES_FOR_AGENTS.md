@@ -25,18 +25,20 @@ How to maintain it:
     - the SLIDERS Anthropic adapter (`pipeline/extract/sliders_adapter/`);
     - the HA20 config and schema;
     - 24 tests (`uv sync && uv run pytest`).
-- **Not run yet:** any part of the pilot that needs the network or a model. That means the corpus, the three-paper smoke test, extraction, the reference snapshot and concordance.
-- **What the pilot needs from Jimmy:**
-  - the research domains allowed (the list is in §3);
-  - `ANTHROPIC_API_KEY` added as an environment secret;
-  - then a **new** session, because environment changes reach only new sessions.
-- **Billing.** The pilot calls the API, which the award's claude.ai credits may not cover (D-17).
+- **Pilot progress (2026-10-18):**
+  - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
+  - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
+  - **Waiting on Jimmy's gate:** the review sheet, the group-absence rule, and Stage 3 spend (`reports/poc_stage2_smoke_findings.md`).
+  - **Fix before Stage 3:** the Markdown converter's merged-cell bug, and `extract_v2`.
+- **How the pilot runs (D-20).** Claude Code helper agents do the model work. No API key is needed; see the D-20 box at the top of `POC_DESIGN.md`.
+- **Network (re-tested 2026-10-18, later the same day).** The research domains are now allowed: NCBI E-utilities, PMC, Europe PMC REST, VariantValidator, ClinVar FTP and purl.obolibrary.org all answer. The europepmc.org website itself still returns 403, but the REST API works.
 - **Blocking the pre-registration freeze:** the pilot report (D-18), then D-08 to D-12, D-17 and D-19. Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**
   - Everything up to 2026-10-18 is on `main`, merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
-  - run `git fetch origin main` before starting, and again before merging;
+  - run `git fetch origin` (all branches, not just `main`) before starting, and again before merging. On 2026-10-18 two sessions ran pilot Stage 1 in parallel because one checked only `main`;
+  - check `list_sessions` for other sessions working on this repo;
   - when files collide, combine both sides; never overwrite one with the other.
 - **The repo is canonical; the claude.ai Project only mirrors it** (Jimmy's decision, in `DECISIONS.md`). After changing documents here, tell Jimmy the Project mirror needs a refresh. Claude Code sessions have no access to the Project.
 
@@ -97,6 +99,13 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 
 **Cowork had the same limits.** The Cowork workspace used on 2026-10-16 couldn't reach PubMed, PMC, Europe PMC, arXiv or publisher sites either. The background papers were downloaded on Jimmy's own machine with `background/fetch_papers.sh` (`background/README.md`).
 
+**Pilot lessons (2026-10-18):**
+- **Give every helper agent its own scratch directory.** Nine screening helpers shared one, and generic file names collided. One helper read another's file; it caught this itself, and a reason-vs-text check confirmed no labels were wrong.
+- **The PMC OA web service is gone.** It answers 404 at both hosts. Europe PMC `fullTextXML` serves the same JATS, but answers 500 (not 404) when it has no full text; `eutils.py` handles both.
+- **NCBI Bookshelf pages (GeneReviews) sit behind a reCAPTCHA**, and PubMed book records aren't parsed. Don't count on GeneReviews reference lists.
+- **`jats_to_markdown` flattens rowspan and colspan**, which shifts table rows. Fix it before running extraction at scale.
+- **Session usage readings include helper agents.** `get_session` cost rises with helper work, so take a reading before and after each stage.
+
 **Python:**
 - The pipeline is a `uv` project (`pyproject.toml`, `uv.lock`, Python ≥ 3.11). Run `uv sync && uv run pytest`.
 - `requirements.txt` covers only the two audit scripts (scipy, which isn't preinstalled; numpy and pandas are).
@@ -106,7 +115,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-20**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-22**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically

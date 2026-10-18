@@ -13,6 +13,22 @@ context.*
 > - **No contact (Jimmy).** No contact with anyone by any channel (`CLAUDE.md`). Draft messages; Jimmy sends them.
 > - **Current state of the plan and the open decisions:** `NOTES_FOR_AGENTS.md`, `DECISIONS.md` and `preregistration/analysis_plan.md` (draft v0.5).
 
+> **D-20 route (Jimmy, 2026-10-18): the pilot runs with Claude Code agents, without an API key.** Where a stage below says "model call", "Haiku", "SLIDERS run" or "`ANTHROPIC_API_KEY`", use the route below instead. The gates, checks, schema, rules and ceilings are unchanged.
+> - **Stage 1, study type and relevance.** A Claude Code helper agent reads title and abstract and assigns:
+>   - `study_type` (same five labels);
+>   - `reports_ha20_individuals` (yes / no / unclear), because the PubMed query also returns unrelated *TNFAIP3* papers.
+>
+>   `pipeline/extract/corpus/claude_code_screen.py` exports the batch and imports the labels (`study_type_method = claude_code`). A paper enters the extraction corpus if its study type qualifies and relevance is yes or unclear. "Unclear" papers are confirmed or dropped at extraction. Abstracts stay in a git-ignored working file. Token counts are chars/4 estimates, flagged as such.
+> - **Stages 2–3, extraction.** One Claude Code helper agent (Opus) per paper. It gets the paper's Markdown file, `schema_ha20.json` and `prompts/extraction_rules_v1.md`, and nothing else.
+>   - It writes `data/extracted/ha20/<run_id>/per_paper/<pmid>.json`: the pinned tables, with a verbatim span and the PMID on every non-null cell.
+>   - The prompt text is saved under `pipeline/extract/claude_code/prompts/`, and its hash is recorded in the run manifest, along with the model each agent was asked for.
+>   - Merging across papers (§3.6) is a deterministic script, not a model step.
+> - **Stage 5, gatekeeper.** Separate helper agents check claims against their span and source paragraph, without seeing the extractor's reasoning.
+> - **Stage 8, probe.** A helper agent answers closed-book, with tools off by instruction.
+> - **Cost.** Recorded per stage from the session's own usage metadata (list-price estimates), and reconciled by Jimmy against claude.ai Settings > Usage. The $1,000 ceiling and $1,500 hard stop still apply.
+> - **Isolation.** `data/reference/` stays absent while extraction runs. The ClinVar-cited seed PMIDs (D-19) are pulled into a temporary directory outside the repo; only the PMID list is kept.
+> - **Reporting.** The pilot report calls this "SLIDERS-style extraction with Claude Code agents", not SLIDERS (§6 risk table).
+
 This document is the operational protocol for the first end-to-end run of the
 GP-RareLink pipeline on one disease. It is **not** the pre-registration; the
 pre-registration (`preregistration/`) is frozen separately before the Month-2
@@ -26,8 +42,9 @@ disease set (`INSTRUCTIONS.md` §1.4).
 | Stage | Status | Date | Notes |
 |---|---|---|---|
 | 0 Setup and guardrails | done | 2026-10-18 | `pyproject.toml`, `pipeline/{common,extract,harness}`, `configs/prices.yaml` (prices unverified against the live page; `verified_on` is null), isolation tests and runtime guard, 14 tests passing with `uv run pytest`. One distribution with three subpackages rather than separate packages; the boundary is enforced by tests and the guard. |
-| 1 Corpus assembly | scripts ready, **not run** | 2026-10-18 | `pipeline/extract/corpus/` (manifest builder, Haiku study-type classifier, full-text fetcher, JATS→Markdown, stats) with offline tests; runbook in `data/literature/ha20/README.md`; seed list from the background bibliography; OMIM request drafted in `reports/drafts/omim_access_request.md`. Blocked here: the cloud environment's network policy denies NCBI, Europe PMC, Unpaywall and omim.org. Run on the Mac mini or allow those hosts in the environment settings. |
+| 1 Corpus assembly | **done; Q1 gate not met** (49.7% < 70%) | 2026-10-18 | Run in this cloud session via the D-20 route. 838 records (PubMed query, 715 hits since 2015, plus review references and ClinVar-cited seeds); Claude Code screening put 153 in the extraction corpus; 76 have full text (Europe PMC XML; the PMC OA service is gone, Unpaywall unused for lack of an email address). Details, counts and QA in `data/literature/ha20/search.md`. Human spot-check sheet (20 rows) awaits Jimmy. |
 | 2 SLIDERS on Claude | adapter done, **smoke test not run** | 2026-10-18 | Patch `pipeline/extract/sliders_adapter/0001-anthropic-provider.patch` on upstream commit `b66094d`, installed by `scripts/install_sliders.sh`; config `configs/sliders_ha20.yaml`; pinned schema complete (no completion call); extraction rules v1; run wrapper with run manifest and usage/cost capture; 24 tests pass incl. wire-payload tests against a fake Messages API. Blocked here: no `ANTHROPIC_API_KEY` in the environment and no full text yet. |
+| 2 Smoke test, D-20 route | **done; awaiting Jimmy's gate** | 2026-10-18 | Three papers (36727002, 35154120, 41890736) extracted by Claude Code helpers (Opus) under `extract_v1.md`: 2,900 asserted values, all quotes found verbatim, 0 structural problems; at most $4.19 per paper (session usage delta, upper bound). Findings, proposed fixes and the Stage 3 estimate in `reports/poc_stage2_smoke_findings.md`; review sheet `reports/poc_review_poc-ha20-smoke-1.md`. |
 
 Everything here is subordinate to `INSTRUCTIONS.md` and `CONTEXT.md`. If a step
 below conflicts with them, they win; stop and flag it.
