@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.2 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Still blocking the freeze: D-01 and D-08 to D-12.
+**Pre-registration status:** draft v0.3 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Still blocking the freeze: D-01, D-08 to D-12, and D-17.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -15,10 +15,20 @@ How to use this file:
 
 ### Needed before the pre-registration can be frozen
 
-**D-01 · Project dates and award**
-- **Question:** What were the award date and the credits awarded, and when did Month 1 start? These are all blank in `CONTEXT.md`.
-- **Why it matters:** the timeline, the budget's remaining balance and the "Month n" labels all depend on them.
-- **Recommendation:** fill them in `CONTEXT.md`.
+**D-01 · Project start (Month 1)**
+- **Already settled:** award date 2026-08-31 and $45,000 awarded (see the log below).
+- **Still open:** when Month 1 starts. The award email gives a "six-month project period" but no start date.
+- **Options:**
+  - **The date the first deposit landed** (scheduled 2026-09-21).
+    - Months then run from the 21st to the 20th, and Month 6 ends around 2027-03-20, when the first deposit expires.
+    - Under this choice, today (2026-10-18) is the end of Month 1. Month-1 work (corpus, reference snapshots, freezing the plan) is behind and would run into Month 2.
+  - **When project work began** (2026-10-16, the background literature search).
+    - The timeline in `CONTEXT.md` §8 then fits as written.
+    - But Month 6 runs about four weeks past the first deposit's expiry, so any of the first half still unspent by then lapses.
+- **Recommendation:** the date the first deposit landed. It matches Anthropic's six-month window and the credit expiry, so our progress reports line up with theirs. Then re-plan Month 2 to absorb the unfinished Month-1 work.
+- **Please also confirm:**
+  - the date and amount of the first deposit, as shown in claude.ai Settings > Usage;
+  - the claude.ai Organization ID it went to.
 
 **D-08 · Substitute-disease trigger**
 - **Question:** What open-access threshold replaces a pilot disease with a substitute?
@@ -36,6 +46,7 @@ How to use this file:
   - How many audited claims per model?
   - Where does it run? The $2,000 line is Claude credits; open-weight compute isn't budgeted.
 - **Recommendation:** pick the model by the time of the freeze, on the criteria open weights, long context and tool use. Run it on A20 haploinsufficiency (the pilot disease) plus one other.
+- **Depends on D-17:** an identical scaffold needs both models to be called the same way.
 
 **D-11 · Panel time**
 - **Questions:**
@@ -47,6 +58,19 @@ How to use this file:
 - **The problem:** omim.org blocks automated reading. The archived terms bar redistribution without a license (`grant_claim_checks.md` §13).
 - **Options:** request API or download access; read the current terms by hand; or limit OMIM concordance to what can be lawfully obtained.
 - **Blocks:** the OMIM half of concordance (O2) and the OMIM gap definition (O3).
+
+**D-17 · How the pipeline calls Claude** (opened 2026-10-18)
+- **The problem:**
+  - The grant assumed extraction, gatekeeper, concordance and bias runs would call Claude from code. The application gave a Console org ID for API credits.
+  - The award email says the credits sit on a claude.ai account and work across chat, Claude Code, Cowork and Claude Science. It doesn't mention API usage.
+- **Why it matters:** most of the core budget (lines 1–3, 5 and 6) is model runs inside the pipeline. The route also affects two parts of the plan:
+  - pinning the model ID and settings (§6.1);
+  - the identical-scaffold comparison with an open-weight model (§7.5), which is simplest when both models are called from code.
+- **Options:**
+  - Run the pipeline's model calls through a claude.ai surface the credits cover, such as Claude Code running the pipeline scripts, or Claude Science. This works only if that surface supports the batch runs and logging the plan needs.
+  - Use the API with separate funding not covered by the award.
+  - Ask Bailey whether the credits can cover API calls from the pipeline.
+- **Recommendation:** Jimmy asks Bailey first (Claude does not contact anyone). Meanwhile, the pipeline keeps all model calls behind one small interface, so the access route can change without touching extraction logic.
 
 ### Needed later
 
@@ -64,9 +88,11 @@ How to use this file:
 - **Scope:** the disease set is unchanged; these are wording and number fixes.
 
 **D-15 · Budget tracking**
-- **Questions:**
-  - How do the budget lines map to the grant's 65% Claude Science / 35% Claude Code split? Only one line, $6,000, is explicitly Claude Code, against ~$16,000 in the split.
-  - Do Cowork and Claude Code sessions bill to the grant's Console org or to a claude.ai plan?
+- **Answered by the award email:** the credits are one pool on a claude.ai account, covering chat, Claude Code, Cowork and Claude Science. Cowork and Claude Code sessions on the funded account draw on that pool. There are no separate Claude Science and Claude Code allocations.
+- **Still open:**
+  - Are this project's Cowork and Claude Code sessions, including this one, running on the funded account?
+  - The grant's 65% / 35% split is now only an internal plan. Recommendation: keep reporting per budget line, as committed, and drop the split unless Anthropic asks for it.
+  - Is the plan's included usage consumed before the credits? The email calls them "extra usage credits". This changes what counts as spend; check the usage-credits help article linked in the email.
   - What counts as a "large share" of a line, requiring Jimmy's approval before a run (25% proposed)?
 - **Details:** see `BUDGET.md`.
 
@@ -77,6 +103,15 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-18 · Award details recorded (D-01 partly resolved)
+- **Source:** award email from Bailey (Anthropic AI for Science program), sent 2026-08-31, saved as `grant/AWARD_EMAIL.md`. The sent date was confirmed by Jimmy.
+- **Recorded in `CONTEXT.md`:**
+  - award date 2026-08-31;
+  - $45,000 awarded (the full request) as claude.ai usage credits;
+  - the first half deposited up front (first deposit scheduled 2026-09-21), then top-ups as credits are spent, with each deposit expiring six months after it lands;
+  - publications must acknowledge the program.
+- **Follow-on changes:** D-01 narrowed to the Month-1 start; D-15 partly answered; D-17 opened (how the pipeline calls Claude).
 
 ### 2026-10-18 · D-02 to D-07 decided
 - **Decided by:** Jimmy Lin, accepting Claude's recommendations as written in `DECISIONS.md` that day.

@@ -12,9 +12,9 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 | `DECISIONS.md` | Open decisions, dated decision log, pre-registration deviations |
 | `BUDGET.md` | Credit spend against each budget line |
 | `preregistration/` | Analysis plan (draft, not yet frozen) |
-| `grant/` | The application as submitted |
+| `grant/` | The application as submitted and the award email |
 | `background/` | Annotated bibliography, manifest, grant-claim checks, fetch scripts |
 
 **Private repository.** It holds the grant application and pre-registration material. Licensed data (OMIM), full-text articles and reference snapshots are kept out by `.gitignore`; commit manifests and download scripts instead.
 
-**Status:** Month 1 (data and setup). Pre-registration drafted (v0.2, 2026-10-18), waiting on the remaining open decisions in `DECISIONS.md` before it can be frozen.
+**Status:** Month 1 (data and setup). Awarded 2026-08-31 ($45,000 in claude.ai credits). Pre-registration drafted (v0.3, 2026-10-18), waiting on the remaining open decisions in `DECISIONS.md` before it can be frozen.

@@ -4,30 +4,42 @@ Actual credit spend against each budget line in the grant (`CONTEXT.md` §9). We
 
 | | |
 |---|---|
-| Requested | $45,000 (≈ $29,000 Claude Science / ≈ $16,000 Claude Code) |
-| Awarded | *Not recorded yet* (see D-01) |
-| Credits applied to | Anthropic Console org in `CONTEXT.md` |
+| Requested | $45,000 |
+| Awarded | $45,000, the full request, on 2026-08-31 (`grant/AWARD_EMAIL.md`) |
+| Form | Usage credits on a paid claude.ai account. They cover chat, Claude Code, Cowork and Claude Science; the email does not mention API usage (D-17). |
+| Account | claude.ai Organization ID: *to confirm* (D-01). The application named a Console org instead. |
 | Spend logged to date | None (see "Usage not yet accounted for") |
 | Last updated | 2026-10-18 |
+
+## Deposits
+
+Anthropic deposits half the award up front, then tops up toward $45,000 as credits are spent. **Each deposit expires six months after it lands.** Record each deposit as it appears in claude.ai Settings > Usage.
+
+| # | Landed | Amount | Expires | Source |
+|---|---|---|---|---|
+| 1 | *to confirm* (scheduled 2026-09-21) | *to confirm* (half the award) | six months after landing | Award email; Settings > Usage |
 
 ## Lines
 
 "Spent" will be filled from the ledger below by script once entries exist. Totals are never added up by hand.
 
-| # | Line | Requested | Product | Spent | Notes |
-|---|---|---|---|---|---|
-| 1 | Extraction across six diseases, incl. re-runs as HGVS and negation handling stabilize | $8,000 | to confirm | — | Pilot on A20 haploinsufficiency first (D-06); cost estimate before scaling |
-| 2 | Gatekeeper verification pass | $4,000 | to confirm | — | |
-| 3 | ClinVar/OMIM reconciliation + concordance harness (full re-runs) | $6,000 | to confirm | — | |
-| 4 | Claude Code: pipeline, VariantValidator integration, dedup tooling, adjudication interface | $6,000 | Claude Code | — | |
-| 5 | Ascertainment-bias arm | $4,000 | to confirm | — | Comparators within the pilot diseases; no extra diseases (D-04) |
-| 6 | Claude vs open-weight head-to-head | $2,000 | to confirm | — | Open-weight compute not covered (D-10) |
-| | **Core subtotal** | **$30,000** | | | |
-| 7 | Stretch: extend to all 12 candidate diseases | $9,000 | to confirm | — | Only if the core finishes under budget |
-| 8 | Contingency | $6,000 | — | — | |
-| | **Total requested** | **$45,000** | | | |
+| # | Line | Requested | Spent | Notes |
+|---|---|---|---|---|
+| 1 | Extraction across six diseases, incl. re-runs as HGVS and negation handling stabilize | $8,000 | — | Pilot on A20 haploinsufficiency first (D-06); cost estimate before scaling |
+| 2 | Gatekeeper verification pass | $4,000 | — | |
+| 3 | ClinVar/OMIM reconciliation + concordance harness (full re-runs) | $6,000 | — | |
+| 4 | Claude Code: pipeline, VariantValidator integration, dedup tooling, adjudication interface | $6,000 | — | |
+| 5 | Ascertainment-bias arm | $4,000 | — | Comparators within the pilot diseases; no extra diseases (D-04) |
+| 6 | Claude vs open-weight head-to-head | $2,000 | — | Open-weight compute not covered (D-10) |
+| | **Core subtotal** | **$30,000** | | |
+| 7 | Stretch: extend to all 12 candidate diseases | $9,000 | — | Only if the core finishes under budget |
+| 8 | Contingency | $6,000 | — | |
+| | **Total requested** | **$45,000** | | |
 
-**Mapping gap (D-15).** The grant splits credits 65% Claude Science / 35% Claude Code, but only line 4 ($6,000) is explicitly Claude Code, against ≈ $16,000 in the split. Before the first progress report we need to know which lines, or parts of lines, count as Claude Code, so that spend is reported the same way it was requested.
+**Three notes:**
+- **One credit pool.** The award is a single pool of claude.ai credits, with no separate Claude Science and Claude Code allocations. The grant's 65% / 35% split (≈ $29,000 / ≈ $16,000) is now only an internal plan. We report per line, as committed (D-15).
+- **Pipeline runs.** Lines 1–3, 5 and 6 are model runs inside the pipeline. Whether the credits can pay for them depends on how the pipeline calls Claude (D-17).
+- **Expiry.** Unspent credits from a deposit lapse six months after it lands, so time large runs with each deposit's expiry in mind. Unused credits are still reported, not spent for the sake of it.
 
 ## Usage not yet accounted for
 
@@ -37,15 +49,18 @@ Model usage before this file existed was not logged:
 |---|---|---|---|
 | 2026-10-16 | Background literature search (129 entries) and grant-claim checks | Claude Cowork | unassigned |
 | 2026-10-18 | Repository setup | Claude Cowork / Claude Code | unassigned |
-| 2026-10-18 | Status review; this file, `DECISIONS.md`, pre-registration draft | Claude Code (cloud session) | unassigned |
+| 2026-10-18 | Status review; this file, `DECISIONS.md`, pre-registration draft, award details | Claude Code (cloud session) | unassigned |
+
+The award covers Cowork and Claude Code, so these sessions count against the grant **if** they ran on the funded account.
 
 **Questions for Jimmy (D-15):**
-1. Do Cowork and Claude Code sessions draw on the grant's Console org credits, or on a claude.ai plan? If on a plan, they don't count against the grant and we log them here only for transparency.
-2. If they do draw on grant credits, the Console usage page for the org is the source for the figures. Which line should Month-1 setup and literature work be booked to? None fits exactly. Line 4 is the closest for repository work; the literature search fits no line.
+1. Did these sessions run on the funded claude.ai account?
+2. Is the plan's included usage used before the credits? The email calls them "extra usage credits". If so, only usage beyond the plan's limits shows as credit spend.
+3. Which line should Month-1 setup and literature work be booked to? None fits exactly. Line 4 is the closest for repository work; the literature search fits no line.
 
 ## Ledger
 
-One row per run or billing period. Figures come from the Console usage export or API usage reports, never from estimates. Link the commit or script that made the run.
+One row per run or billing period. Figures come from claude.ai Settings > Usage on the funded account (or, if D-17 adds an API route, from that account's usage report), never from estimates. Link the commit or script that made the run.
 
 | Date | Line | What ran (script / commit) | Model | Input tokens | Output tokens | Cost (USD) | Source of figure | Logged by |
 |---|---|---|---|---|---|---|---|---|

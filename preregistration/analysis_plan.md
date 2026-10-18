@@ -1,6 +1,9 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.2, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3). v0.2 applies decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
+> **Status: DRAFT v0.3, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+>
+> - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
+> - v0.3 adds the award details (award email of 2026-08-31) and open decision D-17.
 >
 > - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
 > - Items marked **(D-nn, decided)** are settled; the decision and its date are in `DECISIONS.md`.
@@ -19,7 +22,7 @@ Structure follows the usual sections of a preregistration for analysis of existi
 |---|---|
 | **Title** | GP-RareLink: Literature-Curated, Database-Validated Genotype–Phenotype Records for Rare Disease |
 | **Investigators** | Dr. Jimmy Lin (PI, Rare Genomics Institute); Prof. Monica Lam (co-lead, AI methods, Stanford OVAL Lab); adjudication panel Drs. Eva Wu, Gabriela Balderrama, Anita Chacko. *[OVAL contributors to be added by Prof. Lam.]* |
-| **Funding** | Anthropic AI for Science Program, Rare Disease program, Basic science track. API credits only. |
+| **Funding** | Anthropic AI for Science Program, Rare Disease program, Basic science track. Awarded 2026-08-31: $45,000 in claude.ai usage credits, covering chat, Claude Code, Cowork and Claude Science (`grant/AWARD_EMAIL.md`). Credits only; no cash. |
 | **Project dates** | Month 1 start: *not yet recorded* [D-01]. Six months. |
 | **Registry** | *To be decided* [D-09] |
 
@@ -141,6 +144,8 @@ Direct, dated counts per gene (ClinVar records by classification; OMIM allelic v
 ### 6.1 Models and versions
 
 **Primary extractor and gatekeeper:** Claude Opus. The exact model ID, any sampling parameters and the dates of use are recorded when the pipeline is frozen (§6.5) and not changed afterwards. A model change is a deviation. The model's published training cutoff is recorded too, for the memorization probe (§7.4.3).
+
+**Access route [D-17].** How the pipeline calls Claude is not yet decided: through a claude.ai surface the award credits cover, or through the API. Whichever route is chosen, it must let us record and fix the exact model ID and settings for every call. The route is stated in the frozen plan.
 
 **Supporting tools:** VariantValidator, the phenopacket schema validator, and pyphetools CohortValidator (`pyphetools_software`). Each is pinned by version or access date.
 
@@ -382,7 +387,7 @@ Metrics:
 - cost per paper (Claude: API cost; open-weight: compute cost at a stated rate);
 - wall-clock time.
 
-Results are published either way. Still to decide: which model, which disease(s), audit size, and where the open-weight model runs. The grant's $2,000 line covers Claude credits only.
+Results are published either way. Still to decide: which model, which disease(s), audit size, and where the open-weight model runs. The grant's $2,000 line covers Claude credits only. The comparison also depends on [D-17], because an identical scaffold needs both models to be called the same way.
 
 ### 7.6 Exploratory analyses (labeled as such in any report)
 
@@ -419,6 +424,7 @@ Stated so readers can judge the risk of data-informed choices.
 - **OMIM content** is not redistributed. Storage depends on the licensing route [D-12].
 - **ClinVar snapshots** are re-downloadable. The repo holds the download script and manifest, not the files.
 - **No patient data** of any kind is used.
+- **Acknowledgment.** Every publication that used the award credits acknowledges Anthropic's AI for Science program (award email, 2026-08-31).
 
 ## 12. Timeline (relative to Month 1 start [D-01])
 
@@ -433,4 +439,4 @@ Stated so readers can judge the risk of data-informed choices.
 
 ## 13. Decisions needed before freezing
 
-See `DECISIONS.md` → *Open decisions*. Still blocking this plan: D-01 and D-08 to D-12. D-02 to D-07 were decided on 2026-10-18. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.
+See `DECISIONS.md` → *Open decisions*. Still blocking this plan: D-01, D-08 to D-12, and D-17. D-02 to D-07 were decided on 2026-10-18. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.
