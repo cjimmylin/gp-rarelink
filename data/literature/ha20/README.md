@@ -1,6 +1,6 @@
 # HA20 corpus (Stage 1 of POC_DESIGN.md)
 
-Status 2026-10-18: scripts written and unit-tested; **not yet run**. The cloud
+Status 2026-10-18 (later): **Stage 1 run** in a Claude Code cloud session with the research domains allowed (D-20 route); see `search.md` for the query, counts and gate result. Original note: the cloud
 container that wrote them cannot reach NCBI, Europe PMC or Unpaywall (network
 policy), so Stage 1 has to be executed on a networked machine (the Mac mini
 was used for `background/fetch_papers.sh`).

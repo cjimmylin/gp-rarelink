@@ -92,6 +92,10 @@ class Client:
     def pmc_oa_links(self, pmcid: str) -> list[dict]:
         """Return [{'format': 'tgz'|'pdf', 'href': ..., 'license': ...}] from the PMC OA service."""
         r = self.get(PMC_OA, {"id": pmcid})
+        if r.status_code == 404:
+            # The PMC OA web service answered 404 at both its old and new hosts
+            # on 2026-10-18; callers then fall back to Europe PMC full text.
+            return []
         r.raise_for_status()
         root = ET.fromstring(r.content)
         err = root.find(".//error")
@@ -105,11 +109,30 @@ class Client:
         return out
 
     def europepmc_fulltext_xml(self, pmcid: str) -> bytes | None:
-        r = self.get(f"{EUROPEPMC}/{pmcid}/fullTextXML")
-        if r.status_code == 404:
-            return None
-        r.raise_for_status()
-        return r.content
+        """Full-text JATS XML from Europe PMC, or None if it has none for this article.
+
+        Europe PMC answers 500 (not 404) for some articles without full text, so
+        an HTTP error response after two tries means "not available here".
+        Transport failures still raise Unreachable so a real outage stops the run.
+        """
+        url = f"{EUROPEPMC}/{pmcid}/fullTextXML"
+        status = None
+        for attempt in range(2):
+            self._throttle()
+            try:
+                r = self._http.get(url)
+            except httpx.TransportError as exc:
+                if attempt == 1:
+                    raise Unreachable(f"{url}: {exc}") from exc
+                time.sleep(2)
+                continue
+            status = r.status_code
+            if status == 200 and r.content.lstrip().startswith(b"<"):
+                return r.content
+            if status in (404, 400):
+                return None
+            time.sleep(2)
+        return None
 
     def download(self, url: str) -> bytes:
         r = self.get(url)
