@@ -36,6 +36,10 @@ Explicit and strong candidates are merged only if both hold:
     year). A review row that cites a family and matches several relatives with
     the same variant is therefore left unmerged ("ambiguous_one_to_many");
   - no identity may hold two rows from the same paper ("skipped_same_paper").
+    Pairs between two first-hand rows (neither taken from a summary of earlier
+    reports) are joined first, then the rest by confidence and score. So when a
+    review lists one patient twice under two citations, the two primary reports
+    still merge and the review's second row is the one skipped.
 Policy v1 (earlier the same day) merged every explicit or strong candidate; on
 the first 58 run-1 papers that joined relatives into one identity.
 
@@ -342,8 +346,11 @@ def main(argv: list[str] | None = None) -> int:
             x = parent[x]
         return x
 
+    def first_hand_pair(k: int) -> bool:
+        return not people[pairs[k][0]]["source_reference"] and not people[pairs[k][1]]["source_reference"]
+
     order = sorted((k for k in range(len(pairs)) if pairs[k][2]["decision"] == "pending"),
-                   key=lambda k: (-conf_rank[pairs[k][2]["confidence"]], -pairs[k][2]["score"],
+                   key=lambda k: (not first_hand_pair(k), -conf_rank[pairs[k][2]["confidence"]], -pairs[k][2]["score"],
                                   people[pairs[k][0]]["pmid"], str(people[pairs[k][0]]["label"]),
                                   people[pairs[k][1]]["pmid"], str(people[pairs[k][1]]["label"])))
     for k in order:

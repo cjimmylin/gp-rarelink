@@ -109,3 +109,31 @@ def test_review_row_citing_a_family_is_not_merged_into_relatives(tmp_path, monke
     assert rows and all(r["decision"] == "ambiguous_one_to_many" and r["merged"] == "False" for r in rows)
     summary = json.loads((run / "reconcile_summary.json").read_text())
     assert summary["identities_after_merging"] == 3
+
+
+def test_review_listing_one_patient_twice_does_not_block_primary_merge(tmp_path, monkeypatch):
+    """Two primary papers say they describe the same girl; a review lists her twice under both citations.
+    The primary pair must merge; one review row is skipped instead."""
+    monkeypatch.chdir(tmp_path)
+    per = tmp_path / "data/extracted/ha20/r3/per_paper"
+    per.mkdir(parents=True)
+    xml = tmp_path / "data/literature/ha20/fulltext"
+    xml.mkdir(parents=True)
+    docs = {
+        "111": paper("111", 2019, [{"label": "P1", "sex": "female", "cdna": "c.559C>T"}]),
+        "222": paper("222", 2020, [{"label": "patient 7", "sex": "female", "cdna": "c.559C>T"}], prior="[1]"),
+        "333": paper("333", 2024, [{"label": "Gln187Ter [1]", "sex": "female", "protein": "Gln187Ter", "src": "[1]"},
+                                   {"label": "Gln187Ter [2]", "sex": "female", "protein": "Gln187Ter", "src": "[2]"}],
+                     study_type="review/meta-analysis"),
+    }
+    docs["111"]["tables"]["variants"][0]["protein_hgvs_as_stated"] = cell("p.Q187X")
+    docs["222"]["tables"]["variants"][0]["protein_hgvs_as_stated"] = cell("p.Q187X")
+    for pmid, d in docs.items():
+        (per / f"{pmid}.json").write_text(json.dumps(d))
+    (xml / "222.nxml").write_text(jats("222", [("Li G. A20 haploinsufficiency. 2019", "111")]))
+    (xml / "333.nxml").write_text(jats("333", [("Li G. A20 haploinsufficiency. 2019", "111"), ("Li G. Lupus. 2020", "222")]))
+    assert rc.main(["--disease", "ha20", "--run-id", "r3"]) == 0
+    run = tmp_path / "data/extracted/ha20/r3"
+    rows = {(r["pmid_a"], r["label_a"], r["pmid_b"], r["label_b"]): r for r in csv.DictReader((run / "merges.csv").open())}
+    assert rows[("111", "P1", "222", "patient 7")]["decision"] == "merged"
+    assert sum(r["decision"] == "skipped_same_paper" for r in rows.values()) == 1
