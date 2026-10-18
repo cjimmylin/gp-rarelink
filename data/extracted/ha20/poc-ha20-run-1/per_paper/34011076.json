@@ -3,7 +3,7 @@
  "instructions_version": "extract_v2",
  "reports_individuals_with_tnfaip3_variant": true,
  "relevance_note": "Case report of a girl with a heterozygous TNFAIP3 variant (\"there was a heterozygous mutation (c.436_437deTC) in the TNFAIP3 gene\"), plus Table 1 summarising 29 previously published patients.",
- "method_note": "Read the whole paper by hand. A short Python script (scratch only) assembled the JSON: for Table 1 it sliced each table line into cells and built spans as the contiguous row text from the row start through the cited item (or, when that exceeded ~320 characters, a pair [row start, cell fragment]); the per-row feature lists, variant strings and checklist mappings were typed by hand from my reading, and the script output was checked against the table. Table 1 (Clinical features of patients with TNFAIP3) lists 29 previously published patients plus 'This case'. It has no per-patient labels: Pedigree, Mutation location and References cells are filled only on the first row of each group and blank on the following rows. I labelled each previously published patient 'Table 1 Family N row k' (k = order within the family block); these labels are mine, not the paper's. Family label and source reference for blank-cell rows were assigned from the block above (two spans: the block's first row and the patient's row). I did NOT copy the family's mutation to blank-cell rows (rule 6: empty cell = not reported), so only the first row of Families 2-13 has a variant row; Family 1 gives 'TNFAIP3' with no variant, so no variant row. Table 1 'Fever' alone was not mapped to checklist 'recurrent fever' (recurrence not stated); 'oral mucosa, genital ulcer' was read as oral mucosal ulcer plus genital ulcer. The first-hand patient is labelled 'This case' (its Table 1 label). Her age at presentation (2 years 3 months) is the only age given and is not the age at last follow-up (January 2021), so last-evaluation and diagnosis ages are 'not reported'. ANA 1:100 and anticardiolipin antibody 18 RU/mL are given without interpretation, so autoantibodies is 'not reported'; the negative neurological examination is recorded as an excluded feature but the broader checklist item 'central nervous system involvement' is left 'not reported'. Joint pain was denied at admission but knee pain and synovitis were reported later (May 2020) and knee effusion/thickened synovium on admission ultrasound; I treated this as a change over time, not a contradiction, and kept 'arthritis or arthralgia' observed. Contradictions in the paper: (1) Variant notation differs: abstract 'c.436-437deTC', main text and Table 1 'c.436_437deTC', Figure 4 legend 'c.436_437delTC'. (2) Count: Introduction says 'a total of 30 cases, including this case'; Discussion says 'this case and the 48 cases reported so far are summarized in Table 1'; Table 1 has 30 rows. n_patients_reported = 30. (3) Genital ulcers: Table 1 lists 'oral, genital, intestinal ulcers' for This case, but the text says the parents denied vulvar ulcer and 'No abnormalities were noted in the vulva and perianal areas' - both rows emitted, checklist 'not reported'. (4) Rash: Table 1 'nonspecific rash' vs examination 'no skin rash' - both rows emitted, checklist 'not reported'. (5) VitB12 is given twice with different values (1118 and 118.2 pmol/L), and IL-6 is given as '65.5 mg/L', identical to the CRP value. (6) Family 2 and Family 12 carry the same variant (c.252delC p.Trp85GlyfsX11) and similar patients (11 yr F, 9 mo F) under different references (Kadowaki et al[4] vs Ohnishi et al[15]): possibly the same patients reported twice; not merged. (7) By table layout Family 3 (c.728G > A p.Cys243Tyr) falls in the Kadowaki et al[4] block, while reference [14] (Shigemura et al, attributed to Family 1, which has no variant) is titled 'Novel heterozygous C243Y A20/TNFAIP3 gene mutation'; the table's reference attribution may be shifted - recorded as laid out. (8) Family 9 row 1 lists 'cerebral palsy' twice. Group-level Discussion content (Zhou et al's 6 families, functional studies) has no patient-level detail and was not extracted.",
+ "method_note": "Read the whole paper by hand. A short Python script (scratch only) assembled the JSON: for Table 1 it sliced each table line into cells and built spans as the contiguous row text from the row start through the cited item (or, when that exceeded 300 characters, a pair [row start, cell fragment]); the per-row feature lists, variant strings and checklist mappings were typed by hand from my reading, and the script output was checked against the table. Table 1 (Clinical features of patients with TNFAIP3) lists 29 previously published patients plus 'This case'. It has no per-patient labels: Pedigree, Mutation location and References cells are filled only on the first row of each group and blank on the following rows. I labelled each previously published patient 'Table 1 Family N row k' (k = order within the family block); these labels are mine, not the paper's. Family label and source reference for blank-cell rows were assigned from the block above (two spans: the block's first row and the patient's row). I did NOT copy the family's mutation to blank-cell rows (rule 6: empty cell = not reported), so only the first row of Families 2-13 has a variant row; Family 1 gives 'TNFAIP3' with no variant, so no variant row. Table 1 'Fever' alone was not mapped to checklist 'recurrent fever' (recurrence not stated); 'oral mucosa, genital ulcer' was read as oral mucosal ulcer plus genital ulcer. The first-hand patient is labelled 'This case' (its Table 1 label). Her age at presentation (2 years 3 months) is the only age given and is not the age at last follow-up (January 2021), so last-evaluation and diagnosis ages are 'not reported'. ANA 1:100 and anticardiolipin antibody 18 RU/mL are given without interpretation, so autoantibodies is 'not reported'; the negative neurological examination is recorded as an excluded feature but the broader checklist item 'central nervous system involvement' is left 'not reported'. Joint pain was denied at admission but knee pain and synovitis were reported later (May 2020) and knee effusion/thickened synovium on admission ultrasound; I treated this as a change over time, not a contradiction, and kept 'arthritis or arthralgia' observed. Contradictions in the paper: (1) Variant notation differs: abstract 'c.436-437deTC', main text and Table 1 'c.436_437deTC', Figure 4 legend 'c.436_437delTC'. (2) Count: Introduction says 'a total of 30 cases, including this case'; Discussion says 'this case and the 48 cases reported so far are summarized in Table 1'; Table 1 has 30 rows. n_patients_reported = 30. (3) Genital ulcers: Table 1 lists 'oral, genital, intestinal ulcers' for This case, but the text says the parents denied vulvar ulcer and 'No abnormalities were noted in the vulva and perianal areas' - both rows emitted, checklist 'not reported'. (4) Rash: Table 1 'nonspecific rash' vs examination 'no skin rash' - both rows emitted, checklist 'not reported'. (5) VitB12 is given twice with different values (1118 and 118.2 pmol/L), and IL-6 is given as '65.5 mg/L', identical to the CRP value. (6) Family 2 and Family 12 carry the same variant (c.252delC p.Trp85GlyfsX11) and similar patients (11 yr F, 9 mo F) under different references (Kadowaki et al[4] vs Ohnishi et al[15]): possibly the same patients reported twice; not merged. (7) By table layout Family 3 (c.728G > A p.Cys243Tyr) falls in the Kadowaki et al[4] block, while reference [14] (Shigemura et al, attributed to Family 1, which has no variant) is titled 'Novel heterozygous C243Y A20/TNFAIP3 gene mutation'; the table's reference attribution may be shifted - recorded as laid out. (8) Family 9 row 1 lists 'cerebral palsy' twice. Group-level Discussion content (Zhou et al's 6 families, functional studies) has no patient-level detail and was not extracted.",
  "tables": {
   "publications": [
    {
@@ -2451,7 +2451,10 @@
     },
     "source_reference_in_review": {
      "value": "Aeschlimann et al^[16]",
-     "span": "| Family 13 | TNFAIP3 c.994G > T p.Glu332 | 6 yr | F | Fever, abdominal pain, hip and joint pain, backache, knee arthritis, intestinal ulcers, unilateral scleritis, severe inflammatory swelling of skin after vaccination | Cough, weakness, anal fissure, thrombophlebitis of lower extremity | BD | Aeschlimann et al^[16]"
+     "span": [
+      "| Family 13 | TNFAIP3 c.994G > T p.Glu332 | 6 yr | F | Fever",
+      "| Aeschlimann et al^[16]"
+     ]
     }
    },
    {
@@ -6507,15 +6510,24 @@
     },
     "feature_text_as_stated": {
      "value": "growth retardation",
-     "span": "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever, axillary and inguinal lymph nodes, diarrhea, bloody stool, multiple arthritis, oral mucosa, genital ulcer, bilateral anterior uveitis, cataract, glaucoma | Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     "span": [
+      "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever",
+      "| Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     ]
     },
     "status": {
      "value": "observed",
-     "span": "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever, axillary and inguinal lymph nodes, diarrhea, bloody stool, multiple arthritis, oral mucosa, genital ulcer, bilateral anterior uveitis, cataract, glaucoma | Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     "span": [
+      "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever",
+      "| Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     ]
     },
     "evidence_basis": {
      "value": "stated for this individual",
-     "span": "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever, axillary and inguinal lymph nodes, diarrhea, bloody stool, multiple arthritis, oral mucosa, genital ulcer, bilateral anterior uveitis, cataract, glaucoma | Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     "span": [
+      "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever",
+      "| Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     ]
     },
     "onset_original_text": {
      "value": null,
@@ -19528,11 +19540,17 @@
     },
     "status": {
      "value": "observed",
-     "span": "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever, axillary and inguinal lymph nodes, diarrhea, bloody stool, multiple arthritis, oral mucosa, genital ulcer, bilateral anterior uveitis, cataract, glaucoma | Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     "span": [
+      "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever",
+      "| Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     ]
     },
     "evidence_basis": {
      "value": "stated for this individual",
-     "span": "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever, axillary and inguinal lymph nodes, diarrhea, bloody stool, multiple arthritis, oral mucosa, genital ulcer, bilateral anterior uveitis, cataract, glaucoma | Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     "span": [
+      "| Family 6 | TNFAIP3 p.Leu227^∗ | 10 mo | F | Fever",
+      "| Recurrent upper respiratory tract infection in childhood, severe Cushing's syndrome, growth retardation"
+     ]
     }
    },
    {
