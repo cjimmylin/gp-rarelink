@@ -8,7 +8,8 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 |---|---|
 | `CONTEXT.md` | Scope, diseases, methods, metrics, budget, timeline (source of truth) |
 | `INSTRUCTIONS.md` | Working rules for Claude and collaborators |
-| `CLAUDE.md` | Loaded automatically by Claude Code; imports the two files above |
+| `CLAUDE.md` | Loaded automatically by Claude Code; imports the two files above and the notes below |
+| `NOTES_FOR_AGENTS.md` | Current status, next steps, environment limits and lessons from earlier sessions |
 | `DECISIONS.md` | Open decisions, dated decision log, pre-registration deviations |
 | `BUDGET.md` | Credit spend against each budget line |
 | `preregistration/` | Analysis plan (draft, not yet frozen) |

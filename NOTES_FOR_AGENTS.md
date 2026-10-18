@@ -1,0 +1,121 @@
+# Notes for agents
+
+Lessons from earlier sessions, so the next agent doesn't have to rediscover them. `CLAUDE.md` loads this file automatically.
+
+How to maintain it:
+- Add what a future session would need to know. Keep entries short and dated.
+- Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
+
+*Last updated 2026-10-18.*
+
+## 1. Where things stand (2026-10-18)
+
+- **Phase:** Month 1 (data and setup). The Month-1 start date is still undecided (D-01). Under the recommended option, Month 1 is already ending.
+- **Done:**
+  - working rules: `CLAUDE.md`, `INSTRUCTIONS.md`, `CONTEXT.md`;
+  - the grant application and award email (`grant/`);
+  - background literature (`background/`, compiled 2026-10-16 in Cowork);
+  - `DECISIONS.md` and `BUDGET.md`;
+  - pre-registration draft v0.3 (`preregistration/analysis_plan.md`), not frozen. D-02 to D-07 are decided.
+- **Not started:**
+  - case-report corpus;
+  - reference snapshots and dated ClinVar/OMIM counts;
+  - open-access coverage check;
+  - outreach drafts;
+  - any pipeline code, and any extraction runs.
+- **Blocking the pre-registration freeze:** D-01, D-08 to D-12, and D-17. Read *Open decisions* in `DECISIONS.md` before starting work.
+- **Git:**
+  - All work after the initial commit is on branch `claude/gracious-pascal-j7krug`. As of 2026-10-18, `main` holds only the initial commit.
+  - If you start from `main` and these files are missing, fetch that branch.
+  - No pull request has been opened; Jimmy hasn't asked for one.
+
+## 2. Next steps, in order, once unblocked
+
+1. **Network access** (§3). Everything below depends on it.
+2. **Corpus search for A20 haploinsufficiency** (the pilot disease, D-06), as set out in pre-registration §5.1:
+   - save query strings, dates and hit counts in `data/literature/ha20/search.md`;
+   - keep a screening log;
+   - keep a manifest with access status for every paper;
+   - never use ClinVar or OMIM citations to find papers.
+3. **Reference snapshots** into `data/reference/`, each with a manifest and checksums: a ClinVar release, HPO, Mondo and `phenotype.hpoa`. Then compute dated per-gene counts by script to replace the provisional numbers in `CONTEXT.md` §4. OMIM waits for D-12.
+4. **Open-access coverage per disease.** This feeds D-08.
+5. **Outreach drafts** to the Monarch and ClinVar maintainers, for Jimmy to send.
+6. **Month 2:** build the pipeline with all model calls behind one small interface, so the access route can change (D-17).
+
+Offered but not yet requested: a draft introduction for the program's Discourse cohort thread.
+
+## 3. Cloud environment
+
+**Hosts the network policy refuses** (the proxy answers 403 to CONNECT; tested twice on 2026-10-18):
+- `eutils.ncbi.nlm.nih.gov` and `ftp.ncbi.nlm.nih.gov` (PubMed, ClinVar)
+- `www.ebi.ac.uk` (Europe PMC)
+- `export.arxiv.org`
+- `rest.variantvalidator.org`
+- `api.monarchinitiative.org`
+- `omim.org`
+- `purl.obolibrary.org` (HPO and Mondo downloads)
+
+**What works:**
+- `pypi.org` (pip)
+- `raw.githubusercontent.com`
+- `git push` and `git fetch` to GitHub
+- (`github.com` web pages return 403 to curl.)
+
+**Checking and fixing:**
+- `curl -sS "$HTTPS_PROXY/__agentproxy/status"` lists recent refusals.
+- The fix is Jimmy's: in the cloud environment's settings, open Network access and add the hosts under Allowed domains (https://code.claude.com/docs/en/cloud-environments#network-access).
+- Until then, don't work around a block with mocked data or data recalled from memory.
+- Never disable TLS verification or unset the proxy.
+
+**Cowork had the same limits.** The Cowork workspace used on 2026-10-16 couldn't reach PubMed, PMC, Europe PMC, arXiv or publisher sites either. The background papers were downloaded on Jimmy's own machine with `background/fetch_papers.sh` (`background/README.md`).
+
+**Python:** numpy and pandas are preinstalled; scipy is not. Run `pip install -r requirements.txt` before the audit scripts.
+
+## 4. Working with Jimmy
+
+- **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
+- **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
+- **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-18**.
+- **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
+
+## 5. Grant claims not to repeat uncritically
+
+The application and `CONTEXT.md` contain figures that later checks found wrong or shaky. Don't copy them into new writing without the correction.
+
+**Patient and cohort counts:**
+
+| Claim | Correction |
+|---|---|
+| Tangier: "~200 patients" | Sources say fewer than 100 to about 144 (D-14) |
+| Danon: ">100 families" | "About 100 families; ≥146 molecularly confirmed patients" (D-14) |
+| "408 phenopacket-store cohorts" | No published source. 731 gene folders at repo commit `85ffd78`, 2026-10-07 (D-14) |
+| LAD-I: "genotypes for 184 patients published but never structured" | Probably the patients *without* a reported genotype (D-14) |
+
+**Claude benchmark claims** (DRBench, AA-Omniscience, "97.6% HPO precision"): use the corrected wording in `background/grant_claim_checks.md` §8–10.
+
+**Inconsistencies inside the grant:**
+- The bias arm says "held-out diseases" in one place and "held-out cohorts" in another. Resolved by D-04.
+- The budget's 65% / 35% product split doesn't match its lines (D-15).
+- The application asked for credits on a Console (API) org, but the award is claude.ai credits that may not cover API calls (D-17).
+
+**An unfavorable result to keep in related work:** Claude Sonnet 4 was the weakest of five models at counting probands (`murugan2026_reasoning_llm_ps4`).
+
+## 6. Ground-truth leak paths beyond `data/reference/`
+
+These come from pre-registration §5.3. Keep all of them out of `pipeline/`:
+- building the corpus from ClinVar or OMIM citation lists, or querying any index by ClinVar variant ID;
+- `phenotype.hpoa` and other disease–phenotype annotation files, which encode OMIM and Orphanet content;
+- LitVar's links to ClinVar;
+- prompts or outputs from the AutoOMIM project;
+- database annotations in VariantValidator responses (pass only the normalization fields);
+- natural-history comparator papers, which are held out for the bias arm;
+- scoring prompt or scaffold changes against ClinVar or OMIM during development (D-07). Tune only against the papers themselves.
+
+## 7. Conventions that worked
+
+- **Citations.** Cite literature by its key in `background/manifest.csv`, and check by script that every cited key exists. Never add a reference from memory. A blank identifier in the manifest means "not confirmed", not "doesn't exist".
+- **Numbers.** Every number in a document comes from a script in the repo, with the run date given. Example: the audit table in the pre-registration comes from `preregistration/audit_operating_characteristics.py`.
+- **Dates and spelling.** Use ISO dates throughout, and US English for new documents.
+- **Pre-registration markers.** Tag open items `[D-nn]`, settled items `(D-nn, decided)`, and Claude's own defaults `[proposed]`.
+- **Commits.** Commit after each step. Say in the message what changed, and what deliberately didn't (e.g. "No changes to CONTEXT.md, metrics or thresholds").

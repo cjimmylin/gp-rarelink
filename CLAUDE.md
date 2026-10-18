@@ -7,6 +7,12 @@ source of truth rather than duplicating text here.
 @INSTRUCTIONS.md
 @CONTEXT.md
 
+Current status, environment limits and lessons from earlier sessions live in the
+file below. Read it before starting, and update it when you learn something a
+future session would need.
+
+@NOTES_FOR_AGENTS.md
+
 ## Quick reminders for coding sessions
 
 These restate the rules from INSTRUCTIONS.md that matter most while writing code.
