@@ -1,9 +1,10 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.3, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.4, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
-> - v0.3 adds the award details (award email of 2026-08-31) and open decision D-17.
+> - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
+> - v0.4 applies D-01 (Month-1 start date) and the re-planned timeline in §12.
 >
 > - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
 > - Items marked **(D-nn, decided)** are settled; the decision and its date are in `DECISIONS.md`.
@@ -23,7 +24,7 @@ Structure follows the usual sections of a preregistration for analysis of existi
 | **Title** | GP-RareLink: Literature-Curated, Database-Validated Genotype–Phenotype Records for Rare Disease |
 | **Investigators** | Dr. Jimmy Lin (PI, Rare Genomics Institute); Prof. Monica Lam (co-lead, AI methods, Stanford OVAL Lab); adjudication panel Drs. Eva Wu, Gabriela Balderrama, Anita Chacko. *[OVAL contributors to be added by Prof. Lam.]* |
 | **Funding** | Anthropic AI for Science Program, Rare Disease program, Basic science track. Awarded 2026-08-31: $45,000 in claude.ai usage credits, covering chat, Claude Code, Cowork and Claude Science (`grant/AWARD_EMAIL.md`). Credits only; no cash. |
-| **Project dates** | Month 1 start: *not yet recorded* [D-01]. Six months. |
+| **Project dates** | Six months. Month 1 starts on the date the first credit deposit landed, provisionally 2026-09-21; Month 6 then ends 2027-03-20 (D-01, decided). |
 | **Registry** | *To be decided* [D-09] |
 
 ## 2. Background and research question
@@ -426,17 +427,19 @@ Stated so readers can judge the risk of data-informed choices.
 - **No patient data** of any kind is used.
 - **Acknowledgment.** Every publication that used the award credits acknowledges Anthropic's AI for Science program (award email, 2026-08-31).
 
-## 12. Timeline (relative to Month 1 start [D-01])
+## 12. Timeline (D-01, decided)
 
-| When | Step |
-|---|---|
-| Month 1 | Resolve [D-nn]; corpus search and screening; reference snapshots and dated counts; freeze and register this plan |
-| Month 2 | Development phase on A20 haploinsufficiency → `pipeline-v1.0` → full HA20 run → cost estimate approved → extraction on the other five diseases; audit sample drawn |
-| Month 3 | Concordance (O2); audit ratings (O1) |
-| Month 4 | Gap-variant adjudication (O3); efficiency logging (O5) |
-| Month 5 | Submissions after sign-off; bias arm and memorization probe (O4); model comparison |
-| Month 6 | Write-up; all results published whether favorable or not |
+Month 1 starts on the date the first credit deposit landed, provisionally 2026-09-21. The dates below shift if the actual landing date differs. Month-1 work still undone at the end of Month 1 moves into Month 2, and extraction overlaps with concordance in Month 3 (`CONTEXT.md` §8).
+
+| When | Dates (provisional) | Step |
+|---|---|---|
+| Month 1 | 2026-09-21 to 2026-10-20 | Setup; background literature; this plan drafted |
+| Month 2 | 2026-10-21 to 2026-11-20 | Resolve remaining [D-nn]; corpus search and screening; reference snapshots and dated counts; freeze and register this plan. Then the development phase on A20 haploinsufficiency → `pipeline-v1.0` → full HA20 run → cost estimate approved |
+| Month 3 | 2026-11-21 to 2026-12-20 | Extraction on the other five diseases; concordance (O2) on each disease as it finishes; audit sample drawn once all six are done |
+| Month 4 | 2026-12-21 to 2027-01-20 | Audit ratings (O1); gap-variant adjudication (O3); efficiency logging (O5) |
+| Month 5 | 2027-01-21 to 2027-02-20 | Submissions after sign-off; bias arm and memorization probe (O4); model comparison |
+| Month 6 | 2027-02-21 to 2027-03-20 | Write-up; all results published whether favorable or not |
 
 ## 13. Decisions needed before freezing
 
-See `DECISIONS.md` → *Open decisions*. Still blocking this plan: D-01, D-08 to D-12, and D-17. D-02 to D-07 were decided on 2026-10-18. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.
+See `DECISIONS.md` → *Open decisions*. Still blocking this plan: D-08 to D-12, and D-17. D-01 to D-07 were decided on 2026-10-18. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.

@@ -39,7 +39,7 @@ Anthropic deposits half the award up front, then tops up toward $45,000 as credi
 **Three notes:**
 - **One credit pool.** The award is a single pool of claude.ai credits, with no separate Claude Science and Claude Code allocations. The grant's 65% / 35% split (≈ $29,000 / ≈ $16,000) is now only an internal plan. We report per line, as committed (D-15).
 - **Pipeline runs.** Lines 1–3, 5 and 6 are model runs inside the pipeline. Whether the credits can pay for them depends on how the pipeline calls Claude (D-17).
-- **Expiry.** Unspent credits from a deposit lapse six months after it lands, so time large runs with each deposit's expiry in mind. Unused credits are still reported, not spent for the sake of it.
+- **Expiry.** Unspent credits from a deposit lapse six months after it lands, so time large runs with each deposit's expiry in mind. If the first deposit landed on 2026-09-21, it expires 2027-03-21, the day after Month 6 ends (D-01). Unused credits are still reported, not spent for the sake of it.
 
 ## Usage not yet accounted for
 

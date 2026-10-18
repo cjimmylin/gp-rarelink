@@ -103,7 +103,7 @@ Points a coding session needs:
 
 | Item | Where it's tracked |
 |---|---|
-| Month 1 start date. The award date and credits were recorded in `CONTEXT.md` on 2026-10-18 | `DECISIONS.md` D-01 |
+| Month 1 start: decided 2026-10-18 as the date the first deposit landed (provisionally 2026-09-21). The actual date is still to confirm | `DECISIONS.md` D-01; `CONTEXT.md` §8 |
 | Spend to date not reconciled. The credits turned out to be claude.ai usage credits, not Console credits | `DECISIONS.md` D-15, `BUDGET.md` |
 | Decide how to fix the application numbers flagged in `grant_claim_checks.md` | `DECISIONS.md` D-14; `background/grant_claim_checks.md` |
 | Unconfirmed PMIDs/titles in the manifest (`id_notes`) | `background/manifest.csv` |

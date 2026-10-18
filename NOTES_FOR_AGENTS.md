@@ -10,7 +10,7 @@ How to maintain it:
 
 ## 1. Where things stand (2026-10-18)
 
-- **Phase:** Month 1 (data and setup). The Month-1 start date is still undecided (D-01). Under the recommended option, Month 1 is already ending.
+- **Phase:** Month 1 ends 2026-10-20. Month 1 started on the date the first credit deposit landed, provisionally 2026-09-21 (D-01). Most Month-1 work is re-planned into Month 2; the dated calendar is in `CONTEXT.md` §8.
 - **Done:**
   - working rules: `CLAUDE.md`, `INSTRUCTIONS.md`, `CONTEXT.md`;
   - the grant application and award email (`grant/`);
@@ -24,7 +24,7 @@ How to maintain it:
   - open-access coverage check;
   - outreach drafts;
   - any pipeline code, and any extraction runs.
-- **Blocking the pre-registration freeze:** D-01, D-08 to D-12, and D-17. Read *Open decisions* in `DECISIONS.md` before starting work.
+- **Blocking the pre-registration freeze:** D-08 to D-12, and D-17. The freeze is now planned for Month 2. Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**
   - Everything up to 2026-10-18 is on `main`, merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
@@ -35,7 +35,7 @@ How to maintain it:
 
 ## 2. Next steps, in order, once unblocked
 
-1. **Network access** (§3). Everything below depends on it.
+1. **Network access** (§3). Everything below depends on it, and the re-planned Month 2 (2026-10-21 to 2026-11-20) has no slack for a long wait.
 2. **Corpus search for A20 haploinsufficiency** (the pilot disease, D-06), as set out in pre-registration §5.1:
    - save query strings, dates and hit counts in `data/literature/ha20/search.md`;
    - keep a screening log;

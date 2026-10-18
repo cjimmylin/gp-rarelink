@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.3 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Still blocking the freeze: D-01, D-08 to D-12, and D-17.
+**Pre-registration status:** draft v0.4 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Still blocking the freeze: D-08 to D-12, and D-17.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -14,21 +14,6 @@ How to use this file:
 ## Open decisions
 
 ### Needed before the pre-registration can be frozen
-
-**D-01 · Project start (Month 1)**
-- **Already settled:** award date 2026-08-31 and $45,000 awarded (see the log below).
-- **Still open:** when Month 1 starts. The award email gives a "six-month project period" but no start date.
-- **Options:**
-  - **The date the first deposit landed** (scheduled 2026-09-21).
-    - Months then run from the 21st to the 20th, and Month 6 ends around 2027-03-20, when the first deposit expires.
-    - Under this choice, today (2026-10-18) is the end of Month 1. Month-1 work (corpus, reference snapshots, freezing the plan) is behind and would run into Month 2.
-  - **When project work began** (2026-10-16, the background literature search).
-    - The timeline in `CONTEXT.md` §8 then fits as written.
-    - But Month 6 runs about four weeks past the first deposit's expiry, so any of the first half still unspent by then lapses.
-- **Recommendation:** the date the first deposit landed. It matches Anthropic's six-month window and the credit expiry, so our progress reports line up with theirs. Then re-plan Month 2 to absorb the unfinished Month-1 work.
-- **Please also confirm:**
-  - the date and amount of the first deposit, as shown in claude.ai Settings > Usage;
-  - the claude.ai Organization ID it went to.
 
 **D-08 · Substitute-disease trigger**
 - **Question:** What open-access threshold replaces a pilot disease with a substitute?
@@ -103,6 +88,21 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-18 · D-01 decided: Month 1 starts on the date the first deposit landed
+- **Decided by:** Jimmy, accepting Claude's recommendation ("go with your recommendation on D-01").
+- **Start date:** provisionally **2026-09-21**, the scheduled deposit date. Replace it with the actual landing date from claude.ai Settings > Usage once Jimmy confirms it.
+- **Provisional calendar:** months run from the 21st to the 20th, and Month 6 ends 2027-03-20, the day before the first deposit expires. The full calendar is in `CONTEXT.md` §8.
+- **Why:** it matches Anthropic's six-month project period and the credit expiry, so our reports line up with theirs.
+- **Consequence:** Month 1 ends 2026-10-20 with most Month-1 work undone.
+- **Re-plan** (proposed by Claude under this decision; the Months 2–3 split can be adjusted):
+  - **Month 2:** finish the Month-1 work first, then the A20 haploinsufficiency development phase and pilot run. Month-1 work means the corpus search and screening, reference snapshots and dated counts, the open-access check, outreach drafts and freezing the pre-registration.
+  - **Month 3:** extraction on the other five diseases, with concordance run on each disease as it finishes. The two overlap, instead of extraction taking all of Month 2.
+  - **Months 4–6:** unchanged.
+- **Still to confirm:**
+  - the actual date and amount of the first deposit;
+  - the claude.ai Organization ID it went to.
+- **Status:** not a pre-registration deviation; the plan is not frozen.
 
 ### 2026-10-18 · Parallel work combined on `main`
 - **Decided by:** Jimmy ("ok to merge to main").
