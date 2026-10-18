@@ -66,10 +66,11 @@ def main(argv=None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--run-a", required=True)
     ap.add_argument("--run-b", required=True)
+    ap.add_argument("--exclude", nargs="*", default=[], help="PMIDs to leave out (sensitivity check)")
     args = ap.parse_args(argv)
     base = Path("data/extracted") / args.disease
     a, b = load(base / args.run_a), load(base / args.run_b)
-    common = sorted(set(a) & set(b))
+    common = sorted((set(a) & set(b)) - set(args.exclude))
     per_paper, va, vb, fa, fb = {}, set(), set(), set(), set()
     extra = {k: (set(), set()) for k in ("labels", "vkeys", "hpo_pairs", "hpo_status", "feat_free")}
     cl_same = cl_total = 0
@@ -110,7 +111,7 @@ def main(argv=None) -> int:
             "feature_jaccard_label_free": jaccard(sets["a"]["feat_free"], sets["b"]["feat_free"]),
         }
     out = {
-        "run_a": args.run_a, "run_b": args.run_b, "papers_compared": len(common),
+        "run_a": args.run_a, "run_b": args.run_b, "papers_compared": len(common), "excluded": sorted(args.exclude),
         "variant_jaccard": jaccard(va, vb),
         "feature_jaccard": jaccard(fa, fb),
         "checklist_agreement": round(cl_same / cl_total, 4) if cl_total else None,
@@ -124,7 +125,8 @@ def main(argv=None) -> int:
         "variant_threshold_note": "POC_DESIGN.md Stage 3: variant agreement < 0.9 suggests unstable prompts",
         "per_paper": per_paper,
     }
-    dest = Path("analysis/poc") / f"run_agreement_{args.run_a}_vs_{args.run_b}.json"
+    suffix = ("_excluding_" + "_".join(sorted(args.exclude))) if args.exclude else ""
+    dest = Path("analysis/poc") / f"run_agreement_{args.run_a}_vs_{args.run_b}{suffix}.json"
     dest.write_text(json.dumps(out, indent=2) + "\n")
     print(json.dumps({k: out[k] for k in out if k != "per_paper"}, indent=2))
     return 0

@@ -25,7 +25,13 @@ How to maintain it:
     - the SLIDERS Anthropic adapter (`pipeline/extract/sliders_adapter/`);
     - the HA20 config and schema;
     - 24 tests (`uv sync && uv run pytest`).
-- **Pilot progress (2026-10-18):**
+- **Pilot Stage 3 done (2026-10-18, later):**
+  - run-1 covered 85 papers and the repeat 15;
+  - every quote was found verbatim;
+  - merges: 2 false among the 58 merges of policy v2, now policy v3;
+  - variant agreement is below 0.9 because of cohort scope.
+  - Report: `reports/poc_stage3_findings.md`. Waiting on Jimmy for D-22 (instructions v3, run-2, supplementary files). Session usage reading 240.36.
+- **Pilot progress (2026-10-18, earlier):**
   - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
   - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
   - **Waiting on Jimmy's gate:** the review sheet, the group-absence rule, and Stage 3 spend (`reports/poc_stage2_smoke_findings.md`).
@@ -105,6 +111,12 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **NCBI Bookshelf pages (GeneReviews) sit behind a reCAPTCHA**, and PubMed book records aren't parsed. Don't count on GeneReviews reference lists.
 - **`jats_to_markdown` flattens rowspan and colspan**, which shifts table rows. Fix it before running extraction at scale.
 - **Session usage readings include helper agents.** `get_session` cost rises with helper work, so take a reading before and after each stage.
+- **Stage 3 lessons (2026-10-18):**
+  - **Missing tables.** Check converted Markdown for missing tables: compare `table-wrap` counts in the XML with `### Table` counts in the Markdown. Publishers put tables in `<floats-group>`.
+  - **Scope.** Helpers given "one row per person the paper describes" choose different scopes in cohort papers. Most extract TNFAIP3 carriers only; some extract everyone. This, not reading errors, drove run-to-run disagreement.
+  - **Merging.** Merges must be one-to-one. A review row citing a family will otherwise join relatives into one person. Citations naming several papers ("(2, 12, 22)") are not person-specific.
+  - **Reference lists.** Read them from the JATS XML, not the Markdown. Some papers nest them inside a section, and the Markdown flattens them.
+  - **Commits.** Commit helper outputs as they land; the stop hook asks for it anyway. A helper may rewrite its file after you commit it, so check `git status` again before pushing.
 
 **Python:**
 - The pipeline is a `uv` project (`pyproject.toml`, `uv.lock`, Python ≥ 3.11). Run `uv sync && uv run pytest`.
@@ -115,7 +127,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-22**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-23**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically

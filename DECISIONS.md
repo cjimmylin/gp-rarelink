@@ -15,6 +15,20 @@ How to use this file:
 
 ### Needed now, for the pilot
 
+**D-22 · Extraction instructions v3 and a second full run (after Stage 3)** (opened 2026-10-18)
+- **Why now:** Stage 3 (`reports/poc_stage3_findings.md`) found that helpers read the same papers consistently but chose different scopes.
+  - The repeat agreed on 98.7% of checklist cells.
+  - Variant agreement was 0.547 on strings and 0.702 on folded keys, below the 0.9 marker. It rose to 0.973 on keys without the two papers where the runs chose a different cohort scope.
+- **Recommendations** (revisions, since the pre-registration is not frozen):
+  1. **Cohort scope.** Extract people with a TNFAIP3 variant or HA20 diagnosis, plus relatives described in relation to them. Record only the count of other cohort members.
+  2. **Labels.** Give unnamed people a fixed label pattern taken from the paper's own wording and position.
+  3. **"–" cells.** A "–" cell is "excluded" only when the paper defines the symbol as absent or negative; quote that definition as a second span. Otherwise it stays "not reported" (rule 6).
+  4. **Study criteria.** Never use study inclusion or exclusion criteria as phenotype evidence.
+  5. **Variant rows without a printed variant.** Keep them but leave them out of variant counts and concordance. Reword Stage 3 check 3 accordingly.
+  6. **Run-2.** Approve `poc-ha20-run-2` over all 85 papers under v3 plus the converter fixes, with its own 15-paper repeat and a fresh merge hand check. About $190 by run-1's rate; it becomes the pilot's extraction of record.
+  7. **Supplements.** Approve fetching supplementary files for open-access papers after a licensing check. 19 papers keep per-patient tables there.
+- **Stage 4 and 5:** they follow run-2. The gatekeeper estimate comes after run-2.
+
 **D-17 · How the pipeline calls Claude** (opened 2026-10-18)
 - **The problem:**
   - The grant assumed extraction, gatekeeper, concordance and bias runs would call Claude from code. The application gave a Console org ID for API credits.
@@ -100,6 +114,18 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-18 · Pilot Stage 3 done; merge policy v3 (Claude's calls)
+- **Stage 3 ran as approved under D-21:** run-1 over all 85 full-text papers, plus a 15-paper repeat (seed 20261018), drawn from the 73 run-1 papers with individual rows. Results and open questions are in `reports/poc_stage3_findings.md`; the instruction changes are proposed as D-22.
+- **Claude's calls during the run:**
+  - **Converter fix:** the JATS converter now keeps tables placed in `<floats-group>`. 12 papers had lost their tables. Three papers already extracted without tables were re-extracted, and the first outputs are kept.
+  - **Repeat draw:** the repeat sample excludes papers with no individual rows, because those would agree trivially.
+  - **Merge script** (`pipeline/extract/reconcile.py`): reads reference lists from the JATS XML; matches protein changes printed without "p." and gene names such as "A20/TNFAIP3". Policy changes:
+    - v2 merges one-to-one only, never puts two rows from one paper in one identity, and joins first-hand pairs first.
+    - v3 accepts an explicit citation only when it names one paper.
+  - **Agreement script:** gained label-free and normalized-key measures. The strict `POC_DESIGN.md` measures are reported first.
+- **Hand check:** all 58 policy-v2 merges were checked: 52 true, 2 false, 4 cannot tell; one missed merge was found and fixed. Both false merges rested on multi-paper citations, which v3 rejects. v3 was tuned on this check, so its false-merge rate must be measured on run-2.
+- **Unchanged:** metrics, thresholds, the pre-registration, extraction prompts and schema.
 
 ### 2026-10-18 · D-21 decided: smoke test accepted; group-statement rule; Stage 3 spend approved
 - **Decided by:** Jimmy ("approve and merge"), replying to the three gate questions in `reports/poc_stage2_smoke_findings.md`. Recorded as approving all three as recommended; Jimmy to correct if he meant less.
