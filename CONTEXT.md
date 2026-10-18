@@ -4,7 +4,17 @@
 
 This file is the reference for what the project is, who is on it, and what we have committed to. It is drawn from our application to **Anthropic's AI for Science Program — Rare Disease program, Basic science research track**. Instructions for how Claude should work are in `INSTRUCTIONS.md`.
 
-> **Fill in:** Award date ______ · Credits awarded $______ · Project start (Month 1) ______ · Anthropic Console org ID `2056f88f-1a7b-4386-abfb-5b0fe9a98e10`
+> **Award** (full text in `grant/AWARD_EMAIL.md`)
+> - **Award date:** 2026-08-31 (date of the award email).
+> - **Credits awarded:** $45,000, the full amount requested. They are usage credits on a claude.ai account, covering chat, Claude Code, Cowork and Claude Science, over a six-month project period. The email does not mention API (Console) usage; see `DECISIONS.md` D-17.
+> - **Deposits:** half up front, with the first deposit scheduled for 2026-09-21. Top-ups follow toward the total as credits are spent. Each deposit expires six months after it lands.
+> - **Project start (Month 1):** ______ (to decide; see `DECISIONS.md` D-01).
+> - **Account:**
+>   - The application gave Anthropic Console org ID `2056f88f-1a7b-4386-abfb-5b0fe9a98e10`.
+>   - The award email asked, by 2026-09-14, for the Organization ID of a paid claude.ai account instead.
+>   - claude.ai Organization ID the credits were sent to: ______
+> - **Training use:** under the updated program rules, whether conversations are used for model training follows the funded account's own privacy settings.
+> - **Cohort:** 100 projects covering more than 75 conditions. Several work on phenotype extraction, natural-history curation or variant interpretation, so check for overlap before claiming novelty.
 
 ---
 
@@ -133,6 +143,7 @@ Cost is driven by multipliers, not corpus size: SLIDERS is agentic and re-reads 
 - **Biosecurity:** none of pathogen research, drug resistance, toxicology or synthetic biology.
 - Grant credits do not exempt us from Anthropic's Usage Policy.
 - Anthropic treats the application as non-confidential.
+- Acknowledge Anthropic's AI for Science program in any publication that used these credits (award email, 2026-08-31).
 
 ## 11. RGI assets relevant to follow-on work
 

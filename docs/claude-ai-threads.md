@@ -21,6 +21,8 @@ Attribution: "Jimmy asked/decided" means it came from Jimmy's own message;
 | 2026-10-18 | [gp-rarelink repo interaction](https://claude.ai/chat/46c43de7-81d6-436a-8807-34820afaf479) | `DECISIONS.md`, `BUDGET.md`; repo/Project sync rule |
 | 2026-10-18 | (this digest) | `docs/claude-ai-threads.md` |
 
+Claude Code work from the same day (pre-registration draft, numbered open decisions, award details) is summarized in `NOTES_FOR_AGENTS.md` and `DECISIONS.md`.
+
 ## 1. Project documents (2026-10-16)
 
 - Jimmy asked for instruction and context files for the project folder
@@ -101,14 +103,14 @@ Points a coding session needs:
 
 | Item | Where it's tracked |
 |---|---|
-| Award date, credits awarded and Month 1 start date blank in `CONTEXT.md` | `DECISIONS.md` 2026-10-18 |
-| Spend to date not reconciled with the Anthropic Console | `DECISIONS.md`, `BUDGET.md` |
-| Decide how to fix the application numbers flagged in `grant_claim_checks.md` | `background/grant_claim_checks.md` |
+| Month 1 start date. The award date and credits were recorded in `CONTEXT.md` on 2026-10-18 | `DECISIONS.md` D-01 |
+| Spend to date not reconciled. The credits turned out to be claude.ai usage credits, not Console credits | `DECISIONS.md` D-15, `BUDGET.md` |
+| Decide how to fix the application numbers flagged in `grant_claim_checks.md` | `DECISIONS.md` D-14; `background/grant_claim_checks.md` |
 | Unconfirmed PMIDs/titles in the manifest (`id_notes`) | `background/manifest.csv` |
 | PDFs not yet fetched (or fetch status unrecorded) | `background/README.md` |
 | Date of the early concept chat unknown | `background/origins/early_concept_conversation.md` |
 | Project custom instructions must be re-pasted when `INSTRUCTIONS.md` changes | `DECISIONS.md` |
-| Month 1 tasks not started: per-disease corpus, direct dated ClinVar/OMIM counts, pre-registration draft, Monarch/ClinVar outreach drafts | `INSTRUCTIONS.md` §6 |
+| Month 1 tasks. The pre-registration is drafted (v0.3, not frozen). Not started: per-disease corpus, direct dated ClinVar/OMIM counts, Monarch/ClinVar outreach drafts | `NOTES_FOR_AGENTS.md` §1–2; `INSTRUCTIONS.md` §6 |
 
 ## Keeping this current
 

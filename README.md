@@ -8,10 +8,12 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 |---|---|
 | `CONTEXT.md` | Scope, diseases, methods, metrics, budget, timeline (source of truth) |
 | `INSTRUCTIONS.md` | Working rules for Claude and collaborators |
-| `CLAUDE.md` | Loaded automatically by Claude Code; imports the two files above |
-| `DECISIONS.md` | Dated decisions and pre-registration deviations |
-| `BUDGET.md` | Spend against each budget line, with pre-run estimates |
-| `grant/` | The application as submitted |
+| `CLAUDE.md` | Loaded automatically by Claude Code; imports the two files above and the notes below |
+| `NOTES_FOR_AGENTS.md` | Current status, next steps, environment limits and lessons from earlier sessions |
+| `DECISIONS.md` | Open decisions, dated decision log, pre-registration deviations |
+| `BUDGET.md` | Spend against each budget line, with deposits and pre-run estimates |
+| `preregistration/` | Analysis plan (draft, not yet frozen) |
+| `grant/` | The application as submitted and the award email |
 | `background/` | Annotated bibliography, manifest, grant-claim checks, fetch scripts |
 | `docs/claude-ai-threads.md` | What was worked out in the claude.ai Project chats: setup, environment limits, open items |
 
@@ -19,4 +21,4 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 
 **Private repository.** It holds the grant application and pre-registration material. Licensed data (OMIM), full-text articles and reference snapshots are kept out by `.gitignore`; commit manifests and download scripts instead.
 
-**Status:** Month 1 (data and setup).
+**Status:** Month 1 (data and setup). Awarded 2026-08-31 ($45,000 in claude.ai credits). Pre-registration drafted (v0.3, 2026-10-18), waiting on the remaining open decisions in `DECISIONS.md` before it can be frozen.

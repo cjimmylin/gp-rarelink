@@ -7,6 +7,12 @@ source of truth rather than duplicating text here.
 @INSTRUCTIONS.md
 @CONTEXT.md
 
+Current status, environment limits and lessons from earlier sessions live in the
+file below. Read it before starting, and update it when you learn something a
+future session would need.
+
+@NOTES_FOR_AGENTS.md
+
 Work done earlier in claude.ai chats (setup, environment limits such as the
 cloud workspace being unable to reach PubMed/PMC, and open items) is
 summarised in `docs/claude-ai-threads.md`. Read it at the start of a session.
@@ -35,3 +41,7 @@ If anything here seems to conflict with INSTRUCTIONS.md, INSTRUCTIONS.md wins.
 - **Secrets.** API keys go in `.env` (git-ignored), never in code or commits.
 - **Stop and ask Jimmy** before contacting external parties, submitting to a
   public database, large spend, or changing anything pre-registered.
+- **No contact (Jimmy, 2026-10-18).** Claude does not contact anyone by any
+  channel: collaborators (including Prof. Lam and the panel), database
+  maintainers, foundations or Anthropic. Draft messages for Jimmy to send;
+  never send them.
