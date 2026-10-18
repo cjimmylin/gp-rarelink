@@ -13,6 +13,13 @@ cost, and calibrate the tooling. Its results inform prompts, schemas and
 engineering, but they do not change any pre-registered metric, threshold or the
 disease set (`INSTRUCTIONS.md` §1.4).
 
+**Progress log** (update when a stage's gate is met):
+
+| Stage | Status | Date | Notes |
+|---|---|---|---|
+| 0 Setup and guardrails | done | 2026-10-18 | `pyproject.toml`, `pipeline/{common,extract,harness}`, `configs/prices.yaml` (prices unverified against the live page; `verified_on` is null), isolation tests and runtime guard, 14 tests passing with `uv run pytest`. One distribution with three subpackages rather than separate packages; the boundary is enforced by tests and the guard. |
+| 1 Corpus assembly | not started | | needs a networked machine |
+
 Everything here is subordinate to `INSTRUCTIONS.md` and `CONTEXT.md`. If a step
 below conflicts with them, they win; stop and flag it.
 

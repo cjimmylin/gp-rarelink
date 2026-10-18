@@ -14,6 +14,9 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 | `POC_DESIGN.md` | Step-by-step design for the proof-of-concept run on one disease (HA20), written for an agent to execute stage by stage |
 | `grant/` | The application as submitted |
 | `background/` | Annotated bibliography, manifest, grant-claim checks, fetch scripts |
+| `pipeline/` | Pipeline code: `common/` (run manifests, cost), `extract/` (extraction side, never reads ground truth), `harness/` (concordance, the only reader of `data/reference/`) |
+| `configs/` | Price table and run configurations |
+| `tests/` | Ground-truth isolation tests and unit tests (`uv sync && uv run pytest`) |
 
 **Source of truth.** This repo is canonical. The claude.ai Project "Anthropic Rare Disease" mirrors its documents for chat sessions; edit here, commit, then refresh the mirror (see `DECISIONS.md`, 2026-10-18).
 

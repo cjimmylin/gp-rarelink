@@ -1,0 +1,27 @@
+[project]
+name = "gp-rarelink"
+version = "0.0.1"
+description = "GP-RareLink: literature-curated, database-validated genotype-phenotype records for rare disease"
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# One distribution, three subpackages. The import boundary between
+# pipeline.extract and pipeline.harness is enforced by tests/test_isolation.py
+# and by pipeline.extract.guard at run time, not by packaging.
+packages = ["pipeline"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
