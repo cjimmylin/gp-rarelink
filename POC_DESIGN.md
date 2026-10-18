@@ -1,8 +1,9 @@
 # GP-RareLink — Proof-of-Concept (POC) Study Design
 
-*Drafted 2026-10-18 (Month 1). Status: **draft, pending Jimmy's approval** of the
-decisions in §2.4. Written so that a future Claude Code agent can execute it
-stage by stage without the drafting session's context.*
+*Drafted 2026-10-18 (Month 1). Status: **approved by Jimmy on 2026-10-18**
+(decisions in §2.4 logged in `DECISIONS.md`). Written so that a future Claude
+Code agent can execute it stage by stage without the drafting session's
+context.*
 
 This document is the operational protocol for the first end-to-end run of the
 GP-RareLink pipeline on one disease. It is **not** the pre-registration; the
@@ -77,7 +78,7 @@ target. The 250-claim audit stays as pre-registered.
 |---|---|---|
 | Corpus size | 177 patients to Aug 2023 (`elhani2024_ha20_177`); ~200 by 2026 (`li2026_ha20_howitreat`). Expect 60–100 primary publications. | Small enough to run several times within a few hundred dollars |
 | Open access | Disease described in 2016 (`zhou2016_ha20_original`); the entire corpus is open-access era | Best chance of clearing the Q1 gate without licensing work |
-| Completeness benchmark | El Hani 2024 systematic review (177 patients, variant table) and He 2026 multicentre cohort (`he2026_ha20_multicenter`) | Gives Q7 a denominator |
+| Completeness benchmark | El Hani 2024 systematic review (177 patients, variant table) and He 2026 multicentre cohort (`he2026_ha20_multicenter`) | Gives Q7 a denominator (scored on primary-paper rows only, since reviews are also ingested; §2.4-3) |
 | Deduplication test | The Zhou 2016 families were re-reported in Aeschlimann 2018 (`aeschlimann2018_ha20_cohort`) and consolidated in El Hani 2024 | Natural Q5 test case without a second disease |
 | Ground truth | 542 ClinVar records, ~58 P/LP vs ~289 VUS (application-time proxies); OMIM 616744 (phenotype), *TNFAIP3* gene entry 191163 | Enough P/LP for a meaningful concordance table; the VUS mass tests the "monogenic series vs testing noise" separation |
 | Variant mix | Mostly truncating (frameshift, nonsense), some missense and splice | Easier HGVS than a missense-heavy gene; see the caveat below |
@@ -99,8 +100,8 @@ POC proves the pipeline, not for the POC itself.
 - One disease, end to end: corpus → SLIDERS evidence tables → phenopackets →
   gatekeeper → concordance against dated ClinVar and OMIM snapshots →
   completeness vs the published catalogue → cost accounting → report.
-- A 50-claim human audit by one adjudication-panel member (second rater on
-  disagreements), which doubles as gatekeeper calibration.
+- A 50-claim human audit rated by Jimmy, which doubles as gatekeeper
+  calibration.
 - A light, black-box memorization probe (Stage 8), because HA20 is well
   represented in training data and Q7 could look too good.
 
@@ -113,36 +114,38 @@ POC proves the pipeline, not for the POC itself.
   can later reuse it unchanged (SLIDERS already has one; see Stage 2).
 - Any patient data. Literature only.
 - Contacting Monarch, ClinVar, OMIM, patient foundations, or the SLIDERS
-  authors beyond what Jimmy approves (§2.4).
+  authors. The OMIM access request is drafted by Claude but submitted by
+  Jimmy (§2.4-4).
 
-### 2.4 Decisions needed from Jimmy before Stage 2
+### 2.4 Decisions (made by Jimmy, 2026-10-18; logged in `DECISIONS.md`)
 
-Record each answer in `DECISIONS.md` (type `scope` or `method`).
-
-1. **POC disease = HA20** (§2.1). Alternative: Alexander disease.
-2. **Adapt SLIDERS for Claude.** The public SLIDERS code
-   (https://github.com/stanford-oval/sliders, MIT, `pip install sliders-genie`)
-   documents OpenAI and Azure OpenAI providers only (checked 2026-10-18 via
-   the README). Options: (a) fork and add an Anthropic provider (preferred;
-   offer the change upstream to Prof. Lam's lab), or (b) ask the Lam lab
-   whether a Claude-ready branch exists. Option (b) is an external contact and
-   needs Jimmy's go-ahead; it can run in parallel with (a).
-3. **Exclude reviews and meta-analyses from the extraction corpus.** Primary
-   case reports and cohort papers are the sources of record; reviews
-   re-report patients and would inflate counts and complicate deduplication.
-   Reviews are used only (i) as seed lists for finding primary papers and
-   (ii) as completeness benchmarks inside the harness. Recommended: yes.
-4. **OMIM access.** Reading OMIM allelic variants for the harness needs the
-   current terms checked by hand and, probably, an API key
-   (`background/grant_claim_checks.md` #13). If access is not in place by
-   Stage 6, the POC concordance runs against ClinVar only and OMIM is added
-   when access arrives. Decision: who requests the key, and when.
-5. **POC audit size and rater.** 50 claims, one panel member plus a second on
-   disagreements (§4 Stage 5). Decision: which panel member, and whether the
-   panel's time on the POC counts against the Month-4 adjudication hours.
-6. **POC spend ceiling.** Recommended: $1,000 drawn from the extraction
-   ($8,000) and Claude Code ($6,000) lines as itemized in §5, with a hard stop
-   at $1,500 pending re-approval.
+1. **POC disease = HA20** (§2.1).
+2. **Adapt SLIDERS for Claude by forking and adding an Anthropic provider.**
+   The public SLIDERS code (https://github.com/stanford-oval/sliders, MIT,
+   `pip install sliders-genie`) documents OpenAI and Azure OpenAI providers
+   only (checked 2026-10-18 via the README). Build the adapter with the
+   official `anthropic` SDK, keep it small, and offer it upstream to Prof.
+   Lam's lab later. Do not contact the Lam lab for this without separate
+   approval.
+3. **Reviews and meta-analyses are included in the extraction corpus,
+   flagged `study_type = review`.** They are sources like any other for
+   extraction, but: (i) rows whose only source is a review are kept and
+   flagged `review_only`; (ii) the reconciliation agent treats a review row
+   as a re-report to be merged into the primary report whenever the review
+   cites it (§3.6); (iii) completeness against El Hani 2024 (Stage 6) is
+   computed on primary-paper rows only, so the benchmark is never scored
+   against its own ingestion. If deduplication quality suffers (Stage 3
+   check 6), exclusion is reconsidered as a logged change.
+4. **OMIM access: Claude drafts the API access request and a summary of the
+   current terms for Jimmy to submit** (Stage 1 step 5). Nothing is sent
+   without Jimmy. Until access arrives, the POC concordance runs against
+   ClinVar only and OMIM is added when the key exists.
+5. **POC audit: 50 claims, rated by Jimmy** (§4 Stage 5). The adjudication
+   panel is held for the 250-claim audit and Month-4 adjudication.
+6. **POC spend ceiling: $1,000, hard stop at $1,500.** Drawn from the
+   extraction ($8,000) and gatekeeper ($4,000) lines as itemized in §5. Stop
+   and ask before exceeding $1,000; nothing runs past $1,500 without
+   re-approval.
 
 ---
 
@@ -355,6 +358,12 @@ explicit merge policy, versioned under `prompts/`:
   kept separate in the phenopacket output and listed for the human audit.
 - Never merge across different variants unless an explicit citation says they
   are the same patient (papers do correct variants).
+- Review rows (`study_type = review`): when a review's table cites a PMID for
+  a patient and that PMID is in the corpus, merge the review row into the
+  primary row with confidence `explicit_citation` and keep the primary paper's
+  spans as the record of record. A review row with no matching primary row
+  stays as its own individual flagged `review_only`, and its PMID in the
+  phenopacket is the review's.
 - Report: number of individuals before and after merging, by confidence label.
 
 ### 3.7 Phenopacket construction
@@ -508,7 +517,8 @@ side]**.
    series/cohort, review/meta-analysis, functional only, other) from title and
    abstract with a cheap model call (`claude-haiku-5-5`, log cost) **and**
    a human spot-check of 20 rows, and set `in_extraction_corpus = study_type
-   in {case report, case series/cohort}` (decision §2.4-3).
+   in {case report, case series/cohort, review/meta-analysis}` (decision
+   §2.4-3; functional-only and other papers are excluded).
 2. `fetch_fulltext.py`: for each in-corpus paper try, in order, PMC OA
    subset (JATS XML via the OA web service), Europe PMC full-text XML,
    publisher free PDF; record `access_status` ∈ {pmc_oa_xml, europepmc_xml,
@@ -523,6 +533,12 @@ side]**.
 4. Paywalled papers: list them in the manifest; ask Jimmy whether the Stanford
    or RGI library can supply copies for local use (no redistribution). Do not
    scrape.
+5. OMIM access request (decision §2.4-4): on a networked machine, read the
+   current OMIM terms and API registration page by hand, then write
+   `reports/drafts/omim_access_request.md` containing (a) a dated summary of
+   the terms as they apply to storing a gene-level allelic-variant snapshot
+   for a research harness with no redistribution, and (b) the request text
+   for Jimmy to submit under RGI. Do not submit it.
 
 **Outputs.** `data/literature/ha20/manifest.csv` (committed),
 `fulltext/` (git-ignored), `data/literature/ha20/corpus_stats.json` (counts
@@ -587,8 +603,8 @@ papers; cost estimate per paper ≤ $5 (if higher, tune effort/caching first;
 if still higher, ask before Stage 3).
 
 **Cost.** Expect < $30 across iterations.
-**Stop-and-ask.** Contacting the Lam lab (decision §2.4-2); any sign that
-SLIDERS needs changes larger than a provider adapter.
+**Stop-and-ask.** Any sign that SLIDERS needs changes larger than a provider
+adapter; any wish to contact the Lam lab (not approved yet).
 
 ### Stage 3 — Full extraction run (1 day compute, 1 day review)
 
@@ -681,9 +697,10 @@ gatekeeper.
    excluded), 10 demographic/inheritance fields; random with a recorded seed;
    oversample nothing. Each row shows the value, the span, the PMID and a
    link to the paper section; the gatekeeper verdict is hidden from the rater.
-3. Rater (panel member chosen in §2.4-5) labels each claim supported /
-   unsupported / partially supported on the span alone, with a note. A second
-   rater labels disagreements with the gatekeeper and any "partially".
+3. Jimmy (decision §2.4-5) labels each claim supported / unsupported /
+   partially supported on the span alone, with a note. Disagreements with the
+   gatekeeper and any "partially" are re-read by Jimmy with the full
+   paragraph in view and the final label recorded with a reason.
 4. `analysis/poc/audit_metrics.py`: unsupported rate with exact 95 % CI;
    gatekeeper vs human confusion matrix; list of error classes (e.g. negation
    missed, table row misaligned, family member attributed to proband).
@@ -700,7 +717,7 @@ Stages 6–7 are still needed) but the report's recommendation must include
 the fixes and a re-run before Month 2.
 **Cost.** Gatekeeper: roughly one short call per claim; for a few thousand
 claims at Opus 5.5 with cached document chunks, expect $20–60. Measure.
-**Stop-and-ask.** Panel time allocation (§2.4-5).
+**Stop-and-ask.** None beyond scheduling Jimmy's audit time.
 
 ### Stage 6 — Reference snapshot and concordance (1 day, networked machine)
 
@@ -727,9 +744,12 @@ completeness tables.
    gatekeeper pass and a 20-row human check, because this table is scored
    against and must itself be reliable).
 4. `harness/concordance.py --run poc-ha20-run-1 --reference data/reference/<date>` (§3.10).
-5. `harness/completeness.py`: recall of distinct benchmark variants, with the
-   denominator restricted to benchmark variants whose source PMIDs are in our
-   full-text corpus; report the unrestricted recall too.
+5. `harness/completeness.py`: recall of distinct benchmark variants computed
+   on extraction rows sourced from primary papers only (rows whose source is
+   a review are excluded from the numerator, because El Hani 2024 is itself
+   in the corpus; §2.4-3), with the denominator restricted to benchmark
+   variants whose source PMIDs are in our full-text corpus; report the
+   unrestricted recall and the review-inclusive recall too, labelled.
 6. `harness/dedup_check.py`: compare merged individuals with the benchmark's
    patient count per PMID where available.
 7. After tagging and running, triage every miss (§3.10) and commit the table.
@@ -743,8 +763,9 @@ proportion has a denominator and a CI; snapshot date on every table.
 
 **Gate.** Q6 (harness runs) and Q7 (restricted recall ≥ 80 %).
 **Cost.** Benchmark transcription run: small; log it. Everything else: $0.
-**Stop-and-ask.** OMIM terms and key (§2.4-4). Do not store OMIM content
-until the terms are confirmed by hand.
+**Stop-and-ask.** None if OMIM access is still pending (run ClinVar-only and
+say so). Do not store OMIM content until the terms are confirmed by hand and
+Jimmy has the key.
 
 ### Stage 7 — Cost accounting and POC report (1 day)
 
@@ -850,6 +871,7 @@ figure, the multiplier range, and the application's $8,000 line side by side.
 | Model fills gaps from memory | Stage 5 audit finds values with no span or with spans that do not say what the value says; Stage 8 shows high closed-book recall | Tighten prompts; make the gatekeeper stricter; report it |
 | Gatekeeper agrees with extractor out of self-preference | Stage 5 calibration shows low recall for "unsupported" | Sonnet cross-check; stricter span-only prompt; consider a differently-prompted second gatekeeper |
 | Proband over- or under-merging | Stage 3 check 6 | Merge policy tuning; weak merges kept separate; report |
+| Reviews in the corpus inflate individual counts or create duplicate records | `review_only` rows numerous; Stage 3 check 6 misses merges that a citation makes explicit | Merge review rows on cited PMIDs (§3.6); report counts with and without review-only rows; reconsider exclusion as a logged change |
 | HGVS normalization failures on protein-only or legacy descriptions | Stage 4 status distribution | Keep original strings; protein-level matching in the harness; no inference |
 | Reference databases themselves wrong or incomplete | Stage 6 triage finds literature-vs-database conflicts | Triage categories, not "extraction error" by default (`background/grant_claim_checks.md` #17) |
 | OMIM access not available in time | Stage 6 | ClinVar-only concordance for the POC, OMIM added when access arrives; say so |
@@ -887,7 +909,7 @@ reused as a study result.
 
 Before starting:
 - [ ] Read `CLAUDE.md`, `INSTRUCTIONS.md`, `CONTEXT.md`, `DECISIONS.md`, `BUDGET.md`, this file.
-- [ ] Confirm the §2.4 decisions are logged in `DECISIONS.md`; if not, stop and ask Jimmy.
+- [ ] Read the §2.4 decisions (logged in `DECISIONS.md`, 2026-10-18) and follow them; raise anything that needs changing with Jimmy before deviating.
 - [ ] Confirm the machine can reach PubMed/PMC, NCBI FTP, VariantValidator, HPO/Mondo releases (and OMIM if applicable); if not, do only the stages that need no network.
 - [ ] `ANTHROPIC_API_KEY` in `.env`; `uv run pytest` passes.
 

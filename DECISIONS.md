@@ -13,24 +13,32 @@ plan in `preregistration/` is frozen).
 
 ---
 
-## 2026-10-18 — POC study design drafted; six decisions pending
+## 2026-10-18 — POC study design approved with six decisions
 
 - **Type:** method / scope
 - **Decision:** `POC_DESIGN.md` is the protocol for the first end-to-end run of
   the pipeline on one disease. It is a working document, not the
-  pre-registration, and changes nothing pre-registered.
-- **Decisions it needs from Jimmy before Stage 2 (see `POC_DESIGN.md` §2.4):**
-  1. POC disease = A20 haploinsufficiency (recommended) vs Alexander disease.
-  2. Adapt the public SLIDERS code for Claude by adding an Anthropic provider
-     (its README, checked 2026-10-18, lists OpenAI and Azure OpenAI only);
-     whether to also ask the Lam lab for a Claude-ready branch.
-  3. Exclude reviews and meta-analyses from the extraction corpus; use them
-     only as seed lists and completeness benchmarks.
-  4. OMIM access for the harness: who requests the key and when.
-  5. POC audit: 50 claims, which panel member, and whether it counts against
-     Month-4 adjudication hours.
-  6. POC spend ceiling: $1,000 recommended, hard stop at $1,500.
-- **Approved by:** n/a (awaiting Jimmy)
+  pre-registration, and changes nothing pre-registered. Jimmy answered the
+  six open decisions (chat, 2026-10-18); the design was updated to match.
+  1. **POC disease: A20 haploinsufficiency (*TNFAIP3*).** Alexander disease
+     is the natural first disease for the full Month-2 run.
+  2. **SLIDERS on Claude: fork the public code and add an Anthropic provider**
+     using the official SDK. No contact with the Lam lab for now; offer the
+     adapter upstream later (external contact needs separate approval).
+  3. **Reviews and meta-analyses are included in the extraction corpus,
+     flagged `study_type = review`.** The reconciliation agent must merge
+     re-reported patients; rows sourced only from reviews are kept but
+     flagged `review_only`. Completeness against El Hani 2024 is computed on
+     primary-paper rows only, so the benchmark is not scored against itself.
+     If deduplication suffers, exclusion is reconsidered as a logged change.
+  4. **OMIM access: Claude drafts the API access request and a summary of
+     the current terms for Jimmy to submit.** Nothing is sent without Jimmy.
+     Until access arrives, the POC concordance runs against ClinVar only.
+  5. **POC audit: Jimmy rates the 50 claims himself.** The adjudication panel
+     is held for the 250-claim audit and Month-4 adjudication.
+  6. **POC spend ceiling: $1,000, hard stop $1,500.** Drawn from the
+     extraction and gatekeeper lines; stop and ask before exceeding $1,000.
+- **Approved by:** Jimmy (chat, 2026-10-18)
 
 ## 2026-10-18 — Open items blocking Month 1 bookkeeping
 

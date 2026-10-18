@@ -35,7 +35,7 @@ Before any large or repeated run, add an estimate here first.
 
 | Date | Run | Line | Estimated cost | Basis | Approved by |
 |---|---|---|---:|---|---|
-| 2026-10-18 | POC on one disease (HA20), all model-calling stages | Extraction (mostly), Gatekeeper, Harness, Bias arm | $200–400, ceiling $1,000 | `POC_DESIGN.md` §5; per-stage rows to be added before each run after Stage 2 measures per-paper cost | pending (Jimmy) |
+| 2026-10-18 | POC on one disease (HA20), all model-calling stages | Extraction (mostly), Gatekeeper, Harness, Bias arm | $200–400, ceiling $1,000 (hard stop $1,500) | `POC_DESIGN.md` §5; per-stage rows to be added before each run after Stage 2 measures per-paper cost | Jimmy (chat, 2026-10-18) |
 
 ## Spend log
 
