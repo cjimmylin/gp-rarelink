@@ -5,7 +5,8 @@ For every per-paper JSON under data/extracted/<disease>/<run_id>/per_paper/:
 1. Structure: the five schema tables exist; each row has every schema field;
    each cell is {"value": ..., "span": ...}; enum values are allowed ones.
 2. Provenance: every non-missing value has a span. The exceptions are the HPO
-   candidate fields, which are the extractor's suggestions.
+   candidate fields, which are the extractor's suggestions, and
+   checklist_feature, whose values are the schema's fixed feature names.
 3. Verbatim spans: each span is searched in the paper's Markdown
    (data/literature/<disease>/fulltext_md/<pmid>.md):
      exact   = found after collapsing whitespace only;
@@ -35,7 +36,9 @@ from collections import Counter
 from pathlib import Path
 
 SCHEMA = Path("pipeline/extract/sliders_adapter/schema_ha20.json")
-NO_SPAN_FIELDS = {"hpo_label_candidate", "hpo_id_candidate"}
+# Fields whose values come from the schema or the extractor, not the paper:
+# HPO candidates are suggestions; checklist_feature names are the schema's own.
+NO_SPAN_FIELDS = {"hpo_label_candidate", "hpo_id_candidate", "checklist_feature"}
 MISSING = {None, "not reported", ""}
 MARKUP = re.compile(r"[*_`|#]")
 WS = re.compile(r"\s+")
