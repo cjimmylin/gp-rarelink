@@ -75,6 +75,11 @@ def v(cell):
     return (cell or {}).get("value")
 
 
+def is_gene(stated, gene: str) -> bool:
+    """True if the gene as stated names the target gene, e.g. 'TNFAIP3' or 'A20/TNFAIP3'."""
+    return gene.upper() in re.split(r"[^A-Z0-9]+", str(stated or "").upper())
+
+
 # ---- variant keys -------------------------------------------------------------
 def cdna_key(s) -> str | None:
     if s in MISSING:
@@ -221,7 +226,7 @@ def load(run_dir: Path, xml_dir: Path, gene: str) -> tuple[list[dict], dict[str,
                         "prior_pmids": prior, "n_refs": len(refs)}
         variants = defaultdict(list)
         for r in t.get("variants") or []:
-            if str(v(r.get("gene_symbol_as_stated")) or "").upper() != gene:
+            if not is_gene(v(r.get("gene_symbol_as_stated")), gene):
                 continue
             variants[v(r.get("individual_label_in_paper"))].append({
                 "cdna": cdna_key(v(r.get("cdna_hgvs_as_stated"))) or cdna_key(v(r.get("variant_original_string"))),

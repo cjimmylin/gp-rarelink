@@ -30,6 +30,8 @@ import re
 from collections import Counter
 from pathlib import Path
 
+from pipeline.extract.reconcile import is_gene
+
 MISSING = {None, "", "not reported"}
 WS = re.compile(r"\s+")
 
@@ -71,8 +73,8 @@ def main(argv: list[str] | None = None) -> int:
               else "individuals_first_hand"] += 1
         carriers = set()
         for i, r in enumerate(t.get("variants") or []):
-            g = str(v(r.get("gene_symbol_as_stated")) or "not reported").upper()
-            c[f"variant_rows_gene:{g if g == gene else 'other'}"] += 1
+            g = gene if is_gene(v(r.get("gene_symbol_as_stated")), gene) else "other"
+            c[f"variant_rows_gene:{g}"] += 1
             orig = v(r.get("variant_original_string"))
             if orig in MISSING:
                 no_original_string.append(f"{pmid}:variants[{i}]")

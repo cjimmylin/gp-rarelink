@@ -25,6 +25,8 @@ import json
 import re
 from pathlib import Path
 
+from pipeline.extract.reconcile import is_gene
+
 MISSING = {None, "", "not reported"}
 
 
@@ -42,7 +44,7 @@ def tally(docs: dict[str, dict], gene: str) -> dict:
         inds += n
         with_rows += bool(n)
         for r in t.get("variants") or []:
-            if str(v(r.get("gene_symbol_as_stated")) or "").upper() == gene:
+            if is_gene(v(r.get("gene_symbol_as_stated")), gene):
                 rows += 1
                 orig = v(r.get("variant_original_string"))
                 if orig not in MISSING:
