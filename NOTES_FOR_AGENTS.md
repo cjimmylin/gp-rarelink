@@ -25,7 +25,11 @@ How to maintain it:
     - the SLIDERS Anthropic adapter (`pipeline/extract/sliders_adapter/`);
     - the HA20 config and schema;
     - 24 tests (`uv sync && uv run pytest`).
-- **Not run yet:** any part of the pilot that needs the network or a model. That means the corpus, the three-paper smoke test, extraction, the reference snapshot and concordance.
+- **Pilot progress (2026-10-18):**
+  - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
+  - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
+  - **Waiting on Jimmy's gate:** the review sheet, the group-absence rule, and Stage 3 spend (`reports/poc_stage2_smoke_findings.md`).
+  - **Fix before Stage 3:** the Markdown converter's merged-cell bug, and `extract_v2`.
 - **How the pilot runs (D-20).** Claude Code helper agents do the model work. No API key is needed; see the D-20 box at the top of `POC_DESIGN.md`.
 - **Network (re-tested 2026-10-18, later the same day).** The research domains are now allowed: NCBI E-utilities, PMC, Europe PMC REST, VariantValidator, ClinVar FTP and purl.obolibrary.org all answer. The europepmc.org website itself still returns 403, but the REST API works.
 - **Blocking the pre-registration freeze:** the pilot report (D-18), then D-08 to D-12, D-17 and D-19. Read *Open decisions* in `DECISIONS.md` before starting work.
@@ -93,6 +97,13 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - Never disable TLS verification or unset the proxy.
 
 **Cowork had the same limits.** The Cowork workspace used on 2026-10-16 couldn't reach PubMed, PMC, Europe PMC, arXiv or publisher sites either. The background papers were downloaded on Jimmy's own machine with `background/fetch_papers.sh` (`background/README.md`).
+
+**Pilot lessons (2026-10-18):**
+- **Give every helper agent its own scratch directory.** Nine screening helpers shared one, and generic file names collided. One helper read another's file; it caught this itself, and a reason-vs-text check confirmed no labels were wrong.
+- **The PMC OA web service is gone.** It answers 404 at both hosts. Europe PMC `fullTextXML` serves the same JATS, but answers 500 (not 404) when it has no full text; `eutils.py` handles both.
+- **NCBI Bookshelf pages (GeneReviews) sit behind a reCAPTCHA**, and PubMed book records aren't parsed. Don't count on GeneReviews reference lists.
+- **`jats_to_markdown` flattens rowspan and colspan**, which shifts table rows. Fix it before running extraction at scale.
+- **Session usage readings include helper agents.** `get_session` cost rises with helper work, so take a reading before and after each stage.
 
 **Python:**
 - The pipeline is a `uv` project (`pyproject.toml`, `uv.lock`, Python ≥ 3.11). Run `uv sync && uv run pytest`.
