@@ -18,18 +18,26 @@ literature, not reference data) is used to resolve
   - the paper's prior_report_citation, when cites_prior_report_of_same_patients is true,
 to PMIDs. Resolution is by reference number first, then by surname plus year.
 
-Confidence labels (policy v1):
+Confidence labels (policy v2, 2026-10-18):
   explicit_citation  same variant, and one row's own source_reference_in_review
-                     resolves to the other row's PMID. Merged.
+                     resolves to the other row's PMID.
   strong_match       same variant and no conflict, plus either (a) the paper-level
                      prior-report citation resolves to the other PMID, or (b) same
-                     sex and age at onset within 1 year, both stated. Merged.
-  weak_match         same variant, sex not in conflict, nothing else. Not merged;
+                     sex and age at onset within 1 year, both stated.
+  weak_match         same variant, sex not in conflict, nothing else. Never merged;
                      listed for the human audit.
-A conflict is a stated sex that differs, or stated onset ages more than 2 years
-apart. A conflict blocks strong and weak matches; an explicit citation with a
-conflict is still merged and the conflict is written to the evidence column.
-Rows from the same paper are never merged with each other.
+  blocked_conflict   same variant but a conflict. A conflict is a stated sex that
+                     differs (this blocks even an explicit citation), or, without an
+                     explicit citation, stated onset ages more than 2 years apart.
+Explicit and strong candidates are merged only if both hold:
+  - one-to-one: within the other paper, each row is the other's unique best
+    candidate. Candidates are ranked by confidence, then by agreement score
+    (+1 each for same stated sex, same stated proband status, onset within 1
+    year). A review row that cites a family and matches several relatives with
+    the same variant is therefore left unmerged ("ambiguous_one_to_many");
+  - no identity may hold two rows from the same paper ("skipped_same_paper").
+Policy v1 (earlier the same day) merged every explicit or strong candidate; on
+the first 58 run-1 papers that joined relatives into one identity.
 
 Merged pairs are joined transitively into identities. The record of record for
 an identity is a first-hand row (no source_reference_in_review), earliest
@@ -55,7 +63,7 @@ from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
 
-POLICY_VERSION = "merge_policy_v1"
+POLICY_VERSION = "merge_policy_v2"
 MISSING = {None, "", "not reported", "unknown"}
 AA3 = {"ala": "A", "arg": "R", "asn": "N", "asp": "D", "cys": "C", "gln": "Q", "glu": "E", "gly": "G",
        "his": "H", "ile": "I", "leu": "L", "lys": "K", "met": "M", "phe": "F", "pro": "P", "ser": "S",
@@ -209,7 +217,7 @@ def load(run_dir: Path, xml_dir: Path, gene: str) -> tuple[list[dict], dict[str,
             label = v(r.get("individual_label_in_paper"))
             src = v(r.get("source_reference_in_review"))
             people.append({
-                "pmid": pmid, "label": label, "sex": v(r.get("sex")),
+                "pmid": pmid, "label": label, "sex": v(r.get("sex")), "proband": v(r.get("is_proband")),
                 "onset": years(v(r.get("age_at_onset_iso8601"))),
                 "family": v(r.get("family_label_in_paper")),
                 "source_reference": src if src not in MISSING else "",
@@ -229,13 +237,16 @@ def compare(a: dict, b: dict, papers: dict[str, dict]) -> dict | None:
     if a["onset"] is not None and b["onset"] is not None and abs(a["onset"] - b["onset"]) > 2:
         conflicts.append(f"onset {a['onset']:.1f}y vs {b['onset']:.1f}y")
     evidence = [f"same {gene_key_kind(key)} {key}"]
-    if b["pmid"] in a["source_pmids"] or a["pmid"] in b["source_pmids"]:
+    cited = b["pmid"] in a["source_pmids"] or a["pmid"] in b["source_pmids"]
+    sex_conflict = any(c.startswith("sex") for c in conflicts)
+    if cited:
         side = a if b["pmid"] in a["source_pmids"] else b
         evidence.append(f"source_reference_in_review of {side['pmid']}:{side['label']} = {side['source_reference']!r} resolves to the other PMID")
-        conf = "explicit_citation"
-    elif conflicts:
-        return {"variant_key": key, "confidence": "blocked_conflict", "merged": False,
+    if (cited and sex_conflict) or (not cited and conflicts):
+        return {"variant_key": key, "confidence": "blocked_conflict", "candidate": False, "score": 0,
                 "evidence": "; ".join(evidence), "conflicts": "; ".join(conflicts)}
+    if cited:
+        conf = "explicit_citation"
     elif b["pmid"] in papers[a["pmid"]]["prior_pmids"] or a["pmid"] in papers[b["pmid"]]["prior_pmids"]:
         evidence.append("paper-level prior_report_citation resolves to the other PMID")
         conf = "strong_match"
@@ -248,8 +259,11 @@ def compare(a: dict, b: dict, papers: dict[str, dict]) -> dict | None:
         conf = "weak_match"
     if a["family"] not in MISSING and a["family"] == b["family"]:
         evidence.append(f"same family label {a['family']!r}")
-    return {"variant_key": key, "confidence": conf, "merged": conf in ("explicit_citation", "strong_match"),
-            "evidence": "; ".join(evidence), "conflicts": "; ".join(conflicts)}
+    score = ((a["sex"] not in MISSING and a["sex"] == b["sex"])
+             + (a["proband"] is not None and a["proband"] == b["proband"])
+             + (a["onset"] is not None and b["onset"] is not None and abs(a["onset"] - b["onset"]) <= 1))
+    return {"variant_key": key, "confidence": conf, "candidate": conf in ("explicit_citation", "strong_match"),
+            "score": int(score), "evidence": "; ".join(evidence), "conflicts": "; ".join(conflicts)}
 
 
 def gene_key_kind(key: str) -> str:
@@ -276,7 +290,31 @@ def main(argv: list[str] | None = None) -> int:
         if res:
             pairs.append((i, j, res))
 
+    # one-to-one: keep a candidate pair only if each row is the other's unique best in that paper
+    conf_rank = {"explicit_citation": 2, "strong_match": 1}
+    options: dict[tuple[int, str], list[tuple[tuple[int, int], int]]] = defaultdict(list)
+    for i, j, res in pairs:
+        if res["candidate"]:
+            key = (conf_rank[res["confidence"]], res["score"])
+            options[(i, people[j]["pmid"])].append((key, j))
+            options[(j, people[i]["pmid"])].append((key, i))
+
+    def unique_best(row: int, paper: str) -> int | None:
+        opts = sorted(options[(row, paper)], reverse=True)
+        if len(opts) == 1 or (opts and opts[0][0] > opts[1][0]):
+            return opts[0][1]
+        return None
+
+    for i, j, res in pairs:
+        if not res["candidate"]:
+            res["decision"] = "not_merged_" + res["confidence"]
+        elif unique_best(i, people[j]["pmid"]) == j and unique_best(j, people[i]["pmid"]) == i:
+            res["decision"] = "pending"
+        else:
+            res["decision"] = "ambiguous_one_to_many"
+
     parent = list(range(len(people)))
+    papers_in = {i: {people[i]["pmid"]} for i in range(len(people))}
 
     def find(x: int) -> int:
         while parent[x] != x:
@@ -284,9 +322,23 @@ def main(argv: list[str] | None = None) -> int:
             x = parent[x]
         return x
 
-    for i, j, res in pairs:
-        if res["merged"]:
-            parent[find(i)] = find(j)
+    order = sorted((k for k in range(len(pairs)) if pairs[k][2]["decision"] == "pending"),
+                   key=lambda k: (-conf_rank[pairs[k][2]["confidence"]], -pairs[k][2]["score"],
+                                  people[pairs[k][0]]["pmid"], str(people[pairs[k][0]]["label"]),
+                                  people[pairs[k][1]]["pmid"], str(people[pairs[k][1]]["label"])))
+    for k in order:
+        i, j, res = pairs[k]
+        ri, rj = find(i), find(j)
+        if ri == rj:
+            res["decision"] = "merged"
+        elif papers_in[ri] & papers_in[rj]:
+            res["decision"] = "skipped_same_paper"
+        else:
+            parent[ri] = rj
+            papers_in[rj] |= papers_in.pop(ri)
+            res["decision"] = "merged"
+    for _, _, res in pairs:
+        res["merged"] = res["decision"] == "merged"
     clusters = defaultdict(list)
     for i in range(len(people)):
         clusters[find(i)].append(i)
@@ -308,12 +360,12 @@ def main(argv: list[str] | None = None) -> int:
 
     with (run_dir / "merges.csv").open("w", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["pmid_a", "label_a", "pmid_b", "label_b", "variant_key", "confidence", "merged", "evidence",
-                    "conflicts", "identity", "policy"])
+        w.writerow(["pmid_a", "label_a", "pmid_b", "label_b", "variant_key", "confidence", "agreement_score",
+                    "decision", "merged", "evidence", "conflicts", "identity", "policy"])
         for i, j, res in pairs:
             a, b = people[i], people[j]
             w.writerow([a["pmid"], a["label"], b["pmid"], b["label"], res["variant_key"], res["confidence"],
-                        res["merged"], res["evidence"], res["conflicts"], identity[i] if res["merged"] else "", POLICY_VERSION])
+                        res["score"], res["decision"], res["merged"], res["evidence"], res["conflicts"], identity[i] if res["merged"] else "", POLICY_VERSION])
     with (run_dir / "individuals_reconciled.csv").open("w", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["pmid", "individual_label_in_paper", "identity", "record_of_record", "review_only",
@@ -335,6 +387,7 @@ def main(argv: list[str] | None = None) -> int:
         "identities_with_target_gene_variant": len({identity[i] for i, p in enumerate(people) if p["variants"]}),
         "identities_review_only": len({identity[i] for i in review_only}),
         "candidate_pairs_by_confidence": dict(sorted(conf.items())),
+        "candidate_pairs_by_decision": dict(sorted(Counter(res["decision"] for _, _, res in pairs).items())),
         "merged_pairs": sum(1 for *_, r in pairs if r["merged"]),
         "rows_from_prior_report_summaries": len(secondary),
         "of_which_source_resolved_to_pmid": sum(1 for p in secondary if p["source_pmids"]),

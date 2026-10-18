@@ -80,3 +80,28 @@ def test_merge_policy(tmp_path, monkeypatch):
     assert inds[("111", "P1")]["identity"] == inds[("222", "case 5")]["identity"]
     assert inds[("111", "P1")]["record_of_record"] == "True" and inds[("222", "case 5")]["record_of_record"] == "False"
     assert inds[("222", "case 5")]["review_only"] == "False"
+
+
+def test_review_row_citing_a_family_is_not_merged_into_relatives(tmp_path, monkeypatch):
+    """Policy v2: a review row that matches several relatives with the same variant stays unmerged,
+    and relatives from one paper never end up in one identity."""
+    monkeypatch.chdir(tmp_path)
+    per = tmp_path / "data/extracted/ha20/r2/per_paper"
+    per.mkdir(parents=True)
+    xml = tmp_path / "data/literature/ha20/fulltext"
+    xml.mkdir(parents=True)
+    docs = {
+        "111": paper("111", 2016, [{"label": "mother", "sex": "female", "cdna": "c.680T>A"},
+                                   {"label": "daughter", "sex": "female", "cdna": "c.680T>A"}]),
+        "222": paper("222", 2020, [{"label": "case 3", "sex": "female", "cdna": "c.680T>A", "src": "(1)"}],
+                     study_type="review/meta-analysis"),
+    }
+    for pmid, d in docs.items():
+        (per / f"{pmid}.json").write_text(json.dumps(d))
+    (xml / "222.nxml").write_text(jats("222", [("Zhou Q. TNFAIP3. 2016", "111")]))
+    assert rc.main(["--disease", "ha20", "--run-id", "r2"]) == 0
+    run = tmp_path / "data/extracted/ha20/r2"
+    rows = list(csv.DictReader((run / "merges.csv").open()))
+    assert rows and all(r["decision"] == "ambiguous_one_to_many" and r["merged"] == "False" for r in rows)
+    summary = json.loads((run / "reconcile_summary.json").read_text())
+    assert summary["identities_after_merging"] == 3
