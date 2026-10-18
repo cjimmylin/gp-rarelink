@@ -11,6 +11,8 @@ summary written by pipeline.extract.reconcile. Reports:
     table or summary of previously published cases (source_reference_in_review);
   - variant rows by gene, distinct TNFAIP3 variant strings, variant rows without
     an original string (check 3);
+  - TNFAIP3 variant rows by inheritance, and "de novo" rows with no parental
+    testing statement (rule 8 says de novo needs stated parental testing);
   - phenotypic_features by status and evidence basis; checklist cells by status
     and evidence basis; individuals whose checklist is incomplete (check 4);
   - individuals before and after merging, by confidence label (from reconcile).
@@ -53,7 +55,7 @@ def main(argv: list[str] | None = None) -> int:
 
     c: Counter = Counter()
     distinct_variants: set[str] = set()
-    flagged_true_no_rows, incomplete_checklist, no_original_string = [], [], []
+    flagged_true_no_rows, incomplete_checklist, no_original_string, de_novo_without_testing = [], [], [], []
     for pmid, doc in papers.items():
         t = doc.get("tables") or {}
         flag = doc.get("reports_individuals_with_tnfaip3_variant")
@@ -78,6 +80,10 @@ def main(argv: list[str] | None = None) -> int:
                 distinct_variants.add(WS.sub("", str(orig)).lower())
             if g == gene:
                 carriers.add(v(r.get("individual_label_in_paper")))
+                inh = v(r.get("inheritance"))
+                c[f"tnfaip3_inheritance:{inh}"] += 1
+                if inh == "de novo" and v(r.get("parental_testing_statement")) in MISSING:
+                    de_novo_without_testing.append(f"{pmid}:{v(r.get('individual_label_in_paper'))}")
         c["individuals_with_tnfaip3_variant_row"] += len(carriers)
         for r in t.get("phenotypic_features") or []:
             c[f"features_status:{v(r.get('status'))}"] += 1
@@ -103,6 +109,7 @@ def main(argv: list[str] | None = None) -> int:
         "papers_flag_true_without_individual_rows": flagged_true_no_rows,
         "variant_rows_without_original_string": no_original_string,
         "individuals_with_incomplete_checklist": incomplete_checklist,
+        "tnfaip3_de_novo_without_parental_testing_statement": de_novo_without_testing,
     }
     rec = run_dir / "reconcile_summary.json"
     if rec.exists():
