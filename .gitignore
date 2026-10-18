@@ -1,0 +1,68 @@
+# GP-RareLink .gitignore
+# Note: git does not support comments at the end of a line, so every comment
+# here sits on its own line.
+
+# --- Licensed or restricted data -------------------------------------------
+# OMIM terms restrict redistribution; keep only dated query scripts and
+# manifests in git, not OMIM content itself.
+data/reference/omim/
+# ClinVar/HPO/Mondo snapshots are large and re-downloadable; commit the
+# download scripts and dated manifests instead.
+data/reference/**/*.vcf
+data/reference/**/*.vcf.gz
+data/reference/**/*.xml.gz
+data/reference/**/*.obo
+data/reference/**/*.owl
+# Full-text articles: commit PMID manifests and access status only.
+data/literature/fulltext/
+data/literature/**/*.pdf
+data/literature/**/*.nxml
+# Background papers fetched by background/fetch_papers.* (many are not
+# CC-licensed); keep manifest.csv and download_log.csv, not the files.
+background/papers/
+
+# --- Large or regenerable pipeline outputs ---------------------------------
+data/extracted/**/raw/
+data/extracted/**/cache/
+*.parquet
+*.feather
+*.sqlite
+*.db
+
+# --- Patient data guard (out of scope for this grant) ----------------------
+# Nothing patient-level should ever exist in this repo; this is a backstop.
+**/patient*/
+**/cohort*/
+*.ped
+
+# --- Secrets ----------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials*.json
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# --- Editors / OS -----------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# --- Claude Code local settings (personal, not shared) ----------------------
+.claude/settings.local.json
+CLAUDE.local.md
