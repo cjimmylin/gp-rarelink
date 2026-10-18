@@ -16,11 +16,11 @@ Actual credit spend against each budget line in the grant (`CONTEXT.md` §9). We
 
 | # | Line | Requested | Product | Spent | Notes |
 |---|---|---|---|---|---|
-| 1 | Extraction across six diseases, incl. re-runs as HGVS and negation handling stabilize | $8,000 | to confirm | — | Pilot on one disease first; cost estimate before scaling |
+| 1 | Extraction across six diseases, incl. re-runs as HGVS and negation handling stabilize | $8,000 | to confirm | — | Pilot on A20 haploinsufficiency first (D-06); cost estimate before scaling |
 | 2 | Gatekeeper verification pass | $4,000 | to confirm | — | |
 | 3 | ClinVar/OMIM reconciliation + concordance harness (full re-runs) | $6,000 | to confirm | — | |
 | 4 | Claude Code: pipeline, VariantValidator integration, dedup tooling, adjudication interface | $6,000 | Claude Code | — | |
-| 5 | Ascertainment-bias arm | $4,000 | to confirm | — | Size depends on D-04 |
+| 5 | Ascertainment-bias arm | $4,000 | to confirm | — | Comparators within the pilot diseases; no extra diseases (D-04) |
 | 6 | Claude vs open-weight head-to-head | $2,000 | to confirm | — | Open-weight compute not covered (D-10) |
 | | **Core subtotal** | **$30,000** | | | |
 | 7 | Stretch: extend to all 12 candidate diseases | $9,000 | to confirm | — | Only if the core finishes under budget |
@@ -57,8 +57,11 @@ Before any large or repeated model run, add an estimate here and get it approved
 
 **Approval rule (proposed; confirm in D-15).** Ask Jimmy before any single run expected to use more than 25% of a line's remaining balance, and before scaling extraction from the pilot disease to all six.
 
-Estimate method: tokens per paper (measured on the pilot) × papers × passes (extraction, reconciliation, gatekeeper, re-runs) × current price per token. Note the price source and date.
+Estimate method for scaling extraction:
+1. Measure cost per input token on the pilot disease (A20 haploinsufficiency), with all passes included: extraction, reconciliation, gatekeeper and re-runs.
+2. Multiply by each remaining corpus's token count. Scaling by tokens rather than papers accounts for diseases covered by long case series.
+3. Note the price source and date.
 
 | Date | Run | Line | Basis | Estimate (USD) | Approved by | Actual (USD) |
 |---|---|---|---|---|---|---|
-| | *(none yet; first expected: Month-2 pilot extraction)* | | | | | |
+| | *(none yet; first expected: Month-2 pilot extraction on A20 haploinsufficiency)* | | | | | |

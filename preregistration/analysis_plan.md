@@ -1,8 +1,9 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.1, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.2, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3). v0.2 applies decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 >
-> - Items marked **[D-nn]** need a decision recorded in `DECISIONS.md` before the plan is frozen.
+> - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
+> - Items marked **(D-nn, decided)** are settled; the decision and its date are in `DECISIONS.md`.
 > - Items marked **[proposed]** are Claude's defaults. Accept, change or delete each one.
 > - Everything else restates commitments already made in `CONTEXT.md` and the grant application. Changing those after freezing is a deviation (`INSTRUCTIONS.md` §1.4).
 >
@@ -36,8 +37,8 @@ The five outcomes are the five success metrics in the grant (`CONTEXT.md` §6). 
 
 | # | Outcome | Type | Pre-specified target |
 |---|---|---|---|
-| O1 | Unsupported-value rate, human audit of 250 claims (§7.1) | **Primary, confirmatory** | < 2% (decision rule [D-02]) |
-| O2 | Concordance with ClinVar and OMIM on gene, normalized HGVS, classification, phenotype (§7.2) | Primary, estimation | None in the grant; descriptive with CIs [D-03] |
+| O1 | Unsupported-value rate, human audit of 250 claims (§7.1) | **Primary, confirmatory** | Observed rate < 2%, i.e. at most 4 of 250 (D-02, decided) |
+| O2 | Concordance with ClinVar and OMIM on gene, normalized HGVS, classification, phenotype (§7.2) | Primary, estimation | None; estimates with CIs, no pass/fail cut-off (D-03, decided) |
 | O3 | Gap closure: variants absent from both databases, adjudicated, prepared, accepted for submission (§7.3) | Primary, descriptive | None (counts by stage) |
 | O4 | Ascertainment bias: per-disease deviation from natural-history cohorts, with memorization probe (§7.4) | Secondary | None |
 | O5 | Efficiency: expert-minutes per accepted record; Claude vs open-weight model (§7.5) | Secondary | None |
@@ -68,7 +69,7 @@ Mondo IDs will be looked up and recorded with the release date when the referenc
 
 Substitutes, in this order unless the panel decides otherwise: Blau syndrome (*NOD2*), Majeed syndrome (*LPIN2*), familial LCAT deficiency (*LCAT*), GAMT deficiency (*GAMT*), arterial tortuosity syndrome (*SLC2A10*), PAPA syndrome (*PSTPIP1*).
 
-A pilot disease is replaced only if, after screening (§5.1), its accessible full-text corpus falls below the threshold set in [D-08]. Any substitution is decided and logged in `DECISIONS.md` **before** extraction starts, on access grounds alone. It never depends on extraction or concordance results. A disease used for development (§6.5) cannot later be promoted to the study set.
+A pilot disease is replaced only if, after screening (§5.1), its accessible full-text corpus falls below the threshold set in [D-08]. Any substitution is decided and logged in `DECISIONS.md` **before** extraction starts, on access grounds alone. It never depends on extraction or concordance results.
 
 ## 5. Data sources and ground-truth isolation
 
@@ -85,7 +86,15 @@ A pilot disease is replaced only if, after screening (§5.1), its accessible ful
 
 **Screening [proposed].** Title/abstract screening, then full-text screening. Claude may screen, but every decision is logged with a reason, and a human checks a random 10% of inclusions and all exclusions made at full-text stage. Each disease gets a PRISMA-style flow count, produced by script.
 
-**Corpus size [D-05].** The grant estimated "roughly 300 full-text reports" across six diseases. Some diseases will have more eligible reports than that share; Alexander disease alone has hundreds of published patients. This plan proposes extracting **all** eligible accessible reports, with a cost check after the pilot disease. If a cap is needed, it is set before extraction by stratified random sampling with a recorded seed, and the effect on gap closure is stated.
+**Corpus size (D-05, decided).** The grant estimated "roughly 300 full-text reports" across six diseases. Some diseases will have more eligible reports than that share; Alexander disease alone has hundreds of published patients. We extract **all** eligible accessible reports. Cost is re-estimated after the pilot disease, A20 haploinsufficiency (§6.5).
+
+If a cap is then needed for budget reasons, this procedure applies:
+- the cap is set before extraction starts on the remaining diseases;
+- papers are chosen by stratified random sampling with a recorded seed;
+- the cap size and seed are logged in `DECISIONS.md` before sampling;
+- the effect on gap closure is stated in every report.
+
+Following this procedure is not a deviation.
 
 **Access and licensing.** Prefer PMC open-access full text. Record the access route for every paper: PMC OA, other open copy, institutional access, or not accessible. Papers we could not access are listed in the manifest (`INSTRUCTIONS.md` §3). Full texts stay out of git (`.gitignore`); only manifests are committed.
 
@@ -166,15 +175,21 @@ Before that, a deterministic check confirms that every span occurs verbatim in t
 
 ### 6.5 Development phase and pipeline freeze
 
-Prompts, the scaffold and normalization code are developed on a **development set**. That set is a random subset of the pilot disease's corpus [D-06], drawn by script with a recorded seed.
+Prompts, the scaffold and normalization code are developed on a **development set**. The pilot disease is A20 haploinsufficiency (D-06, decided). It was chosen because its corpus is entirely open-access era (described in 2016) and a 65-article systematic review (`elhani2024_ha20_177`) gives a completeness check.
+
+The development set is a random subset of the HA20 corpus: [proposed] 20% of eligible reports, at least 10, drawn by script with a recorded seed.
 
 During development:
 - Outputs are checked by humans against the source text and by the span check.
 - They are **never** scored against ClinVar or OMIM, which would be tuning on the test set.
 
-At the end of development the pipeline is tagged (`pipeline-v1.0`). A cost estimate for all six diseases, based on the pilot disease, goes to Dr. Lin for approval before scaling (`INSTRUCTIONS.md` §3). Development papers are then re-extracted with the frozen pipeline along with everything else. A sensitivity analysis excludes the pilot disease.
+At the end of development the pipeline is tagged (`pipeline-v1.0`) and run on the full HA20 corpus, development papers included. A cost estimate for the other five diseases then goes to Dr. Lin for approval before scaling (`INSTRUCTIONS.md` §3).
 
-**Changes after the freeze [D-07].** Proposed: the frozen pipeline's results are primary. Any later fix (e.g. a normalization bug) is logged in `DECISIONS.md`, the affected analyses are re-run, and both versions are reported. This is stricter than the grant's budget assumed, which allowed re-runs "as normalization improves". The reason is that fixes chosen by looking at concordance misses would inflate concordance.
+Cost per paper on HA20 may not carry over to diseases covered by long case series. So the estimate scales HA20's measured cost per input token by each remaining corpus's token count, rather than by paper count. Token counts can be measured without running a model.
+
+A sensitivity analysis excludes HA20.
+
+**Changes after the freeze (D-07, decided).** The frozen pipeline's results are primary. Any later fix (e.g. a normalization bug) is logged in `DECISIONS.md`, the affected analyses are re-run, and both versions are reported. This is stricter than the grant's budget assumed, which allowed re-runs "as normalization improves". The reason is that fixes chosen by looking at concordance misses would inflate concordance.
 
 ### 6.6 Validation
 
@@ -205,7 +220,9 @@ Every record is checked against the phenopacket v2 schema and with CohortValidat
   - *span not found:* the span is not in the paper.
 - An HPO term more specific than the span justifies counts as unsupported. A less specific (ancestor) term counts as supported.
 
-**Decision rule [D-02].** The grant fixes n = 250 and the < 2% target but not how they combine. `preregistration/audit_operating_characteristics.py` gives, on 2026-10-18:
+**Decision rule (D-02, decided): rule C.** O1 passes if the observed unsupported rate is below 2%, i.e. at most 4 unsupported claims out of 250.
+
+The grant fixed n = 250 and the < 2% target but not how they combine. The rules considered, as computed by `preregistration/audit_operating_characteristics.py` on 2026-10-18:
 
 | Rule | Passes with at most | P(pass) if true rate 0.5% | 1% | 1.5% | 2% | 3% |
 |---|---|---|---|---|---|---|
@@ -213,7 +230,12 @@ Every record is checked against the phenopacket v2 schema and with CohortValidat
 | B: two-sided 95% CP upper bound < 2% | 0 of 250 | 0.29 | 0.08 | 0.02 | 0.01 | 0.00 |
 | C: observed rate < 2% | 4 of 250 | 0.99 | 0.89 | 0.68 | 0.44 | 0.13 |
 
-Rule A or B certifies the target but will often fail a good pipeline. Rule C passes good pipelines but would pass a pipeline sitting exactly at 2% about 44% of the time. Whatever the rule, the observed rate and its exact 95% interval are always reported (`background/audit_ci_250.py`), along with the statement of what rates the audit cannot exclude.
+Rules A and B certify the target but often fail a good pipeline: rule A passes a pipeline with a true 1% rate only 29% of the time. Rule C was chosen because it gives a good pipeline a fair chance of passing. The cost is that it would pass a pipeline sitting exactly at 2% about 44% of the time.
+
+To keep that limit visible, every report:
+- gives the observed rate with its exact 95% interval (`background/audit_ci_250.py`);
+- states the highest rate the audit cannot exclude;
+- never describes a pass as proof that the true rate is below 2%.
 
 **Secondary audit measures (each needs panel time; see [D-11]):**
 - (a) The unsupported rate *before* the gatekeeper, on a separate random sample. This measures what the gatekeeper adds.
@@ -282,7 +304,7 @@ ClinVar contains misclassified variants (`wright2021_ddd_clinvar`), and literatu
   5. reference citation does not describe the variant.
 - The breakdown is secondary and never replaces the primary figure.
 
-**Success criterion [D-03].** The grant gives no numeric concordance threshold. Proposed: report estimates with CIs and no pass/fail cut-off.
+**Success criterion (D-03, decided).** The grant gives no numeric concordance threshold, and none is added. Concordance is reported as estimates with 95% CIs, with no pass/fail cut-off, because ClinVar and OMIM are imperfect references (§7.2.6).
 
 ### 7.3 O3: Gap closure (primary, descriptive)
 
@@ -307,11 +329,15 @@ The ClinVar collection method ("literature only" vs "curation") affects what an 
 
 ### 7.4 O4: Ascertainment bias and memorization (secondary)
 
-#### 7.4.1 Comparators [D-04]
+#### 7.4.1 Comparators (D-04, decided)
 
 The grant wording is ambiguous. The proposal text says "held-out *diseases* with published natural-history studies"; the metric says "per-disease deviation from held-out natural-history *cohorts*".
 
-Proposed reading: for each pilot disease, natural-history or genotype-first cohort papers are held out of the extraction corpus and used as comparators. Candidates from the background bibliography, not yet checked for suitability:
+Reading adopted: for each pilot disease, natural-history or genotype-first cohort papers are held out of the extraction corpus and used as comparators. No extra diseases are added. Prof. Lam is to confirm this reading before the plan is frozen.
+
+[proposed] If no suitable comparator is found for a disease by the freeze, the bias arm leaves that disease out and says why.
+
+Candidates from the background bibliography, not yet checked for suitability:
 
 | Disease | Comparator candidates |
 |---|---|
@@ -368,7 +394,7 @@ Results are published either way. Still to decide: which model, which disease(s)
 
 ## 8. What would count as success, partial success or failure
 
-- **O1** passes or fails under the rule fixed in [D-02]. A fail is reported as a fail.
+- **O1** passes if at most 4 of 250 audited claims are unsupported (D-02). A fail is reported as a fail, and a pass is reported with its 95% interval.
 - **O2** and **O3** are reported as estimates and counts. The write-up does not call concordance "high" without the CI and the pre-specified definition beside it.
 - **Pilot vs general.** Results on six diseases are pilot results and are not presented as general findings (`INSTRUCTIONS.md` §4).
 
@@ -399,7 +425,7 @@ Stated so readers can judge the risk of data-informed choices.
 | When | Step |
 |---|---|
 | Month 1 | Resolve [D-nn]; corpus search and screening; reference snapshots and dated counts; freeze and register this plan |
-| Month 2 | Development phase on pilot disease → `pipeline-v1.0` → cost estimate approved → extraction on all six diseases; audit sample drawn |
+| Month 2 | Development phase on A20 haploinsufficiency → `pipeline-v1.0` → full HA20 run → cost estimate approved → extraction on the other five diseases; audit sample drawn |
 | Month 3 | Concordance (O2); audit ratings (O1) |
 | Month 4 | Gap-variant adjudication (O3); efficiency logging (O5) |
 | Month 5 | Submissions after sign-off; bias arm and memorization probe (O4); model comparison |
@@ -407,4 +433,4 @@ Stated so readers can judge the risk of data-informed choices.
 
 ## 13. Decisions needed before freezing
 
-See `DECISIONS.md` → *Open decisions*. Those blocking this plan: D-01 to D-12. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.
+See `DECISIONS.md` → *Open decisions*. Still blocking this plan: D-01 and D-08 to D-12. D-02 to D-07 were decided on 2026-10-18. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.

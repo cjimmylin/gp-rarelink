@@ -17,4 +17,4 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 
 **Private repository.** It holds the grant application and pre-registration material. Licensed data (OMIM), full-text articles and reference snapshots are kept out by `.gitignore`; commit manifests and download scripts instead.
 
-**Status:** Month 1 (data and setup). Pre-registration drafted (v0.1, 2026-10-18), waiting on the open decisions in `DECISIONS.md` before it can be frozen.
+**Status:** Month 1 (data and setup). Pre-registration drafted (v0.2, 2026-10-18), waiting on the remaining open decisions in `DECISIONS.md` before it can be frozen.

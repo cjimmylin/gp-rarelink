@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.1 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations.
+**Pre-registration status:** draft v0.2 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Still blocking the freeze: D-01 and D-08 to D-12.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -20,44 +20,6 @@ How to use this file:
 - **Why it matters:** the timeline, the budget's remaining balance and the "Month n" labels all depend on them.
 - **Recommendation:** fill them in `CONTEXT.md`.
 
-**D-02 · Pass/fail rule for the 250-claim audit (< 2% unsupported)**
-- **Options:**
-  - **A.** One-sided 95% upper bound < 2%. Passes with at most 1 unsupported claim.
-  - **B.** Two-sided 95% upper bound < 2%. Passes only with 0.
-  - **C.** Observed rate < 2%. Passes with at most 4.
-- **The tradeoff** (from `preregistration/audit_operating_characteristics.py`):
-  - With a true error rate of 1%, A passes 29% of the time and C 89%.
-  - With a true rate of exactly 2%, A passes 4% of the time and C 44%.
-- **Recommendation:** C, with the exact 95% interval always reported beside it. A is the stricter alternative if you prefer certification over power.
-- **Constraint:** either way, n = 250 and the 2% target stay as committed.
-
-**D-03 · Concordance success criterion**
-- **Question:** The grant sets no numeric concordance threshold. Should the pre-registration add one?
-- **Options:** report estimates with CIs only, or pre-specify thresholds per dimension.
-- **Recommendation:** estimates with CIs only. ClinVar and OMIM are imperfect references, and the grant made no numeric promise.
-
-**D-04 · What "held-out" means in the bias arm**
-- **The ambiguity:** the grant's proposal text says "held-out *diseases* with published natural-history studies"; its metric says "per-disease deviation from held-out natural-history *cohorts*".
-- **Options:**
-  - Hold out cohort papers within the six pilot diseases. No extra extraction, but LAD-I and Tangier have no comparator yet.
-  - Add separate held-out diseases. This draws more on the $4,000 bias line.
-- **Recommendation:** within-pilot cohorts, as drafted in §7.4. Confirm with Monica.
-
-**D-05 · Corpus scope**
-- **The tension:** the grant estimated ~300 full texts across six diseases. Alexander disease alone likely has more eligible reports than its share, and gap closure needs completeness.
-- **Recommendation:** extract all eligible accessible reports. Re-estimate cost after the pilot disease and cap only if needed, by a seeded stratified sample set before extraction.
-
-**D-06 · Pilot / development disease**
-- **Recommendation:** A20 haploinsufficiency. It was described in 2016, so the corpus is open-access era, and it has a 65-article systematic review as a completeness check (`elhani2024_ha20_177`).
-- **Caveat:** cost per paper may underestimate diseases with long case series.
-
-**D-07 · Pipeline fixes after the freeze**
-- **Options:**
-  - The frozen pipeline's results are primary; later fixes are reported as a secondary version.
-  - The final version is primary.
-- **Recommendation:** frozen-primary. Fixes chosen by looking at concordance misses inflate concordance.
-- **Note:** this is stricter than the budget's assumption of "re-runs as normalization improves". The re-runs still happen; they just aren't the headline.
-
 **D-08 · Substitute-disease trigger**
 - **Question:** What open-access threshold replaces a pilot disease with a substitute?
 - **Placeholder for discussion:** fewer than 15 accessible eligible reports, or less than 50% of eligible reports accessible.
@@ -73,7 +35,7 @@ How to use this file:
   - Run on which disease(s)?
   - How many audited claims per model?
   - Where does it run? The $2,000 line is Claude credits; open-weight compute isn't budgeted.
-- **Recommendation:** pick the model by the time of the freeze, on the criteria open weights, long context and tool use. Run it on the pilot disease plus one other.
+- **Recommendation:** pick the model by the time of the freeze, on the criteria open weights, long context and tool use. Run it on A20 haploinsufficiency (the pilot disease) plus one other.
 
 **D-11 · Panel time**
 - **Questions:**
@@ -115,6 +77,48 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-18 · D-02 to D-07 decided
+- **Decided by:** Jimmy Lin, accepting Claude's recommendations as written in `DECISIONS.md` that day.
+- **Applied in:** pre-registration draft v0.2.
+- **Status:** the plan is not frozen, so none of these is a deviation.
+
+**D-02 · Pass/fail rule for the 250-claim audit: observed rate < 2%**
+- **Decision:** O1 passes with at most 4 unsupported claims out of 250. n = 250 and the 2% target are unchanged.
+- **Why:** the stricter rule (one-sided 95% upper bound < 2%) passes a pipeline with a true 1% error rate only 29% of the time (`preregistration/audit_operating_characteristics.py`).
+- **Accepted cost:** a pipeline sitting exactly at 2% would pass about 44% of the time.
+- **Safeguard:** every report gives the exact 95% interval and never presents a pass as proof that the true rate is below 2%.
+- **Plan section:** §7.1.
+
+**D-03 · Concordance success criterion: no numeric threshold**
+- **Decision:** concordance is reported as estimates with 95% CIs and no pass/fail cut-off.
+- **Why:** the grant made no numeric promise, and ClinVar and OMIM are imperfect references.
+- **Plan section:** §7.2.
+
+**D-04 · "Held-out" in the bias arm: comparator cohorts within the six pilot diseases**
+- **Decision:** natural-history or genotype-first cohort papers for each pilot disease are held out of the extraction corpus and used as comparators. No extra diseases are added.
+- **Why:** this matches the grant's metric wording ("held-out natural-history cohorts") and the $4,000 bias line. The proposal text's "held-out diseases" is the other possible reading.
+- **Follow-ups:**
+  - Prof. Lam to confirm the reading before the freeze.
+  - LAD-I and Tangier have no comparator yet; if none is found, they are left out of the bias arm and the report says why.
+- **Plan section:** §7.4.1.
+
+**D-05 · Corpus scope: all eligible accessible reports**
+- **Decision:** extract every eligible accessible report. Cost is re-estimated after the pilot disease. If a cap is needed, it is applied by seeded stratified sampling, set and logged here before extraction on the remaining diseases.
+- **Why:** gap closure needs completeness; the grant's "~300 full texts" was an estimate.
+- **Plan section:** §5.1.
+
+**D-06 · Pilot / development disease: A20 haploinsufficiency**
+- **Decision:** A20 haploinsufficiency is the pilot and development disease.
+- **Why:** the corpus is open-access era (described 2016), and a 65-article systematic review (`elhani2024_ha20_177`) serves as a completeness check.
+- **Caveat handled:** cost per paper may not carry over to diseases with long case series, so the scaling estimate uses cost per input token × each corpus's token count, not paper count.
+- **Plan section:** §6.5.
+
+**D-07 · Pipeline fixes after the freeze: frozen version is primary**
+- **Decision:** results from `pipeline-v1.0` are primary. Later fixes are logged here, re-run, and reported alongside.
+- **Why:** fixes chosen by looking at concordance misses would inflate concordance.
+- **Note:** this is stricter than the budget's assumption of "re-runs as normalization improves". The re-runs still happen; they just aren't the headline.
+- **Plan section:** §6.5.
 
 ### 2026-10-18 · Created this log, `BUDGET.md` and pre-registration draft v0.1
 - **Decided by:** Claude Code, at Jimmy's request.
