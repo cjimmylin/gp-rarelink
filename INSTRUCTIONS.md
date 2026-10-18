@@ -52,7 +52,7 @@ These come straight from the commitments in the grant. They outrank speed and co
 Create these as the work needs them; don't scaffold empty folders in advance.
 
 ```
-AnthropicRareDisease/
+gp-rarelink/
 ├── INSTRUCTIONS.md        ← this file
 ├── CONTEXT.md             ← project scope and commitments
 ├── DECISIONS.md           ← dated log of decisions and pre-registration deviations
