@@ -21,14 +21,15 @@ from pathlib import Path
 
 from pipeline.common.run_manifest import RUNS_DIR, RunManifest, sha256_file
 
-SCHEMA = Path("pipeline/extract/sliders_adapter/schema_ha20.json")
+SCHEMA = Path("pipeline/extract/claude_code/schema_ha20_v2.json")
 RULES = Path("pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md")
 
 
 def start(args: argparse.Namespace) -> int:
     m = RunManifest(run_id=args.run_id, stage=args.stage, model=f"Claude Code helper agents ({args.agent_model})",
                     effort=None, provider="claude_code")
-    m.schema_sha256 = sha256_file(SCHEMA)
+    m.schema_sha256 = sha256_file(args.schema)
+    m.notes["schema_file"] = str(args.schema)
     m.prompt_sha256 = {"rules": sha256_file(RULES)}
     for p in args.prompt:
         m.prompt_sha256[Path(p).stem] = sha256_file(p)
@@ -72,6 +73,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--prompt", nargs="+", required=True)
     s.add_argument("--docs", nargs="*", default=[])
     s.add_argument("--session-cost-before", type=float, default=None)
+    s.add_argument("--schema", default=str(SCHEMA))
     f = sub.add_parser("finish")
     f.add_argument("--run-id", required=True)
     f.add_argument("--session-cost-after", type=float, default=None)

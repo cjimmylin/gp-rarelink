@@ -15,12 +15,23 @@ from typing import Iterable
 
 import httpx
 
+try:  # optional: .env at the repo root (git-ignored) holds NCBI_API_KEY, NCBI_EMAIL, UNPAYWALL_EMAIL
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:  # pragma: no cover
+    pass
+
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-IDCONV = "https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/"
-PMC_OA = "https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi"
+# The old www.ncbi.nlm.nih.gov/pmc/utils/idconv path 301s here (checked 2026-10-18).
+IDCONV = "https://pmc.ncbi.nlm.nih.gov/tools/idconv/api/v1/articles/"
+# The PMC OA web service (www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi) answered 404 at
+# both hosts on 2026-10-18 and is no longer used; see efetch_pmc_xml and Europe PMC.
 EUROPEPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest"
 TOOL = "gp-rarelink"
-EMAIL = os.getenv("NCBI_EMAIL", "jimmy.lin@raregenomics.org")
+# Contact address for NCBI/Unpaywall polite use. Jimmy approved jimmy.lin@raregenomics.org
+# for this (DECISIONS.md, 2026-10-18); it is read from the environment, not hard-coded.
+EMAIL = os.getenv("NCBI_EMAIL", "")
 
 
 class Unreachable(RuntimeError):
@@ -34,7 +45,7 @@ class Client:
     max_attempts: int = 4
 
     def __post_init__(self) -> None:
-        self._http = httpx.Client(timeout=self.timeout, follow_redirects=True, headers={"User-Agent": f"{TOOL} ({EMAIL})"})
+        self._http = httpx.Client(timeout=self.timeout, follow_redirects=True, headers={"User-Agent": f"{TOOL} ({EMAIL})" if EMAIL else TOOL})
         self._min_interval = 0.11 if self.api_key else 0.34
         self._last = 0.0
 
@@ -48,7 +59,8 @@ class Client:
         params = dict(params or {})
         if url.startswith(EUTILS):
             params.setdefault("tool", TOOL)
-            params.setdefault("email", EMAIL)
+            if EMAIL:
+                params.setdefault("email", EMAIL)
             if self.api_key:
                 params.setdefault("api_key", self.api_key)
         last_exc: Exception | None = None
@@ -84,29 +96,20 @@ class Client:
 
     # ---- ID conversion ----------------------------------------------------
     def idconv(self, ids: Iterable[str]) -> list[dict]:
-        r = self.get(IDCONV, {"ids": ",".join(ids), "format": "json", "tool": TOOL, "email": EMAIL})
+        r = self.get(IDCONV, {"ids": ",".join(ids), "format": "json", "tool": TOOL, **({"email": EMAIL} if EMAIL else {})})
         r.raise_for_status()
         return r.json().get("records", [])
 
     # ---- Full text --------------------------------------------------------
-    def pmc_oa_links(self, pmcid: str) -> list[dict]:
-        """Return [{'format': 'tgz'|'pdf', 'href': ..., 'license': ...}] from the PMC OA service."""
-        r = self.get(PMC_OA, {"id": pmcid})
-        if r.status_code == 404:
-            # The PMC OA web service answered 404 at both its old and new hosts
-            # on 2026-10-18; callers then fall back to Europe PMC full text.
-            return []
-        r.raise_for_status()
-        root = ET.fromstring(r.content)
-        err = root.find(".//error")
-        if err is not None:
-            return []
-        out = []
-        for rec in root.findall(".//record"):
-            lic = rec.get("license")
-            for link in rec.findall("link"):
-                out.append({"format": link.get("format"), "href": link.get("href"), "license": lic})
-        return out
+    def efetch_pmc_xml(self, pmcid: str) -> bytes | None:
+        """Full JATS XML via E-utilities (db=pmc); None when PMC withholds the body.
+
+        Ported from the pilot session's branch (claude/zealous-meitner-k7moex).
+        """
+        r = self.get(f"{EUTILS}/efetch.fcgi", {"db": "pmc", "id": pmcid.replace("PMC", ""), "retmode": "xml"})
+        if r.status_code != 200 or b"<body" not in r.content:
+            return None
+        return r.content
 
     def europepmc_fulltext_xml(self, pmcid: str) -> bytes | None:
         """Full-text JATS XML from Europe PMC, or None if it has none for this article.

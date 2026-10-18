@@ -1,9 +1,11 @@
 """Stage 1, step 2: fetch open-access full text for every in-corpus manifest row.
 
 Order of attempts per row (first success wins):
-  1. PMC OA service (needs a PMCID): .tar.gz with the article .nxml (+ PDF)
-  2. Europe PMC fullTextXML (needs a PMCID)
+  1. Europe PMC fullTextXML (needs a PMCID)
+  2. NCBI E-utilities efetch db=pmc (needs a PMCID); ported from the pilot
+     session's branch. The PMC OA web service is gone (404, 2026-10-18).
   3. Unpaywall best OA PDF (needs a DOI and UNPAYWALL_EMAIL)
+The licence is read from the JATS <license> element when present.
 Otherwise the row is marked paywalled (DOI known, no OA copy) or not_found.
 
 Full text is stored under data/literature/<disease>/fulltext/ (git-ignored):
@@ -17,10 +19,9 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
-import io
 import json
 import os
-import tarfile
+import re
 from datetime import date
 from pathlib import Path
 
@@ -35,13 +36,18 @@ def sha256(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()
 
 
-def _nxml_from_tgz(blob: bytes) -> bytes | None:
-    with tarfile.open(fileobj=io.BytesIO(blob), mode="r:gz") as tf:
-        for m in tf.getmembers():
-            if m.isfile() and m.name.lower().endswith((".nxml", ".xml")):
-                f = tf.extractfile(m)
-                if f is not None:
-                    return f.read()
+_LICENSE_HREF = re.compile(rb'<license[^>]*href="([^"]+)"')
+_LICENSE_TEXT = re.compile(rb"<license[^>]*>(.*?)</license>", re.S)
+
+
+def license_from_jats(xml: bytes) -> str | None:
+    m = _LICENSE_HREF.search(xml)
+    if m:
+        return m.group(1).decode(errors="ignore")
+    m = _LICENSE_TEXT.search(xml)
+    if m:
+        text = re.sub(rb"<[^>]+>", b" ", m.group(1))
+        return re.sub(rb"\s+", b" ", text).strip().decode(errors="ignore")[:200] or None
     return None
 
 
@@ -49,25 +55,15 @@ def fetch_one(client: Client, row: dict, out: Path, unpaywall_email: str | None)
     pmid, pmcid, doi = row["pmid"], (row.get("pmcid") or "").strip(), (row.get("doi") or "").strip()
     meta = {"pmid": pmid, "retrieved_at": date.today().isoformat(), "source": None, "license": None, "format": None, "sha256": None}
     if pmcid:
-        links = client.pmc_oa_links(pmcid)
-        for link in sorted(links, key=lambda l: 0 if l["format"] == "tgz" else 1):
-            if link["format"] == "tgz":
-                blob = client.download(link["href"].replace("ftp://", "https://"))
-                nxml = _nxml_from_tgz(blob)
-                if nxml:
-                    (out / f"{pmid}.nxml").write_bytes(nxml)
-                    meta.update(source="pmc_oa", license=link.get("license"), format="nxml", sha256=sha256(nxml))
-                    return meta
-        xml = client.europepmc_fulltext_xml(pmcid)
-        if xml:
-            (out / f"{pmid}.nxml").write_bytes(xml)
-            meta.update(source="europepmc", format="nxml", sha256=sha256(xml))
-            return meta
-        for link in links:
-            if link["format"] == "pdf":
-                blob = client.download(link["href"].replace("ftp://", "https://"))
-                (out / f"{pmid}.pdf").write_bytes(blob)
-                meta.update(source="pmc_oa", license=link.get("license"), format="pdf", sha256=sha256(blob))
+        for src_name, fn in (("europepmc", client.europepmc_fulltext_xml), ("pmc_efetch", client.efetch_pmc_xml)):
+            try:
+                xml = fn(pmcid)
+            except (Unreachable, httpx.HTTPError) as exc:  # one source failing is not fatal
+                meta.setdefault("errors", []).append(f"{src_name}: {exc}")
+                xml = None
+            if xml:
+                (out / f"{pmid}.nxml").write_bytes(xml)
+                meta.update(source=src_name, format="nxml", sha256=sha256(xml), license=license_from_jats(xml))
                 return meta
     if doi and unpaywall_email:
         r = client.get(UNPAYWALL + doi, {"email": unpaywall_email})
@@ -92,6 +88,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--only-missing", action="store_true", default=True)
     ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--retry-status", nargs="*", default=[], help="re-attempt rows with these access_status values")
     args = ap.parse_args(argv)
 
     base = Path("data/literature") / args.disease
@@ -107,15 +104,15 @@ def main(argv: list[str] | None = None) -> int:
         for row in rows:
             if row.get("in_extraction_corpus", "").lower() != "true":
                 continue
-            if args.only_missing and row.get("access_status") and row["access_status"] not in ("", "not_found"):
+            if args.only_missing and row.get("access_status") and row["access_status"] not in ("", "not_found", *args.retry_status):
                 continue
             if args.limit and n >= args.limit:
                 break
             meta = fetch_one(client, row, out, email)
             (out / f"{row['pmid']}.meta.json").write_text(json.dumps(meta, indent=2) + "\n")
-            row["access_status"] = {"pmc_oa": "pmc_oa_xml", "europepmc": "europepmc_xml"}.get(meta["source"], meta["source"] or "")
+            row["access_status"] = {"europepmc": "europepmc_xml", "pmc_efetch": "pmc_efetch_xml"}.get(meta["source"], meta["source"] or "")
             if meta["format"] == "pdf":
-                row["access_status"] = "publisher_pdf" if meta["source"] != "pmc_oa" else "pmc_oa_pdf"
+                row["access_status"] = "publisher_pdf"
             row["fulltext_format"] = meta["format"] or ""
             row["retrieved_at"] = meta["retrieved_at"]
             row["sha256"] = meta["sha256"] or ""

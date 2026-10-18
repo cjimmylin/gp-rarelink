@@ -43,3 +43,24 @@ def test_pubmed_xml_parse_and_provisional_type():
     assert study_type_from_pubtypes(r.publication_types) == "case report"
     assert study_type_from_pubtypes(["Journal Article", "Systematic Review"]) == "review/meta-analysis"
     assert study_type_from_pubtypes(["Journal Article"]) is None
+
+
+ROWSPAN_JATS = b"""<?xml version="1.0"?>
+<article><front><article-meta><article-id pub-id-type="pmid">1</article-id>
+<title-group><article-title>T</article-title></title-group></article-meta></front>
+<body><table-wrap><label>Table 1</label><table>
+<thead><tr><th></th><th>Gender</th><th>Manifestations</th><th>Therapy</th></tr></thead>
+<tbody>
+<tr><td rowspan="2">Pt 1</td><td rowspan="2">F</td><td>Oral ulcers</td><td>None</td></tr>
+<tr><td>Thyroiditis</td><td>L-Thyroxine</td></tr>
+<tr><td>Pt 2</td><td>F</td><td colspan="2">Diabetes</td></tr>
+</tbody></table></table-wrap></body></article>"""
+
+
+def test_rowspan_and_colspan_keep_rows_aligned():
+    md = jats_to_markdown(ROWSPAN_JATS).to_markdown()
+    rows = [l for l in md.splitlines() if l.startswith("| ") and "---" not in l]
+    assert rows[1] == "| Pt 1 | F | Oral ulcers | None |"
+    # the second row of Pt 1 keeps the patient label and gender instead of shifting left
+    assert rows[2] == "| Pt 1 | F | Thyroiditis | L-Thyroxine |"
+    assert rows[3] == "| Pt 2 | F | Diabetes |  |"

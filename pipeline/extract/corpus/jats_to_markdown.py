@@ -90,19 +90,42 @@ class Converter:
         self.n_figures = 0
 
     # ---- tables -----------------------------------------------------------
+    @staticmethod
+    def _span(cell: ET.Element, attr: str) -> int:
+        try:
+            return max(1, int(cell.get(attr, "1") or 1))
+        except ValueError:
+            return 1
+
     def _table_rows(self, table: ET.Element) -> list[list[str]]:
-        rows: list[list[str]] = []
-        for tr in table.iter("tr"):
-            cells = []
+        """Lay the table out on a grid, honouring rowspan and colspan.
+
+        A cell that spans several rows has its text repeated in every row it
+        covers, so each Markdown row keeps its own patient label. (Before
+        2026-10-18 rowspan was ignored, which shifted later cells left; see
+        reports/poc_stage2_smoke_findings.md.) Extra columns of a colspan stay
+        empty.
+        """
+        grid: dict[tuple[int, int], str] = {}
+        n_rows = 0
+        for r, tr in enumerate(table.iter("tr")):
+            n_rows = r + 1
+            c = 0
             for cell in tr:
                 if cell.tag not in ("td", "th"):
                     continue
+                while (r, c) in grid:
+                    c += 1
                 text = _inline(cell).replace("|", "\\|")
-                span = int(cell.get("colspan", "1") or 1)
-                cells.append(text)
-                cells.extend([""] * (span - 1))
-            rows.append(cells)
-        return rows
+                cs, rs = self._span(cell, "colspan"), self._span(cell, "rowspan")
+                for dr in range(rs):
+                    for dc in range(cs):
+                        grid.setdefault((r + dr, c + dc), text if dc == 0 else "")
+                c += cs
+        if not grid:
+            return []
+        width = max(col for _, col in grid) + 1
+        return [[grid.get((i, j), "") for j in range(width)] for i in range(n_rows)]
 
     def _table_md(self, table: ET.Element) -> str:
         rows = self._table_rows(table)
