@@ -99,7 +99,7 @@ How to use this file:
 - **Decision:** natural-history or genotype-first cohort papers for each pilot disease are held out of the extraction corpus and used as comparators. No extra diseases are added.
 - **Why:** this matches the grant's metric wording ("held-out natural-history cohorts") and the $4,000 bias line. The proposal text's "held-out diseases" is the other possible reading.
 - **Follow-ups:**
-  - Prof. Lam to confirm the reading before the freeze.
+  - Jimmy to get Prof. Lam's confirmation of the reading before the freeze (Claude does not contact anyone).
   - LAD-I and Tangier have no comparator yet; if none is found, they are left out of the bias arm and the report says why.
 - **Plan section:** §7.4.1.
 

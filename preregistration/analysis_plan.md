@@ -333,7 +333,7 @@ The ClinVar collection method ("literature only" vs "curation") affects what an 
 
 The grant wording is ambiguous. The proposal text says "held-out *diseases* with published natural-history studies"; the metric says "per-disease deviation from held-out natural-history *cohorts*".
 
-Reading adopted: for each pilot disease, natural-history or genotype-first cohort papers are held out of the extraction corpus and used as comparators. No extra diseases are added. Prof. Lam is to confirm this reading before the plan is frozen.
+Reading adopted: for each pilot disease, natural-history or genotype-first cohort papers are held out of the extraction corpus and used as comparators. No extra diseases are added. Dr. Lin will obtain Prof. Lam's confirmation of this reading before the plan is frozen.
 
 [proposed] If no suitable comparator is found for a disease by the freeze, the bias arm leaves that disease out and says why.
 

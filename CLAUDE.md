@@ -31,3 +31,7 @@ If anything here seems to conflict with INSTRUCTIONS.md, INSTRUCTIONS.md wins.
 - **Secrets.** API keys go in `.env` (git-ignored), never in code or commits.
 - **Stop and ask Jimmy** before contacting external parties, submitting to a
   public database, large spend, or changing anything pre-registered.
+- **No contact (Jimmy, 2026-10-18).** Claude does not contact anyone by any
+  channel: collaborators (including Prof. Lam and the panel), database
+  maintainers, foundations or Anthropic. Draft messages for Jimmy to send;
+  never send them.
