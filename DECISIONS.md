@@ -104,6 +104,14 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-18 · Parallel work combined on `main`
+- **Decided by:** Jimmy ("ok to merge to main").
+- **What happened:** two lines of work ran in parallel on 2026-10-18.
+  - Branch `claude/gracious-pascal-j7krug` (Claude Code) added the pre-registration draft, this file's open decisions, the award details and `NOTES_FOR_AGENTS.md`.
+  - `main` (claude.ai Project chats) added its own `DECISIONS.md` and `BUDGET.md`, the repo-as-source-of-truth decision, the chat digest `docs/claude-ai-threads.md` and `background/origins/`.
+- **How they were combined:** `main` was merged into the branch and the branch into `main`. Both sides' entries are kept: `main`'s two decision entries are below, and its budget notes are folded into `BUDGET.md`.
+- **Follow-up for Jimmy:** the claude.ai Project mirror needs a refresh with the new files. This session has no access to the Project.
+
 ### 2026-10-18 · Award details recorded (D-01 partly resolved)
 - **Source:** award email from Bailey (Anthropic AI for Science program), sent 2026-08-31, saved as `grant/AWARD_EMAIL.md`. The sent date was confirmed by Jimmy.
 - **Recorded in `CONTEXT.md`:**
@@ -161,6 +169,24 @@ How to use this file:
 - **Unchanged:** nothing in `CONTEXT.md`, the disease set, the metrics or the thresholds.
 - **Reproducibility:** `background/audit_ci_250.py` was re-run and reproduces the bounds in `grant_claim_checks.md` §14.
 - **New:** `preregistration/audit_operating_characteristics.py` was added to inform D-02.
+
+### 2026-10-18 · Git repo is the single source of truth (from a claude.ai Project chat; merged in from `main`)
+- **Decided by:** Jimmy (chat, 2026-10-18).
+- **Decision:** `cjimmylin/gp-rarelink` (branch `main`) is canonical for every project document, script and dataset manifest. The claude.ai Project "Anthropic Rare Disease" holds a read-only mirror of the repo's documents so chat sessions can see them.
+- **Why:** the instructions require every number to trace to a script, a dated input and a commit; only the repo provides that. The Project previously held duplicate copies (`CONTEXT.md` and `claude/CONTEXT.md`, `claude/INSTRUCTIONS.md`), which would drift.
+- **How syncing works:**
+  - Edit files in the repo and commit. Then refresh the Project mirror from the repo (any Claude session attached to both can do this). Do not edit documents in the Project directly.
+  - Path mapping: files at the repo root are mirrored under `claude/` in the Project (the Project only allows new top-level docs there), e.g. `CONTEXT.md` → `claude/CONTEXT.md`. Files in subfolders keep their repo path, e.g. `grant/GRANT_APPLICATION.md`, `background/manifest.csv`.
+  - `INSTRUCTIONS.md` is mirrored to `claude/INSTRUCTIONS.md` and also serves as the Project's custom instructions. Those have to be pasted into Project settings by hand when the file changes.
+  - `CLAUDE.md` is specific to Claude Code and is not mirrored.
+
+### 2026-10-18 · Open items blocking Month-1 bookkeeping (from a claude.ai Project chat; merged in from `main`)
+- **Raised:**
+  - `CONTEXT.md` had blanks for the award date, credits awarded and project start (Month 1).
+  - Spend to date had not been reconciled against the Anthropic Console org `2056f88f-1a7b-4386-abfb-5b0fe9a98e10`.
+- **Status at merge (2026-10-18):**
+  - The award date and credits are now recorded (see "Award details recorded" above). The Month-1 start is D-01.
+  - The award turned out to be claude.ai usage credits, not Console credits, so spend is reconciled from claude.ai Settings > Usage instead (D-15). The Console matters only if D-17 adds an API route.
 
 ### 2026-10-18 · Repository set up for Claude Code (recorded after the fact from the initial commit)
 - **Decided by:** Jimmy, with Claude.

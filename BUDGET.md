@@ -21,20 +21,20 @@ Anthropic deposits half the award up front, then tops up toward $45,000 as credi
 
 ## Lines
 
-"Spent" will be filled from the ledger below by script once entries exist. Totals are never added up by hand.
+"Spent" and "Remaining" will be filled from the ledger below by script once entries exist. Totals are never added up by hand.
 
-| # | Line | Requested | Spent | Notes |
-|---|---|---|---|---|
-| 1 | Extraction across six diseases, incl. re-runs as HGVS and negation handling stabilize | $8,000 | — | Pilot on A20 haploinsufficiency first (D-06); cost estimate before scaling |
-| 2 | Gatekeeper verification pass | $4,000 | — | |
-| 3 | ClinVar/OMIM reconciliation + concordance harness (full re-runs) | $6,000 | — | |
-| 4 | Claude Code: pipeline, VariantValidator integration, dedup tooling, adjudication interface | $6,000 | — | |
-| 5 | Ascertainment-bias arm | $4,000 | — | Comparators within the pilot diseases; no extra diseases (D-04) |
-| 6 | Claude vs open-weight head-to-head | $2,000 | — | Open-weight compute not covered (D-10) |
-| | **Core subtotal** | **$30,000** | | |
-| 7 | Stretch: extend to all 12 candidate diseases | $9,000 | — | Only if the core finishes under budget |
-| 8 | Contingency | $6,000 | — | |
-| | **Total requested** | **$45,000** | | |
+| # | Line | Requested | Spent | Remaining | Notes |
+|---|---|---:|---:|---:|---|
+| 1 | Extraction across six diseases, incl. re-runs as HGVS and negation handling stabilize | $8,000 | — | — | Pilot on A20 haploinsufficiency first (D-06); cost estimate before scaling |
+| 2 | Gatekeeper verification pass | $4,000 | — | — | |
+| 3 | ClinVar/OMIM reconciliation + concordance harness (full re-runs) | $6,000 | — | — | |
+| 4 | Claude Code: pipeline, VariantValidator integration, dedup tooling, adjudication interface | $6,000 | — | — | |
+| 5 | Ascertainment-bias arm | $4,000 | — | — | Comparators within the pilot diseases; no extra diseases (D-04) |
+| 6 | Claude vs open-weight head-to-head | $2,000 | — | — | Published either way. Open-weight compute not covered (D-10) |
+| | **Core subtotal** | **$30,000** | | | |
+| 7 | Stretch: extend to all 12 candidate diseases | $9,000 | — | — | Only if the core finishes under budget; needs Jimmy's approval |
+| 8 | Contingency | $6,000 | — | — | Each draw logged in `DECISIONS.md` |
+| | **Total requested** | **$45,000** | | | |
 
 **Three notes:**
 - **One credit pool.** The award is a single pool of claude.ai credits, with no separate Claude Science and Claude Code allocations. The grant's 65% / 35% split (≈ $29,000 / ≈ $16,000) is now only an internal plan. We report per line, as committed (D-15).

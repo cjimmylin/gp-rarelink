@@ -13,6 +13,10 @@ future session would need.
 
 @NOTES_FOR_AGENTS.md
 
+Work done earlier in claude.ai chats (setup, environment limits such as the
+cloud workspace being unable to reach PubMed/PMC, and open items) is
+summarised in `docs/claude-ai-threads.md`. Read it at the start of a session.
+
 ## Quick reminders for coding sessions
 
 These restate the rules from INSTRUCTIONS.md that matter most while writing code.

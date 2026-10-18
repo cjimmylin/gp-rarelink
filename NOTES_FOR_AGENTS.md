@@ -17,6 +17,7 @@ How to maintain it:
   - background literature (`background/`, compiled 2026-10-16 in Cowork);
   - `DECISIONS.md` and `BUDGET.md`;
   - pre-registration draft v0.3 (`preregistration/analysis_plan.md`), not frozen. D-02 to D-07 are decided.
+  - a digest of the claude.ai Project chats (`docs/claude-ai-threads.md`) and the pre-grant concept chat (`background/origins/`), both added from claude.ai on 2026-10-18.
 - **Not started:**
   - case-report corpus;
   - reference snapshots and dated ClinVar/OMIM counts;
@@ -25,9 +26,12 @@ How to maintain it:
   - any pipeline code, and any extraction runs.
 - **Blocking the pre-registration freeze:** D-01, D-08 to D-12, and D-17. Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**
-  - All work after the initial commit is on branch `claude/gracious-pascal-j7krug`. As of 2026-10-18, `main` holds only the initial commit.
-  - If you start from `main` and these files are missing, fetch that branch.
-  - No pull request has been opened; Jimmy hasn't asked for one.
+  - Everything up to 2026-10-18 is on `main`, merged with Jimmy's approval. Start new work from `main`.
+  - Merge to `main` only when Jimmy says so.
+- **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
+  - run `git fetch origin main` before starting, and again before merging;
+  - when files collide, combine both sides; never overwrite one with the other.
+- **The repo is canonical; the claude.ai Project only mirrors it** (Jimmy's decision, in `DECISIONS.md`). After changing documents here, tell Jimmy the Project mirror needs a refresh. Claude Code sessions have no access to the Project.
 
 ## 2. Next steps, in order, once unblocked
 
