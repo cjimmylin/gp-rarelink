@@ -1,0 +1,266 @@
+diff --git a/.example.env b/.example.env
+index bb55b6b..235b9bb 100644
+--- a/.example.env
++++ b/.example.env
+@@ -9,6 +9,13 @@ AZURE_OPENAI_API_KEY=
+ AZURE_OPENAI_ENDPOINT=
+ # AZURE_OPENAI_API_VERSION=2024-12-01-preview
+ 
++# ---- Anthropic / Claude (used when SLIDERS_LLM_PROVIDER=anthropic) ----
++ANTHROPIC_API_KEY=
++# ANTHROPIC_BASE_URL=https://api.anthropic.com
++# SLIDERS_ANTHROPIC_EFFORT=high        # default reasoning effort when a model config sets none
++# SLIDERS_ANTHROPIC_FALLBACKS=default  # server-side refusal fallbacks; "off" to disable
++# SLIDERS_ANTHROPIC_CACHE=on           # automatic prompt caching; "off" to disable
++
+ # ---- OpenAI (used when SLIDERS_LLM_PROVIDER=openai) ----
+ OPENAI_API_KEY=
+ # OPENAI_BASE_URL=https://api.openai.com/v1
+diff --git a/pyproject.toml b/pyproject.toml
+index ba3cb5e..0059aeb 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -41,6 +41,7 @@ dependencies = [
+     "jinja2>=3.1",
+     "langchain>=0.3.3",
+     "langchain-community>=0.3.2",
++    "langchain-anthropic>=1.7",
+     "langchain-openai>=0.2.2",
+     "langchain-text-splitters>=0.3.0",
+     "langgraph>=0.3.33",
+diff --git a/sliders/llm/anthropic_client.py b/sliders/llm/anthropic_client.py
+new file mode 100644
+index 0000000..a9e6bd3
+--- /dev/null
++++ b/sliders/llm/anthropic_client.py
+@@ -0,0 +1,131 @@
++"""Anthropic (Claude) provider for SLIDERS.
++
++Selected with ``SLIDERS_LLM_PROVIDER=anthropic`` or ``provider="anthropic"``.
++Built on ``langchain-anthropic``, which calls Claude through the official
++``anthropic`` SDK.
++
++Differences from the OpenAI providers that this module absorbs so the rest of
++SLIDERS stays unchanged:
++
++* Structured output uses Claude's native JSON-schema structured outputs
++  (``with_structured_output(..., method="json_schema")``) instead of forced
++  tool calling, which current Claude models reject. The schema-less
++  ``with_structured_output(method="json_mode")`` call used by the extraction
++  chain is mapped to a JSON output parser.
++* Sampling parameters (``temperature``, ``top_p``, ``top_k``) are dropped:
++  current Claude models reject non-default values. Reasoning depth is
++  controlled with ``effort`` instead (per-model config key, or
++  ``SLIDERS_ANTHROPIC_EFFORT``).
++* Server-side refusal fallbacks are enabled by default
++  (``SLIDERS_ANTHROPIC_FALLBACKS=default``; set to ``off`` to disable).
++* Automatic prompt caching is enabled by default via the top-level
++  ``cache_control`` request parameter (``SLIDERS_ANTHROPIC_CACHE=off`` to
++  disable).
++
++Environment: ``ANTHROPIC_API_KEY`` (required), ``ANTHROPIC_BASE_URL``
++(optional).
++"""
++
++from __future__ import annotations
++
++import os
++import uuid
++from typing import Any, Optional
++
++from langchain_anthropic import ChatAnthropic
++from langchain_core.callbacks.base import Callbacks
++from langchain_core.messages import BaseMessage
++from langchain_core.output_parsers.json import JsonOutputParser
++from langchain_core.outputs import LLMResult
++from langchain_core.runnables import Runnable
++
++from sliders.log_utils import logger
++
++FALLBACK_BETA = "server-side-fallback-2026-07-01"
++_SAMPLING_KWARGS = ("temperature", "top_p", "top_k")
++_VALID_EFFORT = {"low", "medium", "high", "xhigh", "max"}
++
++
++def _env_flag(name: str, default: str) -> str:
++    return (os.getenv(name) or default).strip().lower()
++
++
++def build_anthropic_kwargs(
++    *,
++    model: str,
++    max_retries: int,
++    timeout: float | None,
++    kwargs: dict[str, Any],
++) -> dict[str, Any]:
++    """Translate SLIDERS' provider-agnostic kwargs into ChatAnthropic kwargs."""
++    dropped = [k for k in _SAMPLING_KWARGS if k in kwargs]
++    for k in dropped:
++        kwargs.pop(k)
++    if dropped:
++        logger.debug(f"anthropic provider: ignoring sampling kwargs {dropped} for {model}")
++
++    effort = kwargs.pop("effort", None) or kwargs.pop("reasoning_effort", None) or os.getenv("SLIDERS_ANTHROPIC_EFFORT")
++    if effort is not None:
++        effort = str(effort).lower()
++        if effort not in _VALID_EFFORT:
++            raise ValueError(f"anthropic provider: effort must be one of {sorted(_VALID_EFFORT)}, got {effort!r}")
++
++    betas: list[str] = list(kwargs.pop("betas", None) or [])
++    model_kwargs: dict[str, Any] = dict(kwargs.pop("model_kwargs", None) or {})
++
++    fallbacks = _env_flag("SLIDERS_ANTHROPIC_FALLBACKS", "default")
++    if fallbacks == "default":
++        if FALLBACK_BETA not in betas:
++            betas.append(FALLBACK_BETA)
++        model_kwargs.setdefault("fallbacks", "default")
++
++    if _env_flag("SLIDERS_ANTHROPIC_CACHE", "on") in {"on", "1", "true", "yes"}:
++        model_kwargs.setdefault("cache_control", {"type": "ephemeral"})
++
++    api_key = kwargs.pop("api_key", None) or os.getenv("ANTHROPIC_API_KEY")
++    base_url = kwargs.pop("base_url", None) or os.getenv("ANTHROPIC_BASE_URL")
++
++    out: dict[str, Any] = {
++        "model": model,
++        "max_retries": max_retries,
++        "model_kwargs": model_kwargs,
++        **kwargs,
++    }
++    if api_key:
++        out["api_key"] = api_key
++    if base_url:
++        out["base_url"] = base_url
++    if timeout is not None:
++        out["timeout"] = timeout
++    if effort is not None:
++        out["effort"] = effort
++    if betas:
++        out["betas"] = betas
++    return out
++
++
++class SlidersChatAnthropic(ChatAnthropic):
++    """ChatAnthropic with SLIDERS' structured-output conventions.
++
++    The Redis response cache (``CachedLLMMixin``) is mixed in by
++    ``sliders.llm.llm`` to keep this module importable without Redis.
++    """
++
++    def with_structured_output(  # type: ignore[override]
++        self,
++        schema: dict | type | None = None,
++        *,
++        include_raw: bool = False,
++        method: str = "json_schema",
++        **kwargs: Any,
++    ) -> Runnable:
++        if schema is None:
++            # SLIDERS' extraction chain asks for provider "json mode" with no
++            # schema and parses the JSON itself; Claude is instructed by the
++            # prompt to answer with a JSON object, so parse the text.
++            if include_raw:
++                raise ValueError("include_raw is not supported without a schema")
++            return self | JsonOutputParser()
++        if method in {"function_calling", "json_mode"}:
++            method = "json_schema"
++        return super().with_structured_output(schema, include_raw=include_raw, method=method, **kwargs)
+diff --git a/sliders/llm/llm.py b/sliders/llm/llm.py
+index 805608e..a91f0fe 100644
+--- a/sliders/llm/llm.py
++++ b/sliders/llm/llm.py
+@@ -11,6 +11,11 @@ from typing import Any, Optional
+ 
+ import redis.asyncio as redis
+ from openai import RateLimitError
++
++try:  # optional provider
++    from anthropic import RateLimitError as AnthropicRateLimitError
++except ImportError:  # pragma: no cover
++    AnthropicRateLimitError = None
+ from overrides import override
+ from tenacity import before_sleep_log
+ 
+@@ -26,6 +31,11 @@ from langchain_core.runnables.retry import (
+ )
+ from langchain_openai import AzureChatOpenAI, ChatOpenAI
+ 
++try:  # optional provider
++    from sliders.llm.anthropic_client import SlidersChatAnthropic as _AnthropicBase
++except ImportError:  # pragma: no cover
++    _AnthropicBase = None
++
+ from sliders.callbacks.logging import LoggingHandler
+ from sliders.log_utils import logger
+ 
+@@ -227,6 +237,15 @@ def get_llm_client(*, model: str, slow_rate_limiter: bool = False, provider: str
+             **kwargs,
+         )
+ 
++    if provider_value == "anthropic":
++        from sliders.llm.anthropic_client import build_anthropic_kwargs
++
++        rate_limiter = kwargs.pop("rate_limiter", _build_rate_limiter(slow_rate_limiter))
++        chat_kwargs = build_anthropic_kwargs(
++            model=model, max_retries=max_retries, timeout=timeout, kwargs=kwargs
++        )
++        return CachedChatAnthropic(rate_limiter=rate_limiter, **chat_kwargs)
++
+     raise ValueError(f"Unsupported LLM provider '{provider_value}'.")
+ 
+ 
+@@ -366,8 +385,11 @@ class CachedLLMMixin:
+             )
+ 
+         max_attempts = max(1, getattr(self, "max_retries", 1))
++        retry_types: tuple[type[BaseException], ...] = (RateLimitError,)
++        if AnthropicRateLimitError is not None:
++            retry_types = retry_types + (AnthropicRateLimitError,)
+         retrying = AsyncRetrying(
+-            retry=retry_if_exception_type(RateLimitError),
++            retry=retry_if_exception_type(retry_types),
+             wait=wait_exponential_jitter(initial=1, max=30, exp_base=2, jitter=1),
+             stop=stop_after_attempt(max_attempts),
+             reraise=True,
+@@ -379,7 +401,7 @@ class CachedLLMMixin:
+                 with attempt:
+                     output = await _invoke_llm()
+                     break
+-        except RateLimitError as exc:
++        except retry_types as exc:
+             logger.error(f"Exceeded retry attempts due to rate limiting: {exc}")
+             raise
+ 
+@@ -454,3 +476,32 @@ class CachedChatOpenAI(CachedLLMMixin, ChatOpenAI):
+             run_id=run_id,
+             **kwargs,
+         )
++
++
++class CachedChatAnthropic(CachedLLMMixin, _AnthropicBase if _AnthropicBase is not None else object):
++    """Anthropic (Claude) client with shared caching mixin."""
++
++    @override
++    async def agenerate(
++        self,
++        messages: list[list[BaseMessage]],
++        stop: Optional[list[str]] = None,
++        callbacks: Callbacks = None,
++        *,
++        tags: Optional[list[str]] = None,
++        metadata: Optional[dict[str, Any]] = None,
++        run_name: Optional[str] = None,
++        run_id: Optional[uuid.UUID] = None,
++        **kwargs: Any,
++    ) -> LLMResult:
++        return await self._cached_agenerate(
++            super().agenerate,
++            messages,
++            stop,
++            callbacks,
++            tags=tags,
++            metadata=metadata,
++            run_name=run_name,
++            run_id=run_id,
++            **kwargs,
++        )

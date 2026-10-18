@@ -18,7 +18,8 @@ disease set (`INSTRUCTIONS.md` §1.4).
 | Stage | Status | Date | Notes |
 |---|---|---|---|
 | 0 Setup and guardrails | done | 2026-10-18 | `pyproject.toml`, `pipeline/{common,extract,harness}`, `configs/prices.yaml` (prices unverified against the live page; `verified_on` is null), isolation tests and runtime guard, 14 tests passing with `uv run pytest`. One distribution with three subpackages rather than separate packages; the boundary is enforced by tests and the guard. |
-| 1 Corpus assembly | not started | | needs a networked machine |
+| 1 Corpus assembly | scripts ready, **not run** | 2026-10-18 | `pipeline/extract/corpus/` (manifest builder, Haiku study-type classifier, full-text fetcher, JATS→Markdown, stats) with offline tests; runbook in `data/literature/ha20/README.md`; seed list from the background bibliography; OMIM request drafted in `reports/drafts/omim_access_request.md`. Blocked here: the cloud environment's network policy denies NCBI, Europe PMC, Unpaywall and omim.org. Run on the Mac mini or allow those hosts in the environment settings. |
+| 2 SLIDERS on Claude | adapter done, **smoke test not run** | 2026-10-18 | Patch `pipeline/extract/sliders_adapter/0001-anthropic-provider.patch` on upstream commit `b66094d`, installed by `scripts/install_sliders.sh`; config `configs/sliders_ha20.yaml`; pinned schema complete (no completion call); extraction rules v1; run wrapper with run manifest and usage/cost capture; 24 tests pass incl. wire-payload tests against a fake Messages API. Blocked here: no `ANTHROPIC_API_KEY` in the environment and no full text yet. |
 
 Everything here is subordinate to `INSTRUCTIONS.md` and `CONTEXT.md`. If a step
 below conflicts with them, they win; stop and flag it.
@@ -597,6 +598,19 @@ emits the pinned tables with spans.
 
 **Outputs.** Provider adapter, `schema_ha20.json`, prompts v1,
 `runs/poc-ha20-smoke-*/manifest.json`, Stage 3 cost estimate.
+
+**How to run the smoke test once Stage 1 has produced Markdown and the key is
+in `.env`:**
+
+```bash
+scripts/install_sliders.sh                      # once per machine
+uv run python -m pipeline.extract.sliders_adapter.run_sliders \
+  --docs data/literature/ha20/fulltext_md --run-id poc-ha20-smoke-1 --max-docs 3 --debug
+uv run python -m pipeline.extract.span_check --run-id poc-ha20-smoke-1   # Stage 2 check 2 (to be written)
+```
+Pick the three documents by copying them into a separate directory if the
+first three Markdown files are not one case report, one family and one cohort
+table paper.
 
 **Checks.**
 - Every non-null cell in the final tables has a span and PMID.

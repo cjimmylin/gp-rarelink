@@ -1,0 +1,45 @@
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+from pipeline.extract.corpus.jats_to_markdown import jats_to_markdown
+from pipeline.extract.corpus.pubmed_parse import parse_pubmed_xml, study_type_from_pubtypes
+
+FIX = Path(__file__).parent / "fixtures"
+
+
+def test_jats_to_markdown_keeps_header_tables_captions_and_refs():
+    art = jats_to_markdown((FIX / "sample_jats.xml").read_bytes())
+    md = art.to_markdown()
+    assert md.startswith("PMID: 99999999\n")
+    assert "PMCID: PMC9999999" in md and "DOI: 10.1000/test.1" in md
+    assert "# A novel TNFAIP3 variant in a family" in md
+    assert "## Abstract" in md and "two patients with a heterozygous variant" in md
+    assert "## Case presentation" in md
+    assert "c.1245_1248delTTTA (p.Phe415fs)" in md and "NM_006290.3" in md
+    assert "### Table 1: Clinical features" in md
+    assert "| Patient | Sex | Oral ulcers | Fever |" in md
+    assert "| II-1 | F | + | - |" in md and "| I-2 | M | + | ND |" in md
+    assert "Table notes: ND, not determined." in md
+    assert "**Figure 1**: Pedigree of the family." in md
+    assert "## References" in md and "[1] Zhou Q, 2016, Loss-of-function mutations in TNFAIP3, Nat Genet PMID:26642243" in md
+    assert art.authors == ["Doe Jane", "Roe Richard"] and art.year == "2021"
+    assert art.n_tables == 1 and art.n_figures == 1
+
+
+def test_pubmed_xml_parse_and_provisional_type():
+    xml = b"""<PubmedArticleSet><PubmedArticle><MedlineCitation><PMID>26642243</PMID><Article>
+      <Journal><Title>Nature genetics</Title><JournalIssue><PubDate><Year>2016</Year></PubDate></JournalIssue></Journal>
+      <ArticleTitle>Loss-of-function mutations in TNFAIP3 leading to A20 haploinsufficiency</ArticleTitle>
+      <Abstract><AbstractText>Text.</AbstractText></Abstract>
+      <AuthorList><Author><LastName>Zhou</LastName><ForeName>Qing</ForeName></Author></AuthorList>
+      <Language>eng</Language>
+      <PublicationTypeList><PublicationType>Journal Article</PublicationType><PublicationType>Case Reports</PublicationType></PublicationTypeList>
+      </Article></MedlineCitation><PubmedData><ArticleIdList><ArticleId IdType="doi">10.1038/ng.3459</ArticleId><ArticleId IdType="pmc">PMC4777523</ArticleId></ArticleIdList></PubmedData></PubmedArticle></PubmedArticleSet>"""
+    recs = parse_pubmed_xml(ET.fromstring(xml))
+    assert len(recs) == 1
+    r = recs[0]
+    assert r.pmid == "26642243" and r.doi == "10.1038/ng.3459" and r.pmcid == "PMC4777523"
+    assert r.first_author == "Zhou" and r.year == "2016"
+    assert study_type_from_pubtypes(r.publication_types) == "case report"
+    assert study_type_from_pubtypes(["Journal Article", "Systematic Review"]) == "review/meta-analysis"
+    assert study_type_from_pubtypes(["Journal Article"]) is None

@@ -13,6 +13,28 @@ plan in `preregistration/` is frozen).
 
 ---
 
+## 2026-10-18 — Stages 1 and 2 built offline; model runs deferred to a networked machine
+
+- **Type:** process
+- **Decision:** Stage 0 is complete; Stages 1 and 2 are implemented and
+  unit-tested but their network- and model-dependent steps have not run. The
+  claude.ai cloud environment denies NCBI E-utilities, PMC, Europe PMC,
+  Unpaywall, omim.org and VariantValidator, and holds no `ANTHROPIC_API_KEY`.
+  Either allow those hosts and add the key in the environment settings, or run
+  the runbook in `data/literature/ha20/README.md` and the Stage 2 smoke test on
+  the Mac mini. No spend has occurred.
+- **SLIDERS adaptation (decision 2 follow-through):** the public code is
+  pinned at upstream commit `b66094d` (2026-04-14) and patched with an
+  `anthropic` provider built on `langchain-anthropic` over the official SDK.
+  Structured output uses Claude's JSON-schema mode (current models reject
+  forced tool calls); sampling parameters are dropped and `effort` is used per
+  role; server-side refusal fallbacks and automatic prompt caching are on by
+  default. The patch is self-contained for an upstream offer later.
+- **Schema (§3.5 follow-through):** the pinned schema is fully specified so
+  SLIDERS skips its schema-completion model call; the three-state checklist
+  table carries "not reported" explicitly.
+- **Approved by:** n/a (process; for Jimmy's information)
+
 ## 2026-10-18 — POC study design approved with six decisions
 
 - **Type:** method / scope

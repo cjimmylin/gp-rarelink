@@ -16,6 +16,8 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 | `background/` | Annotated bibliography, manifest, grant-claim checks, fetch scripts |
 | `pipeline/` | Pipeline code: `common/` (run manifests, cost), `extract/` (extraction side, never reads ground truth), `harness/` (concordance, the only reader of `data/reference/`) |
 | `configs/` | Price table and run configurations |
+| `scripts/` | `install_sliders.sh`: pinned SLIDERS checkout + Anthropic provider patch into the venv |
+| `data/literature/<disease>/` | Corpus manifest, seeds and runbook (full text is git-ignored) |
 | `tests/` | Ground-truth isolation tests and unit tests (`uv sync && uv run pytest`) |
 
 **Source of truth.** This repo is canonical. The claude.ai Project "Anthropic Rare Disease" mirrors its documents for chat sessions; edit here, commit, then refresh the mirror (see `DECISIONS.md`, 2026-10-18).
