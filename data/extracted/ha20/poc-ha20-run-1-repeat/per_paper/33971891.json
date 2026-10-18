@@ -1,0 +1,2391 @@
+{
+ "pmid": "33971891",
+ "instructions_version": "extract_v2",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "One cohort member carries a TNFAIP3 variant: '1 TNFAIP3 mutation (A20 haploinsufficiency, #15 with BD)'; his mother also carries it.",
+ "method_note": "Read the whole paper; wrote the JSON with a Python script in my scratch directory. Every table span was cut from the actual Table 1 / Table 2 row text for #15 (so it is character-exact) and every span was checked verbatim by script; transcription of the two #15 rows was checked by eye against the tables. Patients are rows in both tables. SCOPE: this is a 15-patient cohort (recurrent aphthous stomatitis with systemic inflammation); only patient #15 carries a TNFAIP3 variant. I extracted #15 and his two relatives (the mother, who carries the A20 mutation and has BD, and the grandmother, who has BD-like complaints). The other 14 enrolled patients (STAT1 #1, #10; PTPN22 #2; DNASE1L3 #5; genetic-negative others) and their relatives in the family-history column were NOT extracted, because they have no TNFAIP3 variant; the instructions leave non-TNFAIP3 papers' tables empty, and I applied the same scope within this mixed cohort. Revisit if the harness expects all cohort members. Age at last evaluation '16' is Table 1's 'Age at enrollment (y)'; follow-up continued after that (6 months on adalimumab), so it is the age at enrollment, not strictly the last evaluation. Onset '0.3' (y) given as P0.3Y without converting to months. Transcript NM_001270508 (no version) is printed in Methods for TNFAIP3, and the Table 2 legend says the variant column refers to the Methods transcript. cDNA is printed in non-standard form 'c.C1135T'; recorded as printed. Authors do not name the variant class (only 'p.Q379X'), so variant_type is 'not reported'. Table 2 'Inheritance' column ('AD') is the mode of inheritance, not variant origin; origin 'inherited maternal' comes from 'STATUS (carrier) HZ(mother)' and the text. Mother's zygosity left 'not reported' because 'HZ' describes the patient. No functional assay was done for the TNFAIP3 variant: only in silico predictions (GERP 5.63, CADD 39, LRT D, MT D; SIFT/PP2 na) and the patient-level IFN score. Grandmother: carrier status not stated; 'nephew' is the paper's word for her grandson #15; maternal or paternal side not stated. BD was not entered as a phenotypic feature (it is a diagnosis; recorded in disease_label_as_stated). HLA-B51 negative not entered as a phenotype. 'usually normal CRP' was entered as excluded with the qualifier 'usually'. GI checklist item marked observed from 'perianal ulcerations' and 'Fecal calprotectin ↑' (judgement call). IBD excluded for #15 from the explicit cohort-wide statement 'we did not identify any patient with RAS and inflammatory bowel disease' (evidence_basis inferred from group statement); this narrower absence does not change the GI checklist item. Contradictions/oddities in the paper (none change #15's data): patient #1 is 'F' in Table 1 but 'he' in the text; patient #5's DNASE1L3 variant is 'T971fs*2' in Table 1 vs 'p.T97Ifs*2' in Table 2; the IFN-score paragraph cites Table 2, but IFN scores are in Table 1; 'PEDDB' vs 'PEDBD'; the abstract says the TNFAIP3 mutation was 'in patients with BD' (plural) while the Results give one patient (#15).",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "first_author": {
+     "value": "Girardelli",
+     "span": "Girardelli Martina"
+    },
+    "year": {
+     "value": 2021,
+     "span": "Journal: Pediatric Rheumatology Online Journal (2021)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "We enrolled 15 subjects (12 females, median age at disease onset 4 years, range 0.3–15 years)."
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "1 TNFAIP3 mutation (A20 haploinsufficiency, #15 with BD)"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": [
+      "Variants considered to be causative were validated by Sanger Sequencing both in proband and parents, when available.",
+      "1 TNFAIP3 mutation (A20 haploinsufficiency, #15 with BD)"
+     ]
+    },
+    "sex": {
+     "value": "male",
+     "span": "| #15 | M"
+    },
+    "age_at_onset_original_text": {
+     "value": "0.3",
+     "span": "| #15 | M | 16 | 0.3"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P0.3Y",
+     "span": "| #15 | M | 16 | 0.3"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "16",
+     "span": "| #15 | M | 16"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P16Y",
+     "span": "| #15 | M | 16"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Glucocorticoids (GC); adalimumab (ADA) started after genetic diagnosis, with no further recurrence of aphthae, abscesses and fever crisis after 6 months (IFN score still increased); colchicine refused because of intolerance; no benefit from tonsillectomy",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6 | no | no | GC, ADA started after genetic diagnosis",
+      "In patient #15, with A20 haploinsufficiency, a treatment with adalimumab was started, considering the high risks of disease progression without treatment and the colchicine intolerance.",
+      "At the last follow-up, after 6 months of treatment, the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis, even if laboratory investigations still revealed an increased IS.",
+      "as treatment with colchicine was refused because of intolerance",
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "A20 haploinsufficiency (previously diagnosed with BD)",
+     "span": [
+      "in one patient (#15), previously diagnosed with BD, the diagnosis was changed in A20 haploinsufficiency",
+      "In patient #15, with A20 haploinsufficiency"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Both: genetic testing (17-gene targeted panel; causative variants validated by Sanger sequencing) found a TNFAIP3 mutation, changing the diagnosis from BD to A20 haploinsufficiency; BD had been diagnosed by PEDBD criteria (3/6)",
+     "span": [
+      "underwent analysis of peripheral lymphocyte subsets, sequencing of a 17-genes panel and measure of interferon score",
+      "Variants considered to be causative were validated by Sanger Sequencing both in proband and parents, when available.",
+      "1 TNFAIP3 mutation (A20 haploinsufficiency, #15 with BD)",
+      "The patient with A20 haploinsufficiency had a diagnosis of BD based on PEDDB criteria",
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "the patient #15 mother, also carrying the A20 mutation"
+    },
+    "sex": {
+     "value": "female",
+     "span": "the patient #15 mother"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "no specific medications required",
+     "span": "was also affected with BD not requiring specific medications"
+    },
+    "disease_label_as_stated": {
+     "value": "BD",
+     "span": [
+      "was also affected with BD not requiring specific medications",
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother)"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "a treatment with adalimumab is being considered for the grandmother, who presents complaints similar to the nephew."
+    },
+    "sex": {
+     "value": "female",
+     "span": "the grandmother"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "adalimumab being considered (not yet started)",
+     "span": "a treatment with adalimumab is being considered for the grandmother"
+    },
+    "disease_label_as_stated": {
+     "value": "BD (complaints similar to the nephew)",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother)",
+      "who presents complaints similar to the nephew"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "| #15 | TNFAIP3"
+    },
+    "variant_original_string": {
+     "value": "c.C1135T p.Q379X",
+     "span": "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X"
+    },
+    "transcript_as_stated": {
+     "value": "NM_001270508",
+     "span": [
+      "TNFAIP3 (NM_001270508 → NP_001257437)",
+      "The “variant” column shows cDNA sequence and Protein (amino acid) change referring to the coordinates of the gene transcript reported in the materials and methods"
+     ]
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.C1135T",
+     "span": "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Q379X",
+     "span": "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": [
+      "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X | na | na | 5.63 | 39 | na | na | D | D | HZ(mother)",
+      "HZ indicate heterozygous condition"
+     ]
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": [
+      "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X | na | na | 5.63 | 39 | na | na | D | D | HZ(mother)",
+      "the patient #15 mother, also carrying the A20 mutation"
+     ]
+    },
+    "parental_testing_statement": {
+     "value": "Mother carries the variant (STATUS (carrier): HZ(mother)); causative variants were validated by Sanger sequencing in proband and parents when available; father's result not reported",
+     "span": [
+      "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X | na | na | 5.63 | 39 | na | na | D | D | HZ(mother)",
+      "the patient #15 mother, also carrying the A20 mutation",
+      "Variants considered to be causative were validated by Sanger Sequencing both in proband and parents, when available."
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "Pathogenic variants were detected in 3 patients, respectively 2 gain of function (GOF) mutation in STAT1 (#1 with BD/SLE overlap, #10 with SLE) and 1 TNFAIP3 mutation (A20 haploinsufficiency, #15 with BD)"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": [
+      "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X | na | na | 5.63 | 39 | na | na | D | D | HZ(mother)",
+      "the patient #15 mother, also carrying the A20 mutation"
+     ]
+    },
+    "variant_original_string": {
+     "value": "c.C1135T p.Q379X",
+     "span": [
+      "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X",
+      "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X | na | na | 5.63 | 39 | na | na | D | D | HZ(mother)"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "NM_001270508",
+     "span": [
+      "TNFAIP3 (NM_001270508 → NP_001257437)",
+      "The “variant” column shows cDNA sequence and Protein (amino acid) change referring to the coordinates of the gene transcript reported in the materials and methods"
+     ]
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.C1135T",
+     "span": "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Q379X",
+     "span": "| #15 | TNFAIP3 | AD | 6q23.3 | c.C1135T p.Q379X"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "Pathogenic variants were detected in 3 patients, respectively 2 gain of function (GOF) mutation in STAT1 (#1 with BD/SLE overlap, #10 with SLE) and 1 TNFAIP3 mutation (A20 haploinsufficiency, #15 with BD)"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "Recurrent aphthous stomatitis (RAS/year: 24)",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24",
+      "Recurrent aphthous stomatitis was a presenting symptom in all patients.",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24",
+      "Recurrent aphthous stomatitis was a presenting symptom in all patients.",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24",
+      "Recurrent aphthous stomatitis was a presenting symptom in all patients.",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "24 episodes per year; presenting symptom; no further recurrence of aphthae after 6 months of adalimumab",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24",
+      "Recurrent aphthous stomatitis was a presenting symptom in all patients.",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent aphthous stomatitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011107",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "Fever",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "recurrent fever crises; no further recurrence after 6 months of adalimumab; no benefit from tonsillectomy",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001954",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "perianal ulcerations",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "skin abscesses",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "recurrent; no further recurrence of abscesses after 6 months of adalimumab",
+     "span": [
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "abdominal pain",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abdominal pain",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002027",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "ESR ↑",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated erythrocyte sedimentation rate",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003565",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "usually normal CRP",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "usually normal (not stated as always normal)",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating C-reactive protein concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011227",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "Fecal calprotectin ↑",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "Pathergy: negative result",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | –",
+      "“-“: negative result"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | –",
+      "“-“: negative result"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | –",
+      "“-“: negative result"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "high IS (increased IFN signature)",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6 | no | no | GC, ADA started after genetic diagnosis | N | 9.4",
+      "Three patients among those with high IS had positive genetic results (#1 and #10 with STAT1 GOF mutations, #15 with TNFAIP3 mutation, Fig. 2).",
+      "he also had some features more typical of SLE, such as increased IFN signature"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6 | no | no | GC, ADA started after genetic diagnosis | N | 9.4",
+      "Three patients among those with high IS had positive genetic results (#1 and #10 with STAT1 GOF mutations, #15 with TNFAIP3 mutation, Fig. 2).",
+      "he also had some features more typical of SLE, such as increased IFN signature"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6 | no | no | GC, ADA started after genetic diagnosis | N | 9.4",
+      "Three patients among those with high IS had positive genetic results (#1 and #10 with STAT1 GOF mutations, #15 with TNFAIP3 mutation, Fig. 2).",
+      "he also had some features more typical of SLE, such as increased IFN signature"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IFN score 9.4 (positivity cut-off 2.466); still increased after 6 months of adalimumab",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6 | no | no | GC, ADA started after genetic diagnosis | N | 9.4",
+      "IS above 2.466 were considered positive",
+      "At the last follow-up, after 6 months of treatment, the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis, even if laboratory investigations still revealed an increased IS."
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "Immunephenotype: N (normal lymphocyte subsets)",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6 | no | no | GC, ADA started after genetic diagnosis | N",
+      "N normal",
+      "No significant alteration was found in the other patients as concerns the main lymphocyte subset"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6 | no | no | GC, ADA started after genetic diagnosis | N",
+      "N normal",
+      "No significant alteration was found in the other patients as concerns the main lymphocyte subset"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑ | – | – | BD (mother grandmother) | BD | 3/6 | no | no | GC, ADA started after genetic diagnosis | N",
+      "N normal",
+      "No significant alteration was found in the other patients as concerns the main lymphocyte subset"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "inflammatory bowel disease",
+     "span": "Is also important underline that we did not identify any patient with RAS and inflammatory bowel disease"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Is also important underline that we did not identify any patient with RAS and inflammatory bowel disease"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "Is also important underline that we did not identify any patient with RAS and inflammatory bowel disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24",
+      "Recurrent aphthous stomatitis was a presenting symptom in all patients."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24",
+      "Recurrent aphthous stomatitis was a presenting symptom in all patients."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy",
+      "the patient didn’t refer further recurrence of aphthae, abscesses and fever crisis"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| #15 | M | 16 | 0.3 | 24 | Fever, perianal ulcerations, skin abscesses, abdominal pain; no benefit from tonsillectomy | ESR ↑, usually normal CRPFecal calprotectin ↑"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "#15",
+     "span": "#15 with TNFAIP3 mutation"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the patient #15 mother",
+     "span": "the patient #15 mother"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33971891",
+     "span": "PMID: 33971891"
+    },
+    "individual_label_in_paper": {
+     "value": "the grandmother",
+     "span": "the grandmother"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
