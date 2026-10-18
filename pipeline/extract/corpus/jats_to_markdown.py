@@ -287,6 +287,18 @@ class Converter:
         if body is not None:
             for child in body:
                 blocks.extend(self._block(child, 2))
+        # Some publishers put tables and figures in <floats-group>, a sibling of
+        # <body>, and only cite them from the text. Before 2026-10-18 these were
+        # dropped, so 12 HA20 papers lost their patient tables.
+        floats = art.find("floats-group")
+        if floats is not None:
+            float_blocks: list[str] = []
+            for child in floats:
+                float_blocks.extend(self._block(child, 2))
+            float_blocks = [b for b in float_blocks if b]
+            if float_blocks:
+                blocks.append("## Tables and figures")
+                blocks.extend(float_blocks)
         a.body_md = "\n\n".join(b for b in blocks if b)
         back = art.find("back")
         back_blocks: list[str] = []

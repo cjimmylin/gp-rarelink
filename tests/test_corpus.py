@@ -64,3 +64,26 @@ def test_rowspan_and_colspan_keep_rows_aligned():
     # the second row of Pt 1 keeps the patient label and gender instead of shifting left
     assert rows[2] == "| Pt 1 | F | Thyroiditis | L-Thyroxine |"
     assert rows[3] == "| Pt 2 | F | Diabetes |  |"
+
+
+FLOATS_JATS = b"""<?xml version="1.0"?>
+<article><front><article-meta><article-id pub-id-type="pmid">2</article-id>
+<title-group><article-title>T</article-title></title-group></article-meta></front>
+<body><sec><title>Case</title><p>Clinical details are in <xref ref-type="table" rid="t1">Table 1</xref>.</p></sec></body>
+<back><ref-list><ref id="r1"><mixed-citation>Ref one.</mixed-citation></ref></ref-list></back>
+<floats-group>
+<table-wrap id="t1"><label>Table 1</label><caption><p>Patients</p></caption><table>
+<tr><th>Patient</th><th>Variant</th></tr><tr><td>P1</td><td>c.811C&gt;T</td></tr></table></table-wrap>
+<fig id="f1"><label>Figure 1</label><caption><p>Pedigree.</p></caption></fig>
+</floats-group></article>"""
+
+
+def test_tables_in_floats_group_are_kept():
+    art = jats_to_markdown(FLOATS_JATS)
+    md = art.to_markdown()
+    assert "### Table 1: Patients" in md
+    assert "| P1 | c.811C>T |" in md
+    assert "**Figure 1**: Pedigree." in md
+    # floating tables sit after the body text and before the references
+    assert md.index("Clinical details") < md.index("### Table 1") < md.index("## References")
+    assert art.n_tables == 1 and art.n_figures == 1

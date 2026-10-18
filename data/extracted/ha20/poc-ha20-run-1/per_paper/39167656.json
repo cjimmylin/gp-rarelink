@@ -1,0 +1,2766 @@
+{
+ "pmid": "39167656",
+ "instructions_version": "extract_v2",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "A basic-science study of a 34-patient HA20 cohort that gives patient-level genetic detail for a few named patients, e.g. patient HA20-14's \"germline TNFAIP3 c.503G > A (p.Trp168*) mutation\".",
+ "method_note": "Worked by reading the full Markdown by hand; the output JSON was assembled with a short Python script in the scratch directory from values I transcribed, then spans were checked verbatim by script. The paper has no patient table in the Markdown: per-patient data for the 34-patient cohort (19 in six families) are in supplementary table S1, which is not included, so only patients named in the text get rows (HA20-1, HA20-14, HA20-15, HA20-21). CONTRADICTION: the Results and Methods name the two scRNA-seq patients as 'HA20-1 and HA20-21' (7691 cells), but the Fig. 6C legend gives 'HA20-1: 1454 cells; HA20-34: 6237 cells' (sum 7691); I recorded one person labelled HA20-21 and did not create a separate HA20-34 row. SOMATIC VARIANTS: for HA20-14 only c.503G > A (p.Trp168*) is stated as germline; the TNFAIP3 c.1880_1881delGT (p.Cys627fs) and MYD88 c.617C > G (p.Ser206Cys) rows are acquired 'second genetic hits' found in lymphoma tissue, not germline (the schema has no somatic field; context is given in their second span). HA20-1 has no variant row because the text gives no variant description for that patient, only 'germline TNFAIP3 mutations'; the patient's A20 deficiency/constitutive NF-κB activation (immunoblot, Fig. 3A) is recorded as a phenotypic feature. Zygosity left 'not reported' for every variant: heterozygosity is stated only for HA20 or the cohort in general ('heterozygous TNFAIP3 loss'), not for a named patient (rule 8). No variant class is named in words, so variant_type is 'not reported' except the chromosomal deletion. No transcript is stated for HA20 variants (NM_006290.4 is given only for a somatic MF/SS variant). Re-reports: the Methods say 'Functional information of already published TNFAIP3 mutations from HA20 families can be obtained from the Infevers database (56)', which hints that some cohort families were published before but does not say so explicitly; cites_prior_report_of_same_patients left null. All checklist items are 'not reported': lymphoma (HA20-14, HA20-15) was not mapped to 'lymphoproliferation or lymphadenopathy', and HA20-1's cytokine elevation was not mapped to 'elevated inflammatory markers (CRP/ESR)'. Not given rows: healthy donors, the ABC DLBCL and MF/SS lymphoma cohorts and the DLBCL case with somatic A20 deficiency (none has HA20). Other internal inconsistency, not about HA20 patients: the ABC DLBCL cohort is n = 68 (Fig. 1E legend), '21 of 66' (text) and 51 patients (Methods).",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "first_author": {
+     "value": "Schultheiß",
+     "span": "Authors: Schultheiß Christoph"
+    },
+    "year": {
+     "value": 2024,
+     "span": "Journal: Science Advances (2024)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "we study a unique cohort of 34 individuals with HA20"
+    },
+    "n_patients_reported": {
+     "value": 34,
+     "span": "In a cohort of 34 patients with HA20"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "patient HA20-1 normalized her B cell repertoire metrics"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "TNF antagonist infliximab (therapeutic TNF antagonism); B cell repertoire metrics normalized on treatment",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "Upon initiation of therapeutic TNF antagonism, patient HA20-1 normalized her B cell repertoire metrics to richness and diversity measures characteristic of blood B cells of healthy individuals"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "germline TNFAIP3 mutation (genetic); variant not specified in the text",
+     "span": "Peripheral blood of patients with germline TNFAIP3 mutations (in patient HA20-1 before and after treatment initiation)"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "patient HA20-14 was diagnosed with DLBCL in the course of his otherwise mild inflammatory disease"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "one of our patients with HA20 who developed lymphoma after acquisition of a second A20 mutation and an MYD88 mutation"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "previously identified germline TNFAIP3 mutation (genetic)",
+     "span": "his previously identified germline TNFAIP3 c.503G > A (p.Trp168*) mutation"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": [
+      "two patients from our cohort of 34 individuals developed lymphoma in the course of their disease",
+      "a cohort of 34 individuals with HA20"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "chromosomal deletion in 6q23.3 encompassing TNFAIP3 (genetic)",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3, which encompasses TNFAIP3"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "his previously identified germline TNFAIP3 c.503G > A (p.Trp168*) mutation"
+    },
+    "variant_original_string": {
+     "value": "c.503G > A (p.Trp168*)",
+     "span": "germline TNFAIP3 c.503G > A (p.Trp168*) mutation"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.503G > A",
+     "span": "TNFAIP3 c.503G > A (p.Trp168*)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Trp168*",
+     "span": "TNFAIP3 c.503G > A (p.Trp168*)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "an additional TNFAIP3 c.1880_1881delGT (p.Cys627fs) mutation"
+    },
+    "variant_original_string": {
+     "value": "c.1880_1881delGT (p.Cys627fs)",
+     "span": [
+      "an additional TNFAIP3 c.1880_1881delGT (p.Cys627fs) mutation",
+      "Molecular analysis of lymphoma tissue from patient HA20-14 showed two second genetic hits"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1880_1881delGT",
+     "span": "TNFAIP3 c.1880_1881delGT (p.Cys627fs)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Cys627fs",
+     "span": "TNFAIP3 c.1880_1881delGT (p.Cys627fs)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "gene_symbol_as_stated": {
+     "value": "MYD88",
+     "span": "an MYD88 c.617C > G (p.Ser206Cys) mutation"
+    },
+    "variant_original_string": {
+     "value": "c.617C > G (p.Ser206Cys)",
+     "span": [
+      "an MYD88 c.617C > G (p.Ser206Cys) mutation",
+      "Molecular analysis of lymphoma tissue from patient HA20-14 showed two second genetic hits"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.617C > G",
+     "span": "MYD88 c.617C > G (p.Ser206Cys)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Ser206Cys",
+     "span": "MYD88 c.617C > G (p.Ser206Cys)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "a chromosomal deletion in 6q23.3, which encompasses TNFAIP3"
+    },
+    "variant_original_string": {
+     "value": "chromosomal deletion in 6q23.3",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "large deletion/CNV",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3, which encompasses TNFAIP3"
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "feature_text_as_stated": {
+     "value": "excessive proinflammatory cytokine elevations, especially TNF",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "Before treatment initiation, this patient showed classical A20 deficiency with constitutive NF-κB activation (Fig. 3A) and excessive proinflammatory cytokine elevations, especially TNF (Fig. 3B)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "Before treatment initiation, this patient showed classical A20 deficiency with constitutive NF-κB activation (Fig. 3A) and excessive proinflammatory cytokine elevations, especially TNF (Fig. 3B)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "especially TNF; before treatment initiation",
+     "span": "Before treatment initiation, this patient showed classical A20 deficiency with constitutive NF-κB activation (Fig. 3A) and excessive proinflammatory cytokine elevations, especially TNF (Fig. 3B)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "feature_text_as_stated": {
+     "value": "classical A20 deficiency with constitutive NF-κB activation",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "Before treatment initiation, this patient showed classical A20 deficiency with constitutive NF-κB activation (Fig. 3A) and excessive proinflammatory cytokine elevations, especially TNF (Fig. 3B)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "Before treatment initiation, this patient showed classical A20 deficiency with constitutive NF-κB activation (Fig. 3A) and excessive proinflammatory cytokine elevations, especially TNF (Fig. 3B)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "before treatment initiation",
+     "span": "Before treatment initiation, this patient showed classical A20 deficiency with constitutive NF-κB activation (Fig. 3A) and excessive proinflammatory cytokine elevations, especially TNF (Fig. 3B)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "feature_text_as_stated": {
+     "value": "reduced B cell repertoire richness and diversity",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "At that time, the patient also had reduced B cell repertoire richness and diversity"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "At that time, the patient also had reduced B cell repertoire richness and diversity"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "before treatment; normalized on TNF antagonism",
+     "span": [
+      "At that time, the patient also had reduced B cell repertoire richness and diversity",
+      "Upon initiation of therapeutic TNF antagonism, patient HA20-1 normalized her B cell repertoire metrics"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "feature_text_as_stated": {
+     "value": "strong polyclonal expansion of IGHV4-34^+ B cells",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "before treatment initiation, this patient showed strong polyclonal expansion of IGHV4-34^+ B cells that made up almost 20% of the B cell repertoire"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "we longitudinally assessed immune repertoires in patient HA20-1 on treatment with the TNF antagonist infliximab",
+      "before treatment initiation, this patient showed strong polyclonal expansion of IGHV4-34^+ B cells that made up almost 20% of the B cell repertoire"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "almost 20% of the B cell repertoire before treatment; normalized on TNF blockade",
+     "span": [
+      "strong polyclonal expansion of IGHV4-34^+ B cells that made up almost 20% of the B cell repertoire",
+      "On TNF blockade, IGHV4-34–expressing B cells normalized to a repertoire frequency typically found in healthy individuals"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "feature_text_as_stated": {
+     "value": "DLBCL",
+     "span": "patient HA20-14 was diagnosed with DLBCL in the course of his otherwise mild inflammatory disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "patient HA20-14 was diagnosed with DLBCL in the course of his otherwise mild inflammatory disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "malignant clone expressed IGHV3-23; second hits TNFAIP3 and MYD88 in lymphoma tissue",
+     "span": [
+      "The malignant clone expressed IGHV3-23",
+      "Molecular analysis of lymphoma tissue from patient HA20-14 showed two second genetic hits"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Diffuse large B-cell lymphoma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "feature_text_as_stated": {
+     "value": "mild inflammatory disease",
+     "span": "patient HA20-14 was diagnosed with DLBCL in the course of his otherwise mild inflammatory disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "patient HA20-14 was diagnosed with DLBCL in the course of his otherwise mild inflammatory disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "otherwise mild",
+     "span": "his otherwise mild inflammatory disease"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "feature_text_as_stated": {
+     "value": "high level of B cell connectivity",
+     "span": "Sequencing of nonmalignant lymphocytes from the blood of patient HA20-14 showed a high level of B cell connectivity"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Sequencing of nonmalignant lymphocytes from the blood of patient HA20-14 showed a high level of B cell connectivity"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IGHV3-23 the most frequently used BCR gene family in nonmalignant lymphocyte networks",
+     "span": "with IGHV3-23 making up the most frequently used BCR gene family in these nonmalignant lymphocyte networks"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "feature_text_as_stated": {
+     "value": "marginal zone lymphoma",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3, which encompasses TNFAIP3 and developed marginal zone lymphoma"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3, which encompasses TNFAIP3 and developed marginal zone lymphoma"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Marginal zone lymphoma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-1",
+     "span": "patient HA20-1 on treatment with the TNF antagonist infliximab"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-14",
+     "span": "patient HA20-14 was diagnosed with DLBCL"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-15",
+     "span": "Patient HA20-15 has a chromosomal deletion in 6q23.3"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39167656",
+     "span": "PMID: 39167656"
+    },
+    "individual_label_in_paper": {
+     "value": "HA20-21",
+     "span": "two patients with HA20 (HA20-1 and HA20-21, 7691 cells)"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
