@@ -9,6 +9,7 @@ Background literature for GP-RareLink, compiled 2026-10-16 (Month 1). 129 entrie
 | `grant_claim_checks.md` | Where the literature confirms, corrects or complicates numbers and claims in the application, plus design points for the pre-registration |
 | `fetch_papers.py` | Downloads every open-access paper in the manifest into `papers/<theme>/` |
 | `audit_ci_250.py` | Confidence bounds for the 250-claim audit (used in `grant_claim_checks.md` §14) |
+| `origins/early_concept_conversation.md` | The early chat (before the grant) where the idea started, with a map to the funded design. Historical only; its citations are unverified |
 
 | Theme | Entries | Core |
 |---|---|---|
