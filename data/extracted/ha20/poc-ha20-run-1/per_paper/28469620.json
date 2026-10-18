@@ -1,0 +1,2415 @@
+{
+ "pmid": "28469620",
+ "instructions_version": "extract_v2",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "A narrative review whose Table 2 and text summarise previously published HA20 patients, giving patient-level detail for one TNFAIP3 carrier: \"one Japanese patient diagnosed with autoimmune lymphoproliferative syndrome (ALPS) were reported to carry novel LOF mutations in the gene\" (ref. 35, n = 1 column in Table 2).",
+ "method_note": "Read the whole paper by hand; a short Python script assembled the JSON and checked spans; every Table 2 row segment was copied from the paper and the script confirmed each occurs verbatim. Review of LUBAC, OTULIN and A20 diseases. HA20 patients are summarised only in aggregate (Table 2 columns: Patients (16) n = 11 [Zhou et al.], Patients (37) n = 6, Patients (36) n = 3, Patients (35) n = 1); no total is stated, so n_patients_reported is null. Individual rows: (1) 'A patient with ALPS' = the single patient of ref. 35 (column header 'Patients (35) (n = 1)' [thin spaces in original]), described in the text and given a variant in the Figure 2 legend; Table 2 cells in this n = 1 column were treated as stated for this individual (1/1 = observed, 0/1 = excluded, '/' = not reported). (2) 'One patient' = one of Zhou et al.'s 11 patients, described in the text with CNS vasculitis and ITP; no variant is attributed to this person, so no variant row. Aggregate counts for Zhou's cohort (e.g. 11/11 oral ulcers, 0/11 panniculitis) were NOT applied to this person because they are counts without names (D-21). Not given rows: the aggregate cohorts of refs 16, 36 and 37 (no patient-level detail), and the unnamed 'a patient with HA20' in Figure 3D (dermal abscesses) and 3E (recurrent aphthous ulcers), who cannot be identified, may be the same person, and have no source reference. Variant: the review says the variant reported in ref. 35 as p.Gln415fs / c.1245_1248del should be named c.1249_1252del / p.Lys417Serfs*4 (3′ rule). variant_original_string holds the reported cDNA (c.1245_1248del); cdna_hgvs_as_stated and protein_hgvs_as_stated hold the review's corrected forms. No transcript printed. Zygosity left 'not reported': Table 1 says HA20 mutations are 'Heterozygous' only at disease level, not for this person. Table 2 has Arthritis / Arthralgias / Myalgias as three rows with identical cells (merged cells repeated by the converter), so 0/1 was read as covering all three, which is why 'arthritis or arthralgia' is excluded. 'Failure to thrive' 0/1 was mapped to checklist 'growth failure' = excluded; 'Fevers' (plural; 'presented with fevers') was mapped to 'recurrent fever' = observed; ITP was mapped to 'cytopenia (autoimmune)'. Internal inconsistencies in Table 2: Zhou column (n = 11) gives 'Elevated CRP, ESR' as 6/6 and ref. 37 column (n = 6) as 1/1; the ref. 36 column (n = 3) gives 'Effective treatment' as 0/6; 0/6; 0/6; HA20 'Lymphadenopathy' is 'Yes' while Zhou's column is 0/11. None of these affect the extracted individuals' values.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "first_author": {
+     "value": "Aksentijevich",
+     "span": "Authors: Aksentijevich Ivona; Zhou Qing"
+    },
+    "year": {
+     "value": 2017,
+     "span": "Journal: Frontiers in Immunology (2017)"
+    },
+    "study_type": {
+     "value": "review/meta-analysis",
+     "span": "The primary aim of this review is to summarize the latest developments in our understanding of the etiology of autoinflammation."
+    },
+    "n_patients_reported": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": [
+      "HA20 (16, 35–37)",
+      "Source of data: Ref. (14–18, 35–37)."
+     ]
+    },
+    "prior_report_citation": {
+     "value": "HA20 (16, 35–37); Source of data: Ref. (14–18, 35–37).",
+     "span": [
+      "HA20 (16, 35–37)",
+      "Source of data: Ref. (14–18, 35–37)."
+     ]
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "Early age onset",
+     "span": "| Early age onset | Yes (1–4.5 months) | 3/3 | Yes (7 months–16 years) | 11/11 | 6/6 | 3/3 | 1/1"
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Japanese",
+     "span": "one Japanese patient diagnosed with autoimmune lymphoproliferative syndrome (ALPS) were reported to carry novel LOF mutations in the gene"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Table 2 'Effective treatment' (anti-IL-1, anti-TNF; colchicine): 0/1; 0/1; 0/1 for this patient, i.e. none reported effective; which treatments were actually given is not stated",
+     "span": "| Effective treatment | anti-TNF, anti-IL-1 | 2/3; 1/3 | anti-IL-1, anti-TNF; colchicine | 1/11; 4/11; 2/11 | 0/6; 0/6; 1/6 | 0/6; 0/6; 0/6 | 0/1; 0/1; 0/1"
+    },
+    "disease_label_as_stated": {
+     "value": "autoimmune lymphoproliferative syndrome (ALPS); listed under HA20 in Table 2",
+     "span": [
+      "one Japanese patient diagnosed with autoimmune lymphoproliferative syndrome (ALPS) were reported to carry novel LOF mutations in the gene",
+      "| HA20 (16, 35–37) |"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "diagnosed with ALPS; immunophenotyping (increased DNT cells, decreased IgM memory B cells) characteristic of ALPS; reported to carry a novel LOF mutation in TNFAIP3 (gene of HA20)",
+     "span": [
+      "one Japanese patient diagnosed with autoimmune lymphoproliferative syndrome (ALPS) were reported to carry novel LOF mutations in the gene",
+      "The patient’s immunophenotyping revealed an increased percentage of DNT cells and a decreased number of IgM memory B cells, which is characteristic of ALPS"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "(35); PMID:27845235",
+     "span": [
+      "Patients (35) (n = 1)",
+      "PMID:27845235"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "haploinsufficiency of A20 (one of the 11 patients of Zhou et al.); initially diagnosed with SLE",
+     "span": [
+      "Zhou et al. reported 11 patients from 6 families with a new dominantly inherited autoinflammatory disease, termed haploinsufficiency of A20",
+      "One patient was initially diagnosed with SLE"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Zhou et al. (16)",
+     "span": [
+      "Zhou et al. reported 11 patients from 6 families",
+      "ocular inflammation (16)"
+     ]
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": [
+      "| Gene | Gene name | OTULIN (FAM105B) | TNFAIP3 |",
+      "one Japanese patient diagnosed with autoimmune lymphoproliferative syndrome (ALPS) were reported to carry novel LOF mutations in the gene"
+     ]
+    },
+    "variant_original_string": {
+     "value": "c.1245_1248del",
+     "span": [
+      "(reported as c.1245_1248del)",
+      "the reported p.Gln415fs (35)"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1249_1252del",
+     "span": "should be assigned as the most 3′ position in the repeat, i.e., c.1249_1252del"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Lys417Serfs*4",
+     "span": [
+      "the reported p.Gln415fs (35) should be described as p.Lys417Serfs*4",
+      "the proposed nomenclature for the mutation is p.Lys417Serfs*4"
+     ]
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "frameshift",
+     "span": [
+      "The four nucleotide deletion in the repeat sequence",
+      "the proposed nomenclature for the mutation is p.Lys417Serfs*4"
+     ]
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "novel LOF mutations",
+     "span": "one Japanese patient diagnosed with autoimmune lymphoproliferative syndrome (ALPS) were reported to carry novel LOF mutations in the gene"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Fevers",
+     "span": [
+      "| Fevers | Yes (fever lasting 2–3 weeks) | 3/3 | Yes | 2/11 | 3/6 | 1/3 | 1/1",
+      "A patient with ALPS presented with fevers"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Fevers | Yes (fever lasting 2–3 weeks) | 3/3 | Yes | 2/11 | 3/6 | 1/3 | 1/1",
+      "A patient with ALPS presented with fevers"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Fevers | Yes (fever lasting 2–3 weeks) | 3/3 | Yes | 2/11 | 3/6 | 1/3 | 1/1",
+      "A patient with ALPS presented with fevers"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001945",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "extensive skin rash",
+     "span": [
+      "| Skin rash | Yes (erythematous with skin nodules, pustular rash) | 3/3 | Yes (erythematous papules, folliculitis, skin abscesses) | 4/11 | 6/6 | 0/3 | 1/1",
+      "extensive skin rash"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Skin rash | Yes (erythematous with skin nodules, pustular rash) | 3/3 | Yes (erythematous papules, folliculitis, skin abscesses) | 4/11 | 6/6 | 0/3 | 1/1",
+      "extensive skin rash"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Skin rash | Yes (erythematous with skin nodules, pustular rash) | 3/3 | Yes (erythematous papules, folliculitis, skin abscesses) | 4/11 | 6/6 | 0/3 | 1/1",
+      "extensive skin rash"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "extensive",
+     "span": "extensive skin rash"
+    },
+    "hpo_label_candidate": {
+     "value": "Skin rash",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000988",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "bilateral cervical lymphadenopathy",
+     "span": [
+      "| Lymphadenopathy | Yes | 2/3 | Yes | 0/11 | 0/6 | 0/3 | 1/1",
+      "bilateral cervical lymphadenopathy"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Lymphadenopathy | Yes | 2/3 | Yes | 0/11 | 0/6 | 0/3 | 1/1",
+      "bilateral cervical lymphadenopathy"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Lymphadenopathy | Yes | 2/3 | Yes | 0/11 | 0/6 | 0/3 | 1/1",
+      "bilateral cervical lymphadenopathy"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "bilateral cervical",
+     "span": "bilateral cervical lymphadenopathy"
+    },
+    "hpo_label_candidate": {
+     "value": "Lymphadenopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002716",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "massive hepatosplenomegaly",
+     "span": "massive hepatosplenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "massive hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "massive hepatosplenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "massive",
+     "span": "massive hepatosplenomegaly"
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatosplenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001433",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "increased percentage of DNT cells",
+     "span": "increased percentage of DNT cells"
+    },
+    "status": {
+     "value": "observed",
+     "span": "increased percentage of DNT cells"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "increased percentage of DNT cells"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "decreased number of IgM memory B cells",
+     "span": "decreased number of IgM memory B cells"
+    },
+    "status": {
+     "value": "observed",
+     "span": "decreased number of IgM memory B cells"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "decreased number of IgM memory B cells"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "central memory (TCM), naïve, TEMRA, and effector memory (TEM) subpopulations of CD^3+CD^8+ cells were normal",
+     "span": "the patient’s central memory (TCM), naïve, TEMRA, and effector memory (TEM) subpopulations of CD^3+CD^8+ cells were normal (35)"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the patient’s central memory (TCM), naïve, TEMRA, and effector memory (TEM) subpopulations of CD^3+CD^8+ cells were normal (35)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient’s central memory (TCM), naïve, TEMRA, and effector memory (TEM) subpopulations of CD^3+CD^8+ cells were normal (35)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Elevated CRP, ESR",
+     "span": "| Elevated CRP, ESR | Yes | 3/3 | Yes | 6/6 | 1/1 | / | 1/1"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Elevated CRP, ESR | Yes | 3/3 | Yes | 6/6 | 1/1 | / | 1/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Elevated CRP, ESR | Yes | 3/3 | Yes | 6/6 | 1/1 | / | 1/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated C-reactive protein level; Elevated erythrocyte sedimentation rate",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Immunodeficiency",
+     "span": "| Immunodeficiency | No obvious primary immunodeficiency | 2/3 | Yes (IgG2 and 4 subclass deficiency, low anti-polysaccharide antibodies lymphopenia) | 2/11 | / | / | 1/1"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Immunodeficiency | No obvious primary immunodeficiency | 2/3 | Yes (IgG2 and 4 subclass deficiency, low anti-polysaccharide antibodies lymphopenia) | 2/11 | / | / | 1/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Immunodeficiency | No obvious primary immunodeficiency | 2/3 | Yes (IgG2 and 4 subclass deficiency, low anti-polysaccharide antibodies lymphopenia) | 2/11 | / | / | 1/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Immunodeficiency",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002721",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Autoantibodies",
+     "span": "| Autoantibodies | No | 0/3 | Yes (RNP, ANA, lupus anticoagulant) | 5/11 | / | / | 1/1"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Autoantibodies | No | 0/3 | Yes (RNP, ANA, lupus anticoagulant) | 5/11 | / | / | 1/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Autoantibodies | No | 0/3 | Yes (RNP, ANA, lupus anticoagulant) | 5/11 | / | / | 1/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Autoimmune antibody positivity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "CNS",
+     "span": "| CNS | No | 1/3 | Yes (CNS vasculitis, chorea, migraine) | 2/11 | / | / | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| CNS | No | 1/3 | Yes (CNS vasculitis, chorea, migraine) | 2/11 | / | / | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| CNS | No | 1/3 | Yes (CNS vasculitis, chorea, migraine) | 2/11 | / | / | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the central nervous system",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "GI",
+     "span": "| GI | Yes (abdominal pain, diarrhea) | 1/3 | Yes (colitis) | 4/11 | 1/6 | 1/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| GI | Yes (abdominal pain, diarrhea) | 1/3 | Yes (colitis) | 4/11 | 1/6 | 1/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| GI | Yes (abdominal pain, diarrhea) | 1/3 | Yes (colitis) | 4/11 | 1/6 | 1/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the gastrointestinal tract",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Arthritis",
+     "span": "| Arthritis | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Arthritis | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arthritis | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Arthralgias",
+     "span": "| Arthralgias | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Arthralgias | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arthralgias | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthralgia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002829",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Myalgias",
+     "span": "| Myalgias | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Myalgias | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Myalgias | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myalgia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003326",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Oral ulcers",
+     "span": "| Oral ulcers | No | 0/3 | Yes | 11/11 | 6/6 | 2/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Oral ulcers | No | 0/3 | Yes | 11/11 | 6/6 | 2/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Oral ulcers | No | 0/3 | Yes | 11/11 | 6/6 | 2/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Oral ulcer",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Genital ulcers",
+     "span": "| Genital ulcers | No | 0/3 | Yes | 10/11 | 6/6 | 1/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Genital ulcers | No | 0/3 | Yes | 10/11 | 6/6 | 1/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Genital ulcers | No | 0/3 | Yes | 10/11 | 6/6 | 1/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Genital ulcers",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Panniculitis",
+     "span": "| Panniculitis | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Panniculitis | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Panniculitis | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Panniculitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Failure to thrive",
+     "span": "| Failure to thrive | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Failure to thrive | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Failure to thrive | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Failure to thrive",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001508",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Lipodystrophy",
+     "span": "| Lipodystrophy | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Lipodystrophy | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lipodystrophy | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Lipodystrophy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Systemic lymphangiectasia",
+     "span": "| Systemic lymphangiectasia | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Systemic lymphangiectasia | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Systemic lymphangiectasia | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Weakness in lower extremities",
+     "span": "| Weakness in lower extremities | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Weakness in lower extremities | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Weakness in lower extremities | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Lower limb muscle weakness",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Cardiomyopathy",
+     "span": "| Cardiomyopathy | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Cardiomyopathy | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Cardiomyopathy | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001638",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Respiratory distress",
+     "span": "| Respiratory distress | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Respiratory distress | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Respiratory distress | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Respiratory distress",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002098",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Amylopectinosis",
+     "span": "| Amylopectinosis | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Amylopectinosis | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Amylopectinosis | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "feature_text_as_stated": {
+     "value": "Systemic edema",
+     "span": "| Systemic edema | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Systemic edema | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Systemic edema | No | 0/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Generalized edema",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "feature_text_as_stated": {
+     "value": "CNS vasculitis",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "status": {
+     "value": "observed",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "CNS vasculitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "feature_text_as_stated": {
+     "value": "idiopathic thrombocytopenic purpura",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "status": {
+     "value": "observed",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Immune thrombocytopenia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Oral ulcers | No | 0/3 | Yes | 11/11 | 6/6 | 2/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Oral ulcers | No | 0/3 | Yes | 11/11 | 6/6 | 2/3 | 0/1"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Genital ulcers | No | 0/3 | Yes | 10/11 | 6/6 | 1/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Genital ulcers | No | 0/3 | Yes | 10/11 | 6/6 | 1/3 | 0/1"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| GI | Yes (abdominal pain, diarrhea) | 1/3 | Yes (colitis) | 4/11 | 1/6 | 1/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| GI | Yes (abdominal pain, diarrhea) | 1/3 | Yes (colitis) | 4/11 | 1/6 | 1/3 | 0/1"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Fevers | Yes (fever lasting 2–3 weeks) | 3/3 | Yes | 2/11 | 3/6 | 1/3 | 1/1",
+      "A patient with ALPS presented with fevers"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Fevers | Yes (fever lasting 2–3 weeks) | 3/3 | Yes | 2/11 | 3/6 | 1/3 | 1/1",
+      "A patient with ALPS presented with fevers"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Arthritis | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1",
+      "| Arthralgias | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Arthritis | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1",
+      "| Arthralgias | Yes (arthralgias, myalgias) | 3/3 | Yes (arthralgia, polyarthritis) | 6/11 | / | 2/3 | 0/1"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Skin rash | Yes (erythematous with skin nodules, pustular rash) | 3/3 | Yes (erythematous papules, folliculitis, skin abscesses) | 4/11 | 6/6 | 0/3 | 1/1",
+      "extensive skin rash"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Skin rash | Yes (erythematous with skin nodules, pustular rash) | 3/3 | Yes (erythematous papules, folliculitis, skin abscesses) | 4/11 | 6/6 | 0/3 | 1/1",
+      "extensive skin rash"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Lymphadenopathy | Yes | 2/3 | Yes | 0/11 | 0/6 | 0/3 | 1/1",
+      "bilateral cervical lymphadenopathy"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Lymphadenopathy | Yes | 2/3 | Yes | 0/11 | 0/6 | 0/3 | 1/1",
+      "bilateral cervical lymphadenopathy"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| CNS | No | 1/3 | Yes (CNS vasculitis, chorea, migraine) | 2/11 | / | / | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| CNS | No | 1/3 | Yes (CNS vasculitis, chorea, migraine) | 2/11 | / | / | 0/1"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Elevated CRP, ESR | Yes | 3/3 | Yes | 6/6 | 1/1 | / | 1/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Elevated CRP, ESR | Yes | 3/3 | Yes | 6/6 | 1/1 | / | 1/1"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Autoantibodies | No | 0/3 | Yes (RNP, ANA, lupus anticoagulant) | 5/11 | / | / | 1/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Autoantibodies | No | 0/3 | Yes (RNP, ANA, lupus anticoagulant) | 5/11 | / | / | 1/1"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Failure to thrive | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Failure to thrive | Yes | 3/3 | No | 0/11 | 0/6 | 0/3 | 0/1"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "A patient with ALPS",
+     "span": "A patient with ALPS"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "28469620",
+     "span": "PMID: 28469620"
+    },
+    "individual_label_in_paper": {
+     "value": "One patient",
+     "span": "One patient was initially diagnosed with SLE"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "One patient was initially diagnosed with SLE and presented with CNS vasculitis and idiopathic thrombocytopenic purpura"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,2323 @@
+{
+  "pmid": "41654260",
+  "instructions_version": "extract_v2",
+  "reports_individuals_with_tnfaip3_variant": true,
+  "relevance_note": "The paper reports three cohort patients with mosaic (not germline) TNFAIP3 variants: \"Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)\".",
+  "method_note": "Read the whole paper (text, Tables 1-4, figure legends; the remainder is references) and built the JSON with a short Python script in my scratch directory; every value was taken from my reading and every span was checked by script to occur verbatim. SCOPE: this is a cohort study of 452 affected and 154 healthy individuals screened for mosaic variants in 71/101 immune genes; only the three individuals with TNFAIP3 variants (Patient IDs 66, 99, 507) were extracted. About 60 other individuals in Tables 1-4 carry mosaic variants only in other genes or are healthy controls and were not extracted. All three TNFAIP3 variants are MOSAIC (low VAF), not germline; the paper does not diagnose HA20 in any of them and states that mosaic TNFAIP3 variants have not been demonstrated to cause mosaic GEI. LABELS: the Patient ID column values of Tables 1 and 3 ('66', '99', '507'); the text calls them 'Patient 66', 'Pt. ID 66', 'Patient 99' and 'Patient ID 507'. Tables have patients as rows. AGE: Table 1 'Age' column has no unit or time point; read as years (consistent with text, e.g. Patient ID 89 '48 y.o.' = Table 1 age 48; Patient ID 185 '26 y.o.' = age 26) and recorded as age at last evaluation/time of report, though it may be age at sampling. VARIANTS: no transcript or cDNA is printed; genomic positions are hg38 per the Table 1 column header. Text gives truncated forms 'p. Asn98Lysfs' and 'p.Leu147Glnfs' for the table forms 'p.Asn98LysfsTer27' and 'p.Leu147GlnfsTer7' (not treated as contradictions). VAFs (initial/reseq/ddPCR): 66 0.059/0.057/0.058; 99 0.016/0.0148/0.0162; 507 TNFAIP3 0.060/ND/ND; 507 MAP3K1 0.049/ND/ND. Patient 507 also carries a mosaic MAP3K1 p.Val128Met (UMS), unambiguously attributed in Tables 1 and 3, so recorded. Variant type for 507 comes from its position under the 'Frameshift' (TNFAIP3) and 'Missense' (MAP3K1) section rows of Table 1. Pathogenicity uses the authors' own mosaic scoring (LMP/UMS), not ACMG. 'Functional' evidence is cell-subset enrichment by ddPCR (66, 99); 507 was not tested. PHENOTYPES: Table 3 'Clin. Pheno' categories are LYM (66), DYS (99) and DEF (507), whereas the text says all three had lymphoproliferation (66 and 99 as their main clinical symptom; 507 'a lymphoproliferative phenotype'); this is a difference of category, not a stated absence, so both are recorded and no contradiction rows were needed. 'Immune dysregulation' for 66 and 507 is inferred from 'Symptoms of immune dysregulation were present in all affected individuals'. A lymph node biopsy is mentioned for patient 66 but lymphadenopathy is not stated, so it was not recorded. No other clinical details (onset, treatment, ethnicity, family) are given; Supplemental Table S5 (clinical details) is not in this text. DEDUPLICATION: patient 66's p.Tyr246Ter was also detected by exome reanalysis in 'Ghosh et al. (accompanying manuscript)', so the same patient may appear in that paper; it is described as accompanying, not earlier, so cites_prior_report_of_same_patients was left null.",
+  "tables": {
+    "publications": [
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "first_author": {
+          "value": "Schmitz",
+          "span": "Authors: Schmitz Elizabeth G."
+        },
+        "year": {
+          "value": 2026,
+          "span": "Journal: The Journal of allergy and clinical immunology (2026)"
+        },
+        "study_type": {
+          "value": "case series/cohort",
+          "span": "Samples from 452 patients with immune dysregulation (affected) and 154 currently healthy were sequenced using 71- or 101-gene targeted panels."
+        },
+        "n_patients_reported": {
+          "value": 3,
+          "span": "Three patients with lymphoproliferation had mosaic variants in TNFAIP3"
+        },
+        "cites_prior_report_of_same_patients": {
+          "value": null,
+          "span": null
+        },
+        "prior_report_citation": {
+          "value": "not reported",
+          "span": null
+        }
+      }
+    ],
+    "individuals": [
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "| 66^† | V1 | 33 | M | TNFAIP3"
+        },
+        "family_label_in_paper": {
+          "value": "not reported",
+          "span": null
+        },
+        "is_proband": {
+          "value": null,
+          "span": null
+        },
+        "sex": {
+          "value": "male",
+          "span": "| 66^† | V1 | 33 | M"
+        },
+        "age_at_onset_original_text": {
+          "value": "not reported",
+          "span": null
+        },
+        "age_at_onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "age_at_last_evaluation_original_text": {
+          "value": "33",
+          "span": "| 66^† | V1 | 33"
+        },
+        "age_at_last_evaluation_iso8601": {
+          "value": "P33Y",
+          "span": "| 66^† | V1 | 33"
+        },
+        "age_at_diagnosis_original_text": {
+          "value": "not reported",
+          "span": null
+        },
+        "age_at_diagnosis_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "ethnicity_or_country": {
+          "value": "not reported",
+          "span": null
+        },
+        "consanguinity": {
+          "value": "not reported",
+          "span": null
+        },
+        "vital_status": {
+          "value": "not reported",
+          "span": null
+        },
+        "deceased_age_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "cause_of_death": {
+          "value": "not reported",
+          "span": null
+        },
+        "treatment_summary": {
+          "value": "not reported",
+          "span": null
+        },
+        "disease_label_as_stated": {
+          "value": "LYM (Lymphoproliferation)",
+          "span": [
+            "| 66 | LYM | TNFAIP3",
+            "LYM, Lymphoproliferation"
+          ]
+        },
+        "clinical_diagnosis_basis": {
+          "value": "Undiagnosed affected patient evaluated by a clinician with expertise in immune dysregulation; mosaic TNFAIP3 variant identified by targeted deep sequencing on the 71-gene V1 panel (initial VAF 0.059, resequencing 0.057, ddPCR 0.058); enrichment testing not diagnostic",
+          "span": [
+            "All patients had been evaluated by a clinician with expertise in immune dysregulation.",
+            "Of the remaining undiagnosed patients, 48 mosaic variants were identified in 43 individuals (Table 1, 9.6% of undiagnosed affected population)",
+            "| 66^† | V1 | 33 | M | TNFAIP3 | chr6:137876099:C>A | p.Tyr246Ter | 0.059 | 0.057 | 0.058 |",
+            "custom capture targeted sequencing of the coding sequences of 71 genes known or suspected to be involved in dominant immune dysregulation was performed on 207 affected and 97 healthy individuals (“V1” panel)",
+            "While enrichment testing was not diagnostic for the other patients"
+          ]
+        },
+        "source_reference_in_review": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "| 99 | V1 | 17 | F | TNFAIP3"
+        },
+        "family_label_in_paper": {
+          "value": "not reported",
+          "span": null
+        },
+        "is_proband": {
+          "value": null,
+          "span": null
+        },
+        "sex": {
+          "value": "female",
+          "span": "| 99 | V1 | 17 | F"
+        },
+        "age_at_onset_original_text": {
+          "value": "not reported",
+          "span": null
+        },
+        "age_at_onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "age_at_last_evaluation_original_text": {
+          "value": "17",
+          "span": "| 99 | V1 | 17"
+        },
+        "age_at_last_evaluation_iso8601": {
+          "value": "P17Y",
+          "span": "| 99 | V1 | 17"
+        },
+        "age_at_diagnosis_original_text": {
+          "value": "not reported",
+          "span": null
+        },
+        "age_at_diagnosis_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "ethnicity_or_country": {
+          "value": "not reported",
+          "span": null
+        },
+        "consanguinity": {
+          "value": "not reported",
+          "span": null
+        },
+        "vital_status": {
+          "value": "not reported",
+          "span": null
+        },
+        "deceased_age_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "cause_of_death": {
+          "value": "not reported",
+          "span": null
+        },
+        "treatment_summary": {
+          "value": "not reported",
+          "span": null
+        },
+        "disease_label_as_stated": {
+          "value": "DYS (Immune Dysregulation)",
+          "span": [
+            "| 99 | DYS | TNFAIP3",
+            "DYS, Immune Dysregulation"
+          ]
+        },
+        "clinical_diagnosis_basis": {
+          "value": "Undiagnosed affected patient evaluated by a clinician with expertise in immune dysregulation; mosaic TNFAIP3 variant identified by targeted deep sequencing on the 71-gene V1 panel (initial VAF 0.016, resequencing 0.0148, ddPCR 0.0162); enrichment testing not diagnostic",
+          "span": [
+            "All patients had been evaluated by a clinician with expertise in immune dysregulation.",
+            "Of the remaining undiagnosed patients, 48 mosaic variants were identified in 43 individuals (Table 1, 9.6% of undiagnosed affected population)",
+            "| 99 | V1 | 17 | F | TNFAIP3 | chr6:137871512:G>GAAAAC | p.Asn98LysfsTer27 | 0.016 | 0.0148 | 0.0162 |",
+            "custom capture targeted sequencing of the coding sequences of 71 genes known or suspected to be involved in dominant immune dysregulation was performed on 207 affected and 97 healthy individuals (“V1” panel)",
+            "While enrichment testing was not diagnostic for the other patients"
+          ]
+        },
+        "source_reference_in_review": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "| 507 | V2 | 50 | M | TNFAIP3"
+        },
+        "family_label_in_paper": {
+          "value": "not reported",
+          "span": null
+        },
+        "is_proband": {
+          "value": null,
+          "span": null
+        },
+        "sex": {
+          "value": "male",
+          "span": "| 507 | V2 | 50 | M"
+        },
+        "age_at_onset_original_text": {
+          "value": "not reported",
+          "span": null
+        },
+        "age_at_onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "age_at_last_evaluation_original_text": {
+          "value": "50",
+          "span": "| 507 | V2 | 50"
+        },
+        "age_at_last_evaluation_iso8601": {
+          "value": "P50Y",
+          "span": "| 507 | V2 | 50"
+        },
+        "age_at_diagnosis_original_text": {
+          "value": "not reported",
+          "span": null
+        },
+        "age_at_diagnosis_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "ethnicity_or_country": {
+          "value": "not reported",
+          "span": null
+        },
+        "consanguinity": {
+          "value": "not reported",
+          "span": null
+        },
+        "vital_status": {
+          "value": "not reported",
+          "span": null
+        },
+        "deceased_age_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "cause_of_death": {
+          "value": "not reported",
+          "span": null
+        },
+        "treatment_summary": {
+          "value": "not reported",
+          "span": null
+        },
+        "disease_label_as_stated": {
+          "value": "DEF (Immune Deficiency)",
+          "span": [
+            "| 507 | DEF | TNFAIP3",
+            "DEF, Immune Deficiency"
+          ]
+        },
+        "clinical_diagnosis_basis": {
+          "value": "Undiagnosed affected patient evaluated by a clinician with expertise in immune dysregulation; mosaic TNFAIP3 variant identified by targeted deep sequencing on the 101-gene V2 panel (initial VAF 0.060; resequencing and ddPCR not done); enrichment testing not diagnostic",
+          "span": [
+            "All patients had been evaluated by a clinician with expertise in immune dysregulation.",
+            "Of the remaining undiagnosed patients, 48 mosaic variants were identified in 43 individuals (Table 1, 9.6% of undiagnosed affected population)",
+            "| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G | p.Leu147GlnfsTer7 | 0.060 | ND | ND |",
+            "Subsequently, an expanded 101-gene panel, “V2”, was similarly generated",
+            "While enrichment testing was not diagnostic for the other patients"
+          ]
+        },
+        "source_reference_in_review": {
+          "value": "not reported",
+          "span": null
+        }
+      }
+    ],
+    "variants": [
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "| 66^† | V1 | 33 | M | TNFAIP3"
+        },
+        "gene_symbol_as_stated": {
+          "value": "TNFAIP3",
+          "span": "| 66^† | V1 | 33 | M | TNFAIP3"
+        },
+        "variant_original_string": {
+          "value": "p.Tyr246Ter",
+          "span": "| 66^† | V1 | 33 | M | TNFAIP3 | chr6:137876099:C>A | p.Tyr246Ter"
+        },
+        "transcript_as_stated": {
+          "value": "not reported",
+          "span": null
+        },
+        "cdna_hgvs_as_stated": {
+          "value": null,
+          "span": null
+        },
+        "protein_hgvs_as_stated": {
+          "value": "p.Tyr246Ter",
+          "span": "| 66^† | V1 | 33 | M | TNFAIP3 | chr6:137876099:C>A | p.Tyr246Ter"
+        },
+        "genomic_coordinates_as_stated": {
+          "value": "chr6:137876099:C>A (hg38)",
+          "span": [
+            "| 66^† | V1 | 33 | M | TNFAIP3 | chr6:137876099:C>A",
+            "Genomic position change (hg38)"
+          ]
+        },
+        "variant_type_as_stated": {
+          "value": "nonsense",
+          "span": "Patient 66 had a nonsense mutation in TNFAIP3, p.Tyr246Ter"
+        },
+        "zygosity": {
+          "value": "mosaic",
+          "span": "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+        },
+        "inheritance": {
+          "value": "not reported",
+          "span": null
+        },
+        "parental_testing_statement": {
+          "value": "not reported",
+          "span": null
+        },
+        "functional_evidence_statement": {
+          "value": "Enrichment of the variant in peripheral blood T cells (Figure 4F), but absent in T cells from a lymph node biopsy; the function of the variant-expressing cells is unknown",
+          "span": [
+            "Immune cells isolated from blood demonstrated enrichment of the variant in peripheral blood T cells (Figure 4F), but it was intriguingly absent in T cells from a lymph node biopsy.",
+            "In testing of two patients, there was enrichment of the variant in T cells in one and NK cells in the other, but the function of these variant-expressing cells is unknown."
+          ]
+        },
+        "pathogenicity_as_stated_by_authors": {
+          "value": "LMP (Likely mosaic pathogenic); predicted LOF (stop-gain)",
+          "span": [
+            "| 66 | LYM | TNFAIP3 | p.Tyr246Ter | 36 | Novel | None | AD-LOF | NM | LMP |",
+            "LMP, Likely mosaic pathogenic",
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99)"
+          ]
+        },
+        "acmg_criteria_as_stated": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "| 99 | V1 | 17 | F | TNFAIP3"
+        },
+        "gene_symbol_as_stated": {
+          "value": "TNFAIP3",
+          "span": "| 99 | V1 | 17 | F | TNFAIP3"
+        },
+        "variant_original_string": {
+          "value": "p.Asn98LysfsTer27",
+          "span": "| 99 | V1 | 17 | F | TNFAIP3 | chr6:137871512:G>GAAAAC | p.Asn98LysfsTer27"
+        },
+        "transcript_as_stated": {
+          "value": "not reported",
+          "span": null
+        },
+        "cdna_hgvs_as_stated": {
+          "value": null,
+          "span": null
+        },
+        "protein_hgvs_as_stated": {
+          "value": "p.Asn98LysfsTer27",
+          "span": "| 99 | V1 | 17 | F | TNFAIP3 | chr6:137871512:G>GAAAAC | p.Asn98LysfsTer27"
+        },
+        "genomic_coordinates_as_stated": {
+          "value": "chr6:137871512:G>GAAAAC (hg38)",
+          "span": [
+            "| 99 | V1 | 17 | F | TNFAIP3 | chr6:137871512:G>GAAAAC",
+            "Genomic position change (hg38)"
+          ]
+        },
+        "variant_type_as_stated": {
+          "value": "frameshift",
+          "span": "Patient 99 had an early frameshift mutation in TNFAIP3 predicted to lead to LOF"
+        },
+        "zygosity": {
+          "value": "mosaic",
+          "span": "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+        },
+        "inheritance": {
+          "value": "not reported",
+          "span": null
+        },
+        "parental_testing_statement": {
+          "value": "not reported",
+          "span": null
+        },
+        "functional_evidence_statement": {
+          "value": "Variant present in PBMC and NK cells at a similar VAF, but absent from T, B, or monocytes (Figure 4G); NK cells represented only 5.45% of the patient's PBMCs, suggesting another untested cell type might also harbor the variant; enrichment within NK cells suggests a selective advantage; function of the variant-expressing cells unknown",
+          "span": [
+            "that was present in PBMC and NK cells at a similar VAF, but absent from T, B, or monocytes (Figure 4G)",
+            "the VAF in NK cells was similar to the VAF in PBMCs, suggesting that another cell type not tested, for example dendritic cells, might also harbor the variant as NK cells represented only 5.45% of the patient’s PBMCs",
+            "Enrichment within NK cells suggests a selective advantage",
+            "In testing of two patients, there was enrichment of the variant in T cells in one and NK cells in the other, but the function of these variant-expressing cells is unknown."
+          ]
+        },
+        "pathogenicity_as_stated_by_authors": {
+          "value": "LMP (Likely mosaic pathogenic); predicted to lead to LOF",
+          "span": [
+            "| 99 | DYS | TNFAIP3 | p.Asn98LysfsTer27 | 28.1 | Novel | None | AD-LOF | NM | LMP |",
+            "LMP, Likely mosaic pathogenic",
+            "Patient 99 had an early frameshift mutation in TNFAIP3 predicted to lead to LOF"
+          ]
+        },
+        "acmg_criteria_as_stated": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "| 507 | V2 | 50 | M | TNFAIP3"
+        },
+        "gene_symbol_as_stated": {
+          "value": "TNFAIP3",
+          "span": "| 507 | V2 | 50 | M | TNFAIP3"
+        },
+        "variant_original_string": {
+          "value": "p.Leu147GlnfsTer7",
+          "span": "| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G | p.Leu147GlnfsTer7"
+        },
+        "transcript_as_stated": {
+          "value": "not reported",
+          "span": null
+        },
+        "cdna_hgvs_as_stated": {
+          "value": null,
+          "span": null
+        },
+        "protein_hgvs_as_stated": {
+          "value": "p.Leu147GlnfsTer7",
+          "span": "| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G | p.Leu147GlnfsTer7"
+        },
+        "genomic_coordinates_as_stated": {
+          "value": "chr6:137874984:GTC>G (hg38)",
+          "span": [
+            "| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G",
+            "Genomic position change (hg38)"
+          ]
+        },
+        "variant_type_as_stated": {
+          "value": "frameshift",
+          "span": [
+            "| Frameshift |",
+            "| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G | p.Leu147GlnfsTer7"
+          ]
+        },
+        "zygosity": {
+          "value": "mosaic",
+          "span": "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+        },
+        "inheritance": {
+          "value": "not reported",
+          "span": null
+        },
+        "parental_testing_statement": {
+          "value": "not reported",
+          "span": null
+        },
+        "functional_evidence_statement": {
+          "value": "not reported",
+          "span": null
+        },
+        "pathogenicity_as_stated_by_authors": {
+          "value": "LMP (Likely mosaic pathogenic); previously published as causing germline autoinflammatory disease due to A20 haploinsufficiency (ref. 34)",
+          "span": [
+            "| 507 | DEF | TNFAIP3 | p.Leu147GlnfsTer7 | 28.4 | Novel | Germline^34 | AD-LOF | NM | LMP |",
+            "LMP, Likely mosaic pathogenic",
+            "The TNFAIP3 p.Leu147Glnfs variant identified in Patient ID 507 has been shown to cause germline autoinflammatory disease due to A20 haploinsufficiency.^34"
+          ]
+        },
+        "acmg_criteria_as_stated": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "| 507 | V2 | 50 | M | MAP3K1"
+        },
+        "gene_symbol_as_stated": {
+          "value": "MAP3K1",
+          "span": "| 507 | V2 | 50 | M | MAP3K1"
+        },
+        "variant_original_string": {
+          "value": "p.Val128Met",
+          "span": "| 507 | V2 | 50 | M | MAP3K1 | chr5:56815955:G>A | p.Val128Met"
+        },
+        "transcript_as_stated": {
+          "value": "not reported",
+          "span": null
+        },
+        "cdna_hgvs_as_stated": {
+          "value": null,
+          "span": null
+        },
+        "protein_hgvs_as_stated": {
+          "value": "p.Val128Met",
+          "span": "| 507 | V2 | 50 | M | MAP3K1 | chr5:56815955:G>A | p.Val128Met"
+        },
+        "genomic_coordinates_as_stated": {
+          "value": "chr5:56815955:G>A (hg38)",
+          "span": [
+            "| 507 | V2 | 50 | M | MAP3K1 | chr5:56815955:G>A",
+            "Genomic position change (hg38)"
+          ]
+        },
+        "variant_type_as_stated": {
+          "value": "missense",
+          "span": [
+            "| Missense |",
+            "| 507 | V2 | 50 | M | MAP3K1 | chr5:56815955:G>A | p.Val128Met"
+          ]
+        },
+        "zygosity": {
+          "value": "mosaic",
+          "span": [
+            "Table 1.: Mosaic variants in affected individuals",
+            "| 507 | V2 | 50 | M | MAP3K1 | chr5:56815955:G>A | p.Val128Met | 0.049 | ND | ND |"
+          ]
+        },
+        "inheritance": {
+          "value": "not reported",
+          "span": null
+        },
+        "parental_testing_statement": {
+          "value": "not reported",
+          "span": null
+        },
+        "functional_evidence_statement": {
+          "value": "not reported",
+          "span": null
+        },
+        "pathogenicity_as_stated_by_authors": {
+          "value": "UMS (Uncertain mosaic significance)",
+          "span": [
+            "| 507 | DEF | MAP3K1 | p.Val128Met | 15.67 | 3E-05 | None | NM | NM | UMS |",
+            "UMS, Uncertain mosaic significance"
+          ]
+        },
+        "acmg_criteria_as_stated": {
+          "value": "not reported",
+          "span": null
+        }
+      }
+    ],
+    "phenotypic_features": [
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "feature_text_as_stated": {
+          "value": "lymphoproliferation",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)",
+            "| 66 | LYM | TNFAIP3"
+          ]
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)",
+            "| 66 | LYM | TNFAIP3"
+          ]
+        },
+        "evidence_basis": {
+          "value": "stated for this individual",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)",
+            "| 66 | LYM | TNFAIP3"
+          ]
+        },
+        "onset_original_text": {
+          "value": null,
+          "span": null
+        },
+        "onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "severity_or_detail": {
+          "value": "main clinical symptom",
+          "span": "also had lymphoproliferation as their main clinical symptom"
+        },
+        "hpo_label_candidate": {
+          "value": null,
+          "span": null
+        },
+        "hpo_id_candidate": {
+          "value": null,
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "| 66^† | V1 | 33 | M | TNFAIP3"
+        },
+        "feature_text_as_stated": {
+          "value": "immune dysregulation",
+          "span": [
+            "Symptoms of immune dysregulation were present in all affected individuals",
+            "Table 1.: Mosaic variants in affected individuals",
+            "| 66^† | V1 | 33 | M | TNFAIP3 | chr6:137876099:C>A | p.Tyr246Ter | 0.059 | 0.057 | 0.058 |"
+          ]
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "Symptoms of immune dysregulation were present in all affected individuals",
+            "Table 1.: Mosaic variants in affected individuals",
+            "| 66^† | V1 | 33 | M | TNFAIP3 | chr6:137876099:C>A | p.Tyr246Ter | 0.059 | 0.057 | 0.058 |"
+          ]
+        },
+        "evidence_basis": {
+          "value": "inferred from group statement",
+          "span": [
+            "Symptoms of immune dysregulation were present in all affected individuals",
+            "Table 1.: Mosaic variants in affected individuals",
+            "| 66^† | V1 | 33 | M | TNFAIP3 | chr6:137876099:C>A | p.Tyr246Ter | 0.059 | 0.057 | 0.058 |"
+          ]
+        },
+        "onset_original_text": {
+          "value": null,
+          "span": null
+        },
+        "onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "severity_or_detail": {
+          "value": null,
+          "span": null
+        },
+        "hpo_label_candidate": {
+          "value": "Immune dysregulation",
+          "span": null
+        },
+        "hpo_id_candidate": {
+          "value": null,
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "feature_text_as_stated": {
+          "value": "lymphoproliferation",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        },
+        "evidence_basis": {
+          "value": "stated for this individual",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        },
+        "onset_original_text": {
+          "value": null,
+          "span": null
+        },
+        "onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "severity_or_detail": {
+          "value": "main clinical symptom",
+          "span": "also had lymphoproliferation as their main clinical symptom"
+        },
+        "hpo_label_candidate": {
+          "value": null,
+          "span": null
+        },
+        "hpo_id_candidate": {
+          "value": null,
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "| 99 | DYS | TNFAIP3"
+        },
+        "feature_text_as_stated": {
+          "value": "Immune Dysregulation",
+          "span": [
+            "| 99 | DYS | TNFAIP3",
+            "DYS, Immune Dysregulation"
+          ]
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "| 99 | DYS | TNFAIP3",
+            "DYS, Immune Dysregulation"
+          ]
+        },
+        "evidence_basis": {
+          "value": "stated for this individual",
+          "span": [
+            "| 99 | DYS | TNFAIP3",
+            "DYS, Immune Dysregulation"
+          ]
+        },
+        "onset_original_text": {
+          "value": null,
+          "span": null
+        },
+        "onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "severity_or_detail": {
+          "value": null,
+          "span": null
+        },
+        "hpo_label_candidate": {
+          "value": "Immune dysregulation",
+          "span": null
+        },
+        "hpo_id_candidate": {
+          "value": null,
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "feature_text_as_stated": {
+          "value": "lymphoproliferative phenotype",
+          "span": [
+            "The TNFAIP3 p.Leu147Glnfs variant identified in Patient ID 507",
+            "The patient here has a lymphoproliferative phenotype",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "The TNFAIP3 p.Leu147Glnfs variant identified in Patient ID 507",
+            "The patient here has a lymphoproliferative phenotype",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        },
+        "evidence_basis": {
+          "value": "stated for this individual",
+          "span": [
+            "The TNFAIP3 p.Leu147Glnfs variant identified in Patient ID 507",
+            "The patient here has a lymphoproliferative phenotype",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        },
+        "onset_original_text": {
+          "value": null,
+          "span": null
+        },
+        "onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "severity_or_detail": {
+          "value": null,
+          "span": null
+        },
+        "hpo_label_candidate": {
+          "value": null,
+          "span": null
+        },
+        "hpo_id_candidate": {
+          "value": null,
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "| 507 | DEF | TNFAIP3"
+        },
+        "feature_text_as_stated": {
+          "value": "Immune Deficiency",
+          "span": [
+            "| 507 | DEF | TNFAIP3",
+            "DEF, Immune Deficiency"
+          ]
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "| 507 | DEF | TNFAIP3",
+            "DEF, Immune Deficiency"
+          ]
+        },
+        "evidence_basis": {
+          "value": "stated for this individual",
+          "span": [
+            "| 507 | DEF | TNFAIP3",
+            "DEF, Immune Deficiency"
+          ]
+        },
+        "onset_original_text": {
+          "value": null,
+          "span": null
+        },
+        "onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "severity_or_detail": {
+          "value": null,
+          "span": null
+        },
+        "hpo_label_candidate": {
+          "value": "Immunodeficiency",
+          "span": null
+        },
+        "hpo_id_candidate": {
+          "value": "HP:0002721",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "| 507 | V2 | 50 | M | TNFAIP3"
+        },
+        "feature_text_as_stated": {
+          "value": "immune dysregulation",
+          "span": [
+            "Symptoms of immune dysregulation were present in all affected individuals",
+            "Table 1.: Mosaic variants in affected individuals",
+            "| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G | p.Leu147GlnfsTer7 | 0.060 | ND | ND |"
+          ]
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "Symptoms of immune dysregulation were present in all affected individuals",
+            "Table 1.: Mosaic variants in affected individuals",
+            "| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G | p.Leu147GlnfsTer7 | 0.060 | ND | ND |"
+          ]
+        },
+        "evidence_basis": {
+          "value": "inferred from group statement",
+          "span": [
+            "Symptoms of immune dysregulation were present in all affected individuals",
+            "Table 1.: Mosaic variants in affected individuals",
+            "| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G | p.Leu147GlnfsTer7 | 0.060 | ND | ND |"
+          ]
+        },
+        "onset_original_text": {
+          "value": null,
+          "span": null
+        },
+        "onset_iso8601": {
+          "value": null,
+          "span": null
+        },
+        "severity_or_detail": {
+          "value": null,
+          "span": null
+        },
+        "hpo_label_candidate": {
+          "value": "Immune dysregulation",
+          "span": null
+        },
+        "hpo_id_candidate": {
+          "value": null,
+          "span": null
+        }
+      }
+    ],
+    "phenotype_checklist": [
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "oral ulcers",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "genital ulcers",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "gastrointestinal ulcers or inflammation",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "recurrent fever",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "arthritis or arthralgia",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "uveitis or other ocular inflammation",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "autoimmune thyroiditis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "type 1 diabetes",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "autoimmune hepatitis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "cytopenia (autoimmune)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "lymphoproliferation or lymphadenopathy",
+          "span": null
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "| 66 | LYM | TNFAIP3"
+          ]
+        },
+        "evidence_basis": {
+          "value": "stated for this individual",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "| 66 | LYM | TNFAIP3"
+          ]
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "central nervous system involvement",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "recurrent infections",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "elevated inflammatory markers (CRP/ESR)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "autoantibodies (ANA/other)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "growth failure",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "pericarditis or other serositis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "interstitial lung disease",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "66",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "vasculitis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "oral ulcers",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "genital ulcers",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "gastrointestinal ulcers or inflammation",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "recurrent fever",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "arthritis or arthralgia",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "uveitis or other ocular inflammation",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "autoimmune thyroiditis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "type 1 diabetes",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "autoimmune hepatitis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "cytopenia (autoimmune)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "lymphoproliferation or lymphadenopathy",
+          "span": null
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        },
+        "evidence_basis": {
+          "value": "stated for this individual",
+          "span": [
+            "two other patients with predicted LOF TNFAIP3 variants due to stop-gain and frameshift (ID 66 and 99) also had lymphoproliferation as their main clinical symptom",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "central nervous system involvement",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "recurrent infections",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "elevated inflammatory markers (CRP/ESR)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "autoantibodies (ANA/other)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "growth failure",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "pericarditis or other serositis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "interstitial lung disease",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "99",
+          "span": "(ID 66 and 99)"
+        },
+        "checklist_feature": {
+          "value": "vasculitis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "oral ulcers",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "genital ulcers",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "gastrointestinal ulcers or inflammation",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "recurrent fever",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "arthritis or arthralgia",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "uveitis or other ocular inflammation",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "autoimmune thyroiditis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "type 1 diabetes",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "autoimmune hepatitis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "cytopenia (autoimmune)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "lymphoproliferation or lymphadenopathy",
+          "span": null
+        },
+        "status": {
+          "value": "observed",
+          "span": [
+            "The TNFAIP3 p.Leu147Glnfs variant identified in Patient ID 507",
+            "The patient here has a lymphoproliferative phenotype",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        },
+        "evidence_basis": {
+          "value": "stated for this individual",
+          "span": [
+            "The TNFAIP3 p.Leu147Glnfs variant identified in Patient ID 507",
+            "The patient here has a lymphoproliferative phenotype",
+            "Three patients with lymphoproliferation had mosaic variants in TNFAIP3 leading to premature termination and haploinsufficiency (Patient IDs 66, 99, and 507)"
+          ]
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "central nervous system involvement",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "recurrent infections",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "elevated inflammatory markers (CRP/ESR)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "autoantibodies (ANA/other)",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "growth failure",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "pericarditis or other serositis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "interstitial lung disease",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      },
+      {
+        "pmid": {
+          "value": "41654260",
+          "span": "PMID: 41654260"
+        },
+        "individual_label_in_paper": {
+          "value": "507",
+          "span": "Patient ID 507"
+        },
+        "checklist_feature": {
+          "value": "vasculitis",
+          "span": null
+        },
+        "status": {
+          "value": "not reported",
+          "span": null
+        },
+        "evidence_basis": {
+          "value": "not reported",
+          "span": null
+        }
+      }
+    ]
+  }
+}
