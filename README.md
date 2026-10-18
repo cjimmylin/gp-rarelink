@@ -11,6 +11,7 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 | `CLAUDE.md` | Loaded automatically by Claude Code; imports the two files above |
 | `DECISIONS.md` | Dated decisions and pre-registration deviations |
 | `BUDGET.md` | Spend against each budget line, with pre-run estimates |
+| `POC_DESIGN.md` | Step-by-step design for the proof-of-concept run on one disease (HA20), written for an agent to execute stage by stage |
 | `grant/` | The application as submitted |
 | `background/` | Annotated bibliography, manifest, grant-claim checks, fetch scripts |
 

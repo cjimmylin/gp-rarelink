@@ -13,6 +13,25 @@ plan in `preregistration/` is frozen).
 
 ---
 
+## 2026-10-18 — POC study design drafted; six decisions pending
+
+- **Type:** method / scope
+- **Decision:** `POC_DESIGN.md` is the protocol for the first end-to-end run of
+  the pipeline on one disease. It is a working document, not the
+  pre-registration, and changes nothing pre-registered.
+- **Decisions it needs from Jimmy before Stage 2 (see `POC_DESIGN.md` §2.4):**
+  1. POC disease = A20 haploinsufficiency (recommended) vs Alexander disease.
+  2. Adapt the public SLIDERS code for Claude by adding an Anthropic provider
+     (its README, checked 2026-10-18, lists OpenAI and Azure OpenAI only);
+     whether to also ask the Lam lab for a Claude-ready branch.
+  3. Exclude reviews and meta-analyses from the extraction corpus; use them
+     only as seed lists and completeness benchmarks.
+  4. OMIM access for the harness: who requests the key and when.
+  5. POC audit: 50 claims, which panel member, and whether it counts against
+     Month-4 adjudication hours.
+  6. POC spend ceiling: $1,000 recommended, hard stop at $1,500.
+- **Approved by:** n/a (awaiting Jimmy)
+
 ## 2026-10-18 — Open items blocking Month 1 bookkeeping
 
 - **Type:** process
