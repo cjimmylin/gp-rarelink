@@ -13,6 +13,7 @@ Rare Genomics Institute and the Stanford OVAL Lab, funded by Anthropic's AI for 
 | `BUDGET.md` | Spend against each budget line, with pre-run estimates |
 | `grant/` | The application as submitted |
 | `background/` | Annotated bibliography, manifest, grant-claim checks, fetch scripts |
+| `docs/claude-ai-threads.md` | What was worked out in the claude.ai Project chats: setup, environment limits, open items |
 
 **Source of truth.** This repo is canonical. The claude.ai Project "Anthropic Rare Disease" mirrors its documents for chat sessions; edit here, commit, then refresh the mirror (see `DECISIONS.md`, 2026-10-18).
 
