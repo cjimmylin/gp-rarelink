@@ -1,0 +1,846 @@
+{
+ "pmid": "41634270",
+ "instructions_version": "extract_v2",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "This adult transplant cohort of 10 patients with inborn errors of immunity includes one patient with HA20 (Patient #9, 'haploinsufficiency of A20 (HA20) (n = 1)'), but neither the gene symbol TNFAIP3 nor the variant is printed in the main text; the paper refers mutation details to 'Online Resource Table S1', which is not in the supplied document.",
+ "method_note": "Read the whole paper manually; no script transcribed table cells (a script only assembled the JSON and checked spans). Tables 1 and 2 have patients as rows; the HA20 patient is row '9' (diagnosis 'IEI HA20'), referred to in the text as 'Patient #9'/'patient #9'. Only Patient #9 was extracted: the other nine patients have other diagnoses (CTLA4HI x2, APDS, DOCK8, ALPS, DADA2 x2, VEXAS, CVID2 (TACI)) and no TNFAIP3 variant, so they are out of scope for this HA20 extraction. No variants rows: the paper prints no gene symbol, transcript, cDNA or protein change for Patient #9 (Online Resource Table S1 not available). Not captured because the schema has no field: Table 1 'Age' 23 is age at allo-HSCT (the stated mean age at allo-HSCT, 32.1, equals the mean of the Table 1 ages), so it was not used for onset, diagnosis or last evaluation; follow-up 17 months; CMV and EBV serostatus Pos/Pos; IDDA 92 at baseline and 24 at 1 year after SCT ('-' at latest follow-up); Karnofsky 40; HCT-CI 1; 11 days to engraftment; last donor chimerism 100/100. Vital status 'alive' is inferred from the paper naming patient #6 as the only death (Table 2 dagger on #6 only). Transplant complications reported absent for #9 (severe GvHD, chronic GvHD, EBV reactivation, late severe infections) are recorded as excluded features; three come from statements about the whole named cohort ('no chronic GvHD', 'No patient experienced EBV reactivation', 'Except for patient #6 ...'). Contradictions within the paper (none concern Patient #9's phenotype directly): Abstract '5 patients developed grade 2–4 acute GvHD' vs Results 'Four patients developed aGvHD of grade 2–4'; Results 'Patients #5 and #8 showed mixed chimerism' vs Discussion 'Patients #5 and #6 showed mixed chimerism'; Methods 'between 2019 and 2024' vs 'first allo-HSCT performed between 2019 and 2023'; 'Canakinumab' (Table 1) vs 'Canikunumab' (Table 2); 'median decrease in IDDA score was 3 (range 15–68)' is internally inconsistent.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "first_author": {
+     "value": "de Winter",
+     "span": "Authors: de Winter Janneke J. H."
+    },
+    "year": {
+     "value": 2026,
+     "span": "Journal: Journal of Clinical Immunology (2026)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "Here, we report the first 10 consecutive adult patients with IEI who underwent αβTCR/CD19-depleted allo-HSCT."
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "haploinsufficiency of A20 (HA20) (n = 1)"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| 9 | F |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": [
+      "One patient with GvHD died from COVID-19. All remaining 9 patients were successfully tapered off immunosuppression and showed improved IDDA scores.",
+      "patient #6 died of COVID 19 infection"
+     ]
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Immune therapy at SCT: prednisolone + ruxolitinib + anakinra; αβTCR/CD19-depleted allo-HSCT from a 9/10 matched unrelated donor (MUD 9/10) after ATG and myeloablative conditioning (thiotepa, melphalan, fludarabine); after SCT MMF + prednisolone + ruxolitinib + anakinra, with disease-associated immunosuppression tapered only after MMF was stopped at day 28; letermovir prophylaxis until day 100 post allo-SCT.",
+     "span": [
+      "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra |",
+      "αβTCR/CD19-depleted allografts from related, unrelated or haplo-identical donors were used after antithymocyte globulin (ATG) and myeloablative conditioning (thiotepa, melphalan, and fludarabine)",
+      "| 9 | IEI HA20 | 11 | MMF + Prednisolone + Ruxolitinib + Anakinra |",
+      "we started tapering the disease-associated immunosuppression only after the MMF could successfully be stopped at day 28 in patient #7, #9 and #10",
+      "Patient #9 and #10 received letermovir prophylaxis until day 100 post allo-SCT."
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "IEI HA20 (haploinsufficiency of A20)",
+     "span": [
+      "| 9 | F | 23 | IEI HA20 |",
+      "haploinsufficiency of A20 (HA20) (n = 1)"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Not stated for this patient individually; cohort eligibility required a confirmed clinical and/or genetic diagnosis, and mutation details are referred to supplementary Online Resource Table S1 (not in the text).",
+     "span": [
+      "a confirmed clinical and/or genetic diagnosis",
+      "(Table 1; details on mutations in Online Resource Table S1)"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "feature_text_as_stated": {
+     "value": "Refractory colitis",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Refractory",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    },
+    "hpo_label_candidate": {
+     "value": "Colitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002583",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "feature_text_as_stated": {
+     "value": "auto-inflammation",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Autoinflammation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "feature_text_as_stated": {
+     "value": "severe GvHD",
+     "span": "In patients #7 and #9 prolonged disease-associated immunosuppression was administered and none of these patients developed severe GvHD"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "In patients #7 and #9 prolonged disease-associated immunosuppression was administered and none of these patients developed severe GvHD"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "In patients #7 and #9 prolonged disease-associated immunosuppression was administered and none of these patients developed severe GvHD"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "after αβTCR/CD19-depleted allo-HSCT with prolonged disease-associated immunosuppression",
+     "span": "In patients #7 and #9 prolonged disease-associated immunosuppression was administered and none of these patients developed severe GvHD"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "feature_text_as_stated": {
+     "value": "chronic GvHD",
+     "span": [
+      "no chronic GvHD was observed",
+      "No cases of limited or extensive chronic GvHD were reported."
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "no chronic GvHD was observed",
+      "No cases of limited or extensive chronic GvHD were reported."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "no chronic GvHD was observed",
+      "No cases of limited or extensive chronic GvHD were reported."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "feature_text_as_stated": {
+     "value": "EBV reactivation",
+     "span": "No patient experienced EBV reactivation after αβTCR/CD19 depletion"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "No patient experienced EBV reactivation after αβTCR/CD19 depletion"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "No patient experienced EBV reactivation after αβTCR/CD19 depletion"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "after αβTCR/CD19 depletion",
+     "span": "No patient experienced EBV reactivation after αβTCR/CD19 depletion"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "feature_text_as_stated": {
+     "value": "severe infections leading to hospitalization",
+     "span": "Except for patient #6 with poorly controlled inflammation post-HSCT, no severe infections leading to hospitalization were observed beyond the first 3 months"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Except for patient #6 with poorly controlled inflammation post-HSCT, no severe infections leading to hospitalization were observed beyond the first 3 months"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "Except for patient #6 with poorly controlled inflammation post-HSCT, no severe infections leading to hospitalization were observed beyond the first 3 months"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "beyond the first 3 months post-HSCT",
+     "span": "Except for patient #6 with poorly controlled inflammation post-HSCT, no severe infections leading to hospitalization were observed beyond the first 3 months"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone + Ruxolitinib + Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41634270",
+     "span": "PMID: 41634270"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #9",
+     "span": "Patient #9"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
