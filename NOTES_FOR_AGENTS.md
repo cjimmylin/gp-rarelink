@@ -37,7 +37,8 @@ How to maintain it:
   - Everything up to 2026-10-18 is on `main`, merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
-  - run `git fetch origin main` before starting, and again before merging;
+  - run `git fetch origin` (all branches, not just `main`) before starting, and again before merging. On 2026-10-18 two sessions ran pilot Stage 1 in parallel because one checked only `main`;
+  - check `list_sessions` for other sessions working on this repo;
   - when files collide, combine both sides; never overwrite one with the other.
 - **The repo is canonical; the claude.ai Project only mirrors it** (Jimmy's decision, in `DECISIONS.md`). After changing documents here, tell Jimmy the Project mirror needs a refresh. Claude Code sessions have no access to the Project.
 
@@ -114,7 +115,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-21**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-22**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically

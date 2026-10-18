@@ -86,7 +86,7 @@ Estimate method for scaling extraction:
 
 | Date | Run | Line | Basis | Estimate (USD) | Approved by | Actual (USD) |
 |---|---|---|---|---|---|---|
-| 2026-10-18 | Pilot Stage 3: extraction over 76 full-text HA20 papers (D-20 route) | Extraction | Smoke test: at most $4.19/paper (`runs/poc-ha20-smoke-1/stage3_estimate.json`) | one run ~$318; two runs ~$636; one run + 15-paper repeat ~$381 (upper bounds) | **pending Jimmy** (> $200 rule in `POC_DESIGN.md` Stage 3) | — |
+| 2026-10-18 | Pilot Stage 3: extraction over 76 full-text HA20 papers (D-20 route) | Extraction | Smoke test: at most $4.19/paper (`runs/poc-ha20-smoke-1/stage3_estimate.json`) | one run ~$318; two runs ~$636; one run + 15-paper repeat ~$381 (upper bounds, 76 papers; the reconciled corpus has 80, about +$17) | **Jimmy, 2026-10-18 (D-21): one run + 15-paper repeat** | — |
 | 2026-10-18 | Pilot (POC) on A20 haploinsufficiency, all model-calling stages | Extraction (mostly), gatekeeper, harness, bias arm | `POC_DESIGN.md` §5. Per-stage rows to be added before each run, after Stage 2 measures per-paper cost | $200–400; ceiling $1,000; hard stop $1,500 | Jimmy (chat, 2026-10-18) | — |
 
 **Pilot billing (D-20).** The pilot runs with Claude Code helper agents, not the API. Its model use is therefore Claude Code usage on whichever claude.ai account runs the session, which counts against the award if that is the funded account (D-15). Each stage logs the session's own list-price usage estimate before and after. Jimmy reconciles the totals against Settings > Usage. If the SLIDERS/API route is used later, D-17 applies to that spend.
