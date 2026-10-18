@@ -103,14 +103,14 @@ Points a coding session needs:
 
 | Item | Where it's tracked |
 |---|---|
-| Month 1 start date. The award date and credits were recorded in `CONTEXT.md` on 2026-10-18 | `DECISIONS.md` D-01 |
+| Month 1 start: decided 2026-10-18 as the date the first deposit landed (provisionally 2026-09-21). The actual date is still to confirm | `DECISIONS.md` D-01; `CONTEXT.md` §8 |
 | Spend to date not reconciled. The credits turned out to be claude.ai usage credits, not Console credits | `DECISIONS.md` D-15, `BUDGET.md` |
 | Decide how to fix the application numbers flagged in `grant_claim_checks.md` | `DECISIONS.md` D-14; `background/grant_claim_checks.md` |
 | Unconfirmed PMIDs/titles in the manifest (`id_notes`) | `background/manifest.csv` |
 | PDFs not yet fetched (or fetch status unrecorded) | `background/README.md` |
 | Date of the early concept chat unknown | `background/origins/early_concept_conversation.md` |
 | Project custom instructions must be re-pasted when `INSTRUCTIONS.md` changes | `DECISIONS.md` |
-| Month 1 tasks. The pre-registration is drafted (v0.3, not frozen). Not started: per-disease corpus, direct dated ClinVar/OMIM counts, Monarch/ClinVar outreach drafts | `NOTES_FOR_AGENTS.md` §1–2; `INSTRUCTIONS.md` §6 |
+| Month 1 tasks, re-planned (D-18, pilot first). The HA20 pilot is built but not yet run (`POC_DESIGN.md`). The pre-registration is drafted (v0.5) and is frozen after the pilot. Not started: corpora for the other diseases, direct dated ClinVar/OMIM counts, Monarch/ClinVar outreach drafts | `NOTES_FOR_AGENTS.md` §1–2; `DECISIONS.md` D-18 |
 
 ## Keeping this current
 

@@ -39,7 +39,7 @@ Anthropic deposits half the award up front, then tops up toward $45,000 as credi
 **Three notes:**
 - **One credit pool.** The award is a single pool of claude.ai credits, with no separate Claude Science and Claude Code allocations. The grant's 65% / 35% split (≈ $29,000 / ≈ $16,000) is now only an internal plan. We report per line, as committed (D-15).
 - **Pipeline runs.** Lines 1–3, 5 and 6 are model runs inside the pipeline. Whether the credits can pay for them depends on how the pipeline calls Claude (D-17).
-- **Expiry.** Unspent credits from a deposit lapse six months after it lands, so time large runs with each deposit's expiry in mind. Unused credits are still reported, not spent for the sake of it.
+- **Expiry.** Unspent credits from a deposit lapse six months after it lands, so time large runs with each deposit's expiry in mind. If the first deposit landed on 2026-09-21, it expires 2027-03-21, the day after Month 6 ends (D-01). Unused credits are still reported, not spent for the sake of it.
 
 ## Usage not yet accounted for
 
@@ -49,9 +49,12 @@ Model usage before this file existed was not logged:
 |---|---|---|---|
 | 2026-10-16 | Background literature search (129 entries) and grant-claim checks | Claude Cowork | unassigned |
 | 2026-10-18 | Repository setup | Claude Cowork / Claude Code | unassigned |
-| 2026-10-18 | Status review; this file, `DECISIONS.md`, pre-registration draft, award details | Claude Code (cloud session) | unassigned |
+| 2026-10-18 | Status review; this file, `DECISIONS.md`, pre-registration draft, award details | Claude Code (cloud session "Claude Code repo status") | unassigned |
+| 2026-10-18 | Pilot design and code (Stages 0–2) | Claude Code (cloud session "Rarelink POC study design") | line 4 (pipeline) |
 
 The award covers Cowork and Claude Code, so these sessions count against the grant **if** they ran on the funded account.
+
+For scale, the two Claude Code sessions' own metadata reported about $10 ("Claude Code repo status") and about $17 ("Rarelink POC study design") as of about 18:00 UTC on 2026-10-18. These are list-price estimates the sessions report about themselves, not billing figures; the ledger needs figures from Settings > Usage.
 
 **Questions for Jimmy (D-15):**
 1. Did these sessions run on the funded claude.ai account?
@@ -70,7 +73,7 @@ One row per run or billing period. Figures come from claude.ai Settings > Usage 
 
 Before any large or repeated model run, add an estimate here and get it approved if needed. Afterwards, add the actual figure to the ledger and compare.
 
-**Approval rule (proposed; confirm in D-15).** Ask Jimmy before any single run expected to use more than 25% of a line's remaining balance, and before scaling extraction from the pilot disease to all six.
+**Approval rule (proposed; confirm in D-15).** Ask Jimmy before any single run expected to use more than 25% of a line's remaining balance, and before scaling extraction from the pilot disease to all six. The pilot has its own approved ceiling (below).
 
 Estimate method for scaling extraction:
 1. Measure cost per input token on the pilot disease (A20 haploinsufficiency), with all passes included: extraction, reconciliation, gatekeeper and re-runs.
@@ -79,4 +82,6 @@ Estimate method for scaling extraction:
 
 | Date | Run | Line | Basis | Estimate (USD) | Approved by | Actual (USD) |
 |---|---|---|---|---|---|---|
-| | *(none yet; first expected: Month-2 pilot extraction on A20 haploinsufficiency)* | | | | | |
+| 2026-10-18 | Pilot (POC) on A20 haploinsufficiency, all model-calling stages | Extraction (mostly), gatekeeper, harness, bias arm | `POC_DESIGN.md` §5. Per-stage rows to be added before each run, after Stage 2 measures per-paper cost | $200–400; ceiling $1,000; hard stop $1,500 | Jimmy (chat, 2026-10-18) | — |
+
+**Pilot billing (D-17).** The pilot calls the Anthropic API with an API key. Unless Anthropic confirms the award covers API usage, this spend bills to the key's account rather than the grant credits. Log it in the ledger either way, and say which account it billed to.

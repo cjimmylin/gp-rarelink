@@ -8,7 +8,7 @@ This file is the reference for what the project is, who is on it, and what we ha
 > - **Award date:** 2026-08-31 (date of the award email).
 > - **Credits awarded:** $45,000, the full amount requested. They are usage credits on a claude.ai account, covering chat, Claude Code, Cowork and Claude Science, over a six-month project period. The email does not mention API (Console) usage; see `DECISIONS.md` D-17.
 > - **Deposits:** half up front, with the first deposit scheduled for 2026-09-21. Top-ups follow toward the total as credits are spent. Each deposit expires six months after it lands.
-> - **Project start (Month 1):** ______ (to decide; see `DECISIONS.md` D-01).
+> - **Project start (Month 1):** the date the first deposit landed, provisionally **2026-09-21** (the scheduled date; replace with the actual date from claude.ai Settings > Usage). Month 6 then ends 2027-03-20. See §8 and `DECISIONS.md` (D-01, decided 2026-10-18).
 > - **Account:**
 >   - The application gave Anthropic Console org ID `2056f88f-1a7b-4386-abfb-5b0fe9a98e10`.
 >   - The award email asked, by 2026-09-14, for the Organization ID of a paid claude.ai account instead.
@@ -115,6 +115,19 @@ Success = high concordance with a low-false-positive workflow. New database find
 | 4 | Adjudication of gap variants |
 | 5 | Prepare submissions; bias analysis |
 | 6 | Write up results for publication and review |
+
+### Provisional dates and re-plan (D-01 and D-18, 2026-10-18)
+
+The table above is the timeline as committed in the application. Dates assume Month 1 started on 2026-09-21; shift them if the first deposit landed on a different day. The re-plan absorbs Month-1 work that was still undone when Month 1 ended. Under D-18, a one-disease pilot on A20 haploinsufficiency (`POC_DESIGN.md`) runs first, and the pre-registration is frozen after the pilot report.
+
+| Month | Dates | Work after the re-plan |
+|---|---|---|
+| 1 | 2026-09-21 to 2026-10-20 | Setup, background literature, pre-registration draft, pilot design and code |
+| 2 | 2026-10-21 to 2026-11-20 | The pilot on A20 haploinsufficiency and its report. In parallel: corpus search and screening for the other five diseases, reference snapshots and dated counts, open-access check, outreach drafts. Then freeze the pre-registration |
+| 3 | 2026-11-21 to 2026-12-20 | Extraction on all six diseases with the frozen pipeline (HA20 reported separately); concordance on each disease as it finishes |
+| 4 | 2026-12-21 to 2027-01-20 | Adjudication of gap variants; audit ratings. Spans the December holidays, so check panel availability (D-11) |
+| 5 | 2027-01-21 to 2027-02-20 | Submissions after sign-off; bias analysis; model comparison |
+| 6 | 2027-02-21 to 2027-03-20 | Write-up. The first deposit expires 2027-03-21 |
 
 ## 9. Budget (requested $45,000)
 

@@ -15,8 +15,20 @@ data/reference/**/*.obo
 data/reference/**/*.owl
 # Full-text articles: commit PMID manifests and access status only.
 data/literature/fulltext/
+data/literature/*/fulltext/
 data/literature/**/*.pdf
 data/literature/**/*.nxml
+# Dated reference snapshots (ground truth): commit only the manifest and the
+# counts derived from it, never the content (POC_DESIGN.md Stage 6).
+data/reference/*/
+!data/reference/*/MANIFEST.json
+!data/reference/*/counts.json
+# Ontology releases used by the extraction side (re-downloadable).
+data/ontologies/
+# SLIDERS and other run logs; manifests under runs/ are committed.
+runs/**/logs/
+runs/**/*.log
+uv.lock.bak
 # Background papers fetched by background/fetch_papers.* (many are not
 # CC-licensed); keep manifest.csv and download_log.csv, not the files.
 background/papers/
@@ -66,3 +78,6 @@ Thumbs.db
 # --- Claude Code local settings (personal, not shared) ----------------------
 .claude/settings.local.json
 CLAUDE.local.md
+
+# --- Vendored third-party checkouts (scripts/install_sliders.sh) ------------
+.vendor/
