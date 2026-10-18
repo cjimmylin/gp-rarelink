@@ -40,8 +40,12 @@ plan in `preregistration/` is frozen).
   - Edit files in the repo and commit. Then refresh the Project mirror from the
     repo (any Claude session attached to both can do this). Do not edit
     documents in the Project directly.
-  - Project mirror paths match repo paths (e.g. `grant/GRANT_APPLICATION.md`).
-  - `INSTRUCTIONS.md` is mirrored as the Project's custom instructions, which
-    have to be pasted in Project settings by hand when the file changes.
+  - Path mapping: files at the repo root are mirrored under `claude/` in the
+    Project (the Project only allows new top-level docs there), e.g.
+    `CONTEXT.md` → `claude/CONTEXT.md`. Files in subfolders keep their repo
+    path, e.g. `grant/GRANT_APPLICATION.md`, `background/manifest.csv`.
+  - `INSTRUCTIONS.md` is mirrored to `claude/INSTRUCTIONS.md` and also serves
+    as the Project's custom instructions, which have to be pasted in Project
+    settings by hand when the file changes.
   - `CLAUDE.md` is Claude Code–specific and is not mirrored.
 - **Approved by:** Jimmy (chat, 2026-10-18)
