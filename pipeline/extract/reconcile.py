@@ -18,9 +18,11 @@ literature, not reference data) is used to resolve
   - the paper's prior_report_citation, when cites_prior_report_of_same_patients is true,
 to PMIDs. Resolution is by reference number first, then by surname plus year.
 
-Confidence labels (policy v2, 2026-10-18):
+Confidence labels (policy v3, 2026-10-18):
   explicit_citation  same variant, and one row's own source_reference_in_review
-                     resolves to the other row's PMID.
+                     resolves to the other row's PMID and to no other paper. A
+                     citation naming several papers ("(2, 12, 22)") is not
+                     person-specific and counts only as a weak match.
   strong_match       same variant and no conflict, plus either (a) the paper-level
                      prior-report citation resolves to the other PMID, or (b) same
                      sex and age at onset within 1 year, both stated.
@@ -41,7 +43,11 @@ Explicit and strong candidates are merged only if both hold:
     review lists one patient twice under two citations, the two primary reports
     still merge and the review's second row is the one skipped.
 Policy v1 (earlier the same day) merged every explicit or strong candidate; on
-the first 58 run-1 papers that joined relatives into one identity.
+the first 58 run-1 papers that joined relatives into one identity. Policy v2
+added the one-to-one rule; its hand check on run-1 (56 merged pairs) found two
+false merges, both resting on citations that name several papers, which v3 no
+longer accepts. v3 was changed after seeing that hand check, so its own false
+merge rate still has to be measured on pairs it was not tuned on.
 
 Merged pairs are joined transitively into identities. The record of record for
 an identity is a first-hand row (no source_reference_in_review), earliest
@@ -67,7 +73,7 @@ from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
 
-POLICY_VERSION = "merge_policy_v2"
+POLICY_VERSION = "merge_policy_v3"
 MISSING = {None, "", "not reported", "unknown"}
 AA3 = {"ala": "A", "arg": "R", "asn": "N", "asp": "D", "cys": "C", "gln": "Q", "glu": "E", "gly": "G",
        "his": "H", "ile": "I", "leu": "L", "lys": "K", "met": "M", "phe": "F", "pro": "P", "ser": "S",
@@ -188,10 +194,18 @@ def resolve(citation, refs: list[tuple[str, str, str]]) -> list[str]:
         if digits:
             by_label.setdefault(digits, pmid)
     nums: list[str] = []
-    for a, b in re.findall(r"(?<!\d)(\d{1,3})\s*[–—-]\s*(\d{1,3})(?!\d)", s):
-        if int(a) < int(b) <= int(a) + 20:
-            nums += [str(n) for n in range(int(a), int(b) + 1)]
-    nums += [n for n in re.findall(r"(?<!\d)(\d{1,3})(?!\d)", s)]
+    s_stripped = s.strip()
+    if re.fullmatch(r"\d{1,3}(?:\s*[,;–—-]\s*\d{1,3})*", s_stripped):
+        groups = [s_stripped]          # a bare reference number or list, e.g. "12" or "12, 14"
+    else:
+        # only bracketed number groups count, e.g. "[12]", "(2, 12, 22)"; not a volume(issue) like "21(1)"
+        groups = re.findall(r"(?<![\w])[\[(]\s*(\d{1,3}(?:\s*[,;–—-]\s*\d{1,3})*)\s*[\])]", s)
+        groups += re.findall(r"(?i)\brefs?(?:erences?)?\.?\s*(\d{1,3}(?:\s*[,;–—-]\s*\d{1,3})*)", s)
+    for g in groups:
+        for a, b in re.findall(r"(\d{1,3})\s*[–—-]\s*(\d{1,3})", g):
+            if int(a) < int(b) <= int(a) + 20:
+                nums += [str(n) for n in range(int(a), int(b) + 1)]
+        nums += re.findall(r"\d{1,3}", g)
     out = {by_label[n] for n in nums if by_label.get(n)}
     if out:
         return sorted(out)
@@ -261,11 +275,14 @@ def compare(a: dict, b: dict, papers: dict[str, dict]) -> dict | None:
     if a["onset"] is not None and b["onset"] is not None and abs(a["onset"] - b["onset"]) > 2:
         conflicts.append(f"onset {a['onset']:.1f}y vs {b['onset']:.1f}y")
     evidence = [f"same {gene_key_kind(key)} {key}"]
-    cited = b["pmid"] in a["source_pmids"] or a["pmid"] in b["source_pmids"]
+    cited_any = b["pmid"] in a["source_pmids"] or a["pmid"] in b["source_pmids"]
+    citing = a if b["pmid"] in a["source_pmids"] else b
+    # policy v3: a citation that names several papers does not identify one person
+    cited = cited_any and len(citing["source_pmids"]) == 1
     sex_conflict = any(c.startswith("sex") for c in conflicts)
-    if cited:
-        side = a if b["pmid"] in a["source_pmids"] else b
-        evidence.append(f"source_reference_in_review of {side['pmid']}:{side['label']} = {side['source_reference']!r} resolves to the other PMID")
+    if cited_any:
+        evidence.append(f"source_reference_in_review of {citing['pmid']}:{citing['label']} = {citing['source_reference']!r} "
+                        + ("resolves to the other PMID" if cited else f"names {len(citing['source_pmids'])} papers including the other PMID (not person-specific)"))
     if (cited and sex_conflict) or (not cited and conflicts):
         return {"variant_key": key, "confidence": "blocked_conflict", "candidate": False, "score": 0,
                 "evidence": "; ".join(evidence), "conflicts": "; ".join(conflicts)}
