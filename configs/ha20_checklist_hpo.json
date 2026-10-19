@@ -1,0 +1,26 @@
+{
+  "description": "HPO terms for the 20 HA20 checklist features (schema_ha20_v3/v4), chosen by Claude on 2026-10-19 from the pinned HPO release by name and EXACT-synonym search and hierarchy checks (pipeline/extract/ontologies.py). 'observed' is the term a phenopacket may assert when the checklist item is observed; null where the item is a composite whose observed state cannot be pinned to one term (the specific feature rows carry it instead). 'excluded' lists every term a phenopacket may mark excluded when the item is explicitly absent. Flagged for review by Jimmy or the panel; not a pre-registered choice.",
+  "hpo_release": "hp/releases/2026-09-01",
+  "items": {
+    "oral ulcers": {"observed": "HP:0000155", "excluded": ["HP:0000155"], "note": "Oral ulcer"},
+    "genital ulcers": {"observed": "HP:0003249", "excluded": ["HP:0003249"], "note": "Genital ulcers"},
+    "gastrointestinal ulcers or inflammation": {"observed": null, "excluded": ["HP:0004386", "HP:0034274"], "note": "Gastrointestinal inflammation; Gastrointestinal ulcer is not its descendant, so both are excluded"},
+    "recurrent fever": {"observed": "HP:0001954", "excluded": ["HP:0001954"], "note": "Recurrent fever"},
+    "arthritis or arthralgia": {"observed": "HP:0005059", "excluded": ["HP:0001369", "HP:0002829"], "note": "Arthralgia/arthritis is the combined term; Arthritis and Arthralgia are not its descendants"},
+    "uveitis or other ocular inflammation": {"observed": "HP:0100533", "excluded": ["HP:0100533"], "note": "Inflammatory abnormality of the eye; Uveitis is a descendant"},
+    "skin lesions (rash, folliculitis, erythema nodosum)": {"observed": "HP:0011123", "excluded": ["HP:0000988", "HP:0025084", "HP:0012219"], "note": "Inflammatory abnormality of the skin is the common ancestor of the three; exclusion is limited to the three named lesions"},
+    "autoimmune thyroiditis": {"observed": "HP:0000872", "excluded": ["HP:0000872"], "note": "Hashimoto thyroiditis (children of Autoimmunity and Thyroiditis); HPO has no separate 'autoimmune thyroiditis' term"},
+    "type 1 diabetes": {"observed": "HP:0100651", "excluded": ["HP:0100651"], "note": "Type I diabetes mellitus"},
+    "autoimmune hepatitis": {"observed": "HP:5210421", "excluded": ["HP:5210421"], "note": "Autoimmune hepatitis"},
+    "cytopenia (autoimmune)": {"observed": "HP:5210419", "excluded": ["HP:5210419"], "note": "Autoimmune cytopenia; autoimmune haemolytic anaemia and thrombocytopenia are descendants"},
+    "lymphoproliferation or lymphadenopathy": {"observed": null, "excluded": ["HP:0002716", "HP:0031378"], "note": "Lymphadenopathy; Abnormal lymphocyte proliferation"},
+    "central nervous system involvement": {"observed": null, "excluded": ["HP:0002011"], "note": "Morphological central nervous system abnormality (exact synonym 'Abnormality of the central nervous system'); observed CNS involvement is carried by the specific feature rows"},
+    "recurrent infections": {"observed": "HP:0002719", "excluded": ["HP:0002719"], "note": "Recurrent infections"},
+    "elevated inflammatory markers (CRP/ESR)": {"observed": null, "excluded": ["HP:0011227", "HP:0003565"], "note": "Elevated circulating C-reactive protein concentration; Elevated erythrocyte sedimentation rate (no common parent below Increased inflammatory response, which is not their ancestor)"},
+    "autoantibodies (ANA/other)": {"observed": "HP:0030057", "excluded": ["HP:0030057"], "note": "Autoimmune antibody positivity; Antinuclear antibody positivity is a descendant"},
+    "growth failure": {"observed": "HP:0001510", "excluded": ["HP:0001510"], "note": "Growth delay"},
+    "pericarditis or other serositis": {"observed": "HP:0045073", "excluded": ["HP:0045073"], "note": "Serositis; Pericarditis is a descendant"},
+    "interstitial lung disease": {"observed": "HP:0006530", "excluded": ["HP:0006530"], "note": "Abnormal pulmonary interstitial morphology (exact synonym 'Interstitial lung disease')"},
+    "vasculitis": {"observed": "HP:0002633", "excluded": ["HP:0002633"], "note": "Vasculitis"}
+  }
+}
