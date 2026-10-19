@@ -26,6 +26,16 @@ Query construction, in order:
 A validated variant is then projected to the MANE Select transcript with a
 second call on its GRCh38 genomic description.
 
+Repairs (D-26, decided 2026-10-19), each flagged on the row:
+  - an Ensembl transcript (ENST) is sent to VariantValidator's Ensembl
+    endpoint instead of the RefSeq one;
+  - a versioned transcript VariantValidator does not hold (e.g. NM_006290.5)
+    is retried with the latest version it lists for that accession
+    (transcript_assumed = version_mapped);
+  - a cDNA string listed in configs/hgvs_query_corrections.csv (obvious
+    notation typos, each with its reason) is queried in corrected form; the
+    extracted string is kept in query_corrected_from.
+
 Status per distinct description:
   normalized    VariantValidator accepted the description unchanged;
   corrected     accepted, but the validated transcript HGVS differs from the
@@ -61,6 +71,7 @@ import httpx
 from pipeline.extract.reconcile import is_gene, protein_key
 
 API = "https://rest.variantvalidator.org/VariantValidator/variantvalidator"
+API_ENSEMBL = "https://rest.variantvalidator.org/VariantValidator/variantvalidator_ensembl"
 CACHE = Path("data/cache/variantvalidator")
 MISSING = {None, "", "not reported"}
 TX = re.compile(r"\b(N[MR]_\d+(?:\.\d+)?|ENST\d+(?:\.\d+)?)\b")
@@ -131,7 +142,8 @@ class VV:
         return self._fetch(f"https://rest.variantvalidator.org/VariantValidator/{path}")
 
     def get(self, build: str, description: str, select: str) -> dict:
-        return self._fetch(f"{API}/{build}/{quote(description, safe='')}/{quote(select, safe='')}")
+        base = API_ENSEMBL if description.startswith("ENST") else API
+        return self._fetch(f"{base}/{build}/{quote(description, safe='')}/{quote(select, safe='')}")
 
     def _fetch(self, url: str) -> dict:
         key = CACHE / (hashlib.sha256(url.encode()).hexdigest() + ".json")
@@ -190,7 +202,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--gene", default="TNFAIP3")
     ap.add_argument("--mane", default="NM_001270508.2")
     ap.add_argument("--delay", type=float, default=1.0)
+    ap.add_argument("--corrections", default="configs/hgvs_query_corrections.csv")
     args = ap.parse_args(argv)
+    corrections = {}
+    if args.corrections and Path(args.corrections).exists():
+        corrections = {r["cdna_as_extracted"]: r for r in csv.DictReader(Path(args.corrections).open())}
     run_dir = Path("data/extracted") / args.disease / args.run_id
     distinct: dict[str, dict] = {}
     for p in sorted((run_dir / "per_paper").glob("*.json")):
@@ -209,7 +225,7 @@ def main(argv: list[str] | None = None) -> int:
     versions = latest_versions(vv, args.gene)
     for key, d in distinct.items():
         row = {"variant_key": key, "original_string_example": d["original"], "rows": d["rows"], "pmids": " ".join(sorted(d["pmids"])),
-               "query": "", "transcript_assumed": "", "legacy_notation_rewritten": "yes" if d["legacy"] else "", "status": "", "hgvs_transcript": "", "hgvs_protein": "",
+               "query": "", "query_corrected_from": "", "transcript_assumed": "", "legacy_notation_rewritten": "yes" if d["legacy"] else "", "status": "", "hgvs_transcript": "", "hgvs_protein": "",
                "hgvs_genomic_grch38": "", "vcf_grch38": "", "mane_hgvs_transcript": "", "mane_hgvs_protein": "", "warnings": "", "vv_version": ""}
         if d["cdna"]:
             tx = d["transcript"] if d["transcript"] else args.mane
@@ -217,8 +233,18 @@ def main(argv: list[str] | None = None) -> int:
             if tx and "." not in tx and tx in versions:  # printed without a version number
                 tx = versions[tx]
                 row["transcript_assumed"] = "version"
-            row["query"] = f"{tx}:{d['cdna']}"
+            cdna = d["cdna"]
+            if cdna in corrections:
+                row["query_corrected_from"] = cdna
+                cdna = corrections[cdna]["cdna_query"]
+            row["query"] = f"{tx}:{cdna}"
             res = trim(vv.get("GRCh38", row["query"], tx))
+            acc = tx.rsplit(".", 1)[0]
+            if not res["ok"] and "not in our database" in res.get("warnings", "") and versions.get(acc) and versions[acc] != tx:
+                tx = versions[acc]
+                row["transcript_assumed"] = "version_mapped"
+                row["query"] = f"{tx}:{cdna}"
+                res = trim(vv.get("GRCh38", row["query"], tx))
             if res["ok"]:
                 row.update({k: res.get(k, "") for k in ("hgvs_transcript", "hgvs_protein", "hgvs_genomic_grch38", "vcf_grch38", "warnings", "vv_version")})
                 same = clean(res["hgvs_transcript"]).lower() == clean(row["query"]).lower()
@@ -248,6 +274,9 @@ def main(argv: list[str] | None = None) -> int:
                "share_normalized_or_corrected_of_cdna": round((c["normalized"] + c["corrected"]) / max(1, c["normalized"] + c["corrected"] + c["unresolvable"]), 4),
                "transcript_assumed": sum(1 for r in out if r["transcript_assumed"] == "yes"),
                "transcript_version_assumed": sum(1 for r in out if r["transcript_assumed"] == "version"),
+               "transcript_version_mapped": sum(1 for r in out if r["transcript_assumed"] == "version_mapped"),
+               "query_corrected": sum(1 for r in out if r["query_corrected_from"]),
+               "cdna_descriptions": c["normalized"] + c["corrected"] + c["unresolvable"],
                "api_calls": vv.calls, "cache_hits": vv.cached,
                "vv_version": next((r["vv_version"] for r in out if r["vv_version"]), "")}
     (run_dir / "normalization_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
