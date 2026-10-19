@@ -402,6 +402,7 @@ function build() {
   DATA.hpo.forEach((h) => hp.append(hpoCard(h)));
   SECOND.forEach((x) => $("final").append(finalCard(x)));
   $("tab-final").hidden = !SECOND.length;
+  $("tab-hpo").hidden = !DATA.hpo.length;
   $("tab-claims").addEventListener("click", () => selectTab("claims"));
   $("tab-hpo").addEventListener("click", () => selectTab("hpo"));
   $("tab-final").addEventListener("click", () => selectTab("final"));

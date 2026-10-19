@@ -170,8 +170,13 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--template", default=str(HERE / "rating_page_template.html"))
     ap.add_argument("--second-look", action="store_true", help="add the step-3 re-read tab (reads the ratings and gatekeeper.csv)")
     ap.add_argument("--run-dir", default="data/extracted/ha20/poc-ha20-run-2")
+    ap.add_argument("--sample-dir", default=str(HERE), help="folder holding sample.csv (and the HPO sheet, if any)")
+    ap.add_argument("--hpo-sheet", default="hpo_model_binding_sample.csv", help="file name in --sample-dir; empty for no HPO tab")
+    ap.add_argument("--gatekeeper-file", default="gatekeeper.csv", help="verdict file in --run-dir for the second look")
+    ap.add_argument("--title", default="HA20 Audit Ratings")
     args = ap.parse_args(argv)
-    rows = list(csv.DictReader((HERE / "sample.csv").open()))
+    sample_dir = Path(args.sample_dir)
+    rows = list(csv.DictReader((sample_dir / "sample.csv").open()))
     forbidden = [c for c in rows[0] if re.search(r"gatekeeper|verdict", c, re.I)]
     if forbidden:
         raise SystemExit(f"sample.csv carries {forbidden}; the gatekeeper verdict must stay hidden from the rater")
@@ -196,7 +201,7 @@ def main(argv: list[str] | None = None) -> int:
             "quotes": quotes, "contexts": [c for c in contexts if c["text"]],
             "context_missing": [c["quote"][:80] for c in contexts if not c["text"]],
         })
-    hrows = list(csv.DictReader((HERE / "hpo_model_binding_sample.csv").open()))
+    hrows = list(csv.DictReader((sample_dir / args.hpo_sheet).open())) if args.hpo_sheet else []
     defs = hp_definitions(ROOT / args.hp_obo, {h["hpo_id"] for h in hrows})
     grade = {"model_exact": "exact", "model_close": "close", "model_broader": "broader"}
     hpo = [{"id": f"h{int(h['n']):02d}", "n": int(h["n"]), "pmid": h["pmid"], "phrase": h["feature_text_as_stated"],
@@ -205,7 +210,7 @@ def main(argv: list[str] | None = None) -> int:
     second = []
     if args.second_look:
         first_label = {"supported": "supported", "partially supported": "partially_supported", "unsupported": "unsupported"}
-        gk = {g["claim_id"]: g for g in csv.DictReader((ROOT / args.run_dir / "gatekeeper.csv").open())}
+        gk = {g["claim_id"]: g for g in csv.DictReader((ROOT / args.run_dir / args.gatekeeper_file).open())}
         by_id = {c["id"]: c for c in claims}
         for r in rows:
             human = first_label.get((r.get(RATING_COL) or "").strip().lower(), "")
@@ -219,7 +224,7 @@ def main(argv: list[str] | None = None) -> int:
                                "gk": {"verdict": "supported" if verdict == "not_judged" else verdict,
                                       "source": g.get("source", ""), "reason": g.get("reason", "")}})
     data = json.dumps({"claims": claims, "hpo": hpo, "second": second}, ensure_ascii=False).replace("</", "<\\/")
-    page = Path(args.template).read_text().replace("/*__DATA__*/null", data)
+    page = Path(args.template).read_text().replace("/*__DATA__*/null", data).replace("<title>HA20 Audit Ratings</title>", f"<title>{args.title}</title>").replace("<h1>HA20 audit ratings</h1>", f"<h1>{args.title}</h1>")
     Path(args.out).write_text(page)
     missing = {c["id"]: c["context_missing"] for c in claims if c["context_missing"]}
     print(json.dumps({"claims": len(claims), "hpo": len(hpo), "second_look": [x["id"] for x in second], "quote_parts_not_located": missing,
