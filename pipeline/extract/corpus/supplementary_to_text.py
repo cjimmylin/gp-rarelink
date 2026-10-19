@@ -28,8 +28,10 @@ Size:
 Clean-up of pandoc output (2026-10-19, D-24): pandoc writes complex tables as
 HTML, with entities such as "&gt;". Those tables are turned into Markdown pipe
 tables (rowspan and colspan repeated, as in jats_to_markdown) and the remaining
-entities are decoded. Lines stacked inside one cell are joined with " / ", so a
-cell listing one value per patient reads "18 / 24 / 21 / 57". Pandoc drops empty
+entities are decoded. Lines stacked inside one cell are joined with " / " when
+another cell of the same row is also stacked, so a cell listing one value per
+patient reads "18 / 24 / 21 / 57"; a lone multi-line cell is wrapped text and is
+joined with a space. Pandoc drops empty
 lines, so a stacked cell can hold fewer values than the row has patients; the
 extraction instructions (v4) say not to assign values then.
 
@@ -70,8 +72,8 @@ class _TableParser(HTMLParser):
 
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
-        self.rows: list[list[tuple[str, int, int]]] = []
-        self._cell: list[str] | None = None
+        self.rows: list[list[tuple[list[str], int, int]]] = []
+        self._cell: list[str] | None = None  # lines of the current cell
         self._spans = (1, 1)
 
     def handle_starttag(self, tag, attrs):
@@ -89,20 +91,19 @@ class _TableParser(HTMLParser):
                 except ValueError:
                     return 1
             self._spans = (num("rowspan"), num("colspan"))
-        elif tag in ("br", "p") and self._cell is not None:
-            # values stacked on separate lines inside one cell (often one per patient) stay visible
-            if "".join(self._cell).strip():
-                self._cell.append(" / ")
+            self._cell = [""]
+        elif tag in ("br", "p") and self._cell is not None and self._cell[-1].strip():
+            self._cell.append("")  # start a new line inside the cell
 
     def handle_endtag(self, tag):
         if tag in ("td", "th") and self._cell is not None:
-            text = re.sub(r"\s+", " ", "".join(self._cell)).strip().replace("|", "\\|")
-            self.rows[-1].append((text, *self._spans))
+            lines = [re.sub(r"\s+", " ", x).strip().replace("|", "\\|") for x in self._cell]
+            self.rows[-1].append(([x for x in lines if x], *self._spans))
             self._cell = None
 
     def handle_data(self, data):
         if self._cell is not None:
-            self._cell.append(data)
+            self._cell[-1] += data
 
 
 def html_table_to_pipe(fragment: str) -> str:
@@ -111,7 +112,11 @@ def html_table_to_pipe(fragment: str) -> str:
     grid: dict[tuple[int, int], str] = {}
     for r, row in enumerate(parser.rows):
         c = 0
-        for text, rs, cs in row:
+        multi = sum(len(lines) > 1 for lines, _, _ in row)
+        for lines, rs, cs in row:
+            # several lines in a cell are values stacked one per patient only when another cell of the
+            # row is stacked too; a lone multi-line cell is wrapped text ("119-kb" + "microdeletion")
+            text = " / ".join(lines) if (len(lines) > 1 and multi > 1) else " ".join(lines)
             while (r, c) in grid:
                 c += 1
             for dr in range(rs):

@@ -1,0 +1,219 @@
+{
+  "id": "ha20-poc-ha20-run-2-HA20-ID0275",
+  "subject": {
+    "id": "HA20-ID0275",
+    "sex": "MALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002665",
+        "label": "Lymphoma"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:39167656",
+            "description": "patient HA20-14 was diagnosed with DLBCL in the course of his otherwise mild inflammatory disease"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0012191",
+        "label": "B-cell lymphoma"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:40822695",
+            "description": "identified in a patient with both HA20 and DLBCL"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "HA20-ID0275-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0800045",
+          "label": "autoinflammatory syndrome, familial, Behcet-like 1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "HA20-ID0275",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "HA20-ID0275-var1",
+                "label": "c.503G>A",
+                "description": "c.503G>A",
+                "geneContext": {
+                  "valueId": "HGNC:11896",
+                  "symbol": "TNFAIP3"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_001270508.2:c.503G>A"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_001257437.1:p.(Trp168Ter)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000006.12:g.137875704G>A"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "6",
+                  "pos": "137875704",
+                  "ref": "G",
+                  "alt": "A"
+                },
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "HA20-ID0275",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "HA20-ID0275-var2",
+                "label": "c.1880_1881delGT",
+                "description": "c.1880_1881delGT",
+                "geneContext": {
+                  "valueId": "HGNC:11896",
+                  "symbol": "TNFAIP3"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_001270508.2:c.1880_1881del"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_001257437.1:p.(Cys627PhefsTer44)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000006.12:g.137879325_137879326del"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "6",
+                  "pos": "137879321",
+                  "ref": "CTG",
+                  "alt": "C"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "HA20-ID0275",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "HA20-ID0275-var3",
+                "label": "p.Trp168*",
+                "description": "p.Trp168*",
+                "geneContext": {
+                  "valueId": "HGNC:11896",
+                  "symbol": "TNFAIP3"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "p.W168*"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0800045",
+        "label": "autoinflammatory syndrome, familial, Behcet-like 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-10-19T00:00:00Z",
+    "createdBy": "GP-RareLink pilot (Claude Code route, D-20)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:39167656"
+      },
+      {
+        "id": "PMID:40822695"
+      }
+    ]
+  }
+}

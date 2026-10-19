@@ -135,6 +135,8 @@ def test_supplementary_html_tables_entities_and_admin_filter():
     assert "| 1 | TNFAIP3 c.259C>T |" in out and "| 1 | p.Arg87* |" in out
     stacked = clean_pandoc("<table><tr><th>Pt</th><th>Age</th></tr><tr><td><p>1</p><p>2</p></td><td><p>18</p><p>24</p></td></tr></table>")
     assert "| 1 / 2 | 18 / 24 |" in stacked
+    wrapped = clean_pandoc("<table><tr><th>Pt</th><th>Variant</th></tr><tr><td>P1</td><td><p>119-kb</p><p>microdeletion</p></td></tr></table>")
+    assert "| P1 | 119-kb microdeletion |" in wrapped
     assert is_administrative(P("tgh-11-25-22-coif.pdf"), "anything")
     assert is_administrative(P("supp.pdf"), "ICMJE Form for Disclosure of Potential Conflicts of Interest")
     assert is_administrative(P("tgh-11-25-22-rc.pdf"), "x")

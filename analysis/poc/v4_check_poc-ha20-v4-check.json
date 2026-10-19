@@ -1,0 +1,158 @@
+{
+  "run_a": "poc-ha20-run-2",
+  "run_b": "poc-ha20-v4-check",
+  "checks": [
+    {
+      "pmid": "42128528",
+      "check": "TNFAIP3 rows with a printed variant",
+      "expected": "more (filter v2 appends the per-patient table)",
+      "run_a": 1,
+      "run_b": 18,
+      "as_intended": true
+    },
+    {
+      "pmid": "30526650",
+      "check": "TNFAIP3 inheritance values",
+      "expected": "no 'inherited maternal' (the mother is untested; a hedged sentence is not a carrier statement)",
+      "run_a": [
+        "inherited maternal",
+        "inherited maternal"
+      ],
+      "run_b": [
+        "not reported",
+        "not reported"
+      ],
+      "as_intended": true
+    },
+    {
+      "pmid": "33549127",
+      "check": "TNFAIP3 inheritance values",
+      "expected": "more 'inherited' values (each patient's parent carries the same variant)",
+      "run_a": [
+        "not reported",
+        "not reported",
+        "not reported",
+        "not reported",
+        "not reported",
+        "not reported"
+      ],
+      "run_b": [
+        "inherited maternal",
+        "inherited paternal",
+        "inherited paternal",
+        "not reported",
+        "not reported",
+        "not reported"
+      ],
+      "as_intended": true
+    },
+    {
+      "pmid": "37848905",
+      "check": "excluded rows inferred from a group statement",
+      "expected": "fewer (zero counts exclude no one)",
+      "run_a": 26,
+      "run_b": 12,
+      "as_intended": true
+    },
+    {
+      "pmid": "36064566",
+      "check": "labels using 'Table <n> #<k>'",
+      "expected": "at least one",
+      "run_a": 0,
+      "run_b": 2,
+      "as_intended": true
+    },
+    {
+      "pmid": "36064566",
+      "check": "labels guessing mother/father for 'parents'",
+      "expected": "none",
+      "run_a": 2,
+      "run_b": 0,
+      "as_intended": true
+    },
+    {
+      "pmid": "41929919",
+      "check": "individuals",
+      "expected": "reported only (literature patients with one fact stay in scope)",
+      "run_a": 5,
+      "run_b": 5,
+      "as_intended": true
+    },
+    {
+      "pmid": "33446651",
+      "check": "rows for the common SNP c.305A>G",
+      "expected": "none (authors treat it as common, non-causal)",
+      "run_a": 2,
+      "run_b": 0,
+      "as_intended": true
+    },
+    {
+      "pmid": "33446651",
+      "check": "labels using 'Table <n> column <k>'",
+      "expected": "at least one",
+      "run_a": 4,
+      "run_b": 4,
+      "as_intended": true
+    },
+    {
+      "pmid": "42572791",
+      "check": "other-gene variant rows",
+      "expected": "none (named but not described)",
+      "run_a": 4,
+      "run_b": 0,
+      "as_intended": true
+    },
+    {
+      "pmid": "40574834",
+      "check": "individuals with source_reference_in_review",
+      "expected": "more (per-patient reference column, D-23)",
+      "run_a": 2,
+      "run_b": 42,
+      "as_intended": true
+    },
+    {
+      "pmid": "40574834",
+      "check": "TNFAIP3 rows with zygosity 'mosaic'",
+      "expected": "at least one (germline mosaic carriers)",
+      "run_a": 4,
+      "run_b": 4,
+      "as_intended": true
+    },
+    {
+      "pmid": "35958611",
+      "check": "labels with '(Family <n>)'",
+      "expected": "at least one (repeated pedigree label)",
+      "run_a": 2,
+      "run_b": 3,
+      "as_intended": true
+    },
+    {
+      "pmid": "35958611",
+      "check": "TNFAIP3 inheritance values",
+      "expected": "no fewer 'inherited' values (carrier parents named)",
+      "run_a": [
+        "not reported",
+        "not reported",
+        "not reported",
+        "not reported",
+        "not reported",
+        "not reported",
+        "not reported",
+        "not reported"
+      ],
+      "run_b": [
+        "inherited maternal",
+        "inherited maternal",
+        "inherited maternal",
+        "inherited maternal",
+        "inherited paternal",
+        "not reported",
+        "not reported",
+        "not reported"
+      ],
+      "as_intended": true
+    }
+  ],
+  "as_intended": 13,
+  "tested": 13
+}

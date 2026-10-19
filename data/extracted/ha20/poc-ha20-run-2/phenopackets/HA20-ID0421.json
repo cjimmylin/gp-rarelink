@@ -1,0 +1,191 @@
+{
+  "id": "ha20-poc-ha20-run-2-HA20-ID0421",
+  "subject": {
+    "id": "HA20-ID0421",
+    "sex": "MALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000155",
+        "label": "Oral ulcer"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:41741169",
+            "description": "In family 8, patient 10 presented with oral and genital ulcers, colitis and autoimmune diabetes"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002583",
+        "label": "Colitis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:41741169",
+            "description": "In family 8, patient 10 presented with oral and genital ulcers, colitis and autoimmune diabetes \u2026 right-sided colitis extending to the sigmoid (patient 10)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003249",
+        "label": "Genital ulcers"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:41741169",
+            "description": "In family 8, patient 10 presented with oral and genital ulcers, colitis and autoimmune diabetes"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0100651",
+        "label": "Type I diabetes mellitus"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:41741169",
+            "description": "In family 8, patient 10 presented with oral and genital ulcers, colitis and autoimmune diabetes \u2026 One patient (patient 10, 5.9%) had autoimmune diabetes"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "HA20-ID0421-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0800045",
+          "label": "autoinflammatory syndrome, familial, Behcet-like 1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "HA20-ID0421",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "HA20-ID0421-var1",
+                "label": "c. 971_975del",
+                "description": "c. 971_975del",
+                "geneContext": {
+                  "valueId": "HGNC:11896",
+                  "symbol": "TNFAIP3"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_001270508.2:c.971_975del"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_001257437.1:p.(Leu324GlnfsTer7)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000006.12:g.137877241_137877245del"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "6",
+                  "pos": "137877234",
+                  "ref": "ACTCAT",
+                  "alt": "A"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0800045",
+        "label": "autoinflammatory syndrome, familial, Behcet-like 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-10-19T00:00:00Z",
+    "createdBy": "GP-RareLink pilot (Claude Code route, D-20)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:41741169"
+      }
+    ]
+  }
+}

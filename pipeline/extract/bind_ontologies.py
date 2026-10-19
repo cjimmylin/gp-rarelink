@@ -25,7 +25,9 @@ is accepted only if the ID exists in the pinned release, is not obsolete, and
 the name the helper copied equals the term's name; then the row's method is
 model_exact, model_close or model_broader (as the helper graded the match).
 NONE becomes no_suitable_term; an answer that fails the check becomes
-model_rejected and the row stays unbound.
+model_rejected and the row stays unbound. A 'broader' answer is not used for an
+excluded row, because it would overstate the exclusion
+(model_broader_excluded_dropped).
 
 Checklist rows use the fixed mapping in configs/ha20_checklist_hpo.json.
 
@@ -163,6 +165,9 @@ def main(argv: list[str] | None = None) -> int:
             b = bind_feature(r, hidx)
             if b["method"] == "unbound" and model:
                 m = model.get(re.sub(r"\s+", " ", str(v(r.get("feature_text_as_stated")) or "").strip().lower()))
+                if m and m["method"] == "model_broader" and v(r.get("status")) == "excluded":
+                    # a broader term would overstate an exclusion ("normal TSH" does not exclude every thyroid abnormality)
+                    m = {"hpo_id": "", "hpo_label": "", "method": "model_broader_excluded_dropped"}
                 if m:
                     b = dict(m, candidates=b.get("candidates", ""))
             c[f"features:{b['method']}"] += 1
@@ -200,7 +205,7 @@ def main(argv: list[str] | None = None) -> int:
                "counts": dict(sorted(c.items())),
                "model_bindings": args.model_bindings,
                "feature_share_bound": round(sum(v_ for k, v_ in c.items() if k.startswith("features:")
-                                                and k.split(":", 1)[1] not in ("unbound", "no_suitable_term", "model_rejected")) / n_feat, 4) if n_feat else None}
+                                                and k.split(":", 1)[1] not in ("unbound", "no_suitable_term", "model_rejected", "model_broader_excluded_dropped")) / n_feat, 4) if n_feat else None}
     (run_dir / "binding_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
     return 0
