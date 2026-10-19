@@ -386,3 +386,23 @@ Scores: `analysis/poc/audit_metrics_v5.json` (`audit_metrics.py --run-id poc-ha2
   - Jimmy left no note, so which of these he objected to is for the second look.
 - **Gatekeeper v3 against these labels:** it called all four not-fully-supported claims supported. Its one flag (C011145, "without clear celiac disease", partial) Jimmy rated supported. Agreement 43 of 48. So the person-link step did not help here, because the errors are not person-link errors.
 - **Next:** the second-look tab on the same page (5 claims: the three above, C006555 and C011145), plus the two unrated claims. Then the final figures.
+
+**Second look and final labels (Jimmy, 2026-10-19).**
+- **Two labels changed:** C006555 (cDNA with the gene name) went from partial to supported. C011145 ("without clear celiac disease") went from supported to partial, now matching the gatekeeper, whose reason the second-look tab showed (not independent).
+- **The three stacked-table claims stay unsupported.** Jimmy said in chat that he could not clearly assess the stacked supplementary table and thinks those readings uncertain. The sheet records that as the final reason.
+- **C012085 and C010818 stay unrated**, so n = 48.
+
+| | Final (gated) | Sensitivity: the 3 uncertain table claims left out |
+|---|---|---|
+| Unsupported | 3 of 48, 6.3% (1.3–17.2%) | 0 of 45, 0% (0–7.9%) |
+| Not fully supported | 4 of 48, 8.3% (2.3–20.0%) | 1 of 45, 2.2% (0.06–11.8%) |
+| Weighted by stratum pool, unsupported | 9.1% | — |
+
+Files: `analysis/poc/audit_metrics_v5.json` (gated) and `audit_metrics_v5_excluding_uncertain.json` (sensitivity, `--exclude-claims`).
+
+- **Q4 stays not met** on the gated figure. Counting a value the expert rater cannot verify from its quote as unsupported is the conservative reading. It matches the project's rule that thin evidence should give an abstention, not a value.
+- **What the re-audit shows:**
+  - The D-29 fix worked for the error class it targeted: no variant field is unsupported (0 of 20, against 3 of 20 in the first audit).
+  - The remaining failures are a different class: values read by position from stacked multi-patient cells, which the v4 rule allows when the counts match. A human could not confirm them.
+- **The gatekeeper:** v3 flagged 1 of the 4 not-fully-supported claims (recall 25%) with no false flags, and agreed on 45 of 48. It still cannot replace the audit.
+- **Proposed (D-31):** drop the positional reading of stacked cells from the extraction instructions (v6). A stacked value is recorded only when the paper labels it for the person; otherwise the field is "not reported". The gatekeeper treats any remaining positional reading as at most partially supported. This needs no new run for the pilot: the 250-claim audit of the frozen pipeline is the measure that counts.

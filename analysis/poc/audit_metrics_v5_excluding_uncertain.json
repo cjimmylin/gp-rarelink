@@ -1,0 +1,155 @@
+{
+  "run_id": "poc-ha20-v5-subset",
+  "sheet": "adjudication/poc_audit_v5/sample.csv",
+  "excluded_claims_sensitivity": [
+    "C012938",
+    "C012969",
+    "C013090"
+  ],
+  "gatekeeper_file": "gatekeeper_v3.csv",
+  "rated": 45,
+  "unrated": [
+    "C012085",
+    "C010818"
+  ],
+  "labels": {
+    "supported": 44,
+    "partially_supported": 1
+  },
+  "per_stratum": {
+    "demographic_inheritance": {
+      "supported": 5
+    },
+    "feature_excluded": {
+      "supported": 9,
+      "partially_supported": 1
+    },
+    "feature_observed": {
+      "supported": 10
+    },
+    "variant": {
+      "supported": 20
+    }
+  },
+  "unsupported_strict": {
+    "k": 0,
+    "n": 45,
+    "share": 0.0,
+    "ci95": [
+      0.0,
+      0.078705
+    ]
+  },
+  "not_supported_lenient": {
+    "k": 1,
+    "n": 45,
+    "share": 0.022222,
+    "ci95": [
+      0.000562,
+      0.117704
+    ]
+  },
+  "stratum_weighted": {
+    "pool_sizes": {
+      "variant": 673,
+      "feature_observed": 772,
+      "feature_excluded": 323,
+      "demographic_inheritance": 567
+    },
+    "unsupported": 0.0,
+    "not_supported": 0.0138,
+    "note": "stratum rates weighted by pool size; point estimates only (no interval)"
+  },
+  "q4_gate": {
+    "automated_span_match": 1.0,
+    "automated_span_match_ok": true,
+    "human_unsupported_rate": 0.0,
+    "human_unsupported_rate_ok": true,
+    "threshold": 0.04,
+    "complete": false
+  },
+  "gatekeeper_confusion_rows_gatekeeper_cols_human": {
+    "supported": {
+      "supported": 44,
+      "partially_supported": 0,
+      "unsupported": 0
+    },
+    "partially_supported": {
+      "supported": 0,
+      "partially_supported": 1,
+      "unsupported": 0
+    }
+  },
+  "gatekeeper_agreement_supported_vs_not": {
+    "k": 45,
+    "n": 45,
+    "share": 1.0,
+    "ci95": [
+      0.921295,
+      1.0
+    ]
+  },
+  "gatekeeper_calibration": {
+    "not_supported_vs_human_not_supported": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": {
+        "k": 1,
+        "n": 1,
+        "share": 1.0,
+        "ci95": [
+          0.025,
+          1.0
+        ]
+      },
+      "recall": {
+        "k": 1,
+        "n": 1,
+        "share": 1.0,
+        "ci95": [
+          0.025,
+          1.0
+        ]
+      }
+    },
+    "unsupported_vs_human_unsupported": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": {
+        "k": 0,
+        "n": 0,
+        "share": null,
+        "ci95": null
+      },
+      "recall": {
+        "k": 0,
+        "n": 0,
+        "share": null,
+        "ci95": null
+      }
+    }
+  },
+  "changed_on_reread": 2,
+  "disagreements": [],
+  "not_supported_by_human": [
+    {
+      "claim_id": "C011145",
+      "stratum": "feature_excluded",
+      "pmid": "40822695",
+      "table": "phenotypic_features",
+      "field": "status",
+      "value": "\"excluded\"",
+      "human_first": "supported",
+      "human": "partially_supported",
+      "changed_on_reread": true,
+      "gatekeeper": "partially_supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "'Without clear celiac disease' is qualified, not a definite exclusion.",
+      "note": "",
+      "final_reason": ""
+    }
+  ],
+  "hpo_binding_sample": null
+}

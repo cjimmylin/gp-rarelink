@@ -36,6 +36,11 @@ How to use this file:
   - For the pilot, keep the ClinVar-seeded papers but report every result with and without them; the tags make this cheap.
   - Use the difference between the two to set the rule for the six-disease study before the freeze.
 
+**D-31 · Stacked multi-patient table cells** (opened 2026-10-19)
+- **The finding:** in the re-audit (`reports/poc_stage4_5_findings.md` §10.7), all 3 unsupported claims are values read by position from one supplementary table whose cells stack several patients' values ("18 / 24 / 21 / 57"). Jimmy could not verify them and judged them uncertain. The v4 rule allows such positional reading when the number of values equals the number of people.
+- **Recommendation:** extraction v6 drops positional reading. A stacked value is recorded only when the paper labels it for that person; otherwise "not reported", with the reason in `method_note`. Gatekeeper v4 treats a positional reading as at most partially supported. Both go into the frozen pipeline; no new pilot run (the 250-claim audit is the measure).
+- **Cost of the change:** some lost recall in papers that publish per-family stacked tables (42128528's Supplementary File 1 is the example).
+
 ### Needed before the pre-registration can be frozen
 
 **D-08 · Substitute-disease trigger**
@@ -100,6 +105,12 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · Re-audit second look done: final 3 of 48 unsupported (6.3%); D-31 opened
+- **Second look:** two labels changed (C006555 to supported; C011145 to partial). The three stacked-table claims stay unsupported; Jimmy: he "could not clearly assess" those tables and thinks them uncertain. Two claims stay unrated (n = 48).
+- **Final, gated:** 3 of 48 unsupported (6.3%, exact 95% CI 1.3–17.2%); Q4 not met. Sensitivity without the three uncertain claims: 0 of 45. No variant field is unsupported (0 of 20, against 3 of 20 in the first audit).
+- **Gatekeeper v3:** flagged 1 of 4 not-fully-supported claims, no false flags.
+- Opened D-31 (stacked cells). Files: `analysis/poc/audit_metrics_v5.json`, `audit_metrics_v5_excluding_uncertain.json`, report §10.7. No changes to metrics or thresholds.
 
 ### 2026-10-19 · D-30 decided: Chen 2020 Table S1 replaces El Hani 2024 as the Q7 benchmark; C032922 stays unsupported; HA20 counts updated
 Jimmy's answers to three questions (asked in the session, 2026-10-19):

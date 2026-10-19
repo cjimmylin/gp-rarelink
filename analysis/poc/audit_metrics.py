@@ -64,12 +64,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--gate", type=float, default=0.04)
     ap.add_argument("--gatekeeper-file", default="gatekeeper.csv", help="verdict file in the run directory (e.g. gatekeeper_v2_recheck.csv)")
     ap.add_argument("--out", default="analysis/poc/audit_metrics.json")
+    ap.add_argument("--exclude-claims", default="", help="comma-separated claim ids left out (a labelled sensitivity run only)")
     args = ap.parse_args(argv)
     run_dir = Path("data/extracted") / args.disease / args.run_id
     rows = list(csv.DictReader(Path(args.sheet).open()))
     gk = {r["claim_id"]: r for r in csv.DictReader((run_dir / args.gatekeeper_file).open())}
     span = json.loads((run_dir / "span_check.json").read_text())
 
+    excluded = {c.strip() for c in args.exclude_claims.split(",") if c.strip()}
+    rows = [r for r in rows if r["claim_id"] not in excluded]
     rated, unrated = [], []
     for r in rows:
         first = label(r.get(RATING_COL))
@@ -147,7 +150,7 @@ def main(argv: list[str] | None = None) -> int:
                    "rejected": [{k: h[k] for k in ("n", "pmid", "feature_text_as_stated", "hpo_id", "hpo_label", "method")} | {"note": h.get("rater_note", "")}
                                 for h in filled if h not in ok]}
 
-    out = {"run_id": args.run_id, "sheet": args.sheet, "gatekeeper_file": args.gatekeeper_file, "rated": n, "unrated": unrated,
+    out = {"run_id": args.run_id, "sheet": args.sheet, "excluded_claims_sensitivity": sorted(excluded), "gatekeeper_file": args.gatekeeper_file, "rated": n, "unrated": unrated,
            "labels": dict(c), "per_stratum": {k: dict(v) for k, v in sorted(per_stratum.items())},
            "unsupported_strict": strict, "not_supported_lenient": lenient, "stratum_weighted": weighted, "q4_gate": gate,
            "gatekeeper_confusion_rows_gatekeeper_cols_human": confusion,
