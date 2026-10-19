@@ -36,11 +36,6 @@ How to use this file:
   - For the pilot, keep the ClinVar-seeded papers but report every result with and without them; the tags make this cheap.
   - Use the difference between the two to set the rule for the six-disease study before the freeze.
 
-**D-31 · Stacked multi-patient table cells** (opened 2026-10-19)
-- **The finding:** in the re-audit (`reports/poc_stage4_5_findings.md` §10.7), all 3 unsupported claims are values read by position from one supplementary table whose cells stack several patients' values ("18 / 24 / 21 / 57"). Jimmy could not verify them and judged them uncertain. The v4 rule allows such positional reading when the number of values equals the number of people.
-- **Recommendation:** extraction v6 drops positional reading. A stacked value is recorded only when the paper labels it for that person; otherwise "not reported", with the reason in `method_note`. Gatekeeper v4 treats a positional reading as at most partially supported. Both go into the frozen pipeline; no new pilot run (the 250-claim audit is the measure).
-- **Cost of the change:** some lost recall in papers that publish per-family stacked tables (42128528's Supplementary File 1 is the example).
-
 ### Needed before the pre-registration can be frozen
 
 **D-08 · Substitute-disease trigger**
@@ -105,6 +100,11 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · D-31 decided: no positional reading of stacked cells; pilot recommendation "go with fixes"
+Jimmy chose the recommended option on both questions (asked in the session, 2026-10-19):
+- **D-31 · Stacked cells.** Extraction v6 (`pipeline/extract/claude_code/prompts/extract_v6.md`) no longer assigns stacked values ("18 / 24 / 21 / 57") to people by position; a value is used only when the paper labels it for the person, otherwise "not reported". Gatekeeper v4 (`gatekeeper_v4.md`) treats a positional reading as at most partially supported. Both go into the frozen pipeline; no new pilot run.
+- **Stage 7 recommendation:** "go with fixes". The pilot report recommends scale-up to six diseases with the D-29 and D-31 fixes frozen into the pipeline. It states plainly that Q4 was not met in the pilot (6.0% first audit; 6.3% re-audit) and that the pre-registered 250-claim audit of the frozen pipeline decides the false-positive result.
 
 ### 2026-10-19 · Re-audit second look done: final 3 of 48 unsupported (6.3%); D-31 opened
 - **Second look:** two labels changed (C006555 to supported; C011145 to partial). The three stacked-table claims stay unsupported; Jimmy: he "could not clearly assess" those tables and thinks them uncertain. Two claims stay unrated (n = 48).
