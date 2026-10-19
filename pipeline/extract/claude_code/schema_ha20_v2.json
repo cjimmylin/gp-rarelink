@@ -1,0 +1,583 @@
+{
+  "tables": [
+    {
+      "name": "publications",
+      "description": "One row per source document. Study-level facts only.",
+      "fields": [
+        {
+          "name": "pmid",
+          "data_type": "str",
+          "required": true,
+          "description": "PubMed ID of this document, taken from the document header line 'PMID:' only.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "first_author",
+          "data_type": "str",
+          "required": false,
+          "description": "Surname of the first author as printed.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "year",
+          "data_type": "int",
+          "required": false,
+          "description": "Publication year as printed.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "study_type",
+          "data_type": "str",
+          "required": false,
+          "enum_values": [
+            "case report",
+            "case series/cohort",
+            "review/meta-analysis",
+            "other"
+          ],
+          "description": "Design of this document as stated or evident from its structure.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "n_patients_reported",
+          "data_type": "int",
+          "required": false,
+          "description": "Number of patients with a TNFAIP3 variant described in this document, as stated by the authors.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "cites_prior_report_of_same_patients",
+          "data_type": "bool",
+          "required": false,
+          "description": "True only if the document states that some of its patients were described in an earlier publication.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "prior_report_citation",
+          "data_type": "str",
+          "required": false,
+          "description": "The reference (authors, year, PMID or reference number) the document gives for the earlier description of the same patients, verbatim.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        }
+      ]
+    },
+    {
+      "name": "individuals",
+      "description": "One row per individual person (proband or relative) with clinical or genetic information in a document. Never merge two people. Never invent a person who is not described.",
+      "fields": [
+        {
+          "name": "pmid",
+          "data_type": "str",
+          "required": true,
+          "description": "PubMed ID of the document this row comes from.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "individual_label_in_paper",
+          "data_type": "str",
+          "required": true,
+          "description": "The label the document uses for this person, verbatim (e.g. 'Patient 3', 'II-2', 'the proband', 'her mother'). If the document has one unnamed patient, use 'patient'.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "family_label_in_paper",
+          "data_type": "str",
+          "required": false,
+          "description": "Family or pedigree label used by the document, verbatim; 'not reported' if none.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "is_proband",
+          "data_type": "bool",
+          "required": false,
+          "description": "True if the document calls this person the proband or index case, or if they are the single patient of a case report.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "sex",
+          "data_type": "str",
+          "required": false,
+          "enum_values": [
+            "male",
+            "female",
+            "not reported"
+          ],
+          "description": "Sex as stated.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "age_at_onset_original_text",
+          "data_type": "str",
+          "required": false,
+          "description": "Age at symptom onset exactly as written (e.g. '3 months', 'infancy', 'at the age of 12 years'); 'not reported' if absent.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "age_at_onset_iso8601",
+          "data_type": "str",
+          "required": false,
+          "description": "Age at onset as an ISO 8601 duration (P3M, P12Y) only when the original text gives a number; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "age_at_last_evaluation_original_text",
+          "data_type": "str",
+          "required": false,
+          "description": "Age at the last evaluation or at the time of report, exactly as written; 'not reported' if absent.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "age_at_last_evaluation_iso8601",
+          "data_type": "str",
+          "required": false,
+          "description": "ISO 8601 duration only when a number is given; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "age_at_diagnosis_original_text",
+          "data_type": "str",
+          "description": "Age at diagnosis (clinical or genetic) exactly as written; 'not reported' if absent. Use this, not onset, when the paper gives an age at diagnosis."
+        },
+        {
+          "name": "age_at_diagnosis_iso8601",
+          "data_type": "str",
+          "description": "ISO 8601 duration only when the original text gives a number; otherwise null."
+        },
+        {
+          "name": "ethnicity_or_country",
+          "data_type": "str",
+          "required": false,
+          "description": "Ancestry, ethnicity or country of origin as stated; 'not reported' if absent.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "consanguinity",
+          "data_type": "str",
+          "required": false,
+          "enum_values": [
+            "yes",
+            "no",
+            "not reported"
+          ],
+          "description": "Parental consanguinity as stated.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "vital_status",
+          "data_type": "str",
+          "required": false,
+          "enum_values": [
+            "alive",
+            "deceased",
+            "not reported"
+          ],
+          "description": "Vital status at last report as stated.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "deceased_age_iso8601",
+          "data_type": "str",
+          "required": false,
+          "description": "Age at death as ISO 8601 duration if stated; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "cause_of_death",
+          "data_type": "str",
+          "required": false,
+          "description": "Cause of death as stated; 'not reported' if absent.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "treatment_summary",
+          "data_type": "str",
+          "required": false,
+          "description": "Treatments the document reports for this person, as a short verbatim-based summary; 'not reported' if absent.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "disease_label_as_stated",
+          "data_type": "str",
+          "required": false,
+          "description": "The diagnosis the authors give this person, verbatim (e.g. 'A20 haploinsufficiency', 'Behcet-like disease').",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "clinical_diagnosis_basis",
+          "data_type": "str",
+          "required": false,
+          "description": "How the diagnosis was made per the document (genetic testing, clinical criteria, both), verbatim-based.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "source_reference_in_review",
+          "data_type": "str",
+          "description": "Only for a person taken from a table or summary of previously published cases (for example a review or a literature table in a case report): the reference the document gives for that person, verbatim (reference number, authors and year, or PMID as printed). 'not reported' for people this document describes first-hand."
+        }
+      ]
+    },
+    {
+      "name": "variants",
+      "description": "One row per (individual, variant). Record variant descriptions exactly as printed; do not convert between cDNA, protein or genomic notation, and do not infer a transcript.",
+      "fields": [
+        {
+          "name": "pmid",
+          "data_type": "str",
+          "required": true,
+          "description": "PubMed ID of the document this row comes from.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "individual_label_in_paper",
+          "data_type": "str",
+          "required": true,
+          "description": "Must match the individuals table label for the same person in the same document.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "gene_symbol_as_stated",
+          "data_type": "str",
+          "required": true,
+          "description": "Gene symbol exactly as printed (expected TNFAIP3; record whatever is printed).",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "variant_original_string",
+          "data_type": "str",
+          "required": true,
+          "description": "The shortest contiguous text that gives the variant description exactly as printed (for example 'c.1727dupC' or 'NM_006290.3:c.653del:p.Leu218TrpfsTer10'). When the paper prints the cDNA, transcript and protein in separate places, record the cDNA (or, failing that, the protein) string here and the other parts in their own fields.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "transcript_as_stated",
+          "data_type": "str",
+          "required": false,
+          "description": "Reference transcript (e.g. NM_006290.3) only if printed; otherwise 'not reported'.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "cdna_hgvs_as_stated",
+          "data_type": "str",
+          "required": false,
+          "description": "The c. part exactly as printed, if any; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "protein_hgvs_as_stated",
+          "data_type": "str",
+          "required": false,
+          "description": "The p. part exactly as printed, if any; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "genomic_coordinates_as_stated",
+          "data_type": "str",
+          "required": false,
+          "description": "Genomic coordinates or g. description exactly as printed, with the genome build if printed; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "variant_type_as_stated",
+          "data_type": "str",
+          "required": false,
+          "enum_values": [
+            "missense",
+            "nonsense",
+            "frameshift",
+            "splice",
+            "in-frame indel",
+            "large deletion/CNV",
+            "other",
+            "not reported"
+          ],
+          "description": "Variant class only as the authors describe it; 'not reported' if they do not.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "zygosity",
+          "data_type": "str",
+          "required": false,
+          "enum_values": [
+            "heterozygous",
+            "homozygous",
+            "compound heterozygous",
+            "hemizygous",
+            "mosaic",
+            "not reported"
+          ],
+          "description": "Zygosity as stated.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "inheritance",
+          "data_type": "str",
+          "required": false,
+          "enum_values": [
+            "de novo",
+            "inherited maternal",
+            "inherited paternal",
+            "inherited unspecified parent",
+            "not reported"
+          ],
+          "description": "Origin of the variant as stated; 'de novo' only if the document says so after parental testing.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "parental_testing_statement",
+          "data_type": "str",
+          "required": false,
+          "description": "What the document says about testing the parents, verbatim-based; 'not reported' if absent.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "functional_evidence_statement",
+          "data_type": "str",
+          "required": false,
+          "description": "Any functional assay result the document reports for this variant (e.g. NF-kB reporter, protein expression), verbatim-based; 'not reported' if absent.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "pathogenicity_as_stated_by_authors",
+          "data_type": "str",
+          "required": false,
+          "description": "The authors' own classification of the variant (e.g. 'pathogenic', 'likely pathogenic', 'VUS', 'novel loss-of-function'), verbatim; 'not reported' if absent.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "acmg_criteria_as_stated",
+          "data_type": "str",
+          "required": false,
+          "description": "ACMG criteria codes if printed (e.g. PVS1, PS2); otherwise 'not reported'.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        }
+      ]
+    },
+    {
+      "name": "phenotypic_features",
+      "description": "One row per (individual, clinical feature) that the document explicitly reports as PRESENT (observed) or explicitly reports as ABSENT (excluded) for that individual. Never emit a row for a feature the document does not mention for that individual.",
+      "fields": [
+        {
+          "name": "pmid",
+          "data_type": "str",
+          "required": true,
+          "description": "PubMed ID of the document this row comes from.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "individual_label_in_paper",
+          "data_type": "str",
+          "required": true,
+          "description": "Must match the individuals table label.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "feature_text_as_stated",
+          "data_type": "str",
+          "required": true,
+          "description": "The clinical feature in the document's own words (e.g. 'recurrent oral ulcers', 'no uveitis').",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "status",
+          "data_type": "str",
+          "required": true,
+          "enum_values": [
+            "observed",
+            "excluded"
+          ],
+          "description": "'observed' if the document says the individual has or had the feature; 'excluded' only if the document explicitly says the feature was absent, negative or not found in this individual.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "evidence_basis",
+          "data_type": "str",
+          "enum_values": [
+            "stated for this individual",
+            "inferred from group statement"
+          ],
+          "description": "'stated for this individual' when the document says it about this person; 'inferred from group statement' only for a statement that names the group explicitly (e.g. 'only Pt3 of the four had fevers' implies the other three did not)."
+        },
+        {
+          "name": "onset_original_text",
+          "data_type": "str",
+          "required": false,
+          "description": "Age or time of onset of this feature exactly as written, if given; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "onset_iso8601",
+          "data_type": "str",
+          "required": false,
+          "description": "ISO 8601 duration only when a number is given; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "severity_or_detail",
+          "data_type": "str",
+          "required": false,
+          "description": "Qualifiers the document attaches to the feature (frequency, severity, laboratory value), verbatim-based; otherwise null.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "hpo_label_candidate",
+          "data_type": "str",
+          "required": false,
+          "description": "The Human Phenotype Ontology term label you believe matches, or null if unsure. This is a candidate only; it is re-bound downstream.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "hpo_id_candidate",
+          "data_type": "str",
+          "required": false,
+          "description": "The HPO identifier (HP:nnnnnnn) for the candidate label, or null if unsure. Never guess an ID.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        }
+      ]
+    },
+    {
+      "name": "phenotype_checklist",
+      "description": "For each individual and each feature in the fixed HA20 checklist below, the three-state status. Emit one row per (individual, checklist feature), always all features. Checklist: oral ulcers; genital ulcers; gastrointestinal ulcers or inflammation; recurrent fever; arthritis or arthralgia; uveitis or other ocular inflammation; skin lesions (rash, folliculitis, erythema nodosum); autoimmune thyroiditis; type 1 diabetes; autoimmune hepatitis; cytopenia (autoimmune); lymphoproliferation or lymphadenopathy; central nervous system involvement; recurrent infections; elevated inflammatory markers (CRP/ESR); autoantibodies (ANA/other); growth failure; pericarditis or other serositis; interstitial lung disease; vasculitis.",
+      "fields": [
+        {
+          "name": "pmid",
+          "data_type": "str",
+          "required": true,
+          "description": "PubMed ID of the document this row comes from.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "individual_label_in_paper",
+          "data_type": "str",
+          "required": true,
+          "description": "Must match the individuals table label.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "checklist_feature",
+          "data_type": "str",
+          "required": true,
+          "description": "One checklist feature name exactly as listed in the table description.",
+          "unit": null,
+          "scale": null,
+          "enum_values": null
+        },
+        {
+          "name": "status",
+          "data_type": "str",
+          "required": true,
+          "enum_values": [
+            "observed",
+            "excluded",
+            "not reported"
+          ],
+          "description": "'observed' if explicitly reported present; 'excluded' if explicitly reported absent; otherwise 'not reported'. Never use 'excluded' for silence.",
+          "unit": null,
+          "scale": null
+        },
+        {
+          "name": "evidence_basis",
+          "data_type": "str",
+          "enum_values": [
+            "stated for this individual",
+            "inferred from group statement",
+            "not reported"
+          ],
+          "description": "Same meaning as in phenotypic_features; 'not reported' when status is 'not reported'."
+        }
+      ]
+    }
+  ],
+  "version": "ha20-v2 (2026-10-18): adds age at diagnosis, source_reference_in_review, evidence_basis; variant_original_string clarified. Derived from pipeline/extract/sliders_adapter/schema_ha20.json."
+}

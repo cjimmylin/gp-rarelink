@@ -1,0 +1,3996 @@
+{
+ "pmid": "37848905",
+ "instructions_version": "extract_v3",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "This single-centre thalidomide cohort of 16 children with monogenic autoinflammatory diseases includes two HA20 patients with individual-level detail in the supplementary table, e.g. case 12 \"TNFAIP3: p. R271X\" and case 13 \"TNFAIP3: p. D70N\".",
+ "method_note": "Read the whole paper, including the supplementary material (MOESM1 disease-activity definitions; MOESM2 per-patient table), and built the JSON with a small Python script. Every value was entered by hand from my reading; the script only assembles the rows and checks the spans verbatim. Scope: 16 patients in the study (cohort_size_as_stated), and only cases 12 and 13 (HA20, TNFAIP3) are in scope; the 14 patients with other monogenic AIDs get no rows. Labels: the paper refers to its patients as 'Case 1', 'Cases 4 and 6', 'cases 4,12,13', 'cases 5 and 12', and its tables number them in a 'No' column, so I used 'Case 12' and 'Case 13'. Two previously published HA20 patients from reference [17] (PMID:34030699) are described in the Discussion ('both showed amelioration of gastrointestinal symptoms... and eventually discontinued glucocorticoid therapy'), so I gave them rows 'ref [17] patient' and 'ref [17] patient 2'. The paper prints no variant and names no gene for them, so they have no variant rows. Their checklist is all 'not reported', because 'gastrointestinal symptoms' does not establish ulcers or inflammation. Table 1 has disease groups as columns, and HA20 is the 6th data column, after AGS, Blau syndrome, CINCA, DADA2 and FMF. Its legend defines each cell as the number of positive cases in that disease category. For the six manifestation rows where the HA20 cell is 0 (growth or intellectual disability, cardiovascular, joint, eye or ear, hematologic, neurologic), I marked the feature excluded for both HA20 patients, with evidence_basis 'inferred from group statement'. Non-zero HA20 counts that cannot be tied to one patient were not used: elevated CRP 1, elevated ESR 1, respiratory 1. So 'elevated inflammatory markers (CRP/ESR)' is 'not reported' for both patients, although one of the two had elevated CRP and one had elevated ESR at baseline. Cardiovascular involvement 0 was not used to exclude 'pericarditis or other serositis' or 'vasculitis', because those are broader or different composite items. 'Peripheral neuropathy' and 'somnolence' are marked excluded for both from 'None of the patients had adverse events such as...'. The study's exclusion criteria (liver dysfunction, neuropathy) were not used as evidence. Case 12 has 'hypothyroidism', which I did not map to the checklist item 'autoimmune thyroiditis' (left 'not reported'). Case 12's 'multiple nodules in both lungs' was not mapped to interstitial lung disease. Case 12's anorexia and nausea are thalidomide adverse events. They are recorded as observed features, with the dose context in severity_or_detail. 'Recurrent fever' is marked observed for both: the per-patient table lists 'Fever', Table 1 has HA20 fever 2, and the text calls the cohort's 8 febrile patients 'recurrent fevers (8, 50.0%)'. The supplementary table gives age at baseline (start of thalidomide): 11.50 years for case 12 and 5.75 years for case 13. Patients were followed for 12 months after baseline, so this is not the age at last evaluation, and the schema has no baseline-age field. I left the ages 'not reported' and give them here. Variants are printed protein-only ('p. R271X', 'p. D70N', with a space after 'p.'), with no transcript, zygosity, inheritance or classification, so those fields are not reported. Table 1 HA20 pre-thalidomide treatment counts: glucocorticoids 0, immunosuppressive agents 1, others 1 (hydroxychloroquine). The last two cannot be attributed to either patient and were left out of treatment_summary. Table 2 HA20 scores use the HA20 severity scale defined in MOESM1 (mild, moderate, severe). Inconsistencies noticed: (a) the Discussion says the 2 patients with side effects had 'nausea, fatigue, and anorexia', but the Results give only anorexia and nausea for cases 5 and 12; fatigue was not recorded for case 12. (b) The Results say ESR 'reached the normal ranges' in '16 patients (100.0%)' at 3 months, although only nine had elevated ESR at baseline. This does not affect individual rows. cites_prior_report_of_same_patients is null: the paper does not state that cases 12 or 13 were described before.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "first_author": {
+     "value": "Zhang",
+     "span": "Authors: Zhang Caihui"
+    },
+    "year": {
+     "value": 2023,
+     "span": "Pediatric Rheumatology Online Journal (2023)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "This was a single-center, single-arm, real-world study."
+    },
+    "n_patients_reported": {
+     "value": 2,
+     "span": "2 A20 haploinsufficiency (HA20)"
+    },
+    "cohort_size_as_stated": {
+     "value": 16,
+     "span": "A total of 16 patients entered this study"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Thalidomide for 12 months; anorexia and nausea at 25 mg/d (1.0–1.5 mg/kg) resolved after dosage reduction; HA20 disease severity Mild at baseline and disease-free activity at 3, 6, 9 and 12 months; treated with thalidomide alone at the end of follow-up; HA20 group efficacy at 12 months 100.0%",
+     "span": [
+      "patients with monogenic AIDs who met the inclusion and exclusion criteria were given thalidomide for 12 months",
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction",
+      "| 12 | HA20^d | Mild | Mild | Disease-free activity | Disease-free activity | Disease-free activity | Disease-free activity |",
+      "3 patients (cases 4,12,13) were treated with thalidomide alone",
+      "Efficacy in DADA2, FMF, HA20 and PLAID after 12 months of thalidomide treatment was 100.0%"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "| 12  | HA20          | TNFAIP3: p. R271X"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic diagnosis (TNFAIP3: p. R271X)",
+     "span": [
+      "with a genetic diagnosis of monogenic AID",
+      "| 12  | HA20          | TNFAIP3: p. R271X"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Thalidomide for 12 months; HA20 disease severity Moderate at baseline, Mild at 3 months, disease-free activity at 6 months, Moderate at 9 months, disease-free activity at 12 months; treated with thalidomide alone at the end of follow-up; HA20 group efficacy at 12 months 100.0%",
+     "span": [
+      "patients with monogenic AIDs who met the inclusion and exclusion criteria were given thalidomide for 12 months",
+      "| 13 | HA20^d | Moderate | Moderate | Mild | Disease-free activity | Moderate | Disease-free activity |",
+      "3 patients (cases 4,12,13) were treated with thalidomide alone",
+      "Efficacy in DADA2, FMF, HA20 and PLAID after 12 months of thalidomide treatment was 100.0%"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "| 13  | HA20          | TNFAIP3: p. D70N"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic diagnosis (TNFAIP3: p. D70N)",
+     "span": [
+      "with a genetic diagnosis of monogenic AID",
+      "| 13  | HA20          | TNFAIP3: p. D70N"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Thalidomide on a background of glucocorticoids or biological agents; eventually discontinued glucocorticoid therapy",
+     "span": [
+      "When two For HA20 patients were treated with thalidomide, both showed amelioration of gastrointestinal symptoms on a background of glucocorticoids or biological agents and eventually discontinued glucocorticoid therapy [17]"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "two For HA20 patients"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "[17] Zhang D, Su G, Zhou Z, et al, 2021, Clinical characteristics and genetic analysis of A20 haploinsufficiency, Pediatr Rheumatol Online J PMID:34030699",
+     "span": [
+      "discontinued glucocorticoid therapy [17]",
+      "[17.] Zhang D, Su G, Zhou Z, et al, 2021, Clinical characteristics and genetic analysis of A20 haploinsufficiency, Pediatr Rheumatol Online J PMID:34030699"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Thalidomide on a background of glucocorticoids or biological agents; eventually discontinued glucocorticoid therapy",
+     "span": [
+      "When two For HA20 patients were treated with thalidomide, both showed amelioration of gastrointestinal symptoms on a background of glucocorticoids or biological agents and eventually discontinued glucocorticoid therapy [17]"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "two For HA20 patients"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "[17] Zhang D, Su G, Zhou Z, et al, 2021, Clinical characteristics and genetic analysis of A20 haploinsufficiency, Pediatr Rheumatol Online J PMID:34030699",
+     "span": [
+      "discontinued glucocorticoid therapy [17]",
+      "[17.] Zhang D, Su G, Zhou Z, et al, 2021, Clinical characteristics and genetic analysis of A20 haploinsufficiency, Pediatr Rheumatol Online J PMID:34030699"
+     ]
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "| 12  | HA20          | TNFAIP3: p. R271X"
+    },
+    "variant_original_string": {
+     "value": "p. R271X",
+     "span": "| 12  | HA20          | TNFAIP3: p. R271X"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p. R271X",
+     "span": "| 12  | HA20          | TNFAIP3: p. R271X"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "| 13  | HA20          | TNFAIP3: p. D70N"
+    },
+    "variant_original_string": {
+     "value": "p. D70N",
+     "span": "| 13  | HA20          | TNFAIP3: p. D70N"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p. D70N",
+     "span": "| 13  | HA20          | TNFAIP3: p. D70N"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Fever",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001945",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "punctate erosion of the rectum",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "multiple nodules in both lungs",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pulmonary nodule",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "hypothyroidism",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypothyroidism",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000821",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "positive ANA",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism; positive ANA, anticardiolipin autoantibodies"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism; positive ANA, anticardiolipin autoantibodies"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism; positive ANA, anticardiolipin autoantibodies"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Antinuclear antibody positivity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003493",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "anticardiolipin autoantibodies",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism; positive ANA, anticardiolipin autoantibodies"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism; positive ANA, anticardiolipin autoantibodies"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism; positive ANA, anticardiolipin autoantibodies"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Anticardiolipin antibody positivity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "anorexia",
+     "span": [
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "adverse event at a dose of 25 mg/d (1.0–1.5 mg/kg) thalidomide, which resolved after dosage reduction",
+     "span": [
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Anorexia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002039",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "nausea",
+     "span": [
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "adverse event at a dose of 25 mg/d (1.0–1.5 mg/kg) thalidomide, which resolved after dosage reduction",
+     "span": [
+      "Two patients (12.50%, cases 5 and 12) experienced anorexia and nausea at a dose of 25 mg/d (1.0–1.5 mg/kg), which resolved after dosage reduction"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Nausea",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002018",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Growth or intellectual disability",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Cardiovascular involvement",
+     "span": [
+      "| Cardiovascular involvement | 1 (14.29) | 3 (42.86) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Cardiovascular involvement | 1 (14.29) | 3 (42.86) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Cardiovascular involvement | 1 (14.29) | 3 (42.86) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the cardiovascular system",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001626",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Joint involvement",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Eye or ear involvement",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Hematologic involvement",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of blood and blood-forming tissues",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001871",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Neurologic involvement",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the nervous system",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000707",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "peripheral neuropathy",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence.",
+      "none of the patients had the symptoms such as numbness, tingling, pain or tremor"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence.",
+      "none of the patients had the symptoms such as numbness, tingling, pain or tremor"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence.",
+      "none of the patients had the symptoms such as numbness, tingling, pain or tremor"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Peripheral neuropathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0009830",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "somnolence",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence."
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Somnolence",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001262",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Fever",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001945",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "rash",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever; rash"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever; rash"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever; rash"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Skin rash",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000988",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Growth or intellectual disability",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Cardiovascular involvement",
+     "span": [
+      "| Cardiovascular involvement | 1 (14.29) | 3 (42.86) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Cardiovascular involvement | 1 (14.29) | 3 (42.86) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Cardiovascular involvement | 1 (14.29) | 3 (42.86) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the cardiovascular system",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001626",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Joint involvement",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Eye or ear involvement",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Hematologic involvement",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of blood and blood-forming tissues",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001871",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Neurologic involvement",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the nervous system",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000707",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "peripheral neuropathy",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence.",
+      "none of the patients had the symptoms such as numbness, tingling, pain or tremor"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence.",
+      "none of the patients had the symptoms such as numbness, tingling, pain or tremor"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence.",
+      "none of the patients had the symptoms such as numbness, tingling, pain or tremor"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Peripheral neuropathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0009830",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "somnolence",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence."
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "None of the patients had adverse events such as peripheral neuropathy and somnolence."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Somnolence",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001262",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "feature_text_as_stated": {
+     "value": "gastrointestinal symptoms",
+     "span": [
+      "When two For HA20 patients were treated with thalidomide, both showed amelioration of gastrointestinal symptoms"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "When two For HA20 patients were treated with thalidomide, both showed amelioration of gastrointestinal symptoms"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "When two For HA20 patients were treated with thalidomide, both showed amelioration of gastrointestinal symptoms"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "amelioration of gastrointestinal symptoms with thalidomide",
+     "span": [
+      "both showed amelioration of gastrointestinal symptoms"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the gastrointestinal tract",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011024",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "feature_text_as_stated": {
+     "value": "gastrointestinal symptoms",
+     "span": [
+      "When two For HA20 patients were treated with thalidomide, both showed amelioration of gastrointestinal symptoms"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "When two For HA20 patients were treated with thalidomide, both showed amelioration of gastrointestinal symptoms"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "When two For HA20 patients were treated with thalidomide, both showed amelioration of gastrointestinal symptoms"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "amelioration of gastrointestinal symptoms with thalidomide",
+     "span": [
+      "both showed amelioration of gastrointestinal symptoms"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the gastrointestinal tract",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011024",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism; positive ANA, anticardiolipin autoantibodies"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X                   | 11.50                    | Female | Fever; punctate erosion of the rectum; multiple nodules in both lungs; hypothyroidism; positive ANA, anticardiolipin autoantibodies"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 12",
+     "span": [
+      "| 12  | HA20          | TNFAIP3: p. R271X",
+      "cases 5 and 12"
+     ]
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever",
+      "| Fever | 0 | 1 (12.50) | 1 (12.50) | 1 (12.50) | 0 | 2 (25.0) |",
+      "particularly recurrent fevers (8, 50.0%)"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Joint involvement | 1 (33.33) | 2 (66.67) | 0 | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Eye or ear involvement | 1 (14.29) | 4 (57.14) | 2 (28.57) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever; rash"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N                    | 5.75                     | Male   | Fever; rash"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Hematologic involvement | 2 (28.57) | 1 (14.29) | 2 (28.57) | 1 (14.29) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Neurologic involvement | 1 (20.0) | 1 (20.0) | 2 (40.0) | 1 (20.0) | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "| Growth or intellectual disability | 1 (16.67) | 2 (33.33) | 2 (33.33) | 0 | 0 | 0 |",
+      "n (%) represents the number of positive cases in each disease category"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "Case 13",
+     "span": [
+      "| 13  | HA20          | TNFAIP3: p. D70N",
+      "cases 4,12,13"
+     ]
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37848905",
+     "span": "PMID: 37848905"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient 2",
+     "span": "When two For HA20 patients were treated with thalidomide"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

@@ -48,3 +48,13 @@ All steps were run on 2026-10-18 in a Claude Code cloud session, after the resea
   - **Q1 gate (at least 70%) not met.** Per `POC_DESIGN.md` Stage 1, the pilot continues on what is available.
   - The paywalled list in `corpus_stats.json` is the starting point for a library request.
 - **Markdown:** 76 papers converted. About 750,000 tokens in total (median 9,171; max 25,491), estimated as characters ÷ 4 because no API key is available to count exactly.
+
+## Update 2026-10-19: human labels applied, statistics refreshed
+
+- **Human labels.** Jimmy confirmed study type for 20 papers and HA20 relevance for 20 papers in the pilot-design session, after Claude read each abstract (`spotcheck_human_labels_2026-10-19.csv`, handed over from branch `claude/zealous-meitner-k7moex`, commit 77a2704). Applied here by `pipeline/extract/corpus/apply_human_labels.py` on Jimmy's instruction ("apply").
+  - All 40 papers are in this manifest; 24 rows changed. Relevance labels are mapped: ha20_patients → yes, tnfaip3_other → no.
+  - **Agreement with this branch's screening labels:** study type 17 of 40; in or out of the extraction corpus 39 of 40. Most disagreements are "other" here versus "functional only", both outside the corpus. The 40 were chosen in the other session, not drawn at random from this manifest.
+  - **One corpus change:** 30488325 leaves the corpus (Jimmy: TNFAIP3-other, not HA20 patients). It had been added at the Stage 1 reconciliation, is paywalled and was never extracted.
+- **Statistics refreshed** (`corpus_stats.json`, 2026-10-19). They now also include the 9 papers added at the Stage 1 reconciliation (DECISIONS.md 2026-10-18): **160 papers in the extraction corpus, 85 with full text (53.1%)**. Q1 (70%) is still not met.
+- This branch's own 20-row spot-check sheet (`study_type_spotcheck.csv`) shares one paper with Jimmy's labels (26846592), now filled; its other 19 rows are still unrated.
+

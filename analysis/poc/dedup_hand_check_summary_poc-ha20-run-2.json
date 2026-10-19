@@ -1,0 +1,115 @@
+{
+  "run_id": "poc-ha20-run-2",
+  "policy": "merge_policy_v3",
+  "merged_pairs": 93,
+  "hand_checked": 93,
+  "verdicts": {
+    "true_merge": 84,
+    "cannot_tell": 3,
+    "false_merge": 6
+  },
+  "verdicts_by_confidence": {
+    "explicit_citation": {
+      "true_merge": 42,
+      "cannot_tell": 2
+    },
+    "strong_match": {
+      "true_merge": 42,
+      "cannot_tell": 1,
+      "false_merge": 6
+    }
+  },
+  "reference_check": {
+    "fail": 2,
+    "pass": 49,
+    "na": 42
+  },
+  "false_merges": [
+    {
+      "pair_no": "8",
+      "pmid_a": "27175295",
+      "label_a": "patient 1",
+      "pmid_b": "40574834",
+      "label_b": "P41",
+      "confidence": "strong_match",
+      "reason": "40574834 Supplementary Table 1 lists the Shigemura-cited C243Y family as F5 (P13 M and P14 F, reference '(7,12)', 12 = Shigemura 2016); P41 is in a different family, F25, with no reference, and the survey's 37 families are unrelated. Only the recurrent variant, sex and similar onset match."
+    },
+    {
+      "pair_no": "22",
+      "pmid_a": "31299923",
+      "label_a": "P1",
+      "pmid_b": "40574834",
+      "label_b": "P39",
+      "confidence": "strong_match",
+      "reason": "Li 2019 P1 is Chinese, but 40574834 is a Japanese national survey and P39 (F23, F, 7 yr, p.Q187X) is Japanese and cites ref 22 (Imai et al. 2020), not Li 2019. Only the recurrent variant, sex and onset match."
+    },
+    {
+      "pair_no": "33",
+      "pmid_a": "33101300",
+      "label_a": "1",
+      "pmid_b": "40574834",
+      "label_b": "P41",
+      "confidence": "strong_match",
+      "reason": "33101300 patient 1 is the Shigemura 2016 male with nephrotic syndrome; 40574834 assigns Shigemura 2016 (ref 12) to family F5 (P13, nephrotic syndrome), while P41 is a separate family (F25) with no prior-report reference, no nephrotic syndrome and chronic hepatitis. Same recurrent missense, different patient."
+    },
+    {
+      "pair_no": "47",
+      "pmid_a": "33101300",
+      "label_a": "61",
+      "pmid_b": "40574834",
+      "label_b": "P39",
+      "confidence": "strong_match",
+      "reason": "33101300 patient 61 comes from Li 2019's Chinese families; 40574834 P39 is Japanese, cites Imai 2020 (ref 22), and lacks recurrent fever, which patient 61 has. Same recurrent nonsense variant in two unrelated patients."
+    },
+    {
+      "pair_no": "49",
+      "pmid_a": "33101300",
+      "label_a": "80",
+      "pmid_b": "40859316",
+      "label_b": "Patient 3",
+      "confidence": "strong_match",
+      "reason": "33101300 patient 80 is from Zhong 2019 family 36, which has a second R45* carrier (patient 81), and has oral ulcers and skin lesions; 40859316 patient 3 is de novo with wild-type parents, no oral aphthosis or rash, and the paper cites Zhong 2019 only for the variant. Different patients."
+    },
+    {
+      "pair_no": "76",
+      "pmid_a": "36211342",
+      "label_a": "Patient 5",
+      "pmid_b": "39845949",
+      "label_b": "case 12",
+      "confidence": "strong_match",
+      "reason": "Same familial variant, different relatives: Patient 5 had onset at 6 months with FMF-like disease on etanercept, while case 12 (Kadowaki 2018, ref 18) had onset at 2 months with aseptic meningitis on colchicine. 40574834 lists them as separate members of family F3 (P4 vs P10)."
+    }
+  ],
+  "cannot_tell": [
+    {
+      "pair_no": "3",
+      "pmid_a": "26642243",
+      "label_a": "unnamed person 9",
+      "pmid_b": "39125844",
+      "label_b": "Table 2 row 28",
+      "confidence": "explicit_citation",
+      "reason": "Citation is correct and both rows are Zhou's Family 5, but the Zhou row is a family-level placeholder (no sex or age) for a dominantly inherited family that may hold several affected carriers; which member the review row (onset 5 y) describes cannot be told from the main text."
+    },
+    {
+      "pair_no": "4",
+      "pmid_a": "26642243",
+      "label_a": "unnamed person 9",
+      "pmid_b": "39845949",
+      "label_b": "case 4",
+      "confidence": "strong_match",
+      "reason": "Case 4 cites ref (4) Aeschlimann 2018, not Zhou (ref 1). Same family is likely (Dutch, c.918C>G = Zhou's only Dutch family), but Zhou's row is a family-level placeholder for a dominant family, so the female case 4 (onset 4 y) cannot be tied to one Zhou individual; 39125844 gives onset 5 y for its Tyr306* row."
+    },
+    {
+      "pair_no": "88",
+      "pmid_a": "37342083",
+      "label_a": "II.2",
+      "pmid_b": "39125844",
+      "label_b": "Table 3 row 4",
+      "confidence": "explicit_citation",
+      "reason": "[66] = El Khouri et al. eLife 2023 (PMID 37342083). The review row pools the family: '13 years' is II.2's current age (her onset was 15 months), and colonic ulcers occur only in her father I.1. II.2 (the index case) is the likeliest intended person, but the row is not a one-person record."
+    }
+  ],
+  "merged_pairs_without_verdict": [],
+  "pairs_with_more_than_one_verdict": [],
+  "verdict_rows_not_matching_a_merge": []
+}

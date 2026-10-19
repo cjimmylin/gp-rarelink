@@ -57,6 +57,19 @@ The award covers Cowork and Claude Code, so these sessions count against the gra
 Pilot model work in this session (D-20), from the session's own list-price usage readings, which include orchestration:
 - **Stage 1 screening (838 abstracts, nine Sonnet helpers):** from $19.63 to $31.46 (2026-10-18, 20:28 → 20:38 UTC).
 - **Stage 2 smoke test (three papers, Opus helpers):** from $31.46 to $44.02 (`runs/poc-ha20-smoke-1/manifest.json`).
+- **Stage 3 run-1 (85 papers, Opus helpers, three re-extractions):** from $45.93 to $206.13 (`runs/poc-ha20-run-1/manifest.json`), about $1.88 per paper.
+- **Stage 3 repeat (15 papers) plus merge hand check (two Opus helpers) and merge-script fixes:** from $206.13 to $240.36 (`runs/poc-ha20-run-1-repeat/manifest.json`).
+- **Stage 3 total:** $194.43 against the ~$381 approved under D-21 (`reports/poc_stage3_findings.md` §7).
+- **Stage 3b preparation (D-22: converter fixes, supplementary files, instructions v3):** from $240.36 to $252.27.
+- **Stage 3b run-2 (85 papers, Opus helpers, one repair-only resume):** from $252.27 to $418.07 (`runs/poc-ha20-run-2/manifest.json`), about $1.95 per paper.
+- **Stage 3b repeat (15 papers) plus merge hand check (three Opus helpers):** from $418.07 to $460.75 (`runs/poc-ha20-run-2-repeat/manifest.json`).
+- **Stage 3b total:** $220.39 against the ~$190 estimated under D-22 and the $300 stop-and-ask line (`reports/poc_stage3b_findings.md` §8). Pilot total so far: $460.75 against the $1,000 ceiling.
+- **D-23 and D-24 preparation (merge policy v4, input fixes, instructions v4):** from $460.75 to $463.50.
+- **v4 check (10 papers, Opus helpers), Stage 4 HPO binding (four Sonnet helpers) and Stage 5 gatekeeper (97 Opus helpers):** from $463.50 to $580.31, $116.81 together, against ~$195 approved under D-24 and D-25. They overlapped in one window (2026-10-19 02:08–03:02 UTC) and cannot be split (`runs/poc-ha20-v4-check/manifest.json`, `runs/poc-ha20-run-2-gatekeeper/manifest.json`).
+- **Overage:** from about 02:50 UTC on 2026-10-19 the account was past its five-hour usage limit and the session ran on overage (extra usage). If overage bills differently from the grant credits, this matters for D-17.
+- **Pilot total so far:** $580.31 against the $1,000 ceiling (`reports/poc_stage4_5_findings.md` §7).
+- **After the audit (D-26 to D-28 work and the gatekeeper v2 re-check on 50 claims):** from $580.31 to $610.19 (the re-check itself from $593.02, `runs/poc-ha20-gatekeeper-v2-recheck/manifest.json`). Pilot total so far: $610.19 against the $1,000 ceiling.
+- **D-29 re-run, Stage 6 and the re-audit (overlapping):** from $614.97 to $673.89, $58.92 together, against the $82.61 estimate for the re-run alone (`runs/poc-ha20-v5-subset/manifest.json`). The reading stayed at $614.97 from about 09:17 to past 09:36 UTC while helpers ran. Pilot total so far: $673.89 against the $1,000 ceiling (`reports/poc_report.md` §8).
 
 For scale, the two Claude Code sessions' own metadata reported about $10 ("Claude Code repo status") and about $17 ("Rarelink POC study design") as of about 18:00 UTC on 2026-10-18. These are list-price estimates the sessions report about themselves, not billing figures; the ledger needs figures from Settings > Usage.
 
@@ -86,7 +99,12 @@ Estimate method for scaling extraction:
 
 | Date | Run | Line | Basis | Estimate (USD) | Approved by | Actual (USD) |
 |---|---|---|---|---|---|---|
-| 2026-10-18 | Pilot Stage 3: extraction over 76 full-text HA20 papers (D-20 route) | Extraction | Smoke test: at most $4.19/paper (`runs/poc-ha20-smoke-1/stage3_estimate.json`) | one run ~$318; two runs ~$636; one run + 15-paper repeat ~$381 (upper bounds, 76 papers; the reconciled corpus has 80, about +$17) | **Jimmy, 2026-10-18 (D-21): one run + 15-paper repeat** | — |
+| 2026-10-18 | Pilot Stage 3: extraction over 76 full-text HA20 papers (D-20 route) | Extraction | Smoke test: at most $4.19/paper (`runs/poc-ha20-smoke-1/stage3_estimate.json`) | one run ~$318; two runs ~$636; one run + 15-paper repeat ~$381 (upper bounds, 76 papers; the reconciled corpus has 80, about +$17) | **Jimmy, 2026-10-18 (D-21): one run + 15-paper repeat** | — (session readings: +$194.43, an estimate; see above) |
+| 2026-10-18 | Pilot Stage 3b: run-2 over 85 papers under revised instructions, plus a 15-paper repeat and a merge hand check | Extraction | Run-1 rate, about $1.88/paper from session readings | ~$160 + ~$30 | **Jimmy, 2026-10-19 (D-22)** | — (session readings: +$220.39 incl. $11.91 preparation, an estimate; see above) |
+| 2026-10-19 | Pilot Stage 5: gatekeeper re-read of every run-2 value | Gatekeeper | Run-2 rate, about $1.95/paper | ~$170 | **Jimmy, 2026-10-19 (D-25)** | — (session readings: +$116.81 together with the v4 check and Stage 4 binding, an estimate; see above) |
+| 2026-10-19 | Instructions v4 check: 10-paper mini-run | Extraction | Run-2 rate | ~$25 | **Jimmy, 2026-10-19 (D-24)** | — (included in the $116.81 above) |
+| 2026-10-19 | Gatekeeper v2 re-check on the 50 audit claims (28 papers) | Gatekeeper | Run-2 gatekeeper, about $1 per helper | ~$30 | **Jimmy, 2026-10-19 (D-28)**, within the Stage 5 approval | — (session readings: +$17.17 including orchestration, an estimate) |
+| 2026-10-19 | D-29 re-run: instructions v5 on 20 HA20 papers, gatekeeper v3 on all their values | Extraction, gatekeeper | Run-2 rates (`analysis/poc/pick_v5_subset.py`): $35.84 + $46.77 | $82.61 (Jimmy approved about $110) | **Jimmy, 2026-10-19 (D-29)** | — (session readings: +$58.92, $614.97 to $673.89, including concurrent Stage 6 and re-audit work; an estimate) |
 | 2026-10-18 | Pilot (POC) on A20 haploinsufficiency, all model-calling stages | Extraction (mostly), gatekeeper, harness, bias arm | `POC_DESIGN.md` §5. Per-stage rows to be added before each run, after Stage 2 measures per-paper cost | $200–400; ceiling $1,000; hard stop $1,500 | Jimmy (chat, 2026-10-18) | — |
 
 **Pilot billing (D-20).** The pilot runs with Claude Code helper agents, not the API. Its model use is therefore Claude Code usage on whichever claude.ai account runs the session, which counts against the award if that is the funded account (D-15). Each stage logs the session's own list-price usage estimate before and after. Jimmy reconciles the totals against Settings > Usage. If the SLIDERS/API route is used later, D-17 applies to that spend.

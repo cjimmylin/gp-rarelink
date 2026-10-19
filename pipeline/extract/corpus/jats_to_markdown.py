@@ -24,8 +24,12 @@ def _strip_ns(root: ET.Element) -> None:
             el.tag = el.tag.split("}", 1)[1]
 
 
-def _inline(el: ET.Element | None) -> str:
-    """Flatten inline content, keeping sub/sup markers and xref labels."""
+def _inline(el: ET.Element | None, bold: bool = False) -> str:
+    """Flatten inline content, keeping sub/sup markers and xref labels.
+
+    With bold=True (used for table body cells, 2026-10-19, D-24), <bold> text is
+    kept as **text**, because some tables mark abnormal values only in bold.
+    """
     if el is None:
         return ""
     parts: list[str] = []
@@ -34,17 +38,20 @@ def _inline(el: ET.Element | None) -> str:
     for child in el:
         tag = child.tag
         if tag in ("sub",):
-            parts.append("_" + _inline(child))
+            parts.append("_" + _inline(child, bold))
         elif tag in ("sup",):
-            parts.append("^" + _inline(child))
+            parts.append("^" + _inline(child, bold))
+        elif tag == "bold" and bold:
+            inner = _inline(child, bold)
+            parts.append(f"**{inner}**" if inner else "")
         elif tag in ("xref", "bold", "italic", "underline", "sc", "named-content", "ext-link", "uri", "styled-content", "inline-formula", "abbrev", "email", "monospace", "roman"):
-            parts.append(_inline(child))
+            parts.append(_inline(child, bold))
         elif tag in ("break",):
             parts.append(" ")
         elif tag in ("table-wrap", "fig", "boxed-text", "list", "disp-formula", "supplementary-material"):
             pass  # block content handled by the caller
         else:
-            parts.append(_inline(child))
+            parts.append(_inline(child, bold))
         if child.tail:
             parts.append(child.tail)
     return _WS.sub(" ", "".join(parts)).strip()
@@ -90,19 +97,43 @@ class Converter:
         self.n_figures = 0
 
     # ---- tables -----------------------------------------------------------
+    @staticmethod
+    def _span(cell: ET.Element, attr: str) -> int:
+        try:
+            return max(1, int(cell.get(attr, "1") or 1))
+        except ValueError:
+            return 1
+
     def _table_rows(self, table: ET.Element) -> list[list[str]]:
-        rows: list[list[str]] = []
-        for tr in table.iter("tr"):
-            cells = []
+        """Lay the table out on a grid, honouring rowspan and colspan.
+
+        A cell that spans several rows or columns has its text repeated in every
+        cell it covers, so each Markdown row keeps its own patient label and each
+        column keeps its header. (Before 2026-10-18 rowspan was ignored, which
+        shifted later cells left; until 2026-10-19 the extra columns of a colspan
+        were left empty, so grouped headers such as a source paper spanning two
+        patient columns came through blank. See reports/poc_stage3_findings.md.)
+        """
+        grid: dict[tuple[int, int], str] = {}
+        n_rows = 0
+        for r, tr in enumerate(table.iter("tr")):
+            n_rows = r + 1
+            c = 0
             for cell in tr:
                 if cell.tag not in ("td", "th"):
                     continue
-                text = _inline(cell).replace("|", "\\|")
-                span = int(cell.get("colspan", "1") or 1)
-                cells.append(text)
-                cells.extend([""] * (span - 1))
-            rows.append(cells)
-        return rows
+                while (r, c) in grid:
+                    c += 1
+                text = _inline(cell, bold=cell.tag == "td").replace("|", "\\|")
+                cs, rs = self._span(cell, "colspan"), self._span(cell, "rowspan")
+                for dr in range(rs):
+                    for dc in range(cs):
+                        grid.setdefault((r + dr, c + dc), text)
+                c += cs
+        if not grid:
+            return []
+        width = max(col for _, col in grid) + 1
+        return [[grid.get((i, j), "") for j in range(width)] for i in range(n_rows)]
 
     def _table_md(self, table: ET.Element) -> str:
         rows = self._table_rows(table)
@@ -183,6 +214,14 @@ class Converter:
                 out.extend(self._block(child, level))
         elif tag in ("disp-quote", "statement"):
             out.append("> " + _inline(el))
+        elif tag == "ref-list":
+            # reference lists nested inside a section (some publishers do this)
+            title = _inline(el.find("title"))
+            if title or level <= 2:  # a nested list under a titled section needs no second heading
+                out.append("#" * min(level, 6) + " " + (title or "References"))
+            out.extend(self._ref(r, n) for n, r in enumerate(el.findall("ref"), 1))
+            for sub in el.findall("ref-list"):
+                out.extend(self._block(sub, level + 1))
         elif tag in ("title",):
             pass
         else:
@@ -192,7 +231,7 @@ class Converter:
         return out
 
     # ---- references -------------------------------------------------------
-    def _ref(self, ref: ET.Element) -> str:
+    def _ref(self, ref: ET.Element, position: int | None = None) -> str:
         label = _inline(ref.find("label"))
         cit = ref.find(".//element-citation")
         if cit is None:
@@ -214,11 +253,17 @@ class Converter:
             source = _inline(cit.find("source"))
             text = ", ".join(x for x in [", ".join(names), year, title, source] if x)
         pmid = ""
-        for pid in cit.findall("pub-id"):
+        for pid in cit.iter("pub-id"):
             if pid.get("pub-id-type") == "pmid":
                 pmid = " PMID:" + _inline(pid)
+        if not pmid:
+            for link in ref.iter("ext-link"):
+                if link.get("ext-link-type") == "pmid":
+                    href = next((v for k, v in link.attrib.items() if k.endswith("href")), "").strip()
+                    if href.isdigit():
+                        pmid = " PMID:" + href
         rid = ref.get("id", "")
-        lab = label or rid
+        lab = label or (str(position) if position is not None else rid)
         return f"[{lab}] {text}{pmid}".strip()
 
     def convert(self, xml_bytes: bytes) -> Article:
@@ -264,15 +309,25 @@ class Converter:
         if body is not None:
             for child in body:
                 blocks.extend(self._block(child, 2))
+        # Some publishers put tables and figures in <floats-group>, a sibling of
+        # <body>, and only cite them from the text. Before 2026-10-18 these were
+        # dropped, so 12 HA20 papers lost their patient tables.
+        floats = art.find("floats-group")
+        if floats is not None:
+            float_blocks: list[str] = []
+            for child in floats:
+                float_blocks.extend(self._block(child, 2))
+            float_blocks = [b for b in float_blocks if b]
+            if float_blocks:
+                blocks.append("## Tables and figures")
+                blocks.extend(float_blocks)
         a.body_md = "\n\n".join(b for b in blocks if b)
         back = art.find("back")
         back_blocks: list[str] = []
         if back is not None:
             for child in back:
                 if child.tag == "ref-list":
-                    title = _inline(child.find("title")) or "References"
-                    back_blocks.append("## " + title)
-                    back_blocks.extend(self._ref(r) for r in child.findall("ref"))
+                    back_blocks.extend(self._block(child, 2))
                 elif child.tag in ("sec", "ack", "fn-group", "notes", "app-group", "app"):
                     back_blocks.extend(self._block(child, 2))
         a.back_md = "\n\n".join(b for b in back_blocks if b)

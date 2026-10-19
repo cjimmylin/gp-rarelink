@@ -1,0 +1,4865 @@
+{
+ "pmid": "31175876",
+ "instructions_version": "extract_v2",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "The paper reports a family with a heterozygous TNFAIP3 variant ('Whole-exome sequencing revealed a heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3') and a second family with 'the p.N98Tfs25 TNFAIP3 variant'.",
+ "method_note": "Read the whole paper (a JACI letter with an online-repository Methods section and Table E1) and transcribed values by hand into a Python builder script; a second script checked every span verbatim against the paper Markdown and every row against the schema field list. Table E1 has the patient as a column; its column header is 'Subject III.1 (reference range)'. Individuals: family 1 (Fig 1 pedigree, no family label) III.1 proband, III.2 younger sister, II.2 mother, II.4 (died at 17 of early-onset SLE; relationship to the proband, sex and genotype not stated, so no variant row); family 2 (Fig 2 I, no family label) a 4-year-old boy labelled here by the paper's description '4-year-old nonconsanguineous white male' (also called 'the patient', 'this boy', 'The additional case of HA20'), and his symptomatic father. Subject II.1 is mentioned only as a 'family member' whose serum was used for cytokine measurement, with no clinical or genetic information, so no row was made for II.1. Not recorded as values: inheritance for III.1/III.2 (the mother II.2 carries the variant and the pedigree 'shows segregation', but the paper never states maternal inheritance) and for the boy (father carries it); this is in parental_testing_statement instead. III.1 age: presented as an '8-year-old', with follow-up '24 months later' after baricitinib, so age at last evaluation is not stated; individual-level age at onset left 'not reported' because the earliest symptom (choreoretinitis from 6 months) was attributed at the time to congenital infection; the 6-month onset is kept on that feature row. Variant notation printed non-standard ('c.A1939C', unversioned 'NM_001270508', 'p.N98Tfs25'); recorded as printed. Variant type not stated by the authors for either variant. The boy is not called proband/index, so is_proband is null. n_patients_reported is null: the authors give no total (they name 'affected patients (subjects III.1, III.2, and II.2)' plus the boy and his father). The panel reference E1 (Omoyinmi 2017) is cited for the sequencing panel used for the boy; the paper does not say he was described there, so cites_prior_report_of_same_patients is null. Table E1 laboratory values outside the printed reference ranges (hemoglobin '10 g/L (120-160 g/L)', raised IgG, IgA, IgM, C3, low ALP) were not turned into phenotype rows because the paper does not call them abnormal. The NOD2 testing in the laboratory sentence has no result stated, and no non-TNFAIP3 variant is attributed to anyone. Group-level statements (cytokines higher 'in heterozygotes for p.T647P'; p65 and IRF3 in 'all heterozygotes') were used only in functional_evidence_statement, not as phenotypes. The father's 'similar clinical features' were not mapped to checklist items. The boy's 'recurrent oral inflammation' was not taken as oral ulcers; III.1's 'no history of systemic symptoms' was not taken to exclude fever. Contradictions in the paper: (1) the text places III.1's lesions in the paracentral lobule and thalamus 'on the left', but the Fig 1 legend says 'right paracentral lobule'; (2) the text says STAT1/STAT3 phosphorylation was raised in lymphocytes 'from subject III.1', the Fig 2 D-E legend says 'from p.T647P TNFAIP3 heterozygotes'; (3) minor P-value differences between text and Fig E2 legend (IRF3 .0043 vs .004; STAT1 .037 vs .03).",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "first_author": {
+     "value": "Mulhern",
+     "span": "Authors: Mulhern Ciara M"
+    },
+    "year": {
+     "value": 2019,
+     "span": "The Journal of Allergy and Clinical Immunology (2019)"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "We report a case of TNFAIP3-mediated autoinflammation manifesting as progressive neuroinflammation."
+    },
+    "n_patients_reported": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "The proband (III.1)"
+    },
+    "sex": {
+     "value": "female",
+     "span": "The proband (III.1) was an 8-year-old girl"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Pakistani-Indian descent",
+     "span": "nonconsanguineous Pakistani-Indian descent"
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "8-year-old girl of nonconsanguineous Pakistani-Indian descent"
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": "24 months later, she remains stable"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Empiric anti-tuberculosis treatment (isoniazid/rifampicin/pyrazinamide/moxifloxacin); prednisolone 2 mg/kg/d weaning to 0.5 mg/kg/d plus mycophenolate mofetil (no response); intravenous cyclophosphamide (6 doses) with prednisolone at 2 mg/kg/d (poor response); baricitinib 6 mg/d (oral JAK1/JAK2 inhibitor) with rapid clinical and radiologic improvement; prednisolone weaned off",
+     "span": [
+      "empiric anti-tuberculosis treatment was started (isoniazid/rifampicin/pyrazinamide/moxifloxacin)",
+      "she received treatment with 2 mg/kg/d prednisolone, weaning to 0.5 mg/kg/d over 6 months and mycophenolate mofetil (1200 mg/m^2/d). There was no response to this treatment",
+      "Intravenous cyclophosphamide (6 doses, 500-750 mg/m^2) was then given, and prednisolone continued at a higher dose (2 mg/kg/d). There was poor response to these treatments",
+      "was started on baricitinib (6 mg/d), an oral JAK1/JAK2 inhibitor that blocks interferon signaling",
+      "This resulted in rapid clinical and radiologic improvement: 24 months later, she remains stable, with no further seizures and marked resolution of the intracerebral inflammatory lesion (Fig 1, H-J). Prednisolone was weaned off for the first time in 2 years."
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "TNFAIP3-mediated autoinflammation manifesting as progressive neuroinflammation",
+     "span": "We report a case of TNFAIP3-mediated autoinflammation manifesting as progressive neuroinflammation."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Genetic testing: whole-exome sequencing found a heterozygous TNFAIP3 p.T647P variant, confirmed by Sanger sequencing. Earlier clinical working diagnoses: unclassified granulomatous neuroinflammatory disorder reminiscent of neurosarcoid, then unclassified interferonopathy",
+     "span": [
+      "Whole-exome sequencing revealed a heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3, which was confirmed by using Sanger sequencing in subject III.1",
+      "the patient was considered to have an unclassified granulomatous neuroinflammatory disorder reminiscent of neurosarcoid",
+      "she was considered to have an unclassified interferonopathy"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Her younger sister (subject III.2)"
+    },
+    "sex": {
+     "value": "female",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "age_at_onset_original_text": {
+     "value": "from the age of 6 months",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P6M",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": "immune cells from subjects II.2 and III.2, as well as heterozygotes for the p.T647P TNFAIP3 variant, exhibited enhanced NF-κB activity and IRF3 activation, but these subjects currently have a much milder phenotype"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "further emphasizing the previously described clinical heterogeneity of HA20, even within the same kindred"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Genetic testing: the TNFAIP3 p.T647P variant found in the proband was also present in this symptomatic sibling (familial segregation by PCR and Sanger sequencing)",
+     "span": [
+      "also present in the symptomatic sibling (subject III.2) and mildly symptomatic mother (subject II.2; Fig 1, A and K)",
+      "familial segregation was ascertained by using PCR and Sanger sequencing"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "mildly symptomatic mother (subject II.2"
+    },
+    "sex": {
+     "value": "female",
+     "span": "mildly symptomatic mother (subject II.2"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": "immune cells from subjects II.2 and III.2, as well as heterozygotes for the p.T647P TNFAIP3 variant, exhibited enhanced NF-κB activity and IRF3 activation, but these subjects currently have a much milder phenotype"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "further emphasizing the previously described clinical heterogeneity of HA20, even within the same kindred"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Genetic testing: the TNFAIP3 p.T647P variant found in the proband was also present in this mildly symptomatic mother (familial segregation by PCR and Sanger sequencing)",
+     "span": [
+      "also present in the symptomatic sibling (subject III.2) and mildly symptomatic mother (subject II.2; Fig 1, A and K)",
+      "familial segregation was ascertained by using PCR and Sanger sequencing"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4 died at the age of 17 years from early-onset systemic lupus erythematosus."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Subject II.4 died at the age of 17 years from early-onset systemic lupus erythematosus."
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "Subject II.4 died at the age of 17 years"
+    },
+    "deceased_age_iso8601": {
+     "value": "P17Y",
+     "span": "Subject II.4 died at the age of 17 years"
+    },
+    "cause_of_death": {
+     "value": "early-onset systemic lupus erythematosus",
+     "span": "died at the age of 17 years from early-onset systemic lupus erythematosus"
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "early-onset systemic lupus erythematosus",
+     "span": "Subject II.4 died at the age of 17 years from early-onset systemic lupus erythematosus."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "a 4-year-old nonconsanguineous white male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "4-year-old",
+     "span": "a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P4Y",
+     "span": "a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "white",
+     "span": "a 4-year-old nonconsanguineous white male"
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "a 4-year-old nonconsanguineous white male"
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "a 4-year-old nonconsanguineous white male with HA20 without any neurological involvement"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Genetic testing: sequenced on the Vasculitis and Inflammation Panel; heterozygous for the TNFAIP3 p.N98Tfs25 variant",
+     "span": [
+      "The additional case of HA20 studied as disease control was sequenced on the Vasculitis and Inflammation Panel.",
+      "was heterozygous for the p.N98Tfs25 TNFAIP3 variant"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "as was his symptomatic father who had similar clinical features from early childhood"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "as was his symptomatic father"
+    },
+    "sex": {
+     "value": "male",
+     "span": "his symptomatic father"
+    },
+    "age_at_onset_original_text": {
+     "value": "from early childhood",
+     "span": "his symptomatic father who had similar clinical features from early childhood"
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "heterozygous p.N98Tfs25 TNFAIP3–associated autoinflammation",
+     "span": "Pedigree for a family of patients with heterozygous p.N98Tfs25 TNFAIP3–associated autoinflammation"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Genetic testing: heterozygous for the TNFAIP3 p.N98Tfs25 variant, as was his son",
+     "span": [
+      "heterozygous for the p.N98Tfs25 TNFAIP3 variant, as was his symptomatic father"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "variant_original_string": {
+     "value": "c.A1939C (NM_001270508) p.T647P",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "transcript_as_stated": {
+     "value": "NM_001270508",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.A1939C",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.T647P",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "a heterozygous TNFAIP3 p.T647P variant in subjects III.1, III.2, and II.2"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "The variant was also present in the mildly symptomatic mother (subject II.2); familial segregation was ascertained by PCR and Sanger sequencing",
+     "span": [
+      "also present in the symptomatic sibling (subject III.2) and mildly symptomatic mother (subject II.2; Fig 1, A and K)",
+      "familial segregation was ascertained by using PCR and Sanger sequencing"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "Increased phosphorylated p65 in patients' lymphocytes and HDFCs; increased Lys63-ubiquitinated NEMO in TNF-stimulated HDFCs from III.1; constitutive NLRP3 inflammasome activation in PBMCs from III.1; upregulated type 1 interferon-stimulated gene expression in whole blood from III.1; no upregulation of TBK1 binding to A20 in response to TNF-α in HDFCs from III.1",
+     "span": [
+      "There was increased expression of phosphorylated p65 in patients' lymphocytes (P = .0124) and patients' HDFCs (P = .0001) compared with control cells.",
+      "TNF-stimulated HDFCs from subject III.1 also showed increased molecular weight of Lys63-ubiquitinated NF-κB essential modulator as a result of insufficient A20 deubiquitinase activity",
+      "PBMCs from subject III.1 showed constitutive activation of the NLR family pyrin domain containing 3 inflammasome",
+      "Type 1 interferon-stimulated gene expression levels were upregulated in whole blood from subject III.1",
+      "In HDFCs from subject III.1, there was no significant upregulation in binding of TBK1 to the A20 protein in response to TNF-α"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "also present in the symptomatic sibling (subject III.2)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "variant_original_string": {
+     "value": "c.A1939C (NM_001270508) p.T647P",
+     "span": [
+      "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3",
+      "also present in the symptomatic sibling (subject III.2)"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "NM_001270508",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.A1939C",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.T647P",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "a heterozygous TNFAIP3 p.T647P variant in subjects III.1, III.2, and II.2"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "The variant was also present in the mildly symptomatic mother (subject II.2); familial segregation was ascertained by PCR and Sanger sequencing",
+     "span": [
+      "also present in the symptomatic sibling (subject III.2) and mildly symptomatic mother (subject II.2; Fig 1, A and K)",
+      "familial segregation was ascertained by using PCR and Sanger sequencing"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "Immune cells from II.2 and III.2 showed enhanced NF-κB activity and IRF3 activation; in p.T647P heterozygotes (group-level): increased phosphorylated p65 in PBMCs, enhanced phosphorylated IRF3 in lymphocytes, and higher proinflammatory cytokine levels than healthy controls",
+     "span": [
+      "immune cells from subjects II.2 and III.2, as well as heterozygotes for the p.T647P TNFAIP3 variant, exhibited enhanced NF-κB activity and IRF3 activation",
+      "PBMCs derived from heterozygotes for the p.T647P variant of TNFAIP3 showed increased expression of NF-κB phosphorylated p65 transcription factor compared with control cells (P = .0124; Fig 1, L).",
+      "We also observed enhanced expression of phosphorylated IRF3 in lymphocytes from all heterozygotes for p.T647P TNFAIP3 variants (P = .0007; Fig 2, B)",
+      "Levels of several proinflammatory cytokines were substantially greater in heterozygotes for p.T647P TNFAIP3 compared with those in healthy control subjects"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "mildly symptomatic mother (subject II.2"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "variant_original_string": {
+     "value": "c.A1939C (NM_001270508) p.T647P",
+     "span": [
+      "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3",
+      "mildly symptomatic mother (subject II.2"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "NM_001270508",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.A1939C",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.T647P",
+     "span": "heterozygous c.A1939C (NM_001270508) p.T647P variant in TNFAIP3"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "a heterozygous TNFAIP3 p.T647P variant in subjects III.1, III.2, and II.2"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "Immune cells from II.2 and III.2 showed enhanced NF-κB activity and IRF3 activation; in p.T647P heterozygotes (group-level): increased phosphorylated p65 in PBMCs, enhanced phosphorylated IRF3 in lymphocytes, and higher proinflammatory cytokine levels than healthy controls",
+     "span": [
+      "immune cells from subjects II.2 and III.2, as well as heterozygotes for the p.T647P TNFAIP3 variant, exhibited enhanced NF-κB activity and IRF3 activation",
+      "PBMCs derived from heterozygotes for the p.T647P variant of TNFAIP3 showed increased expression of NF-κB phosphorylated p65 transcription factor compared with control cells (P = .0124; Fig 1, L).",
+      "We also observed enhanced expression of phosphorylated IRF3 in lymphocytes from all heterozygotes for p.T647P TNFAIP3 variants (P = .0007; Fig 2, B)",
+      "Levels of several proinflammatory cytokines were substantially greater in heterozygotes for p.T647P TNFAIP3 compared with those in healthy control subjects"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "was heterozygous for the p.N98Tfs25 TNFAIP3 variant"
+    },
+    "variant_original_string": {
+     "value": "p.N98Tfs25",
+     "span": "was heterozygous for the p.N98Tfs25 TNFAIP3 variant"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.N98Tfs25",
+     "span": "was heterozygous for the p.N98Tfs25 TNFAIP3 variant"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "was heterozygous for the p.N98Tfs25 TNFAIP3 variant"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "His symptomatic father was also heterozygous for the p.N98Tfs25 TNFAIP3 variant",
+     "span": "heterozygous for the p.N98Tfs25 TNFAIP3 variant, as was his symptomatic father"
+    },
+    "functional_evidence_statement": {
+     "value": "Significant upregulation of p65, phosphorylated IRF3, STAT1 and STAT3 expression in lymphocytes from this boy compared with healthy controls",
+     "span": "We confirmed significant upregulation of p65 (P = .011) phosphorylated IRF3 (P = .0001; Fig 2, J), and STAT1 (P = .0013) and STAT3 expression (P = .009; Fig 2, K and L) in lymphocytes from this boy compared with levels seen in healthy control subjects."
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "as was his symptomatic father"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "heterozygous for the p.N98Tfs25 TNFAIP3 variant, as was his symptomatic father"
+    },
+    "variant_original_string": {
+     "value": "p.N98Tfs25",
+     "span": "heterozygous for the p.N98Tfs25 TNFAIP3 variant, as was his symptomatic father"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.N98Tfs25",
+     "span": "heterozygous for the p.N98Tfs25 TNFAIP3 variant, as was his symptomatic father"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "heterozygous for the p.N98Tfs25 TNFAIP3 variant, as was his symptomatic father"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "left-sided focal seizures",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Focal-onset seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0007359",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "hemiparesis",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "left-sided; later worsening of left-sided hemiplegia",
+     "span": [
+      "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline.",
+      "There was progression of the mass lesion, worsening of left-sided hemiplegia, and new-onset ataxia."
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Hemiparesis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001269",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "uveitis",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Uveitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000554",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "cognitive decline",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Mental deterioration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001268",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "choreoretinitis",
+     "span": "She had choreoretinitis from the age of 6 months considered secondary to congenital infection"
+    },
+    "status": {
+     "value": "observed",
+     "span": "She had choreoretinitis from the age of 6 months considered secondary to congenital infection"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "She had choreoretinitis from the age of 6 months considered secondary to congenital infection"
+    },
+    "onset_original_text": {
+     "value": "from the age of 6 months",
+     "span": "She had choreoretinitis from the age of 6 months considered secondary to congenital infection"
+    },
+    "onset_iso8601": {
+     "value": "P6M",
+     "span": "She had choreoretinitis from the age of 6 months considered secondary to congenital infection"
+    },
+    "severity_or_detail": {
+     "value": "considered secondary to congenital infection; however, no pathogen had been identified",
+     "span": "She had choreoretinitis from the age of 6 months considered secondary to congenital infection; however, no pathogen had been identified."
+    },
+    "hpo_label_candidate": {
+     "value": "Chorioretinitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "no history of systemic symptoms",
+     "span": "There was no history of systemic symptoms"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "There was no history of systemic symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "There was no history of systemic symptoms"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "occasional mouth ulcers",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "occasional",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    },
+    "hpo_label_candidate": {
+     "value": "Oral ulcer",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "no genital ulcers",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Genital ulcers",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "contrast-enhancing T2-hypointense intracranial mass lesions",
+     "span": "Magnetic resonance imaging of her brain revealed contrast-enhancing T2-hypointense intracranial mass lesions affecting predominantly the grey matter of the paracentral lobule and the thalamus on the left, with surrounding edema"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Magnetic resonance imaging of her brain revealed contrast-enhancing T2-hypointense intracranial mass lesions affecting predominantly the grey matter of the paracentral lobule and the thalamus on the left, with surrounding edema"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Magnetic resonance imaging of her brain revealed contrast-enhancing T2-hypointense intracranial mass lesions affecting predominantly the grey matter of the paracentral lobule and the thalamus on the left, with surrounding edema"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "affecting predominantly the grey matter of the paracentral lobule and the thalamus on the left, with surrounding edema",
+     "span": "Magnetic resonance imaging of her brain revealed contrast-enhancing T2-hypointense intracranial mass lesions affecting predominantly the grey matter of the paracentral lobule and the thalamus on the left, with surrounding edema"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "progressive neuroinflammation",
+     "span": "We report a case of TNFAIP3-mediated autoinflammation manifesting as progressive neuroinflammation."
+    },
+    "status": {
+     "value": "observed",
+     "span": "We report a case of TNFAIP3-mediated autoinflammation manifesting as progressive neuroinflammation."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "We report a case of TNFAIP3-mediated autoinflammation manifesting as progressive neuroinflammation."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "granulomatous inflammation, focal necrosis, and calcification",
+     "span": "Brain histology revealed granulomatous inflammation, focal necrosis, and calcification"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Brain histology revealed granulomatous inflammation, focal necrosis, and calcification"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain histology revealed granulomatous inflammation, focal necrosis, and calcification"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "brain histology; a second brain biopsy again revealed necrotizing granulomatous inflammation and no evidence of infection",
+     "span": [
+      "Brain histology revealed granulomatous inflammation, focal necrosis, and calcification",
+      "A second brain biopsy again revealed necrotizing granulomatous inflammation and no evidence of infection"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "intracerebral calcification",
+     "span": "brain computed tomography revealed intracerebral calcification"
+    },
+    "status": {
+     "value": "observed",
+     "span": "brain computed tomography revealed intracerebral calcification"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "brain computed tomography revealed intracerebral calcification"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cerebral calcification",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002514",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "new-onset ataxia",
+     "span": "There was progression of the mass lesion, worsening of left-sided hemiplegia, and new-onset ataxia."
+    },
+    "status": {
+     "value": "observed",
+     "span": "There was progression of the mass lesion, worsening of left-sided hemiplegia, and new-onset ataxia."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "There was progression of the mass lesion, worsening of left-sided hemiplegia, and new-onset ataxia."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Ataxia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001251",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "negative autoantibody screen results",
+     "span": "Laboratory tests included negative autoantibody screen results"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Laboratory tests included negative autoantibody screen results"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Laboratory tests included negative autoantibody screen results"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Autoantibodies persistent >3 mo: Absent (Table E1)",
+     "span": [
+      "Laboratory tests included negative autoantibody screen results",
+      "| Autoantibodies persistent >3 mo | Absent"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "modestly increased erythrocyte sedimentation rate",
+     "span": "She had a modestly increased erythrocyte sedimentation rate of 25 mm/h (normal range, <5 mm/h)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "She had a modestly increased erythrocyte sedimentation rate of 25 mm/h (normal range, <5 mm/h)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "She had a modestly increased erythrocyte sedimentation rate of 25 mm/h (normal range, <5 mm/h)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "25 mm/h (normal range, <5 mm/h)",
+     "span": "She had a modestly increased erythrocyte sedimentation rate of 25 mm/h (normal range, <5 mm/h)"
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated erythrocyte sedimentation rate",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003565",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "normal C-reactive protein levels",
+     "span": "normal C-reactive protein levels (5 mg/L; normal range, <5 mg/L)"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "normal C-reactive protein levels (5 mg/L; normal range, <5 mg/L)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "normal C-reactive protein levels (5 mg/L; normal range, <5 mg/L)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "5 mg/L; normal range, <5 mg/L",
+     "span": "normal C-reactive protein levels (5 mg/L; normal range, <5 mg/L)"
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating C-reactive protein concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011227",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "no evidence of malignancy",
+     "span": "Whole-body positron emission tomography–computed tomography revealed no evidence of malignancy"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Whole-body positron emission tomography–computed tomography revealed no evidence of malignancy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Whole-body positron emission tomography–computed tomography revealed no evidence of malignancy"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Neoplasm",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002664",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "CSF oligoclonal bands",
+     "span": "| CSF oligoclonal bands | Negative"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| CSF oligoclonal bands | Negative"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| CSF oligoclonal bands | Negative"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Negative (Table E1)",
+     "span": "| CSF oligoclonal bands | Negative"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "weight gain",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "steroid-related side effect",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "Cushingoid appearance",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "steroid-related side effect",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "arterial hypertension",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "steroid-related side effect",
+     "span": "significant steroid-related side effects were noted (weight gain, Cushingoid appearance, and arterial hypertension)"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000822",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "Type 1 interferon-stimulated gene expression levels were upregulated in whole blood",
+     "span": "Type 1 interferon-stimulated gene expression levels were upregulated in whole blood from subject III.1"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Type 1 interferon-stimulated gene expression levels were upregulated in whole blood from subject III.1"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Type 1 interferon-stimulated gene expression levels were upregulated in whole blood from subject III.1"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "normalized after treatment with baricitinib",
+     "span": "normalization of interferon-induced gene expression in whole blood (Fig 2, F) after treatment with baricitinib"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "feature_text_as_stated": {
+     "value": "levels of serum IFN-α and IFN- β were also increased",
+     "span": "levels of serum IFN-α and IFN- β were also increased compared with those in control subjects (P = .04 and P = .049, respectively)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "levels of serum IFN-α and IFN- β were also increased compared with those in control subjects (P = .04 and P = .049, respectively)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "levels of serum IFN-α and IFN- β were also increased compared with those in control subjects (P = .04 and P = .049, respectively)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "P = .04 and P = .049, respectively",
+     "span": "levels of serum IFN-α and IFN- β were also increased compared with those in control subjects (P = .04 and P = .049, respectively)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "feature_text_as_stated": {
+     "value": "arthritis",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "onset_original_text": {
+     "value": "from the age of 6 months",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "onset_iso8601": {
+     "value": "P6M",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "feature_text_as_stated": {
+     "value": "facial malar-type rash",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "onset_original_text": {
+     "value": "from the age of 6 months",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "onset_iso8601": {
+     "value": "P6M",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Malar rash",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "feature_text_as_stated": {
+     "value": "mild oral ulceration",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mild",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "hpo_label_candidate": {
+     "value": "Oral ulcer",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "feature_text_as_stated": {
+     "value": "early-onset systemic lupus erythematosus",
+     "span": "Subject II.4 died at the age of 17 years from early-onset systemic lupus erythematosus."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Subject II.4 died at the age of 17 years from early-onset systemic lupus erythematosus."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Subject II.4 died at the age of 17 years from early-onset systemic lupus erythematosus."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "early-onset; cause of death at age 17 years",
+     "span": "Subject II.4 died at the age of 17 years from early-onset systemic lupus erythematosus."
+    },
+    "hpo_label_candidate": {
+     "value": "Systemic lupus erythematosus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002725",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "feature_text_as_stated": {
+     "value": "recurrent oral inflammation",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "recurrent",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    },
+    "hpo_label_candidate": {
+     "value": "Stomatitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "feature_text_as_stated": {
+     "value": "penile ulceration",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Genital ulcers",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "feature_text_as_stated": {
+     "value": "without any neurological involvement",
+     "span": "a 4-year-old nonconsanguineous white male with HA20 without any neurological involvement"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "a 4-year-old nonconsanguineous white male with HA20 without any neurological involvement"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a 4-year-old nonconsanguineous white male with HA20 without any neurological involvement"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the nervous system",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000707",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "feature_text_as_stated": {
+     "value": "similar clinical features",
+     "span": "his symptomatic father who had similar clinical features from early childhood"
+    },
+    "status": {
+     "value": "observed",
+     "span": "his symptomatic father who had similar clinical features from early childhood"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "his symptomatic father who had similar clinical features from early childhood"
+    },
+    "onset_original_text": {
+     "value": "from early childhood",
+     "span": "his symptomatic father who had similar clinical features from early childhood"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "similar to his son's recurrent oral inflammation and penile ulceration (features not itemized for the father)",
+     "span": [
+      "The patient presented with recurrent oral inflammation and penile ulceration and was heterozygous for the p.N98Tfs25 TNFAIP3 variant, as was his symptomatic father who had similar clinical features from early childhood"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "she had occasional mouth ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she had occasional mouth ulcers"
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she had occasional mouth ulcers but no genital ulcers"
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline."
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline.",
+      "Magnetic resonance imaging of her brain revealed contrast-enhancing T2-hypointense intracranial mass lesions affecting predominantly the grey matter of the paracentral lobule and the thalamus on the left, with surrounding edema"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "The proband (III.1) was an 8-year-old girl of nonconsanguineous Pakistani-Indian descent (Fig 1, A) who presented with left-sided focal seizures and hemiparesis, uveitis, and cognitive decline.",
+      "Magnetic resonance imaging of her brain revealed contrast-enhancing T2-hypointense intracranial mass lesions affecting predominantly the grey matter of the paracentral lobule and the thalamus on the left, with surrounding edema"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "She had a modestly increased erythrocyte sedimentation rate of 25 mm/h (normal range, <5 mm/h)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "She had a modestly increased erythrocyte sedimentation rate of 25 mm/h (normal range, <5 mm/h)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "Laboratory tests included negative autoantibody screen results",
+      "| Autoantibodies persistent >3 mo | Absent"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Laboratory tests included negative autoantibody screen results",
+      "| Autoantibodies persistent >3 mo | Absent"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The proband (III.1)"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her younger sister (subject III.2) had arthritis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her younger sister (subject III.2) had arthritis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her younger sister (subject III.2) had arthritis and a facial malar-type rash from the age of 6 months."
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "III.2",
+     "span": "Her younger sister (subject III.2)"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Subject II.2 had mild oral ulceration."
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "Subject II.2 had mild oral ulceration."
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "II.4",
+     "span": "Subject II.4"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient presented with recurrent oral inflammation and penile ulceration"
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "a 4-year-old nonconsanguineous white male with HA20 without any neurological involvement"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a 4-year-old nonconsanguineous white male with HA20 without any neurological involvement"
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "4-year-old nonconsanguineous white male",
+     "span": "in a 4-year-old nonconsanguineous white male with HA20"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31175876",
+     "span": "PMID: 31175876"
+    },
+    "individual_label_in_paper": {
+     "value": "his symptomatic father",
+     "span": "his symptomatic father"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

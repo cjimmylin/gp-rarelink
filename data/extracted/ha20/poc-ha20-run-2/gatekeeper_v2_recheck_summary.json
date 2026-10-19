@@ -1,0 +1,219 @@
+{
+  "run_id": "poc-ha20-run-2",
+  "claims": 50,
+  "verdicts": {
+    "supported": 48,
+    "partially_supported": 2
+  },
+  "by_class": {
+    "model": {
+      "supported": 48,
+      "partially_supported": 2
+    },
+    "verbatim": {}
+  },
+  "rates_all_values": {
+    "judged": 50,
+    "unsupported_or_not_found": {
+      "k": 0,
+      "n": 50,
+      "share": 0.0,
+      "ci95": [
+        0.0,
+        0.071122
+      ]
+    },
+    "not_supported": {
+      "k": 2,
+      "n": 50,
+      "share": 0.04,
+      "ci95": [
+        0.004881,
+        0.137138
+      ]
+    }
+  },
+  "rates_model_claims": {
+    "judged": 50,
+    "unsupported_or_not_found": {
+      "k": 0,
+      "n": 50,
+      "share": 0.0,
+      "ci95": [
+        0.0,
+        0.071122
+      ]
+    },
+    "not_supported": {
+      "k": 2,
+      "n": 50,
+      "share": 0.04,
+      "ci95": [
+        0.004881,
+        0.137138
+      ]
+    }
+  },
+  "denominators": "all_values = verbatim + model claims (bookkeeping not counted); model_claims = the claims the helpers judged. 'unsupported_or_not_found' counts unsupported and span_not_found; 'not_supported' adds partially_supported. Exact 95% intervals.",
+  "missing_chunks": [],
+  "missing_chunk_pmids": [],
+  "model_claims_not_judged_yet": 0,
+  "by_field": {
+    "phenotypic_features.status": {
+      "supported": 20
+    },
+    "variants.gene_symbol_as_stated": {
+      "supported": 6
+    },
+    "individuals.sex": {
+      "supported": 4
+    },
+    "variants.cdna_hgvs_as_stated": {
+      "supported": 3
+    },
+    "variants.protein_hgvs_as_stated": {
+      "supported": 3
+    },
+    "individuals.is_proband": {
+      "supported": 3
+    },
+    "variants.pathogenicity_as_stated_by_authors": {
+      "supported": 1,
+      "partially_supported": 1
+    },
+    "variants.zygosity": {
+      "supported": 2
+    },
+    "variants.parental_testing_statement": {
+      "supported": 1
+    },
+    "individuals.age_at_onset_iso8601": {
+      "supported": 1
+    },
+    "variants.variant_original_string": {
+      "supported": 1
+    },
+    "individuals.ethnicity_or_country": {
+      "supported": 1
+    },
+    "individuals.age_at_onset_original_text": {
+      "supported": 1
+    },
+    "variants.variant_type_as_stated": {
+      "partially_supported": 1
+    },
+    "variants.functional_evidence_statement": {
+      "supported": 1
+    }
+  },
+  "by_paper": {
+    "26642243": {
+      "supported": 4
+    },
+    "30526650": {
+      "supported": 1
+    },
+    "31384100": {
+      "supported": 2
+    },
+    "31767699": {
+      "supported": 1
+    },
+    "32047491": {
+      "supported": 1
+    },
+    "32714711": {
+      "supported": 1
+    },
+    "32719680": {
+      "supported": 1
+    },
+    "32743991": {
+      "supported": 1
+    },
+    "33042144": {
+      "supported": 1
+    },
+    "33101300": {
+      "supported": 1
+    },
+    "33549127": {
+      "supported": 2
+    },
+    "33679772": {
+      "supported": 1
+    },
+    "34011076": {
+      "supported": 3
+    },
+    "35154120": {
+      "supported": 3
+    },
+    "35958611": {
+      "supported": 3
+    },
+    "36064566": {
+      "supported": 1
+    },
+    "36325013": {
+      "supported": 1
+    },
+    "36727002": {
+      "supported": 1
+    },
+    "37342083": {
+      "supported": 4
+    },
+    "37848905": {
+      "supported": 1
+    },
+    "38006337": {
+      "supported": 1
+    },
+    "39125844": {
+      "supported": 3,
+      "partially_supported": 1
+    },
+    "39167656": {
+      "supported": 1
+    },
+    "40574834": {
+      "supported": 5,
+      "partially_supported": 1
+    },
+    "41675327": {
+      "supported": 1
+    },
+    "41890736": {
+      "supported": 1
+    },
+    "42572791": {
+      "supported": 1
+    },
+    "42682521": {
+      "supported": 1
+    }
+  },
+  "flagged": [
+    {
+      "claim_id": "C038628",
+      "pmid": "39125844",
+      "table": "variants",
+      "row": "44",
+      "field": "variant_type_as_stated",
+      "value": "\"nonsense\"",
+      "verdict": "partially_supported",
+      "reason": "Caption lists splice site, frameshift or nonsense; 'nonsense' for this row is inferred from Ter notation, not stated."
+    },
+    {
+      "claim_id": "C049428",
+      "pmid": "40574834",
+      "table": "variants",
+      "row": "54",
+      "field": "pathogenicity_as_stated_by_authors",
+      "value": "\"pathogenic\"",
+      "verdict": "partially_supported",
+      "reason": "\"Pathogenic\" is said of the 72-patient group; linking mother of P3 to its two mosaic cases is inferred, unstated."
+    }
+  ]
+}

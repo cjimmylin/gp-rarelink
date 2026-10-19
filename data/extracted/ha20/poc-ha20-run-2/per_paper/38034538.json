@@ -1,0 +1,793 @@
+{
+ "pmid": "38034538",
+ "instructions_version": "extract_v3",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "This 32-patient canakinumab cohort of undifferentiated autoinflammatory disease (uAIDs) gives individual-level data (sex, onset and diagnosis ages, clinical features, treatment) for one patient carrying a TNFAIP3 variant: '| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}'.",
+ "method_note": "Read the whole paper by hand (no supplementary section present). Scope: only Table 3 ID 26 carries a TNFAIP3 variant; the other 31 cohort patients (variants in other genes or none) are out of scope and counted in cohort_size_as_stated = 32. Label '26' is the paper's own Table 3 'ID' value, used verbatim (the paper refers to another patient as 'Pt 4' but never prints 'Pt 26'). n_patients_reported = 1 is counted from Table 3 (one row, and one Table 2 row, list TNFAIP3); the authors never state the number in words. Table 3 columns (patients as rows): ID | Gender | Results of NGS | Fever | Rash | Serosites | Arthritis | GI | Eye | Hydrocephalus | Sensorineural hearing loss | Laboratory activity | Onset age | Age at the time of diagnosis | Initial treatment (non-biologic) | Initial treatment (biologic drugs) | Outcome. '+' read as present. Table 3's notes define only drug/outcome abbreviations, not '-'; so the '-' cells for patient 26 (Rash, Serosites, GI, Eye, Hydrocephalus, Sensorineural hearing loss) are not reported, with no rows. Gender 'M' read as male: Table 3 has 13 M and 19 W, matching '13 (41%) boys and 19 (59%) girls'. Table 3 prints ages without units; years taken from Table 1 headers ('Onset age, years'; 'Age of the diagnosis, years') and consistent with Pt 4 ('at 1.5 years' in text vs 1.4 in Table 3). ISO values written as decimal years (P5.7Y, P14.7Y). 'Laboratory activity +' is recorded as a feature but not mapped to checklist 'elevated inflammatory markers (CRP/ESR)', because the paper's 'laboratory activity' also covers WBC, platelets and hemoglobin. 'Fever +' is not mapped to checklist 'recurrent fever', because the table gives fever only and the methods mention patients with persistent fever. Table 2 'Inheritance' column 'AD' is the gene's inheritance mode, not the variant's origin, so inheritance = not reported. Zygosity comes from the group sentence 'Heterozygous genetic variants were found in the remaining 31 patients ... TNFAIP3'. No ACMG class is stated for the TNFAIP3 variant (Table 2 gnomAD 'No data', reference '-'). The transcript comes from Table 2's TNFAIP3 row, which prints the same c./p. as Table 3. The paper does not call this patient HA20; the diagnosis given is uAIDs, plus a formal sJIA diagnosis for all patients. No variants in other genes are listed for patient 26. Contradictions in the paper (none about patient 26's own data): Table 3 '+' counts differ from text/Table 1 for rash (28 vs 29), serositis (10 vs 'detected in 17 patients'), GI (5 vs 6) and eye (3 in Table 3/Table 1 vs 'Four patients (9%)' in the text); TREX1 is c.914A>G, p.Y305C in Table 2 but c.1079A>G, p.Y360C in Table 3 and the text; corticosteroids are 88% in the abstract vs 85% in the results; Pt 4 onset is 1.4 in Table 3 vs 1.5 years in the text. A script assembled the JSON from hand-chosen values; spans were checked verbatim by script.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "first_author": {
+     "value": "Alexeeva",
+     "span": "Authors: Alexeeva Ekaterina"
+    },
+    "year": {
+     "value": 2023,
+     "span": "Journal: Frontiers in Medicine (2023)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "The patients were recruited from two tertiary centers in the retrospective cohort study."
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "cohort_size_as_stated": {
+     "value": 32,
+     "span": "We included information about 32 patients"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": [
+      "| 26 | M |",
+      "| ID | Gender |",
+      "13 (41%) boys and 19 (59%) girls"
+     ]
+    },
+    "age_at_onset_original_text": {
+     "value": "5.7",
+     "span": [
+      "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | + | - | - | - | - | + | 5.7",
+      "| Laboratory activity | Onset age |",
+      "Onset age, years"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": "P5.7Y",
+     "span": [
+      "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | + | - | - | - | - | + | 5.7",
+      "| Laboratory activity | Onset age |",
+      "Onset age, years"
+     ]
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "14.7",
+     "span": [
+      "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | + | - | - | - | - | + | 5.7 | 14.7",
+      "| Onset age | Age at the time of diagnosis |",
+      "Age of the diagnosis, years"
+     ]
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P14.7Y",
+     "span": [
+      "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | + | - | - | - | - | + | 5.7 | 14.7",
+      "| Onset age | Age at the time of diagnosis |",
+      "Age of the diagnosis, years"
+     ]
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Initial treatment (non-biologic): GCS, NSAID (corticosteroids, non-steroidal anti-inflammatory drugs); initial treatment (biologic drugs): TCZ, CAN (tocilizumab, canakinumab); outcome: CR (complete remission)",
+     "span": [
+      "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | + | - | - | - | - | + | 5.7 | 14.7 | GCS, NSAID | TCZ, CAN | CR |",
+      "| Initial treatment (non-biologic) | Initial treatment (biologic drugs) | Outcome |",
+      "CAN, canakinumab; CR, complete remission",
+      "GCS, corticosteroids",
+      "NSAID, non-steroidal anti-inflammatory drugs; PI, primary inefficacy; PR, partial remission; RTX, rituximab; SAR, sarilumab; SI, secondary inefficacy SSZ, sulfasalazine; TCZ, tocilizumab"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "uAIDs",
+     "span": "Table 3: Detailed characteristics of patients with uAIDs treated with canakinumab."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Undifferentiated autoinflammatory disease: clear features of an AID not fitting a specific diagnosis; NGS and Federici criteria used to exclude known monogenic AIDs; all patients also had a formal sJIA diagnosis to qualify for biologic treatment",
+     "span": [
+      "The term uAIDs includes children who exhibit clear features of an AID but do not fit a specific diagnosis due to either a non-diagnostic phenotype or negative genetic tests that are typical for known AIDs",
+      "Next-generation sequencing and Federici criteria were used for the exclusion of the known monogenic AID.",
+      "All patients also had a formal diagnosis of sJIA to qualify for biologic treatment."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "variant_original_string": {
+     "value": "c.1217A>T, p.E406V",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "transcript_as_stated": {
+     "value": "NM_001270508.2",
+     "span": "| TNFAIP3 NM_001270508.2 | AD | c.1217A>T, p.E406V |"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1217A>T",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.E406V",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Heterozygous genetic variants were found in the remaining 31 patients (97%) in the following genes: IL10, NLRP12, STAT2, C8B, LPIN2, NLRC4, PSMB8, PRF1, CARD14, IFIH1, LYST, NFAT5, PLCG2, COPA, IL23R, STXBP2, IL36RN, JAK1, DDX58, LACC1, LRBA, TNFRSF11A, PTHR1, STAT4, TNFRSF1B, TNFAIP3"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "feature_text_as_stated": {
+     "value": "Fever",
+     "span": "| ID | Gender |  | Fever |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | +"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | +"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001945",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "feature_text_as_stated": {
+     "value": "Arthritis",
+     "span": "| Serosites | Arthritis |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | +"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | +"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "feature_text_as_stated": {
+     "value": "Laboratory activity",
+     "span": "| Sensorineural hearing loss | Laboratory activity |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | + | - | - | - | - | +"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | + | - | - | - | - | +"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | +"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V} | + | - | - | +"
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38034538",
+     "span": "PMID: 38034538"
+    },
+    "individual_label_in_paper": {
+     "value": "26",
+     "span": "| 26 | M | TNFAIP3 {c.1217A>T, p.E406V}"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

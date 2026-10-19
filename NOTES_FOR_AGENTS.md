@@ -6,7 +6,7 @@ How to maintain it:
 - Add what a future session would need to know. Keep entries short and dated.
 - Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
 
-*Last updated 2026-10-18.*
+*Last updated 2026-10-19 (later).*
 
 ## 1. Where things stand (2026-10-18)
 
@@ -17,7 +17,7 @@ How to maintain it:
   - the grant application and award email (`grant/`);
   - background literature (`background/`, compiled 2026-10-16 in Cowork);
   - `DECISIONS.md` and `BUDGET.md`;
-  - pre-registration draft v0.5 (`preregistration/analysis_plan.md`), not frozen. D-01 to D-07 and D-18 are decided;
+  - pre-registration draft v0.6 (`preregistration/analysis_plan.md`), not frozen. D-01 to D-07, D-18 and D-26 to D-28 are decided;
   - a digest of the claude.ai Project chats (`docs/claude-ai-threads.md`) and the pre-grant concept chat (`background/origins/`), both added from claude.ai on 2026-10-18;
   - **pilot Stages 0–2, built and tested offline** by the session "Rarelink POC study design" (merged from branch `claude/zealous-meitner-k7moex`). That covers:
     - the `pipeline/` skeleton with isolation guard and tests;
@@ -25,7 +25,30 @@ How to maintain it:
     - the SLIDERS Anthropic adapter (`pipeline/extract/sliders_adapter/`);
     - the HA20 config and schema;
     - 24 tests (`uv sync && uv run pytest`).
-- **Pilot progress (2026-10-18):**
+- **Pilot Stage 3 done (2026-10-18, later):**
+  - run-1 covered 85 papers and the repeat 15;
+  - every quote was found verbatim;
+  - merges: 2 false among the 58 merges of policy v2, now policy v3;
+  - variant agreement is below 0.9 because of cohort scope.
+  - Report: `reports/poc_stage3_findings.md`. D-22 decided 2026-10-19 (instructions v3, run-2, supplementary files). Session usage reading 240.36 at the end of Stage 3.
+- **Pilot Stage 3b done (2026-10-19):**
+  - run-2 over all 85 papers is the extraction of record: 64,999 quotes, all verbatim; 799 individuals;
+  - repeat variant agreement 0.944 on strings, 0.988 on keys (gate met);
+  - fresh merge hand check: 6 false of 93, all from the sex-and-onset route; policy v4 proposed.
+  - Report: `reports/poc_stage3b_findings.md`. Session usage reading 460.75.
+  - D-23 to D-25 decided by Jimmy, 2026-10-19: merge policy v4; instructions v4 plus input fixes, checked on 10 papers, with no run-3; Stage 5 approved at about $170 after Stage 4.
+- **Pilot Stages 4 and 5 done, v4 checked (2026-10-19):**
+  - v4 check: 13 of 13 rule checks as intended; run-2 stays the extraction of record;
+  - Stage 4: 749 phenopackets, all valid; HPO binding 88.5%; normalization 92.8% of cDNA descriptions (check not met as worded, D-26);
+  - Stage 5: 8 unsupported and 305 partial of 22,003 judged values; phenopackets rebuilt without claims not judged supported.
+  - Human audit (Jimmy, first pass): 2 of 50 unsupported (4.0%, the Q4 limit), 6 partial. The gatekeeper flagged none of his 8; v2 (D-28) flags 2. D-26 repairs: 135 of 138 cDNA descriptions normalized. Report §10.
+  - **Audit ratings (collected 2026-10-19):** the 50 claims and 30 HPO bindings were rated on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. D-26 to D-28 decided 2026-10-19. The step-3 second look is done (`final` collection): **Q4 not met, 3 of 50 unsupported (6.0%)**; D-29 (fixes and a re-run) is open, report §10.5.
+  - **D-29 decided and run (2026-10-19):** extraction v5 (variant fields only from this person) and gatekeeper v3 (records who each quote is about) on 20 papers (`poc-ha20-v5-subset`). **Re-audit done (48 of 50 rated): final 3 unsupported (6.3%), all stacked-table readings Jimmy could not verify; 0 of 45 without them; variant stratum clean. D-31 (stacked cells) open.** Page: https://claude.ai/artifact/UHTQJ3TyT29HZ25PPdQFN8 (store collection `ratings`; collect with `apply_ratings.py --sample-dir adjudication/poc_audit_v5`, then `audit_metrics.py --run-id poc-ha20-v5-subset --gatekeeper-file gatekeeper_v3.csv --sheet adjudication/poc_audit_v5/sample.csv --out analysis/poc/audit_metrics_v5.json`). Report §10.6. (C032922 stays unsupported: Jimmy, D-30 entry.)
+  - **Stage 6 done for ClinVar and HPO (2026-10-19):** `reports/poc_stage6_findings.md`. The snapshot lives outside the repo (`/home/user/gp-rarelink-reference/<date>/`, gone when the container goes; re-create with `pipeline/harness/snapshot_reference.py`); only its manifest and counts are committed. Q7 is met on the Chen 2020 Table S1 benchmark (D-30; El Hani 2024 is paywalled here): 9 of 9 restricted. The benchmark is transcribed by `pipeline/harness/benchmark_chen2020.py` into the same reference root.
+  - **Stage 7 drafted (2026-10-19):** `reports/poc_report.md` (regenerate with `uv run python analysis/poc_report.py`). Recommendation: go with fixes (D-31 entry). Extraction v6 and gatekeeper v4 are the frozen-pipeline candidates, not yet run. **Waiting on Jimmy:** review of the pilot report, and whether to merge this branch to `main`.
+  - **Next after his review:** fold the report's §10 into the pre-registration, resolve D-08 to D-12, D-17 and D-19, freeze; corpus searches for the other five diseases.
+  - Report: `reports/poc_stage4_5_findings.md`. Session usage reading 580.31.
+- **Pilot progress (2026-10-18, earlier):**
   - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
   - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
   - **Waiting on Jimmy's gate:** the review sheet, the group-absence rule, and Stage 3 spend (`reports/poc_stage2_smoke_findings.md`).
@@ -36,6 +59,7 @@ How to maintain it:
 - **Git:**
   - Everything up to 2026-10-18 is on `main`, merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
+  - Branch `claude/zealous-meitner-k7moex` (the pilot-design session) is archived and must not be merged: it commits full-text Markdown. Its one asset, Jimmy's 40 screening labels, was applied here on 2026-10-19.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
   - run `git fetch origin` (all branches, not just `main`) before starting, and again before merging. On 2026-10-18 two sessions ran pilot Stage 1 in parallel because one checked only `main`;
   - check `list_sessions` for other sessions working on this repo;
@@ -105,6 +129,32 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **NCBI Bookshelf pages (GeneReviews) sit behind a reCAPTCHA**, and PubMed book records aren't parsed. Don't count on GeneReviews reference lists.
 - **`jats_to_markdown` flattens rowspan and colspan**, which shifts table rows. Fix it before running extraction at scale.
 - **Session usage readings include helper agents.** `get_session` cost rises with helper work, so take a reading before and after each stage.
+- **Stage 3 lessons (2026-10-18):**
+  - **Missing tables.** Check converted Markdown for missing tables: compare `table-wrap` counts in the XML with `### Table` counts in the Markdown. Publishers put tables in `<floats-group>`.
+  - **Scope.** Helpers given "one row per person the paper describes" choose different scopes in cohort papers. Most extract TNFAIP3 carriers only; some extract everyone. This, not reading errors, drove run-to-run disagreement.
+  - **Merging.** Merges must be one-to-one. A review row citing a family will otherwise join relatives into one person. Citations naming several papers ("(2, 12, 22)") are not person-specific.
+  - **Reference lists.** Read them from the JATS XML, not the Markdown. Some papers nest them inside a section, and the Markdown flattens them.
+  - **Commits.** Commit helper outputs as they land; the stop hook asks for it anyway. A helper may rewrite its file after you commit it, so check `git status` again before pushing.
+- **Stage 3b lessons (2026-10-19):**
+  - **Run span_check before the run ends.** One helper left every checklist quote empty (35958611). A repair-only resume of the same helper fixed it; diff the values before and after to prove nothing else changed.
+  - **Supplementary text needs care.** Pandoc writes ">" as "&gt;" and complex tables as HTML. A gene-name relevance filter drops per-patient tables that never name the gene. Europe PMC zips often hold only figures.
+  - **The sex-and-onset merge route is unsafe.** Recurrent variants and relatives in one family match on sex and onset. Citation-based merges were all correct.
+  - **Helpers apply unwritten rules unevenly:** inheritance from a carrier parent, 0 counts in group tables, labels for table columns and numbering columns. Write the rule down rather than hoping for consistency.
+  - **Running about 13 helpers at once worked.** That was 85 papers in about 50 minutes of wall time. A helper writes its file before its final checks, so expect rewrites after the first commit.
+- **Stage 4–5 lessons (2026-10-19):**
+  - **A word match is not support.** Three audit failures had values copied from their own quote but about another person or the whole cohort. Never mark a value supported by script (D-28).
+  - **The second-look tab shows the gatekeeper's reasons, so labels changed there are not independent of it.** Two of Jimmy's final labels repeat v1's wording. Say so when reporting gatekeeper agreement.
+  - **Don't trust the gatekeeper's rate as an error rate.** It found 0.036% unsupported where the human audit found 4%; even v2 caught 2 of 8. Report gatekeeper accuracy against human labels instead.
+  - **Ratings via an artifact page work.** The `db` store keeps them; read with `ArtifactData list` + `out_dir`, then `apply_ratings.py`. Keep gatekeeper verdicts out of the first-pass page.
+  - **The five-hour usage limit stops helpers mid-task.** Many had already written their output; check each file is complete before trusting it. Resume the rest with SendMessage to the same helper. `get_session` → `rate_limit_info` shows when the account is past the limit and running on overage (it matters for D-17).
+  - **The session cost reading can freeze for most of an hour.** It stuck at 463.50 from about 02:08 to 02:58 UTC. Take a reading at the end too, and say when stages overlap.
+  - **Helpers skip quotes on repeated labels.** In the v5 subset, four of 20 helpers left `individual_label_in_paper` spans empty in child tables (and one left 38 checklist quotes empty). Run `span_check` with the run's own `--schema` (it defaults to v2 and then reports every v5 field as a problem) before gatekeeper prep, because prep numbers claims and a later repair shifts the ids.
+  - **Gatekeepers soften hard rules they think too strict.** Gatekeeper v3 says a quote about another person makes the value unsupported; helpers recorded `other_person` but judged 20 such claims partially supported. Expect it, and count `about` against `verdict` in the summary.
+  - **Stacked multi-patient cells can't be checked by a person.** Values read by position from cells like "18 / 24 / 21 / 57" were all the re-audit's failures; the rater could not confirm them (D-31).
+  - **Never put a reference snapshot in `data/reference/` in the checkout.** The extraction guard then refuses to run. Use a root outside the repo.
+  - **scipy is not in the uv project.** `pipeline/extract/claude_code/gatekeeper_merge.py` has a pure-Python exact interval (`share`); reuse it rather than adding a dependency.
+  - **Write gatekeeper conventions down.** Helpers split on "normal X" recorded as excluded (D-27). Any convention the extraction uses must be stated in the gatekeeper instructions too.
+  - **The gatekeeper finds papers that contradict themselves** (table vs text). Those claims were judged supported with a note; collect them for the human audit.
 
 **Python:**
 - The pipeline is a `uv` project (`pyproject.toml`, `uv.lock`, Python ≥ 3.11). Run `uv sync && uv run pytest`.
@@ -115,7 +165,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-22**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-32**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically

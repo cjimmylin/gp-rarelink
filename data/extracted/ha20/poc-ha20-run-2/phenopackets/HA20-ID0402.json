@@ -1,0 +1,159 @@
+{
+  "id": "ha20-poc-ha20-run-2-HA20-ID0402",
+  "subject": {
+    "id": "HA20-ID0402",
+    "sex": "FEMALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002583",
+        "label": "Colitis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:41634270",
+            "description": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone\u2009+\u2009Ruxolitinib\u2009+\u2009Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0033428",
+        "label": "Systemic autoinflammation"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:41634270",
+            "description": "| 9 | F | 23 | IEI HA20 | Pos/ Pos | Pos/ Pos | MUD 9/10 | Prednisolone\u2009+\u2009Ruxolitinib\u2009+\u2009Anakinra | 92 | 40 | 1 | Refractory colitis, auto-inflammation |"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0032169",
+        "label": "Severe infection"
+      },
+      "excluded": true,
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:41634270",
+            "description": "Except for patient #6 with poorly controlled inflammation post-HSCT, no severe infections leading to hospitalization were observed beyond the first 3 months"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "HA20-ID0402-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0800045",
+          "label": "autoinflammatory syndrome, familial, Behcet-like 1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "HA20-ID0402",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "HA20-ID0402-var1",
+                "label": "TNFAIP3 (NM_001270508.2):p.Tyr306*",
+                "description": "TNFAIP3 (NM_001270508.2):p.Tyr306*",
+                "geneContext": {
+                  "valueId": "HGNC:11896",
+                  "symbol": "TNFAIP3"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "p.Y306*"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0800045",
+        "label": "autoinflammatory syndrome, familial, Behcet-like 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-10-19T00:00:00Z",
+    "createdBy": "GP-RareLink pilot (Claude Code route, D-20)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:41634270"
+      }
+    ]
+  }
+}

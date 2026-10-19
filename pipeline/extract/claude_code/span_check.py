@@ -35,10 +35,11 @@ import unicodedata
 from collections import Counter
 from pathlib import Path
 
-SCHEMA = Path("pipeline/extract/sliders_adapter/schema_ha20.json")
+SCHEMA = Path("pipeline/extract/claude_code/schema_ha20_v2.json")  # v1: pipeline/extract/sliders_adapter/schema_ha20.json
 # Fields whose values come from the schema or the extractor, not the paper:
-# HPO candidates are suggestions; checklist_feature names are the schema's own.
-NO_SPAN_FIELDS = {"hpo_label_candidate", "hpo_id_candidate", "checklist_feature"}
+# HPO candidates are suggestions; checklist_feature names are the schema's own;
+# evidence_basis (schema v2) characterises the status cell, whose span carries the evidence.
+NO_SPAN_FIELDS = {"hpo_label_candidate", "hpo_id_candidate", "checklist_feature", "evidence_basis"}
 MISSING = {None, "not reported", ""}
 MARKUP = re.compile(r"[*_`|#]")
 WS = re.compile(r"\s+")
@@ -135,6 +136,12 @@ def check_paper(path: Path, md_dir: Path, schema: dict[str, dict], features: lis
                 counts[f"span_{found}"] += 1
                 claims.append({"pmid": pmid, "table": tname, "row": i, "field": fname, "value": json.dumps(value),
                                "span": " || ".join(spans), "found": found})
+    # evidence basis (schema v2): count rows inferred from group statements for the audit
+    for tname in ("phenotypic_features", "phenotype_checklist"):
+        for row in tables.get(tname) or []:
+            eb = (row.get("evidence_basis") or {}).get("value")
+            if eb:
+                counts[f"evidence_basis:{tname}:{eb}"] += 1
     # three-state and checklist completeness
     for i, row in enumerate(tables.get("phenotypic_features") or []):
         st = (row.get("status") or {}).get("value")
@@ -161,10 +168,14 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--disease", required=True)
     ap.add_argument("--run-id", required=True)
+    ap.add_argument("--schema", type=Path, default=SCHEMA)
+    ap.add_argument("--md-dir", type=Path, default=None,
+                    help="paper Markdown to check against (default data/literature/<disease>/fulltext_md; "
+                         "run-1 read the copy kept as fulltext_md_run1)")
     args = ap.parse_args(argv)
     run_dir = Path("data/extracted") / args.disease / args.run_id
-    md_dir = Path("data/literature") / args.disease / "fulltext_md"
-    schema = load_schema()
+    md_dir = args.md_dir or Path("data/literature") / args.disease / "fulltext_md"
+    schema = load_schema(args.schema)
     features = checklist_features(schema)
     all_claims, all_problems, total = [], [], Counter()
     per_paper = {}
@@ -181,6 +192,8 @@ def main(argv: list[str] | None = None) -> int:
     with_span = total["span_exact"] + total["span_lenient"] + total["span_not_found"]
     summary = {
         "run_id": args.run_id,
+        "schema": str(args.schema),
+        "markdown_dir": str(md_dir),
         "n_papers": len(per_paper),
         "checklist_features": features,
         "counts": dict(total),

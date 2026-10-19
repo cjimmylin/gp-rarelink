@@ -1,0 +1,1634 @@
+{
+ "pmid": "32047491",
+ "instructions_version": "extract_v2",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "One cohort patient carries a germline TNFAIP3 frameshift: 'A variant in the tumor necrosis factor, alpha-induced protein (TNFAIP)3 gene (c.997dupG) resulting in a frameshift (p.A333fs^*2) was found in P10'.",
+ "method_note": "Read the whole paper manually; a short Python script only assembled the JSON and checked spans and fields (no automated table transcription). Scope: this is a 20-patient whole-exome CVID cohort; only P10 carries a TNFAIP3 variant (Table 2). The other 19 patients (variants in NFKB1, STAT3, IL17F, IRAK4, TTC37, DDX41, NLRC3, TNFRSF1A, PLCG2 or none) and the relatives of P2, P3 and P15 have no reported TNFAIP3 variant and were not extracted, by analogy with the rule that papers with no TNFAIP3 carrier leave patient tables empty; a reviewer may prefer all 20 rows. Label: tables use 'P10'; the text also says 'Patient 10'; 'P10' used throughout. Table column headers used: Table 1 'Age at diagnosis' (value 23; unit not printed, read as years since the cohort is adult, ISO P23Y), 'Recurrent infectious manifestations', 'Other conditions', 'Hematology'; Table 2 'ACMG classification' (4 = likely pathogenic, consistent with the abstract and with 'four were classified as likely pathogenic'); Table 4 lab columns. Lab-derived features (IgG, IgA, lymphocyte count) are values interpreted against the reference ranges printed in the Table 4 notes; T-cell, CD8, NK and B-cell counts for P10 are also below the printed ranges but were not extracted as separate features. IgM for P10 is '^*' (no measurement). Treatment: IVIG inferred from the Table 4 cell 'NP (only after IVIG)'; the statement that all but one patient received immunoglobulin substitution does not name the exception, so it was not used. Group statements used: switched memory B cells reduced in all except P15 (observed for P10); ITP only in P17 and P18 and malignancy only in P1, P4, P5, P6, P12, P17 (excluded for P10). Checklist judgements: 'cytopenia (autoimmune)' left not reported because the anemia, thrombocytopenia and pancytopenia are not called autoimmune and the thrombocytopenia is linked to hypersplenism; 'lymphoproliferation or lymphadenopathy' left not reported because only splenomegaly/hepatosplenomegaly (with portal hypertension and nodular regenerative hyperplasia) is stated, not lymphoproliferation or lymphadenopathy; 'oral ulcers' left not reported because only 'stomatitis' is stated. The text 'diagnosed with CVID 10 years ago' gives time since diagnosis, not an age, so age at last evaluation is not reported. Country/ancestry not stated (patients are from the Danish CVID cohort at Aarhus University Hospital; that is the place of care, not stated ancestry). Prior report: the paper states the Danish CVID cohort was described previously (ref 2, Westh 2017, cohort-level aggregate data) and that a subgroup was analysed by flow cytometry (ref 8, Kofod-Olsen 2016, 26 patients); it does not say P10 was individually described before. The sentence on the OTU domain and 'severely truncated and rapidly degraded protein' refers to p.A332X from ref 35, not to an assay of P10's variant, so it was not recorded as functional evidence. Protein string kept as printed 'p.A333fs^*2' (the '^' appears to be a conversion artifact of a superscript asterisk). Contradictions/inconsistencies noted (none affect P10's extracted values): DOI contains '2019' while the journal line gives 2020 (2020 used); Results call the NFKB1 variants novel while the Discussion calls them 'previously described'; PLCG2 CADD is 33 in Table 2 but 35 in the text (P18).",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "first_author": {
+     "value": "Christiansen",
+     "span": "Authors: Christiansen Mette"
+    },
+    "year": {
+     "value": 2020,
+     "span": "Journal: Frontiers in Immunology (2020)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "we performed whole exome sequencing on 20 CVID patients with autoimmunity, autoinflammation, and/or malignancy from the Danish CVID cohort"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "(c.997dupG) resulting in a frameshift (p.A333fs^*2) was found in P10"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": [
+      "Previously, we described the demographic, infectious, and non-infectious phenotype of the Danish CVID cohort (2).",
+      "from the Danish CVID cohort"
+     ]
+    },
+    "prior_report_citation": {
+     "value": "(2) Westh L, Mogensen TH, Dalgaard LS, Bernth Jensen JM, Katzenstein T, Hansen AE, et al. Identification and characterization of a nationwide danish adult common variable immunodeficiency cohort. Scand J Immunol. (2017) 85:450–61.",
+     "span": [
+      "the Danish CVID cohort (2)",
+      "Westh L, Mogensen TH, Dalgaard LS, Bernth Jensen JM, Katzenstein T, Hansen AE, et al. Identification and characterization of a nationwide danish adult common variable immunodeficiency cohort. Scand J Immunol. (2017) 85:450–61."
+     ]
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| P10 | F"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "23",
+     "span": "| P10 | F | CVID | 23"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P23Y",
+     "span": "| P10 | F | CVID | 23"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Splenectomy (relieved some of the hypersplenism and improved thrombocytopenia); granulocyte colony-stimulating factor (G-CSF) to avoid neutropenia; IVIG (Table 4 isohaemagglutinin cell: 'NP (only after IVIG)')",
+     "span": [
+      "Splenectomy relieved some of the hypersplenism and improved thrombocytopenia, and the patient moreover received granulocyte colony-stimulatory factor (G-CSF) to avoid neutropenia",
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia, splenomegaly (Splenectomized)",
+      "| P10 | 4.2 | ^* | BD | 266 | 68 | 34 | 156 | 102 | 48 | 2.13 | NP (only after IVIG)"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "CVID",
+     "span": [
+      "| P10 | F | CVID",
+      "Patient 10 was diagnosed with CVID 10 years ago"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Clinical diagnosis of CVID under the cohort inclusion criteria (decreased IgG and IgM and/or IgA, insufficient polysaccharide vaccine responses or reduced isohemagglutinins, abnormal B-cell phenotype); TNFAIP3 variant found by whole exome sequencing; authors state the presentation 'shares many features with A20 haploinsufficiency' (diagnosis given remains CVID)",
+     "span": [
+      "Patient 10 was diagnosed with CVID 10 years ago",
+      "patients had decreased IgG and IgM and/or IgA, insufficient vaccine responses to polysaccharide vaccination (when assessed) or reduced isohemagglutinins, and varying degrees of abnormal B-cell phenotype",
+      "Here, we performed whole exome sequencing on a total of 20 CVID patients",
+      "A variant in the tumor necrosis factor, alpha-induced protein (TNFAIP)3 gene (c.997dupG) resulting in a frameshift (p.A333fs^*2) was found in P10",
+      "The clinical presentation of the patient shares many features with A20 haploinsufficiency."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "| P10 | TNFAIP3"
+    },
+    "variant_original_string": {
+     "value": "c.997dupG",
+     "span": "| P10 | TNFAIP3 | NM_006290.3 | c.997dupG"
+    },
+    "transcript_as_stated": {
+     "value": "NM_006290.3",
+     "span": "| P10 | TNFAIP3 | NM_006290.3"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.997dupG",
+     "span": "| P10 | TNFAIP3 | NM_006290.3 | c.997dupG"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.A333fs^*2",
+     "span": "| P10 | TNFAIP3 | NM_006290.3 | c.997dupG | p.A333fs^*2"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "frameshift",
+     "span": "(c.997dupG) resulting in a frameshift (p.A333fs^*2)"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": [
+      "Table 2: Monoallelic variants identified.",
+      "| P10 | TNFAIP3 | NM_006290.3 | c.997dupG"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "Not established: the authors 'have not been able to verify whether the variant is de novo or inherited'; inheritance listed as 'Unknown' in Table 3",
+     "span": [
+      "we have not been able to verify whether the variant is de novo or inherited",
+      "| P10 | TNFAIP3 | Zinc finger protein and ubiqitin-editing enzyme | AD Autoinflammatory syndrome, Behcet-like | Unknown"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "No functional assay performed: the authors 'were not able to functionally validate identified variants in vitro or in vivo'",
+     "span": [
+      "we were not able to functionally validate identified variants in vitro or in vivo"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "likely pathogenic (ACMG classification 4); not described previously",
+     "span": [
+      "classified as likely pathogenic (NFKB1, TNFAIP3, and TTC37)",
+      "| P10 | TNFAIP3 | NM_006290.3 | c.997dupG | p.A333fs^*2 | - |  |  |  | 3.313 | 4",
+      "The variant harbored by P10 has not been described previously"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "Pneumonia",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia",
+      "pancytopenia with persistent CD4 lymphopenia, and pneumonias"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia",
+      "pancytopenia with persistent CD4 lymphopenia, and pneumonias"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia",
+      "pancytopenia with persistent CD4 lymphopenia, and pneumonias"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "listed under 'Recurrent infectious manifestations'; 'pneumonias' (plural) in text",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia",
+      "pancytopenia with persistent CD4 lymphopenia, and pneumonias"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent pneumonia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0006532",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "stomatitis",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "listed under 'Recurrent infectious manifestations'",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Stomatitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0010280",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "Elevated liver enzymes",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating hepatic transaminase concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002910",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "Anemia",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Anemia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001903",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "trombocytopenia",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia",
+      "Splenectomy relieved some of the hypersplenism and improved thrombocytopenia"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia",
+      "Splenectomy relieved some of the hypersplenism and improved thrombocytopenia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia",
+      "Splenectomy relieved some of the hypersplenism and improved thrombocytopenia"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "improved after splenectomy",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia",
+      "Splenectomy relieved some of the hypersplenism and improved thrombocytopenia"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Thrombocytopenia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001873",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "splenomegaly (Splenectomized)",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia, splenomegaly (Splenectomized)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia, splenomegaly (Splenectomized)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia, splenomegaly (Splenectomized)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Splenectomized",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis | Elevated liver enzymes | Anemia, trombocytopenia, splenomegaly (Splenectomized)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Splenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001744",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "significant hepatosplenomegaly",
+     "span": [
+      "experienced severe disease with significant hepatosplenomegaly"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "experienced severe disease with significant hepatosplenomegaly"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "experienced severe disease with significant hepatosplenomegaly"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "significant",
+     "span": [
+      "experienced severe disease with significant hepatosplenomegaly"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatosplenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001433",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "pancytopenia",
+     "span": [
+      "pancytopenia with persistent CD4 lymphopenia"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "pancytopenia with persistent CD4 lymphopenia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "pancytopenia with persistent CD4 lymphopenia"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pancytopenia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001876",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "persistent CD4 lymphopenia",
+     "span": [
+      "pancytopenia with persistent CD4 lymphopenia"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "pancytopenia with persistent CD4 lymphopenia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "pancytopenia with persistent CD4 lymphopenia"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "persistent",
+     "span": [
+      "pancytopenia with persistent CD4 lymphopenia"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "CD4 lymphocytopenia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "nodular regenerative hyperplasia",
+     "span": [
+      "Liver biopsy showed nodular regenerative hyperplasia"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Liver biopsy showed nodular regenerative hyperplasia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Liver biopsy showed nodular regenerative hyperplasia"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "on liver biopsy",
+     "span": [
+      "Liver biopsy showed nodular regenerative hyperplasia"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Nodular regenerative hyperplasia of liver",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "portal hypertension",
+     "span": [
+      "esophagoscopy revealed portal hypertension and esophagus varices"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "esophagoscopy revealed portal hypertension and esophagus varices"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "esophagoscopy revealed portal hypertension and esophagus varices"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Portal hypertension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001409",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "esophagus varices",
+     "span": [
+      "esophagoscopy revealed portal hypertension and esophagus varices"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "esophagoscopy revealed portal hypertension and esophagus varices"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "esophagoscopy revealed portal hypertension and esophagus varices"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Esophageal varix",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002040",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "hypersplenism",
+     "span": [
+      "Splenectomy relieved some of the hypersplenism"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Splenectomy relieved some of the hypersplenism"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Splenectomy relieved some of the hypersplenism"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "partly relieved by splenectomy",
+     "span": [
+      "Splenectomy relieved some of the hypersplenism"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Hypersplenism",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001971",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "IgG^# (g/L): 4.2",
+     "span": [
+      "| P10 | 4.2",
+      "IgG_tot (6.9–15.7 g/L)",
+      "IgG before initiation of immunoglobulin substitution therapy"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | 4.2",
+      "IgG_tot (6.9–15.7 g/L)",
+      "IgG before initiation of immunoglobulin substitution therapy"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | 4.2",
+      "IgG_tot (6.9–15.7 g/L)",
+      "IgG before initiation of immunoglobulin substitution therapy"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IgG 4.2 g/L before immunoglobulin substitution; printed reference 6.9–15.7 g/L",
+     "span": [
+      "| P10 | 4.2",
+      "IgG_tot (6.9–15.7 g/L)",
+      "IgG before initiation of immunoglobulin substitution therapy"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased circulating IgG level",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0004315",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "IgA (g/L): BD (below detection limit)",
+     "span": [
+      "| P10 | 4.2 | ^* | BD",
+      "BD, below detection limit"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | 4.2 | ^* | BD",
+      "BD, below detection limit"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | 4.2 | ^* | BD",
+      "BD, below detection limit"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "below detection limit; printed reference 0.8–3.9 g/L",
+     "span": [
+      "| P10 | 4.2 | ^* | BD",
+      "BD, below detection limit"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased circulating IgA level",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002720",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "Lymfocyte count (cells/μL WB): 266",
+     "span": [
+      "| P10 | 4.2 | ^* | BD | 266",
+      "Lymfocyte count (cell/μL WB) (1,000–2,800)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | 4.2 | ^* | BD | 266",
+      "Lymfocyte count (cell/μL WB) (1,000–2,800)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | 4.2 | ^* | BD | 266",
+      "Lymfocyte count (cell/μL WB) (1,000–2,800)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "266 cells/μL; printed reference 1,000–2,800",
+     "span": [
+      "| P10 | 4.2 | ^* | BD | 266",
+      "Lymfocyte count (cell/μL WB) (1,000–2,800)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Lymphopenia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001888",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "markedly reduced fraction of isotype-switched memory B cells",
+     "span": [
+      "the large majority of patients (with the exception of P15) displayed a markedly reduced fraction of isotype-switched memory B cells"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "the large majority of patients (with the exception of P15) displayed a markedly reduced fraction of isotype-switched memory B cells"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "the large majority of patients (with the exception of P15) displayed a markedly reduced fraction of isotype-switched memory B cells"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "markedly reduced; group statement names P15 as the only exception",
+     "span": [
+      "the large majority of patients (with the exception of P15) displayed a markedly reduced fraction of isotype-switched memory B cells"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased proportion of class-switched memory B cells",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "idiopathic thrombocytopenic purpura",
+     "span": [
+      "two patients had idiopathic thrombocytopenic purpura (P17 and P18)"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "two patients had idiopathic thrombocytopenic purpura (P17 and P18)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "two patients had idiopathic thrombocytopenic purpura (P17 and P18)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "group statement names P17 and P18 as the only patients with ITP",
+     "span": [
+      "two patients had idiopathic thrombocytopenic purpura (P17 and P18)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Autoimmune thrombocytopenia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001973",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "feature_text_as_stated": {
+     "value": "malignancy",
+     "span": [
+      "six had been diagnosed with malignancy, three of which were diffuse large B cell lymphoma (P1, P6, P12), one was splenic marginal zone lymphoma (P17), one was cervical adenocarcinoma (P5), and one was esophagus squamous cell carcinoma (P4)"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "six had been diagnosed with malignancy, three of which were diffuse large B cell lymphoma (P1, P6, P12), one was splenic marginal zone lymphoma (P17), one was cervical adenocarcinoma (P5), and one was esophagus squamous cell carcinoma (P4)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "six had been diagnosed with malignancy, three of which were diffuse large B cell lymphoma (P1, P6, P12), one was splenic marginal zone lymphoma (P17), one was cervical adenocarcinoma (P5), and one was esophagus squamous cell carcinoma (P4)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "group statement names all six patients with malignancy (P1, P4, P5, P6, P12, P17)",
+     "span": [
+      "six had been diagnosed with malignancy, three of which were diffuse large B cell lymphoma (P1, P6, P12), one was splenic marginal zone lymphoma (P17), one was cervical adenocarcinoma (P5), and one was esophagus squamous cell carcinoma (P4)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Neoplasm",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002664",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis",
+      "pancytopenia with persistent CD4 lymphopenia, and pneumonias"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| P10 | F | CVID | 23 | Pneumonia, stomatitis",
+      "pancytopenia with persistent CD4 lymphopenia, and pneumonias"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32047491",
+     "span": "PMID: 32047491"
+    },
+    "individual_label_in_paper": {
+     "value": "P10",
+     "span": "P10"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

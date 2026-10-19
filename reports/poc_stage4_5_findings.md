@@ -1,0 +1,408 @@
+# Pilot Stages 4 and 5, and the instructions-v4 check (A20 haploinsufficiency)
+
+*2026-10-19. Branch `claude/gracious-pascal-j7krug`. Approved by Jimmy under D-23 to D-25. Route D-20: Claude Code helper agents. HA20 is a development disease (D-18), so none of this is a headline result for the six-disease study.*
+
+Every number below comes from a script in the repo; the output file is named next to it. Statements about single papers come from the extraction files and the helpers' notes, and those papers are named.
+
+## 1. Summary
+
+- **Instructions v4 behave as intended (D-24).** On the 10 papers picked for the changed rules, 13 of 13 rule checks moved the way the rule says (`analysis/poc/v4_check_poc-ha20-v4-check.json`). All 11,706 quoted values were found verbatim. As agreed, there is no run-3: run-2 stays the extraction of record.
+- **Stage 4: the records convert, but normalization misses its target as worded.**
+  - **Phenopackets:** 749, one per merged person, and **all 749 are schema-valid** (`validation_report.json`).
+  - **HPO binding:** 88.5% of 4,453 feature rows are bound to a current term in the pinned HPO release (`binding_summary.json`).
+  - **Variant normalization:** 128 of 277 distinct variant descriptions normalized or corrected (46.2%). Counting only the 138 that state a cDNA change, it is 92.8%. The Stage 4 check asks for 95% (`normalization_summary.json`). The rest are protein-only (99) or structural (40) descriptions, which cannot be normalized from the text, plus 10 that VariantValidator rejected. §4.1 has the detail; §8 has a proposed rewording.
+- **Stage 5: the gatekeeper re-read 22,003 values and found 8 unsupported.**
+  - The 22,003 are every run-2 value except bookkeeping fields. 9,848 are text copied from inside their own quote, so a script marks them supported; helpers judged the other 12,155.
+  - **Result:** 21,690 supported, 305 partially supported, **8 unsupported**, 0 quotes not found (`gatekeeper_summary.json`).
+  - **Shares:** unsupported 0.036% (exact 95% CI 0.016–0.072%); not fully supported, counting partials, 1.42% (1.27–1.59%).
+  - **These are the gatekeeper's own reading.** The pre-registered measure is your 50-claim audit, which also calibrates the gatekeeper. It is still waiting for your ratings (§6).
+- **The phenopackets were rebuilt** without any claim the gatekeeper did not call supported, as `POC_DESIGN.md` §3.9 requires. That left out 50 feature rows, 69 checklist rows, 10 ages, 15 onsets, 15 pathogenicity statements and 4 zygosity values. All 749 phenopackets remain valid.
+- **The commonest gatekeeper flag is a labelling convention, not a reading error.** Normal findings are recorded as the feature with status "excluded" ("normal CRP" excluded). Helpers disagreed on how to judge that: most accepted it, about 40 flags call it partial, and one calls it unsupported. §5.3 proposes a fix for the frozen pipeline.
+- **Spend:** the session reading rose from $463.50 to $580.31, so $116.81 covers the v4 check, the Stage 4 helpers and the gatekeeper together. You approved about $195 for these (~$170 + ~$25). Pilot total: $580.31 against the $1,000 ceiling (§7).
+- **Needed from you:** ratings for the 50-claim audit and the 30 HPO bindings (§6), and two small decisions (§8).
+
+## 2. What ran
+
+| Step | What | Output |
+|---|---|---|
+| Merge policy v4 (D-23) | Merges on citations only; matches on sex and onset alone become weak matches listed for review. Tests added. | `data/extracted/ha20/poc-ha20-run-2/merges.csv` (v4), `merges_policy_v3.csv` kept for comparison |
+| Input fixes (D-24) | Bold table cells kept; supplement filter v2 (only administrative files skipped); HTML tables to pipe tables; entities decoded | `pipeline/extract/corpus/`, `data/literature/ha20/supplementary/conversion.csv` |
+| v4 check | 10 purposive papers under `extract_v4.md` and `schema_ha20_v4.json`, one Opus helper each | `data/extracted/ha20/poc-ha20-v4-check/`, `runs/poc-ha20-v4-check/` |
+| Stage 4 | VariantValidator 4.0.1 normalization to MANE Select NM_001270508.2; HPO and Mondo binding against pinned releases (HP 2026-09-01, Mondo 2026-10-06), with four Sonnet helpers for phrases a script could not bind; GA4GH Phenopackets v2 | `variants_normalized.csv`, `hpo_bindings.csv`, `disease_bindings.csv`, `phenopackets/`, `validation_report.json` |
+| Stage 5 | 97 chunks of claims, one Opus helper each, under `gatekeeper_v1.md`; claims judged against the run-2 Markdown snapshot | `gatekeeper/*.csv`, `gatekeeper.csv`, `gatekeeper_summary.json`, `runs/poc-ha20-run-2-gatekeeper/` |
+
+**Interruption.** At about 02:50 UTC the account reached its five-hour usage limit and 10 gatekeeper helpers stopped. Seven had already written complete files; a script checked each one (every claim once, valid verdicts). The other three were resumed and finished. The session ran on overage (extra usage) from then on; the limit resets at 05:30 UTC.
+
+## 3. Instructions v4 on 10 papers (D-24)
+
+Each paper was chosen because one or more v4 rules apply to it. The table compares run-2 (instructions v3) with the v4 run on the same paper (`analysis/poc/v4_check.py`).
+
+| Paper | Rule | Run-2 → v4 | As intended |
+|---|---|---|---|
+| 42128528 | Supplement filter v2 keeps the per-patient table | TNFAIP3 rows with a printed variant: 1 → 18 | yes |
+| 30526650 | Inherited only when the paper says the parent carries the variant | "inherited maternal" ×2 → "not reported" ×2 | yes |
+| 33549127 | Same rule, carrier parents named | 0 → 3 inherited values | yes |
+| 37848905 | A 0 count in a group table excludes no one | group-statement exclusions: 26 → 12 | yes |
+| 36064566 | Labels for numbered table rows; no guessing which parent | "Table n #k" labels: 0 → 2; guessed mother/father labels: 2 → 0 | yes, yes |
+| 33446651 | Leave out a variant the authors call common and non-causal | rows for c.305A>G: 2 → 0; column labels kept (4 → 4) | yes, yes |
+| 42572791 | Other genes only when described | other-gene variant rows: 4 → 0 | yes |
+| 40574834 | Per-patient reference column; germline mosaic carriers | rows with a source reference: 2 → 42; mosaic rows: 4 → 4 | yes, yes |
+| 35958611 | Repeated pedigree labels; carrier parents | "(Family n)" labels: 2 → 3; inherited values: 0 → 5 | yes, yes |
+| 41929919 | Literature patients with one fact stay in scope | individuals: 5 → 5 (reported only) | — |
+
+**Variant agreement with run-2 is low on these papers, and that is expected** (`analysis/poc/run_agreement_poc-ha20-run-2_vs_poc-ha20-v4-check.json`).
+- **The scores:** variant agreement 0.32 on strings and 0.33 on keys. Checklist answers agree in 98.5% of 2,380 cells, and individual labels in 86%.
+- **Why so low:** the papers were picked because v4 changes them, and three of them had their input changed by the D-24 fixes.
+  - In 40574834, both runs give 58 TNFAIP3 rows. But run-2 copied protein forms ("p.W85GfsX"), while v4 copied cDNA forms ("c.252delC") from the supplementary table, which is readable now that HTML tables are converted. The keys cannot match without normalization.
+  - In 42128528, the per-patient table is new input.
+  - In 33446651 and 42572791, the rules removed rows on purpose.
+- **What this measures:** this is a check of the rules, not a stability measure. Stability was measured on run-2's random repeat (0.944 on strings), which this does not replace.
+
+## 4. Stage 4: normalization, binding, phenopackets
+
+### 4.1 Variant normalization (VariantValidator 4.0.1, database vvdb_2025_3)
+
+| Status | Distinct descriptions | Variant rows | Meaning |
+|---|---|---|---|
+| normalized | 102 | 196 | Accepted as given |
+| corrected | 26 | 50 | Accepted after a correction VariantValidator reported (e.g. a wrong reference base) |
+| protein_only | 99 | 236 | The paper gives only a protein change; no cDNA to normalize |
+| not_normalized | 40 | 49 | No cDNA or protein description: copy-number changes, exon deletions, prose |
+| unresolvable | 10 | 15 | Rejected by VariantValidator: 4 cite NM_006290.5, which its database does not hold; 2 cite Ensembl transcripts outside its RefSeq set; 3 have syntax errors in the paper's string (e.g. "c.436_437deTC"); 1 crosses an exon boundary |
+| **Total** | **277** | **546** | |
+
+- **Transcripts:** 76 descriptions named no transcript, so MANE Select was assumed. 24 named a transcript without a version, and the latest version from VariantValidator's gene-to-transcript list was used. Both are flagged per row.
+- **Database fields:** only normalization fields are kept from VariantValidator responses. No ClinVar or other database annotation is stored (pre-registration §5.3).
+- **The Stage 4 check is not met as worded.** It asks for 95% normalized or corrected; the result is 46.2% of all descriptions and 92.8% of those with a cDNA. Protein-only and structural descriptions cannot reach that status from the text, so the check as written cannot be met on this literature. The 10 unresolvable ones could be repaired:
+  - the 4 NM_006290.5 and 2 Ensembl strings, by mapping to a transcript VariantValidator holds;
+  - the 3 typos, by recording a corrected query next to the original string.
+
+  Done together, that would give up to 137 of 138; the exon-boundary case needs a person to read it (§8, item 1).
+
+### 4.2 HPO and Mondo binding
+
+| Binding method (4,453 phenotypic feature rows) | Rows |
+|---|---|
+| Helper's HPO ID verified against the pinned release (exact ID) | 2,449 |
+| Exact name or synonym match (label) | 657 |
+| Obsolete ID replaced | 1 |
+| ID current but name not matched (kept, flagged) | 24 |
+| Model step, exact / close / broader | 60 / 461 / 288 |
+| Broader term on an excluded row, dropped (it would overstate the exclusion) | 54 |
+| No suitable term | 459 |
+| **Bound** | **3,940 (88.5%)** |
+
+- **The model step.** Four Sonnet helpers looked up unbound phrases in the pinned `hp.obo`. An answer was used only if the ID exists, is current, and the name the helper copied equals the term's name.
+- **Rater check:** 30 model bindings are sampled for you (`adjudication/poc_audit/hpo_model_binding_sample.csv`, seed 20261019).
+- **Diseases** (799 individuals):
+  - 468 name HA20 and are bound to MONDO:0800045, whose Mondo cross-references are OMIM:616744 and Orphanet:476102;
+  - 20 bind to another Mondo term by exact name;
+  - 192 state no disease;
+  - 119 state a label with no exact Mondo match.
+
+  Binding the HA20 label to MONDO:0800045 rather than the gene group term MONDO:0100222 was my call, flagged for review.
+
+### 4.3 Phenopackets
+
+| | Ungated build | Final build (gatekeeper applied) |
+|---|---|---|
+| Phenopackets (one per merged person, policy v4) | 749 | 749 |
+| Schema-valid | 749 | **749** |
+| Observed / excluded features | 3,523 / 759 | 3,463 / 730 |
+| With a genomic interpretation | 492 | 492 |
+| Variants with normalized expressions / original string only | 227 / 294 | 227 / 294 |
+| Excluded terms dropped because an observed term entails them | 36 | 32 |
+
+- **Validation:** no errors. The warnings are 631 observed and 131 excluded terms whose ancestor is also listed; they are kept, since each has its own quote.
+- **Three-state:** excluded terms come only from rows marked excluded. "Not reported" stays in the evidence tables, because a phenopacket cannot express it.
+- **The lenient build:** keeping partial verdicts and dropping only unsupported ones gives 3,523 observed and 757 excluded (`phenopackets_gk_lenient_build.json`).
+
+## 5. Stage 5: the gatekeeper
+
+### 5.1 What was judged
+
+| Class | Claims | How judged |
+|---|---|---|
+| Bookkeeping (PMID fields, labels repeated in child tables) | 42,996 | Not judged |
+| Verbatim (free text found inside its own quote; the quote is verbatim in the paper) | 9,848 | Supported by construction |
+| Model (statuses, enums, numbers, age conversions, text not found in its quote) | 12,155 | One Opus helper per chunk, `gatekeeper_v1.md` |
+
+**Result** (`gatekeeper_summary.json`):
+
+| | All judged values (22,003) | Helper-judged only (12,155) |
+|---|---|---|
+| Unsupported or quote not found | 8 (0.036%; 0.016–0.072%) | 8 (0.066%; 0.028–0.130%) |
+| Not fully supported, counting partials | 313 (1.42%; 1.27–1.59%) | 313 (2.58%; 2.30–2.87%) |
+
+**Where flags fall.** Fields with the most flags (partial or unsupported, of judged):
+- feature status 72/4,453;
+- checklist status 69/1,911;
+- clinical diagnosis basis 36/410;
+- functional evidence statement 17/144;
+- feature detail 16/1,269;
+- feature onset 16/241;
+- pathogenicity statement 15/390;
+- treatment summary 14/409;
+- age at last evaluation 10/154;
+- the "cites earlier report" flag 8/43.
+
+### 5.2 The 8 unsupported values
+
+| Paper | Field | Error class | Already fixed? |
+|---|---|---|---|
+| 30526650 (×2) | inheritance "inherited maternal" | Carrier status inferred: the mother was never tested | Yes: v4 gives "not reported" (§3) |
+| 37324276 (×2) | arthralgia "excluded" for P2 and P5 | A group statement contradicted by the paper's own per-patient table | No; proposed rule below |
+| 31175876 | "normal C-reactive protein levels" excluded | Labelling convention (§5.3); the meaning is right | Convention fix proposed |
+| 33971891 | "usually normal CRP" excluded | A hedged phrase read as an absence | No |
+| 39125844 | treatment summary | Treatment of the proband's relatives given to the proband | No |
+| 41634270 | treatment summary for patient #9 | Adds conditioning details stated only in Methods, for all patients | No |
+
+All 8 are left out of the final phenopackets. The two treatment summaries and the two inheritance values never enter a phenopacket in any case.
+
+### 5.3 The partial verdicts, and one gatekeeper inconsistency
+
+The flags were grouped by a keyword rule on the helper's reason (`analysis/poc/gatekeeper_flags.py`). The groups are approximate and only describe the flags; the rule is in the script, and every flag is listed with its reason in `gatekeeper_summary.json`.
+
+| Group (313 flags) | Flags | Typical case |
+|---|---|---|
+| Detail outside the quote | 80 | The value adds a true detail from the next sentence ("trio WES", a gene panel) |
+| More specific than the quote | 75 | "fever" → "recurrent fever"; "cytopenia" → "autoimmune cytopenia"; "oral/genital ulcers" split into two items; an initial diagnosis read as a feature |
+| Normal finding labelled as the feature, status excluded | 41 | "normal ESR" excluded, "RF negative" excluded |
+| Age or timing | 30 | A range recorded as one age; age at presentation used as age at diagnosis |
+| Absence or fact inferred | 11 | A normal chest CT read as "no interstitial lung disease" |
+| Hedged phrase | 7 | "suggesting panniculitis" recorded as observed |
+| Another person | 6 | |
+| Contradicted by the paper | 3 | |
+| Other | 60 | |
+
+**The labelling convention.**
+- **What happens:** the extraction records a normal finding with the paper's words as the feature and status "excluded", meaning the abnormality is absent.
+- **How helpers judged it:**
+  - At least six helpers said they accepted it, on the same reasoning (e.g. 33815380, 36467491, 40719110).
+  - About 40 flags, from other helpers, call it partial because the label read literally says the opposite.
+  - One helper called it unsupported (31175876).
+- **Where the meaning lands:** the HPO binding carries the abnormality (e.g. "Elevated C-reactive protein level", excluded), so the phenopackets are right. But because the gatekeeper was inconsistent, the final build drops some correct exclusions.
+- **This is a gap in my instructions, not in the extraction.** Proposal in §8, item 2.
+
+**Papers that contradict themselves.** Helpers found several papers whose table and text disagree, e.g.:
+- the Figure 2 legend in 31299923 names a patient that the text and Table 2 do not;
+- in 34011076, Table 1 lists genital ulcers and a rash, while the text says there were none.
+
+Others are 34030699, 35958611, 39125844, 40859316 and 32714711. In each case the claim matched its own quote and was judged supported, with the conflict noted in the reason. These belong in the human audit's error discussion, not in the unsupported count.
+
+**A flag that could mislead merging.**
+- In 35753512, 35486341 and 36211342, the paper-level "cites an earlier report of the same patients" flag is true, but the earlier report covers patients with other genes, not the TNFAIP3 carrier.
+- None of these papers produced a merge under policy v4 (`merges.csv`: 0 merged pairs involving them). So no record was joined in error.
+- The flag should be per patient in the frozen schema; it is already per patient where v4 adds the reference column.
+
+## 6. Waiting for you: the two rating sheets
+
+| Sheet | Rows | What to fill in |
+|---|---|---|
+| `adjudication/poc_audit/sample.csv` | 50 claims: 20 variant fields, 10 observed and 10 excluded features, 10 demographic or inheritance fields (seed 20261019; pools in `sample_key.json`) | Column "rating": supported / partially supported / unsupported, on the quote alone, plus a note. The gatekeeper verdict is hidden. |
+| `adjudication/poc_audit/hpo_model_binding_sample.csv` | 30 model-step HPO bindings | "rater_ok": yes / no, plus a note |
+
+**After your ratings:**
+- `analysis/poc/audit_metrics.py` scores them: the human unsupported rate with an exact interval, and the Q4 gate (unsupported ≤ 4% at n = 50). The automated span match is already met at 100%.
+- It also produces the gatekeeper-vs-human confusion matrix and a list of disagreements.
+- Per `POC_DESIGN.md` Stage 5 step 3, disagreements and partials come back to you once, with the full paragraph, for a final label.
+
+## 7. Spend
+
+| Reading (session usage, list-price estimate) | USD |
+|---|---|
+| End of Stage 3b report | 460.75 |
+| Start of the v4 check (after D-23 and D-24 work) | 463.50 |
+| After the v4 check, Stage 4 and Stage 5 | 580.31 |
+| **This report's work** | **≈119.56** (116.81 since the v4 check started) |
+| Approved: Stage 5 ~$170 (D-25) + v4 check ~$25 (D-24) | ~195 |
+
+- **Why the work cannot be split:** the v4 check, the Stage 4 binding helpers and the gatekeeper overlapped in one window (02:08–03:02 UTC). The 463.50 reading did not refresh again until about 02:58 UTC. Details are in both run manifests.
+- **Against the estimate:** the gatekeeper came in well under the ~$170 estimated from run-2's per-paper rate. Most claims needed no model call, and each helper read one paper once.
+- **What the readings cover:** this session's own work as well as the helpers', so they are upper bounds. Reconcile against claude.ai Settings > Usage (D-17).
+- **Overage:** from about 02:50 UTC the session ran on overage after the five-hour limit. If overage bills differently from the grant credits, it matters for D-17.
+- **Pilot to date:** $580.31 against the $1,000 ceiling (hard stop $1,500).
+
+## 8. Decisions needed (recommendations first)
+
+The pre-registration is not frozen, so these are revisions. The next free decision number is D-26.
+
+1. **Reword the normalization check.**
+   - *Recommend:* measure it over descriptions that state a cDNA change, and report protein-only and structural descriptions separately with their status.
+   - *For the frozen pipeline:* also fix the two repairable causes of rejection: map transcripts VariantValidator does not hold to the current RefSeq version, and record a corrected query beside the original string for typos.
+   - *Why:* as worded, the target counts descriptions that cannot be normalized from the text, so no extraction can meet it.
+   - *Effect:* on run-2 it would read 128/138 (92.8%) now, and up to 137/138 after the fixes.
+2. **Normal findings and the gatekeeper.**
+   - *Recommend:* in the instructions for the six-disease run, when a feature is excluded because a finding is normal, write the abnormality as the feature ("elevated CRP") and keep the paper's words in the quote. Also state the convention in gatekeeper v2, along with two rules the flags showed were missing: a per-patient table outranks a group statement, and a hedged phrase supports neither observed nor excluded.
+   - *What not to do:* no re-run on HA20.
+   - *Why:* it removes the largest group of flags at its source, and makes the gatekeeper consistent before the 250-claim audit.
+
+**Not a decision, for the record.** The final phenopackets follow `POC_DESIGN.md` §3.9 and leave out partially supported claims. The lenient build is reported alongside as a sensitivity check.
+
+## 9. Next
+
+- Your ratings (§6), then `audit_metrics.py` and the re-read step.
+- Stage 6 (ClinVar concordance and completeness, harness side only) and Stage 7 (pilot report).
+
+## 10. Update, 2026-10-19: the human audit, D-26 to D-28 and gatekeeper v2
+
+Every number here comes from `analysis/poc/audit_metrics.py` (output files named below), the gatekeeper merge, or `normalize_variants.py`.
+
+### 10.1 Jimmy's audit (first pass, before the step-3 second look)
+
+Jimmy rated all 50 claims and 27 of the 30 HPO bindings on a private rating page (`adjudication/poc_audit/make_rating_page.py`). The gatekeeper's verdicts were hidden from him. Ratings: `adjudication/poc_audit/sample.csv`, `ratings_raw.json`; scores: `analysis/poc/audit_metrics.json`.
+
+| | Claims | Plain rate (exact 95% CI) | Weighted by stratum pool |
+|---|---|---|---|
+| Supported | 42 | | |
+| Partially supported | 6 | | |
+| Unsupported | 2 | 4.0% (0.5–13.7%) | 3.3% |
+| Not fully supported | 8 | 16.0% (7.2–29.1%) | 12.5% |
+
+- **Q4 gate:** the automated span match is 100%, and the human unsupported rate is 4.0%, exactly at the ≤ 4% point-estimate limit. The gate is met on the first pass, at its edge. The second look may move it.
+- **By stratum:** both unsupported claims are variant fields.
+  - C049428: "pathogenic" was given to the mother of P3 from a sentence about the whole cohort; she has low-level somatic mosaicism.
+  - C048990: P1's zygosity was taken from a group statement, although P1's variant is undetermined.
+- **Excluded features:** 3 of the 10 sampled were rated partly. Two of them record a negative investigation or consultation as the feature.
+- **Weighting:** the sample has fixed counts per stratum, so excluded features (a small pool) are over-represented. The weighted figures correct for that; they are point estimates only.
+- **HPO model bindings:** 23 of 27 accepted (85%, CI 66–96%), after Jimmy recounted four normal-finding rows as yes (D-27 handles the convention). 3 were left unrated.
+
+### 10.2 The gatekeeper against the audit
+
+| Gatekeeper | Agreement with Jimmy (supported vs not) | Of his 8 not-fully-supported claims, flagged | False flags |
+|---|---|---|---|
+| v1, as run on all of run-2 | 40/50 | 0 | 2 |
+| v2, re-check on the same 50 claims (`gatekeeper_v2_recheck.csv`) | 44/50 | 2 | 0 |
+
+- **v1 missed all 8.** In 3 of them no model judged the claim: the value appears word for word in its quote, so a script had marked it supported. Its 2 false flags were normal findings recorded as excluded, which Jimmy accepts.
+- **The gatekeeper's whole-run rate understates the problem.** Its 0.036% unsupported rate over run-2 (§5.1) is far below the human 4.0% and should not be cited as an error rate.
+- **v2 does better but is still weak.** It has no script shortcut and checks the person link (D-28), and it states the normal-finding rule (D-27). It flagged C049428 and C038628 as partial. It still called C048990 supported, and 5 of Jimmy's partials too.
+- **This was not an independent test.** v2's rules were written after seeing these ratings, so its true performance on new claims is likely no better than this.
+- **What it means:** the gatekeeper cannot stand in for the human audit. The pre-registered 250-claim audit stays the measure of the false-positive rate. The pre-registration's "gatekeeper accuracy against human labels" (§7.1(b)) is the right way to report it.
+
+### 10.3 Decisions taken (Jimmy, 2026-10-19; `DECISIONS.md`)
+
+- **D-26:** the normalization check counts descriptions that state a cDNA change, with repairs.
+  - The repairs: Ensembl transcripts go to VariantValidator's Ensembl endpoint; NM_006290.5 (not held) is mapped to NM_006290.4; two notation typos are queried in corrected form (`configs/hgvs_query_corrections.csv`), with the extracted string kept.
+  - Result: **135 of 138 (97.8%)**, so the check is met as reworded. Three remain for a person to read: one length mismatch and two reference mismatches.
+  - Phenopackets rebuilt: still 749, all schema-valid. Variants with normalized expressions rose from 227 to 239.
+- **D-27:** for the six-disease run, a normal finding is recorded as the absent abnormality, with the paper's words in the quote. Gatekeeper v2 states this.
+- **D-28:** no script shortcut in the gatekeeper; every value is judged, including its link to the person. That is about 80% more gatekeeper work.
+- **Pre-registration:** draft v0.6 applies all three (§6.2, §6.4, §7.2.2).
+
+### 10.4 Still open (as of the first pass; see §10.5 for what changed)
+
+- **The step-3 second look:** done the same day (§10.5).
+- **The gatekeeper's weak recall** needs a design answer before the freeze (§10.5, D-29).
+- **Spend:** the session reading went from $593.02 to $610.19 ($17.17) across the re-check (28 short helper reads) and this session's own work; normalization repairs cost no model calls. Pilot total: $610.19 against the $1,000 ceiling.
+
+### 10.5 Final labels after the second look: Q4 not met
+
+Jimmy re-read 10 claims with the full paragraph in view and, for this step, the v1 gatekeeper verdict beside each (POC_DESIGN Stage 5 step 3). Final labels: `adjudication/poc_audit/sample.csv` (`final_rating`, `final_reason`) and `ratings_raw.json`; scores: `analysis/poc/audit_metrics.json` (v1) and `audit_metrics_gatekeeper_v2.json` (v2), both run 2026-10-19.
+
+| | First pass | Final | Plain rate, final (exact 95% CI) | Weighted by stratum pool, final |
+|---|---|---|---|---|
+| Supported | 42 | 44 | | |
+| Partially supported | 6 | 3 | | |
+| Unsupported | 2 | 3 | **6.0% (1.3–16.5%)** | 5.0% |
+| Not fully supported | 8 | 6 | 12.0% (4.5–24.3%) | 8.2% |
+
+- **Q4 is not met.** The automated span match is 100%, but the human unsupported rate is 6.0%, above the ≤ 4% point-estimate limit. The interval is wide (n = 50), and the pre-registered target (< 2%) is certified only by the 250-claim audit. Under the Stage 5 gate rule the pilot continues (Stages 6 and 7 are still needed), and the pilot report must recommend fixes and a re-run before the six-disease run.
+- **Seven labels changed on re-reading.**
+  - Four partials became supported: C017466 (neutropenic fevers), C025863 (fever, table "–"), C064551 and C008133 (negative investigations recorded as excluded).
+  - Two supported became partial: C008344 and C049812, normal findings recorded in the inverted form ("normal immunoglobulins", excluded). Jimmy's reasons repeat the v1 gatekeeper's wording, which the second-look tab showed him.
+  - One partial became unsupported: **C032922**, gene symbol "TNFAIP3" for "Table 2 column 8" of 37342083 (c.1129G>A, p.(Val377Met)). Jimmy's reason: "variant is different: c.707T>C, p.(Leu236Pro)". See the note below.
+- **Every unsupported claim, and one partial, is a variant field taken from something other than this person's own statement:**
+
+| Claim | Field | What went wrong | Error class |
+|---|---|---|---|
+| C049428 | pathogenicity "pathogenic" (40574834) | Given to P3's mother from a cohort-wide sentence; she has low-level somatic mosaicism | Group statement applied to a person |
+| C048990 | zygosity "heterozygous" (40574834) | Taken from a group statement; P1's variant is undetermined | Group statement applied to a person |
+| C032922 | gene symbol (37342083) | Jimmy: the variant is different (the paper's own patients carry c.707T>C) | Variant or row attribution (to confirm) |
+| C038628 | variant type "nonsense" (39125844), partial | The paper gives three types for the group (splice site, frameshift, nonsense) | Group statement applied to a person |
+| C008344, C049812 | status "excluded", partial | Normal finding recorded in the inverted form | Normal-finding form (D-27 already fixes it for new runs) |
+
+- **Note on C032922.** It alone moves the result across the gate (2 of 50 is 4.0%, met; 3 of 50 is 6.0%, not met). Claude's reading of the paper: Table 2 has one column per missense variant, the paper's own c.707T>C first and then variants cited from earlier papers; column 8 is c.1129G>A (cited to Niwano et al., 2022), and the quoted row header "Molecular TNFAIP3 (NM_006290) anomaly" covers every column. On that reading the gene symbol is right for that column, and the problem Jimmy points at may be a different one: the extractor made a "person" of a literature-summary column. Jimmy confirmed the label on 2026-10-19 ("Keep unsupported"; D-30 entry in `DECISIONS.md`).
+- **The gatekeepers against the final labels:**
+
+| Gatekeeper | Agreement (supported vs not) | Of 6 not-fully-supported, flagged | Of 3 unsupported, called unsupported | False flags |
+|---|---|---|---|---|
+| v1, as run on run-2 | 46/50 | 2 (C008344, C049812) | 0 | 0 |
+| v2 re-check | 46/50 | 2 (C049428 as partial, C038628) | 0 | 0 |
+
+- **The v1 figures are not independent.** v1 now scores better because the two claims it flagged became partial when Jimmy saw its reasons. Neither gatekeeper called any of the three unsupported claims unsupported, and both called C032922 and C048990 supported.
+- **v2 conflicts with Jimmy's final labels on one rule.** v2 says a normal finding in the inverted form is supported (D-27 accepted both recording forms); Jimmy's final labels call it partial. A v3 should treat the inverted form as partial, matching D-27's preferred form.
+- **HPO bindings:** unchanged, 23 of 27 accepted.
+
+**What the pilot report should recommend (D-29, open; recommendation first in `DECISIONS.md`):**
+1. **Extraction (instructions v5):** variant fields (zygosity, inheritance, pathogenicity, variant type) only from a statement or table row about this person or a named group that includes them; otherwise "not reported". v5 already holds the D-27 rule. If Jimmy's point on C032922 is that a literature-summary column should not become a person, that needs its own rule, weighed against how review rows are handled now (they are extracted as people and merged with the original report).
+2. **Gatekeeper v3:** before judging, the gatekeeper writes down who the quote is about (this person, a named group, the cohort, another paper's patients) and judges the person link from that; the inverted normal-finding form is partial. This follows the mitigation listed for "gatekeeper agrees with extractor" in the POC risk table.
+3. **The re-run before the six-disease run:** v5 extraction and gatekeeper v3 on about 20 HA20 papers weighted toward cohort papers, with a fresh 50-claim audit drawn from them by a new seed, so the gatekeeper is tested on claims its rules were not written from. A rough estimate from run-2 rates is about $110 (20 papers at about $1.95 for extraction and about $3.60 for gatekeeper v3 with D-28's extra claims); it would be estimated properly before running.
+4. **Keep the 250-claim audit as the measure.** The gatekeeper is a filter whose accuracy is reported against human labels, not an error rate.
+
+### 10.6 The D-29 re-run (instructions v5, gatekeeper v3), 2026-10-19
+
+Decided by Jimmy (D-29). Numbers from `analysis/poc/pick_v5_subset.py`, `analysis/poc/v5_variant_fields.py`, `gatekeeper_merge.py --prefix gatekeeper_v3` and `make_audit_sample.py`, all run 2026-10-19.
+
+- **Papers:** 20 of the 85 run-2 papers, drawn at random with seed 29: 14 cohort or review papers and 6 case reports (`runs/poc-ha20-v5-subset/selection.json`). The draw did not look at the audit, the gatekeeper or any reference data.
+- **Extraction:** 20 helpers, with all quotes found verbatim.
+  - Four helpers had left some quotes empty: mostly person labels repeated in child tables, plus 38 checklist values and 10 proband flags. Repair-only resumes filled them.
+  - A diff against copies taken before the repair shows nothing else changed, except four proband flags set to null where no quote supported them.
+- **What v5 changed:** on the TNFAIP3 variant rows of these 20 papers, the share of rows with a value moved as follows (122 rows in run-2, 116 in v5).
+
+| Field | Run-2 (v3) | v5 |
+|---|---|---|
+| Zygosity | 77% | 53% |
+| Inheritance | 11% | 27% |
+| Variant type | 33% | 30% |
+| Pathogenicity | 52% | 52% |
+| Functional evidence | 25% | 21% |
+
+  Zygosity now abstains where only a cohort-level sentence gives it, as D-29 intended. Inheritance rose because of the v4 rule (a parent stated to carry the variant), which run-2 did not have. Pathogenicity did not move, so whether the rule caught the cohort-wide pathogenicity sentences is for the audit to show.
+- **Gatekeeper v3 on all 4,986 judged values:** 4,853 supported, 116 partially supported, 17 unsupported (0.34%; exact 95% CI 0.20–0.55%).
+  - That is about ten times the v1 rate on run-2 (0.036%). It is still a gatekeeper rate, not an error rate.
+  - Unsupported: 7 gene symbols on relatives' or literature patients' variant rows whose quote is another person's variant sentence, 6 feature claims (hedged phrases, conflicting figure legends), and 4 demographic fields.
+  - Partial: mostly onset ages taken from the age at diagnosis or admission (39).
+- **The gatekeepers bent the new rule.** v3 says a quote about another person makes a person-level value unsupported. In 20 claims the helpers recorded `about = other_person` but judged them partially supported, reasoning that the value is right one step away (relatives' proband flags; sisters' variant fields resting on "the same mutation" in the next sentence). Two helpers said so in their replies. The audit will show whether that leniency hides errors.
+- **Fresh audit:** 50 claims drawn with seed 20261029 from the same strata as before (pools: variant 673, observed 772, excluded 323, demographic 567), in `adjudication/poc_audit_v5/`. Rating page, with the gatekeeper hidden: https://claude.ai/artifact/UHTQJ3TyT29HZ25PPdQFN8 (private to Jimmy). Then `apply_ratings.py --dir ... --sample-dir adjudication/poc_audit_v5` and `audit_metrics.py --run-id poc-ha20-v5-subset --gatekeeper-file gatekeeper_v3.csv --sheet adjudication/poc_audit_v5/sample.csv`.
+- **Spend:** estimate $82.61. The session cost reading stayed at $614.97 from about 09:17 UTC through the run (the freeze seen before), so the actual figure comes from a later reading.
+
+### 10.7 The re-audit, first pass (Jimmy, 2026-10-19; 48 of 50 rated)
+
+Scores: `analysis/poc/audit_metrics_v5.json` (`audit_metrics.py --run-id poc-ha20-v5-subset --gatekeeper-file gatekeeper_v3.csv`). Ratings: `adjudication/poc_audit_v5/sample.csv` and `ratings_raw.json`.
+
+| | Claims | Rate (exact 95% CI) | Weighted by stratum pool |
+|---|---|---|---|
+| Supported | 44 | | |
+| Partially supported | 1 | | |
+| Unsupported | 3 | 6.3% (1.3–17.2%) | 9.1% |
+| Not rated | 2 | | |
+
+- **Q4 is still not met on the first pass** (6.3% against ≤ 4%). Two claims are unrated (C012085, vital status from a Chinese follow-up sentence; C010818, age at diagnosis).
+- **The variant stratum, where D-29 aimed, is clean:** 19 of 20 supported, 1 partly (C006555: a cDNA value that, Jimmy notes, includes the gene name), none unsupported. In the first audit, all three unsupported claims were variant fields.
+- **All three unsupported claims come from one table in one paper:** the stacked per-family cells of 42128528's Supplementary File 1 ("1 / 2 / 3 / 4*" patients against "18 / 24 / 21 / 57" ages).
+  - The three: pt1's age at last evaluation (P18Y, from the column "Age at analysis"), and pt4's and pt15's ages at onset (P5Y and P1Y).
+  - Read by position, the values match the column the field names. But the age at analysis is not the age at last evaluation. And positional reading of stacked cells is the v4 rule this table tests: the rule allows it only when the number of values equals the number of people, which holds for these columns but not for others in the same table.
+  - Jimmy left no note, so which of these he objected to is for the second look.
+- **Gatekeeper v3 against these labels:** it called all four not-fully-supported claims supported. Its one flag (C011145, "without clear celiac disease", partial) Jimmy rated supported. Agreement 43 of 48. So the person-link step did not help here, because the errors are not person-link errors.
+- **Next:** the second-look tab on the same page (5 claims: the three above, C006555 and C011145), plus the two unrated claims. Then the final figures.
+
+**Second look and final labels (Jimmy, 2026-10-19).**
+- **Two labels changed:** C006555 (cDNA with the gene name) went from partial to supported. C011145 ("without clear celiac disease") went from supported to partial, now matching the gatekeeper, whose reason the second-look tab showed (not independent).
+- **The three stacked-table claims stay unsupported.** Jimmy said in chat that he could not clearly assess the stacked supplementary table and thinks those readings uncertain. The sheet records that as the final reason.
+- **C012085 and C010818 stay unrated**, so n = 48.
+
+| | Final (gated) | Sensitivity: the 3 uncertain table claims left out |
+|---|---|---|
+| Unsupported | 3 of 48, 6.3% (1.3–17.2%) | 0 of 45, 0% (0–7.9%) |
+| Not fully supported | 4 of 48, 8.3% (2.3–20.0%) | 1 of 45, 2.2% (0.06–11.8%) |
+| Weighted by stratum pool, unsupported | 9.1% | — |
+
+Files: `analysis/poc/audit_metrics_v5.json` (gated) and `audit_metrics_v5_excluding_uncertain.json` (sensitivity, `--exclude-claims`).
+
+- **Q4 stays not met** on the gated figure. Counting a value the expert rater cannot verify from its quote as unsupported is the conservative reading. It matches the project's rule that thin evidence should give an abstention, not a value.
+- **What the re-audit shows:**
+  - The D-29 fix worked for the error class it targeted: no variant field is unsupported (0 of 20, against 3 of 20 in the first audit).
+  - The remaining failures are a different class: values read by position from stacked multi-patient cells, which the v4 rule allows when the counts match. A human could not confirm them.
+- **The gatekeeper:** v3 flagged 1 of the 4 not-fully-supported claims (recall 25%) with no false flags, and agreed on 45 of 48. It still cannot replace the audit.
+- **Proposed (D-31):** drop the positional reading of stacked cells from the extraction instructions (v6). A stacked value is recorded only when the paper labels it for the person; otherwise the field is "not reported". The gatekeeper treats any remaining positional reading as at most partially supported. This needs no new run for the pilot: the 250-claim audit of the frozen pipeline is the measure that counts.

@@ -44,7 +44,15 @@ disease set (`INSTRUCTIONS.md` §1.4).
 | 0 Setup and guardrails | done | 2026-10-18 | `pyproject.toml`, `pipeline/{common,extract,harness}`, `configs/prices.yaml` (prices unverified against the live page; `verified_on` is null), isolation tests and runtime guard, 14 tests passing with `uv run pytest`. One distribution with three subpackages rather than separate packages; the boundary is enforced by tests and the guard. |
 | 1 Corpus assembly | **done; Q1 gate not met** (49.7% < 70%) | 2026-10-18 | Run in this cloud session via the D-20 route. 838 records (PubMed query, 715 hits since 2015, plus review references and ClinVar-cited seeds); Claude Code screening put 153 in the extraction corpus; 76 have full text (Europe PMC XML; the PMC OA service is gone, Unpaywall unused for lack of an email address). Details, counts and QA in `data/literature/ha20/search.md`. Human spot-check sheet (20 rows) awaits Jimmy. |
 | 2 SLIDERS on Claude | adapter done, **smoke test not run** | 2026-10-18 | Patch `pipeline/extract/sliders_adapter/0001-anthropic-provider.patch` on upstream commit `b66094d`, installed by `scripts/install_sliders.sh`; config `configs/sliders_ha20.yaml`; pinned schema complete (no completion call); extraction rules v1; run wrapper with run manifest and usage/cost capture; 24 tests pass incl. wire-payload tests against a fake Messages API. Blocked here: no `ANTHROPIC_API_KEY` in the environment and no full text yet. |
-| 2 Smoke test, D-20 route | **done; awaiting Jimmy's gate** | 2026-10-18 | Three papers (36727002, 35154120, 41890736) extracted by Claude Code helpers (Opus) under `extract_v1.md`: 2,900 asserted values, all quotes found verbatim, 0 structural problems; at most $4.19 per paper (session usage delta, upper bound). Findings, proposed fixes and the Stage 3 estimate in `reports/poc_stage2_smoke_findings.md`; review sheet `reports/poc_review_poc-ha20-smoke-1.md`. |
+| 2 Smoke test, D-20 route | **done; gate passed (D-21)** | 2026-10-18 | Three papers (36727002, 35154120, 41890736) extracted by Claude Code helpers (Opus) under `extract_v1.md`: 2,900 asserted values, all quotes found verbatim, 0 structural problems; at most $4.19 per paper (session usage delta, upper bound). Findings, proposed fixes and the Stage 3 estimate in `reports/poc_stage2_smoke_findings.md`; review sheet `reports/poc_review_poc-ha20-smoke-1.md`. |
+| 3 Full extraction, D-20 route | **done; Q5 not met, variant agreement below 0.9** | 2026-10-18 | Run-1 over all 85 full-text papers plus a 15-paper repeat (D-21). 54,110 quoted values, all verbatim; 635 individuals (399 with a TNFAIP3 variant row). Repeat: checklist agreement 0.987; variant agreement 0.547 on strings, 0.702 on folded keys (0.973 without the two papers where the runs chose a different cohort scope). Merge hand check of all 58 policy-v2 merges: 52 true, 2 false, 4 cannot tell; policy v3 since. Spend $194.43 by session readings. Zhou↔Aeschlimann check not possible (Aeschlimann 2018 paywalled). Report: `reports/poc_stage3_findings.md`; instruction changes and run-2 decided under D-22. |
+| 3b Run-2 under instructions v3 (D-22) | **done; agreement gate met, Q5 not met** | 2026-10-19 | Run-2 over all 85 papers with converter fixes and supplementary text (21 papers): 64,999 quoted values, all verbatim; 799 individuals (597 with a TNFAIP3 variant row; 308 distinct TNFAIP3 strings). Repeat (15 papers): variant agreement 0.944 on strings, 0.988 on keys; checklist 0.995; labels 0.909. Fresh hand check of all 93 policy-v3 merges: 84 true, 6 false (all from the sex-and-onset route), 3 cannot tell; policy v4 proposed (D-23). Spend $220.39 by session readings. Run-2 is the extraction of record. Report: `reports/poc_stage3b_findings.md`; D-23 to D-25 decided 2026-10-19 (merge policy v4, instructions v4 with a 10-paper check, Stage 5 approved). |
+| 3c Instructions v4 check (D-24) | **done; 13 of 13 rule checks as intended** | 2026-10-19 | 10 purposive papers under `extract_v4.md` and `schema_ha20_v4.json` after the D-24 input fixes; 11,706 quotes, all verbatim. Variant agreement with run-2 0.32 on these papers, expected because they were picked for changed rules and inputs. No run-3; run-2 stays the extraction of record. `analysis/poc/v4_check_poc-ha20-v4-check.json`. |
+| 4 Normalization, binding, phenopackets | **done; checks met after D-26** | 2026-10-19 | VariantValidator 4.0.1: after the D-26 repairs, 135 of 138 cDNA descriptions normalized or corrected (97.8%); 99 protein-only and 40 structural reported separately; 3 left for a person (first pass: 128 of 138). HPO binding 88.5% of 4,453 feature rows (pinned HP 2026-09-01); 30 model bindings sampled for Jimmy. 749 phenopackets, all schema-valid. |
+| 5 Gatekeeper and audit | **done; Q4 not met (3/50 unsupported, 6.0%) after the second look** | 2026-10-19 | Final human labels: 44 supported, 3 partial, 3 unsupported (exact 95% CI 1.3–16.5%; first pass was 2/50). All three are variant fields taken from a group statement or summary table. Gatekeeper v1 and v2 each flagged 2 of the 6 not-fully-supported and none of the 3 unsupported, so it cannot replace the audit (D-28). Fixes and a re-run before scale-up: D-29. HPO model bindings accepted 23/27. | 22,003 judged values: 21,690 supported, 305 partial, 8 unsupported (0.036%; exact 95% CI 0.016–0.072%), 0 quotes not found. Phenopackets rebuilt without claims not judged supported. Automated span match 100% (Q4 part 1 met). Spend $116.81 with the v4 check and Stage 4 helpers. Report: `reports/poc_stage4_5_findings.md`; D-26 and D-27 opened. |
+| 5b D-29 re-run (v5 + gatekeeper v3, 20 papers) | **done; Q4 still not met (3/48, 6.3%), all from stacked table cells; 0/20 variant fields unsupported** | 2026-10-19 | 20 papers drawn at random (seed 29). Variant fields filled less often where papers give them only for a group (zygosity 77% to 53% of TNFAIP3 variant rows). Gatekeeper v3 on all 4,986 values: 4,853 supported, 116 partial, 17 unsupported. Fresh 50-claim sample (seed 20261029) on a new rating page. | Report: `reports/poc_stage4_5_findings.md` §10.6. |
+| 6 Reference snapshot and concordance | **Q6 met (ClinVar and HPO; OMIM not checked); Q7 met on Chen 2020 (9/9 restricted; D-30)** | 2026-10-19 | ClinVar 2026-10-12: 764 TNFAIP3 records, 99 P/LP. 40 of 95 normalized extracted variants in ClinVar (42%); 41 gap candidates whose stated protein matches. Authors' P/LP agrees with ClinVar for 17 of 20. HPO annotation recall 13 of 14. | Q7 benchmark changed to Chen 2020 Table S1 (D-30; El Hani 2024 paywalled): 9 of 9 restricted variants found, 28 of 32 overall. Snapshot kept outside the repo (guard). Report: `reports/poc_stage6_findings.md`. |
+| 7 Cost accounting and pilot report | **drafted; waiting for Jimmy's review** | 2026-10-19 | `reports/poc_report.md`, generated by `analysis/poc_report.py` from committed outputs. Recommendation: go, with the D-29 and D-31 fixes frozen (Jimmy's choice). Q1, Q4 and Q5 not met; Q2, Q3, Q6, Q7 and Q8 met. Session reading $673.89 against the $1,000 ceiling. | Stage 8 (memorization probe) not run. |
 
 Everything here is subordinate to `INSTRUCTIONS.md` and `CONTEXT.md`. If a step
 below conflicts with them, they win; stop and flag it.
@@ -385,6 +393,12 @@ explicit merge policy, versioned under `prompts/`:
   identical original string, plus at least one of: same family label, same
   sex and age at onset within tolerance, explicit "previously reported" citation
   linking the two PMIDs, or overlapping author list with the same centre.
+  *As implemented (`pipeline/extract/reconcile.py`, policy v4 since D-23,
+  2026-10-19):* only a citation merges, either a row's own single-paper citation
+  or the paper-level prior-report citation. Same sex and onset is listed for
+  audit, because in the run-2 hand check it made all 6 false merges. Merging is
+  one-to-one and deterministic, with no model call; the design history is in the
+  script's docstring.
 - Each merge writes a row to `data/extracted/ha20/merges.csv` with the two
   (pmid, individual_label) pairs, the evidence used, and a confidence label
   (`explicit_citation`, `strong_match`, `weak_match`). `weak_match` merges are
@@ -675,7 +689,7 @@ run twice.
 1. Counts: papers processed / failed; individuals before and after merging;
    distinct variants; features by status. All from `analysis/poc/extraction_counts.py`.
 2. Span check ≥ 98 % verbatim matches (the rest listed).
-3. Every variant row has an `original_string`.
+3. Every variant row with a printed variant has an `original_string` (reworded under D-22, 2026-10-19: rows where the paper ties a TNFAIP3 variant to a person without printing it are kept, with "not reported", and left out of variant counts and concordance).
 4. "not reported" present in the checklist table for every individual.
 5. Run-to-run agreement (run-1 vs run-2): Jaccard on distinct variant original
    strings and on (individual, HPO candidate) pairs; report both. No gate, but
@@ -719,8 +733,10 @@ pattern affecting many documents.
 
 **Checks.**
 - 100 % of phenopackets schema-valid.
-- Normalization status distribution: ≥ 95 % `normalized` or `corrected`;
-  `protein_only` and `unresolvable` listed with reasons.
+- Normalization status distribution: ≥ 95 % `normalized` or `corrected`,
+  counted over distinct descriptions that state a cDNA change (D-26,
+  decided 2026-10-19); `protein_only`, structural (`not_normalized`) and
+  `unresolvable` listed with reasons.
 - HPO binding: share bound by exact ID, by label, by model; share "no
   suitable term". Sample 30 model-bound terms for a human check.
 - Three-state preserved: no `excluded` feature in a phenopacket without an

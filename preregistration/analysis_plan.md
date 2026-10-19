@@ -1,11 +1,12 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.5, 2026-10-18. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.6, 2026-10-19. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
 > - v0.4 applied D-01 (Month-1 start date) and the re-planned timeline in §12.
 > - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
+> - v0.6 applies D-26 to D-28, decided by Dr. Lin on 2026-10-19 from the pilot's Stages 4 and 5: normalization success by description type (§7.2.2); normal findings recorded as the absent abnormality (§6.2); the gatekeeper checks every value, including its link to the person (§6.4).
 >
 > - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
 > - Items marked **(D-nn, decided)** are settled; the decision and its date are in `DECISIONS.md`.
@@ -164,7 +165,7 @@ One GA4GH Phenopacket (v2) per individual, plus a per-paper evidence table. Ever
   - VariantValidator-normalized HGVS (transcript-level and GRCh38 genomic), or a recorded normalization failure;
   - zygosity and inheritance, where reported;
   - the author-asserted pathogenicity, as stated (e.g. "pathogenic", "disease-causing", "VUS"), or "not stated".
-- **Phenotypes:** HPO terms, each marked *observed*, *excluded* or *not reported*. "Not reported" is never collapsed into "excluded". Onset age is captured where reported.
+- **Phenotypes:** HPO terms, each marked *observed*, *excluded* or *not reported*. "Not reported" is never collapsed into "excluded". Onset age is captured where reported. A normal finding is recorded as the abnormality it rules out, marked excluded ("elevated CRP", excluded), with the paper's own words in the span (D-27, decided).
 - **Disease:** Mondo ID as primary, with OMIM and ORPHA cross-references taken from Mondo (not from OMIM).
 - **Individual:** sex, age at report, family identifier as given in the paper.
 
@@ -178,7 +179,7 @@ Patient-level statistics use deduplicated individuals. Counts are reported with 
 
 ### 6.4 Gatekeeper pass
 
-A second Claude read checks each value strictly against its cited span: is the value entailed by the span (`rashkin2023_ais`)? It does not judge whether the value is plausible. Values that fail are removed or downgraded to "not reported", and the reason is logged.
+A second Claude read checks each value strictly against its cited span: is the value entailed by the span (`rashkin2023_ais`)? It does not judge whether the value is plausible. Values that fail are removed or downgraded to "not reported", and the reason is logged. It checks that the span ties the value to this individual (or this paper), not only that the words match. No value is exempted by a script match of value and span (D-28, decided).
 
 Before that, a deterministic check confirms that every span occurs verbatim in the source text (after whitespace normalization). This check runs on **all** values, not a sample. Any span not found is reported as a fabricated-span count.
 
@@ -275,7 +276,7 @@ The reference pairs are (PMID, variant) pairs from two sources, restricted to co
 
 Metrics:
 - **HGVS concordance (recall form):** the share of reference pairs where the pipeline extracted the same variant (tier 1, and tiers 1+2) from that PMID.
-- **Normalization success:** the share of extracted variant strings that VariantValidator normalizes without error, overall and by whether the transcript was stated in the paper.
+- **Normalization success:** the share of extracted variant strings that VariantValidator normalizes without error, counted over strings that state a cDNA change, and by whether the transcript was stated in the paper. Strings that give only a protein change, or a structural change (copy number, exon deletion, prose), are reported separately with their status (D-26, decided).
 
 The share of extracted variants found in ClinVar is reported only as *overlap*. It is not precision, because gap variants are expected; precision comes from the audit (O1).
 

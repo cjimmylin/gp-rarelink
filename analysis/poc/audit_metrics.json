@@ -1,0 +1,361 @@
+{
+  "run_id": "poc-ha20-run-2",
+  "sheet": "adjudication/poc_audit/sample.csv",
+  "gatekeeper_file": "gatekeeper.csv",
+  "rated": 50,
+  "unrated": [],
+  "labels": {
+    "supported": 44,
+    "unsupported": 3,
+    "partially_supported": 3
+  },
+  "per_stratum": {
+    "demographic_inheritance": {
+      "supported": 10
+    },
+    "feature_excluded": {
+      "partially_supported": 2,
+      "supported": 8
+    },
+    "feature_observed": {
+      "supported": 10
+    },
+    "variant": {
+      "supported": 16,
+      "unsupported": 3,
+      "partially_supported": 1
+    }
+  },
+  "unsupported_strict": {
+    "k": 3,
+    "n": 50,
+    "share": 0.06,
+    "ci95": [
+      0.012549,
+      0.165482
+    ]
+  },
+  "not_supported_lenient": {
+    "k": 6,
+    "n": 50,
+    "share": 0.12,
+    "ci95": [
+      0.045335,
+      0.243101
+    ]
+  },
+  "stratum_weighted": {
+    "pool_sizes": {
+      "variant": 3481,
+      "feature_observed": 3617,
+      "feature_excluded": 836,
+      "demographic_inheritance": 2555
+    },
+    "unsupported": 0.0498,
+    "not_supported": 0.0823,
+    "note": "stratum rates weighted by pool size; point estimates only (no interval)"
+  },
+  "q4_gate": {
+    "automated_span_match": 1.0,
+    "automated_span_match_ok": true,
+    "human_unsupported_rate": 0.06,
+    "human_unsupported_rate_ok": false,
+    "threshold": 0.04,
+    "complete": true
+  },
+  "gatekeeper_confusion_rows_gatekeeper_cols_human": {
+    "supported": {
+      "supported": 44,
+      "partially_supported": 1,
+      "unsupported": 3
+    },
+    "partially_supported": {
+      "supported": 0,
+      "partially_supported": 2,
+      "unsupported": 0
+    }
+  },
+  "gatekeeper_agreement_supported_vs_not": {
+    "k": 46,
+    "n": 50,
+    "share": 0.92,
+    "ci95": [
+      0.807657,
+      0.977772
+    ]
+  },
+  "gatekeeper_calibration": {
+    "not_supported_vs_human_not_supported": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 4,
+      "precision": {
+        "k": 2,
+        "n": 2,
+        "share": 1.0,
+        "ci95": [
+          0.158114,
+          1.0
+        ]
+      },
+      "recall": {
+        "k": 2,
+        "n": 6,
+        "share": 0.333333,
+        "ci95": [
+          0.043272,
+          0.777222
+        ]
+      }
+    },
+    "unsupported_vs_human_unsupported": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 3,
+      "precision": {
+        "k": 0,
+        "n": 0,
+        "share": null,
+        "ci95": null
+      },
+      "recall": {
+        "k": 0,
+        "n": 3,
+        "share": 0.0,
+        "ci95": [
+          0.0,
+          0.707598
+        ]
+      }
+    }
+  },
+  "changed_on_reread": 7,
+  "disagreements": [
+    {
+      "claim_id": "C049428",
+      "stratum": "variant",
+      "pmid": "40574834",
+      "table": "variants",
+      "field": "pathogenicity_as_stated_by_authors",
+      "value": "\"pathogenic\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "script",
+      "gatekeeper_reason": "value occurs inside its verbatim span",
+      "note": "it's low frequency somatic mosaicism",
+      "final_reason": "it's low frequency somatic mosaicism"
+    },
+    {
+      "claim_id": "C038628",
+      "stratum": "variant",
+      "pmid": "39125844",
+      "table": "variants",
+      "field": "variant_type_as_stated",
+      "value": "\"nonsense\"",
+      "human_first": "partially_supported",
+      "human": "partially_supported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "script",
+      "gatekeeper_reason": "value occurs inside its verbatim span",
+      "note": "splice site, frameshift, or nonsense ",
+      "final_reason": "it's one of the three: splice site, frameshift, or nonsense"
+    },
+    {
+      "claim_id": "C032922",
+      "stratum": "variant",
+      "pmid": "37342083",
+      "table": "variants",
+      "field": "gene_symbol_as_stated",
+      "value": "\"TNFAIP3\"",
+      "human_first": "partially_supported",
+      "human": "unsupported",
+      "changed_on_reread": true,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "script",
+      "gatekeeper_reason": "value occurs inside its verbatim span",
+      "note": "right gene, unknown about variant",
+      "final_reason": "variant is different: c.707T>C, p.(Leu236Pro)"
+    },
+    {
+      "claim_id": "C048990",
+      "stratum": "variant",
+      "pmid": "40574834",
+      "table": "variants",
+      "field": "zygosity",
+      "value": "\"heterozygous\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "group of patients, undetermined variant",
+      "final_reason": "group of patients, distinct variants"
+    }
+  ],
+  "not_supported_by_human": [
+    {
+      "claim_id": "C049428",
+      "stratum": "variant",
+      "pmid": "40574834",
+      "table": "variants",
+      "field": "pathogenicity_as_stated_by_authors",
+      "value": "\"pathogenic\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "script",
+      "gatekeeper_reason": "value occurs inside its verbatim span",
+      "note": "it's low frequency somatic mosaicism",
+      "final_reason": "it's low frequency somatic mosaicism"
+    },
+    {
+      "claim_id": "C038628",
+      "stratum": "variant",
+      "pmid": "39125844",
+      "table": "variants",
+      "field": "variant_type_as_stated",
+      "value": "\"nonsense\"",
+      "human_first": "partially_supported",
+      "human": "partially_supported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "script",
+      "gatekeeper_reason": "value occurs inside its verbatim span",
+      "note": "splice site, frameshift, or nonsense ",
+      "final_reason": "it's one of the three: splice site, frameshift, or nonsense"
+    },
+    {
+      "claim_id": "C032922",
+      "stratum": "variant",
+      "pmid": "37342083",
+      "table": "variants",
+      "field": "gene_symbol_as_stated",
+      "value": "\"TNFAIP3\"",
+      "human_first": "partially_supported",
+      "human": "unsupported",
+      "changed_on_reread": true,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "script",
+      "gatekeeper_reason": "value occurs inside its verbatim span",
+      "note": "right gene, unknown about variant",
+      "final_reason": "variant is different: c.707T>C, p.(Leu236Pro)"
+    },
+    {
+      "claim_id": "C048990",
+      "stratum": "variant",
+      "pmid": "40574834",
+      "table": "variants",
+      "field": "zygosity",
+      "value": "\"heterozygous\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "group of patients, undetermined variant",
+      "final_reason": "group of patients, distinct variants"
+    },
+    {
+      "claim_id": "C008344",
+      "stratum": "feature_excluded",
+      "pmid": "32719680",
+      "table": "phenotypic_features",
+      "field": "status",
+      "value": "\"excluded\"",
+      "human_first": "supported",
+      "human": "partially_supported",
+      "changed_on_reread": true,
+      "gatekeeper": "partially_supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "Context names a normal finding; 'excluded' fits only if read as abnormal immunoglobulins excluded.",
+      "note": "",
+      "final_reason": "Context names a normal finding; 'excluded' fits only if read as abnormal immunoglobulins excluded."
+    },
+    {
+      "claim_id": "C049812",
+      "stratum": "feature_excluded",
+      "pmid": "40574834",
+      "table": "phenotypic_features",
+      "field": "status",
+      "value": "\"excluded\"",
+      "human_first": "supported",
+      "human": "partially_supported",
+      "changed_on_reread": true,
+      "gatekeeper": "partially_supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "Cell shows normal IFN score; 'excluded' fits elevated IFN, but context names the normal finding (inverted).",
+      "note": "",
+      "final_reason": "Cell shows normal IFN score; 'excluded' fits elevated IFN, but context names the normal finding (inverted)."
+    }
+  ],
+  "hpo_binding_sample": {
+    "rated": 27,
+    "of": 30,
+    "accepted": {
+      "k": 23,
+      "n": 27,
+      "share": 0.851852,
+      "ci95": [
+        0.662689,
+        0.958113
+      ]
+    },
+    "by_method": {
+      "model_broader": {
+        "yes": 9,
+        "no": 2
+      },
+      "model_close": {
+        "yes": 12,
+        "no": 2
+      },
+      "model_exact": {
+        "yes": 2
+      }
+    },
+    "rejected": [
+      {
+        "n": "6",
+        "pmid": "40859316",
+        "feature_text_as_stated": "Fluid accumulation in joint spaces (hip joints, both sides)",
+        "hpo_id": "HP:0001384",
+        "hpo_label": "Abnormal hip joint morphology",
+        "method": "model_broader",
+        "note": "just fluid accumulation, not morphology"
+      },
+      {
+        "n": "7",
+        "pmid": "41905891",
+        "feature_text_as_stated": "肛周溃疡",
+        "hpo_id": "HP:0200042",
+        "hpo_label": "Skin ulcer",
+        "method": "model_broader",
+        "note": ""
+      },
+      {
+        "n": "9",
+        "pmid": "32714711",
+        "feature_text_as_stated": "no history of joint involvement",
+        "hpo_id": "HP:0001367",
+        "hpo_label": "Abnormal joint morphology",
+        "method": "model_close",
+        "note": "no history"
+      },
+      {
+        "n": "22",
+        "pmid": "39125844",
+        "feature_text_as_stated": "joint symptoms were still present at the time of publication",
+        "hpo_id": "HP:0001367",
+        "hpo_label": "Abnormal joint morphology",
+        "method": "model_close",
+        "note": "symptoms not morphology"
+      }
+    ]
+  }
+}

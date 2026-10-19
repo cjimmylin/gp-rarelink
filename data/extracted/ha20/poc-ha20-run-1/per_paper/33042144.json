@@ -1,0 +1,1478 @@
+{
+ "pmid": "33042144",
+ "instructions_version": "extract_v2",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "This single-centre cohort of 79 pediatric monogenic autoinflammatory disease patients includes two HA20 patients, each with one stated TNFAIP3 variant: \"The genetic sequencing yielded p.R271X of the TNFAIP3 gene in one patient and p.R45X in the other one\".",
+ "method_note": "Read the whole paper by hand; a short Python script only assembled the JSON and checked spans. No table was transcribed by script. The two HA20 patients are never labelled. Their labels ('one patient', 'the other one') are taken from the only sentence that ties a fact to one specific person, the variant sentence ('p.R271X of the TNFAIP3 gene in one patient and p.R45X in the other one'). The same words in other sentences may refer to either person. Table 2 has disease groups as rows (row 'A20 deficiency (n = 2)'); its columns are 'Age onset (median, range)', 'Gender (male: female)', 'Main clinical findings', 'Genetic defects', 'Inheritance'. Sex = female for both, from Gender 0:2 with n = 2. Not attributed to either person, because the paper does not say which patient had them: age at onset (group median 4, range 0-8); Table 2's group-level findings 'Fever, rash, arthralgia, mucosal ulcers, bowel inflammation, CTD'; 'One patient was diagnosed as Behçet disease previously and the other one was diagnosed with undifferentiated connective tissue disease'; and 'Hashimoto′s thyroiditis was also found in one patient'. These checklist items stay 'not reported' for both (a count without names does not exclude). Recurrent oral ulcer comes from 'both suffered', and elevated inflammation indices and no malignancy come from the inclusion criteria for all 288 enrolled patients ('They all had...'). These rows are marked 'inferred from group statement'. 'No evidence of ... infection' at inclusion was NOT recorded as an exclusion, because the Discussion says 'one third of the sick kids would experience episodes of infections' (unnamed); recurrent infections stays 'not reported'. Consanguinity 'no' and 'Chinese' are cohort-wide statements. Treatment (anti-TNF-α) is stated for 'HA20 patients' as a group, not per patient. Table 2's 'AD' is the disease's inheritance mode, not variant origin, so inheritance and zygosity are 'not reported'. variant_type is 'not reported' because the authors use 'X' notation but never name the class. cites_prior_report_of_same_patients is null: nothing is said about earlier reports of the HA20 patients. Refs 25 and 26 are cited for variant pathogenicity only. (The NLRP12 patients' variants 'have been analyzed and reported previously (12)'; those are not TNFAIP3 patients.) Contradictions found (none concern the HA20 patients): the Discussion says 'All of these AID patients are under regular follow-up', but Table 3 case 8 reads 'Death prior to treatment'. Vital status is therefore left 'not reported'.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "first_author": {
+     "value": "Wang",
+     "span": "Authors: Wang Wei"
+    },
+    "year": {
+     "value": 2020,
+     "span": "Journal: Frontiers in Immunology (2020)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "we report the first and also the largest cohort of monogenic AIDs in Chinese pediatric population"
+    },
+    "n_patients_reported": {
+     "value": 2,
+     "span": [
+      "We also diagnosed two cases of haploinsufficiency of A20 (HA20).",
+      "| A20 deficiency (n = 2) |"
+     ]
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| A20 deficiency (n = 2) | 4 (0–8) | 0:2 |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Chinese",
+     "span": "Chinese pediatric monogenic AID patients"
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "There was no consanguinity in these children."
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "anti-TNF-α therapies initiated, 'some good responses' (stated for HA20 patients as a group together with Blau syndrome and DADA2 patients; not stated per patient)",
+     "span": "For Blau syndrome, DADA2 and HA20 patients, we initiated anti-TNF-α therapies and have observed some good responses."
+    },
+    "disease_label_as_stated": {
+     "value": "haploinsufficiency of A20 (HA20)",
+     "span": "two cases of haploinsufficiency of A20 (HA20)"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "both: genetic sequencing found the TNFAIP3 variant; final definite diagnoses made when phenotypes and genotypes were mutually verified",
+     "span": [
+      "Final definite diagnoses were made when the phenotypes and genotypes were mutually verified.",
+      "The genetic sequencing yielded p.R271X of the TNFAIP3 gene in one patient and p.R45X in the other one"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| A20 deficiency (n = 2) | 4 (0–8) | 0:2 |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Chinese",
+     "span": "Chinese pediatric monogenic AID patients"
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "There was no consanguinity in these children."
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "anti-TNF-α therapies initiated, 'some good responses' (stated for HA20 patients as a group together with Blau syndrome and DADA2 patients; not stated per patient)",
+     "span": "For Blau syndrome, DADA2 and HA20 patients, we initiated anti-TNF-α therapies and have observed some good responses."
+    },
+    "disease_label_as_stated": {
+     "value": "haploinsufficiency of A20 (HA20)",
+     "span": "two cases of haploinsufficiency of A20 (HA20)"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "both: genetic sequencing found the TNFAIP3 variant; final definite diagnoses made when phenotypes and genotypes were mutually verified",
+     "span": [
+      "Final definite diagnoses were made when the phenotypes and genotypes were mutually verified.",
+      "The genetic sequencing yielded p.R271X of the TNFAIP3 gene in one patient and p.R45X in the other one"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "variant_original_string": {
+     "value": "p.R271X",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.R271X",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "known to be pathogenic variants",
+     "span": "which were known to be pathogenic variants (25, 26)"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "The genetic sequencing yielded p.R271X of the TNFAIP3 gene in one patient and p.R45X in the other one"
+    },
+    "variant_original_string": {
+     "value": "p.R45X",
+     "span": "p.R45X in the other one"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.R45X",
+     "span": "p.R45X in the other one"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "known to be pathogenic variants",
+     "span": "which were known to be pathogenic variants (25, 26)"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "feature_text_as_stated": {
+     "value": "recurrent oral ulcer",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "status": {
+     "value": "observed",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "recurrent",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "hpo_label_candidate": {
+     "value": "Oral ulcer",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "feature_text_as_stated": {
+     "value": "persistently or intermittently elevated inflammation indices",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "status": {
+     "value": "observed",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "persistently or intermittently",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "hpo_label_candidate": {
+     "value": "Increased inflammatory response",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "feature_text_as_stated": {
+     "value": "no evidence of malignancy",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "feature_text_as_stated": {
+     "value": "recurrent oral ulcer",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "status": {
+     "value": "observed",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "recurrent",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "hpo_label_candidate": {
+     "value": "Oral ulcer",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "feature_text_as_stated": {
+     "value": "persistently or intermittently elevated inflammation indices",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "status": {
+     "value": "observed",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "persistently or intermittently",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "hpo_label_candidate": {
+     "value": "Increased inflammatory response",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "feature_text_as_stated": {
+     "value": "no evidence of malignancy",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "one patient",
+     "span": "p.R271X of the TNFAIP3 gene in one patient"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "For our patients, both suffered from recurrent oral ulcer."
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "They all had persistently or intermittently elevated inflammation indices with no evidence of malignancy or infection."
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33042144",
+     "span": "PMID: 33042144"
+    },
+    "individual_label_in_paper": {
+     "value": "the other one",
+     "span": "p.R45X in the other one"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
