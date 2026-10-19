@@ -35,7 +35,7 @@ def main(argv: list[str] | None = None) -> int:
     picked = sorted(random.Random(args.seed).sample(eligible, min(args.n, len(eligible))))
     out = {
         "repeat_run_id": args.repeat_run_id, "source_run_id": args.run_id, "date": date.today().isoformat(),
-        "seed": args.seed, "n": len(picked), "eligible_rule": "run-1 papers with at least one individual row",
+        "seed": args.seed, "n": len(picked), "eligible_rule": "source-run papers with at least one individual row",
         "n_eligible": len(eligible), "selected": picked,
     }
     dest = Path("runs") / args.repeat_run_id
