@@ -52,3 +52,22 @@ def test_merge(tmp_path, monkeypatch):
                                          {"claim_id": "C000002", "verdict": "supported", "reason": ""}])
     with pytest.raises(SystemExit):
         gatekeeper_merge.main(["--disease", "ha20", "--run-id", "r1"])
+
+
+def test_merge_passes_about_column(tmp_path, monkeypatch):
+    # gatekeeper v3 (D-29) adds 'about'; it is kept, counted, and checked against the allowed values
+    monkeypatch.chdir(tmp_path)
+    run = tmp_path / "data/extracted/ha20/r1"
+    (run / "gatekeeper").mkdir(parents=True)
+    write(run / "gatekeeper_claims.csv", [
+        {"claim_id": "C000001", "pmid": "111", "table": "variants", "row": 0, "field": "zygosity", "value": '"heterozygous"', "class": "model"}])
+    (run / "gatekeeper_prep.json").write_text(json.dumps({"chunk_list": [{"chunk": "111_1", "pmid": "111", "claims": 1}]}))
+    write(run / "gatekeeper/111_1.csv", [{"claim_id": "C000001", "about": "cohort_general", "verdict": "unsupported", "reason": "cohort statement"}])
+    assert gatekeeper_merge.main(["--disease", "ha20", "--run-id", "r1"]) == 0
+    row = next(csv.DictReader((run / "gatekeeper.csv").open()))
+    assert row["about"] == "cohort_general"
+    s = json.loads((run / "gatekeeper_summary.json").read_text())
+    assert s["about_by_verdict"] == {"cohort_general": {"unsupported": 1}}
+    write(run / "gatekeeper/111_1.csv", [{"claim_id": "C000001", "about": "everyone", "verdict": "unsupported", "reason": ""}])
+    with pytest.raises(SystemExit):
+        gatekeeper_merge.main(["--disease", "ha20", "--run-id", "r1"])

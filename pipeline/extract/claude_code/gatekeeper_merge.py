@@ -3,7 +3,9 @@
 Inputs, under data/extracted/<disease>/<run_id>/:
   gatekeeper_claims.csv   every claim with its class (gatekeeper_prep.py)
   gatekeeper_prep.json    the chunk list
-  gatekeeper/<chunk>.csv  one helper's verdicts per chunk (claim_id, verdict, reason)
+  gatekeeper/<chunk>.csv  one helper's verdicts per chunk (claim_id, verdict, reason;
+                          gatekeeper v3 adds 'about', who the quote is about,
+                          which is passed through as a column)
 
 Each claim gets one verdict and a source:
   bookkeeping   not judged (pmid fields, labels repeated in child tables);
@@ -41,6 +43,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 VERDICTS = ("supported", "partially_supported", "unsupported", "span_not_found")
+ABOUT = ("this_person", "named_group", "cohort_general", "other_person", "paper", "unclear")
 
 
 def binom_cdf(k: int, n: int, p: float) -> float:
@@ -96,6 +99,7 @@ def main(argv: list[str] | None = None) -> int:
     by_id = {c["claim_id"]: c for c in claims}
     model_ids = {c["claim_id"] for c in claims if c["class"] == "model"}
     verdicts: dict[str, tuple[str, str]] = {}
+    about: dict[str, str] = {}  # gatekeeper v3 (D-29): who the quote is about
     problems, missing_chunks = [], []
     for ch in prep["chunk_list"]:
         path = run_dir / P / f"{ch['chunk']}.csv"
@@ -120,6 +124,10 @@ def main(argv: list[str] | None = None) -> int:
             if cid in verdicts:
                 problems.append(f"{cid} judged in two chunks")
             verdicts[cid] = (verdict, (r.get("reason") or "").strip())
+            if r.get("about") is not None:
+                if r["about"].strip() not in ABOUT:
+                    problems.append(f"{ch['chunk']}: {cid} has about {r['about']!r}")
+                about[cid] = r["about"].strip()
     missing_chunk_pmids = {ch["pmid"] for ch in prep["chunk_list"] if ch["chunk"] in missing_chunks}
     unjudged = sorted(model_ids - set(verdicts))
     if missing_chunks and not args.allow_missing:
@@ -145,6 +153,8 @@ def main(argv: list[str] | None = None) -> int:
             verdict, source, reason = "not_judged_yet", "missing", ""
         out.append({**{k: cl[k] for k in ("claim_id", "pmid", "table", "row", "field", "value", "class")},
                     "verdict": verdict, "source": source, "reason": reason})
+        if about:
+            out[-1]["about"] = about.get(cid, "")
         c[verdict] += 1
         by_class[kind][verdict] += 1
         if kind != "bookkeeping":
@@ -167,8 +177,13 @@ def main(argv: list[str] | None = None) -> int:
     judged_values = Counter()
     for kind in ("verbatim", "model"):
         judged_values.update(by_class[kind])
+    about_by_verdict = defaultdict(Counter)
+    for row in out:
+        if row.get("about"):
+            about_by_verdict[row["about"]][row["verdict"]] += 1
     summary = {
         "run_id": args.run_id, "claims": len(claims), "verdicts": dict(c),
+        "about_by_verdict": {k: dict(v) for k, v in sorted(about_by_verdict.items())},
         "by_class": {k: dict(v) for k, v in by_class.items()},
         "rates_all_values": rates(judged_values),
         "rates_model_claims": rates(by_class["model"]),

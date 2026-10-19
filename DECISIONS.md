@@ -36,17 +36,6 @@ How to use this file:
   - For the pilot, keep the ClinVar-seeded papers but report every result with and without them; the tags make this cheap.
   - Use the difference between the two to set the rule for the six-disease study before the freeze.
 
-**D-29 · What the Q4 miss triggers: fixes and a re-run before the six-disease run** (opened 2026-10-19)
-- **The finding:** after the second look, 3 of 50 audited claims are unsupported (6.0%, exact 95% CI 1.3–16.5%), above the pilot's ≤ 4% limit. All three, and one partial, are variant fields taken from a group statement or a summary table rather than from this person. Neither gatekeeper (v1 or v2) called any of the three unsupported (`reports/poc_stage4_5_findings.md` §10.5).
-- **The rule already set:** the Stage 5 gate says the pilot continues, and the report must recommend fixes and a re-run before Month-2 scale-up.
-- **Recommendation:**
-  - extraction instructions v5: variant fields only from this person's own statement or table row, or a named group that includes them; otherwise "not reported";
-  - gatekeeper v3: the gatekeeper first states who the quote is about, then judges; the inverted normal-finding form is partial (matches Jimmy's final labels and D-27);
-  - re-run v5 and gatekeeper v3 on about 20 HA20 papers weighted toward cohort papers, with a fresh 50-claim audit (new seed) rated by Jimmy. Rough estimate about $110 from run-2 rates, to be estimated properly before running; it would take the pilot to about $720 of the $1,000 ceiling;
-  - run-2 stays the extraction of record for Stage 6 concordance, so Stage 6 need not wait;
-  - the 250-claim audit stays the pre-registered measure.
-- **Also for Jimmy:** C032922 alone moves the result across the limit. Claude's reading is that the gene symbol is right for that table column (a variant the paper cites from an earlier report); the label stands as given unless Jimmy changes it.
-
 ### Needed before the pre-registration can be frozen
 
 **D-08 · Substitute-disease trigger**
@@ -111,6 +100,14 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · D-29 decided: fixes and a 20-paper re-run after the Q4 miss
+Jimmy: "go with your recommendations on D-29" (this session, 2026-10-19). Accepted as recommended (`reports/poc_stage4_5_findings.md` §10.5):
+- **Extraction instructions v5** gain a variant-field rule: zygosity, inheritance, variant type, pathogenicity, ACMG criteria and functional evidence come only from this person's own row, column or sentence, or from a statement about a named group that includes them, with nothing in the paper giving this person a different or undetermined status. Otherwise "not reported". v5 already held D-27.
+- **Gatekeeper v3:** the gatekeeper first records who the quote is about, then judges the person link from that. A normal finding recorded in the inverted form ("normal CRP", excluded) is partially supported, matching Jimmy's final labels and D-27's preferred form.
+- **Re-run:** v5 and gatekeeper v3 on 20 run-2 papers drawn at random (seed 29; 14 cohort or review papers, 6 case reports; `analysis/poc/pick_v5_subset.py`, `runs/poc-ha20-v5-subset/selection.json`). Then a fresh 50-claim audit drawn with a new seed, rated by Jimmy with the gatekeeper hidden on the first pass. Estimate $82.61 (planning figure from run-2 readings), within the rough $110 Jimmy approved.
+- **Run-2 stays the extraction of record** for Stage 6 concordance, which starts now. The 250-claim audit stays the pre-registered measure.
+- **Still open:** Jimmy's reading of C032922 (a gene symbol on a literature-summary table column).
 
 ### 2026-10-19 · Audit second look done: Q4 not met (3 of 50 unsupported); D-29 opened
 - **Jimmy's second look** (10 claims, with the full paragraph and the v1 gatekeeper verdict in view) changed 7 labels. Final: 44 supported, 3 partial, 3 unsupported.

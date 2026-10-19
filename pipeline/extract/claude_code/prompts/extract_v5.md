@@ -1,6 +1,6 @@
 # Per-paper extraction instructions, v5 (GP-RareLink; Claude Code route, D-20)
 
-*Changes from v2 come from the Stage 3 findings (`reports/poc_stage3_findings.md`) and decision D-22, marked "(v3)". Changes from v3 come from the Stage 3b findings (`reports/poc_stage3b_findings.md`) and decisions D-23 and D-24, marked "(v4)". The change from v4 is D-27 (Jimmy, 2026-10-19), from the Stage 5 audit (`reports/poc_stage4_5_findings.md` §10), marked "(v5)". v5 has not been run on HA20 (D-27: no re-run); it is the candidate for the frozen pipeline.*
+*Changes from v2 come from the Stage 3 findings (`reports/poc_stage3_findings.md`) and decision D-22, marked "(v3)". Changes from v3 come from the Stage 3b findings (`reports/poc_stage3b_findings.md`) and decisions D-23 and D-24, marked "(v4)". The changes from v4 are D-27 and D-29 (Jimmy, 2026-10-19), from the Stage 5 audit (`reports/poc_stage4_5_findings.md` §10), marked "(v5)". v5 is checked on 20 HA20 papers under D-29 (`poc-ha20-v5-subset`); it is the candidate for the frozen pipeline.*
 
 You extract structured evidence from **one** published paper for a literature-curation study of A20 haploinsufficiency (HA20), the disease caused by germline *TNFAIP3* variants. Your output is checked by script (every quote must be found verbatim in the paper) and then by a separate reviewer, so accuracy and honest abstention matter more than completeness.
 
@@ -129,6 +129,19 @@ A **ROW** is an object with every field of that table, using the field names exa
   - emit both `phenotypic_features` rows, each with its own span;
   - set that checklist item to `not reported`;
   - list the contradiction in `method_note`.
+
+### Variant fields belong to this person's variant (v5, D-29)
+Zygosity, inheritance, variant type, pathogenicity, ACMG criteria and functional evidence describe **one person's variant**. Fill them only from:
+- this person's own table row or column, or a sentence that names this person or this exact variant; or
+- a statement about a **named group that includes this person** and gives one value for all of them ("all six patients carried heterozygous variants").
+
+Leave the field `not reported` (with span null) when:
+- the statement is about the cohort's or the paper's variants in general, without naming a group this person is clearly in ("the variants were classified as pathogenic");
+- the statement lists several values for a group ("splice-site, frameshift and nonsense variants"): it does not say which one is this person's;
+- the paper gives this person a different or open status elsewhere: a variant not identified or not determined, a mosaic or somatic finding, a VUS, a relative not tested. A group statement never overrides that;
+- the value is about another person's variant, for example a relative carrying the proband's variant, unless the paper says it for the relative.
+
+Variant type: record only a class the paper states for this variant (or for a named group of variants that includes it). Do not derive it from the HGVS string.
 
 ### Inheritance (v4, D-24)
 - **De novo:** only when the paper states parental testing with the variant absent in both parents (rule 8).
