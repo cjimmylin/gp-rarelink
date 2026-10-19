@@ -1,12 +1,13 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.6, 2026-10-19. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.7, 2026-10-19. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
 > - v0.4 applied D-01 (Month-1 start date) and the re-planned timeline in §12.
 > - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
 > - v0.6 applies D-26 to D-28, decided by Dr. Lin on 2026-10-19 from the pilot's Stages 4 and 5: normalization success by description type (§7.2.2); normal findings recorded as the absent abnormality (§6.2); the gatekeeper checks every value, including its link to the person (§6.4).
+> - v0.7 folds in the pilot report (`reports/poc_report.md` §10; D-29 to D-31, decided 2026-10-19). It also records the five-disease corpus searches and screening, the Mondo IDs and the dated ClinVar counts (2026-10-19). Changed sections: §4.1, §5.1, §5.2, §6.2 to §6.5, §7.1, §7.2 (matching, D-19 split, new §7.2.7 completeness), §10 and §13. No metric, threshold or disease was changed.
 >
 > - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
 > - Items marked **(D-nn, decided)** are settled; the decision and its date are in `DECISIONS.md`.
@@ -60,16 +61,18 @@ The grant defines success as "high concordance with a low-false-positive workflo
 
 ### 4.1 Pilot set (fixed by the grant)
 
-| Disease | Gene | OMIM | ORPHA | Inheritance |
-|---|---|---|---|---|
-| Alexander disease | *GFAP* | 203450 | 58 | AD / de novo |
-| Leukocyte adhesion deficiency I | *ITGB2* | 116920 | 2968 | AR |
-| A20 haploinsufficiency | *TNFAIP3* | 616744 | 476102 | AD |
-| SSADH deficiency | *ALDH5A1* | 271980 | 22 | AR |
-| Danon disease | *LAMP2* | 300257 | 34587 | X-linked dominant |
-| Tangier disease | *ABCA1* | 205400 | 31150 | AR |
+| Disease | Gene | Mondo | OMIM | ORPHA | Inheritance |
+|---|---|---|---|---|---|
+| Alexander disease | *GFAP* | MONDO:0008752 | 203450 | 58 | AD / de novo |
+| Leukocyte adhesion deficiency I | *ITGB2* | MONDO:0007293 | 116920 | 2968 † | AR |
+| A20 haploinsufficiency | *TNFAIP3* | MONDO:0800045 | 616744 | 476102 | AD |
+| SSADH deficiency | *ALDH5A1* | MONDO:0010083 | 271980 | 22 | AR |
+| Danon disease | *LAMP2* | MONDO:0010281 | 300257 | 34587 | X-linked dominant |
+| Tangier disease | *ABCA1* | MONDO:0008783 | 205400 | 31150 | AR |
 
-Mondo IDs will be looked up and recorded with the release date when the reference snapshot is taken (§5.2). They are not listed here because they have not yet been verified.
+Mondo IDs come from the OMIM cross-references in Mondo release 2026-10-06, the release the pilot pinned (§6.2 takes OMIM and ORPHA cross-references from Mondo).
+
+† Mondo cross-references MONDO:0007293 to Orphanet:99842, not to ORPHA 2968 as `CONTEXT.md` and the application give. To check against Orphanet before the freeze; records will use Mondo's cross-reference.
 
 ### 4.2 Substitution rule
 
@@ -85,7 +88,19 @@ A pilot disease is replaced only if, after screening (§5.1), its accessible ful
 
 **Not used to build the corpus:** ClinVar and OMIM citation lists, or any index queried by ClinVar variant IDs. A corpus built from database citations would bias concordance upward and gap discovery downward. LitVar (`allot2023_litvar2`) may be queried by gene symbol only, and every PMID records which source found it. After extraction, the harness reports what share of the corpus is cited by ClinVar or OMIM (§7.2.5).
 
-The pilot (§6.5) departs from this rule: it seeds its search with ClinVar-cited PMIDs, tagged so they can be separated. The recommendation is to report pilot results with and without those papers, and to set the rule for the six-disease study before freezing [D-19].
+The pilot (§6.5) departs from this rule: it seeds its search with ClinVar-cited PMIDs, tagged so they can be separated. The recommendation is to report pilot results with and without those papers, and to set the rule for the six-disease study before freezing [D-19]. In the pilot, removing every ClinVar-cited paper lowered ClinVar presence from 42.1% to 38.2% of normalized variants (`reports/poc_stage6_findings.md` §3). The pilot report recommends keeping this rule as written.
+
+**Searches run for the five other diseases (2026-10-19).** The five searches followed this section's rule: no ClinVar or OMIM citation seeds. Each disease's query, filter, search date and hit count are in `configs/diseases.yaml` and `data/literature/<disease>/search.md`. Seeds were of two kinds:
+- the background bibliography's papers for the disease;
+- the reference lists of the key reviews, taken from Europe PMC's reference index (`seeds_from_references.py`). Some of these lists are partial: Almarza Novoa 2018 gave 8 references. References listed without a PMID are kept for hand resolution.
+
+Two parts of the proposed search were not run:
+- the Europe PMC full-text search;
+- LitVar.
+
+Whether to add them before the freeze is open [proposed: not added; the PubMed search plus review references is the registered search, and its date is the cut-off].
+
+**Comparator holdouts.** The natural-history comparators of §7.4.1 found by the search are marked out of the extraction corpus in each manifest (`in_extraction_corpus = false`, with the reason), by `pipeline/extract/corpus/disease_seeds.py`.
 
 **Eligibility [proposed].**
 - *Include:* primary publications (case reports, case series, cohort papers) that report individual-level genotype and/or phenotype for at least one person with the pilot disease. Any publication year.
@@ -93,6 +108,10 @@ The pilot (§6.5) departs from this rule: it seeds its search with ClinVar-cited
 - Papers about the same individuals are **not** excluded. Overlap is handled by patient-level deduplication (§6.3).
 
 **Screening [proposed].** Title/abstract screening, then full-text screening. Claude may screen, but every decision is logged with a reason, and a human checks a random 10% of inclusions and all exclusions made at full-text stage. Each disease gets a PRISMA-style flow count, produced by script.
+
+- **Title and abstract screening is done** for all six diseases (2026-10-19 for the five new ones). Claude Code helper agents did it with `screen_v2.md`, the disease-neutral form of the pilot's prompt, logged with its sha256 in each `screening_log.json`.
+- "Yes" and "unclear" both go forward to full text. For Tangier disease, papers on heterozygous *ABCA1* carriers with familial HDL deficiency are "unclear", so the full text decides.
+- The human 10% check of inclusions is still to do for the five new diseases. For HA20, Jimmy labeled 40 records.
 
 **Corpus size (D-05, decided).** The grant estimated "roughly 300 full-text reports" across six diseases. Some diseases will have more eligible reports than that share; Alexander disease alone has hundreds of published patients. We extract **all** eligible accessible reports. Cost is re-estimated after the pilot disease, A20 haploinsufficiency (§6.5).
 
@@ -108,7 +127,9 @@ Following this procedure is not a deviation.
 
 ### 5.2 Reference data (ground truth; concordance harness only)
 
-All snapshots are taken on one date, as close as possible to the corpus search date, and stored under `data/reference/` with a manifest recording the source URL, release identifier, download date and checksum.
+All snapshots are taken on one date, as close as possible to the corpus search date, with a manifest recording the source URL, release identifier, download date and checksum (`pipeline/harness/snapshot_reference.py`).
+
+**Where snapshots live.** Snapshot content is kept outside the repository checkout, e.g. `/home/user/gp-rarelink-reference/<date>/`. Only manifests and counts are committed, under `analysis/poc/reference_snapshot/<date>/`. The plan first said `data/reference/`, but the extraction guard refuses to run while that folder holds data. Keeping ground truth out of the checkout serves the same purpose (logged in `DECISIONS.md`, 2026-10-19). The six-disease study takes a fresh snapshot on one date before extraction starts. The 2026-10-19 counts are a planning baseline.
 
 | Source | What | Used for |
 |---|---|---|
@@ -166,6 +187,9 @@ One GA4GH Phenopacket (v2) per individual, plus a per-paper evidence table. Ever
   - zygosity and inheritance, where reported;
   - the author-asserted pathogenicity, as stated (e.g. "pathogenic", "disease-causing", "VUS"), or "not stated".
 - **Phenotypes:** HPO terms, each marked *observed*, *excluded* or *not reported*. "Not reported" is never collapsed into "excluded". Onset age is captured where reported. A normal finding is recorded as the abnormality it rules out, marked excluded ("elevated CRP", excluded), with the paper's own words in the span (D-27, decided).
+- **Person-level values (D-29, D-31, decided).** A value is recorded for a person only when the paper ties it to that person.
+  - Variant fields (zygosity, inheritance, classification) are not taken from statements about a group, the cohort or other papers (D-29).
+  - Values in stacked multi-patient cells (e.g. "18 / 24 / 21 / 57") are not assigned to people by position. They are used only when the paper labels them for the person; otherwise the value is "not reported" (D-31).
 - **Disease:** Mondo ID as primary, with OMIM and ORPHA cross-references taken from Mondo (not from OMIM).
 - **Individual:** sex, age at report, family identifier as given in the paper.
 
@@ -175,6 +199,8 @@ One GA4GH Phenopacket (v2) per individual, plus a per-paper evidence table. Ever
 
 The reconciliation agent proposes merges of individuals reported in more than one paper. A merge records its evidence, for example: shared family ID or pedigree, identical genotype plus consistent demographics, overlapping authors or center, or an explicit statement that the patient was previously reported.
 
+**Merge policy v4 (D-23, decided).** Merges are made only on a citation that ties a person to an earlier report, and one-to-one. A citation naming several papers is not person-specific. The pilot dropped the sex-and-onset route: all 6 false merges of 93 under policy v3 came from it. Recurrent variants and relatives in one family match on sex and onset. Policy v4 had no false merges in the hand-checked set, but it was chosen after that check, so the six-disease study re-checks a random sample of merges by hand [proposed: 50 merges, or all if fewer].
+
 Patient-level statistics use deduplicated individuals. Counts are reported with and without merges so the effect of deduplication is visible.
 
 ### 6.4 Gatekeeper pass
@@ -182,6 +208,11 @@ Patient-level statistics use deduplicated individuals. Counts are reported with 
 A second Claude read checks each value strictly against its cited span: is the value entailed by the span (`rashkin2023_ais`)? It does not judge whether the value is plausible. Values that fail are removed or downgraded to "not reported", and the reason is logged. It checks that the span ties the value to this individual (or this paper), not only that the words match. No value is exempted by a script match of value and span (D-28, decided).
 
 Before that, a deterministic check confirms that every span occurs verbatim in the source text (after whitespace normalization). This check runs on **all** values, not a sample. Any span not found is reported as a fabricated-span count.
+
+**Gatekeeper v4 and how its results are reported (from the pilot).**
+- **What v4 records.** For each value, v4 records whom the quote is about: this person, a named group, the cohort in general, another person, the paper, or unclear. A quote about another person makes the value unsupported. A value read by position from a stacked cell is at most partially supported (D-31).
+- **A filter, not a measure.** In the pilot the gatekeeper's own unsupported rate was 0.036% (v1) and 0.34% (v3). The human audits found 6.0% and 6.3%, and the gatekeeper flagged only 2 of 6 and 1 of 4 of the claims a person did not fully support (`reports/poc_report.md` §4). Its verdicts are therefore never reported as the error rate. Its accuracy against the human labels is reported instead (§7.1 (b)).
+- **Phenopackets.** The phenopackets keep only claims the gatekeeper judged supported. The count removed is reported.
 
 ### 6.5 Development phase: the one-disease pilot, then the pipeline freeze
 
@@ -197,6 +228,26 @@ Prompts, the scaffold and normalization code are developed in a one-disease pilo
 - the final schema and prompts;
 - the cost model;
 - the open choices listed in `POC_DESIGN.md` §7.
+
+**Pilot outcome (2026-10-19; `reports/poc_report.md`).** The recommendation is "go, with fixes" (Jimmy, D-31 entry).
+- **Met:** Q2, Q3, Q6, Q7 and Q8.
+- **Not met:** Q1 (open-access coverage 53.1% against 70%), Q4 (human audit 3 of 50 unsupported, 6.0%, then 3 of 48, 6.3%, against the pilot's 4% limit) and Q5 (policy v3).
+
+The candidates for `pipeline-v1.0` (sha256, first 12 characters, from the report) are:
+
+| File | sha256 |
+|---|---|
+| `pipeline/extract/claude_code/prompts/extract_v6.md` | `aa689f24b470` |
+| `pipeline/extract/claude_code/prompts/gatekeeper_v4.md` | `48ec4f05e65f` |
+| `pipeline/extract/claude_code/schema_ha20_v5.json` | `f0fdf6b3bfea` |
+| `pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md` | `55ab99df7f17` |
+
+- **Not yet run on any paper.** Extraction v6 and gatekeeper v4 have not been tried.
+  - [proposed] Before tagging `pipeline-v1.0`, run both on the same 20-paper HA20 subset as the D-29 re-run, with a span check only. There is no new audit; this proves the prompts run end to end.
+  - The six-disease schema generalizes `schema_ha20_v5.json` with a per-disease checklist. Each disease's checklist is written from its GeneReviews or key review before extraction. It is never written from `phenotype.hpoa`.
+- **Normalization carries the D-26 repairs.** Success is reported by description type.
+
+**Six-disease scale-up and cost.** The pilot projected extraction at $1,676–$4,189 for about 859 papers, by scaling patient counts at HA20's ratio. The screened corpora (§5.1) replace that projection. The revised estimate goes to Dr. Lin before the run.
 
 A cost estimate for the six-disease run then goes to Dr. Lin for approval before scaling (`INSTRUCTIONS.md` §3). Cost per paper on HA20 may not carry over to diseases covered by long case series, so the estimate scales HA20's measured cost per input token by each corpus's token count, rather than by paper count. Token counts can be measured without running a model.
 
@@ -230,6 +281,10 @@ Every record is checked against the phenopacket v2 schema and with CohortValidat
   - *unsupported:* the span does not entail the value;
   - *span not found:* the span is not in the paper.
 - An HPO term more specific than the span justifies counts as unsupported. A less specific (ancestor) term counts as supported.
+- **Additions from the pilot:**
+  - a value the rater cannot verify from its quote and the paper counts as unsupported, because it should have been an abstention. A sensitivity analysis without such claims is reported beside it;
+  - raters work on a rating page that shows the claim, its quote and the paper, never the gatekeeper's verdict or reasons;
+  - any second look that shows gatekeeper reasons is reported separately, because labels changed there are not independent of the gatekeeper.
 
 **Decision rule (D-02, decided): rule C.** O1 passes if the observed unsupported rate is below 2%, i.e. at most 4 unsupported claims out of 250.
 
@@ -263,6 +318,12 @@ The matched sets below are built by the harness from the frozen extraction and t
 3. unmatched.
 
 The tier is reported for every comparison.
+
+**As built in the pilot (`pipeline/harness/concordance.py`).**
+- **Tier 1.** Tier 1 matches the GRCh38 VCF key (chromosome, position, reference and alternate allele). On the extracted side the key comes from VariantValidator; on the ClinVar side, from ClinVar's own VCF columns. Records are restricted to single-gene records for the pilot gene.
+- **Unplaced descriptions.** Descriptions that cannot be placed on the genome (protein only, not normalized, rejected) are counted and reported, but are not in the denominator.
+- **Gap pre-triage.** Before hand triage, each unmatched variant gets a pre-triage label by script: whether the protein change the paper states agrees with the one predicted from the normalized cDNA.
+- **D-19 split.** Every O2 figure is reported for all papers and again without any paper ClinVar cites for the gene. For the five new diseases no paper enters through ClinVar citations, so the split measures only ClinVar-cited papers the search found itself.
 
 #### 7.2.1 Gene
 
@@ -316,6 +377,29 @@ ClinVar contains misclassified variants (`wright2021_ddd_clinvar`), and literatu
 - The breakdown is secondary and never replaces the primary figure.
 
 **Success criterion (D-03, decided).** The grant gives no numeric concordance threshold, and none is added. Concordance is reported as estimates with 95% CIs, with no pass/fail cut-off, because ClinVar and OMIM are imperfect references (§7.2.6).
+
+#### 7.2.7 Completeness against a published variant catalogue (from the pilot, D-30)
+
+**What it measures.** This is recall against a variant catalogue published by people, not against a database. The method is the pilot's (`pipeline/harness/completeness.py`):
+- **Transcription.** The catalogue's per-variant table is transcribed by script, with a check that its rows are complete.
+- **Comparison level.** Variants are compared at the level the catalogue prints. The pilot's catalogue printed protein changes only.
+- **Restricted recall.** Denominator: catalogue variants with a source paper in the extracted corpus. Numerator: variants found in rows from primary papers, which excludes reviews and the catalogue itself. Wilson 95% CI.
+- **Also reported:** unrestricted recall; recall in the variant's own source paper; patients per source paper against the run's carriers.
+
+**Outcome type.** This is a secondary, descriptive outcome with no threshold. The pilot's ≥ 80% gate (Q7) was a development gate only.
+
+**The catalogue is fixed per disease before extraction [proposed; suitability not yet checked].** Each candidate must have a per-variant table naming its source papers:
+
+| Disease | Candidate catalogue |
+|---|---|
+| Alexander disease | `grossi2024_axd_meta` (open, PMC) |
+| LAD-I | `almarzanovoa2018_lad1_review` (repository copy; its online supplement lists published cases) |
+| SSADH deficiency | `tokatlylatzer2023_ssadh_genotype` (open, PMC) |
+| Danon disease | none open yet; `brambatti2019_danon_gender` is paywalled |
+| Tangier disease | `koseki2021_tangier_review` (open, publisher) |
+| A20 haploinsufficiency | Chen 2020 Table S1 (D-30) |
+
+A disease with no suitable open catalogue reports no completeness figure and says why. The candidates' reference lists were search seeds (§5.1), so their source papers are more likely to be in the corpus. That widens the restricted denominator; it does not make a variant easier to find. A catalogue is used only on the harness side: it is never shown to extraction, and never used as a few-shot example (§5.3).
 
 ### 7.3 O3: Gap closure (primary, descriptive)
 
@@ -419,7 +503,19 @@ Stated so readers can judge the risk of data-informed choices.
 
 - **Aggregate ClinVar counts per gene** (MyVariant.info, ClinVar Miner) and **proxy OMIM counts** were seen at application time. No variant-level comparison between literature and ClinVar/OMIM has been made for any pilot gene.
 - **Review figures** for patient and variant counts were read and checked on 2026-10-16 (`background/grant_claim_checks.md`). The fact-check found two figures contradicted or only roughly supported (Tangier, Danon). It also found that "408 phenopacket-store cohorts" has no published source. Since then, a further check found that the impact statement's "genotypes for 184 LAD-I patients whose variants were published but never structured" equals 323 − 139. By the fact-check's reading of `almarzanovoa2018_lad1_review`, those 184 are the patients *without* a reported genotype. This needs checking against the review [D-14]; it affects what gap closure can mean for LAD-I.
-- **Extraction.** As of 2026-10-18 no extraction has been run. The pilot's code is built and tested offline but has not processed any paper. A one-disease pilot on A20 haploinsufficiency (`POC_DESIGN.md`) runs before this plan is frozen (D-18). Its results, including any ClinVar concordance seen for HA20, will be summarized here before freezing.
+- **The HA20 pilot (2026-10-18 to 2026-10-19).** The pilot extracted 85 open-access HA20 papers twice, plus a 20-paper re-run, and every result was seen before this plan was frozen. That includes the following (`reports/poc_report.md`):
+  - **ClinVar concordance for *TNFAIP3*:** 40 of 95 normalized variants in ClinVar; 17 of 20 author P/LP calls agree with ClinVar; 55 gap candidates.
+  - **HPO concordance:** 13 of 14 annotated terms recalled.
+  - **Completeness:** against Chen 2020.
+  - **Audits:** two human audits.
+
+  The only prompt change made after ClinVar content was seen is D-31 (extraction v6, gatekeeper v4). It came from the re-audit's stacked-cell failures, which compare values with their quotes, not from any ClinVar miss. The D-29 prompts were committed before the snapshot (`reports/poc_stage6_findings.md` §5). HA20 stays a development disease (§6.5).
+- **The other five diseases (2026-10-19).** For each of these the following were seen:
+  - their PubMed titles and abstracts, during screening;
+  - their open-access full-text counts (§5.1);
+  - their aggregate ClinVar counts by classification (`analysis/poc/reference_snapshot/2026-10-19/counts_<GENE>.json`, release 2026-10-12).
+
+  No variant from those diseases' papers has been extracted, and no literature-to-ClinVar comparison has been made for their genes.
 - **AutoOMIM.** The team has worked with OMIM-style content through the AutoOMIM collaboration, which is why §5.3 excludes it.
 - **The grant mentions "our own internal experience"** with Claude's precision. This is not used as evidence here.
 
@@ -447,4 +543,20 @@ Month 1 starts on the date the first credit deposit landed, provisionally 2026-0
 
 ## 13. Decisions needed before freezing
 
-See `DECISIONS.md` → *Open decisions*. Still blocking this plan: D-08 to D-12, D-17 and D-19, plus the pilot report (D-18). D-01 to D-07 and D-18 were decided on 2026-10-18. D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.
+See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, and D-22 to D-31 on 2026-10-19. The pilot report is drafted (`reports/poc_report.md`) and is waiting on Dr. Lin's review.
+
+Still blocking this plan:
+- **D-08 (substitute trigger).** Its real numbers now exist: open full-text coverage per disease (`analysis/corpus/coverage_2026-10-19.md`). The placeholder's share rule would replace most of the set, so the trigger needs restating before the freeze (`DECISIONS.md`, D-08).
+- **D-09 to D-12, and D-17.**
+- **D-19.** The recommendation is to keep this section's rule. The five new searches already follow it.
+
+Also to settle before the freeze:
+- the [proposed] items added in v0.7:
+  - a smoke run of extraction v6 and gatekeeper v4 (§6.5);
+  - the merge re-check sample (§6.3);
+  - the completeness catalogues (§7.2.7);
+  - whether the Europe PMC full-text search is added (§5.1);
+- the human 10% check of screening for the five new diseases (§5.1);
+- full-text screening.
+
+D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.

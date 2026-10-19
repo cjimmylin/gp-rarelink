@@ -38,7 +38,8 @@ def config(disease: str) -> dict:
 
 def background(disease: str) -> int:
     cfg = config(disease)
-    rows = {r["key"]: r for r in csv.DictReader(Path("background/manifest.csv").open())}
+    with Path("background/manifest.csv").open(newline="") as fh:
+        rows = {r["key"]: r for r in csv.DictReader(fh)}
     hold = set(cfg.get("holdouts", {}).values())
     out = Path("data/literature") / disease / "seeds" / "background_bibliography.csv"
     out.parent.mkdir(parents=True, exist_ok=True)

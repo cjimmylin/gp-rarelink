@@ -70,6 +70,11 @@ Pilot model work in this session (D-20), from the session's own list-price usage
 - **Pilot total so far:** $580.31 against the $1,000 ceiling (`reports/poc_stage4_5_findings.md` §7).
 - **After the audit (D-26 to D-28 work and the gatekeeper v2 re-check on 50 claims):** from $580.31 to $610.19 (the re-check itself from $593.02, `runs/poc-ha20-gatekeeper-v2-recheck/manifest.json`). Pilot total so far: $610.19 against the $1,000 ceiling.
 - **D-29 re-run, Stage 6 and the re-audit (overlapping):** from $614.97 to $673.89, $58.92 together, against the $82.61 estimate for the re-run alone (`runs/poc-ha20-v5-subset/manifest.json`). The reading stayed at $614.97 from about 09:17 to past 09:36 UTC while helpers ran. Pilot total so far: $673.89 against the $1,000 ceiling (`reports/poc_report.md` §8).
+- **Items 1–5 after the pilot (2026-10-19): five-disease screening, plus scripts and documents.**
+  - 2,715 abstracts were screened by 30 Sonnet helpers. Full-text fetching, the ClinVar counts and the coverage lookup are scripts with no model calls.
+  - The readings were $673.89 at 12:16 UTC and $685.10 at 14:10 UTC, before screening began. At 14:24 and 14:27 UTC, after all 30 helpers had finished, it still read $685.10, so the reading has frozen again and the screening cost is not yet captured.
+  - At HA20's screening rate ($11.83 for 838 abstracts) it would be about $38. That is inside the $50–100 put to Jimmy with the items.
+  - Take a fresh reading in the next session and log the difference here. This is not pilot spend; it is corpus building for the six-disease study.
 
 For scale, the two Claude Code sessions' own metadata reported about $10 ("Claude Code repo status") and about $17 ("Rarelink POC study design") as of about 18:00 UTC on 2026-10-18. These are list-price estimates the sessions report about themselves, not billing figures; the ledger needs figures from Settings > Usage.
 
@@ -105,6 +110,7 @@ Estimate method for scaling extraction:
 | 2026-10-19 | Instructions v4 check: 10-paper mini-run | Extraction | Run-2 rate | ~$25 | **Jimmy, 2026-10-19 (D-24)** | — (included in the $116.81 above) |
 | 2026-10-19 | Gatekeeper v2 re-check on the 50 audit claims (28 papers) | Gatekeeper | Run-2 gatekeeper, about $1 per helper | ~$30 | **Jimmy, 2026-10-19 (D-28)**, within the Stage 5 approval | — (session readings: +$17.17 including orchestration, an estimate) |
 | 2026-10-19 | D-29 re-run: instructions v5 on 20 HA20 papers, gatekeeper v3 on all their values | Extraction, gatekeeper | Run-2 rates (`analysis/poc/pick_v5_subset.py`): $35.84 + $46.77 | $82.61 (Jimmy approved about $110) | **Jimmy, 2026-10-19 (D-29)** | — (session readings: +$58.92, $614.97 to $673.89, including concurrent Stage 6 and re-audit work; an estimate) |
+| 2026-10-19 | Title and abstract screening for the five other diseases (2,715 records, Sonnet helpers) | Extraction (corpus building; no closer line) | HA20 screening rate, $11.83 per 838 abstracts | about $38 (range given to Jimmy: $50–100) | **Jimmy, 2026-10-19 ("Yes. Perform items 1-5")** | — (reading frozen at $685.10; see above) |
 | 2026-10-18 | Pilot (POC) on A20 haploinsufficiency, all model-calling stages | Extraction (mostly), gatekeeper, harness, bias arm | `POC_DESIGN.md` §5. Per-stage rows to be added before each run, after Stage 2 measures per-paper cost | $200–400; ceiling $1,000; hard stop $1,500 | Jimmy (chat, 2026-10-18) | — |
 
 **Pilot billing (D-20).** The pilot runs with Claude Code helper agents, not the API. Its model use is therefore Claude Code usage on whichever claude.ai account runs the session, which counts against the award if that is the funded account (D-15). Each stage logs the session's own list-price usage estimate before and after. Jimmy reconciles the totals against Settings > Usage. If the SLIDERS/API route is used later, D-17 applies to that spend.

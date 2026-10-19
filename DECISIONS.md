@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.6 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
+**Pre-registration status:** draft v0.7 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -42,6 +42,17 @@ How to use this file:
 - **Question:** What open-access threshold replaces a pilot disease with a substitute?
 - **Placeholder for discussion:** fewer than 15 accessible eligible reports, or less than 50% of eligible reports accessible.
 - **Constraint:** decided before extraction, on access grounds only.
+- **Evidence (2026-10-19, `analysis/corpus/coverage_2026-10-19.md`):**
+  - Open full text from PMC and Europe PMC covers 10.6% (Tangier) to 35.2% (Danon) of the five new corpora, against 53.1% for HA20.
+  - Counting the free copies Europe PMC lists elsewhere, the upper bound is 34.5% to 45.6%.
+  - Primary papers screened "yes" with full text: Alexander disease 66, LAD-I 30, SSADH deficiency 38, Danon disease 74, Tangier disease 17.
+  - **So the placeholder's 50% rule would replace all five.** The substitutes are similar: older, smaller literatures, unlikely to do better. The 15-paper rule is met by all five today, Tangier only just.
+- **Recommendation:**
+  1. **Drop the share rule.** Substitute a disease only if, after full-text screening, it has fewer than 15 accessible eligible primary reports.
+  2. **Report coverage per disease as a limitation.** Compare accessible and inaccessible papers by publication decade, because open-access papers skew recent.
+  3. **Widen access before the freeze; both steps are Jimmy's call.**
+     - Set `UNPAYWALL_EMAIL` in `.env` to an address he chooses, so the free copies get fetched. These are PDFs, so they need a converter the pilot did not use.
+     - Decide whether institutional access (RGI or a partner library) can supply paywalled papers. Pre-registration §5.1 already lists that route. Full texts stay out of git.
 
 **D-09 · Registry and timing**
 - **Recommendation:** register on OSF, publicly. Freeze after the pilot report and before the six-disease run (D-18).
@@ -82,6 +93,7 @@ How to use this file:
   - **Danon:** change ">100 families" to "about 100 families; ≥146 molecularly confirmed patients".
   - **phenopacket-store:** replace "408 cohorts", which has no published source, with a dated count.
   - **LAD-I** (new, found 2026-10-18): the impact statement says "genotypes for 184 LAD-I patients whose variants were published but never structured". 184 = 323 − 139, and the source review reports that genotype was *not* reported for those patients. If so, extraction cannot recover them. This affects how LAD-I gap closure is described. Check against `almarzanovoa2018_lad1_review`.
+  - **LAD-I ORPHA number** (new, found 2026-10-19): Mondo release 2026-10-06 cross-references LAD-I (MONDO:0007293) to Orphanet:99842, not to ORPHA 2968 as `CONTEXT.md` and the application give. Check against Orphanet; records will use Mondo's cross-reference (pre-registration §4.1, §6.2).
 - **Scope:** the disease set is unchanged; these are wording and number fixes.
 
 **D-15 · Budget tracking**
@@ -100,6 +112,33 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · Five-disease corpus searched and screened; dated ClinVar counts; pre-registration v0.7
+Jimmy: "Yes. Perform items 1-5" (this session), after Claude listed them. Items 1–4 are done here; the item 5 drafts are in `reports/drafts/`, for Jimmy to send.
+- **Searches and screening (Alexander disease, LAD-I, SSADH deficiency, Danon disease, Tangier disease).** Settings: `configs/diseases.yaml`. Per-disease logs: `data/literature/<disease>/search.md`.
+  - Claude's calls:
+    - no ClinVar or OMIM citation seeds, following pre-registration §5.1 (D-19 stays open; the recommendation is unchanged);
+    - searches run from database inception;
+    - the Europe PMC full-text search and LitVar were not run;
+    - comparator holdouts were marked out of the corpus (pre-registration §7.4.1).
+  - Screening was done by Sonnet helper agents with `screen_v2.md` (the disease-neutral form of `screen_v1.md`), each with its own scratch directory.
+  - Human check of a 10% sample: not yet done.
+- **Full text.** Fetched from Europe PMC and PMC only. Unpaywall was skipped: it needs an email address, and Claude does not send Jimmy's address to a third party without his say. `pipeline/extract/corpus/oa_elsewhere.py` lists, without downloading, which remaining papers Europe PMC shows as free elsewhere. Coverage, from `analysis/corpus/coverage_2026-10-19.md`:
+
+| Disease | Search hits | Records | In corpus | Full text | + free elsewhere (upper bound) | Yes-relevance primary papers with full text | D-08 placeholder on full text |
+|---|---|---|---|---|---|---|---|
+| ha20 | 716 | 838 | 160 | 85 (53.1%) | 96 (60.0%) | 55 of 95 (57.9%) | met |
+| axd | 513 | 539 | 363 | 74 (20.4%) | 135 (37.2%) | 66 of 283 (23.3%) | not met |
+| lad1 | 869 | 874 | 274 | 51 (18.6%) | 98 (35.8%) | 30 of 180 (16.7%) | not met |
+| ssadh | 254 | 357 | 171 | 52 (30.4%) | 78 (45.6%) | 38 of 135 (28.1%) | not met |
+| danon | 408 | 416 | 244 | 86 (35.2%) | 110 (45.1%) | 74 of 203 (36.5%) | not met |
+| tangier | 519 | 529 | 284 | 30 (10.6%) | 98 (34.5%) | 17 of 186 (9.1%) | not met |
+
+  "In corpus" counts title and abstract screening only, so full-text screening will lower every denominator. "Free elsewhere" is an upper bound; those papers were not fetched.
+
+- **ClinVar counts.** `CONTEXT.md` §4 now gives direct counts for all six genes from one release (2026-10-12, read 2026-10-19), with the application's figures beside them (`analysis/poc/reference_snapshot/2026-10-19/counts_<GENE>.json`). The snapshot content stays outside the repository.
+- **Mondo IDs.** Recorded in pre-registration §4.1. The LAD-I Orphanet mismatch has been added to D-14.
+- **Pre-registration v0.7.** This revision folds in the pilot report §10 and the items above (header of `preregistration/analysis_plan.md`). It is a revision, not a deviation: the plan is not frozen. No metric, threshold or disease was changed.
 
 ### 2026-10-19 · Pilot Stages 3–7 merged to `main`
 - Jimmy: "Merge to main" (this session). Merged as PR #4 (cjimmylin/gp-rarelink#4), merge commit `ca4fb71`; `main` had not moved since PR #3.
