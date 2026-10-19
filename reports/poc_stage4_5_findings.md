@@ -339,3 +339,30 @@ Jimmy re-read 10 claims with the full paragraph in view and, for this step, the 
 2. **Gatekeeper v3:** before judging, the gatekeeper writes down who the quote is about (this person, a named group, the cohort, another paper's patients) and judges the person link from that; the inverted normal-finding form is partial. This follows the mitigation listed for "gatekeeper agrees with extractor" in the POC risk table.
 3. **The re-run before the six-disease run:** v5 extraction and gatekeeper v3 on about 20 HA20 papers weighted toward cohort papers, with a fresh 50-claim audit drawn from them by a new seed, so the gatekeeper is tested on claims its rules were not written from. A rough estimate from run-2 rates is about $110 (20 papers at about $1.95 for extraction and about $3.60 for gatekeeper v3 with D-28's extra claims); it would be estimated properly before running.
 4. **Keep the 250-claim audit as the measure.** The gatekeeper is a filter whose accuracy is reported against human labels, not an error rate.
+
+### 10.6 The D-29 re-run (instructions v5, gatekeeper v3), 2026-10-19
+
+Decided by Jimmy (D-29). Numbers from `analysis/poc/pick_v5_subset.py`, `analysis/poc/v5_variant_fields.py`, `gatekeeper_merge.py --prefix gatekeeper_v3` and `make_audit_sample.py`, all run 2026-10-19.
+
+- **Papers:** 20 of the 85 run-2 papers, drawn at random with seed 29: 14 cohort or review papers and 6 case reports (`runs/poc-ha20-v5-subset/selection.json`). The draw did not look at the audit, the gatekeeper or any reference data.
+- **Extraction:** 20 helpers, with all quotes found verbatim.
+  - Four helpers had left some quotes empty: mostly person labels repeated in child tables, plus 38 checklist values and 10 proband flags. Repair-only resumes filled them.
+  - A diff against copies taken before the repair shows nothing else changed, except four proband flags set to null where no quote supported them.
+- **What v5 changed:** on the TNFAIP3 variant rows of these 20 papers, the share of rows with a value moved as follows (122 rows in run-2, 116 in v5).
+
+| Field | Run-2 (v3) | v5 |
+|---|---|---|
+| Zygosity | 77% | 53% |
+| Inheritance | 11% | 27% |
+| Variant type | 33% | 30% |
+| Pathogenicity | 52% | 52% |
+| Functional evidence | 25% | 21% |
+
+  Zygosity now abstains where only a cohort-level sentence gives it, as D-29 intended. Inheritance rose because of the v4 rule (a parent stated to carry the variant), which run-2 did not have. Pathogenicity did not move, so whether the rule caught the cohort-wide pathogenicity sentences is for the audit to show.
+- **Gatekeeper v3 on all 4,986 judged values:** 4,853 supported, 116 partially supported, 17 unsupported (0.34%; exact 95% CI 0.20–0.55%).
+  - That is about ten times the v1 rate on run-2 (0.036%). It is still a gatekeeper rate, not an error rate.
+  - Unsupported: 7 gene symbols on relatives' or literature patients' variant rows whose quote is another person's variant sentence, 6 feature claims (hedged phrases, conflicting figure legends), and 4 demographic fields.
+  - Partial: mostly onset ages taken from the age at diagnosis or admission (39).
+- **The gatekeepers bent the new rule.** v3 says a quote about another person makes a person-level value unsupported. In 20 claims the helpers recorded `about = other_person` but judged them partially supported, reasoning that the value is right one step away (relatives' proband flags; sisters' variant fields resting on "the same mutation" in the next sentence). Two helpers said so in their replies. The audit will show whether that leniency hides errors.
+- **Fresh audit:** 50 claims drawn with seed 20261029 from the same strata as before (pools: variant 673, observed 772, excluded 323, demographic 567), in `adjudication/poc_audit_v5/`. Rating page, with the gatekeeper hidden: https://claude.ai/artifact/UHTQJ3TyT29HZ25PPdQFN8 (private to Jimmy). Then `apply_ratings.py --dir ... --sample-dir adjudication/poc_audit_v5` and `audit_metrics.py --run-id poc-ha20-v5-subset --gatekeeper-file gatekeeper_v3.csv --sheet adjudication/poc_audit_v5/sample.csv`.
+- **Spend:** estimate $82.61. The session cost reading stayed at $614.97 from about 09:17 UTC through the run (the freeze seen before), so the actual figure comes from a later reading.

@@ -6,7 +6,7 @@ How to maintain it:
 - Add what a future session would need to know. Keep entries short and dated.
 - Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
 
-*Last updated 2026-10-19.*
+*Last updated 2026-10-19 (later).*
 
 ## 1. Where things stand (2026-10-18)
 
@@ -43,7 +43,9 @@ How to maintain it:
   - Stage 5: 8 unsupported and 305 partial of 22,003 judged values; phenopackets rebuilt without claims not judged supported.
   - Human audit (Jimmy, first pass): 2 of 50 unsupported (4.0%, the Q4 limit), 6 partial. The gatekeeper flagged none of his 8; v2 (D-28) flags 2. D-26 repairs: 135 of 138 cDNA descriptions normalized. Report §10.
   - **Audit ratings (collected 2026-10-19):** the 50 claims and 30 HPO bindings were rated on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. D-26 to D-28 decided 2026-10-19. The step-3 second look is done (`final` collection): **Q4 not met, 3 of 50 unsupported (6.0%)**; D-29 (fixes and a re-run) is open, report §10.5.
-  - **Next:** Stage 6 (ClinVar concordance, harness side only) and Stage 7.
+  - **D-29 decided and run (2026-10-19):** extraction v5 (variant fields only from this person) and gatekeeper v3 (records who each quote is about) on 20 papers (`poc-ha20-v5-subset`). **Waiting on Jimmy:** the fresh 50-claim audit on https://claude.ai/artifact/UHTQJ3TyT29HZ25PPdQFN8 (store collection `ratings`; collect with `apply_ratings.py --sample-dir adjudication/poc_audit_v5`, then `audit_metrics.py --run-id poc-ha20-v5-subset --gatekeeper-file gatekeeper_v3.csv --sheet adjudication/poc_audit_v5/sample.csv --out analysis/poc/audit_metrics_v5.json`). Also his reading of C032922. Report §10.6.
+  - **Stage 6 done for ClinVar and HPO (2026-10-19):** `reports/poc_stage6_findings.md`. The snapshot lives outside the repo (`/home/user/gp-rarelink-reference/<date>/`, gone when the container goes; re-create with `pipeline/harness/snapshot_reference.py`); only its manifest and counts are committed. Q7 waits on the El Hani 2024 benchmark, which is paywalled here.
+  - **Next:** Stage 7 (pilot report), after the re-audit and the Q7 benchmark.
   - Report: `reports/poc_stage4_5_findings.md`. Session usage reading 580.31.
 - **Pilot progress (2026-10-18, earlier):**
   - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
@@ -145,6 +147,9 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
   - **Ratings via an artifact page work.** The `db` store keeps them; read with `ArtifactData list` + `out_dir`, then `apply_ratings.py`. Keep gatekeeper verdicts out of the first-pass page.
   - **The five-hour usage limit stops helpers mid-task.** Many had already written their output; check each file is complete before trusting it. Resume the rest with SendMessage to the same helper. `get_session` → `rate_limit_info` shows when the account is past the limit and running on overage (it matters for D-17).
   - **The session cost reading can freeze for most of an hour.** It stuck at 463.50 from about 02:08 to 02:58 UTC. Take a reading at the end too, and say when stages overlap.
+  - **Helpers skip quotes on repeated labels.** In the v5 subset, four of 20 helpers left `individual_label_in_paper` spans empty in child tables (and one left 38 checklist quotes empty). Run `span_check` with the run's own `--schema` (it defaults to v2 and then reports every v5 field as a problem) before gatekeeper prep, because prep numbers claims and a later repair shifts the ids.
+  - **Gatekeepers soften hard rules they think too strict.** Gatekeeper v3 says a quote about another person makes the value unsupported; helpers recorded `other_person` but judged 20 such claims partially supported. Expect it, and count `about` against `verdict` in the summary.
+  - **Never put a reference snapshot in `data/reference/` in the checkout.** The extraction guard then refuses to run. Use a root outside the repo.
   - **scipy is not in the uv project.** `pipeline/extract/claude_code/gatekeeper_merge.py` has a pure-Python exact interval (`share`); reuse it rather than adding a dependency.
   - **Write gatekeeper conventions down.** Helpers split on "normal X" recorded as excluded (D-27). Any convention the extraction uses must be stated in the gatekeeper instructions too.
   - **The gatekeeper finds papers that contradict themselves** (table vs text). Those claims were judged supported with a note; collect them for the human audit.

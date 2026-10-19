@@ -43,9 +43,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--dir", required=True)
     ap.add_argument("--read-on", required=True, help="date the store was read (ISO)")
     ap.add_argument("--overwrite", action="store_true")
+    ap.add_argument("--sample-dir", default=str(HERE), help="folder with sample.csv (and the HPO sheet, if any); ratings_raw.json is written there")
     args = ap.parse_args(argv)
+    sd = Path(args.sample_dir)
     ratings = load(Path(args.dir) / "ratings")
-    hpo = load(Path(args.dir) / "hpo")
+    hpo = load(Path(args.dir) / "hpo") if (Path(args.dir) / "hpo").exists() else {}
     final = load(Path(args.dir) / "final") if (Path(args.dir) / "final").exists() else {}
 
     def fill(path: Path, key, col, note_col, value_of):
@@ -68,13 +70,13 @@ def main(argv: list[str] | None = None) -> int:
             w.writerows(rows)
         return changed, sum(bool(r[col].strip()) for r in rows), len(rows)
 
-    c1 = fill(HERE / "sample.csv", lambda r: ratings.get(r["claim_id"]), RATING_COL, "note",
+    c1 = fill(sd / "sample.csv", lambda r: ratings.get(r["claim_id"]), RATING_COL, "note",
               lambda d: LABEL.get(d.get("rating", ""), ""))
-    c2 = fill(HERE / "hpo_model_binding_sample.csv", lambda r: hpo.get(f"h{int(r['n']):02d}"), "rater_ok (yes/no)", "rater_note",
-              lambda d: d.get("ok", "") if d.get("ok") in ("yes", "no") else "")
-    c3 = fill(HERE / "sample.csv", lambda r: final.get(r["claim_id"]), "final_rating", "final_reason",
+    c2 = fill(sd / "hpo_model_binding_sample.csv", lambda r: hpo.get(f"h{int(r['n']):02d}"), "rater_ok (yes/no)", "rater_note",
+              lambda d: d.get("ok", "") if d.get("ok") in ("yes", "no") else "") if (sd / "hpo_model_binding_sample.csv").exists() else (0, 0, 0)
+    c3 = fill(sd / "sample.csv", lambda r: final.get(r["claim_id"]), "final_rating", "final_reason",
               lambda d: LABEL.get(d.get("rating", ""), "")) if final else (0, 0, 0)
-    (HERE / "ratings_raw.json").write_text(json.dumps({"read_on": args.read_on, "ratings": ratings, "hpo": hpo, "final": final},
+    (sd / "ratings_raw.json").write_text(json.dumps({"read_on": args.read_on, "ratings": ratings, "hpo": hpo, "final": final},
                                                        indent=2, ensure_ascii=False, sort_keys=True) + "\n")
     print(json.dumps({"claims": {"written": c1[0], "rated": c1[1], "of": c1[2]},
                       "hpo": {"written": c2[0], "rated": c2[1], "of": c2[2]},
