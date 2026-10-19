@@ -1,0 +1,3629 @@
+{
+ "pmid": "34899744",
+ "instructions_version": "extract_v3",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "A literature review that summarises HA20 patients mostly at group level but also describes a few previously published patients individually, e.g. 'The second case was a 6-year-old Japanese boy.'",
+ "method_note": "Read the whole review by hand; a short Python script only assembled the JSON and checked spans/fields (no table transcription). Scope: the review summarises 74 East Asian and 51 other-region HA20 patients only at group level (Table 1); those get no rows. Rows were made only for previously published people the text describes individually: the two allogeneic-HCT boys ('The first case ... 14-year-old English boy', 'The second case ... 6-year-old Japanese boy'), the East Asian patient with Hodgkin lymphoma (10), the autologous-HCT patient with CNS vasculitis (30), and the one East Asian patient with elevated ISG expression (47). Labels follow rule 4 using the reference as printed; the two boys share the joint citation '(31, 47)' and are numbered in the order of their individual description ('first case' = English boy). The paper never assigns 31 or 47 to a specific boy, so '(31, 47)' is recorded for both; the text implies (not stated) that the Japanese boy is the single East Asian canakinumab/anti-IL-1 patient cited as (47) ('Only one patient was treated with anti-IL-1 agents (canakinumab) in East Asia (47)'), so that mention was treated as the same person and not given a separate row. The ISG patient (47) may also be the Japanese boy but the paper does not say so, so it has its own row ('ref (47) patient'); a reconciler should check. Ages '14-year-old'/'6-year-old' are the ages given in the case summaries (apparently around HCT) and were put in age_at_last_evaluation. Variant rows: the review says its patients have 'HA20 resulting from TNFAIP3 mutations' and shows East Asian mutations only in Figure 1, so each in-scope person has a TNFAIP3 row with variant_original_string 'not reported'. Variants named in the text (Cys243Tyr (45), Glu192Lys (18), Met476Ile (20), Arg183X (22, 27), Arg87X (21, 42), p.Asn102Ser, c.487-1G>A, p.Val309dup, Phe127Cys) are tied to references or families, not to identifiable individuals, so they were not attributed. Checklist judgements: 'insulin-dependent DM' -> type 1 diabetes observed; 'psoriasis' -> skin lesions observed; 'frequent fever' -> recurrent fever observed; 'hepatitis', 'enteropathy', 'cell depletion', 'bowel disease' and 'Hodgkin lymphoma' were NOT mapped to autoimmune hepatitis, GI inflammation, autoimmune cytopenia or lymphoproliferation (left not reported) because the paper does not specify them further. No exclusions were recorded; Table 1 counts are unnamed group counts. n_patients_reported = 125 is the sum of the two stated regional totals (74 + 51); no single total is printed, so cohort_size_as_stated is null. Contradictions/inconsistencies in the paper: Table 1 prints '42/51 (82.6%)' (42/51 = 82.4%); the text says onset 'ranged from neonatal to around 30 years' while Table 1 gives 'neonatal period to 32 y'; the text says 'four potential splice site mutations or duplication mutations' then 'One ... in Japan (16), while four were reported in China (25, 27)' (1 + 4 = 5); allogeneic HCT is cited '(31, 47)' after 'one refractory patient in East Asia and one refractory patient in other regions', which by order would map 31 to East Asia, unlike the inference above.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "first_author": {
+     "value": "Kadowaki",
+     "span": "Authors: Kadowaki Tomonori"
+    },
+    "year": {
+     "value": 2021,
+     "span": "Journal: Frontiers in Immunology (2021)"
+    },
+    "study_type": {
+     "value": "review/meta-analysis",
+     "span": "In this review, we summarize the characteristics of patients with HA20 in East Asia"
+    },
+    "n_patients_reported": {
+     "value": 125,
+     "span": [
+      "A total of 74 patients in 39 families were affected by HA20 in East Asia, while a total of 51 patients in 23 families were affected by HA20 in other regions"
+     ]
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": "We summarized the literature on patients with HA20 resulting from TNFAIP3 mutations starting from the first report of this disease in 2016 until August 2021"
+    },
+    "prior_report_citation": {
+     "value": "(10–44)",
+     "span": "A total of 20 studies in East Asia and 15 studies in other regions, mainly the USA and Europe, were published during this period (10–44)"
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "14-year-old",
+     "span": "a 14-year-old English boy"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P14Y",
+     "span": "a 14-year-old English boy"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "English",
+     "span": "a 14-year-old English boy"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "refractory to prednisolone, sirolimus, tacrolimus, infliximab and rituximab; then allogeneic HCT, after which complete remission from all autoimmune disorders except DM",
+     "span": [
+      "Because his symptoms were refractory to treatment with prednisolone, sirolimus, tacrolimus, infliximab, and rituximab, he received HCT",
+      "The first case of allogeneic HCT was a 14-year-old English boy",
+      "Following HCT, he entered complete remission from all autoimmune disorders except DM"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "Although it has been conducted in only two patients with HA20 to date"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "(31, 47)",
+     "span": "HCT was effective in patients resistant to various treatments including several biological agents and led to remission of their inflammatory symptoms (31, 47)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "6-year-old",
+     "span": "a 6-year-old Japanese boy"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P6Y",
+     "span": "a 6-year-old Japanese boy"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Japanese",
+     "span": "a 6-year-old Japanese boy"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "refractory to prednisolone, cyclosporine, tocilizumab, anti-TNF-α agents, canakinumab and tofacitinib; then HCT (second allogeneic HCT case), after which autoinflammatory symptoms improved; long-term steroids",
+     "span": [
+      "His symptoms were refractory to treatment with immunosuppressive drugs including prednisolone, cyclosporine, tocilizumab, anti-TNF-α agents, canakinumab, and tofacitinib",
+      "He underwent HCT and his autoinflammatory symptoms improved",
+      "persisted because of long term administration of steroids",
+      "The second case was a 6-year-old Japanese boy"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "Although it has been conducted in only two patients with HA20 to date"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "(31, 47)",
+     "span": "HCT was effective in patients resistant to various treatments including several biological agents and led to remission of their inflammatory symptoms (31, 47)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "East Asia",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "(10)",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "autologous HCT because of central nervous system vasculitis; relapsed after 18 months of remission and various immunosuppressive agents were reinitiated",
+     "span": [
+      "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)",
+      "autologous HCT was performed for one patient in other regions (30)"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": [
+      "Treatment of HA20",
+      "autologous HCT was performed for one patient in other regions (30)"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "(30)",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "East Asia",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "HA20 patients in other regions were reported to show overexpression of ISGs (36, 38, 40, 43), while only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "(47)",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "patients with HA20 resulting from TNFAIP3 mutations"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": [
+      "patients with HA20 resulting from TNFAIP3 mutations",
+      "locations of TNFAIP3 gene mutations in East Asian patients with A20 haploinsufficiency (HA20)"
+     ]
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": [
+      "patients with HA20 resulting from TNFAIP3 mutations",
+      "locations of TNFAIP3 gene mutations in East Asian patients with A20 haploinsufficiency (HA20)"
+     ]
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "patients with HA20 resulting from TNFAIP3 mutations"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": [
+      "patients with HA20 resulting from TNFAIP3 mutations",
+      "locations of TNFAIP3 gene mutations in East Asian patients with A20 haploinsufficiency (HA20)"
+     ]
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "feature_text_as_stated": {
+     "value": "insulin-dependent DM",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "persisted after HCT (remission from all autoimmune disorders except DM)",
+     "span": "he entered complete remission from all autoimmune disorders except DM"
+    },
+    "hpo_label_candidate": {
+     "value": "Type I diabetes mellitus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100651",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "feature_text_as_stated": {
+     "value": "cell depletion",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "feature_text_as_stated": {
+     "value": "hepatitis",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012115",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "feature_text_as_stated": {
+     "value": "enteropathy",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "feature_text_as_stated": {
+     "value": "interstitial lung disease",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Interstitial pulmonary abnormality",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "feature_text_as_stated": {
+     "value": "frequent fever",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001954",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "feature_text_as_stated": {
+     "value": "arthritis",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "feature_text_as_stated": {
+     "value": "psoriasis",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Psoriasiform dermatitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "feature_text_as_stated": {
+     "value": "aortic regurgitation",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "severe; persisted after HCT",
+     "span": "some of his symptoms, such as severe aortic regurgitation and adrenal insufficiency, persisted because of long term administration of steroids"
+    },
+    "hpo_label_candidate": {
+     "value": "Aortic regurgitation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001659",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "feature_text_as_stated": {
+     "value": "bowel disease",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "feature_text_as_stated": {
+     "value": "genital ulcers",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Genital ulcers",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "feature_text_as_stated": {
+     "value": "adrenal insufficiency",
+     "span": "some of his symptoms, such as severe aortic regurgitation and adrenal insufficiency, persisted because of long term administration of steroids"
+    },
+    "status": {
+     "value": "observed",
+     "span": "some of his symptoms, such as severe aortic regurgitation and adrenal insufficiency, persisted because of long term administration of steroids"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "some of his symptoms, such as severe aortic regurgitation and adrenal insufficiency, persisted because of long term administration of steroids"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "persisted because of long term administration of steroids",
+     "span": "some of his symptoms, such as severe aortic regurgitation and adrenal insufficiency, persisted because of long term administration of steroids"
+    },
+    "hpo_label_candidate": {
+     "value": "Adrenal insufficiency",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000846",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "feature_text_as_stated": {
+     "value": "Hodgkin lymphoma",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hodgkin lymphoma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012189",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "feature_text_as_stated": {
+     "value": "central nervous system vasculitis",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "relapsed after 18 months of remission following autologous HCT",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "hpo_label_candidate": {
+     "value": "Central nervous system vasculitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISG expression",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had complex clinical features including development of insulin-dependent DM, cell depletion, hepatitis, enteropathy, and interstitial lung disease"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient",
+     "span": "The first case of allogeneic HCT was a 14-year-old English boy"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He had frequent fever, arthritis, psoriasis, aortic regurgitation, bowel disease, and genital ulcers"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (31, 47) patient 2",
+     "span": "The second case was a 6-year-old Japanese boy"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (10) patient",
+     "span": "One patient with HA20 in East Asia developed Hodgkin lymphoma (10)"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (30) patient",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a patient who received autologous HCT because of central nervous system vasculitis relapsed after 18 months of remission and various immunosuppressive agents were reinitiated (30)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "34899744",
+     "span": "PMID: 34899744"
+    },
+    "individual_label_in_paper": {
+     "value": "ref (47) patient",
+     "span": "only one patient in East Asia showed elevated ISG expression (47)"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
