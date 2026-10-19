@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.5 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17, D-19 and D-23 to D-24.
+**Pre-registration status:** draft v0.5 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -14,30 +14,6 @@ How to use this file:
 ## Open decisions
 
 ### Needed now, for the pilot
-
-**D-23 · Merge policy v4: no merging on sex and onset alone** (opened 2026-10-19; `reports/poc_stage3b_findings.md` §6)
-- **The finding:** the fresh hand check of all 93 run-2 merges under policy v3 found 6 false merges. All 6 rested only on "same variant, same sex, onset within a year": that route was 37 true, 6 false. Merges resting on a citation were 47 true, 0 false, 3 cannot tell.
-- **Recommendation:**
-  - Merge only on a citation (row-level or paper-level), and list sex-and-onset pairs for audit instead.
-  - Tell helpers to put a per-patient reference column into `source_reference_in_review`. Its absence in 40574834 allowed 4 of the 6 false merges.
-- **Effect on run-2** (`reconcile.py --no-sex-onset-merges`): 50 merges, all already checked (47 true, 3 cannot tell, 0 false). 749 identities instead of 719, so some patients are counted twice.
-- **Caveat:** this rule was chosen after seeing the check, so its error rate needs measuring again on the six-disease study.
-
-**D-24 · Extraction instructions v4 and the next run** (opened 2026-10-19; report §9 items 2–8)
-- **Recommendation, as one package:**
-  1. **Inheritance:** "inherited maternal/paternal" is allowed when the paper states that the named parent carries the same variant, with that statement quoted. "De novo" still needs stated parental testing.
-  2. **Zero counts:** a 0 in a count table excludes no one; text naming the group still excludes.
-  3. **Labels:** "Table n column k" for patients as columns; "Table n #k" for a patient-numbering column; "<label> (Family n)" for a label repeated across families; "parent of X" / "sibling of X" when the paper gives no sex.
-  4. **Literature patients:** in scope only with at least one individual-level fact beyond the diagnosis.
-  5. **Variant rows:** none for other-gene variants named but not described, or for common variants the authors dismiss. Germline mosaic carriers are in scope (zygosity "mosaic"); tumour-only variants are not.
-  6. **Inputs:** supplementary filter v2 (keep every file except administrative forms), entity decoding and bold kept in the converter.
-  7. **Runs:** no run-3. Run-2, merged under D-23, stays the extraction of record. Check v4 on a 10-paper mini-run (about $25) before the six-disease extraction.
-
-**D-25 · Stage 5 spend** (opened 2026-10-19)
-- **What:** the gatekeeper re-reads all 64,999 run-2 values against their quotes, one helper per paper, plus Jimmy's 50-claim audit.
-- **Estimate:** about one extraction run, roughly $170 (run-2 cost $165.80, session readings).
-- **Budget context:** pilot spend stands at $460.75 against the $1,000 ceiling.
-- **Recommendation:** approve, after Stage 4 (scripts only).
 
 **D-17 · How the pipeline calls Claude** (opened 2026-10-18)
 - **The problem:**
@@ -124,6 +100,24 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · D-23, D-24 and D-25 decided: merge policy v4, instructions v4 with a 10-paper check, Stage 5 approved
+- **Decided by Jimmy (2026-10-19), accepting all recommendations** from Stage 3b (`reports/poc_stage3b_findings.md` §9). He answered four questions in the session's question form. These are revisions, because the pre-registration is not frozen.
+- **D-23 · Merge policy v4.**
+  - Patients in different papers are merged only on a citation, either row-level or paper-level.
+  - "Same variant, same sex, onset within a year" no longer merges; those pairs are listed for audit.
+  - Helpers put a per-patient reference column into `source_reference_in_review`.
+  - The basis: in run-2 that route made all 6 false merges (37 true, 6 false), and citation merges had none (47 true, 3 cannot tell).
+  - Caveat: chosen after seeing the check, so the six-disease study must measure it again.
+- **D-24 · Extraction instructions v4, input fixes and a 10-paper check; no run-3.**
+  1. **Inheritance:** "inherited maternal/paternal" is allowed when the paper states that the named parent carries the same variant, with that statement quoted. "De novo" still needs stated parental testing (rule 8). This was asked as a separate question; the alternative was to keep the strict reading.
+  2. **Zero counts:** a 0 in a count table excludes no one; text naming the group still excludes.
+  3. **Labels:** "Table n column k" for patients as columns; "Table n #k" for a patient-numbering column; "<label> (Family n)" for a label repeated across families; "parent of X" or "sibling of X" when the paper gives no sex.
+  4. **Literature patients:** in scope only with at least one individual-level fact beyond the diagnosis.
+  5. **Variant rows:** none for other-gene variants that are named but not described, or for common variants the authors dismiss. Germline mosaic carriers are in scope (zygosity "mosaic"); tumour-only variants are not.
+  6. **Inputs:** supplementary filter v2 (keep every file except administrative forms); entities decoded and bold kept in the converter.
+  7. **Runs:** run-2, merged under D-23, stays the extraction of record. v4 is checked on a 10-paper mini-run (about $25) before the six-disease extraction.
+- **D-25 · Stage 5 approved, at about $170.** This is the gatekeeper re-read of every run-2 value against its quote, plus Jimmy's 50-claim audit. It runs after Stage 4, which is scripts only.
 
 ### 2026-10-19 · Pilot Stage 3b done: run-2, repeat, merge hand check (Claude's calls)
 - **Ran as approved under D-22.**

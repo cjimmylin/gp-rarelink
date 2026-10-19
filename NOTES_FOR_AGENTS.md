@@ -35,7 +35,8 @@ How to maintain it:
   - run-2 over all 85 papers is the extraction of record: 64,999 quotes, all verbatim; 799 individuals;
   - repeat variant agreement 0.944 on strings, 0.988 on keys (gate met);
   - fresh merge hand check: 6 false of 93, all from the sex-and-onset route; policy v4 proposed.
-  - Report: `reports/poc_stage3b_findings.md`. Waiting on Jimmy for D-23 (merge policy v4), D-24 (instructions v4, input fixes, 10-paper check, no run-3) and D-25 (Stage 5 spend). Session usage reading 460.75.
+  - Report: `reports/poc_stage3b_findings.md`. Session usage reading 460.75.
+  - D-23 to D-25 decided by Jimmy, 2026-10-19: merge policy v4; instructions v4 plus input fixes, checked on 10 papers, with no run-3; Stage 5 approved at about $170 after Stage 4.
 - **Pilot progress (2026-10-18, earlier):**
   - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
   - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
