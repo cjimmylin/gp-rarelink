@@ -26,6 +26,7 @@ Writes analysis/poc/extraction_counts_<run_id>.json and prints it.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 from collections import Counter
@@ -80,7 +81,7 @@ def main(argv: list[str] | None = None) -> int:
             if orig in MISSING:
                 no_original_string.append(f"{pmid}:variants[{i}]")
             elif g == gene:
-                distinct_variants.add(WS.sub("", str(orig)).lower())
+                distinct_variants.add(WS.sub("", html.unescape(str(orig))).lower())
                 c["variant_rows_gene:TNFAIP3_with_printed_variant"] += 1
             if g == gene:
                 carriers.add(v(r.get("individual_label_in_paper")))

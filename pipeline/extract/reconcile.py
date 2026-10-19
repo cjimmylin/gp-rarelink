@@ -11,6 +11,8 @@ target gene. Variants are compared on the cDNA HGVS as stated (transcript
 prefix, spaces and case removed) when both rows give one; otherwise on the
 protein HGVS (three-letter amino acids folded to one letter, Ter/X folded to
 *); otherwise on the original string. Different variants are never merged.
+HTML entities are decoded first (added 2026-10-19: text converted from
+supplementary Word files prints "c.259C&gt;T"; the quoted span stays verbatim).
 
 Citation link. Each paper's reference list (from its JATS XML; the papers are
 literature, not reference data) is used to resolve
@@ -66,6 +68,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import html
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -94,7 +97,7 @@ def is_gene(stated, gene: str) -> bool:
 def cdna_key(s) -> str | None:
     if s in MISSING:
         return None
-    s = re.sub(r"\s+", "", str(s)).lower()
+    s = re.sub(r"\s+", "", html.unescape(str(s))).lower()
     s = s.split(":")[-1]
     m = re.search(r"c\.[^,;()]+", s)
     return m.group(0) if m else None
@@ -113,7 +116,7 @@ def protein_key(s) -> str | None:
     """
     if s in MISSING:
         return None
-    s = re.sub(r"\s+", "", str(s))
+    s = re.sub(r"\s+", "", html.unescape(str(s)))
     s = s.split(":")[-1]
     m = re.search(r"p\.\(?([^,;]+?)\)?$", s) or re.search(r"p\.\(?([A-Za-z*0-9_]+(?:fs\*?\d*|fsX\d*|fsTer\d*)?)", s)
     if m:
@@ -131,7 +134,7 @@ def protein_key(s) -> str | None:
 
 
 def orig_key(s) -> str | None:
-    return None if s in MISSING else re.sub(r"\s+", "", str(s)).lower()
+    return None if s in MISSING else re.sub(r"\s+", "", html.unescape(str(s))).lower()
 
 
 def same_variant(a: dict, b: dict) -> str | None:

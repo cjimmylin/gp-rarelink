@@ -30,6 +30,7 @@ prompts. Writes analysis/poc/run_agreement_<a>_vs_<b>.json.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 from pathlib import Path
@@ -44,7 +45,7 @@ def v(cell):
 
 
 def norm(s) -> str:
-    return WS.sub("", str(s or "")).lower()
+    return WS.sub("", html.unescape(str(s or ""))).lower()
 
 
 def load(run_dir: Path) -> dict[str, dict]:
