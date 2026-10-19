@@ -56,6 +56,7 @@ How to maintain it:
 - **Git:**
   - Everything up to 2026-10-18 is on `main`, merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
+  - Branch `claude/zealous-meitner-k7moex` (the pilot-design session) is archived and must not be merged: it commits full-text Markdown. Its one asset, Jimmy's 40 screening labels, was applied here on 2026-10-19.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
   - run `git fetch origin` (all branches, not just `main`) before starting, and again before merging. On 2026-10-18 two sessions ran pilot Stage 1 in parallel because one checked only `main`;
   - check `list_sessions` for other sessions working on this repo;

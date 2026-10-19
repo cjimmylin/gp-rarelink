@@ -101,6 +101,14 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-19 · Jimmy's 40 human screening labels applied; the pilot-design branch is archived
+- **Handoff.** The pilot-design session (branch `claude/zealous-meitner-k7moex`) reported that Jimmy decided there, on 2026-10-19, to stop pipeline work on that branch and archive it unmerged; this thread owns Stage 3 onward. Its one asset is `data/literature/ha20/spotcheck_human_labels_2026-10-19.csv`: study type for 20 papers and HA20 relevance for 20, confirmed by Jimmy in chat after Claude read each abstract.
+- **Applied on Jimmy's instruction ("apply", this session).** `pipeline/extract/corpus/apply_human_labels.py` writes them to `manifest.csv` as human labels, which outrank agent labels.
+  - 24 rows changed. Study type agreed with this branch's screening on 17 of 40; the in/out-of-corpus decision on 39 of 40.
+  - **30488325 leaves the extraction corpus:** Jimmy labelled it TNFAIP3-other. It had been added at the Stage 1 reconciliation, is paywalled and was never extracted, so no result changes.
+- **Statistics refreshed:** 160 papers in the corpus, 85 with full text (53.1%), now counting the reconciliation additions (`data/literature/ha20/search.md`).
+- **Unchanged:** run-2, the phenopackets, every result and decision downstream of Stage 1.
+
 ### 2026-10-19 · D-26, D-27 and D-28 decided; four HPO ratings recounted
 Jimmy chose the recommended option on each question (asked in the session, 2026-10-19), after rating the 50-claim audit sample and 27 of the 30 HPO bindings.
 - **D-26 · The normalization check counts descriptions that state a cDNA change.**
