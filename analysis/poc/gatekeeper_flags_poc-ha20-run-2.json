@@ -1,0 +1,465 @@
+{
+  "run_id": "poc-ha20-run-2",
+  "flags": 313,
+  "rules": [
+    "age_or_timing (by field)",
+    "inverted_label",
+    "wrong_person",
+    "contradicted",
+    "hedged",
+    "silence",
+    "detail_not_in_span",
+    "more_specific",
+    "other"
+  ],
+  "by_group": {
+    "detail_not_in_span": 80,
+    "more_specific": 75,
+    "other": 60,
+    "inverted_label": 41,
+    "age_or_timing": 30,
+    "silence": 11,
+    "hedged": 7,
+    "wrong_person": 6,
+    "contradicted": 3
+  },
+  "by_verdict": {
+    "partially_supported": {
+      "more_specific": 75,
+      "silence": 11,
+      "other": 60,
+      "detail_not_in_span": 79,
+      "inverted_label": 40,
+      "age_or_timing": 30,
+      "contradicted": 1,
+      "hedged": 4,
+      "wrong_person": 5
+    },
+    "unsupported": {
+      "hedged": 3,
+      "inverted_label": 1,
+      "contradicted": 2,
+      "wrong_person": 1,
+      "detail_not_in_span": 1
+    }
+  },
+  "by_field": {
+    "phenotypic_features.status": {
+      "detail_not_in_span": 1,
+      "inverted_label": 41,
+      "more_specific": 21,
+      "hedged": 3,
+      "contradicted": 2,
+      "wrong_person": 2,
+      "other": 2
+    },
+    "phenotype_checklist.status": {
+      "more_specific": 46,
+      "silence": 7,
+      "other": 13,
+      "contradicted": 1,
+      "detail_not_in_span": 1,
+      "hedged": 1
+    },
+    "individuals.clinical_diagnosis_basis": {
+      "detail_not_in_span": 32,
+      "other": 4
+    },
+    "variants.functional_evidence_statement": {
+      "detail_not_in_span": 11,
+      "wrong_person": 3,
+      "other": 2,
+      "silence": 1
+    },
+    "phenotypic_features.severity_or_detail": {
+      "detail_not_in_span": 10,
+      "other": 5,
+      "more_specific": 1
+    },
+    "phenotypic_features.onset_iso8601": {
+      "age_or_timing": 16
+    },
+    "variants.pathogenicity_as_stated_by_authors": {
+      "other": 10,
+      "detail_not_in_span": 5
+    },
+    "individuals.treatment_summary": {
+      "detail_not_in_span": 11,
+      "hedged": 1,
+      "other": 1,
+      "wrong_person": 1
+    },
+    "individuals.age_at_last_evaluation_iso8601": {
+      "age_or_timing": 10
+    },
+    "publications.cites_prior_report_of_same_patients": {
+      "other": 5,
+      "silence": 2,
+      "more_specific": 1
+    },
+    "individuals.is_proband": {
+      "more_specific": 2,
+      "other": 5
+    },
+    "publications.n_patients_reported": {
+      "other": 4,
+      "detail_not_in_span": 1
+    },
+    "variants.variant_type_as_stated": {
+      "other": 2,
+      "detail_not_in_span": 3
+    },
+    "variants.zygosity": {
+      "more_specific": 4
+    },
+    "variants.inheritance": {
+      "hedged": 2,
+      "other": 2
+    },
+    "publications.prior_report_citation": {
+      "detail_not_in_span": 3,
+      "other": 1
+    },
+    "variants.parental_testing_statement": {
+      "silence": 1,
+      "other": 1,
+      "detail_not_in_span": 1
+    },
+    "individuals.age_at_diagnosis_iso8601": {
+      "age_or_timing": 3
+    },
+    "individuals.individual_label_in_paper": {
+      "other": 2
+    },
+    "phenotypic_features.feature_text_as_stated": {
+      "detail_not_in_span": 1
+    },
+    "publications.study_type": {
+      "other": 1
+    },
+    "individuals.age_at_onset_iso8601": {
+      "age_or_timing": 1
+    }
+  },
+  "examples": {
+    "more_specific": [
+      {
+        "claim_id": "C000045",
+        "pmid": "26642243",
+        "field": "is_proband",
+        "verdict": "partially_supported",
+        "reason": "Span gives only kinship; non-proband status is inferred, not stated."
+      },
+      {
+        "claim_id": "C000528",
+        "pmid": "26642243",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "'oral/genital ulcers' is and/or shorthand (cf. 'arthralgia/arthritis'); this site not stated separately."
+      },
+      {
+        "claim_id": "C000531",
+        "pmid": "26642243",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "'oral/genital ulcers' is and/or shorthand (cf. 'arthralgia/arthritis'); this site not stated separately."
+      },
+      {
+        "claim_id": "C000571",
+        "pmid": "26642243",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "'oral/genital ulcers' is and/or shorthand (cf. 'arthralgia/arthritis'); this site not stated separately."
+      },
+      {
+        "claim_id": "C000574",
+        "pmid": "26642243",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "'oral/genital ulcers' is and/or shorthand (cf. 'arthralgia/arthritis'); this site not stated separately."
+      }
+    ],
+    "silence": [
+      {
+        "claim_id": "C000604",
+        "pmid": "26642243",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Elevation implied by 'normalized'; CRP/ESR not named in span."
+      },
+      {
+        "claim_id": "C002326",
+        "pmid": "29682366",
+        "field": "parental_testing_statement",
+        "verdict": "partially_supported",
+        "reason": "Span says father was deceased; 'not tested' is inferred, not stated."
+      },
+      {
+        "claim_id": "C008149",
+        "pmid": "32714711",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Normal ophthalmology consultation implies no uveitis, but span does not name ocular inflammation."
+      },
+      {
+        "claim_id": "C015506",
+        "pmid": "33101300",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "HSP is an initial diagnosis implying vasculitis only by inference; row 79's Vasculitis column shows '-'."
+      },
+      {
+        "claim_id": "C018423",
+        "pmid": "33971891",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Perianal ulcers and raised fecal calprotectin imply, but do not state, GI ulceration or inflammation."
+      }
+    ],
+    "other": [
+      {
+        "claim_id": "C001108",
+        "pmid": "27175295",
+        "field": "cites_prior_report_of_same_patients",
+        "verdict": "partially_supported",
+        "reason": "Span says first Asian report of the mutation; does not address prior clinical reports of these patients."
+      },
+      {
+        "claim_id": "C001198",
+        "pmid": "27175295",
+        "field": "pathogenicity_as_stated_by_authors",
+        "verdict": "partially_supported",
+        "reason": "'likely responsible' in span refers to cytokine production, not AD BD; title says 'is responsible'."
+      },
+      {
+        "claim_id": "C001209",
+        "pmid": "27175295",
+        "field": "pathogenicity_as_stated_by_authors",
+        "verdict": "partially_supported",
+        "reason": "'likely responsible' in span refers to cytokine production, not AD BD; title says 'is responsible'."
+      },
+      {
+        "claim_id": "C001220",
+        "pmid": "27175295",
+        "field": "pathogenicity_as_stated_by_authors",
+        "verdict": "partially_supported",
+        "reason": "'likely responsible' in span refers to cytokine production, not AD BD; title says 'is responsible'."
+      },
+      {
+        "claim_id": "C001231",
+        "pmid": "27175295",
+        "field": "pathogenicity_as_stated_by_authors",
+        "verdict": "partially_supported",
+        "reason": "'likely responsible' in span refers to cytokine production, not AD BD; title says 'is responsible'."
+      }
+    ],
+    "detail_not_in_span": [
+      {
+        "claim_id": "C001208",
+        "pmid": "27175295",
+        "field": "functional_evidence_statement",
+        "verdict": "partially_supported",
+        "reason": "Comparison with her unaffected son is in the sentence but not in the quoted span."
+      },
+      {
+        "claim_id": "C001426",
+        "pmid": "27175295",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Span states genital ulcers, but next sentence says genital ulcer history could not be ascertained."
+      },
+      {
+        "claim_id": "C002297",
+        "pmid": "29682366",
+        "field": "clinical_diagnosis_basis",
+        "verdict": "partially_supported",
+        "reason": "'(VUS)' classification is not in the cited spans; rest of summary is supported."
+      },
+      {
+        "claim_id": "C002687",
+        "pmid": "30022980",
+        "field": "clinical_diagnosis_basis",
+        "verdict": "partially_supported",
+        "reason": "cDNA splicing analysis is not in the cited spans; rest of basis supported."
+      },
+      {
+        "claim_id": "C002728",
+        "pmid": "30022980",
+        "field": "functional_evidence_statement",
+        "verdict": "partially_supported",
+        "reason": "NLRP3-dependence and 'other cytokines' not in cited spans; remaining functional findings supported."
+      }
+    ],
+    "inverted_label": [
+      {
+        "claim_id": "C001820",
+        "pmid": "28469620",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Span says subsets were normal; context names the normal finding, so 'excluded' inverts it literally."
+      },
+      {
+        "claim_id": "C004072",
+        "pmid": "31164164",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Normal colonoscopy at one time point; context names the negative finding, so 'excluded' reads as double negative."
+      },
+      {
+        "claim_id": "C004156",
+        "pmid": "31164164",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Explicit normal colonoscopy, but context names the negative finding itself, so 'excluded' reads as a double negative."
+      },
+      {
+        "claim_id": "C004761",
+        "pmid": "31175876",
+        "field": "status",
+        "verdict": "unsupported",
+        "reason": "Context is 'normal CRP levels'; span says CRP was normal, so 'excluded' inverts it."
+      },
+      {
+        "claim_id": "C007064",
+        "pmid": "31767699",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Span supports ISGs not elevated, but context label is already negated; 'excluded' reads as double negative."
+      }
+    ],
+    "age_or_timing": [
+      {
+        "claim_id": "C002151",
+        "pmid": "28659290",
+        "field": "age_at_last_evaluation_iso8601",
+        "verdict": "partially_supported",
+        "reason": "Age 14 stated at investigation; span does not state age at last follow-up, 21 months post-HSCT."
+      },
+      {
+        "claim_id": "C002683",
+        "pmid": "30022980",
+        "field": "age_at_diagnosis_iso8601",
+        "verdict": "partially_supported",
+        "reason": "Age 21 is the AOSD diagnosis; age at HA20 genetic diagnosis is not stated in span."
+      },
+      {
+        "claim_id": "C003154",
+        "pmid": "30402268",
+        "field": "age_at_diagnosis_iso8601",
+        "verdict": "partially_supported",
+        "reason": "Age 4 is when polyarticular JIA was diagnosed; span gives no age at HA20 diagnosis."
+      },
+      {
+        "claim_id": "C004021",
+        "pmid": "31164164",
+        "field": "onset_iso8601",
+        "verdict": "partially_supported",
+        "reason": "Span dates only the fever; this feature's 2-month onset needs unquoted text; Table 1 initial symptom: periodic fever."
+      },
+      {
+        "claim_id": "C004028",
+        "pmid": "31164164",
+        "field": "onset_iso8601",
+        "verdict": "partially_supported",
+        "reason": "Span dates only the fever; this feature's 2-month onset needs unquoted text; Table 1 initial symptom: periodic fever."
+      }
+    ],
+    "hedged": [
+      {
+        "claim_id": "C003492",
+        "pmid": "30526650",
+        "field": "inheritance",
+        "verdict": "unsupported",
+        "reason": "Mother never tested; authors only suggest maternal origin from father's negative result. No statement mother carries variant."
+      },
+      {
+        "claim_id": "C003504",
+        "pmid": "30526650",
+        "field": "inheritance",
+        "verdict": "unsupported",
+        "reason": "Mother never tested; authors only suggest maternal origin from father's negative result. No statement mother carries variant."
+      },
+      {
+        "claim_id": "C008691",
+        "pmid": "32743991",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Biopsy findings only 'suggesting panniculitis'; hedged interpretation recorded as observed."
+      },
+      {
+        "claim_id": "C018395",
+        "pmid": "33971891",
+        "field": "status",
+        "verdict": "unsupported",
+        "reason": "'Usually normal CRP' is hedged, implying occasional elevation; not an explicit absence."
+      },
+      {
+        "claim_id": "C024993",
+        "pmid": "35897075",
+        "field": "treatment_summary",
+        "verdict": "partially_supported",
+        "reason": "Span does not state corticosteroids were given for suspected HLH; rest of summary supported."
+      }
+    ],
+    "contradicted": [
+      {
+        "claim_id": "C004398",
+        "pmid": "31164164",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Fever with tonsillitis several times yearly, 'not apparently periodic'; Table 1 marks fever '–' for Patient 4."
+      },
+      {
+        "claim_id": "C031958",
+        "pmid": "37324276",
+        "field": "status",
+        "verdict": "unsupported",
+        "reason": "Table 2 records arthralgia 'yes' for this patient; the conflicting group statement cannot support exclusion."
+      },
+      {
+        "claim_id": "C032166",
+        "pmid": "37324276",
+        "field": "status",
+        "verdict": "unsupported",
+        "reason": "Table 2 records arthralgia 'yes' for this patient; the conflicting group statement cannot support exclusion."
+      }
+    ],
+    "wrong_person": [
+      {
+        "claim_id": "C038140",
+        "pmid": "39125844",
+        "field": "treatment_summary",
+        "verdict": "unsupported",
+        "reason": "'They' refers to mother, uncle and grandmother with Hashimoto's; treatment not stated for this proband."
+      },
+      {
+        "claim_id": "C038535",
+        "pmid": "39125844",
+        "field": "functional_evidence_statement",
+        "verdict": "partially_supported",
+        "reason": "Luciferase assay covers this variant; patient-derived cell finding is from Zhou's patients, not this individual."
+      },
+      {
+        "claim_id": "C038542",
+        "pmid": "39125844",
+        "field": "functional_evidence_statement",
+        "verdict": "partially_supported",
+        "reason": "Luciferase assay covers this variant; patient-derived cell finding is from Zhou's patients, not this individual."
+      },
+      {
+        "claim_id": "C038549",
+        "pmid": "39125844",
+        "field": "functional_evidence_statement",
+        "verdict": "partially_supported",
+        "reason": "Luciferase assay covers this variant; patient-derived cell finding is from Zhou's patients, not this individual."
+      },
+      {
+        "claim_id": "C039206",
+        "pmid": "39125844",
+        "field": "status",
+        "verdict": "partially_supported",
+        "reason": "Table row summarizes a family; prose assigns JIA to other affected relatives, not the proband merged here."
+      }
+    ]
+  }
+}
