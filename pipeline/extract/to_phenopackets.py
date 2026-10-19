@@ -35,6 +35,17 @@ Content of each phenopacket:
                 HA20 term, else the gene-based group term.
   metaData      resources with the pinned ontology versions, the PMIDs.
 
+Gatekeeper (POC_DESIGN.md §3.9): with --gatekeeper not_supported (the
+default), every claim the Stage 5 gatekeeper did not judge supported
+(partially_supported, unsupported, span_not_found; gatekeeper.csv from
+pipeline.extract.claude_code.gatekeeper_merge) is left out: a phenotypic
+feature or checklist row whose status or feature text is not supported; a
+variant row whose original string or gene is not supported; and, singly, a
+sex, age, onset, zygosity, pathogenicity statement or disease label that is
+not supported. The evidence tables keep every row with its verdict.
+--gatekeeper unsupported drops only unsupported and span_not_found (a
+sensitivity build); --gatekeeper none ignores the verdicts.
+
 Evidence code: ECO:0007539 'author statement supported from referenced clinical
 study used in automatic assertion' (the values were extracted by a model; ECO
 from the pinned snapshot). "Not reported" cannot be expressed in a phenopacket
@@ -122,8 +133,25 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--group-mondo", default="MONDO:0100222")
     ap.add_argument("--checklist-map", default="configs/ha20_checklist_hpo.json")
     ap.add_argument("--created", default=date.today().isoformat())
+    ap.add_argument("--gatekeeper", choices=("not_supported", "unsupported", "none"), default="not_supported")
+    ap.add_argument("--out-name", default="phenopackets", help="output directory and summary name under the run directory")
     args = ap.parse_args(argv)
     run_dir = Path("data/extracted") / args.disease / args.run_id
+    drop = {"not_supported": {"partially_supported", "unsupported", "span_not_found"},
+            "unsupported": {"unsupported", "span_not_found"}, "none": set()}[args.gatekeeper]
+    bad: set[tuple[str, str, int, str]] = set()
+    if drop:
+        gk_path = run_dir / "gatekeeper.csv"
+        if not gk_path.exists():
+            raise SystemExit(f"{gk_path} not found; run gatekeeper_merge or pass --gatekeeper none")
+        for g in csv.DictReader(gk_path.open()):
+            if g["verdict"] in ("not_judged_yet",):
+                raise SystemExit("gatekeeper.csv has claims not judged yet; finish Stage 5 or pass --gatekeeper none")
+            if g["verdict"] in drop:
+                bad.add((g["pmid"], g["table"], int(g["row"]), g["field"]))
+
+    def ok(pm: str, table: str, i, field: str) -> bool:
+        return i is None or (pm, table, int(i), field) not in bad
     snap = ontologies.latest_dir()
     hp, mondo, eco_o, geno_o = (ontologies.load(n, snap) for n in ("hp", "mondo", "eco", "geno"))
     eco = eco_o.terms[ECO_ID]
@@ -150,7 +178,7 @@ def main(argv: list[str] | None = None) -> int:
             if str(v(r.get("individual_label_in_paper"))) == str(label):
                 yield i, r
 
-    out_dir = run_dir / "phenopackets"
+    out_dir = run_dir / args.out_name
     out_dir.mkdir(exist_ok=True)
     for old in out_dir.glob("*.json"):
         old.unlink()
@@ -158,11 +186,20 @@ def main(argv: list[str] | None = None) -> int:
     for ident, mem in sorted(members.items()):
         pp = Phenopacket(id=f"{args.disease}-{args.run_id}-{ident}")
         pp.subject.id = ident
-        inds = [next((r for _, r in rows_for("individuals", pm, lab)), {}) for pm, lab in mem]
-        pp.subject.sex = sex_of([str(v(r.get("sex"))) for r in inds])
+        inds = [(pm, *next(iter(rows_for("individuals", pm, lab)), (None, {}))) for pm, lab in mem]
+        sexes = []
+        for pm, i, r in inds:
+            if ok(pm, "individuals", i, "sex"):
+                sexes.append(str(v(r.get("sex"))))
+            else:
+                c["gk_dropped_sex"] += 1
+        pp.subject.sex = sex_of(sexes)
         rec_pmid, rec_label = record.get(ident, mem[0])
-        rec_ind = next((r for _, r in rows_for("individuals", rec_pmid, rec_label)), {})
+        rec_i, rec_ind = next(iter(rows_for("individuals", rec_pmid, rec_label)), (None, {}))
         age = v(rec_ind.get("age_at_last_evaluation_iso8601"))
+        if age not in MISSING and not ok(rec_pmid, "individuals", rec_i, "age_at_last_evaluation_iso8601"):
+            c["gk_dropped_age"] += 1
+            age = None
         if age not in MISSING and re.fullmatch(r"P(\d+(\.\d+)?[YMWD])+", str(age)):
             pp.subject.time_at_last_encounter.CopyFrom(TimeElement(age={"iso8601duration": str(age)}))
         # phenotypic features
@@ -174,11 +211,17 @@ def main(argv: list[str] | None = None) -> int:
                 if not b or not b["hpo_id"]:
                     c["feature_rows_unbound_skipped"] += 1
                     continue
+                if not (ok(pm, "phenotypic_features", i, "status") and ok(pm, "phenotypic_features", i, "feature_text_as_stated")):
+                    c["gk_dropped_feature_rows"] += 1
+                    continue
                 excl = v(r.get("status")) == "excluded"
                 key = (b["hpo_id"], excl)
                 if key not in feats:
                     f = PhenotypicFeature(type=OntologyClass(id=b["hpo_id"], label=hp.terms[b["hpo_id"]].name), excluded=excl)
                     onset = v(r.get("onset_iso8601"))
+                    if onset not in MISSING and not ok(pm, "phenotypic_features", i, "onset_iso8601"):
+                        c["gk_dropped_onset"] += 1
+                        onset = None
                     if onset not in MISSING and re.fullmatch(r"P(\d+(\.\d+)?[YMWD])+", str(onset)):
                         f.onset.CopyFrom(TimeElement(age={"iso8601duration": str(onset)}))
                     feats[key] = f
@@ -186,9 +229,12 @@ def main(argv: list[str] | None = None) -> int:
                 if not excl:
                     observed_terms.add(b["hpo_id"])
         for pm, lab in mem:
-            for _, r in rows_for("phenotype_checklist", pm, lab):
+            for i, r in rows_for("phenotype_checklist", pm, lab):
                 item, status = cmap.get(str(v(r.get("checklist_feature")))), v(r.get("status"))
                 if not item or status not in ("observed", "excluded"):
+                    continue
+                if not ok(pm, "phenotype_checklist", i, "status"):
+                    c["gk_dropped_checklist_rows"] += 1
                     continue
                 if status == "observed" and item["observed"] and item["observed"] not in observed_terms:
                     key = (item["observed"], False)
@@ -220,16 +266,26 @@ def main(argv: list[str] | None = None) -> int:
         c["features_observed"] += sum(1 for f in feats.values() if not f.excluded)
         c["features_excluded"] += sum(1 for f in feats.values() if f.excluded)
         # disease
-        d_terms = {dis[(pm, lab)]["mondo_id"] for pm, lab in mem if (pm, lab) in dis and dis[(pm, lab)]["mondo_id"]}
+        dis_ok = {}
+        for (pm, i, _), (_, lab) in zip(inds, mem):
+            if (pm, lab) in dis:
+                if ok(pm, "individuals", i, "disease_label_as_stated"):
+                    dis_ok[(pm, lab)] = dis[(pm, lab)]
+                elif dis[(pm, lab)]["mondo_id"]:
+                    c["gk_dropped_disease_label"] += 1
+        d_terms = {d["mondo_id"] for d in dis_ok.values() if d["mondo_id"]}
         for mid in sorted(d_terms):
             pp.diseases.append(Disease(term=OntologyClass(id=mid, label=mondo.terms[mid].name)))
-        ha20_stated = any(dis.get((pm, lab), {}).get("method") == "ha20_label_rule" for pm, lab in mem)
+        ha20_stated = any(d.get("method") == "ha20_label_rule" for d in dis_ok.values())
         # variants
         gis = []
         seen = set()
         for pm, lab in mem:
-            for _, r in rows_for("variants", pm, lab):
+            for i, r in rows_for("variants", pm, lab):
                 if not is_gene(v(r.get("gene_symbol_as_stated")), args.gene) or v(r.get("variant_original_string")) in MISSING:
+                    continue
+                if not (ok(pm, "variants", i, "variant_original_string") and ok(pm, "variants", i, "gene_symbol_as_stated")):
+                    c["gk_dropped_variant_rows"] += 1
                     continue
                 orig = str(v(r.get("variant_original_string")))
                 (cdna, _legacy), tx = cdna_of(r), transcript_of(r)
@@ -252,9 +308,15 @@ def main(argv: list[str] | None = None) -> int:
                     chrom, pos, ref, alt = n["vcf_grch38"].split(":")
                     vd.vcf_record.CopyFrom(VcfRecord(genome_assembly="GRCh38", chrom=chrom, pos=int(pos), ref=ref, alt=alt))
                 zyg = str(v(r.get("zygosity")))
+                if zyg in GENO and not ok(pm, "variants", i, "zygosity"):
+                    c["gk_dropped_zygosity"] += 1
+                    zyg = ""
                 if zyg in GENO:
                     vd.allelic_state.CopyFrom(OntologyClass(id=GENO[zyg], label=geno_o.terms[GENO[zyg]].name))
                 patho = str(v(r.get("pathogenicity_as_stated_by_authors")) or "")
+                if patho and not ok(pm, "variants", i, "pathogenicity_as_stated_by_authors"):
+                    c["gk_dropped_pathogenicity"] += 1
+                    patho = ""
                 causative = ha20_stated or (bool(PATHOGENIC.search(patho)) and not NOT_PATHOGENIC.search(patho))
                 gi = GenomicInterpretation(subject_or_biosample_id=ident,
                                            interpretation_status=GenomicInterpretation.CAUSATIVE if causative else GenomicInterpretation.UNKNOWN_STATUS,
@@ -286,9 +348,11 @@ def main(argv: list[str] | None = None) -> int:
         (out_dir / f"{ident}.json").write_text(MessageToJson(pp) + "\n")
         c["phenopackets"] += 1
         c["with_interpretation"] += bool(gis)
-    summary = {"run_id": args.run_id, "created": args.created, "counts": dict(sorted(c.items())),
+    summary = {"run_id": args.run_id, "created": args.created, "gatekeeper": args.gatekeeper,
+               "gatekeeper_claims_dropped_available": len(bad), "counts": dict(sorted(c.items())),
                "observed_excluded_conflicts": len(conflicts), "conflicts": conflicts}
-    (run_dir / "phenopacket_build.json").write_text(json.dumps(summary, indent=2) + "\n")
+    name = "phenopacket_build.json" if args.out_name == "phenopackets" else f"{args.out_name}_build.json"
+    (run_dir / name).write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps({k: summary[k] for k in summary if k != "conflicts"}, indent=2))
     return 0
 

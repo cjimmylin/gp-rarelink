@@ -80,7 +80,7 @@ def cell(value, span="x"):
     return {"value": value, "span": span if value not in (None, "not reported") else None}
 
 
-def test_build_and_validate(tmp_path, monkeypatch):
+def make_run(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     snap = tmp_path / "data/ontologies/2026-01-01"
     snap.mkdir(parents=True)
@@ -118,7 +118,12 @@ def test_build_and_validate(tmp_path, monkeypatch):
             w.writeheader()
             w.writerows(data)
     monkeypatch.setattr(ontologies, "BASE", tmp_path / "data/ontologies")
-    assert to_phenopackets.main(["--disease", "ha20", "--run-id", "r1", "--created", "2026-01-01"]) == 0
+    return run
+
+
+def test_build_and_validate(tmp_path, monkeypatch):
+    run = make_run(tmp_path, monkeypatch)
+    assert to_phenopackets.main(["--disease", "ha20", "--run-id", "r1", "--created", "2026-01-01", "--gatekeeper", "none"]) == 0
     pp = json.loads((run / "phenopackets/HA20-ID0001.json").read_text())
     feats = {(f["type"]["id"], f.get("excluded", False)) for f in pp["phenotypicFeatures"]}
     # the excluded broad skin term is dropped because a skin rash is observed; checklist adds oral (observed) and genital (excluded)
@@ -134,3 +139,40 @@ def test_build_and_validate(tmp_path, monkeypatch):
     assert validate.main(["--disease", "ha20", "--run-id", "r1"]) == 0
     report = json.loads((run / "validation_report.json").read_text())
     assert report["share_schema_valid"] == 1.0 and report["errors_by_check"] == {}
+
+
+def test_gatekeeper_verdicts_drop_claims(tmp_path, monkeypatch):
+    run = make_run(tmp_path, monkeypatch)
+    # without gatekeeper.csv the default mode refuses to build
+    try:
+        to_phenopackets.main(["--disease", "ha20", "--run-id", "r1"])
+        raise AssertionError("expected SystemExit")
+    except SystemExit:
+        pass
+    verdicts = [
+        ("111", "phenotypic_features", 0, "status", "unsupported"),      # the rash row goes
+        ("111", "individuals", 0, "sex", "partially_supported"),         # sex goes under not_supported only
+        ("111", "phenotype_checklist", 1, "status", "supported"),
+        ("111", "variants", 0, "zygosity", "span_not_found"),            # allelic state goes
+    ]
+    with (run / "gatekeeper.csv").open("w", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["claim_id", "pmid", "table", "row", "field", "value", "class", "verdict", "source", "reason"])
+        for n, (pm, t, r, f, verdict) in enumerate(verdicts, 1):
+            w.writerow([f"C{n:06d}", pm, t, r, f, "", "model", verdict, "gatekeeper", ""])
+    assert to_phenopackets.main(["--disease", "ha20", "--run-id", "r1", "--created", "2026-01-01"]) == 0
+    pp = json.loads((run / "phenopackets/HA20-ID0001.json").read_text())
+    feats = {(f["type"]["id"], f.get("excluded", False)) for f in pp["phenotypicFeatures"]}
+    # with the rash row gone, the excluded skin term no longer conflicts and stays
+    assert feats == {("HP:0000951", True), ("HP:0000155", False), ("HP:0003249", True)}
+    assert pp["subject"].get("sex", "UNKNOWN_SEX") == "UNKNOWN_SEX"
+    vd = pp["interpretations"][0]["diagnosis"]["genomicInterpretations"][0]["variantInterpretation"]["variationDescriptor"]
+    assert "allelicState" not in vd
+    build = json.loads((run / "phenopacket_build.json").read_text())
+    assert build["gatekeeper"] == "not_supported"
+    assert build["counts"]["gk_dropped_feature_rows"] == 1 and build["counts"]["gk_dropped_sex"] == 1
+    # the sensitivity build keeps partially supported claims
+    assert to_phenopackets.main(["--disease", "ha20", "--run-id", "r1", "--gatekeeper", "unsupported", "--out-name", "pp_lenient"]) == 0
+    pp2 = json.loads((run / "pp_lenient/HA20-ID0001.json").read_text())
+    assert pp2["subject"]["sex"] == "FEMALE"
+    assert (run / "pp_lenient_build.json").exists()
