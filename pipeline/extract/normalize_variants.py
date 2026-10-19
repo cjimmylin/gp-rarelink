@@ -15,7 +15,9 @@ Query construction, in order:
   2. the transcript is transcript_as_stated when it is a RefSeq NM_ or an
      Ensembl ENST accession; otherwise the MANE Select transcript (--mane,
      default NM_001270508.2, as VariantValidator's gene2transcripts reported for
-     TNFAIP3 on 2026-10-19), and the row is flagged transcript_assumed;
+     TNFAIP3 on 2026-10-19), and the row is flagged transcript_assumed = yes.
+     A transcript printed without a version number gets the latest version
+     VariantValidator lists for that accession (transcript_assumed = version);
   3. no cDNA but a protein change: status protein_only, no call (protein
      changes are never back-translated);
   4. neither (copy-number changes, exon deletions, genomic coordinates without
@@ -105,14 +107,33 @@ def transcript_of(row: dict) -> str | None:
     return None
 
 
+def latest_versions(vv: "VV", gene: str) -> dict[str, str]:
+    """Unversioned accession -> latest versioned accession known to VariantValidator for the gene."""
+    resp = vv.get_tool(f"tools/gene2transcripts_v2/{gene}/all/all/GRCh38")
+    best: dict[str, str] = {}
+    for g in resp.get("response") or []:
+        for t in g.get("transcripts") or []:
+            ref = t.get("reference", "")
+            if "." in ref:
+                acc, ver = ref.rsplit(".", 1)
+                if acc not in best or int(ver) > int(best[acc].rsplit(".", 1)[1]):
+                    best[acc] = ref
+    return best
+
+
 class VV:
     def __init__(self, delay: float) -> None:
         self.delay, self.last, self.calls, self.cached = delay, 0.0, 0, 0
         self.client = httpx.Client(timeout=120, headers={"accept": "application/json", "User-Agent": "gp-rarelink (literature curation)"})
         CACHE.mkdir(parents=True, exist_ok=True)
 
+    def get_tool(self, path: str) -> dict:
+        return self._fetch(f"https://rest.variantvalidator.org/VariantValidator/{path}")
+
     def get(self, build: str, description: str, select: str) -> dict:
-        url = f"{API}/{build}/{quote(description, safe='')}/{quote(select, safe='')}"
+        return self._fetch(f"{API}/{build}/{quote(description, safe='')}/{quote(select, safe='')}")
+
+    def _fetch(self, url: str) -> dict:
         key = CACHE / (hashlib.sha256(url.encode()).hexdigest() + ".json")
         if key.exists():
             self.cached += 1
@@ -185,6 +206,7 @@ def main(argv: list[str] | None = None) -> int:
             d["rows"] += 1
             d["pmids"].add(p.stem)
     vv, out, c = VV(args.delay), [], Counter()
+    versions = latest_versions(vv, args.gene)
     for key, d in distinct.items():
         row = {"variant_key": key, "original_string_example": d["original"], "rows": d["rows"], "pmids": " ".join(sorted(d["pmids"])),
                "query": "", "transcript_assumed": "", "legacy_notation_rewritten": "yes" if d["legacy"] else "", "status": "", "hgvs_transcript": "", "hgvs_protein": "",
@@ -192,6 +214,9 @@ def main(argv: list[str] | None = None) -> int:
         if d["cdna"]:
             tx = d["transcript"] if d["transcript"] else args.mane
             row["transcript_assumed"] = "" if d["transcript"] else "yes"
+            if tx and "." not in tx and tx in versions:  # printed without a version number
+                tx = versions[tx]
+                row["transcript_assumed"] = "version"
             row["query"] = f"{tx}:{d['cdna']}"
             res = trim(vv.get("GRCh38", row["query"], tx))
             if res["ok"]:
@@ -221,7 +246,8 @@ def main(argv: list[str] | None = None) -> int:
                "row_counts": {k[5:]: c[k] for k in c if k.startswith("rows:")},
                "share_normalized_or_corrected": round((c["normalized"] + c["corrected"]) / n, 4) if n else None,
                "share_normalized_or_corrected_of_cdna": round((c["normalized"] + c["corrected"]) / max(1, c["normalized"] + c["corrected"] + c["unresolvable"]), 4),
-               "transcript_assumed": sum(1 for r in out if r["transcript_assumed"]),
+               "transcript_assumed": sum(1 for r in out if r["transcript_assumed"] == "yes"),
+               "transcript_version_assumed": sum(1 for r in out if r["transcript_assumed"] == "version"),
                "api_calls": vv.calls, "cache_hits": vv.cached,
                "vv_version": next((r["vv_version"] for r in out if r["vv_version"]), "")}
     (run_dir / "normalization_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
