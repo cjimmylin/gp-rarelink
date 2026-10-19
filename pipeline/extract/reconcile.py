@@ -268,7 +268,7 @@ def load(run_dir: Path, xml_dir: Path, gene: str) -> tuple[list[dict], dict[str,
     return people, papers
 
 
-def compare(a: dict, b: dict, papers: dict[str, dict]) -> dict | None:
+def compare(a: dict, b: dict, papers: dict[str, dict], sex_onset_merges: bool = True) -> dict | None:
     key = next((k for va in a["variants"] for vb in b["variants"] if (k := same_variant(va, vb))), None)
     if key is None:
         return None
@@ -297,7 +297,7 @@ def compare(a: dict, b: dict, papers: dict[str, dict]) -> dict | None:
     elif (a["sex"] not in MISSING and a["sex"] == b["sex"] and a["onset"] is not None and b["onset"] is not None
           and abs(a["onset"] - b["onset"]) <= 1):
         evidence.append(f"same sex ({a['sex']}); onset {a['onset']:.1f}y vs {b['onset']:.1f}y")
-        conf = "strong_match"
+        conf = "strong_match" if sex_onset_merges else "weak_match"
     else:
         evidence.append("no corroborating detail")
         conf = "weak_match"
@@ -319,7 +319,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--run-id", required=True)
     ap.add_argument("--gene", default="TNFAIP3")
+    ap.add_argument("--no-sex-onset-merges", action="store_true",
+                    help="sensitivity analysis (2026-10-19): same variant + same sex + onset within 1 year is listed "
+                         "as a weak match for audit instead of merged. Outputs get the suffix _without_sex_onset.")
     args = ap.parse_args(argv)
+    policy = POLICY_VERSION + ("_without_sex_onset" if args.no_sex_onset_merges else "")
+    suffix = "_without_sex_onset" if args.no_sex_onset_merges else ""
     run_dir = Path("data/extracted") / args.disease / args.run_id
     xml_dir = Path("data/literature") / args.disease / "fulltext"
     people, papers = load(run_dir, xml_dir, args.gene.upper())
@@ -330,7 +335,7 @@ def main(argv: list[str] | None = None) -> int:
         a, b = people[i], people[j]
         if a["pmid"] == b["pmid"]:
             continue
-        res = compare(a, b, papers)
+        res = compare(a, b, papers, sex_onset_merges=not args.no_sex_onset_merges)
         if res:
             pairs.append((i, j, res))
 
@@ -405,15 +410,15 @@ def main(argv: list[str] | None = None) -> int:
         if all(people[i]["source_reference"] for i in members):
             review_only.update(members)
 
-    with (run_dir / "merges.csv").open("w", newline="") as fh:
+    with (run_dir / f"merges{suffix}.csv").open("w", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["pmid_a", "label_a", "pmid_b", "label_b", "variant_key", "confidence", "agreement_score",
                     "decision", "merged", "evidence", "conflicts", "identity", "policy"])
         for i, j, res in pairs:
             a, b = people[i], people[j]
             w.writerow([a["pmid"], a["label"], b["pmid"], b["label"], res["variant_key"], res["confidence"],
-                        res["score"], res["decision"], res["merged"], res["evidence"], res["conflicts"], identity[i] if res["merged"] else "", POLICY_VERSION])
-    with (run_dir / "individuals_reconciled.csv").open("w", newline="") as fh:
+                        res["score"], res["decision"], res["merged"], res["evidence"], res["conflicts"], identity[i] if res["merged"] else "", policy])
+    with (run_dir / f"individuals_reconciled{suffix}.csv").open("w", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["pmid", "individual_label_in_paper", "identity", "record_of_record", "review_only",
                     "has_target_gene_variant", "source_reference_in_review", "source_pmids_resolved",
@@ -428,7 +433,7 @@ def main(argv: list[str] | None = None) -> int:
     secondary = [p for p in people if p["source_reference"]]
     summary = {
         "run_id": args.run_id,
-        "policy": POLICY_VERSION,
+        "policy": policy,
         "individuals_before_merging": len(people),
         "identities_after_merging": len(ordered),
         "identities_with_target_gene_variant": len({identity[i] for i, p in enumerate(people) if p["variants"]}),
@@ -441,7 +446,7 @@ def main(argv: list[str] | None = None) -> int:
         "of_which_source_pmid_in_corpus": sum(1 for p in secondary if set(p["source_pmids"]) & corpus),
         "papers_without_parsed_reference_list": sorted(k for k, x in papers.items() if x["n_refs"] == 0),
     }
-    (run_dir / "reconcile_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    (run_dir / f"reconcile_summary{suffix}.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
     return 0
 
