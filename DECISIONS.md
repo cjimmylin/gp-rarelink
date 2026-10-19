@@ -101,6 +101,12 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-19 · Stage 6 run on ClinVar and HPO; snapshot kept outside the repo (Claude's calls)
+- **Snapshot location.** `POC_DESIGN.md` Stage 6 says to write the snapshot under `data/reference/<date>/` and commit its manifest. The extraction guard refuses to run while a populated `data/reference/` is readable, so a committed manifest there would block every later extraction run. The snapshot content is kept outside the repository (a reference root given to the harness), and only `MANIFEST.json` and `counts.json` are committed, under `analysis/poc/reference_snapshot/<date>/`. The intent of the design (ground truth out of extraction's reach) is unchanged.
+- **Direct counts for *TNFAIP3*** (ClinVar release 2026-10-12, GRCh38, distinct VariationID): 764 single-gene records; 99 P/LP (68 P, 27 LP, 4 P/LP); 375 VUS; 76 name HA20. These replace the application's provisional figures (542 records, about 58 pathogenic, about 289 VUS). `CONTEXT.md` §4 is not edited here; the six-disease counts will be taken together.
+- **OMIM not fetched** (no key; terms unconfirmed). **Q7 not measured:** the El Hani 2024 benchmark is paywalled from the cloud environment.
+- Results: `reports/poc_stage6_findings.md`. No changes to metrics, thresholds or extraction prompts.
+
 ### 2026-10-19 · D-29 decided: fixes and a 20-paper re-run after the Q4 miss
 Jimmy: "go with your recommendations on D-29" (this session, 2026-10-19). Accepted as recommended (`reports/poc_stage4_5_findings.md` §10.5):
 - **Extraction instructions v5** gain a variant-field rule: zygosity, inheritance, variant type, pathogenicity, ACMG criteria and functional evidence come only from this person's own row, column or sentence, or from a statement about a named group that includes them, with nothing in the paper giving this person a different or undetermined status. Otherwise "not reported". v5 already held D-27.
