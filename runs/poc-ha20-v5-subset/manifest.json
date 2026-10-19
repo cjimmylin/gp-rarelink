@@ -6,7 +6,7 @@
   "effort": null,
   "errors": [],
   "fallbacks": [],
-  "finished": null,
+  "finished": "2026-10-19T12:17:17+00:00",
   "git_commit": "33f71c7e00ee606b4db0f958d0c70f89f275b034",
   "input_manifest_sha256": null,
   "model": "Claude Code helper agents (opus)",
@@ -15,6 +15,7 @@
   "notes": {
     "agent_model_requested": "opus",
     "cost_usd_field": "0.0 by construction: per-call usage is not available on this route",
+    "decision": "D-29",
     "documents": [
       "26945335",
       "28469620",
@@ -37,19 +38,21 @@
       "40719110",
       "41905891"
     ],
-    "route": "claude_code (D-20)",
-    "schema_file": "pipeline/extract/claude_code/schema_ha20_v5.json",
-    "session_cost_note": "The session reading stayed at 614.97 from about 09:17 to at least 09:34 UTC while helpers ran; the after-reading is taken later and covers this stage and the Stage 6 work, which overlapped.",
-    "session_cost_usd_before": 614.97,
-    "decision": "D-29",
-    "launch_commit": "05952ea (rules committed before the first helper started)",
-    "recorded_after_the_fact": "manifest written after the helpers finished; started 2026-10-19 ~09:17 UTC",
     "helpers": "20 extraction helpers (4 repair-only resumes) and 26 gatekeeper v3 helpers, all opus",
+    "launch_commit": "05952ea (rules committed before the first helper started)",
     "outputs": [
       "data/extracted/ha20/poc-ha20-v5-subset/per_paper/*.json",
       "data/extracted/ha20/poc-ha20-v5-subset/gatekeeper_v3.csv",
       "adjudication/poc_audit_v5/sample.csv"
-    ]
+    ],
+    "recorded_after_the_fact": "manifest written after the helpers finished; started 2026-10-19 ~09:17 UTC",
+    "route": "claude_code (D-20)",
+    "schema_file": "pipeline/extract/claude_code/schema_ha20_v5.json",
+    "served_model_reported": "claude-opus-5-5",
+    "session_cost_note": "The session reading stayed at 614.97 from about 09:17 to at least 09:34 UTC while helpers ran; the after-reading is taken later and covers this stage and the Stage 6 work, which overlapped.",
+    "session_cost_usd_after": 673.89,
+    "session_cost_usd_before": 614.97,
+    "session_cost_usd_delta": 58.92
   },
   "price_table": "configs/prices.yaml@33f71c7e00ee (read_on 2026-10-18, verified_on None)",
   "prompt_sha256": {
