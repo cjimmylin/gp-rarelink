@@ -11,7 +11,7 @@ Writes analysis/poc/dedup_hand_check_<run_id>.csv and
 analysis/poc/dedup_hand_check_summary_<run_id>.json, and prints the summary.
 
   uv run python analysis/poc/dedup_hand_check.py --disease ha20 --run-id poc-ha20-run-2 \
-      --verdicts batch_a/verdicts.csv batch_b/verdicts.csv --checked-by "helper agent (Opus)"
+      --merges-file merges_policy_v3.csv --verdicts batch_a/verdicts.csv batch_b/verdicts.csv batch_c/verdicts.csv
 """
 
 from __future__ import annotations
@@ -29,8 +29,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--run-id", required=True)
     ap.add_argument("--verdicts", nargs="+", required=True)
     ap.add_argument("--checked-by", default="helper agent (Opus)")
+    ap.add_argument("--merges-file", default="merges.csv",
+                    help="merge table the helpers checked; run-2's check used merges_policy_v3.csv")
     args = ap.parse_args(argv)
-    merges = [r for r in csv.DictReader((Path("data/extracted") / args.disease / args.run_id / "merges.csv").open())
+    merges = [r for r in csv.DictReader((Path("data/extracted") / args.disease / args.run_id / args.merges_file).open())
               if r["merged"] == "True"]
     key = lambda r: (r["pmid_a"], r["label_a"], r["pmid_b"], r["label_b"])  # noqa: E731
     by_key = {key(r): r for r in merges}

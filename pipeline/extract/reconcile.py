@@ -20,16 +20,17 @@ literature, not reference data) is used to resolve
   - the paper's prior_report_citation, when cites_prior_report_of_same_patients is true,
 to PMIDs. Resolution is by reference number first, then by surname plus year.
 
-Confidence labels (policy v3, 2026-10-18):
+Confidence labels (policy v4, 2026-10-19, D-23):
   explicit_citation  same variant, and one row's own source_reference_in_review
                      resolves to the other row's PMID and to no other paper. A
                      citation naming several papers ("(2, 12, 22)") is not
                      person-specific and counts only as a weak match.
-  strong_match       same variant and no conflict, plus either (a) the paper-level
-                     prior-report citation resolves to the other PMID, or (b) same
-                     sex and age at onset within 1 year, both stated.
-  weak_match         same variant, sex not in conflict, nothing else. Never merged;
-                     listed for the human audit.
+  strong_match       same variant and no conflict, and the paper-level prior-report
+                     citation resolves to the other PMID.
+  weak_match         same variant, sex not in conflict, and no citation. Never
+                     merged; listed for the human audit. Under v4 this includes
+                     pairs with the same stated sex and onset within 1 year, which
+                     v3 merged as strong matches (--policy v3 restores that).
   blocked_conflict   same variant but a conflict. A conflict is a stated sex that
                      differs (this blocks even an explicit citation), or, without an
                      explicit citation, stated onset ages more than 2 years apart.
@@ -48,8 +49,10 @@ Policy v1 (earlier the same day) merged every explicit or strong candidate; on
 the first 58 run-1 papers that joined relatives into one identity. Policy v2
 added the one-to-one rule; its hand check on run-1 (56 merged pairs) found two
 false merges, both resting on citations that name several papers, which v3 no
-longer accepts. v3 was changed after seeing that hand check, so its own false
-merge rate still has to be measured on pairs it was not tuned on.
+longer accepts. The hand check of all 93 v3 merges on run-2, pairs v3 was not
+tuned on, found 6 false merges, all resting only on same sex and onset (37 true,
+6 false); citation merges had none. v4 (D-23) therefore merges on citations only.
+v4 was chosen after that check, so the six-disease study must measure it again.
 
 Merged pairs are joined transitively into identities. The record of record for
 an identity is a first-hand row (no source_reference_in_review), earliest
@@ -60,6 +63,7 @@ Writes, under data/extracted/<disease>/<run_id>/:
   merges.csv               one row per candidate pair (merged or not)
   individuals_reconciled.csv  one row per individual with its identity id
   reconcile_summary.json   counts before and after merging, by confidence
+With --policy v3 the same files get the suffix _policy_v3.
 
   uv run python -m pipeline.extract.reconcile --disease ha20 --run-id poc-ha20-run-1
 """
@@ -76,7 +80,7 @@ from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
 
-POLICY_VERSION = "merge_policy_v3"
+POLICY_VERSION = "merge_policy_v4"
 MISSING = {None, "", "not reported", "unknown"}
 AA3 = {"ala": "A", "arg": "R", "asn": "N", "asp": "D", "cys": "C", "gln": "Q", "glu": "E", "gly": "G",
        "his": "H", "ile": "I", "leu": "L", "lys": "K", "met": "M", "phe": "F", "pro": "P", "ser": "S",
@@ -268,7 +272,7 @@ def load(run_dir: Path, xml_dir: Path, gene: str) -> tuple[list[dict], dict[str,
     return people, papers
 
 
-def compare(a: dict, b: dict, papers: dict[str, dict], sex_onset_merges: bool = True) -> dict | None:
+def compare(a: dict, b: dict, papers: dict[str, dict], sex_onset_merges: bool = False) -> dict | None:
     key = next((k for va in a["variants"] for vb in b["variants"] if (k := same_variant(va, vb))), None)
     if key is None:
         return None
@@ -319,12 +323,13 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--run-id", required=True)
     ap.add_argument("--gene", default="TNFAIP3")
-    ap.add_argument("--no-sex-onset-merges", action="store_true",
-                    help="sensitivity analysis (2026-10-19): same variant + same sex + onset within 1 year is listed "
-                         "as a weak match for audit instead of merged. Outputs get the suffix _without_sex_onset.")
+    ap.add_argument("--policy", choices=["v4", "v3"], default="v4",
+                    help="v4 (default, D-23): merge on citations only. v3: also merge same variant + same sex + "
+                         "onset within 1 year; outputs get the suffix _policy_v3.")
     args = ap.parse_args(argv)
-    policy = POLICY_VERSION + ("_without_sex_onset" if args.no_sex_onset_merges else "")
-    suffix = "_without_sex_onset" if args.no_sex_onset_merges else ""
+    sex_onset_merges = args.policy == "v3"
+    policy = POLICY_VERSION if args.policy == "v4" else "merge_policy_v3"
+    suffix = "" if args.policy == "v4" else "_policy_v3"
     run_dir = Path("data/extracted") / args.disease / args.run_id
     xml_dir = Path("data/literature") / args.disease / "fulltext"
     people, papers = load(run_dir, xml_dir, args.gene.upper())
@@ -335,7 +340,7 @@ def main(argv: list[str] | None = None) -> int:
         a, b = people[i], people[j]
         if a["pmid"] == b["pmid"]:
             continue
-        res = compare(a, b, papers, sex_onset_merges=not args.no_sex_onset_merges)
+        res = compare(a, b, papers, sex_onset_merges=sex_onset_merges)
         if res:
             pairs.append((i, j, res))
 

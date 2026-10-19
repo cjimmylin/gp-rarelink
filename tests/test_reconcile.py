@@ -140,3 +140,25 @@ def test_review_listing_one_patient_twice_does_not_block_primary_merge(tmp_path,
     rows = {(r["pmid_a"], r["label_a"], r["pmid_b"], r["label_b"]): r for r in csv.DictReader((run / "merges.csv").open())}
     assert rows[("111", "P1", "222", "patient 7")]["decision"] == "merged"
     assert sum(r["decision"] == "skipped_same_paper" for r in rows.values()) == 1
+
+
+def test_policy_v4_does_not_merge_on_sex_and_onset_alone(tmp_path, monkeypatch):
+    """D-23: same variant, same sex and onset within a year, with no citation, is an audit pair under v4
+    (v3 merged it, and that route made all six false merges in the run-2 hand check)."""
+    monkeypatch.chdir(tmp_path)
+    per = tmp_path / "data/extracted/ha20/r4/per_paper"
+    per.mkdir(parents=True)
+    (tmp_path / "data/literature/ha20/fulltext").mkdir(parents=True)
+    docs = {
+        "111": paper("111", 2019, [{"label": "P1", "sex": "female", "onset": "P7Y", "protein": "p.Gln187Ter"}]),
+        "222": paper("222", 2025, [{"label": "P39", "sex": "female", "onset": "P7Y", "protein": "p.Q187*"}]),
+    }
+    for pmid, d in docs.items():
+        (per / f"{pmid}.json").write_text(json.dumps(d))
+    run = tmp_path / "data/extracted/ha20/r4"
+    assert rc.main(["--disease", "ha20", "--run-id", "r4"]) == 0
+    v4 = next(csv.DictReader((run / "merges.csv").open()))
+    assert v4["confidence"] == "weak_match" and v4["merged"] == "False" and v4["policy"] == "merge_policy_v4"
+    assert rc.main(["--disease", "ha20", "--run-id", "r4", "--policy", "v3"]) == 0
+    v3 = next(csv.DictReader((run / "merges_policy_v3.csv").open()))
+    assert v3["confidence"] == "strong_match" and v3["merged"] == "True" and v3["policy"] == "merge_policy_v3"

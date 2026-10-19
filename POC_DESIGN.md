@@ -387,6 +387,12 @@ explicit merge policy, versioned under `prompts/`:
   identical original string, plus at least one of: same family label, same
   sex and age at onset within tolerance, explicit "previously reported" citation
   linking the two PMIDs, or overlapping author list with the same centre.
+  *As implemented (`pipeline/extract/reconcile.py`, policy v4 since D-23,
+  2026-10-19):* only a citation merges, either a row's own single-paper citation
+  or the paper-level prior-report citation. Same sex and onset is listed for
+  audit, because in the run-2 hand check it made all 6 false merges. Merging is
+  one-to-one and deterministic, with no model call; the design history is in the
+  script's docstring.
 - Each merge writes a row to `data/extracted/ha20/merges.csv` with the two
   (pmid, individual_label) pairs, the evidence used, and a confidence label
   (`explicit_citation`, `strong_match`, `weak_match`). `weak_match` merges are

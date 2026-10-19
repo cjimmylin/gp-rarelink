@@ -129,7 +129,7 @@ How to use this file:
   - **Repair, 35958611:** 72 checklist answers had no quote. The same helper added quotes only, and a script confirmed every value unchanged.
   - **Supplementary filter kept as it was, mid-run:** filter v1 skipped one per-patient table that never names the gene (42128528). I kept v1 so all 85 papers read inputs made the same way, and proposed v2 for the next run (D-24).
   - **Entity decoding:** "&gt;" from converted Word files broke variant keys. Decoding was added on the harness side, in the merge keys, the counts and the agreement script; quotes are unchanged.
-  - **Sensitivity option:** `reconcile.py --no-sex-onset-merges` was added. Policy v3 stays the default until D-23.
+  - **Sensitivity option:** a sensitivity option was added to `reconcile.py`. After D-23 it became `--policy v4`, the default, with `--policy v3` to reproduce v3.
 - **Unchanged:** metrics, thresholds, the pre-registration, the merge policy default, and the extraction prompts and schema.
 
 ### 2026-10-19 · D-22 decided: extraction instructions v3, run-2, supplementary files

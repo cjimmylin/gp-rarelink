@@ -139,7 +139,7 @@ Source: `analysis/poc/run_agreement_poc-ha20-run-2_vs_poc-ha20-run-2-repeat.json
 - **Missed evidence.** According to the hand-check helpers, four of the six would have been blocked if 40574834's per-patient "reference" column had gone into `source_reference_in_review`. The extraction helper put those references in its method note instead.
 - **Cannot tell (3).** Two are rows standing for the whole Zhou 2016 Family 5. The third is a review row that mixes two members of one family.
 
-**Sensitivity analysis: no merging on sex and onset alone** (`reconcile.py --no-sex-onset-merges`; outputs `*_without_sex_onset` next to the v3 files):
+**Sensitivity analysis: no merging on sex and onset alone.** This is policy v4, adopted under D-23 on 2026-10-19. `merges.csv` is now v4, and the v3 tables are kept as `merges_policy_v3.csv` and `reconcile_summary_policy_v3.json`.
 - **Merges:** 50 instead of 93, all already hand-checked: 47 true, 3 cannot tell, 0 false.
 - **Distinct people:** 749 instead of 719. Some of the 30 extra are the same patient counted twice, since 37 of the dropped merges were true.
 - **Caveat:** this option was chosen after seeing the check, so its 0 false merges is not an independent estimate. The next measure is the six-disease study.
