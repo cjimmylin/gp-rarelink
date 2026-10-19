@@ -15,6 +15,14 @@ How to use this file:
 
 ### Needed now, for the pilot
 
+**D-26 · Wording of the variant-normalization check** (opened 2026-10-19)
+- **The problem:** `POC_DESIGN.md` Stage 4 asks for 95% of distinct variant descriptions `normalized` or `corrected`. On run-2 that is 128 of 277 (46.2%), because 99 descriptions give only a protein change and 40 give no cDNA or protein change (copy-number changes, exon deletions, prose). Neither can be normalized from the text. Of the 138 that state a cDNA change, 128 are normalized or corrected (92.8%); 10 were rejected by VariantValidator (`reports/poc_stage4_5_findings.md` §4.1).
+- **Recommendation:** measure the check over descriptions that state a cDNA change, and report protein-only and structural descriptions separately with their status. For the frozen pipeline, fix the repairable rejections: map transcripts VariantValidator does not hold to one it does, and record a corrected query beside the original string for typos. On run-2 that would give up to 137 of 138.
+
+**D-27 · Normal findings recorded as excluded features; gatekeeper v2** (opened 2026-10-19)
+- **The problem:** the extraction records a normal finding with the paper's words as the feature and status "excluded" ("normal CRP" excluded, meaning raised CRP is absent). The gatekeeper instructions don't say how to judge that. Some helpers accepted it, about 40 flags call it partial, and one calls it unsupported. Because partials are left out of the phenopackets, some correct exclusions are dropped (`reports/poc_stage4_5_findings.md` §5.3).
+- **Recommendation:** for the six-disease run, write the abnormality as the feature when status is excluded ("elevated CRP") and keep the paper's words in the quote. Gatekeeper v2 states that convention, plus two rules the flags showed were missing: a per-patient table outranks a group statement, and a hedged phrase supports neither observed nor excluded. No re-run on HA20.
+
 **D-17 · How the pipeline calls Claude** (opened 2026-10-18)
 - **The problem:**
   - The grant assumed extraction, gatekeeper, concordance and bias runs would call Claude from code. The application gave a Console org ID for API credits.
@@ -100,6 +108,20 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · Pilot Stages 4 and 5 done, instructions v4 checked (Claude's calls; audit ratings pending)
+- **Ran as approved under D-23 to D-25.** Results: `reports/poc_stage4_5_findings.md`. Open questions are D-26 and D-27.
+  - **v4 check:** 13 of 13 rule checks as intended on the 10 purposive papers; all 11,706 quotes verbatim. Run-2 stays the extraction of record (no run-3).
+  - **Stage 4:** 749 phenopackets, all schema-valid; HPO binding 88.5% of 4,453 feature rows; normalization 128 of 277 distinct descriptions (92.8% of those with a cDNA), below the Stage 4 check as worded (D-26).
+  - **Stage 5:** of 22,003 judged values, 21,690 supported, 305 partially supported, 8 unsupported (0.036%, exact 95% CI 0.016–0.072%), 0 quotes not found. The 50-claim human audit and the 30-binding HPO check wait for Jimmy's ratings.
+  - **Spend:** session reading $463.50 → $580.31; $116.81 for the v4 check, Stage 4 helpers and Stage 5 together, against ~$195 approved.
+- **Claude's calls:**
+  - **Disease binding:** labels naming HA20 are bound to MONDO:0800045 (cross-references OMIM:616744, Orphanet:476102), with the gene group term MONDO:0100222 recorded; flagged for review.
+  - **Model-assisted HPO binding:** Sonnet helpers looked terms up in the pinned `hp.obo`; an answer is used only if the ID is current and the copied name matches; a broader term is never used for an excluded row.
+  - **Gatekeeper classes:** bookkeeping fields are not judged; free text found inside its own verbatim quote is supported by construction; everything else went to helpers.
+  - **Phenopackets leave out claims not judged supported** (`POC_DESIGN.md` §3.9). A lenient build that drops only unsupported claims is kept as a summary for sensitivity.
+  - **Interruption:** at the five-hour usage limit, 10 gatekeeper helpers stopped; 7 had written complete files (checked by script), 3 were resumed. The session ran on overage from about 02:50 UTC.
+- **Unchanged:** metrics, thresholds, the pre-registration, and the extraction instructions of record.
 
 ### 2026-10-19 · D-23, D-24 and D-25 decided: merge policy v4, instructions v4 with a 10-paper check, Stage 5 approved
 - **Decided by Jimmy (2026-10-19), accepting all recommendations** from Stage 3b (`reports/poc_stage3b_findings.md` §9). He answered four questions in the session's question form. These are revisions, because the pre-registration is not frozen.

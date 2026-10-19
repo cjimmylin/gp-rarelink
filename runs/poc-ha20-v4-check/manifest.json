@@ -6,7 +6,7 @@
   "effort": null,
   "errors": [],
   "fallbacks": [],
-  "finished": null,
+  "finished": "2026-10-19T03:02:00+00:00",
   "git_commit": "57170f850c9c9bf5ba9ca522860ddc9831158e07",
   "input_manifest_sha256": null,
   "model": "Claude Code helper agents (opus)",
@@ -27,10 +27,16 @@
       "42128528",
       "42572791"
     ],
+    "outputs": [
+      "data/extracted/ha20/poc-ha20-v4-check/per_paper/*.json",
+      "analysis/poc/v4_check_poc-ha20-v4-check.json"
+    ],
     "route": "claude_code (D-20)",
     "schema_file": "pipeline/extract/claude_code/schema_ha20_v4.json",
     "session_cost_note": "Session metadata list-price estimate; not a billing figure. Reconcile against claude.ai Settings > Usage.",
-    "session_cost_usd_before": 463.5
+    "session_cost_usd_after": 580.31,
+    "session_cost_usd_before": 463.5,
+    "session_cost_window_note": "The v4 check, the Stage 4 HPO-binding helpers and the Stage 5 gatekeeper ran in one window (2026-10-19 02:08-03:02 UTC) and cannot be separated in the session reading: 463.50 before, 580.31 after, 116.81 together. The 463.50 reading was taken at about 02:08 UTC and did not refresh again until about 02:58 UTC."
   },
   "price_table": "configs/prices.yaml@57170f850c9c (read_on 2026-10-18, verified_on None)",
   "prompt_sha256": {

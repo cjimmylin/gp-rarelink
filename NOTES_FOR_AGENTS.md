@@ -37,6 +37,13 @@ How to maintain it:
   - fresh merge hand check: 6 false of 93, all from the sex-and-onset route; policy v4 proposed.
   - Report: `reports/poc_stage3b_findings.md`. Session usage reading 460.75.
   - D-23 to D-25 decided by Jimmy, 2026-10-19: merge policy v4; instructions v4 plus input fixes, checked on 10 papers, with no run-3; Stage 5 approved at about $170 after Stage 4.
+- **Pilot Stages 4 and 5 done, v4 checked (2026-10-19):**
+  - v4 check: 13 of 13 rule checks as intended; run-2 stays the extraction of record;
+  - Stage 4: 749 phenopackets, all valid; HPO binding 88.5%; normalization 92.8% of cDNA descriptions (check not met as worded, D-26);
+  - Stage 5: 8 unsupported and 305 partial of 22,003 judged values; phenopackets rebuilt without claims not judged supported.
+  - **Waiting on Jimmy:** ratings in `adjudication/poc_audit/sample.csv` (50 claims) and `hpo_model_binding_sample.csv` (30), then `analysis/poc/audit_metrics.py`; D-26 and D-27.
+  - **Next:** Stage 6 (ClinVar concordance, harness side only) and Stage 7.
+  - Report: `reports/poc_stage4_5_findings.md`. Session usage reading 580.31.
 - **Pilot progress (2026-10-18, earlier):**
   - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
   - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
@@ -129,6 +136,12 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
   - **The sex-and-onset merge route is unsafe.** Recurrent variants and relatives in one family match on sex and onset. Citation-based merges were all correct.
   - **Helpers apply unwritten rules unevenly:** inheritance from a carrier parent, 0 counts in group tables, labels for table columns and numbering columns. Write the rule down rather than hoping for consistency.
   - **Running about 13 helpers at once worked.** That was 85 papers in about 50 minutes of wall time. A helper writes its file before its final checks, so expect rewrites after the first commit.
+- **Stage 4–5 lessons (2026-10-19):**
+  - **The five-hour usage limit stops helpers mid-task.** Many had already written their output; check each file is complete before trusting it. Resume the rest with SendMessage to the same helper. `get_session` → `rate_limit_info` shows when the account is past the limit and running on overage (it matters for D-17).
+  - **The session cost reading can freeze for most of an hour.** It stuck at 463.50 from about 02:08 to 02:58 UTC. Take a reading at the end too, and say when stages overlap.
+  - **scipy is not in the uv project.** `pipeline/extract/claude_code/gatekeeper_merge.py` has a pure-Python exact interval (`share`); reuse it rather than adding a dependency.
+  - **Write gatekeeper conventions down.** Helpers split on "normal X" recorded as excluded (D-27). Any convention the extraction uses must be stated in the gatekeeper instructions too.
+  - **The gatekeeper finds papers that contradict themselves** (table vs text). Those claims were judged supported with a note; collect them for the human audit.
 
 **Python:**
 - The pipeline is a `uv` project (`pyproject.toml`, `uv.lock`, Python ≥ 3.11). Run `uv sync && uv run pytest`.
@@ -139,7 +152,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-26**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-28**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
