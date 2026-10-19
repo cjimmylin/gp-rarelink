@@ -100,11 +100,12 @@ class Converter:
     def _table_rows(self, table: ET.Element) -> list[list[str]]:
         """Lay the table out on a grid, honouring rowspan and colspan.
 
-        A cell that spans several rows has its text repeated in every row it
-        covers, so each Markdown row keeps its own patient label. (Before
-        2026-10-18 rowspan was ignored, which shifted later cells left; see
-        reports/poc_stage2_smoke_findings.md.) Extra columns of a colspan stay
-        empty.
+        A cell that spans several rows or columns has its text repeated in every
+        cell it covers, so each Markdown row keeps its own patient label and each
+        column keeps its header. (Before 2026-10-18 rowspan was ignored, which
+        shifted later cells left; until 2026-10-19 the extra columns of a colspan
+        were left empty, so grouped headers such as a source paper spanning two
+        patient columns came through blank. See reports/poc_stage3_findings.md.)
         """
         grid: dict[tuple[int, int], str] = {}
         n_rows = 0
@@ -120,7 +121,7 @@ class Converter:
                 cs, rs = self._span(cell, "colspan"), self._span(cell, "rowspan")
                 for dr in range(rs):
                     for dc in range(cs):
-                        grid.setdefault((r + dr, c + dc), text if dc == 0 else "")
+                        grid.setdefault((r + dr, c + dc), text)
                 c += cs
         if not grid:
             return []
@@ -206,6 +207,14 @@ class Converter:
                 out.extend(self._block(child, level))
         elif tag in ("disp-quote", "statement"):
             out.append("> " + _inline(el))
+        elif tag == "ref-list":
+            # reference lists nested inside a section (some publishers do this)
+            title = _inline(el.find("title"))
+            if title or level <= 2:  # a nested list under a titled section needs no second heading
+                out.append("#" * min(level, 6) + " " + (title or "References"))
+            out.extend(self._ref(r, n) for n, r in enumerate(el.findall("ref"), 1))
+            for sub in el.findall("ref-list"):
+                out.extend(self._block(sub, level + 1))
         elif tag in ("title",):
             pass
         else:
@@ -215,7 +224,7 @@ class Converter:
         return out
 
     # ---- references -------------------------------------------------------
-    def _ref(self, ref: ET.Element) -> str:
+    def _ref(self, ref: ET.Element, position: int | None = None) -> str:
         label = _inline(ref.find("label"))
         cit = ref.find(".//element-citation")
         if cit is None:
@@ -237,11 +246,17 @@ class Converter:
             source = _inline(cit.find("source"))
             text = ", ".join(x for x in [", ".join(names), year, title, source] if x)
         pmid = ""
-        for pid in cit.findall("pub-id"):
+        for pid in cit.iter("pub-id"):
             if pid.get("pub-id-type") == "pmid":
                 pmid = " PMID:" + _inline(pid)
+        if not pmid:
+            for link in ref.iter("ext-link"):
+                if link.get("ext-link-type") == "pmid":
+                    href = next((v for k, v in link.attrib.items() if k.endswith("href")), "").strip()
+                    if href.isdigit():
+                        pmid = " PMID:" + href
         rid = ref.get("id", "")
-        lab = label or rid
+        lab = label or (str(position) if position is not None else rid)
         return f"[{lab}] {text}{pmid}".strip()
 
     def convert(self, xml_bytes: bytes) -> Article:
@@ -305,9 +320,7 @@ class Converter:
         if back is not None:
             for child in back:
                 if child.tag == "ref-list":
-                    title = _inline(child.find("title")) or "References"
-                    back_blocks.append("## " + title)
-                    back_blocks.extend(self._ref(r) for r in child.findall("ref"))
+                    back_blocks.extend(self._block(child, 2))
                 elif child.tag in ("sec", "ack", "fn-group", "notes", "app-group", "app"):
                     back_blocks.extend(self._block(child, 2))
         a.back_md = "\n\n".join(b for b in back_blocks if b)

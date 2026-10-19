@@ -63,7 +63,8 @@ def test_rowspan_and_colspan_keep_rows_aligned():
     assert rows[1] == "| Pt 1 | F | Oral ulcers | None |"
     # the second row of Pt 1 keeps the patient label and gender instead of shifting left
     assert rows[2] == "| Pt 1 | F | Thyroiditis | L-Thyroxine |"
-    assert rows[3] == "| Pt 2 | F | Diabetes |  |"
+    # a colspan repeats its text in every column it covers (since 2026-10-19)
+    assert rows[3] == "| Pt 2 | F | Diabetes | Diabetes |"
 
 
 FLOATS_JATS = b"""<?xml version="1.0"?>
@@ -87,3 +88,19 @@ def test_tables_in_floats_group_are_kept():
     # floating tables sit after the body text and before the references
     assert md.index("Clinical details") < md.index("### Table 1") < md.index("## References")
     assert art.n_tables == 1 and art.n_figures == 1
+
+
+NESTED_REFS_JATS = b"""<?xml version="1.0"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink"><front><article-meta><article-id pub-id-type="pmid">3</article-id>
+<title-group><article-title>T</article-title></title-group></article-meta></front>
+<body><p>Text.</p></body>
+<back><sec><title>References</title><ref-list>
+<ref id="bib1"><mixed-citation><named-content content-type="citation-string">Zhou Q. Loss-of-function mutations in TNFAIP3. 2016.</named-content><ext-link ext-link-type="pmid" xlink:href="26642243"/></mixed-citation></ref>
+<ref id="bib2"><label>2</label><mixed-citation>Aeschlimann FA. A20 haploinsufficiency. 2018.</mixed-citation></ref>
+</ref-list></sec></back></article>"""
+
+
+def test_nested_reference_list_keeps_one_line_per_reference():
+    md = jats_to_markdown(NESTED_REFS_JATS).to_markdown()
+    assert "[1] Zhou Q. Loss-of-function mutations in TNFAIP3. 2016. PMID:26642243" in md
+    assert "[2] Aeschlimann FA. A20 haploinsufficiency. 2018." in md
