@@ -1,4 +1,4 @@
-"""Pinned ontology releases (HPO, Mondo) for Stage 4 binding (POC_DESIGN.md §3.7).
+"""Pinned ontology releases (HPO, Mondo, ECO, GENO) for Stage 4 (POC_DESIGN.md §3.7).
 
 Ontologies are vocabularies, not ground truth, so the extraction side may read
 them. They are downloaded to data/ontologies/<date>/ (git-ignored), with a
@@ -28,6 +28,8 @@ import httpx
 SOURCES = {
     "hp": "https://purl.obolibrary.org/obo/hp.obo",
     "mondo": "https://purl.obolibrary.org/obo/mondo.obo",
+    "eco": "https://purl.obolibrary.org/obo/eco.obo",    # evidence codes for phenopacket evidence
+    "geno": "https://purl.obolibrary.org/obo/geno.obo",  # allelic state terms
 }
 BASE = Path("data/ontologies")
 
