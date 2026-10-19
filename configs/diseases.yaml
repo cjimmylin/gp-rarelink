@@ -1,0 +1,91 @@
+# Pilot diseases for the six-disease study: corpus search and screening settings.
+# Slugs are the folder names under data/literature/. Facts about each disease are
+# the ones CONTEXT.md §4 states (gene, OMIM, ORPHA, inheritance). Queries are run
+# by build_manifest.py from database inception (pre-registration §5.1 [proposed]);
+# the filter is the same case/patient/family clause the HA20 pilot used.
+#
+# Comparator holdouts: natural-history or genotype-first cohort papers held out of
+# the extraction corpus for the bias arm (pre-registration §7.4.1, D-04). They are
+# listed by background-manifest key and PMID; holdouts.py marks them out of the
+# corpus after screening. ClinVar-cited PMIDs are NOT used as seeds (pre-registration
+# §5.1; D-19 still open).
+
+filter: '("case reports"[pt] OR "case report"[tiab] OR patient*[tiab] OR cohort[tiab] OR family[tiab] OR families[tiab])'
+
+diseases:
+  axd:
+    name: Alexander disease
+    gene: GFAP
+    omim: "203450"
+    orpha: "58"
+    inheritance: autosomal dominant, mostly de novo
+    definition: the leukodystrophy caused by heterozygous (usually de novo) GFAP variants
+    not_this_disease:
+      - GFAP used as an astrocyte or glial marker (immunostaining, gliosis, tumours)
+      - serum or CSF GFAP as a biomarker of brain injury, stroke, multiple sclerosis or neurodegeneration
+      - autoimmune GFAP astrocytopathy (anti-GFAP antibodies), which is a different disease
+      - other leukodystrophies without a GFAP variant
+    query: '("Alexander disease"[tiab] OR "Alexander''s disease"[tiab] OR "Alexander Disease"[MeSH] OR (GFAP[tiab] AND (leukodystroph*[tiab] OR leukoencephalopath*[tiab])))'
+    key_reviews: {grossi2024: "39420046"}
+    background_keys: [grossi2024_axd_meta, prust2011_axd_onset, messing2025_axd_14variants, genereviews_axd]
+    holdouts: {mura2021_axd_italian: "34865968", gagliardi2024_axd_ukb: "39643430"}
+  lad1:
+    name: leukocyte adhesion deficiency type I (LAD-I)
+    gene: ITGB2
+    omim: "116920"
+    orpha: "2968"
+    inheritance: autosomal recessive
+    definition: the primary immunodeficiency caused by biallelic ITGB2 variants (CD18 deficiency)
+    not_this_disease:
+      - LAD type II (SLC35C1) or LAD type III (FERMT3/kindlin-3); a paper on these is "no" unless it also describes LAD-I patients
+      - ITGB2/CD18 biology, integrin signalling or leukocyte trafficking without patients
+      - ITGB2 expression in cancer or common-disease association studies
+    query: '("leukocyte adhesion deficiency"[tiab] OR "leucocyte adhesion deficiency"[tiab] OR "Leukocyte-Adhesion Deficiency Syndrome"[MeSH] OR "CD18 deficiency"[tiab] OR ITGB2[tiab] OR ITGB2[Gene Name])'
+    key_reviews: {almarzanovoa2018: "29371071"}
+    background_keys: [almarzanovoa2018_lad1_review, kambli2020_lad_india, qasim2009_lad_hsct, booth2025_lad_gene_therapy]
+    holdouts: {}
+  ssadh:
+    name: succinic semialdehyde dehydrogenase (SSADH) deficiency
+    gene: ALDH5A1
+    omim: "271980"
+    orpha: "22"
+    inheritance: autosomal recessive
+    definition: the neurometabolic disorder caused by biallelic ALDH5A1 variants (4-hydroxybutyric aciduria)
+    not_this_disease:
+      - GHB (gamma-hydroxybutyrate) drug use, intoxication or treatment of narcolepsy or alcohol dependence
+      - ALDH5A1 polymorphisms in association studies without SSADH-deficient patients
+      - animal models (Aldh5a1 knockout mice) with no patients
+    query: '("succinic semialdehyde dehydrogenase deficiency"[tiab] OR "SSADH deficiency"[tiab] OR SSADHD[tiab] OR "4-hydroxybutyric aciduria"[tiab] OR "gamma-hydroxybutyric aciduria"[tiab] OR "4-hydroxybutyricaciduria"[tiab] OR ALDH5A1[tiab] OR ALDH5A1[Gene Name])'
+    key_reviews: {didiasova2020: "32093054"}
+    background_keys: [didiasova2020_ssadh_update, tokatlylatzer2023_ssadh_genotype, tokatlylatzer2024_ssadh_guidelines, pearl2003_ssadh_series, genereviews_ssadh]
+    holdouts: {dibacco2019_ssadh_natural_history: "30656189"}
+  danon:
+    name: Danon disease
+    gene: LAMP2
+    omim: "300257"
+    orpha: "34587"
+    inheritance: X-linked dominant
+    definition: the cardiomyopathy and myopathy caused by LAMP2 variants (LAMP-2 deficiency, glycogen storage disease IIb)
+    not_this_disease:
+      - LAMP-2 (or LAMP2A) in autophagy, cancer or neurodegeneration biology without patients
+      - anti-LAMP-2 antibodies in ANCA-associated vasculitis or glomerulonephritis, which is a different condition
+      - other glycogen storage diseases (for example Pompe disease) without a LAMP2 variant
+    query: '("Danon disease"[tiab] OR "Danon''s disease"[tiab] OR "Glycogen Storage Disease Type IIb"[MeSH] OR "LAMP-2 deficiency"[tiab] OR "LAMP2 deficiency"[tiab] OR (LAMP2[tiab] AND (cardiomyopath*[tiab] OR myopath*[tiab] OR mutation*[tiab] OR variant*[tiab])))'
+    key_reviews: {brambatti2019: "30857840"}
+    background_keys: [brambatti2019_danon_gender, cenacchi2020_danon_review, sugie2024_danon_history, genereviews_danon]
+    holdouts: {boucek2011_danon_natural_history: "21415759", khedro2025_danon_prospective: "41121270"}
+  tangier:
+    name: Tangier disease
+    gene: ABCA1
+    omim: "205400"
+    orpha: "31150"
+    inheritance: autosomal recessive
+    definition: the near-absence of HDL caused by biallelic ABCA1 variants
+    not_this_disease:
+      - ABCA1 polymorphisms or expression in association studies of lipids, coronary disease, diabetes or Alzheimer disease, without individual patients
+      - ABCA1 cholesterol-efflux biology without patients
+    unclear_note: heterozygous ABCA1 carriers with familial HDL deficiency (not Tangier disease) are "unclear", so the full text decides
+    query: '("Tangier disease"[tiab] OR "Tangier Disease"[MeSH] OR "analphalipoproteinemia"[tiab] OR (ABCA1[tiab] AND ("HDL deficiency"[tiab] OR hypoalphalipoproteinemia[tiab] OR "low HDL"[tiab])))'
+    key_reviews: {koseki2021: "33994407"}
+    background_keys: [koseki2021_tangier_review, puntoni2012_tangier, mercan2018_tangier_neuropathy, schaefer2016_hdl_deficiency, genereviews_tangier]
+    holdouts: {}

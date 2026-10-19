@@ -116,6 +116,10 @@ def stream_filter(client, url, keep, out_path, gz):
             "kept_file": str(out_path.name)}
 
 
+def names(args) -> tuple[str, str]:
+    return (f"MANIFEST_{args.gene}.json", f"counts_{args.gene}.json") if args.per_gene else ("MANIFEST.json", "counts.json")
+
+
 def names_any(phenotype_ids: str, wanted: set[str]) -> bool:
     """ClinVar PhenotypeIDS lists IDs as 'MONDO:MONDO:0800045,MedGen:C4225383,OMIM:616744', ';' or '|' between conditions."""
     ids = set()
@@ -154,6 +158,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--date", default=date.today().isoformat())
     ap.add_argument("--manifest-out", required=True, help="repo folder for MANIFEST.json and counts.json copies")
     ap.add_argument("--recount", action="store_true", help="recompute counts.json from an existing snapshot; download nothing")
+    ap.add_argument("--per-gene", action="store_true",
+                    help="name the outputs MANIFEST_<GENE>.json and counts_<GENE>.json, so several genes share one dated snapshot")
     args = ap.parse_args(argv)
     if not args.root:
         raise SystemExit("give --root or set GP_RARELINK_REFERENCE_DIR")
@@ -175,7 +181,7 @@ def main(argv: list[str] | None = None) -> int:
                 "location_note": "content kept outside the repository under the reference root; only this manifest and counts.json are committed"}
     vs = snap / "clinvar" / f"variant_summary_{gene}.tsv"
     if args.recount:
-        manifest = json.loads((snap / "MANIFEST.json").read_text())
+        manifest = json.loads((snap / names(args)[0]).read_text())
         rows = list(csv.DictReader((l.lstrip("#") if i == 0 else l for i, l in enumerate(vs.open(encoding="utf-8"))), delimiter="\t"))
     else:
         manifest, rows = download(args, snap, gene, gid, in_gene, manifest, vs)
@@ -239,11 +245,13 @@ def write_counts(args, snap, manifest, rows, gid):
               "classification_rule": "first term of the aggregate germline ClinicalSignificance; 'conflicting' if it says so",
               "hpo_annotations_kept": manifest["files"]["phenotype_hpoa"]["rows_kept"],
               "omim": "not counted (no access in place)"}
-    (snap / "MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    (snap / "counts.json").write_text(json.dumps(counts, indent=2) + "\n")
+    m_name, c_name = names(args)
+    counts["gene"] = args.gene
+    (snap / m_name).write_text(json.dumps(manifest, indent=2) + "\n")
+    (snap / c_name).write_text(json.dumps(counts, indent=2) + "\n")
     dest = Path(args.manifest_out) / args.date
     dest.mkdir(parents=True, exist_ok=True)
-    for n in ("MANIFEST.json", "counts.json"):
+    for n in (m_name, c_name):
         shutil.copy(snap / n, dest / n)
     print(json.dumps(counts, indent=2))
 
