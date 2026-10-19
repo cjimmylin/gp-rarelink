@@ -87,16 +87,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--run-id", required=True)
     ap.add_argument("--allow-missing", action="store_true")
+    ap.add_argument("--prefix", default="gatekeeper", help="names of the prep files, chunk folder and outputs (e.g. gatekeeper_v2)")
     args = ap.parse_args(argv)
     run_dir = Path("data/extracted") / args.disease / args.run_id
-    claims = list(csv.DictReader((run_dir / "gatekeeper_claims.csv").open()))
-    prep = json.loads((run_dir / "gatekeeper_prep.json").read_text())
+    P = args.prefix
+    claims = list(csv.DictReader((run_dir / f"{P}_claims.csv").open()))
+    prep = json.loads((run_dir / f"{P}_prep.json").read_text())
     by_id = {c["claim_id"]: c for c in claims}
     model_ids = {c["claim_id"] for c in claims if c["class"] == "model"}
     verdicts: dict[str, tuple[str, str]] = {}
     problems, missing_chunks = [], []
     for ch in prep["chunk_list"]:
-        path = run_dir / "gatekeeper" / f"{ch['chunk']}.csv"
+        path = run_dir / P / f"{ch['chunk']}.csv"
         if not path.exists():
             missing_chunks.append(ch["chunk"])
             continue
@@ -151,7 +153,7 @@ def main(argv: list[str] | None = None) -> int:
         if verdict in ("partially_supported", "unsupported", "span_not_found"):
             flagged.append({k: out[-1][k] for k in ("claim_id", "pmid", "table", "row", "field", "value", "verdict", "reason")})
 
-    with (run_dir / "gatekeeper.csv").open("w", newline="") as fh:
+    with (run_dir / f"{P}.csv").open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(out[0].keys()))
         w.writeheader()
         w.writerows(out)
@@ -179,7 +181,7 @@ def main(argv: list[str] | None = None) -> int:
         "by_paper": {k: dict(v) for k, v in sorted(by_paper.items())},
         "flagged": flagged,
     }
-    (run_dir / "gatekeeper_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n")
+    (run_dir / f"{P}_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n")
     print(json.dumps({k: summary[k] for k in ("claims", "verdicts", "rates_all_values", "rates_model_claims",
                                                "missing_chunks", "model_claims_not_judged_yet")}, indent=2))
     return 0

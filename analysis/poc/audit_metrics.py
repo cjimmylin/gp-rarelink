@@ -62,10 +62,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--sheet", default="adjudication/poc_audit/sample.csv")
     ap.add_argument("--hpo-sheet", default="adjudication/poc_audit/hpo_model_binding_sample.csv")
     ap.add_argument("--gate", type=float, default=0.04)
+    ap.add_argument("--gatekeeper-file", default="gatekeeper.csv", help="verdict file in the run directory (e.g. gatekeeper_v2_recheck.csv)")
+    ap.add_argument("--out", default="analysis/poc/audit_metrics.json")
     args = ap.parse_args(argv)
     run_dir = Path("data/extracted") / args.disease / args.run_id
     rows = list(csv.DictReader(Path(args.sheet).open()))
-    gk = {r["claim_id"]: r for r in csv.DictReader((run_dir / "gatekeeper.csv").open())}
+    gk = {r["claim_id"]: r for r in csv.DictReader((run_dir / args.gatekeeper_file).open())}
     span = json.loads((run_dir / "span_check.json").read_text())
 
     rated, unrated = [], []
@@ -145,7 +147,7 @@ def main(argv: list[str] | None = None) -> int:
                    "rejected": [{k: h[k] for k in ("n", "pmid", "feature_text_as_stated", "hpo_id", "hpo_label", "method")} | {"note": h.get("rater_note", "")}
                                 for h in filled if h not in ok]}
 
-    out = {"run_id": args.run_id, "sheet": args.sheet, "rated": n, "unrated": unrated,
+    out = {"run_id": args.run_id, "sheet": args.sheet, "gatekeeper_file": args.gatekeeper_file, "rated": n, "unrated": unrated,
            "labels": dict(c), "per_stratum": {k: dict(v) for k, v in sorted(per_stratum.items())},
            "unsupported_strict": strict, "not_supported_lenient": lenient, "stratum_weighted": weighted, "q4_gate": gate,
            "gatekeeper_confusion_rows_gatekeeper_cols_human": confusion,
@@ -154,7 +156,7 @@ def main(argv: list[str] | None = None) -> int:
            "disagreements": [x for x in rated if (x["gatekeeper"] == "supported") != (x["human"] == "supported")],
            "not_supported_by_human": [x for x in rated if x["human"] != "supported"],
            "hpo_binding_sample": hpo}
-    dest = Path("analysis/poc/audit_metrics.json")
+    dest = Path(args.out)
     dest.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n")
     print(json.dumps({k: out[k] for k in ("rated", "labels", "unsupported_strict", "not_supported_lenient", "stratum_weighted", "q4_gate",
                                            "gatekeeper_agreement_supported_vs_not")}, indent=2))
