@@ -1,47 +1,47 @@
 {
   "run_id": "poc-ha20-run-2",
   "sheet": "adjudication/poc_audit/sample.csv",
+  "gatekeeper_file": "gatekeeper.csv",
   "rated": 50,
   "unrated": [],
   "labels": {
-    "supported": 42,
-    "unsupported": 2,
-    "partially_supported": 6
+    "supported": 44,
+    "unsupported": 3,
+    "partially_supported": 3
   },
   "per_stratum": {
     "demographic_inheritance": {
       "supported": 10
     },
     "feature_excluded": {
-      "supported": 7,
-      "partially_supported": 3
+      "partially_supported": 2,
+      "supported": 8
     },
     "feature_observed": {
-      "supported": 9,
-      "partially_supported": 1
+      "supported": 10
     },
     "variant": {
       "supported": 16,
-      "unsupported": 2,
-      "partially_supported": 2
+      "unsupported": 3,
+      "partially_supported": 1
     }
   },
   "unsupported_strict": {
-    "k": 2,
+    "k": 3,
     "n": 50,
-    "share": 0.04,
+    "share": 0.06,
     "ci95": [
-      0.004881,
-      0.137138
+      0.012549,
+      0.165482
     ]
   },
   "not_supported_lenient": {
-    "k": 8,
+    "k": 6,
     "n": 50,
-    "share": 0.16,
+    "share": 0.12,
     "ci95": [
-      0.071701,
-      0.291126
+      0.045335,
+      0.243101
     ]
   },
   "stratum_weighted": {
@@ -51,67 +51,67 @@
       "feature_excluded": 836,
       "demographic_inheritance": 2555
     },
-    "unsupported": 0.0332,
-    "not_supported": 0.1248,
+    "unsupported": 0.0498,
+    "not_supported": 0.0823,
     "note": "stratum rates weighted by pool size; point estimates only (no interval)"
   },
   "q4_gate": {
     "automated_span_match": 1.0,
     "automated_span_match_ok": true,
-    "human_unsupported_rate": 0.04,
-    "human_unsupported_rate_ok": true,
+    "human_unsupported_rate": 0.06,
+    "human_unsupported_rate_ok": false,
     "threshold": 0.04,
     "complete": true
   },
   "gatekeeper_confusion_rows_gatekeeper_cols_human": {
     "supported": {
-      "supported": 40,
-      "partially_supported": 6,
-      "unsupported": 2
+      "supported": 44,
+      "partially_supported": 1,
+      "unsupported": 3
     },
     "partially_supported": {
-      "supported": 2,
-      "partially_supported": 0,
+      "supported": 0,
+      "partially_supported": 2,
       "unsupported": 0
     }
   },
   "gatekeeper_agreement_supported_vs_not": {
-    "k": 40,
+    "k": 46,
     "n": 50,
-    "share": 0.8,
+    "share": 0.92,
     "ci95": [
-      0.662817,
-      0.899698
+      0.807657,
+      0.977772
     ]
   },
   "gatekeeper_calibration": {
     "not_supported_vs_human_not_supported": {
-      "tp": 0,
-      "fp": 2,
-      "fn": 8,
+      "tp": 2,
+      "fp": 0,
+      "fn": 4,
       "precision": {
-        "k": 0,
+        "k": 2,
         "n": 2,
-        "share": 0.0,
+        "share": 1.0,
         "ci95": [
-          0.0,
-          0.841886
+          0.158114,
+          1.0
         ]
       },
       "recall": {
-        "k": 0,
-        "n": 8,
-        "share": 0.0,
+        "k": 2,
+        "n": 6,
+        "share": 0.333333,
         "ci95": [
-          0.0,
-          0.369417
+          0.043272,
+          0.777222
         ]
       }
     },
     "unsupported_vs_human_unsupported": {
       "tp": 0,
       "fp": 0,
-      "fn": 2,
+      "fn": 3,
       "precision": {
         "k": 0,
         "n": 0,
@@ -120,16 +120,16 @@
       },
       "recall": {
         "k": 0,
-        "n": 2,
+        "n": 3,
         "share": 0.0,
         "ci95": [
           0.0,
-          0.841886
+          0.707598
         ]
       }
     }
   },
-  "changed_on_reread": 0,
+  "changed_on_reread": 7,
   "disagreements": [
     {
       "claim_id": "C049428",
@@ -145,7 +145,7 @@
       "gatekeeper_source": "script",
       "gatekeeper_reason": "value occurs inside its verbatim span",
       "note": "it's low frequency somatic mosaicism",
-      "final_reason": ""
+      "final_reason": "it's low frequency somatic mosaicism"
     },
     {
       "claim_id": "C038628",
@@ -161,7 +161,7 @@
       "gatekeeper_source": "script",
       "gatekeeper_reason": "value occurs inside its verbatim span",
       "note": "splice site, frameshift, or nonsense ",
-      "final_reason": ""
+      "final_reason": "it's one of the three: splice site, frameshift, or nonsense"
     },
     {
       "claim_id": "C032922",
@@ -171,13 +171,13 @@
       "field": "gene_symbol_as_stated",
       "value": "\"TNFAIP3\"",
       "human_first": "partially_supported",
-      "human": "partially_supported",
-      "changed_on_reread": false,
+      "human": "unsupported",
+      "changed_on_reread": true,
       "gatekeeper": "supported",
       "gatekeeper_source": "script",
       "gatekeeper_reason": "value occurs inside its verbatim span",
       "note": "right gene, unknown about variant",
-      "final_reason": ""
+      "final_reason": "variant is different: c.707T>C, p.(Leu236Pro)"
     },
     {
       "claim_id": "C048990",
@@ -193,103 +193,7 @@
       "gatekeeper_source": "gatekeeper",
       "gatekeeper_reason": "",
       "note": "group of patients, undetermined variant",
-      "final_reason": ""
-    },
-    {
-      "claim_id": "C017466",
-      "stratum": "feature_observed",
-      "pmid": "33679772",
-      "table": "phenotypic_features",
-      "field": "status",
-      "value": "\"observed\"",
-      "human_first": "partially_supported",
-      "human": "partially_supported",
-      "changed_on_reread": false,
-      "gatekeeper": "supported",
-      "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "",
-      "note": "fevers and neutropenia are two separate descriptions",
-      "final_reason": ""
-    },
-    {
-      "claim_id": "C008344",
-      "stratum": "feature_excluded",
-      "pmid": "32719680",
-      "table": "phenotypic_features",
-      "field": "status",
-      "value": "\"excluded\"",
-      "human_first": "supported",
-      "human": "supported",
-      "changed_on_reread": false,
-      "gatekeeper": "partially_supported",
-      "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "Context names a normal finding; 'excluded' fits only if read as abnormal immunoglobulins excluded.",
-      "note": "",
-      "final_reason": ""
-    },
-    {
-      "claim_id": "C049812",
-      "stratum": "feature_excluded",
-      "pmid": "40574834",
-      "table": "phenotypic_features",
-      "field": "status",
-      "value": "\"excluded\"",
-      "human_first": "supported",
-      "human": "supported",
-      "changed_on_reread": false,
-      "gatekeeper": "partially_supported",
-      "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "Cell shows normal IFN score; 'excluded' fits elevated IFN, but context names the normal finding (inverted).",
-      "note": "",
-      "final_reason": ""
-    },
-    {
-      "claim_id": "C025863",
-      "stratum": "feature_excluded",
-      "pmid": "35958611",
-      "table": "phenotypic_features",
-      "field": "status",
-      "value": "\"excluded\"",
-      "human_first": "partially_supported",
-      "human": "partially_supported",
-      "changed_on_reread": false,
-      "gatekeeper": "supported",
-      "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "",
-      "note": "status is negative",
-      "final_reason": ""
-    },
-    {
-      "claim_id": "C064551",
-      "stratum": "feature_excluded",
-      "pmid": "42572791",
-      "table": "phenotypic_features",
-      "field": "status",
-      "value": "\"excluded\"",
-      "human_first": "partially_supported",
-      "human": "partially_supported",
-      "changed_on_reread": false,
-      "gatekeeper": "supported",
-      "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "",
-      "note": "feature is only \"Gastrointestinal investigation (including imaging and stool calprotectin)\" and status is negative",
-      "final_reason": ""
-    },
-    {
-      "claim_id": "C008133",
-      "stratum": "feature_excluded",
-      "pmid": "32714711",
-      "table": "phenotypic_features",
-      "field": "status",
-      "value": "\"excluded\"",
-      "human_first": "partially_supported",
-      "human": "partially_supported",
-      "changed_on_reread": false,
-      "gatekeeper": "supported",
-      "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "",
-      "note": "feature is \"pediatric-immunology and pediatric-rheumatology consultations\" with status \"negative\"",
-      "final_reason": ""
+      "final_reason": "group of patients, distinct variants"
     }
   ],
   "not_supported_by_human": [
@@ -307,7 +211,7 @@
       "gatekeeper_source": "script",
       "gatekeeper_reason": "value occurs inside its verbatim span",
       "note": "it's low frequency somatic mosaicism",
-      "final_reason": ""
+      "final_reason": "it's low frequency somatic mosaicism"
     },
     {
       "claim_id": "C038628",
@@ -323,7 +227,7 @@
       "gatekeeper_source": "script",
       "gatekeeper_reason": "value occurs inside its verbatim span",
       "note": "splice site, frameshift, or nonsense ",
-      "final_reason": ""
+      "final_reason": "it's one of the three: splice site, frameshift, or nonsense"
     },
     {
       "claim_id": "C032922",
@@ -333,13 +237,13 @@
       "field": "gene_symbol_as_stated",
       "value": "\"TNFAIP3\"",
       "human_first": "partially_supported",
-      "human": "partially_supported",
-      "changed_on_reread": false,
+      "human": "unsupported",
+      "changed_on_reread": true,
       "gatekeeper": "supported",
       "gatekeeper_source": "script",
       "gatekeeper_reason": "value occurs inside its verbatim span",
       "note": "right gene, unknown about variant",
-      "final_reason": ""
+      "final_reason": "variant is different: c.707T>C, p.(Leu236Pro)"
     },
     {
       "claim_id": "C048990",
@@ -355,71 +259,39 @@
       "gatekeeper_source": "gatekeeper",
       "gatekeeper_reason": "",
       "note": "group of patients, undetermined variant",
-      "final_reason": ""
+      "final_reason": "group of patients, distinct variants"
     },
     {
-      "claim_id": "C017466",
-      "stratum": "feature_observed",
-      "pmid": "33679772",
-      "table": "phenotypic_features",
-      "field": "status",
-      "value": "\"observed\"",
-      "human_first": "partially_supported",
-      "human": "partially_supported",
-      "changed_on_reread": false,
-      "gatekeeper": "supported",
-      "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "",
-      "note": "fevers and neutropenia are two separate descriptions",
-      "final_reason": ""
-    },
-    {
-      "claim_id": "C025863",
+      "claim_id": "C008344",
       "stratum": "feature_excluded",
-      "pmid": "35958611",
+      "pmid": "32719680",
       "table": "phenotypic_features",
       "field": "status",
       "value": "\"excluded\"",
-      "human_first": "partially_supported",
+      "human_first": "supported",
       "human": "partially_supported",
-      "changed_on_reread": false,
-      "gatekeeper": "supported",
+      "changed_on_reread": true,
+      "gatekeeper": "partially_supported",
       "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "",
-      "note": "status is negative",
-      "final_reason": ""
+      "gatekeeper_reason": "Context names a normal finding; 'excluded' fits only if read as abnormal immunoglobulins excluded.",
+      "note": "",
+      "final_reason": "Context names a normal finding; 'excluded' fits only if read as abnormal immunoglobulins excluded."
     },
     {
-      "claim_id": "C064551",
+      "claim_id": "C049812",
       "stratum": "feature_excluded",
-      "pmid": "42572791",
+      "pmid": "40574834",
       "table": "phenotypic_features",
       "field": "status",
       "value": "\"excluded\"",
-      "human_first": "partially_supported",
+      "human_first": "supported",
       "human": "partially_supported",
-      "changed_on_reread": false,
-      "gatekeeper": "supported",
+      "changed_on_reread": true,
+      "gatekeeper": "partially_supported",
       "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "",
-      "note": "feature is only \"Gastrointestinal investigation (including imaging and stool calprotectin)\" and status is negative",
-      "final_reason": ""
-    },
-    {
-      "claim_id": "C008133",
-      "stratum": "feature_excluded",
-      "pmid": "32714711",
-      "table": "phenotypic_features",
-      "field": "status",
-      "value": "\"excluded\"",
-      "human_first": "partially_supported",
-      "human": "partially_supported",
-      "changed_on_reread": false,
-      "gatekeeper": "supported",
-      "gatekeeper_source": "gatekeeper",
-      "gatekeeper_reason": "",
-      "note": "feature is \"pediatric-immunology and pediatric-rheumatology consultations\" with status \"negative\"",
-      "final_reason": ""
+      "gatekeeper_reason": "Cell shows normal IFN score; 'excluded' fits elevated IFN, but context names the normal finding (inverted).",
+      "note": "",
+      "final_reason": "Cell shows normal IFN score; 'excluded' fits elevated IFN, but context names the normal finding (inverted)."
     }
   ],
   "hpo_binding_sample": {

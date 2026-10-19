@@ -290,8 +290,52 @@ Jimmy rated all 50 claims and 27 of the 30 HPO bindings on a private rating page
 - **D-28:** no script shortcut in the gatekeeper; every value is judged, including its link to the person. That is about 80% more gatekeeper work.
 - **Pre-registration:** draft v0.6 applies all three (§6.2, §6.4, §7.2.2).
 
-### 10.4 Still open
+### 10.4 Still open (as of the first pass; see §10.5 for what changed)
 
-- **The step-3 second look:** 10 claims, on the rating page's second tab. Then the final labels go through `audit_metrics.py`, for both v1 and v2.
-- **The gatekeeper's weak recall** needs a design answer before the freeze. Options for the pilot report include a claim-level read with the person named in the question, a second independent gatekeeper, or accepting it as a pre-filter and relying on the audit. That decision is for after the second look.
+- **The step-3 second look:** done the same day (§10.5).
+- **The gatekeeper's weak recall** needs a design answer before the freeze (§10.5, D-29).
 - **Spend:** the session reading went from $593.02 to $610.19 ($17.17) across the re-check (28 short helper reads) and this session's own work; normalization repairs cost no model calls. Pilot total: $610.19 against the $1,000 ceiling.
+
+### 10.5 Final labels after the second look: Q4 not met
+
+Jimmy re-read 10 claims with the full paragraph in view and, for this step, the v1 gatekeeper verdict beside each (POC_DESIGN Stage 5 step 3). Final labels: `adjudication/poc_audit/sample.csv` (`final_rating`, `final_reason`) and `ratings_raw.json`; scores: `analysis/poc/audit_metrics.json` (v1) and `audit_metrics_gatekeeper_v2.json` (v2), both run 2026-10-19.
+
+| | First pass | Final | Plain rate, final (exact 95% CI) | Weighted by stratum pool, final |
+|---|---|---|---|---|
+| Supported | 42 | 44 | | |
+| Partially supported | 6 | 3 | | |
+| Unsupported | 2 | 3 | **6.0% (1.3–16.5%)** | 5.0% |
+| Not fully supported | 8 | 6 | 12.0% (4.5–24.3%) | 8.2% |
+
+- **Q4 is not met.** The automated span match is 100%, but the human unsupported rate is 6.0%, above the ≤ 4% point-estimate limit. The interval is wide (n = 50), and the pre-registered target (< 2%) is certified only by the 250-claim audit. Under the Stage 5 gate rule the pilot continues (Stages 6 and 7 are still needed), and the pilot report must recommend fixes and a re-run before the six-disease run.
+- **Seven labels changed on re-reading.**
+  - Four partials became supported: C017466 (neutropenic fevers), C025863 (fever, table "–"), C064551 and C008133 (negative investigations recorded as excluded).
+  - Two supported became partial: C008344 and C049812, normal findings recorded in the inverted form ("normal immunoglobulins", excluded). Jimmy's reasons repeat the v1 gatekeeper's wording, which the second-look tab showed him.
+  - One partial became unsupported: **C032922**, gene symbol "TNFAIP3" for "Table 2 column 8" of 37342083 (c.1129G>A, p.(Val377Met)). Jimmy's reason: "variant is different: c.707T>C, p.(Leu236Pro)". See the note below.
+- **Every unsupported claim, and one partial, is a variant field taken from something other than this person's own statement:**
+
+| Claim | Field | What went wrong | Error class |
+|---|---|---|---|
+| C049428 | pathogenicity "pathogenic" (40574834) | Given to P3's mother from a cohort-wide sentence; she has low-level somatic mosaicism | Group statement applied to a person |
+| C048990 | zygosity "heterozygous" (40574834) | Taken from a group statement; P1's variant is undetermined | Group statement applied to a person |
+| C032922 | gene symbol (37342083) | Jimmy: the variant is different (the paper's own patients carry c.707T>C) | Variant or row attribution (to confirm) |
+| C038628 | variant type "nonsense" (39125844), partial | The paper gives three types for the group (splice site, frameshift, nonsense) | Group statement applied to a person |
+| C008344, C049812 | status "excluded", partial | Normal finding recorded in the inverted form | Normal-finding form (D-27 already fixes it for new runs) |
+
+- **Note on C032922.** It alone moves the result across the gate (2 of 50 is 4.0%, met; 3 of 50 is 6.0%, not met). Claude's reading of the paper: Table 2 has one column per missense variant, the paper's own c.707T>C first and then variants cited from earlier papers; column 8 is c.1129G>A (cited to Niwano et al., 2022), and the quoted row header "Molecular TNFAIP3 (NM_006290) anomaly" covers every column. On that reading the gene symbol is right for that column, and the problem Jimmy points at may be a different one: the extractor made a "person" of a literature-summary column. The label stands as Jimmy gave it; this report counts it as unsupported until he says otherwise.
+- **The gatekeepers against the final labels:**
+
+| Gatekeeper | Agreement (supported vs not) | Of 6 not-fully-supported, flagged | Of 3 unsupported, called unsupported | False flags |
+|---|---|---|---|---|
+| v1, as run on run-2 | 46/50 | 2 (C008344, C049812) | 0 | 0 |
+| v2 re-check | 46/50 | 2 (C049428 as partial, C038628) | 0 | 0 |
+
+- **The v1 figures are not independent.** v1 now scores better because the two claims it flagged became partial when Jimmy saw its reasons. Neither gatekeeper called any of the three unsupported claims unsupported, and both called C032922 and C048990 supported.
+- **v2 conflicts with Jimmy's final labels on one rule.** v2 says a normal finding in the inverted form is supported (D-27 accepted both recording forms); Jimmy's final labels call it partial. A v3 should treat the inverted form as partial, matching D-27's preferred form.
+- **HPO bindings:** unchanged, 23 of 27 accepted.
+
+**What the pilot report should recommend (D-29, open; recommendation first in `DECISIONS.md`):**
+1. **Extraction (instructions v5):** variant fields (zygosity, inheritance, pathogenicity, variant type) only from a statement or table row about this person or a named group that includes them; otherwise "not reported". v5 already holds the D-27 rule. If Jimmy's point on C032922 is that a literature-summary column should not become a person, that needs its own rule, weighed against how review rows are handled now (they are extracted as people and merged with the original report).
+2. **Gatekeeper v3:** before judging, the gatekeeper writes down who the quote is about (this person, a named group, the cohort, another paper's patients) and judges the person link from that; the inverted normal-finding form is partial. This follows the mitigation listed for "gatekeeper agrees with extractor" in the POC risk table.
+3. **The re-run before the six-disease run:** v5 extraction and gatekeeper v3 on about 20 HA20 papers weighted toward cohort papers, with a fresh 50-claim audit drawn from them by a new seed, so the gatekeeper is tested on claims its rules were not written from. A rough estimate from run-2 rates is about $110 (20 papers at about $1.95 for extraction and about $3.60 for gatekeeper v3 with D-28's extra claims); it would be estimated properly before running.
+4. **Keep the 250-claim audit as the measure.** The gatekeeper is a filter whose accuracy is reported against human labels, not an error rate.

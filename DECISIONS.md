@@ -36,6 +36,17 @@ How to use this file:
   - For the pilot, keep the ClinVar-seeded papers but report every result with and without them; the tags make this cheap.
   - Use the difference between the two to set the rule for the six-disease study before the freeze.
 
+**D-29 · What the Q4 miss triggers: fixes and a re-run before the six-disease run** (opened 2026-10-19)
+- **The finding:** after the second look, 3 of 50 audited claims are unsupported (6.0%, exact 95% CI 1.3–16.5%), above the pilot's ≤ 4% limit. All three, and one partial, are variant fields taken from a group statement or a summary table rather than from this person. Neither gatekeeper (v1 or v2) called any of the three unsupported (`reports/poc_stage4_5_findings.md` §10.5).
+- **The rule already set:** the Stage 5 gate says the pilot continues, and the report must recommend fixes and a re-run before Month-2 scale-up.
+- **Recommendation:**
+  - extraction instructions v5: variant fields only from this person's own statement or table row, or a named group that includes them; otherwise "not reported";
+  - gatekeeper v3: the gatekeeper first states who the quote is about, then judges; the inverted normal-finding form is partial (matches Jimmy's final labels and D-27);
+  - re-run v5 and gatekeeper v3 on about 20 HA20 papers weighted toward cohort papers, with a fresh 50-claim audit (new seed) rated by Jimmy. Rough estimate about $110 from run-2 rates, to be estimated properly before running; it would take the pilot to about $720 of the $1,000 ceiling;
+  - run-2 stays the extraction of record for Stage 6 concordance, so Stage 6 need not wait;
+  - the 250-claim audit stays the pre-registered measure.
+- **Also for Jimmy:** C032922 alone moves the result across the limit. Claude's reading is that the gene symbol is right for that table column (a variant the paper cites from an earlier report); the label stands as given unless Jimmy changes it.
+
 ### Needed before the pre-registration can be frozen
 
 **D-08 · Substitute-disease trigger**
@@ -100,6 +111,13 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · Audit second look done: Q4 not met (3 of 50 unsupported); D-29 opened
+- **Jimmy's second look** (10 claims, with the full paragraph and the v1 gatekeeper verdict in view) changed 7 labels. Final: 44 supported, 3 partial, 3 unsupported.
+- **Q4:** human unsupported rate 6.0% (exact 95% CI 1.3–16.5%; 5.0% weighted by stratum pool), above the ≤ 4% limit. The automated span match is 100%. Per the Stage 5 gate rule the pilot continues to Stages 6 and 7.
+- **Gatekeepers against the final labels:** v1 and v2 each agree on 46 of 50 and flag 2 of the 6 not-fully-supported claims; neither calls any of the 3 unsupported claims unsupported. v1's agreement is not independent, since Jimmy saw its reasons.
+- **Opened D-29** (fixes and a re-run). Files: `adjudication/poc_audit/sample.csv`, `ratings_raw.json`, `analysis/poc/audit_metrics*.json`, report §10.5.
+- **Unchanged:** the metrics, thresholds and pre-registration text; run-2 and its phenopackets.
 
 ### 2026-10-19 · Jimmy's 40 human screening labels applied; the pilot-design branch is archived
 - **Handoff.** The pilot-design session (branch `claude/zealous-meitner-k7moex`) reported that Jimmy decided there, on 2026-10-19, to stop pipeline work on that branch and archive it unmerged; this thread owns Stage 3 onward. Its one asset is `data/literature/ha20/spotcheck_human_labels_2026-10-19.csv`: study type for 20 papers and HA20 relevance for 20, confirmed by Jimmy in chat after Claude read each abstract.

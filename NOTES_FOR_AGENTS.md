@@ -42,7 +42,7 @@ How to maintain it:
   - Stage 4: 749 phenopackets, all valid; HPO binding 88.5%; normalization 92.8% of cDNA descriptions (check not met as worded, D-26);
   - Stage 5: 8 unsupported and 305 partial of 22,003 judged values; phenopackets rebuilt without claims not judged supported.
   - Human audit (Jimmy, first pass): 2 of 50 unsupported (4.0%, the Q4 limit), 6 partial. The gatekeeper flagged none of his 8; v2 (D-28) flags 2. D-26 repairs: 135 of 138 cDNA descriptions normalized. Report §10.
-  - **Waiting on Jimmy:** ratings for the 50 claims and 30 HPO bindings, entered on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. D-26 to D-28 decided 2026-10-19; the step-3 second look (10 claims, `final` collection) is next.
+  - **Audit ratings (collected 2026-10-19):** the 50 claims and 30 HPO bindings were rated on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. D-26 to D-28 decided 2026-10-19. The step-3 second look is done (`final` collection): **Q4 not met, 3 of 50 unsupported (6.0%)**; D-29 (fixes and a re-run) is open, report §10.5.
   - **Next:** Stage 6 (ClinVar concordance, harness side only) and Stage 7.
   - Report: `reports/poc_stage4_5_findings.md`. Session usage reading 580.31.
 - **Pilot progress (2026-10-18, earlier):**
@@ -140,6 +140,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
   - **Running about 13 helpers at once worked.** That was 85 papers in about 50 minutes of wall time. A helper writes its file before its final checks, so expect rewrites after the first commit.
 - **Stage 4–5 lessons (2026-10-19):**
   - **A word match is not support.** Three audit failures had values copied from their own quote but about another person or the whole cohort. Never mark a value supported by script (D-28).
+  - **The second-look tab shows the gatekeeper's reasons, so labels changed there are not independent of it.** Two of Jimmy's final labels repeat v1's wording. Say so when reporting gatekeeper agreement.
   - **Don't trust the gatekeeper's rate as an error rate.** It found 0.036% unsupported where the human audit found 4%; even v2 caught 2 of 8. Report gatekeeper accuracy against human labels instead.
   - **Ratings via an artifact page work.** The `db` store keeps them; read with `ArtifactData list` + `out_dir`, then `apply_ratings.py`. Keep gatekeeper verdicts out of the first-pass page.
   - **The five-hour usage limit stops helpers mid-task.** Many had already written their output; check each file is complete before trusting it. Resume the rest with SendMessage to the same helper. `get_session` → `rate_limit_info` shows when the account is past the limit and running on overage (it matters for D-17).
@@ -157,7 +158,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-29**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-30**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
