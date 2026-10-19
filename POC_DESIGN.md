@@ -730,8 +730,10 @@ pattern affecting many documents.
 
 **Checks.**
 - 100 % of phenopackets schema-valid.
-- Normalization status distribution: ≥ 95 % `normalized` or `corrected`;
-  `protein_only` and `unresolvable` listed with reasons.
+- Normalization status distribution: ≥ 95 % `normalized` or `corrected`,
+  counted over distinct descriptions that state a cDNA change (D-26,
+  decided 2026-10-19); `protein_only`, structural (`not_normalized`) and
+  `unresolvable` listed with reasons.
 - HPO binding: share bound by exact ID, by label, by model; share "no
   suitable term". Sample 30 model-bound terms for a human check.
 - Three-state preserved: no `excluded` feature in a phenopacket without an

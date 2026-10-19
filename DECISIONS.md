@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.5 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
+**Pre-registration status:** draft v0.6 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -14,14 +14,6 @@ How to use this file:
 ## Open decisions
 
 ### Needed now, for the pilot
-
-**D-26 · Wording of the variant-normalization check** (opened 2026-10-19)
-- **The problem:** `POC_DESIGN.md` Stage 4 asks for 95% of distinct variant descriptions `normalized` or `corrected`. On run-2 that is 128 of 277 (46.2%), because 99 descriptions give only a protein change and 40 give no cDNA or protein change (copy-number changes, exon deletions, prose). Neither can be normalized from the text. Of the 138 that state a cDNA change, 128 are normalized or corrected (92.8%); 10 were rejected by VariantValidator (`reports/poc_stage4_5_findings.md` §4.1).
-- **Recommendation:** measure the check over descriptions that state a cDNA change, and report protein-only and structural descriptions separately with their status. For the frozen pipeline, fix the repairable rejections: map transcripts VariantValidator does not hold to one it does, and record a corrected query beside the original string for typos. On run-2 that would give up to 137 of 138.
-
-**D-27 · Normal findings recorded as excluded features; gatekeeper v2** (opened 2026-10-19)
-- **The problem:** the extraction records a normal finding with the paper's words as the feature and status "excluded" ("normal CRP" excluded, meaning raised CRP is absent). The gatekeeper instructions don't say how to judge that. Some helpers accepted it, about 40 flags call it partial, and one calls it unsupported. Because partials are left out of the phenopackets, some correct exclusions are dropped (`reports/poc_stage4_5_findings.md` §5.3).
-- **Recommendation:** for the six-disease run, write the abnormality as the feature when status is excluded ("elevated CRP") and keep the paper's words in the quote. Gatekeeper v2 states that convention, plus two rules the flags showed were missing: a per-patient table outranks a group statement, and a hedged phrase supports neither observed nor excluded. No re-run on HA20.
 
 **D-17 · How the pipeline calls Claude** (opened 2026-10-18)
 - **The problem:**
@@ -109,8 +101,26 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-19 · D-26, D-27 and D-28 decided; four HPO ratings recounted
+Jimmy chose the recommended option on each question (asked in the session, 2026-10-19), after rating the 50-claim audit sample and 27 of the 30 HPO bindings.
+- **D-26 · The normalization check counts descriptions that state a cDNA change.**
+  - The Stage 4 check (`POC_DESIGN.md`) is measured over distinct descriptions that state a cDNA change. Protein-only and structural descriptions are reported separately, each with its status.
+  - The frozen pipeline fixes the repairable rejections: a transcript VariantValidator does not hold is mapped to one it does, and a typo gets a corrected query recorded beside the original string.
+  - Pre-registration §7.2.2 reports normalization success by description type (draft v0.6).
+- **D-27 · Normal findings are recorded as the absent abnormality.**
+  - For the six-disease run, when a feature is excluded because a finding is normal, the feature is the abnormality ("elevated CRP", excluded), and the quote keeps the paper's words ("CRP was normal").
+  - Gatekeeper v2 states this convention, and two rules the Stage 5 flags showed were missing: a per-patient table outranks a group statement, and a hedged phrase supports neither observed nor excluded.
+  - No re-run on HA20; run-2 stays the extraction of record.
+- **D-28 · The gatekeeper checks every value, including the link to the person.**
+  - No value is marked supported by script because it appears in its quote. Every value except bookkeeping fields goes to the gatekeeper. At HA20 scale that is 9,848 more claims on top of 12,155, about 80% more gatekeeper work.
+  - The gatekeeper checks that the quote ties the value to this person (or this paper), not only that the words match.
+  - Before the six-disease run, gatekeeper v2 is re-checked against Jimmy's 50 ratings.
+  - Pre-registration §6.4 says so (draft v0.6).
+  - **Why:** in Jimmy's audit the gatekeeper called all 8 of his not-fully-supported claims supported, and 3 of the 8 had been marked supported by script.
+- **HPO recount.** Jimmy's "no" on h02, h04, h23 and h25 counts as yes: the term is right, and the objection was to how normal findings are recorded (D-27). HPO model bindings accepted: 23 of 27 rated (3 left unrated).
+
 ### 2026-10-19 · Pilot Stages 4 and 5 done, instructions v4 checked (Claude's calls; audit ratings pending)
-- **Ran as approved under D-23 to D-25.** Results: `reports/poc_stage4_5_findings.md`. Open questions are D-26 and D-27.
+- **Ran as approved under D-23 to D-25.** Results: `reports/poc_stage4_5_findings.md`. Open questions were D-26 and D-27 (decided the same day, with D-28).
   - **v4 check:** 13 of 13 rule checks as intended on the 10 purposive papers; all 11,706 quotes verbatim. Run-2 stays the extraction of record (no run-3).
   - **Stage 4:** 749 phenopackets, all schema-valid; HPO binding 88.5% of 4,453 feature rows; normalization 128 of 277 distinct descriptions (92.8% of those with a cDNA), below the Stage 4 check as worded (D-26).
   - **Stage 5:** of 22,003 judged values, 21,690 supported, 305 partially supported, 8 unsupported (0.036%, exact 95% CI 0.016–0.072%), 0 quotes not found. The 50-claim human audit and the 30-binding HPO check wait for Jimmy's ratings.

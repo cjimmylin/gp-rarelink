@@ -17,7 +17,7 @@ How to maintain it:
   - the grant application and award email (`grant/`);
   - background literature (`background/`, compiled 2026-10-16 in Cowork);
   - `DECISIONS.md` and `BUDGET.md`;
-  - pre-registration draft v0.5 (`preregistration/analysis_plan.md`), not frozen. D-01 to D-07 and D-18 are decided;
+  - pre-registration draft v0.6 (`preregistration/analysis_plan.md`), not frozen. D-01 to D-07, D-18 and D-26 to D-28 are decided;
   - a digest of the claude.ai Project chats (`docs/claude-ai-threads.md`) and the pre-grant concept chat (`background/origins/`), both added from claude.ai on 2026-10-18;
   - **pilot Stages 0–2, built and tested offline** by the session "Rarelink POC study design" (merged from branch `claude/zealous-meitner-k7moex`). That covers:
     - the `pipeline/` skeleton with isolation guard and tests;
@@ -41,7 +41,7 @@ How to maintain it:
   - v4 check: 13 of 13 rule checks as intended; run-2 stays the extraction of record;
   - Stage 4: 749 phenopackets, all valid; HPO binding 88.5%; normalization 92.8% of cDNA descriptions (check not met as worded, D-26);
   - Stage 5: 8 unsupported and 305 partial of 22,003 judged values; phenopackets rebuilt without claims not judged supported.
-  - **Waiting on Jimmy:** ratings for the 50 claims and 30 HPO bindings, entered on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. Also D-26 and D-27.
+  - **Waiting on Jimmy:** ratings for the 50 claims and 30 HPO bindings, entered on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. D-26 to D-28 decided 2026-10-19; the step-3 second look (10 claims, `final` collection) is next.
   - **Next:** Stage 6 (ClinVar concordance, harness side only) and Stage 7.
   - Report: `reports/poc_stage4_5_findings.md`. Session usage reading 580.31.
 - **Pilot progress (2026-10-18, earlier):**
@@ -152,7 +152,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-28**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-29**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
