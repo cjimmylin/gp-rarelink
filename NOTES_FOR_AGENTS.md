@@ -30,7 +30,7 @@ How to maintain it:
   - every quote was found verbatim;
   - merges: 2 false among the 58 merges of policy v2, now policy v3;
   - variant agreement is below 0.9 because of cohort scope.
-  - Report: `reports/poc_stage3_findings.md`. Waiting on Jimmy for D-22 (instructions v3, run-2, supplementary files). Session usage reading 240.36.
+  - Report: `reports/poc_stage3_findings.md`. D-22 decided 2026-10-19 (instructions v3, run-2, supplementary files); run-2 in preparation. Session usage reading 240.36 at the end of Stage 3.
 - **Pilot progress (2026-10-18, earlier):**
   - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
   - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.

@@ -15,20 +15,6 @@ How to use this file:
 
 ### Needed now, for the pilot
 
-**D-22 · Extraction instructions v3 and a second full run (after Stage 3)** (opened 2026-10-18)
-- **Why now:** Stage 3 (`reports/poc_stage3_findings.md`) found that helpers read the same papers consistently but chose different scopes.
-  - The repeat agreed on 98.7% of checklist cells.
-  - Variant agreement was 0.547 on strings and 0.702 on folded keys, below the 0.9 marker. It rose to 0.973 on keys without the two papers where the runs chose a different cohort scope.
-- **Recommendations** (revisions, since the pre-registration is not frozen):
-  1. **Cohort scope.** Extract people with a TNFAIP3 variant or HA20 diagnosis, plus relatives described in relation to them. Record only the count of other cohort members.
-  2. **Labels.** Give unnamed people a fixed label pattern taken from the paper's own wording and position.
-  3. **"–" cells.** A "–" cell is "excluded" only when the paper defines the symbol as absent or negative; quote that definition as a second span. Otherwise it stays "not reported" (rule 6).
-  4. **Study criteria.** Never use study inclusion or exclusion criteria as phenotype evidence.
-  5. **Variant rows without a printed variant.** Keep them but leave them out of variant counts and concordance. Reword Stage 3 check 3 accordingly.
-  6. **Run-2.** Approve `poc-ha20-run-2` over all 85 papers under v3 plus the converter fixes, with its own 15-paper repeat and a fresh merge hand check. About $190 by run-1's rate; it becomes the pilot's extraction of record.
-  7. **Supplements.** Approve fetching supplementary files for open-access papers after a licensing check. 19 papers keep per-patient tables there.
-- **Stage 4 and 5:** they follow run-2. The gatekeeper estimate comes after run-2.
-
 **D-17 · How the pipeline calls Claude** (opened 2026-10-18)
 - **The problem:**
   - The grant assumed extraction, gatekeeper, concordance and bias runs would call Claude from code. The application gave a Console org ID for API credits.
@@ -114,6 +100,18 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · D-22 decided: extraction instructions v3, run-2, supplementary files
+- **Decided by Jimmy (2026-10-19), accepting all seven recommendations** from Stage 3 (`reports/poc_stage3_findings.md` §8). These are revisions, because the pre-registration is not frozen.
+  1. **Cohort scope.** Extract people with a TNFAIP3 variant or an HA20 diagnosis, plus relatives the paper describes in relation to them (tested or affected). For other cohort members, record only their number.
+  2. **Labels.** Give people the paper leaves unnamed a fixed label pattern built from the paper's own wording and position.
+  3. **"–" cells.** A "–" cell is "excluded" only when the paper's legend or text defines the symbol as absent or negative, and that definition is quoted as a second span. Otherwise it stays "not reported" (rule 6).
+  4. **Study criteria.** Study inclusion or exclusion criteria are never phenotype evidence.
+  5. **Variant rows without a printed variant.** Keep them, but leave them out of variant counts and concordance. Stage 3 check 3 becomes "every variant row with a printed variant has an original string".
+  6. **Run-2.** `poc-ha20-run-2` runs over all 85 papers under instructions v3 and the converter fixes. It gets its own 15-paper repeat and a fresh merge hand check, which also measures merge policy v3 independently. Estimated cost is about $190 at run-1's rate. Run-2 becomes the pilot's extraction of record.
+  7. **Supplements.** Fetch supplementary files for open-access papers after a licensing check.
+- **Stages 4 and 5** follow run-2. The gatekeeper estimate comes after run-2.
+- **Why:** Stage 3 found the helpers read values consistently but chose different scopes. The repeat agreed on 98.7% of checklist cells. Variant agreement was 0.547 on strings and 0.702 on folded keys, rising to 0.973 on keys without the two papers where scope differed.
 
 ### 2026-10-18 · Pilot Stage 3 done; merge policy v3 (Claude's calls)
 - **Stage 3 ran as approved under D-21:** run-1 over all 85 full-text papers, plus a 15-paper repeat (seed 20261018), drawn from the 73 run-1 papers with individual rows. Results and open questions are in `reports/poc_stage3_findings.md`; the instruction changes are proposed as D-22.
