@@ -33,9 +33,18 @@ research.
 - Papers with at least one document or table file kept: 30 of 85.
 - File statuses: kept 59; zip_without_document_files 44; none (HTTP 200) 11; skipped_too_large 1.
   "zip_without_document_files" means the zip held only figures or media.
-- Conversion: included_full 33; skipped_no_TNFAIP3_or_A20_mention 23; included_excerpt 3.
-  Files that never mention TNFAIP3, A20 or HA20 (for example
-  conflict-of-interest forms or unrelated cohort data) are not appended.
-- Papers whose Markdown gained a "## Supplementary material" section: 21.
+- Conversion, filter v1 (used by run-2, 2026-10-19): included_full 33; skipped_no_TNFAIP3_or_A20_mention 23;
+  included_excerpt 3. Files that never mention TNFAIP3, A20 or HA20 were not appended. That also dropped
+  a per-patient variant table that never names the gene (42128528) and some case-report lab tables.
+  Papers with a "## Supplementary material" section: 21. Run-2's Markdown is kept locally in
+  `../fulltext_md_run2/`, with checksums in `runs/poc-ha20-run-2/markdown_sha256.csv`.
+- Conversion, filter v2 (D-24, 2026-10-19; current `conversion.csv`):
+  - every file is kept except administrative ones (conflict-of-interest forms, reporting checklists,
+    peer-review files, data-sharing statements);
+  - pandoc's HTML tables become pipe tables, and lines stacked in one cell are joined with " / ";
+  - entities are decoded.
+
+  Result: included_full 52; included_excerpt 2; skipped_administrative 5. Papers with a supplementary
+  section: 30.
 - The supplement of 39167656 (21 MB PDF) was fetched with a 30 MB cap; the default cap is 15 MB.
   One file remains skipped as too large: a 50 MB figure-data PDF of 37342083.

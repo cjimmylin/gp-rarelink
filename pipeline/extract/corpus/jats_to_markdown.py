@@ -24,8 +24,12 @@ def _strip_ns(root: ET.Element) -> None:
             el.tag = el.tag.split("}", 1)[1]
 
 
-def _inline(el: ET.Element | None) -> str:
-    """Flatten inline content, keeping sub/sup markers and xref labels."""
+def _inline(el: ET.Element | None, bold: bool = False) -> str:
+    """Flatten inline content, keeping sub/sup markers and xref labels.
+
+    With bold=True (used for table body cells, 2026-10-19, D-24), <bold> text is
+    kept as **text**, because some tables mark abnormal values only in bold.
+    """
     if el is None:
         return ""
     parts: list[str] = []
@@ -34,17 +38,20 @@ def _inline(el: ET.Element | None) -> str:
     for child in el:
         tag = child.tag
         if tag in ("sub",):
-            parts.append("_" + _inline(child))
+            parts.append("_" + _inline(child, bold))
         elif tag in ("sup",):
-            parts.append("^" + _inline(child))
+            parts.append("^" + _inline(child, bold))
+        elif tag == "bold" and bold:
+            inner = _inline(child, bold)
+            parts.append(f"**{inner}**" if inner else "")
         elif tag in ("xref", "bold", "italic", "underline", "sc", "named-content", "ext-link", "uri", "styled-content", "inline-formula", "abbrev", "email", "monospace", "roman"):
-            parts.append(_inline(child))
+            parts.append(_inline(child, bold))
         elif tag in ("break",):
             parts.append(" ")
         elif tag in ("table-wrap", "fig", "boxed-text", "list", "disp-formula", "supplementary-material"):
             pass  # block content handled by the caller
         else:
-            parts.append(_inline(child))
+            parts.append(_inline(child, bold))
         if child.tail:
             parts.append(child.tail)
     return _WS.sub(" ", "".join(parts)).strip()
@@ -117,7 +124,7 @@ class Converter:
                     continue
                 while (r, c) in grid:
                     c += 1
-                text = _inline(cell).replace("|", "\\|")
+                text = _inline(cell, bold=cell.tag == "td").replace("|", "\\|")
                 cs, rs = self._span(cell, "colspan"), self._span(cell, "rowspan")
                 for dr in range(rs):
                     for dc in range(cs):

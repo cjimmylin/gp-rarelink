@@ -104,3 +104,38 @@ def test_nested_reference_list_keeps_one_line_per_reference():
     md = jats_to_markdown(NESTED_REFS_JATS).to_markdown()
     assert "[1] Zhou Q. Loss-of-function mutations in TNFAIP3. 2016. PMID:26642243" in md
     assert "[2] Aeschlimann FA. A20 haploinsufficiency. 2018." in md
+
+
+BOLD_JATS = b"""<?xml version="1.0"?>
+<article><front><article-meta><article-id pub-id-type="pmid">3</article-id>
+<title-group><article-title>T</article-title></title-group></article-meta></front>
+<body><p>Some <bold>bold</bold> text.</p><table-wrap><label>Table 1</label><table>
+<tr><th><bold>Test</bold></th><th>Value</th></tr>
+<tr><td>Hb</td><td><bold>93</bold> g/L</td></tr></table>
+<table-wrap-foot><p>Abnormal values are in bold.</p></table-wrap-foot></table-wrap></body></article>"""
+
+
+def test_bold_is_kept_in_table_body_cells_only():
+    md = jats_to_markdown(BOLD_JATS).to_markdown()
+    assert "| Hb | **93** g/L |" in md
+    assert "| Test | Value |" in md  # header cells stay plain
+    assert "Some bold text." in md  # running text stays plain
+
+
+def test_supplementary_html_tables_entities_and_admin_filter():
+    from pathlib import Path as P
+
+    from pipeline.extract.corpus.supplementary_to_text import clean_pandoc, is_administrative
+
+    html_table = ('<table><thead><tr><th>Pt</th><th>Variant</th></tr></thead><tbody>'
+                  '<tr><td rowspan="2">1</td><td><em>TNFAIP3</em> c.259C&gt;T</td></tr>'
+                  '<tr><td>p.Arg87*</td></tr></tbody></table>')
+    out = clean_pandoc("Intro &amp; methods\n\n" + html_table)
+    assert "Intro & methods" in out
+    assert "| 1 | TNFAIP3 c.259C>T |" in out and "| 1 | p.Arg87* |" in out
+    stacked = clean_pandoc("<table><tr><th>Pt</th><th>Age</th></tr><tr><td><p>1</p><p>2</p></td><td><p>18</p><p>24</p></td></tr></table>")
+    assert "| 1 / 2 | 18 / 24 |" in stacked
+    assert is_administrative(P("tgh-11-25-22-coif.pdf"), "anything")
+    assert is_administrative(P("supp.pdf"), "ICMJE Form for Disclosure of Potential Conflicts of Interest")
+    assert is_administrative(P("tgh-11-25-22-rc.pdf"), "x")
+    assert not is_administrative(P("rmdopen-12-2-s001.docx"), "Supplementary File 1. Genetic, clinical and laboratory characteristics")
