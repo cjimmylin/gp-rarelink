@@ -41,6 +41,7 @@ How to maintain it:
   - v4 check: 13 of 13 rule checks as intended; run-2 stays the extraction of record;
   - Stage 4: 749 phenopackets, all valid; HPO binding 88.5%; normalization 92.8% of cDNA descriptions (check not met as worded, D-26);
   - Stage 5: 8 unsupported and 305 partial of 22,003 judged values; phenopackets rebuilt without claims not judged supported.
+  - Human audit (Jimmy, first pass): 2 of 50 unsupported (4.0%, the Q4 limit), 6 partial. The gatekeeper flagged none of his 8; v2 (D-28) flags 2. D-26 repairs: 135 of 138 cDNA descriptions normalized. Report §10.
   - **Waiting on Jimmy:** ratings for the 50 claims and 30 HPO bindings, entered on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. D-26 to D-28 decided 2026-10-19; the step-3 second look (10 claims, `final` collection) is next.
   - **Next:** Stage 6 (ClinVar concordance, harness side only) and Stage 7.
   - Report: `reports/poc_stage4_5_findings.md`. Session usage reading 580.31.
@@ -137,6 +138,9 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
   - **Helpers apply unwritten rules unevenly:** inheritance from a carrier parent, 0 counts in group tables, labels for table columns and numbering columns. Write the rule down rather than hoping for consistency.
   - **Running about 13 helpers at once worked.** That was 85 papers in about 50 minutes of wall time. A helper writes its file before its final checks, so expect rewrites after the first commit.
 - **Stage 4–5 lessons (2026-10-19):**
+  - **A word match is not support.** Three audit failures had values copied from their own quote but about another person or the whole cohort. Never mark a value supported by script (D-28).
+  - **Don't trust the gatekeeper's rate as an error rate.** It found 0.036% unsupported where the human audit found 4%; even v2 caught 2 of 8. Report gatekeeper accuracy against human labels instead.
+  - **Ratings via an artifact page work.** The `db` store keeps them; read with `ArtifactData list` + `out_dir`, then `apply_ratings.py`. Keep gatekeeper verdicts out of the first-pass page.
   - **The five-hour usage limit stops helpers mid-task.** Many had already written their output; check each file is complete before trusting it. Resume the rest with SendMessage to the same helper. `get_session` → `rate_limit_info` shows when the account is past the limit and running on overage (it matters for D-17).
   - **The session cost reading can freeze for most of an hour.** It stuck at 463.50 from about 02:08 to 02:58 UTC. Take a reading at the end too, and say when stages overlap.
   - **scipy is not in the uv project.** `pipeline/extract/claude_code/gatekeeper_merge.py` has a pure-Python exact interval (`share`); reuse it rather than adding a dependency.

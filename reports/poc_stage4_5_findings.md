@@ -243,3 +243,55 @@ The pre-registration is not frozen, so these are revisions. The next free decisi
 
 - Your ratings (§6), then `audit_metrics.py` and the re-read step.
 - Stage 6 (ClinVar concordance and completeness, harness side only) and Stage 7 (pilot report).
+
+## 10. Update, 2026-10-19: the human audit, D-26 to D-28 and gatekeeper v2
+
+Every number here comes from `analysis/poc/audit_metrics.py` (output files named below), the gatekeeper merge, or `normalize_variants.py`.
+
+### 10.1 Jimmy's audit (first pass, before the step-3 second look)
+
+Jimmy rated all 50 claims and 27 of the 30 HPO bindings on a private rating page (`adjudication/poc_audit/make_rating_page.py`). The gatekeeper's verdicts were hidden from him. Ratings: `adjudication/poc_audit/sample.csv`, `ratings_raw.json`; scores: `analysis/poc/audit_metrics.json`.
+
+| | Claims | Plain rate (exact 95% CI) | Weighted by stratum pool |
+|---|---|---|---|
+| Supported | 42 | | |
+| Partially supported | 6 | | |
+| Unsupported | 2 | 4.0% (0.5–13.7%) | 3.3% |
+| Not fully supported | 8 | 16.0% (7.2–29.1%) | 12.5% |
+
+- **Q4 gate:** the automated span match is 100%, and the human unsupported rate is 4.0%, exactly at the ≤ 4% point-estimate limit. The gate is met on the first pass, at its edge. The second look may move it.
+- **By stratum:** both unsupported claims are variant fields.
+  - C049428: "pathogenic" was given to the mother of P3 from a sentence about the whole cohort; she has low-level somatic mosaicism.
+  - C048990: P1's zygosity was taken from a group statement, although P1's variant is undetermined.
+- **Excluded features:** 3 of the 10 sampled were rated partly. Two of them record a negative investigation or consultation as the feature.
+- **Weighting:** the sample has fixed counts per stratum, so excluded features (a small pool) are over-represented. The weighted figures correct for that; they are point estimates only.
+- **HPO model bindings:** 23 of 27 accepted (85%, CI 66–96%), after Jimmy recounted four normal-finding rows as yes (D-27 handles the convention). 3 were left unrated.
+
+### 10.2 The gatekeeper against the audit
+
+| Gatekeeper | Agreement with Jimmy (supported vs not) | Of his 8 not-fully-supported claims, flagged | False flags |
+|---|---|---|---|
+| v1, as run on all of run-2 | 40/50 | 0 | 2 |
+| v2, re-check on the same 50 claims (`gatekeeper_v2_recheck.csv`) | 44/50 | 2 | 0 |
+
+- **v1 missed all 8.** In 3 of them no model judged the claim: the value appears word for word in its quote, so a script had marked it supported. Its 2 false flags were normal findings recorded as excluded, which Jimmy accepts.
+- **The gatekeeper's whole-run rate understates the problem.** Its 0.036% unsupported rate over run-2 (§5.1) is far below the human 4.0% and should not be cited as an error rate.
+- **v2 does better but is still weak.** It has no script shortcut and checks the person link (D-28), and it states the normal-finding rule (D-27). It flagged C049428 and C038628 as partial. It still called C048990 supported, and 5 of Jimmy's partials too.
+- **This was not an independent test.** v2's rules were written after seeing these ratings, so its true performance on new claims is likely no better than this.
+- **What it means:** the gatekeeper cannot stand in for the human audit. The pre-registered 250-claim audit stays the measure of the false-positive rate. The pre-registration's "gatekeeper accuracy against human labels" (§7.1(b)) is the right way to report it.
+
+### 10.3 Decisions taken (Jimmy, 2026-10-19; `DECISIONS.md`)
+
+- **D-26:** the normalization check counts descriptions that state a cDNA change, with repairs.
+  - The repairs: Ensembl transcripts go to VariantValidator's Ensembl endpoint; NM_006290.5 (not held) is mapped to NM_006290.4; two notation typos are queried in corrected form (`configs/hgvs_query_corrections.csv`), with the extracted string kept.
+  - Result: **135 of 138 (97.8%)**, so the check is met as reworded. Three remain for a person to read: one length mismatch and two reference mismatches.
+  - Phenopackets rebuilt: still 749, all schema-valid. Variants with normalized expressions rose from 227 to 239.
+- **D-27:** for the six-disease run, a normal finding is recorded as the absent abnormality, with the paper's words in the quote. Gatekeeper v2 states this.
+- **D-28:** no script shortcut in the gatekeeper; every value is judged, including its link to the person. That is about 80% more gatekeeper work.
+- **Pre-registration:** draft v0.6 applies all three (§6.2, §6.4, §7.2.2).
+
+### 10.4 Still open
+
+- **The step-3 second look:** 10 claims, on the rating page's second tab. Then the final labels go through `audit_metrics.py`, for both v1 and v2.
+- **The gatekeeper's weak recall** needs a design answer before the freeze. Options for the pilot report include a claim-level read with the person named in the question, a second independent gatekeeper, or accepting it as a pre-filter and relying on the audit. That decision is for after the second look.
+- **Spend:** the re-check (28 short helper reads) has no reading yet; the session reading did not refresh during the turn. Normalization repairs cost no model calls.
