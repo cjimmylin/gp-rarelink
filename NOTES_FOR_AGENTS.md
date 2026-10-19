@@ -6,7 +6,7 @@ How to maintain it:
 - Add what a future session would need to know. Keep entries short and dated.
 - Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
 
-*Last updated 2026-10-18.*
+*Last updated 2026-10-19.*
 
 ## 1. Where things stand (2026-10-18)
 
@@ -30,7 +30,12 @@ How to maintain it:
   - every quote was found verbatim;
   - merges: 2 false among the 58 merges of policy v2, now policy v3;
   - variant agreement is below 0.9 because of cohort scope.
-  - Report: `reports/poc_stage3_findings.md`. D-22 decided 2026-10-19 (instructions v3, run-2, supplementary files); run-2 in preparation. Session usage reading 240.36 at the end of Stage 3.
+  - Report: `reports/poc_stage3_findings.md`. D-22 decided 2026-10-19 (instructions v3, run-2, supplementary files). Session usage reading 240.36 at the end of Stage 3.
+- **Pilot Stage 3b done (2026-10-19):**
+  - run-2 over all 85 papers is the extraction of record: 64,999 quotes, all verbatim; 799 individuals;
+  - repeat variant agreement 0.944 on strings, 0.988 on keys (gate met);
+  - fresh merge hand check: 6 false of 93, all from the sex-and-onset route; policy v4 proposed.
+  - Report: `reports/poc_stage3b_findings.md`. Waiting on Jimmy for D-23 (merge policy v4), D-24 (instructions v4, input fixes, 10-paper check, no run-3) and D-25 (Stage 5 spend). Session usage reading 460.75.
 - **Pilot progress (2026-10-18, earlier):**
   - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
   - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
@@ -117,6 +122,12 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
   - **Merging.** Merges must be one-to-one. A review row citing a family will otherwise join relatives into one person. Citations naming several papers ("(2, 12, 22)") are not person-specific.
   - **Reference lists.** Read them from the JATS XML, not the Markdown. Some papers nest them inside a section, and the Markdown flattens them.
   - **Commits.** Commit helper outputs as they land; the stop hook asks for it anyway. A helper may rewrite its file after you commit it, so check `git status` again before pushing.
+- **Stage 3b lessons (2026-10-19):**
+  - **Run span_check before the run ends.** One helper left every checklist quote empty (35958611). A repair-only resume of the same helper fixed it; diff the values before and after to prove nothing else changed.
+  - **Supplementary text needs care.** Pandoc writes ">" as "&gt;" and complex tables as HTML. A gene-name relevance filter drops per-patient tables that never name the gene. Europe PMC zips often hold only figures.
+  - **The sex-and-onset merge route is unsafe.** Recurrent variants and relatives in one family match on sex and onset. Citation-based merges were all correct.
+  - **Helpers apply unwritten rules unevenly:** inheritance from a carrier parent, 0 counts in group tables, labels for table columns and numbering columns. Write the rule down rather than hoping for consistency.
+  - **Running about 13 helpers at once worked.** That was 85 papers in about 50 minutes of wall time. A helper writes its file before its final checks, so expect rewrites after the first commit.
 
 **Python:**
 - The pipeline is a `uv` project (`pyproject.toml`, `uv.lock`, Python ≥ 3.11). Run `uv sync && uv run pytest`.
@@ -127,7 +138,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-23**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-26**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically

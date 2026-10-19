@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.5 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
+**Pre-registration status:** draft v0.5 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17, D-19 and D-23 to D-24.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -14,6 +14,30 @@ How to use this file:
 ## Open decisions
 
 ### Needed now, for the pilot
+
+**D-23 · Merge policy v4: no merging on sex and onset alone** (opened 2026-10-19; `reports/poc_stage3b_findings.md` §6)
+- **The finding:** the fresh hand check of all 93 run-2 merges under policy v3 found 6 false merges. All 6 rested only on "same variant, same sex, onset within a year": that route was 37 true, 6 false. Merges resting on a citation were 47 true, 0 false, 3 cannot tell.
+- **Recommendation:**
+  - Merge only on a citation (row-level or paper-level), and list sex-and-onset pairs for audit instead.
+  - Tell helpers to put a per-patient reference column into `source_reference_in_review`. Its absence in 40574834 allowed 4 of the 6 false merges.
+- **Effect on run-2** (`reconcile.py --no-sex-onset-merges`): 50 merges, all already checked (47 true, 3 cannot tell, 0 false). 749 identities instead of 719, so some patients are counted twice.
+- **Caveat:** this rule was chosen after seeing the check, so its error rate needs measuring again on the six-disease study.
+
+**D-24 · Extraction instructions v4 and the next run** (opened 2026-10-19; report §9 items 2–8)
+- **Recommendation, as one package:**
+  1. **Inheritance:** "inherited maternal/paternal" is allowed when the paper states that the named parent carries the same variant, with that statement quoted. "De novo" still needs stated parental testing.
+  2. **Zero counts:** a 0 in a count table excludes no one; text naming the group still excludes.
+  3. **Labels:** "Table n column k" for patients as columns; "Table n #k" for a patient-numbering column; "<label> (Family n)" for a label repeated across families; "parent of X" / "sibling of X" when the paper gives no sex.
+  4. **Literature patients:** in scope only with at least one individual-level fact beyond the diagnosis.
+  5. **Variant rows:** none for other-gene variants named but not described, or for common variants the authors dismiss. Germline mosaic carriers are in scope (zygosity "mosaic"); tumour-only variants are not.
+  6. **Inputs:** supplementary filter v2 (keep every file except administrative forms), entity decoding and bold kept in the converter.
+  7. **Runs:** no run-3. Run-2, merged under D-23, stays the extraction of record. Check v4 on a 10-paper mini-run (about $25) before the six-disease extraction.
+
+**D-25 · Stage 5 spend** (opened 2026-10-19)
+- **What:** the gatekeeper re-reads all 64,999 run-2 values against their quotes, one helper per paper, plus Jimmy's 50-claim audit.
+- **Estimate:** about one extraction run, roughly $170 (run-2 cost $165.80, session readings).
+- **Budget context:** pilot spend stands at $460.75 against the $1,000 ceiling.
+- **Recommendation:** approve, after Stage 4 (scripts only).
 
 **D-17 · How the pipeline calls Claude** (opened 2026-10-18)
 - **The problem:**
@@ -100,6 +124,19 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-19 · Pilot Stage 3b done: run-2, repeat, merge hand check (Claude's calls)
+- **Ran as approved under D-22.**
+  - **Run-2:** all 85 papers under instructions v3.
+  - **Repeat:** 15 papers, seed 20261019, drawn from the 78 run-2 papers with individual rows.
+  - **Hand check:** all 93 policy-v3 merges.
+  - **Results:** `reports/poc_stage3b_findings.md`. Open questions are D-23 to D-25.
+- **Claude's calls during the run:**
+  - **Repair, 35958611:** 72 checklist answers had no quote. The same helper added quotes only, and a script confirmed every value unchanged.
+  - **Supplementary filter kept as it was, mid-run:** filter v1 skipped one per-patient table that never names the gene (42128528). I kept v1 so all 85 papers read inputs made the same way, and proposed v2 for the next run (D-24).
+  - **Entity decoding:** "&gt;" from converted Word files broke variant keys. Decoding was added on the harness side, in the merge keys, the counts and the agreement script; quotes are unchanged.
+  - **Sensitivity option:** `reconcile.py --no-sex-onset-merges` was added. Policy v3 stays the default until D-23.
+- **Unchanged:** metrics, thresholds, the pre-registration, the merge policy default, and the extraction prompts and schema.
 
 ### 2026-10-19 · D-22 decided: extraction instructions v3, run-2, supplementary files
 - **Decided by Jimmy (2026-10-19), accepting all seven recommendations** from Stage 3 (`reports/poc_stage3_findings.md` §8). These are revisions, because the pre-registration is not frozen.

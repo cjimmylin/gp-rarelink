@@ -60,6 +60,10 @@ Pilot model work in this session (D-20), from the session's own list-price usage
 - **Stage 3 run-1 (85 papers, Opus helpers, three re-extractions):** from $45.93 to $206.13 (`runs/poc-ha20-run-1/manifest.json`), about $1.88 per paper.
 - **Stage 3 repeat (15 papers) plus merge hand check (two Opus helpers) and merge-script fixes:** from $206.13 to $240.36 (`runs/poc-ha20-run-1-repeat/manifest.json`).
 - **Stage 3 total:** $194.43 against the ~$381 approved under D-21 (`reports/poc_stage3_findings.md` §7).
+- **Stage 3b preparation (D-22: converter fixes, supplementary files, instructions v3):** from $240.36 to $252.27.
+- **Stage 3b run-2 (85 papers, Opus helpers, one repair-only resume):** from $252.27 to $418.07 (`runs/poc-ha20-run-2/manifest.json`), about $1.95 per paper.
+- **Stage 3b repeat (15 papers) plus merge hand check (three Opus helpers):** from $418.07 to $460.75 (`runs/poc-ha20-run-2-repeat/manifest.json`).
+- **Stage 3b total:** $220.39 against the ~$190 estimated under D-22 and the $300 stop-and-ask line (`reports/poc_stage3b_findings.md` §8). Pilot total so far: $460.75 against the $1,000 ceiling.
 
 For scale, the two Claude Code sessions' own metadata reported about $10 ("Claude Code repo status") and about $17 ("Rarelink POC study design") as of about 18:00 UTC on 2026-10-18. These are list-price estimates the sessions report about themselves, not billing figures; the ledger needs figures from Settings > Usage.
 
@@ -90,7 +94,9 @@ Estimate method for scaling extraction:
 | Date | Run | Line | Basis | Estimate (USD) | Approved by | Actual (USD) |
 |---|---|---|---|---|---|---|
 | 2026-10-18 | Pilot Stage 3: extraction over 76 full-text HA20 papers (D-20 route) | Extraction | Smoke test: at most $4.19/paper (`runs/poc-ha20-smoke-1/stage3_estimate.json`) | one run ~$318; two runs ~$636; one run + 15-paper repeat ~$381 (upper bounds, 76 papers; the reconciled corpus has 80, about +$17) | **Jimmy, 2026-10-18 (D-21): one run + 15-paper repeat** | — (session readings: +$194.43, an estimate; see above) |
-| 2026-10-18 | Pilot Stage 3b (proposed): run-2 over 85 papers under revised instructions, plus a 15-paper repeat and a merge hand check | Extraction | Run-1 rate, about $1.88/paper from session readings | ~$160 + ~$30 | **Jimmy, 2026-10-19 (D-22)** | — |
+| 2026-10-18 | Pilot Stage 3b: run-2 over 85 papers under revised instructions, plus a 15-paper repeat and a merge hand check | Extraction | Run-1 rate, about $1.88/paper from session readings | ~$160 + ~$30 | **Jimmy, 2026-10-19 (D-22)** | — (session readings: +$220.39 incl. $11.91 preparation, an estimate; see above) |
+| 2026-10-19 | Pilot Stage 5 (proposed): gatekeeper re-read of every run-2 value | Gatekeeper | Run-2 rate, about $1.95/paper | ~$170 | pending (D-25) | — |
+| 2026-10-19 | Instructions v4 check (proposed): 10-paper mini-run | Extraction | Run-2 rate | ~$25 | pending (D-24) | — |
 | 2026-10-18 | Pilot (POC) on A20 haploinsufficiency, all model-calling stages | Extraction (mostly), gatekeeper, harness, bias arm | `POC_DESIGN.md` §5. Per-stage rows to be added before each run, after Stage 2 measures per-paper cost | $200–400; ceiling $1,000; hard stop $1,500 | Jimmy (chat, 2026-10-18) | — |
 
 **Pilot billing (D-20).** The pilot runs with Claude Code helper agents, not the API. Its model use is therefore Claude Code usage on whichever claude.ai account runs the session, which counts against the award if that is the funded account (D-15). Each stage logs the session's own list-price usage estimate before and after. Jimmy reconciles the totals against Settings > Usage. If the SLIDERS/API route is used later, D-17 applies to that spend.
