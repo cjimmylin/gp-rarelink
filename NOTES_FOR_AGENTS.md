@@ -41,7 +41,7 @@ How to maintain it:
   - v4 check: 13 of 13 rule checks as intended; run-2 stays the extraction of record;
   - Stage 4: 749 phenopackets, all valid; HPO binding 88.5%; normalization 92.8% of cDNA descriptions (check not met as worded, D-26);
   - Stage 5: 8 unsupported and 305 partial of 22,003 judged values; phenopackets rebuilt without claims not judged supported.
-  - **Waiting on Jimmy:** ratings in `adjudication/poc_audit/sample.csv` (50 claims) and `hpo_model_binding_sample.csv` (30), then `analysis/poc/audit_metrics.py`; D-26 and D-27.
+  - **Waiting on Jimmy:** ratings for the 50 claims and 30 HPO bindings, entered on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. Also D-26 and D-27.
   - **Next:** Stage 6 (ClinVar concordance, harness side only) and Stage 7.
   - Report: `reports/poc_stage4_5_findings.md`. Session usage reading 580.31.
 - **Pilot progress (2026-10-18, earlier):**
