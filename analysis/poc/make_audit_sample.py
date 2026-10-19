@@ -17,6 +17,7 @@ Writes adjudication/poc_audit/sample.csv (for the rater) and
 adjudication/poc_audit/sample_key.json (seed, strata, claim ids).
 
   uv run python analysis/poc/make_audit_sample.py --disease ha20 --run-id poc-ha20-run-2 --seed 20261019
+  (D-29 re-audit) ... --run-id poc-ha20-v5-subset --prefix gatekeeper_v3 --seed <new> --out-dir adjudication/poc_audit_v5
 """
 
 from __future__ import annotations
@@ -37,9 +38,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--run-id", required=True)
     ap.add_argument("--seed", type=int, required=True)
+    ap.add_argument("--prefix", default="gatekeeper", help="claims file <prefix>_claims.csv from gatekeeper_prep (e.g. gatekeeper_v3)")
+    ap.add_argument("--out-dir", default="adjudication/poc_audit", help="where sample.csv and sample_key.json go")
     args = ap.parse_args(argv)
     run_dir = Path("data/extracted") / args.disease / args.run_id
-    claims = {r["claim_id"]: r for r in csv.DictReader((run_dir / "gatekeeper_claims.csv").open())}
+    claims = {r["claim_id"]: r for r in csv.DictReader((run_dir / f"{args.prefix}_claims.csv").open())}
     spans = list(csv.DictReader((run_dir / "claims.csv").open()))
     papers = {p.stem: json.loads(p.read_text()) for p in sorted((run_dir / "per_paper").glob("*.json"))}
     strata = {"variant": [], "feature_observed": [], "feature_excluded": [], "demographic_inheritance": []}
@@ -77,13 +80,13 @@ def main(argv: list[str] | None = None) -> int:
                     "individual": (rec.get("individual_label_in_paper") or {}).get("value", ""),
                     "context": context, "table": c["table"], "field": c["field"], "value": c["value"], "span": sp["span"],
                     "rating (supported / partially supported / unsupported)": "", "note": ""})
-    dest = Path("adjudication/poc_audit")
+    dest = Path(args.out_dir)
     dest.mkdir(parents=True, exist_ok=True)
     with (dest / "sample.csv").open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(out[0].keys()))
         w.writeheader()
         w.writerows(out)
-    key = {"run_id": args.run_id, "seed": args.seed, "pool_sizes": {k: len(v) for k, v in strata.items()},
+    key = {"run_id": args.run_id, "seed": args.seed, "claims_file": f"{args.prefix}_claims.csv", "pool_sizes": {k: len(v) for k, v in strata.items()},
            "drawn": {k: sum(1 for s, _ in picked if s == k) for k in want}, "claim_ids": [cid for _, cid in picked]}
     (dest / "sample_key.json").write_text(json.dumps(key, indent=2) + "\n")
     print(json.dumps({k: key[k] for k in ("pool_sizes", "drawn")}, indent=2))
