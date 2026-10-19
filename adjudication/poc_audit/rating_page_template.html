@@ -131,6 +131,13 @@ mark { background: var(--mark); color: inherit; padding: 0 1px; }
 .hpo-term .term code { font-family: var(--font-data); font-weight: 500; font-size: 13px; color: var(--muted); margin-left: 6px; }
 .hpo-term .def { font-size: 13.5px; color: var(--muted); max-width: 70ch; }
 .phrase { font-family: var(--font-quote); font-size: 17px; }
+.compare { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; font-size: 14px; padding: 10px 12px; border: 1px dashed var(--rule); border-radius: 6px; }
+.compare dt { color: var(--muted); }
+.compare dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.verdict { font-weight: 600; }
+.verdict[data-v="supported"] { color: var(--ok); }
+.verdict[data-v="partially_supported"] { color: var(--part); }
+.verdict[data-v="unsupported"] { color: var(--bad); }
 .done-banner { border: 1px solid var(--ok); background: var(--ok-soft); color: var(--ink); border-radius: 8px; padding: 12px 14px; font-size: 14px; }
 .copy-box { width: 100%; min-height: 120px; font-family: var(--font-data); font-size: 12px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); padding: 8px; }
 @media (max-width: 520px) {
@@ -150,6 +157,7 @@ mark { background: var(--mark); color: inherit; padding: 0 1px; }
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="tab-claims" aria-selected="true" aria-controls="panel-claims">Claims <span class="count" id="count-claims">0/50</span></button>
       <button class="tab" role="tab" id="tab-hpo" aria-selected="false" aria-controls="panel-hpo">HPO terms <span class="count" id="count-hpo">0/30</span></button>
+      <button class="tab" role="tab" id="tab-final" aria-selected="false" aria-controls="panel-final" hidden>Second look <span class="count" id="count-final">0/0</span></button>
     </div>
     <div class="meter" aria-hidden="true"><i id="meter"></i></div>
     <div class="tools">
@@ -162,7 +170,7 @@ mark { background: var(--mark); color: inherit; padding: 0 1px; }
 
 <main>
   <div class="wrap">
-    <div id="done" class="done-banner" hidden>All 80 items are rated. Tell Claude in the chat that the ratings are in.</div>
+    <div id="done" class="done-banner" hidden>Everything is rated. Tell Claude in the chat that the ratings are in.</div>
     <textarea id="copy-box" class="copy-box" hidden readonly aria-label="Ratings as text"></textarea>
 
     <section id="panel-claims" role="tabpanel" aria-labelledby="tab-claims">
@@ -181,6 +189,14 @@ mark { background: var(--mark); color: inherit; padding: 0 1px; }
       </div>
       <div id="hpo" style="display:grid; gap:14px"></div>
     </section>
+
+    <section id="panel-final" role="tabpanel" aria-labelledby="tab-final" hidden>
+      <div class="intro">
+        <p><b>A second look at the claims where your first rating and the gatekeeper's verdict differ, or where you chose Partly.</b> The paper context is open. Give a final label and a short reason. Your first rating stays on record either way.</p>
+        <p>The gatekeeper's verdict is shown now, for comparison. "Matched by script" means no model judged it: the value appears word for word in the quote, so the pipeline marked it supported.</p>
+      </div>
+      <div id="final" style="display:grid; gap:14px"></div>
+    </section>
   </div>
 </main>
 
@@ -188,7 +204,11 @@ mark { background: var(--mark); color: inherit; padding: 0 1px; }
 const DATA = /*__DATA__*/null;
 const CLAIM_CHOICES = [["supported", "Supported", "1"], ["partially_supported", "Partly", "2"], ["unsupported", "Unsupported", "3"]];
 const HPO_CHOICES = [["yes", "Yes, right term", "Y"], ["no", "No", "N"]];
-const state = { ratings: {}, hpo: {} };
+const state = { ratings: {}, hpo: {}, final: {} };
+const SECOND = (DATA && DATA.second) || [];
+const VERDICT_LABEL = { supported: "Supported", partially_supported: "Partly", unsupported: "Unsupported", span_not_found: "Quote not found" };
+const PREFIX = { ratings: "c-", hpo: "h-", final: "f-" };
+const valueKey = (coll) => (coll === "hpo" ? "ok" : "rating");
 let db = null, store = "none";
 const LS_KEY = "ha20-audit-ratings-v1";
 
@@ -208,8 +228,9 @@ function highlight(pre, text, needle) {
   pre.append(text.slice(0, i), el("mark", { text: needle }), text.slice(i + needle.length));
 }
 
-function claimCard(c) {
-  const card = el("article", { class: "card", tabindex: "0", id: "c-" + c.id, "data-kind": "claim" });
+function claimCard(c, opts = {}) {
+  const coll = opts.coll || "ratings";
+  const card = el("article", { class: "card", tabindex: "0", id: PREFIX[coll] + c.id, "data-kind": coll === "final" ? "final" : "claim" });
   const head = el("div", { class: "card-head" },
     el("span", { class: "num", text: String(c.n).padStart(2, "0") }),
     el("span", { class: "chip", text: c.stratum }),
@@ -231,9 +252,11 @@ function claimCard(c) {
       highlight(pre, x.text, x.kind === "text" ? x.quote : "");
       box.append(pre);
     }
+    if (opts.open) box.open = true;
     parts.push(box);
   }
-  parts.push(rateRow("ratings", c.id, CLAIM_CHOICES, "Note (optional): what's wrong, or why partly"));
+  if (opts.compare) parts.push(opts.compare);
+  parts.push(rateRow(coll, c.id, CLAIM_CHOICES, opts.placeholder || "Note (optional): what's wrong, or why partly"));
   card.append(...parts);
   return card;
 }
@@ -253,6 +276,15 @@ function hpoCard(h) {
   return card;
 }
 
+function finalCard(s) {
+  const verdict = (v) => el("span", { class: "verdict", "data-v": v, text: VERDICT_LABEL[v] || v || "not rated" });
+  const cmp = el("dl", { class: "compare" },
+    el("dt", { text: "Your first rating" }), el("dd", {}, verdict(s.first.rating), s.first.note ? " · " + s.first.note : ""),
+    el("dt", { text: "Gatekeeper" }), el("dd", {}, verdict(s.gk.verdict),
+      s.gk.source === "script" ? " · matched by script (the value appears in the quote)" : (s.gk.reason ? " · " + s.gk.reason : "")));
+  return claimCard(s, { coll: "final", open: true, compare: cmp, placeholder: "Reason for the final label" });
+}
+
 function rateRow(coll, id, choices, placeholder) {
   const seg = el("div", { class: "seg", role: "group", "aria-label": "Rating" });
   for (const [v, label, key] of choices) {
@@ -269,13 +301,13 @@ function rateRow(coll, id, choices, placeholder) {
   return el("div", { class: "rate-row" }, seg, note, saved);
 }
 
-function cardFor(coll, id) { return $((coll === "ratings" ? "c-" : "h-") + id); }
+function cardFor(coll, id) { return $(PREFIX[coll] + id); }
 
 function paint(coll, id) {
   const card = cardFor(coll, id);
   if (!card) return;
   const rec = state[coll][id] || {};
-  const v = coll === "ratings" ? rec.rating : rec.ok;
+  const v = rec[valueKey(coll)];
   card.dataset.r = v || "";
   card.querySelectorAll(".seg button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
   const note = $("note-" + coll + "-" + id);
@@ -285,19 +317,20 @@ function paint(coll, id) {
 function progress() {
   const nc = DATA.claims.filter((c) => state.ratings[c.id]?.rating).length;
   const nh = DATA.hpo.filter((h) => state.hpo[h.id]?.ok).length;
+  const nf = SECOND.filter((x) => state.final[x.id]?.rating).length;
   $("count-claims").textContent = nc + "/" + DATA.claims.length;
   $("count-hpo").textContent = nh + "/" + DATA.hpo.length;
-  $("meter").style.width = (100 * (nc + nh) / (DATA.claims.length + DATA.hpo.length)) + "%";
-  $("done").hidden = !(nc === DATA.claims.length && nh === DATA.hpo.length);
+  $("count-final").textContent = nf + "/" + SECOND.length;
+  const total = DATA.claims.length + DATA.hpo.length + SECOND.length;
+  $("meter").style.width = (100 * (nc + nh + nf) / total) + "%";
+  $("done").hidden = !(nc === DATA.claims.length && nh === DATA.hpo.length && nf === SECOND.length);
 }
 
 // One write at a time per document.
 const chains = {};
 function write(coll, id) {
   const rec = state[coll][id] || {};
-  const body = coll === "ratings"
-    ? { rating: rec.rating || "", note: rec.note || "", updated_at: new Date().toISOString() }
-    : { ok: rec.ok || "", note: rec.note || "", updated_at: new Date().toISOString() };
+  const body = { [valueKey(coll)]: rec[valueKey(coll)] || "", note: rec.note || "", updated_at: new Date().toISOString() };
   const key = coll + "/" + id;
   const mark = $("saved-" + coll + "-" + id);
   if (mark) mark.textContent = "Saving…";
@@ -319,7 +352,7 @@ function write(coll, id) {
 }
 
 function setRating(coll, id, v) {
-  state[coll][id] = { ...(state[coll][id] || {}), [coll === "ratings" ? "rating" : "ok"]: v };
+  state[coll][id] = { ...(state[coll][id] || {}), [valueKey(coll)]: v };
   paint(coll, id); progress(); write(coll, id);
 }
 function setNote(coll, id, text) {
@@ -333,7 +366,7 @@ function saveLocal() {
   try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable */ }
 }
 function loadLocal() {
-  try { const s = JSON.parse(localStorage.getItem(LS_KEY) || "null"); if (s) { Object.assign(state.ratings, s.ratings || {}); Object.assign(state.hpo, s.hpo || {}); } } catch (e) { /* ignore */ }
+  try { const s = JSON.parse(localStorage.getItem(LS_KEY) || "null"); if (s) { Object.assign(state.ratings, s.ratings || {}); Object.assign(state.hpo, s.hpo || {}); Object.assign(state.final, s.final || {}); } } catch (e) { /* ignore */ }
 }
 
 function setSaveState(text, warn) { const s = $("save-state"); s.textContent = text; s.classList.toggle("warn", !!warn); }
@@ -344,15 +377,18 @@ function ratingsText() {
   for (const c of DATA.claims) { const r = state.ratings[c.id] || {}; lines.push([c.id, r.rating || "", r.note || ""].map(csvCell).join(",")); }
   lines.push("", "# hpo", "n,hpo_id,ok,note");
   for (const h of DATA.hpo) { const r = state.hpo[h.id] || {}; lines.push([h.n, h.hpo_id, r.ok || "", r.note || ""].map(csvCell).join(",")); }
+  if (SECOND.length) {
+    lines.push("", "# second look", "claim_id,final_rating,final_reason");
+    for (const x of SECOND) { const r = state.final[x.id] || {}; lines.push([x.id, r.rating || "", r.note || ""].map(csvCell).join(",")); }
+  }
   return lines.join("\n");
 }
 
 function selectTab(which) {
-  const claims = which === "claims";
-  $("tab-claims").setAttribute("aria-selected", String(claims));
-  $("tab-hpo").setAttribute("aria-selected", String(!claims));
-  $("panel-claims").hidden = !claims;
-  $("panel-hpo").hidden = claims;
+  for (const t of ["claims", "hpo", "final"]) {
+    $("tab-" + t).setAttribute("aria-selected", String(t === which));
+    $("panel-" + t).hidden = t !== which;
+  }
   applyFilter();
 }
 function applyFilter() {
@@ -364,8 +400,11 @@ function build() {
   const cl = $("claims"), hp = $("hpo");
   DATA.claims.forEach((c) => cl.append(claimCard(c)));
   DATA.hpo.forEach((h) => hp.append(hpoCard(h)));
+  SECOND.forEach((x) => $("final").append(finalCard(x)));
+  $("tab-final").hidden = !SECOND.length;
   $("tab-claims").addEventListener("click", () => selectTab("claims"));
   $("tab-hpo").addEventListener("click", () => selectTab("hpo"));
+  $("tab-final").addEventListener("click", () => selectTab("final"));
   $("unrated-only").addEventListener("change", applyFilter);
   $("copy-btn").addEventListener("click", async () => {
     const text = ratingsText();
@@ -376,9 +415,9 @@ function build() {
     const card = document.activeElement && document.activeElement.closest && document.activeElement.closest(".card");
     if (!card || e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key.toLowerCase();
-    if (card.dataset.kind === "claim") {
+    if (card.dataset.kind === "claim" || card.dataset.kind === "final") {
       const m = CLAIM_CHOICES.find((x) => x[2] === k);
-      if (m) { e.preventDefault(); setRating("ratings", card.id.slice(2), m[0]); }
+      if (m) { e.preventDefault(); setRating(card.dataset.kind === "final" ? "final" : "ratings", card.id.slice(2), m[0]); }
     } else {
       const m = HPO_CHOICES.find((x) => x[2].toLowerCase() === k);
       if (m) { e.preventDefault(); setRating("hpo", card.id.slice(2), m[0]); }
@@ -389,6 +428,7 @@ function build() {
 function repaintAll() {
   DATA.claims.forEach((c) => paint("ratings", c.id));
   DATA.hpo.forEach((h) => paint("hpo", h.id));
+  SECOND.forEach((x) => paint("final", x.id));
   progress();
 }
 
@@ -402,7 +442,7 @@ async function connect() {
   }
   db = api; store = "db";
   setSaveState("Ratings save to this page's store as you go.");
-  for (const coll of ["ratings", "hpo"]) {
+  for (const coll of ["ratings", "hpo", "final"]) {
     db.collection(coll).onSnapshot((snap) => {
       for (const d of snap.docs) {
         const body = d.data() || {};

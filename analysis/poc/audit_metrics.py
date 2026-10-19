@@ -91,6 +91,20 @@ def main(argv: list[str] | None = None) -> int:
     for x in rated:
         per_stratum[x["stratum"]][x["human"]] += 1
     strict, lenient = share(c["unsupported"], n), share(c["unsupported"] + c["partially_supported"], n)
+    # The sample is stratified with fixed counts per stratum, so the plain rate over-weights small pools
+    # (excluded features). Weight each stratum's rate by its pool size (sample_key.json) as a sensitivity.
+    weighted = None
+    key_path = Path(args.sheet).with_name("sample_key.json")
+    if key_path.exists():
+        pools = json.loads(key_path.read_text()).get("pool_sizes", {})
+        total = sum(pools.get(k, 0) for k in per_stratum)
+        if total:
+            def wrate(labels: set[str]) -> float:
+                return sum(pools.get(k, 0) / total * sum(v[l] for l in labels) / sum(v.values()) for k, v in per_stratum.items())
+            weighted = {"pool_sizes": {k: pools.get(k, 0) for k in per_stratum},
+                        "unsupported": round(wrate({"unsupported"}), 4),
+                        "not_supported": round(wrate({"unsupported", "partially_supported"}), 4),
+                        "note": "stratum rates weighted by pool size; point estimates only (no interval)"}
 
     # gatekeeper vs human
     gk_levels = ["supported", "partially_supported", "unsupported", "span_not_found", "not_judged", "missing"]
@@ -133,7 +147,7 @@ def main(argv: list[str] | None = None) -> int:
 
     out = {"run_id": args.run_id, "sheet": args.sheet, "rated": n, "unrated": unrated,
            "labels": dict(c), "per_stratum": {k: dict(v) for k, v in sorted(per_stratum.items())},
-           "unsupported_strict": strict, "not_supported_lenient": lenient, "q4_gate": gate,
+           "unsupported_strict": strict, "not_supported_lenient": lenient, "stratum_weighted": weighted, "q4_gate": gate,
            "gatekeeper_confusion_rows_gatekeeper_cols_human": confusion,
            "gatekeeper_agreement_supported_vs_not": share(agree, n), "gatekeeper_calibration": calib,
            "changed_on_reread": sum(x["changed_on_reread"] for x in rated),
@@ -142,7 +156,7 @@ def main(argv: list[str] | None = None) -> int:
            "hpo_binding_sample": hpo}
     dest = Path("analysis/poc/audit_metrics.json")
     dest.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n")
-    print(json.dumps({k: out[k] for k in ("rated", "labels", "unsupported_strict", "not_supported_lenient", "q4_gate",
+    print(json.dumps({k: out[k] for k in ("rated", "labels", "unsupported_strict", "not_supported_lenient", "stratum_weighted", "q4_gate",
                                            "gatekeeper_agreement_supported_vs_not")}, indent=2))
     return 0
 

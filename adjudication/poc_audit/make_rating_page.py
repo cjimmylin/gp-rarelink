@@ -10,9 +10,16 @@ page (published as a private claude.ai Artifact) where Jimmy rates:
 The page shows, for each claim, the value, the person and the quote; and, folded
 away, where the quote sits in the paper (the table caption and header row, or
 the paragraph), taken from the run-2 Markdown the extraction and the gatekeeper
-read. That is the same view the gatekeeper had. The gatekeeper verdict is NOT
-put in the page: this script never reads gatekeeper.csv, and it fails if any
-row of the sheet carries a column that looks like a verdict.
+read. That is the same view the gatekeeper had. In the first pass the
+gatekeeper verdict is NOT put in the page: without --second-look this script
+never reads gatekeeper.csv, and it fails if the sheet carries a column that
+looks like a verdict.
+
+--second-look (POC_DESIGN.md Stage 5 step 3, after the first ratings are in)
+adds a tab with every claim the rater did not call supported, plus every claim
+where the rater and the gatekeeper disagree on supported vs not. Each shows the
+rater's first rating and the gatekeeper's verdict side by side, with the paper
+context open, for a final label and a reason.
 
 For the HPO rows it adds the term's definition from the pinned hp.obo.
 
@@ -161,6 +168,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--markdown-dir", default="data/literature/ha20/fulltext_md_run2")
     ap.add_argument("--hp-obo", default="data/ontologies/2026-10-19/hp.obo")
     ap.add_argument("--template", default=str(HERE / "rating_page_template.html"))
+    ap.add_argument("--second-look", action="store_true", help="add the step-3 re-read tab (reads the ratings and gatekeeper.csv)")
+    ap.add_argument("--run-dir", default="data/extracted/ha20/poc-ha20-run-2")
     args = ap.parse_args(argv)
     rows = list(csv.DictReader((HERE / "sample.csv").open()))
     forbidden = [c for c in rows[0] if re.search(r"gatekeeper|verdict", c, re.I)]
@@ -193,11 +202,27 @@ def main(argv: list[str] | None = None) -> int:
     hpo = [{"id": f"h{int(h['n']):02d}", "n": int(h["n"]), "pmid": h["pmid"], "phrase": h["feature_text_as_stated"],
             "status": h["status"], "hpo_id": h["hpo_id"], "hpo_label": h["hpo_label"],
             "grade": grade.get(h["method"], h["method"]), "definition": defs.get(h["hpo_id"], "")} for h in hrows]
-    data = json.dumps({"claims": claims, "hpo": hpo}, ensure_ascii=False).replace("</", "<\\/")
+    second = []
+    if args.second_look:
+        first_label = {"supported": "supported", "partially supported": "partially_supported", "unsupported": "unsupported"}
+        gk = {g["claim_id"]: g for g in csv.DictReader((ROOT / args.run_dir / "gatekeeper.csv").open())}
+        by_id = {c["id"]: c for c in claims}
+        for r in rows:
+            human = first_label.get((r.get(RATING_COL) or "").strip().lower(), "")
+            g = gk.get(r["claim_id"], {})
+            verdict = g.get("verdict", "")
+            if not human:
+                continue
+            gk_ok = verdict in ("supported", "not_judged")
+            if human != "supported" or gk_ok != (human == "supported"):
+                second.append({**by_id[r["claim_id"]], "first": {"rating": human, "note": r.get("note", "")},
+                               "gk": {"verdict": "supported" if verdict == "not_judged" else verdict,
+                                      "source": g.get("source", ""), "reason": g.get("reason", "")}})
+    data = json.dumps({"claims": claims, "hpo": hpo, "second": second}, ensure_ascii=False).replace("</", "<\\/")
     page = Path(args.template).read_text().replace("/*__DATA__*/null", data)
     Path(args.out).write_text(page)
     missing = {c["id"]: c["context_missing"] for c in claims if c["context_missing"]}
-    print(json.dumps({"claims": len(claims), "hpo": len(hpo), "quote_parts_not_located": missing,
+    print(json.dumps({"claims": len(claims), "hpo": len(hpo), "second_look": [x["id"] for x in second], "quote_parts_not_located": missing,
                       "contexts": {k: sum(x["kind"] == k for c in claims for x in c["contexts"]) for k in ("table", "text")},
                       "definitions": sum(bool(h["definition"]) for h in hpo), "bytes": len(page)}, indent=2))
     return 0

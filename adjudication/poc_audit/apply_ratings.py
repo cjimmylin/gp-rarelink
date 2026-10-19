@@ -2,12 +2,15 @@
 
 The rating page (built by make_rating_page.py, published as a private claude.ai
 Artifact) saves each rating as a document in its own store: `ratings/<claim_id>`
-with {rating, note, updated_at} and `hpo/h<nn>` with {ok, note, updated_at}.
+with {rating, note, updated_at}, `hpo/h<nn>` with {ok, note, updated_at}, and,
+after the step-3 re-read, `final/<claim_id>` with {rating, note, updated_at}.
 Claude reads the store with the ArtifactData tool (`list` with `out_dir`), which
 writes one JSON file per document under <dir>/ratings/ and <dir>/hpo/. This
 script reads those files and fills:
   sample.csv                        'rating (...)' and 'note'
   hpo_model_binding_sample.csv      'rater_ok (yes/no)' and 'rater_note'
+  sample.csv (again)                'final_rating' and 'final_reason' from the
+                                    re-read (columns added when absent)
 and keeps the raw documents in ratings_raw.json with the date they were read.
 A sheet cell that already holds a value is overwritten only with --overwrite.
 
@@ -43,9 +46,13 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     ratings = load(Path(args.dir) / "ratings")
     hpo = load(Path(args.dir) / "hpo")
+    final = load(Path(args.dir) / "final") if (Path(args.dir) / "final").exists() else {}
 
     def fill(path: Path, key, col, note_col, value_of):
         rows = list(csv.DictReader(path.open()))
+        for r in rows:
+            r.setdefault(col, "")
+            r.setdefault(note_col, "")
         changed = 0
         for r in rows:
             doc = key(r)
@@ -65,10 +72,13 @@ def main(argv: list[str] | None = None) -> int:
               lambda d: LABEL.get(d.get("rating", ""), ""))
     c2 = fill(HERE / "hpo_model_binding_sample.csv", lambda r: hpo.get(f"h{int(r['n']):02d}"), "rater_ok (yes/no)", "rater_note",
               lambda d: d.get("ok", "") if d.get("ok") in ("yes", "no") else "")
-    (HERE / "ratings_raw.json").write_text(json.dumps({"read_on": args.read_on, "ratings": ratings, "hpo": hpo},
+    c3 = fill(HERE / "sample.csv", lambda r: final.get(r["claim_id"]), "final_rating", "final_reason",
+              lambda d: LABEL.get(d.get("rating", ""), "")) if final else (0, 0, 0)
+    (HERE / "ratings_raw.json").write_text(json.dumps({"read_on": args.read_on, "ratings": ratings, "hpo": hpo, "final": final},
                                                        indent=2, ensure_ascii=False, sort_keys=True) + "\n")
     print(json.dumps({"claims": {"written": c1[0], "rated": c1[1], "of": c1[2]},
-                      "hpo": {"written": c2[0], "rated": c2[1], "of": c2[2]}}, indent=2))
+                      "hpo": {"written": c2[0], "rated": c2[1], "of": c2[2]},
+                      "final": {"written": c3[0], "rated": c3[1]}}, indent=2))
     return 0
 
 
