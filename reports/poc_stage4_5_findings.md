@@ -294,4 +294,4 @@ Jimmy rated all 50 claims and 27 of the 30 HPO bindings on a private rating page
 
 - **The step-3 second look:** 10 claims, on the rating page's second tab. Then the final labels go through `audit_metrics.py`, for both v1 and v2.
 - **The gatekeeper's weak recall** needs a design answer before the freeze. Options for the pilot report include a claim-level read with the person named in the question, a second independent gatekeeper, or accepting it as a pre-filter and relying on the audit. That decision is for after the second look.
-- **Spend:** the re-check (28 short helper reads) has no reading yet; the session reading did not refresh during the turn. Normalization repairs cost no model calls.
+- **Spend:** the session reading went from $593.02 to $610.19 ($17.17) across the re-check (28 short helper reads) and this session's own work; normalization repairs cost no model calls. Pilot total: $610.19 against the $1,000 ceiling.
