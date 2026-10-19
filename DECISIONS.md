@@ -101,6 +101,15 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-19 · D-30 decided: Chen 2020 Table S1 replaces El Hani 2024 as the Q7 benchmark; C032922 stays unsupported; HA20 counts updated
+Jimmy's answers to three questions (asked in the session, 2026-10-19):
+- **D-30 · Q7 benchmark: Chen 2020 Table S1** (PMID 33101300, PMC7546856, CC BY). It replaces El Hani 2024 (`POC_DESIGN.md` Stage 6 step 3), which is paywalled from the cloud environment. This changes the pilot design; the pre-registration is not frozen, so it is a revision, not a deviation.
+  - Recommended option was Jimmy downloading El Hani; he chose the substitute. Trade-offs, as put to him: Chen 2020 is smaller (89 patients, 32 distinct protein-level variants, 21 source papers) and is itself in the corpus; its table was extracted in run-2.
+  - Handled as the design handles El Hani: the numerator counts only rows from primary papers (not reviews, not Chen 2020); the restricted denominator keeps benchmark variants with a source paper in the run. Transcribed by script (`pipeline/harness/benchmark_chen2020.py`); the patients number 1–89 without gaps, which the script checks.
+  - Results: `reports/poc_stage6_findings.md` §6.
+- **C032922 stays unsupported** as Jimmy rated it ("Keep unsupported"). The audit stands at 3 of 50 unsupported (6.0%); Q4 is not met.
+- **CONTEXT.md §4, HA20 row:** the ClinVar figures are replaced with the direct count (release 2026-10-12: 764 records, 99 P/LP, 375 VUS), with the application's figures kept beside them. The other five rows wait for their snapshots.
+
 ### 2026-10-19 · Stage 6 run on ClinVar and HPO; snapshot kept outside the repo (Claude's calls)
 - **Snapshot location.** `POC_DESIGN.md` Stage 6 says to write the snapshot under `data/reference/<date>/` and commit its manifest. The extraction guard refuses to run while a populated `data/reference/` is readable, so a committed manifest there would block every later extraction run. The snapshot content is kept outside the repository (a reference root given to the harness), and only `MANIFEST.json` and `counts.json` are committed, under `analysis/poc/reference_snapshot/<date>/`. The intent of the design (ground truth out of extraction's reach) is unchanged.
 - **Direct counts for *TNFAIP3*** (ClinVar release 2026-10-12, GRCh38, distinct VariationID): 764 single-gene records; 99 P/LP (68 P, 27 LP, 4 P/LP); 375 VUS; 76 name HA20. These replace the application's provisional figures (542 records, about 58 pathogenic, about 289 VUS). `CONTEXT.md` §4 is not edited here; the six-disease counts will be taken together.
@@ -113,7 +122,7 @@ Jimmy: "go with your recommendations on D-29" (this session, 2026-10-19). Accept
 - **Gatekeeper v3:** the gatekeeper first records who the quote is about, then judges the person link from that. A normal finding recorded in the inverted form ("normal CRP", excluded) is partially supported, matching Jimmy's final labels and D-27's preferred form.
 - **Re-run:** v5 and gatekeeper v3 on 20 run-2 papers drawn at random (seed 29; 14 cohort or review papers, 6 case reports; `analysis/poc/pick_v5_subset.py`, `runs/poc-ha20-v5-subset/selection.json`). Then a fresh 50-claim audit drawn with a new seed, rated by Jimmy with the gatekeeper hidden on the first pass. Estimate $82.61 (planning figure from run-2 readings), within the rough $110 Jimmy approved.
 - **Run-2 stays the extraction of record** for Stage 6 concordance, which starts now. The 250-claim audit stays the pre-registered measure.
-- **Still open:** Jimmy's reading of C032922 (a gene symbol on a literature-summary table column).
+- **C032922:** Jimmy kept it unsupported (D-30 entry).
 
 ### 2026-10-19 · Audit second look done: Q4 not met (3 of 50 unsupported); D-29 opened
 - **Jimmy's second look** (10 claims, with the full paragraph and the v1 gatekeeper verdict in view) changed 7 labels. Final: 44 supported, 3 partial, 3 unsupported.

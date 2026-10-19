@@ -52,14 +52,14 @@ All six are absent from phenopacket-store's 408 cohorts. Together they span four
 |---|---|---|---|---|---|---|
 | Alexander disease | *GFAP* | 203450 | 58 | AD / de novo | Neurology | 2024 review: 550 patients, 182 causative variants vs 72 ClinVar P/LP, ~12 OMIM allelic. Active foundation (United Leukodystrophy Foundation). |
 | Leukocyte adhesion deficiency I | *ITGB2* | 116920 | 2968 | AR | Immunology | 323 published cases, genotype reported for only 139: the clearest gap in the set. |
-| A20 haploinsufficiency | *TNFAIP3* | 616744 | 476102 | AD | Auto-inflammatory | 177 published patients; 542 ClinVar records, ~58 pathogenic vs ~289 VUS. Described 2016, so the corpus is entirely open-access era. |
+| A20 haploinsufficiency | *TNFAIP3* | 616744 | 476102 | AD | Auto-inflammatory | 177 published patients. ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 764 records, 99 P/LP vs 375 VUS (application: 542 records, ~58 pathogenic vs ~289 VUS). Described 2016, so the corpus is entirely open-access era. |
 | SSADH deficiency | *ALDH5A1* | 271980 | 22 | AR | Neurometabolic | ~450 published patients; 143 ClinVar P/LP vs 262 VUS; proxy count of 5 OMIM allelic variants. Active patient association. |
 | Danon disease | *LAMP2* | 300257 | 34587 | X-linked dominant | Cardiac / neuromuscular | >100 published families; 162 ClinVar P/LP vs 345 VUS. Sex-differential severity tests whether genotype–phenotype structure survives extraction. |
 | Tangier disease | *ABCA1* | 205400 | 31150 | AR | Lipid metabolism | ~200 published patients; 1,302 ClinVar records but only 69 P/LP. Big gene, small pathogenic core: the monogenic series must be separated from unrelated testing. |
 
 **Substitutes** (held in reserve if open-access coverage is thin; also the Stretch extension to 12 diseases): Blau syndrome (*NOD2*), Majeed syndrome (*LPIN2*), familial LCAT deficiency (*LCAT*), GAMT deficiency (*GAMT*), arterial tortuosity syndrome (*SLC2A10*), PAPA syndrome (*PSTPIP1*).
 
-**Caveats on the numbers:** ClinVar counts came from MyVariant.info and ClinVar Miner at application time. OMIM counts are proxy lower bounds. **All of these are to be replaced with direct, dated counts before extraction begins** (Month 1).
+**Caveats on the numbers:** ClinVar counts came from MyVariant.info and ClinVar Miner at application time, except the A20 haploinsufficiency row, replaced on 2026-10-19 with a direct count (`analysis/poc/reference_snapshot/2026-10-19/counts.json`; Jimmy's decision, `DECISIONS.md`). OMIM counts are proxy lower bounds. **All of these are to be replaced with direct, dated counts before extraction begins** (Month 1).
 
 ## 5. Methodology
 

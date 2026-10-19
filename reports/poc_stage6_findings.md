@@ -5,7 +5,7 @@
 ## 1. Summary
 
 - **Q6 (the harness runs end to end against dated snapshots) is met for ClinVar and HPO.** OMIM is not checked: no API key is in place and its terms are not confirmed (Stage 6 stop-and-ask).
-- **Q7 (completeness against a published catalogue) is not measured.** The benchmark named in the design, El Hani 2024 (PMID 38128752), is paywalled from this environment (publisher 403; not in Europe PMC). See §6.
+- **Q7 (completeness against a published catalogue) is met, on a small denominator.** The benchmark is Chen 2020 Table S1 (D-30), because El Hani 2024 is paywalled from this environment. Of the 9 benchmark variants whose source paper is in the run, all 9 are found in primary papers (100%, 70–100%). Over all 32 benchmark variants, 28 are found (88%, 72–95%). See §6.
 - **Direct ClinVar counts now replace the application's proxies for *TNFAIP3*:**
   - 764 single-gene records on GRCh38 in the release of 2026-10-12;
   - 99 of them pathogenic or likely pathogenic, and 375 VUS.
@@ -101,11 +101,28 @@ Pre-triage by script, comparing the protein change the paper states with the one
 - The snapshot was taken after run-2 was tagged and after the D-29 rules (extraction v5, gatekeeper v3) were committed (`05952ea`). Nothing in the extraction or gatekeeper prompts was changed after ClinVar content was seen.
 - The harness imports normalization helpers from `pipeline/extract`; the reverse is not allowed, and `tests/test_isolation.py` still passes.
 
-## 6. Open items
+## 6. Completeness against Chen 2020 Table S1 (Q7, D-30)
 
-1. **The Q7 benchmark (Jimmy).** El Hani 2024 is paywalled here. Options:
-   - Jimmy downloads its supplementary patient and variant tables on his machine. They go under the reference root, not the repo, and are transcribed by script or by a separately audited run, as the design says;
-   - or a substitute benchmark, which changes the design and needs his decision.
-2. **Hand triage of the 55 gap candidates**, with the paper open (feeds adjudication).
-3. **OMIM** stays unchecked until the key and terms are in place.
-4. **Dedup check against the benchmark** (Stage 6 step 6) waits on item 1.
+*`pipeline/harness/benchmark_chen2020.py` and `pipeline/harness/completeness.py`, run 2026-10-19. Outputs: `analysis/poc/completeness_poc-ha20-run-2.json` and `.csv`; benchmark manifest `analysis/poc/reference_snapshot/2026-10-19/chen2020_MANIFEST.json`.*
+
+- **The benchmark.** Chen et al. 2020 (PMID 33101300), Table S1: 39 families, 89 patients, 32 distinct protein-level variants, 21 source papers.
+  - Transcribed by script from the CC BY supplement; the script checks that the patients number 1–89 without gaps.
+  - Each source paper's DOI was resolved to a PubMed ID (21 of 21).
+  - The table prints protein changes only, so variants are compared at protein level: residue, position and consequence class (stop, frameshift, missense residue), and exon deletions by their range.
+- **Results:**
+
+| Measure | Found | Rate (Wilson 95%) |
+|---|---|---|
+| Restricted: benchmark variants with a source paper in the run, found in primary-paper rows (gated) | 9 of 9 | 100% (70–100%) |
+| Restricted, found in that variant's own source paper | 9 of 9 | 100% (70–100%) |
+| Unrestricted: all benchmark variants, found in primary-paper rows | 28 of 32 | 88% (72–95%) |
+
+- **Q7 gate (restricted recall ≥ 80%) is met**, but 9 is a small denominator. Only 9 of the 32 variants have a source paper in our full-text corpus. The two largest sources (Kadowaki 2018, 22 patients; Aeschlimann 2018, 16 patients) are paywalled.
+- **The 4 not found in any primary paper:** p.Phe637Glufs\*2 and p.Gln370Argfs\*16 (both found only in reviews), and p.Lys303fs and p.Trp85\* (found only in Chen 2020 itself). Their source papers are not in the full-text corpus.
+- **Step 6, patients per source paper** (for the 9 source papers in the run): our TNFAIP3 carriers match Chen's patient count for 5 papers. There are fewer for 2 papers (30022980: 3 vs 4; 30526650: 2 vs 3) and more for 1 (31164164: 4 vs 2, because that paper also reports a deletion family that Chen did not take). For 28659290 the count is equal (1). The two shortfalls are worth a look in Stage 7: either the paper does not tie a variant to every patient, or the extraction missed one.
+
+## 7. Open items
+
+1. **Hand triage of the 55 gap candidates**, with the paper open (feeds adjudication).
+2. **OMIM** stays unchecked until the key and terms are in place.
+3. **The two patient-count shortfalls** in §6.
