@@ -366,3 +366,23 @@ Decided by Jimmy (D-29). Numbers from `analysis/poc/pick_v5_subset.py`, `analysi
 - **The gatekeepers bent the new rule.** v3 says a quote about another person makes a person-level value unsupported. In 20 claims the helpers recorded `about = other_person` but judged them partially supported, reasoning that the value is right one step away (relatives' proband flags; sisters' variant fields resting on "the same mutation" in the next sentence). Two helpers said so in their replies. The audit will show whether that leniency hides errors.
 - **Fresh audit:** 50 claims drawn with seed 20261029 from the same strata as before (pools: variant 673, observed 772, excluded 323, demographic 567), in `adjudication/poc_audit_v5/`. Rating page, with the gatekeeper hidden: https://claude.ai/artifact/UHTQJ3TyT29HZ25PPdQFN8 (private to Jimmy). Then `apply_ratings.py --dir ... --sample-dir adjudication/poc_audit_v5` and `audit_metrics.py --run-id poc-ha20-v5-subset --gatekeeper-file gatekeeper_v3.csv --sheet adjudication/poc_audit_v5/sample.csv`.
 - **Spend:** estimate $82.61. The session cost reading stayed at $614.97 from about 09:17 UTC through the run (the freeze seen before), so the actual figure comes from a later reading.
+
+### 10.7 The re-audit, first pass (Jimmy, 2026-10-19; 48 of 50 rated)
+
+Scores: `analysis/poc/audit_metrics_v5.json` (`audit_metrics.py --run-id poc-ha20-v5-subset --gatekeeper-file gatekeeper_v3.csv`). Ratings: `adjudication/poc_audit_v5/sample.csv` and `ratings_raw.json`.
+
+| | Claims | Rate (exact 95% CI) | Weighted by stratum pool |
+|---|---|---|---|
+| Supported | 44 | | |
+| Partially supported | 1 | | |
+| Unsupported | 3 | 6.3% (1.3–17.2%) | 9.1% |
+| Not rated | 2 | | |
+
+- **Q4 is still not met on the first pass** (6.3% against ≤ 4%). Two claims are unrated (C012085, vital status from a Chinese follow-up sentence; C010818, age at diagnosis).
+- **The variant stratum, where D-29 aimed, is clean:** 19 of 20 supported, 1 partly (C006555: a cDNA value that, Jimmy notes, includes the gene name), none unsupported. In the first audit, all three unsupported claims were variant fields.
+- **All three unsupported claims come from one table in one paper:** the stacked per-family cells of 42128528's Supplementary File 1 ("1 / 2 / 3 / 4*" patients against "18 / 24 / 21 / 57" ages).
+  - The three: pt1's age at last evaluation (P18Y, from the column "Age at analysis"), and pt4's and pt15's ages at onset (P5Y and P1Y).
+  - Read by position, the values match the column the field names. But the age at analysis is not the age at last evaluation. And positional reading of stacked cells is the v4 rule this table tests: the rule allows it only when the number of values equals the number of people, which holds for these columns but not for others in the same table.
+  - Jimmy left no note, so which of these he objected to is for the second look.
+- **Gatekeeper v3 against these labels:** it called all four not-fully-supported claims supported. Its one flag (C011145, "without clear celiac disease", partial) Jimmy rated supported. Agreement 43 of 48. So the person-link step did not help here, because the errors are not person-link errors.
+- **Next:** the second-look tab on the same page (5 claims: the three above, C006555 and C011145), plus the two unrated claims. Then the final figures.

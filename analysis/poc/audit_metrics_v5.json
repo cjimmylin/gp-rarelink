@@ -1,0 +1,284 @@
+{
+  "run_id": "poc-ha20-v5-subset",
+  "sheet": "adjudication/poc_audit_v5/sample.csv",
+  "gatekeeper_file": "gatekeeper_v3.csv",
+  "rated": 48,
+  "unrated": [
+    "C012085",
+    "C010818"
+  ],
+  "labels": {
+    "supported": 44,
+    "partially_supported": 1,
+    "unsupported": 3
+  },
+  "per_stratum": {
+    "demographic_inheritance": {
+      "unsupported": 3,
+      "supported": 5
+    },
+    "feature_excluded": {
+      "supported": 10
+    },
+    "feature_observed": {
+      "supported": 10
+    },
+    "variant": {
+      "supported": 19,
+      "partially_supported": 1
+    }
+  },
+  "unsupported_strict": {
+    "k": 3,
+    "n": 48,
+    "share": 0.0625,
+    "ci95": [
+      0.013079,
+      0.17196
+    ]
+  },
+  "not_supported_lenient": {
+    "k": 4,
+    "n": 48,
+    "share": 0.083333,
+    "ci95": [
+      0.023173,
+      0.199828
+    ]
+  },
+  "stratum_weighted": {
+    "pool_sizes": {
+      "variant": 673,
+      "feature_observed": 772,
+      "feature_excluded": 323,
+      "demographic_inheritance": 567
+    },
+    "unsupported": 0.0911,
+    "not_supported": 0.1055,
+    "note": "stratum rates weighted by pool size; point estimates only (no interval)"
+  },
+  "q4_gate": {
+    "automated_span_match": 1.0,
+    "automated_span_match_ok": true,
+    "human_unsupported_rate": 0.0625,
+    "human_unsupported_rate_ok": false,
+    "threshold": 0.04,
+    "complete": false
+  },
+  "gatekeeper_confusion_rows_gatekeeper_cols_human": {
+    "supported": {
+      "supported": 43,
+      "partially_supported": 1,
+      "unsupported": 3
+    },
+    "partially_supported": {
+      "supported": 1,
+      "partially_supported": 0,
+      "unsupported": 0
+    }
+  },
+  "gatekeeper_agreement_supported_vs_not": {
+    "k": 43,
+    "n": 48,
+    "share": 0.895833,
+    "ci95": [
+      0.773422,
+      0.965302
+    ]
+  },
+  "gatekeeper_calibration": {
+    "not_supported_vs_human_not_supported": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 4,
+      "precision": {
+        "k": 0,
+        "n": 1,
+        "share": 0.0,
+        "ci95": [
+          0.0,
+          0.975
+        ]
+      },
+      "recall": {
+        "k": 0,
+        "n": 4,
+        "share": 0.0,
+        "ci95": [
+          0.0,
+          0.602365
+        ]
+      }
+    },
+    "unsupported_vs_human_unsupported": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 3,
+      "precision": {
+        "k": 0,
+        "n": 0,
+        "share": null,
+        "ci95": null
+      },
+      "recall": {
+        "k": 0,
+        "n": 3,
+        "share": 0.0,
+        "ci95": [
+          0.0,
+          0.707598
+        ]
+      }
+    }
+  },
+  "changed_on_reread": 0,
+  "disagreements": [
+    {
+      "claim_id": "C006555",
+      "stratum": "variant",
+      "pmid": "36064566",
+      "table": "variants",
+      "field": "cdna_hgvs_as_stated",
+      "value": "\"c.1245_1248del\"",
+      "human_first": "partially_supported",
+      "human": "partially_supported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "Includes the gene name",
+      "final_reason": ""
+    },
+    {
+      "claim_id": "C011145",
+      "stratum": "feature_excluded",
+      "pmid": "40822695",
+      "table": "phenotypic_features",
+      "field": "status",
+      "value": "\"excluded\"",
+      "human_first": "supported",
+      "human": "supported",
+      "changed_on_reread": false,
+      "gatekeeper": "partially_supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "'Without clear celiac disease' is qualified, not a definite exclusion.",
+      "note": "",
+      "final_reason": ""
+    },
+    {
+      "claim_id": "C012969",
+      "stratum": "demographic_inheritance",
+      "pmid": "42128528",
+      "table": "individuals",
+      "field": "age_at_onset_iso8601",
+      "value": "\"P5Y\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "",
+      "final_reason": ""
+    },
+    {
+      "claim_id": "C013090",
+      "stratum": "demographic_inheritance",
+      "pmid": "42128528",
+      "table": "individuals",
+      "field": "age_at_onset_iso8601",
+      "value": "\"P1Y\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "",
+      "final_reason": ""
+    },
+    {
+      "claim_id": "C012938",
+      "stratum": "demographic_inheritance",
+      "pmid": "42128528",
+      "table": "individuals",
+      "field": "age_at_last_evaluation_iso8601",
+      "value": "\"P18Y\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "",
+      "final_reason": ""
+    }
+  ],
+  "not_supported_by_human": [
+    {
+      "claim_id": "C006555",
+      "stratum": "variant",
+      "pmid": "36064566",
+      "table": "variants",
+      "field": "cdna_hgvs_as_stated",
+      "value": "\"c.1245_1248del\"",
+      "human_first": "partially_supported",
+      "human": "partially_supported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "Includes the gene name",
+      "final_reason": ""
+    },
+    {
+      "claim_id": "C012969",
+      "stratum": "demographic_inheritance",
+      "pmid": "42128528",
+      "table": "individuals",
+      "field": "age_at_onset_iso8601",
+      "value": "\"P5Y\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "",
+      "final_reason": ""
+    },
+    {
+      "claim_id": "C013090",
+      "stratum": "demographic_inheritance",
+      "pmid": "42128528",
+      "table": "individuals",
+      "field": "age_at_onset_iso8601",
+      "value": "\"P1Y\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "",
+      "final_reason": ""
+    },
+    {
+      "claim_id": "C012938",
+      "stratum": "demographic_inheritance",
+      "pmid": "42128528",
+      "table": "individuals",
+      "field": "age_at_last_evaluation_iso8601",
+      "value": "\"P18Y\"",
+      "human_first": "unsupported",
+      "human": "unsupported",
+      "changed_on_reread": false,
+      "gatekeeper": "supported",
+      "gatekeeper_source": "gatekeeper",
+      "gatekeeper_reason": "",
+      "note": "",
+      "final_reason": ""
+    }
+  ],
+  "hpo_binding_sample": null
+}
