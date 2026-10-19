@@ -9,8 +9,9 @@ summary written by pipeline.extract.reconcile. Reports:
     flagged true but with no individual rows;
   - individuals, split into those described first-hand and those taken from a
     table or summary of previously published cases (source_reference_in_review);
-  - variant rows by gene, distinct TNFAIP3 variant strings, variant rows without
-    an original string (check 3);
+  - variant rows by gene, TNFAIP3 rows with a printed variant (D-22: rows
+    without one are kept but left out of variant counts and concordance),
+    distinct TNFAIP3 variant strings, variant rows without an original string;
   - TNFAIP3 variant rows by inheritance, and "de novo" rows with no parental
     testing statement (rule 8 says de novo needs stated parental testing);
   - phenotypic_features by status and evidence basis; checklist cells by status
@@ -80,6 +81,7 @@ def main(argv: list[str] | None = None) -> int:
                 no_original_string.append(f"{pmid}:variants[{i}]")
             elif g == gene:
                 distinct_variants.add(WS.sub("", str(orig)).lower())
+                c["variant_rows_gene:TNFAIP3_with_printed_variant"] += 1
             if g == gene:
                 carriers.add(v(r.get("individual_label_in_paper")))
                 inh = v(r.get("inheritance"))

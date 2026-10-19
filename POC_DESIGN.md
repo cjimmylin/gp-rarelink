@@ -676,7 +676,7 @@ run twice.
 1. Counts: papers processed / failed; individuals before and after merging;
    distinct variants; features by status. All from `analysis/poc/extraction_counts.py`.
 2. Span check ≥ 98 % verbatim matches (the rest listed).
-3. Every variant row has an `original_string`.
+3. Every variant row with a printed variant has an `original_string` (reworded under D-22, 2026-10-19: rows where the paper ties a TNFAIP3 variant to a person without printing it are kept, with "not reported", and left out of variant counts and concordance).
 4. "not reported" present in the checklist table for every individual.
 5. Run-to-run agreement (run-1 vs run-2): Jaccard on distinct variant original
    strings and on (individual, HPO candidate) pairs; report both. No gate, but

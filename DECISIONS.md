@@ -111,6 +111,13 @@ How to use this file:
   6. **Run-2.** `poc-ha20-run-2` runs over all 85 papers under instructions v3 and the converter fixes. It gets its own 15-paper repeat and a fresh merge hand check, which also measures merge policy v3 independently. Estimated cost is about $190 at run-1's rate. Run-2 becomes the pilot's extraction of record.
   7. **Supplements.** Fetch supplementary files for open-access papers after a licensing check.
 - **Stages 4 and 5** follow run-2. The gatekeeper estimate comes after run-2.
+- **How it was implemented (Claude, 2026-10-19; flagged for Jimmy's review):** `extract_v3.md` and `schema_ha20_v3.json`.
+  - **Field added:** `publications.cohort_size_as_stated` records the out-of-scope members as a number (item 1).
+  - **Labels:** one fixed six-step order (item 2).
+  - **Table symbols:** the rule applies to "-", "–", "0", "N" and similar symbols, not only "–" (item 3). So unexplained 1/0 tables, as in 41991504 during run-1, now give "not reported".
+  - **Relevance flag:** follows the scope, meaning "describes at least one identifiable in-scope person".
+  - **Other genes:** for in-scope people, risk alleles and polygenic-score variants are not listed. This is my reading of item 1 (one Stage 3 scope difference was 19 lupus-risk alleles in 36325013). Say if you want them kept.
+  - **Inputs:** run-2 reads the re-converted Markdown with the converter fixes and the supplementary sections. Run-1's Markdown is kept locally, with checksums committed, so run-1 quotes still verify (100%).
 - **Why:** Stage 3 found the helpers read values consistently but chose different scopes. The repeat agreed on 98.7% of checklist cells. Variant agreement was 0.547 on strings and 0.702 on folded keys, rising to 0.973 on keys without the two papers where scope differed.
 
 ### 2026-10-18 · Pilot Stage 3 done; merge policy v3 (Claude's calls)

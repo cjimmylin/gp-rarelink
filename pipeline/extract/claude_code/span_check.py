@@ -169,9 +169,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--run-id", required=True)
     ap.add_argument("--schema", type=Path, default=SCHEMA)
+    ap.add_argument("--md-dir", type=Path, default=None,
+                    help="paper Markdown to check against (default data/literature/<disease>/fulltext_md; "
+                         "run-1 read the copy kept as fulltext_md_run1)")
     args = ap.parse_args(argv)
     run_dir = Path("data/extracted") / args.disease / args.run_id
-    md_dir = Path("data/literature") / args.disease / "fulltext_md"
+    md_dir = args.md_dir or Path("data/literature") / args.disease / "fulltext_md"
     schema = load_schema(args.schema)
     features = checklist_features(schema)
     all_claims, all_problems, total = [], [], Counter()
@@ -190,6 +193,7 @@ def main(argv: list[str] | None = None) -> int:
     summary = {
         "run_id": args.run_id,
         "schema": str(args.schema),
+        "markdown_dir": str(md_dir),
         "n_papers": len(per_paper),
         "checklist_features": features,
         "counts": dict(total),
