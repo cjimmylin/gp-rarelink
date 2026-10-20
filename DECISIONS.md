@@ -48,6 +48,18 @@ How to use this file:
 - **Questions:** Which license applies to released phenopackets and evidence tables? How are verbatim spans from non-open-access papers handled on release?
 - **Needed by:** Month 6.
 
+**D-39 · AxD completeness catalogue: its supplement came through only after extraction (raised 2026-10-20)**
+- **What happened:**
+  - The catalogue check before extraction (§7.2.7, D-35; `analysis/catalogue/catalogue_check_2026-10-20.md`, commit `3622d03`) dropped the AxD candidate, Grossi 2024 (PMID 39420046). Its per-variant table is in the supplement, and Europe PMC answered HTTP 500 when the supplement was fetched.
+  - So `pv1-axd` extracted that paper from its main text only.
+  - A single retry at 19:3x UTC, after AxD extraction finished, downloaded the three supplement files (`data/literature/axd/supplementary/manifest.csv`).
+  - They have **not** been appended to the paper's text, so `pv1-axd`'s inputs stay as they were run.
+- **Options:**
+  - (a) **Keep it dropped, as the frozen rule says** ("checked by script before extraction starts"): AxD reports no completeness figure and the report says why.
+  - (b) **Use the supplement on the harness side only.** Transcribe the table for the completeness check and log a deviation, since the check would then use input that wasn't there before extraction. Extraction is untouched; no re-run.
+- **Recommendation:** (b), as a logged deviation. The catalogue never reaches extraction, and the drop was a server error, not a property of the catalogue. Report both: the figure, and the fact that it was added after the fact.
+- **Needed by:** the six-disease concordance step.
+
 ---
 
 ## Decision log
