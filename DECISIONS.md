@@ -104,6 +104,12 @@ Jimmy's answers to four questions (asked in the session, 2026-10-20):
   - Paywalled papers stay in the manifests as not accessible and are listed in reports.
   - The "institutional access" route in pre-registration §5.1 is removed (draft v0.8).
 - **Unpaywall contact address:** Jimmy gave `jimmy.lin@raregenomics.org`. It is stored only in the git-ignored `.env` as `UNPAYWALL_EMAIL` and sent only to api.unpaywall.org.
+- **Unpaywall pass (2026-10-20).** It fetched 43 open PDFs across the five diseases (`analysis/corpus/coverage_2026-10-20.md`, `unpaywall_hosts_2026-10-20.json`). Most open copies it found could not be fetched:
+  - publisher sites answered with HTTP errors to automated downloads (Wiley, ScienceDirect, Neurology, AHA, OUP and others). This was not worked around;
+  - a few hosts are refused by the environment's network policy, mainly www.jci.org (14 links). Jimmy could allow them;
+  - PMC's own PDF pages are behind a reCAPTCHA.
+  - Under D-08, all five diseases now meet the count provisionally: 24 (Tangier) to 81 (Danon) relevance-"yes" primary papers with full text. Full-text screening decides.
+  - The PDFs need conversion before extraction (`to_markdown.py` uses Docling, not yet installed).
 
 ### 2026-10-19 · Five-disease corpus searched and screened; dated ClinVar counts; pre-registration v0.7
 Jimmy: "Yes. Perform items 1-5" (this session), after Claude listed them. Items 1–4 are done here; the item 5 drafts are in `reports/drafts/`, for Jimmy to send.
