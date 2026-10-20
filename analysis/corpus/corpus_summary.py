@@ -13,8 +13,10 @@ oa_elsewhere.json, and writes
 case report, case series/cohort or review). Full-text screening has not been done,
 so the eligible set, and the D-08 denominators, will shrink.
 
-D-08 is open. The check here uses its placeholder (at least 15 accessible reports
-and at least 50% accessible), labelled as a placeholder.
+D-08 (decided 2026-10-20): a disease is replaced only if fewer than 15 eligible
+primary reports have accessible full text after full-text screening. Until full-text
+screening is done, the check here uses relevance-"yes" case reports and series with
+fetched full text as a stand-in, labelled as provisional.
 
   uv run python analysis/corpus/corpus_summary.py
 """
@@ -31,7 +33,7 @@ import yaml
 
 LIT = Path("data/literature")
 OUT = Path("analysis/corpus")
-D08_MIN_N, D08_MIN_SHARE = 15, 0.50
+D08_MIN_N = 15
 
 
 def pct(n: int, d: int) -> str:
@@ -80,7 +82,7 @@ def summarise(disease: str) -> dict:
         "yes_primary": len(yes_primary),
         "yes_primary_fulltext": yp_text,
         "yes_primary_fulltext_or_free": yp_text + yp_free if oa else None,
-        "d08_placeholder_met_fulltext": bool(n_text >= D08_MIN_N and corpus and n_text / len(corpus) >= D08_MIN_SHARE),
+        "d08_met_provisional": yp_text >= D08_MIN_N,
     }
 
 
@@ -138,7 +140,7 @@ def search_md(s: dict, cfg: dict) -> str:
 - **Fetched:** {s['fulltext']} of {s['in_corpus']} corpus papers ({pct(s['fulltext'], s['in_corpus'])}) as JATS XML from Europe PMC or PMC (`fetch_fulltext.py`). Access status in the corpus: {acc}.
 - **"Paywalled" here means no PMC copy.** Unpaywall was skipped because `UNPAYWALL_EMAIL` is unset. Of the papers without full text, {free}.
 - **Relevance yes, primary papers** (case reports and series): {s['yes_primary']}; with full text {s['yes_primary_fulltext']} ({pct(s['yes_primary_fulltext'], s['yes_primary'])}).
-- **D-08 (open; placeholder: at least {D08_MIN_N} accessible reports and at least {int(D08_MIN_SHARE * 100)}%):** {'met' if s['d08_placeholder_met_fulltext'] else 'not met'} on fetched full text.
+- **D-08 (decided: at least {D08_MIN_N} eligible primary reports with accessible full text):** provisionally {'met' if s['d08_met_provisional'] else 'not met'} ({s['yes_primary_fulltext']} relevance-"yes" primary papers with full text; full-text screening will decide).
 """
 
 
@@ -160,13 +162,13 @@ def main() -> int:
          "\"Free elsewhere\" is a Europe PMC listing of a free or open copy outside PMC, not fetched. HA20's corpus was "
          "seeded partly from ClinVar citations (D-19); the other five were not.*"),
         "",
-        "| Disease | Search hits | Records | In corpus | Full text | + free elsewhere (upper bound) | Yes-relevance primary papers with full text | D-08 placeholder on full text |",
+        "| Disease | Search hits | Records | In corpus | Full text | + free elsewhere (upper bound) | Yes-relevance primary papers with full text | D-08 (≥ 15), provisional |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for s in out:
         fe = "n/a" if s["free_elsewhere_listed"] is None else f"{s['fulltext'] + s['free_elsewhere_listed']} ({pct(s['fulltext'] + s['free_elsewhere_listed'], s['in_corpus'])})"
         lines.append(f"| {s['disease']} | {s['query_hits']} | {s['manifest_rows']} | {s['in_corpus']} | {s['fulltext']} ({pct(s['fulltext'], s['in_corpus'])}) | {fe} | "
-                     f"{s['yes_primary_fulltext']} of {s['yes_primary']} ({pct(s['yes_primary_fulltext'], s['yes_primary'])}) | {'met' if s['d08_placeholder_met_fulltext'] else 'not met'} |")
+                     f"{s['yes_primary_fulltext']} of {s['yes_primary']} ({pct(s['yes_primary_fulltext'], s['yes_primary'])}) | {'met' if s['d08_met_provisional'] else 'not met'} |")
     (OUT / f"coverage_{today}.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     return 0

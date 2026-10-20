@@ -1,6 +1,6 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.7, 2026-10-19. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.8, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
@@ -8,6 +8,7 @@
 > - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
 > - v0.6 applies D-26 to D-28, decided by Dr. Lin on 2026-10-19 from the pilot's Stages 4 and 5: normalization success by description type (§7.2.2); normal findings recorded as the absent abnormality (§6.2); the gatekeeper checks every value, including its link to the person (§6.4).
 > - v0.7 folds in the pilot report (`reports/poc_report.md` §10; D-29 to D-31, decided 2026-10-19). It also records the five-disease corpus searches and screening, the Mondo IDs and the dated ClinVar counts (2026-10-19). Changed sections: §4.1, §5.1, §5.2, §6.2 to §6.5, §7.1, §7.2 (matching, D-19 split, new §7.2.7 completeness), §10 and §13. No metric, threshold or disease was changed.
+> - v0.8 applies D-08 (substitute trigger: an absolute count), D-19 (no ClinVar-cited seeds) and D-32 (open access only), decided by Dr. Lin on 2026-10-20 (§4.2, §5.1, §13).
 >
 > - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
 > - Items marked **(D-nn, decided)** are settled; the decision and its date are in `DECISIONS.md`.
@@ -78,7 +79,7 @@ Mondo IDs come from the OMIM cross-references in Mondo release 2026-10-06, the r
 
 Substitutes, in this order unless the panel decides otherwise: Blau syndrome (*NOD2*), Majeed syndrome (*LPIN2*), familial LCAT deficiency (*LCAT*), GAMT deficiency (*GAMT*), arterial tortuosity syndrome (*SLC2A10*), PAPA syndrome (*PSTPIP1*).
 
-A pilot disease is replaced only if, after screening (§5.1), its accessible full-text corpus falls below the threshold set in [D-08]. Any substitution is decided and logged in `DECISIONS.md` **before** extraction starts, on access grounds alone. It never depends on extraction or concordance results.
+A pilot disease is replaced only if, after full-text screening (§5.1), fewer than 15 eligible primary reports (case reports, case series or cohorts) have accessible full text (D-08, decided). There is no share threshold: open full text covered 10.6–35.2% of the five new corpora at title/abstract stage (`analysis/corpus/coverage_2026-10-19.md`), so a share rule would have replaced the whole set. Coverage per disease is reported as a limitation, with accessible and inaccessible papers compared by publication decade. Any substitution is decided and logged in `DECISIONS.md` **before** extraction starts, on access grounds alone. It never depends on extraction or concordance results.
 
 ## 5. Data sources and ground-truth isolation
 
@@ -88,7 +89,7 @@ A pilot disease is replaced only if, after screening (§5.1), its accessible ful
 
 **Not used to build the corpus:** ClinVar and OMIM citation lists, or any index queried by ClinVar variant IDs. A corpus built from database citations would bias concordance upward and gap discovery downward. LitVar (`allot2023_litvar2`) may be queried by gene symbol only, and every PMID records which source found it. After extraction, the harness reports what share of the corpus is cited by ClinVar or OMIM (§7.2.5).
 
-The pilot (§6.5) departs from this rule: it seeds its search with ClinVar-cited PMIDs, tagged so they can be separated. The recommendation is to report pilot results with and without those papers, and to set the rule for the six-disease study before freezing [D-19]. In the pilot, removing every ClinVar-cited paper lowered ClinVar presence from 42.1% to 38.2% of normalized variants (`reports/poc_stage6_findings.md` §3). The pilot report recommends keeping this rule as written.
+The pilot (§6.5) departed from this rule: it seeded its search with ClinVar-cited PMIDs, tagged so they can be separated. For the six-disease study the rule above stands: no ClinVar-cited seeds (D-19, decided). HA20's existing corpus keeps its tagged papers; when HA20 is re-extracted, papers that came only from ClinVar citations are reported separately. In the pilot, removing every ClinVar-cited paper lowered ClinVar presence from 42.1% to 38.2% of normalized variants (`reports/poc_stage6_findings.md` §3).
 
 **Searches run for the five other diseases (2026-10-19).** The five searches followed this section's rule: no ClinVar or OMIM citation seeds. Each disease's query, filter, search date and hit count are in `configs/diseases.yaml` and `data/literature/<disease>/search.md`. Seeds were of two kinds:
 - the background bibliography's papers for the disease;
@@ -123,7 +124,7 @@ If a cap is then needed for budget reasons, this procedure applies:
 
 Following this procedure is not a deviation.
 
-**Access and licensing.** Prefer PMC open-access full text. Record the access route for every paper: PMC OA, other open copy, institutional access, or not accessible. Papers we could not access are listed in the manifest (`INSTRUCTIONS.md` §3). Full texts stay out of git (`.gitignore`); only manifests are committed.
+**Access and licensing (D-32, decided).** Open access only: full text from PMC and Europe PMC, plus open copies found through Unpaywall. No institutional or library access is used. Record the access route for every paper: PMC/Europe PMC, other open copy (with its Unpaywall host type, version and license), or not accessible. Pages behind a bot check (e.g. reCAPTCHA) are not fetched, and hosts the network policy refuses are recorded as not fetched. Papers we could not access are listed in the manifest (`INSTRUCTIONS.md` §3). Full texts stay out of git (`.gitignore`); only manifests are committed.
 
 ### 5.2 Reference data (ground truth; concordance harness only)
 
@@ -546,9 +547,7 @@ Month 1 starts on the date the first credit deposit landed, provisionally 2026-0
 See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, and D-22 to D-31 on 2026-10-19. The pilot report is drafted (`reports/poc_report.md`) and is waiting on Dr. Lin's review.
 
 Still blocking this plan:
-- **D-08 (substitute trigger).** Its real numbers now exist: open full-text coverage per disease (`analysis/corpus/coverage_2026-10-19.md`). The placeholder's share rule would replace most of the set, so the trigger needs restating before the freeze (`DECISIONS.md`, D-08).
-- **D-09 to D-12, and D-17.**
-- **D-19.** The recommendation is to keep this section's rule. The five new searches already follow it.
+- **D-09 to D-12, and D-17.** (D-08, D-19 and D-32 were decided on 2026-10-20.)
 
 Also to settle before the freeze:
 - the [proposed] items added in v0.7:

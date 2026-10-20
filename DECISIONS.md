@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.7 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
+**Pre-registration status:** draft v0.8 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-09 to D-12 and D-17.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -29,30 +29,7 @@ How to use this file:
   - Ask Bailey whether the credits can cover API calls from the pipeline.
 - **Recommendation:** Jimmy asks Bailey before adding the key (Claude does not contact anyone). If the answer is slow, the pilot can still go ahead on a separately funded key, logged in `BUDGET.md` with the account it billed to. The pilot's SLIDERS adapter already keeps model calls behind one provider setting, so the route can change later without touching extraction logic.
 
-**D-19 · ClinVar-cited papers as corpus seeds** (opened 2026-10-18)
-- **The conflict:** the pilot's Stage 1 adds the PMIDs ClinVar cites for *TNFAIP3* to the corpus search. This is done on the harness side, and the papers are tagged `seed_source = clinvar_citations`. The pre-registration draft (§5.1) excludes ClinVar and OMIM citation lists from corpus building.
-- **Why it matters:** papers ClinVar already cites are more likely to agree with ClinVar. Seeding from them inflates concordance and hides gap variants.
-- **Recommendation:**
-  - For the pilot, keep the ClinVar-seeded papers but report every result with and without them; the tags make this cheap.
-  - Use the difference between the two to set the rule for the six-disease study before the freeze.
-
 ### Needed before the pre-registration can be frozen
-
-**D-08 · Substitute-disease trigger**
-- **Question:** What open-access threshold replaces a pilot disease with a substitute?
-- **Placeholder for discussion:** fewer than 15 accessible eligible reports, or less than 50% of eligible reports accessible.
-- **Constraint:** decided before extraction, on access grounds only.
-- **Evidence (2026-10-19, `analysis/corpus/coverage_2026-10-19.md`):**
-  - Open full text from PMC and Europe PMC covers 10.6% (Tangier) to 35.2% (Danon) of the five new corpora, against 53.1% for HA20.
-  - Counting the free copies Europe PMC lists elsewhere, the upper bound is 34.5% to 45.6%.
-  - Primary papers screened "yes" with full text: Alexander disease 66, LAD-I 30, SSADH deficiency 38, Danon disease 74, Tangier disease 17.
-  - **So the placeholder's 50% rule would replace all five.** The substitutes are similar: older, smaller literatures, unlikely to do better. The 15-paper rule is met by all five today, Tangier only just.
-- **Recommendation:**
-  1. **Drop the share rule.** Substitute a disease only if, after full-text screening, it has fewer than 15 accessible eligible primary reports.
-  2. **Report coverage per disease as a limitation.** Compare accessible and inaccessible papers by publication decade, because open-access papers skew recent.
-  3. **Widen access before the freeze; both steps are Jimmy's call.**
-     - Set `UNPAYWALL_EMAIL` in `.env` to an address he chooses, so the free copies get fetched. These are PDFs, so they need a converter the pilot did not use.
-     - Decide whether institutional access (RGI or a partner library) can supply paywalled papers. Pre-registration §5.1 already lists that route. Full texts stay out of git.
 
 **D-09 · Registry and timing**
 - **Recommendation:** register on OSF, publicly. Freeze after the pilot report and before the six-disease run (D-18).
@@ -112,6 +89,21 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-20 · D-08, D-19 and D-32 decided: absolute substitute trigger, no ClinVar seeds, open access only
+Jimmy's answers to four questions (asked in the session, 2026-10-20):
+- **D-08 · Substitute-disease trigger: absolute count** (recommended option).
+  - A pilot disease is replaced only if, after full-text screening, it has fewer than 15 accessible eligible primary reports (case reports, case series or cohorts).
+  - There is no share rule. Coverage per disease is reported as a limitation, with accessible and inaccessible papers compared by publication decade.
+  - Evidence as of 2026-10-19 (`analysis/corpus/coverage_2026-10-19.md`): all five new diseases meet the count on fetched full text. Tangier disease only just does, with 17 relevant primary papers.
+- **D-19 · ClinVar-cited papers as corpus seeds: not used** (recommended option).
+  - Pre-registration §5.1 stands as written for the six-disease study. Every concordance figure is still reported with and without ClinVar-cited papers.
+  - The pilot's ClinVar-seeded HA20 corpus stays as run. When HA20 is re-extracted for the six-disease study, the papers that came only from ClinVar citations are reported separately.
+- **D-32 · Full-text access: open access only** (new).
+  - The study uses openly available full text only: PMC and Europe PMC, plus open copies found through Unpaywall. No institutional or library access.
+  - Paywalled papers stay in the manifests as not accessible and are listed in reports.
+  - The "institutional access" route in pre-registration §5.1 is removed (draft v0.8).
+- **Unpaywall contact address:** Jimmy gave `jimmy.lin@raregenomics.org`. It is stored only in the git-ignored `.env` as `UNPAYWALL_EMAIL` and sent only to api.unpaywall.org.
 
 ### 2026-10-19 · Five-disease corpus searched and screened; dated ClinVar counts; pre-registration v0.7
 Jimmy: "Yes. Perform items 1-5" (this session), after Claude listed them. Items 1–4 are done here; the item 5 drafts are in `reports/drafts/`, for Jimmy to send.
