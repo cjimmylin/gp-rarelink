@@ -71,6 +71,7 @@ How to maintain it:
 - **The pre-registration is frozen (v1.0, 2026-10-20; D-36).** Tags `prereg-v1.0` and `pipeline-v1.0` sit on the same commit. From now on, any change to the plan or the four pinned files (extract_v6, gatekeeper_v4, schema_ha20_v5, extraction_rules_v1) is a deviation: it needs Jimmy's approval and an entry under *Pre-registration deviations* in `DECISIONS.md`.
   - **Smoke run** `poc-ha20-v6-smoke`: span check clean, gatekeeper v4 judged 23 of 4,538 claims unsupported, +$53.50 (`reports/poc_smoke_v6_findings.md`).
   - **Known gap, frozen on purpose:** extraction v6 has no hedge rule, so the gatekeeper drops hedged "observed" statuses. Don't "fix" it in v6.
+  - **Tags:** they point at commit `ef3133e`. This session's git access refused the tag push (HTTP 403; only the session branch is writable), so Jimmy pushes them; the commands are in `reports/drafts/osf_registration.md` §1. Don't retry the push or route around the refusal.
   - **Left for Jimmy:** the OSF registration, using `reports/drafts/osf_registration.md`. Put the DOI and date in `DECISIONS.md`, never in the frozen plan.
   - **Next for the study:** the cost estimate for the six-disease run (pre-registration §6.5: scale HA20's measured cost per input token by each corpus's token count), then Jimmy's approval before running. Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**

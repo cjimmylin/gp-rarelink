@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** **frozen v1.0, 2026-10-20** (`preregistration/analysis_plan.md`; git tags `prereg-v1.0` and `pipeline-v1.0`). Any change from here on is a deviation, logged below with Jimmy's approval. Left: Jimmy registers the same text on OSF (D-09); record the registration's DOI and date here when it exists.
+**Pre-registration status:** **frozen v1.0, 2026-10-20** (`preregistration/analysis_plan.md`; git tags `prereg-v1.0` and `pipeline-v1.0`). Any change from here on is a deviation, logged below with Jimmy's approval. The tags exist on commit `ef3133e`, which is on the branch; this session's git access refused the tag push (HTTP 403), so Jimmy pushes them (`reports/drafts/osf_registration.md` §1). Left: Jimmy registers the same text on OSF (D-09); record the registration's DOI and date here when it exists.
 
 **OSF registration:** DOI ______, registered ______ (to fill in after Jimmy registers).
 
