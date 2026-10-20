@@ -1,0 +1,3997 @@
+{
+ "pmid": "33489165",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Single case report of a girl with SSADH deficiency and a homozygous ALDH5A1 variant: \"Whole‐exome sequencing revealed a previously unreported homozygous variant in the ALDH5A1 gene\".",
+ "method_note": "Read the whole paper by hand; a short Python script only assembled the JSON and copied each span verbatim from the paper (tolerating Unicode hyphens and no-break spaces), and checked every span occurs in the paper. In scope: the single patient (label 'patient', rule 5) and her two parents, who are described ('The mother is a healthy 27-year-old primigravida, and the father is a healthy 32-year-old') and tested ('Both parents were heterozygous carriers for this variant.'); labels 'mother of patient' and 'father of patient' (rule 2). The 182 patients of Attri et al and the 450 literature patients are mentioned only at group level and get no rows. Inheritance for the patient's homozygous variant is recorded as 'inherited unspecified parent' because both parents are stated carriers and the enum has no value for biparental inheritance. Variant type not stated by the authors (not derived from HGVS). Pathogenicity: authors classify the variant as VUS (class 3) under ACMG yet argue for pathogenicity from biochemistry, MRS and structural modelling; no ACMG codes printed. The parents' rows carry the VUS classification because that sentence names this exact variant. Age at SSADH diagnosis is not stated (only age 7 months for the hypothyroidism diagnosis), so age_at_diagnosis is not reported. Checklist: 'she does not have seizure disorders, dystonia, or movement disorders' was used to exclude seizures, dystonia, exertional dyskinesia and hemiballismus (the latter two as movement disorders); ataxia left not reported. 'Says a few words but no sentences' at 3 years and speech therapy were not taken as an explicit speech impairment (recorded only as a phenotypic feature); global developmental delay was not taken as intellectual disability. Normal findings were recorded as excluded abnormalities under D-27; the normal eye examination and unremarkable systemic examination are recorded as written (whole examinations, nothing more specific excluded). Table 1 values (e.g. prolactin 771 vs 102-496) that the text does not call abnormal were not recorded as features. Table 1 and Table 2 have time points, not patients, as columns. Possible inconsistencies in the paper: the Discussion says 'high levels of serum and urinary GABA on thyroid hormone supplementation' but Table 1 reports urine GHB, not urine GABA; the Discussion says MRS demonstrated 'accumulation of GHB and GABA in the brain' while the Results describe only GABA; the hypothyroidism diagnosis is dated 7 months while the Table 1 column is '8 mo old'; Figure 5 gives PDB 2W8R while the text gives 2W8O. No stacked cells.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "first_author": {
+     "value": "Alghamdi",
+     "span": "Alghamdi Malak Ali"
+    },
+    "year": {
+     "value": 2020,
+     "span": "Journal: Clinical Case Reports (2020)"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "## CASE REPORT"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "Here, we report a female infant"
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "Here, we report a female infant"
+    },
+    "sex": {
+     "value": "female",
+     "span": "Here, we report a female infant"
+    },
+    "age_at_onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "3 years old",
+     "span": "Currently, she is 3 years old"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P3Y",
+     "span": "Currently, she is 3 years old"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Saudi",
+     "span": "first‐degree consanguineous Saudi parents"
+    },
+    "consanguinity": {
+     "value": "yes",
+     "span": "first‐degree consanguineous Saudi parents"
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": "Currently, she is 3 years old and is able to walk and sit without support"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "levothyroxine 25 mcg daily (thyroid hormone replacement), stopped for 6 weeks at 3 years for TRH stimulation testing and then resumed; physical therapy, occupational therapy and speech therapy",
+     "span": [
+      "She was started on levothyroxine 25 mcg daily.",
+      "we stopped thyroid replacement for 6 weeks",
+      "The thyroid hormone replacement therapy was resumed.",
+      "The parents have initiated the non‐pharmacologic treatments include physical therapy, occupational therapy, and speech therapy."
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "who was diagnosed with SSADH deficiency"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "both: biochemical (high urinary excretion of GHB; elevated GHB and GABA in urine and serum; MRS) and molecular (homozygous ALDH5A1 variant on whole-exome sequencing)",
+     "span": [
+      "who was diagnosed with SSADH deficiency based on high urinary excretion of GHB with a novel homozygous mutation in ALDH5A1gene",
+      "The diagnosis of SSADH deficiency was established based on molecular result and pathognomonic biochemical findings",
+      "Whole‐exome sequencing revealed a previously unreported homozygous variant in the ALDH5A1 gene"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "sex": {
+     "value": "female",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "27‐year‐old",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P27Y",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Saudi",
+     "span": "consanguineous Saudi parents"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "sex": {
+     "value": "male",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "32‐year‐old",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P32Y",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Saudi",
+     "span": "consanguineous Saudi parents"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "variant in the ALDH5A1 gene, NM_170740"
+    },
+    "variant_original_string": {
+     "value": "NM_170740: c.209T > C; p. (Leu70Pro)",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "transcript_as_stated": {
+     "value": "NM_170740",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.209T > C",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p. (Leu70Pro)",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": "Whole‐exome sequencing revealed a previously unreported homozygous variant in the ALDH5A1 gene"
+    },
+    "inheritance": {
+     "value": "inherited unspecified parent",
+     "span": "Both parents were heterozygous carriers for this variant."
+    },
+    "parental_testing_statement": {
+     "value": "Both parents were heterozygous carriers for this variant",
+     "span": "Both parents were heterozygous carriers for this variant."
+    },
+    "functional_evidence_statement": {
+     "value": "No in vitro studies performed; elevated urine and serum GABA and GHB and MRS GABA peaks in the patient were considered functional validation; structural modelling predicts Leu70Pro destabilizes the structure locally",
+     "span": [
+      "the presence of suggestive metabolomic profiling with elevated urine and serum GABA and GHB levels, MRS peaks for GABA were considered as functional validation and predicted the pathogenicity of this variant",
+      "Although we have not been able to perform in vitro studies (eg, variant overexpression and wild type rescue) to confirm the pathogenicity of these variants",
+      "the substitution of Leu70 by a smaller and conformationally restricted proline is predicted to destabilize the structure locally"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "variant of uncertain significance (VUS) (class 3) by ACMG; previously unreported/novel; in silico programs predicted pathogenicity; authors argue in favor of pathogenicity",
+     "span": [
+      "this variant is classified as a variant of uncertain significance (VUS) (class 3)",
+      "Whole‐exome sequencing revealed a previously unreported homozygous variant",
+      "In silico prediction programs predicted pathogenicity in all applicable programs (SIFT, PolyPhen2, AlignGVD, MutationTaster)."
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "variant in the ALDH5A1 gene, NM_170740"
+    },
+    "variant_original_string": {
+     "value": "NM_170740: c.209T > C; p. (Leu70Pro)",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "transcript_as_stated": {
+     "value": "NM_170740",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.209T > C",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p. (Leu70Pro)",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Both parents were heterozygous carriers for this variant."
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "variant of uncertain significance (VUS) (class 3)",
+     "span": "this variant is classified as a variant of uncertain significance (VUS) (class 3)"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "variant in the ALDH5A1 gene, NM_170740"
+    },
+    "variant_original_string": {
+     "value": "NM_170740: c.209T > C; p. (Leu70Pro)",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "transcript_as_stated": {
+     "value": "NM_170740",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.209T > C",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p. (Leu70Pro)",
+     "span": "NM_170740: c.209T > C; p. (Leu70Pro)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Both parents were heterozygous carriers for this variant."
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "variant of uncertain significance (VUS) (class 3)",
+     "span": "this variant is classified as a variant of uncertain significance (VUS) (class 3)"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "recurrent chest infection",
+     "span": "recurrent chest infection"
+    },
+    "status": {
+     "value": "observed",
+     "span": "recurrent chest infection"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "recurrent chest infection"
+    },
+    "onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent lower respiratory tract infections",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002783",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "stridor",
+     "span": "recurrent chest infection associated with stridor"
+    },
+    "status": {
+     "value": "observed",
+     "span": "recurrent chest infection associated with stridor"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "recurrent chest infection associated with stridor"
+    },
+    "onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Stridor",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0010307",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "poor sucking",
+     "span": "stridor, poor sucking"
+    },
+    "status": {
+     "value": "observed",
+     "span": "stridor, poor sucking"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "stridor, poor sucking"
+    },
+    "onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Poor suck",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002033",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "frequent choking",
+     "span": "frequent choking"
+    },
+    "status": {
+     "value": "observed",
+     "span": "frequent choking"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "frequent choking"
+    },
+    "onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Choking episodes",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "failure to thrive",
+     "span": "frequent choking, failure to thrive"
+    },
+    "status": {
+     "value": "observed",
+     "span": "frequent choking, failure to thrive"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "frequent choking, failure to thrive"
+    },
+    "onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Failure to thrive",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001508",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "hypotonia",
+     "span": "failure to thrive, hypotonia, hypoglycemia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "failure to thrive, hypotonia, hypoglycemia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "failure to thrive, hypotonia, hypoglycemia"
+    },
+    "onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypotonia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001252",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "hypoglycemia",
+     "span": [
+      "failure to thrive, hypotonia, hypoglycemia",
+      "She had one episode of hypoglycemia (glucose <50 mg/dL) upon presentation to the ER."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "failure to thrive, hypotonia, hypoglycemia",
+      "She had one episode of hypoglycemia (glucose <50 mg/dL) upon presentation to the ER."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "failure to thrive, hypotonia, hypoglycemia",
+      "She had one episode of hypoglycemia (glucose <50 mg/dL) upon presentation to the ER."
+     ]
+    },
+    "onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "severity_or_detail": {
+     "value": "one episode of hypoglycemia (glucose <50 mg/dL) upon presentation to the ER",
+     "span": "She had one episode of hypoglycemia (glucose <50 mg/dL) upon presentation to the ER."
+    },
+    "hpo_label_candidate": {
+     "value": "Hypoglycemia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001943",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "chronic constipation",
+     "span": "hypoglycemia, and chronic constipation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "hypoglycemia, and chronic constipation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "hypoglycemia, and chronic constipation"
+    },
+    "onset_original_text": {
+     "value": "the age of 3 months",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "onset_iso8601": {
+     "value": "P3M",
+     "span": "She was growing well until the age of 3 months, when she started to have"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Constipation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002019",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "hypoactive",
+     "span": "the child looked alert, hypoactive, and malnourished"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the child looked alert, hypoactive, and malnourished"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the child looked alert, hypoactive, and malnourished"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "malnourished",
+     "span": "the child looked alert, hypoactive, and malnourished"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the child looked alert, hypoactive, and malnourished"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the child looked alert, hypoactive, and malnourished"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "length <3rd percentile",
+     "span": "Her length was 60 cm (<3rd percentile)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her length was 60 cm (<3rd percentile)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her length was 60 cm (<3rd percentile)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "60 cm (<3rd percentile)",
+     "span": "Her length was 60 cm (<3rd percentile)"
+    },
+    "hpo_label_candidate": {
+     "value": "Short stature",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0004322",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "weight <3rd percentile",
+     "span": "her weight was 4.2 kg (<3rd percentile)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "her weight was 4.2 kg (<3rd percentile)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "her weight was 4.2 kg (<3rd percentile)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "4.2 kg (<3rd percentile)",
+     "span": "her weight was 4.2 kg (<3rd percentile)"
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased body weight",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "head circumference <3rd percentile",
+     "span": "her head circumference was 40 cm (<3rd percentile)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "her head circumference was 40 cm (<3rd percentile)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "her head circumference was 40 cm (<3rd percentile)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "40 cm (<3rd percentile)",
+     "span": "her head circumference was 40 cm (<3rd percentile)"
+    },
+    "hpo_label_candidate": {
+     "value": "Microcephaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000252",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal eye examination",
+     "span": "Her eye examination was normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Her eye examination was normal"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her eye examination was normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "generalized hypotonia",
+     "span": "a neurological examination revealed generalized hypotonia with hyporeflexia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a neurological examination revealed generalized hypotonia with hyporeflexia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a neurological examination revealed generalized hypotonia with hyporeflexia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Generalized hypotonia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001290",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "hyporeflexia",
+     "span": "generalized hypotonia with hyporeflexia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "generalized hypotonia with hyporeflexia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "generalized hypotonia with hyporeflexia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hyporeflexia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001265",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal systemic examination",
+     "span": "an unremarkable systemic examination"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "an unremarkable systemic examination"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "an unremarkable systemic examination"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "inability to sit with support",
+     "span": "Her developmental assessment showed an inability to sit with support"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her developmental assessment showed an inability to sit with support"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her developmental assessment showed an inability to sit with support"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "head lag",
+     "span": "an inability to sit with support, head lag"
+    },
+    "status": {
+     "value": "observed",
+     "span": "an inability to sit with support, head lag"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "an inability to sit with support, head lag"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Head lag",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "could not turn from the supine to prone position",
+     "span": "she could not turn from the supine to prone position"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she could not turn from the supine to prone position"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she could not turn from the supine to prone position"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "could not hold objects",
+     "span": "she could not hold objects"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she could not hold objects"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she could not hold objects"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "global developmental delay",
+     "span": [
+      "a female infant with global developmental delay",
+      "severe early onset global developmental delay"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "a female infant with global developmental delay",
+      "severe early onset global developmental delay"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "a female infant with global developmental delay",
+      "severe early onset global developmental delay"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Global developmental delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001263",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal blood gas",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "electrolyte abnormality",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal complete blood count",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal liver profile",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal renal profile",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The initial diagnostic work up showed normal blood gas, electrolytes, Complete Blood Count (CBC), liver profile, and renal profile."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "low glucose at the end of a 12 hr fasting challenge",
+     "span": "she underwent a fasting challenge for 12 hr The glucose at the end was normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she underwent a fasting challenge for 12 hr The glucose at the end was normal"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she underwent a fasting challenge for 12 hr The glucose at the end was normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal acylcarnitine profile",
+     "span": "the acylcarnitine profile was within the normal range"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the acylcarnitine profile was within the normal range"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the acylcarnitine profile was within the normal range"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "central hypothyroidism",
+     "span": [
+      "Her hormonal profile suggested central hypothyroidism: FT4 7.23 pmol/L (normal range 12‐22 pmol/L) and TSH 2.7 mIU/L (normal range 0.25‐5 mIU/L)",
+      "TRH stimulation confirmed a tertiary form of hypothyroidism"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Her hormonal profile suggested central hypothyroidism: FT4 7.23 pmol/L (normal range 12‐22 pmol/L) and TSH 2.7 mIU/L (normal range 0.25‐5 mIU/L)",
+      "TRH stimulation confirmed a tertiary form of hypothyroidism"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Her hormonal profile suggested central hypothyroidism: FT4 7.23 pmol/L (normal range 12‐22 pmol/L) and TSH 2.7 mIU/L (normal range 0.25‐5 mIU/L)",
+      "TRH stimulation confirmed a tertiary form of hypothyroidism"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "FT4 7.23 pmol/L (normal range 12-22 pmol/L) and TSH 2.7 mIU/L; tertiary form confirmed by TRH stimulation at 3 years",
+     "span": "FT4 7.23 pmol/L (normal range 12‐22 pmol/L) and TSH 2.7 mIU/L (normal range 0.25‐5 mIU/L)"
+    },
+    "hpo_label_candidate": {
+     "value": "Central hypothyroidism",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011787",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal ACTH stimulation test",
+     "span": "normal ACTH stimulation"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "normal ACTH stimulation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "normal ACTH stimulation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal growth hormone stimulation test",
+     "span": "a normal growth hormone stimulation test"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "a normal growth hormone stimulation test"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a normal growth hormone stimulation test"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "other pituitary hormone involvement",
+     "span": "tertiary isolated hypothyroidism at the age of 7 months old with no other hormonal involvement"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "tertiary isolated hypothyroidism at the age of 7 months old with no other hormonal involvement"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "tertiary isolated hypothyroidism at the age of 7 months old with no other hormonal involvement"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "midline defect",
+     "span": "no midline defect or craniofacial anomalies"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "no midline defect or craniofacial anomalies"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "no midline defect or craniofacial anomalies"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "craniofacial anomalies",
+     "span": "no midline defect or craniofacial anomalies"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "no midline defect or craniofacial anomalies"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "no midline defect or craniofacial anomalies"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal pituitary on MRI",
+     "span": "a normal pituitary on MRI"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "a normal pituitary on MRI"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a normal pituitary on MRI"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal homocysteine level",
+     "span": "showed normal homocysteine and uric acid levels"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "showed normal homocysteine and uric acid levels"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "showed normal homocysteine and uric acid levels"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal uric acid level",
+     "span": "showed normal homocysteine and uric acid levels"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "showed normal homocysteine and uric acid levels"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "showed normal homocysteine and uric acid levels"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "slight elevation in asparagine",
+     "span": "Plasma amino acid analysis revealed a slight elevation in asparagine to 115 mcmol/L (ref range 25‐91 mcmol/L)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Plasma amino acid analysis revealed a slight elevation in asparagine to 115 mcmol/L (ref range 25‐91 mcmol/L)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Plasma amino acid analysis revealed a slight elevation in asparagine to 115 mcmol/L (ref range 25‐91 mcmol/L)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "115 mcmol/L (ref range 25-91 mcmol/L); deemed unspecific",
+     "span": "a slight elevation in asparagine to 115 mcmol/L (ref range 25‐91 mcmol/L) and glutamic acid to 271 mcmol/L (ref range 5‐150 mcmol/L), both of which were deemed unspecific"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "elevation in glutamic acid",
+     "span": "glutamic acid to 271 mcmol/L (ref range 5‐150 mcmol/L), both of which were deemed unspecific"
+    },
+    "status": {
+     "value": "observed",
+     "span": "glutamic acid to 271 mcmol/L (ref range 5‐150 mcmol/L), both of which were deemed unspecific"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "glutamic acid to 271 mcmol/L (ref range 5‐150 mcmol/L), both of which were deemed unspecific"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "271 mcmol/L (ref range 5-150 mcmol/L); deemed unspecific",
+     "span": "glutamic acid to 271 mcmol/L (ref range 5‐150 mcmol/L), both of which were deemed unspecific"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "persistently increased urinary excretion of GHB",
+     "span": "Urine organic acid levels were analyzed several times and showed persistently increased urinary excretion of GHB"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Urine organic acid levels were analyzed several times and showed persistently increased urinary excretion of GHB"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Urine organic acid levels were analyzed several times and showed persistently increased urinary excretion of GHB"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "urine GHB 50 mg/L (normal < 5 mg/L)",
+     "span": "urine GHB levels were elevated at 50 mg/L byGC‐MS (normal < 5 mg/L)"
+    },
+    "hpo_label_candidate": {
+     "value": "4-Hydroxybutyric aciduria",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated serum gamma hydroxy butyric acid",
+     "span": "Serum gamma hydroxy butyric acid levels were elevated at 89 mg/L by GC‐MS (normal < 1)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Serum gamma hydroxy butyric acid levels were elevated at 89 mg/L by GC‐MS (normal < 1)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Serum gamma hydroxy butyric acid levels were elevated at 89 mg/L by GC‐MS (normal < 1)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "89 mg/L (normal < 1)",
+     "span": "Serum gamma hydroxy butyric acid levels were elevated at 89 mg/L by GC‐MS (normal < 1)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated serum gamma amino butyric acid",
+     "span": "serum gamma amino butyric acid levels were elevated to 103 μg/l (normal 10‐20)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "serum gamma amino butyric acid levels were elevated to 103 μg/l (normal 10‐20)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "serum gamma amino butyric acid levels were elevated to 103 μg/l (normal 10‐20)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "103 μg/l (normal 10-20)",
+     "span": "serum gamma amino butyric acid levels were elevated to 103 μg/l (normal 10‐20)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "bilateral symmetric high signal intensity in the globus pallidus on T2-weighted images",
+     "span": "Brain magnetic resonance imaging (MRI) performed at an age of 8 months revealed bilateral symmetric high signal intensity in the globus pallidus (white arrowheads) on T2‐weighted images"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Brain magnetic resonance imaging (MRI) performed at an age of 8 months revealed bilateral symmetric high signal intensity in the globus pallidus (white arrowheads) on T2‐weighted images"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain magnetic resonance imaging (MRI) performed at an age of 8 months revealed bilateral symmetric high signal intensity in the globus pallidus (white arrowheads) on T2‐weighted images"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "at 8 months; with diffusion restriction (cytotoxic edema)",
+     "span": "consistent with diffusion restriction (Figure 3). This represents cytotoxic edema"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "diffusion restriction in the globus pallidus",
+     "span": "corresponding high signal intensity on diffusion‐weighted images (DW1) and low signal intensity on apparent diffusion coefficient (ADC) maps, consistent with diffusion restriction"
+    },
+    "status": {
+     "value": "observed",
+     "span": "corresponding high signal intensity on diffusion‐weighted images (DW1) and low signal intensity on apparent diffusion coefficient (ADC) maps, consistent with diffusion restriction"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "corresponding high signal intensity on diffusion‐weighted images (DW1) and low signal intensity on apparent diffusion coefficient (ADC) maps, consistent with diffusion restriction"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "unilateral accumulation of GABA and related compounds at the level of the right globus pallidus on MR spectroscopy",
+     "span": "At the age of 2 and a half years old, brain magnetic resonance spectroscopy (^1H) showed a unilateral accumulation of GABA and related compounds (resonating at 2.3 ppm) at the level of the right globus pallidus"
+    },
+    "status": {
+     "value": "observed",
+     "span": "At the age of 2 and a half years old, brain magnetic resonance spectroscopy (^1H) showed a unilateral accumulation of GABA and related compounds (resonating at 2.3 ppm) at the level of the right globus pallidus"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At the age of 2 and a half years old, brain magnetic resonance spectroscopy (^1H) showed a unilateral accumulation of GABA and related compounds (resonating at 2.3 ppm) at the level of the right globus pallidus"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "at the age of 2 and a half years; resonating at 2.3 ppm",
+     "span": "At the age of 2 and a half years old, brain magnetic resonance spectroscopy (^1H) showed a unilateral accumulation of GABA and related compounds (resonating at 2.3 ppm)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "says a few words but no sentences",
+     "span": "says a few words but no sentences"
+    },
+    "status": {
+     "value": "observed",
+     "span": "says a few words but no sentences"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "says a few words but no sentences"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "disturbed sleep patterns in the form of difficulty falling asleep",
+     "span": "Our patient has occasionally disturbed sleep patterns in the form of difficulty falling asleep"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Our patient has occasionally disturbed sleep patterns in the form of difficulty falling asleep"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Our patient has occasionally disturbed sleep patterns in the form of difficulty falling asleep"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "occasionally",
+     "span": "Our patient has occasionally disturbed sleep patterns"
+    },
+    "hpo_label_candidate": {
+     "value": "Sleep onset insomnia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "seizure disorders",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001250",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "dystonia",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Dystonia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001332",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "feature_text_as_stated": {
+     "value": "movement disorders",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "failure to thrive, hypotonia, hypoglycemia",
+      "a neurological examination revealed generalized hypotonia with hyporeflexia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "failure to thrive, hypotonia, hypoglycemia",
+      "a neurological examination revealed generalized hypotonia with hyporeflexia"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her developmental assessment showed an inability to sit with support, head lag, she could not turn from the supine to prone position, and she could not hold objects"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her developmental assessment showed an inability to sit with support, head lag, she could not turn from the supine to prone position, and she could not hold objects"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she does not have seizure disorders, dystonia, or movement disorders"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Our patient has occasionally disturbed sleep patterns in the form of difficulty falling asleep"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Our patient has occasionally disturbed sleep patterns in the form of difficulty falling asleep"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "revealed bilateral symmetric high signal intensity in the globus pallidus (white arrowheads) on T2‐weighted images"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "revealed bilateral symmetric high signal intensity in the globus pallidus (white arrowheads) on T2‐weighted images"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 7‐month‐old girl who was the first child of first‐degree consanguineous Saudi parents"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother is a healthy 27‐year‐old primigravida"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33489165",
+     "span": "PMID: 33489165"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father is a healthy 32‐year‐old"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
