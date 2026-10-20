@@ -43,9 +43,9 @@
 
 ## Full text
 
-- **Fetched:** 83 of 363 corpus papers (22.9%) as JATS XML from Europe PMC or PMC (`fetch_fulltext.py`). Access status in the corpus: paywalled 241, europepmc_xml 65, not_found 39, publisher_pdf 9, pmc_efetch_xml 9.
+- **Fetched:** 83 of 363 corpus papers (22.9%): JATS XML from Europe PMC or PMC, or an open PDF found through Unpaywall (`fetch_fulltext.py`). Access status in the corpus: paywalled 241, europepmc_xml 65, not_found 39, publisher_pdf 9, pmc_efetch_xml 9.
 - **Unpaywall** open PDFs were fetched on 2026-10-20 (D-32: open access only). Of the papers still without full text, 58 more list a free or open copy outside PMC in Europe PMC (`oa_elsewhere.json`); with them, at most 141 of 363 (38.8%). Not fetched.
 - **Relevance yes, primary papers** (case reports and series): 283; with full text 72 (25.4%).
-- **Full-text screening** (`screen_fulltext_v1.md`; `screening_fulltext/screening_log.json`): exclude 7, include 67, not_accessible 280, pending 9. Exclusion reasons: no_individual_data 5, not_disease 2.
-- **Eligible with full text:** 67 papers, of which 66 primary reports (case reports and series) and 8 with a per-patient literature table (D-33).
-- **D-08 (decided: at least 15 eligible primary reports with accessible full text):** pending (9 papers not yet screened) (66 eligible primary reports).
+- **Full-text screening** (`screen_fulltext_v1.md`; `screening_fulltext/screening_log.json`): exclude 14, include 69, not_accessible 280. Exclusion reasons: no_individual_data 5, not_disease 2, not_english 6, review_no_new_individuals 1.
+- **Eligible with full text:** 69 papers, of which 68 primary reports (case reports and series) and 9 with a per-patient literature table (D-33).
+- **D-08 (decided: at least 15 eligible primary reports with accessible full text):** met (68 eligible primary reports).

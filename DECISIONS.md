@@ -63,6 +63,27 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-20 · Full-text screening done for the five new diseases; D-08 met by all five (Claude's run, Jimmy's instruction)
+- **What ran:** Jimmy asked for the full-text screening ("do this: Still to do"). Sonnet helpers applied `screen_fulltext_v1.md` (pre-registration §5.1 with D-33) to all 336 open full texts. That is 293 JATS XML papers plus 43 open PDFs, which Docling converted.
+- **Quotes:** every decision carries an evidence quote, and all of them were found verbatim in the paper by the import script.
+- **Results** (`analysis/corpus/coverage_2026-10-20.md`):
+
+| Disease | Eligible papers with full text | Of which case reports or series |
+|---|---|---|
+| Alexander disease | 69 | 68 |
+| LAD-I | 42 | 38 |
+| SSADH deficiency | 40 | 36 |
+| Danon disease | 83 | 82 |
+| Tangier disease | 31 | 28 |
+
+  Every disease meets D-08 (at least 15 eligible primary reports). No substitution is needed.
+- **Exclusions to check:**
+  - 71 papers were excluded at full text. Jimmy rates all of them in Part B of the screening-check page.
+  - 10 of the 71 were excluded as not in English. Most are Japanese case reports with a GFAP, ITGB2, LAMP2 or ABCA1 variant, which pre-registration §5.1 excludes ("no English full text").
+  - Several "aggregate only" exclusions say the per-patient data sit in supplementary tables we did not fetch.
+  - Both points are flagged for Jimmy; neither changes the registered rule.
+- **Human check:** the screening-check page is https://claude.ai/artifact/1JoRKB2uVCap3XAJUDw3RN. Part A has 137 abstracts, Part B the 71 full-text exclusions.
+
 ### 2026-10-20 · Pilot report approved; D-09, D-11, D-12, D-17 and D-33 decided; screening-check design accepted
 Jimmy's answers to eight questions (asked in the session, 2026-10-20). Each took the recommended option.
 - **Pilot report** (`reports/poc_report.md`): approved as drafted. The Stage 7 gate is passed, and its §10 changes go into the frozen pipeline (pre-registration v0.7 to v0.9).

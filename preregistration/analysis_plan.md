@@ -112,7 +112,7 @@ Whether to add them before the freeze is open [proposed: not added; the PubMed s
 
 **Screening (decided by Dr. Lin, 2026-10-20).** Title/abstract screening, then full-text screening. Claude may screen, but every decision is logged with a reason, and a human checks a random 10% of inclusions at title/abstract stage and all exclusions made at full-text stage. Each disease gets a PRISMA-style flow count, produced by script.
 
-- **Full-text screening** uses `pipeline/extract/claude_code/prompts/screen_fulltext_v1.md` and `pipeline/extract/corpus/claude_code_fulltext_screen.py`. Each decision carries a verbatim evidence quote, checked by script against the paper.
+- **Full-text screening** uses `pipeline/extract/claude_code/prompts/screen_fulltext_v1.md` and `pipeline/extract/corpus/claude_code_fulltext_screen.py`. Each decision carries a verbatim evidence quote, checked by script against the paper. Done on 2026-10-20 for the five new diseases. Eligible primary reports with open full text: Alexander disease 68, LAD-I 38, SSADH deficiency 36, Danon disease 82, Tangier disease 28 (`analysis/corpus/coverage_2026-10-20.md`). All five meet the D-08 count. Dr. Lin's check of the screening is in progress.
 
 - **Title and abstract screening is done** for all six diseases (2026-10-19 for the five new ones). Claude Code helper agents did it with `screen_v2.md`, the disease-neutral form of the pilot's prompt, logged with its sha256 in each `screening_log.json`.
 - "Yes" and "unclear" both go forward to full text. For Tangier disease, papers on heterozygous *ABCA1* carriers with familial HDL deficiency are "unclear", so the full text decides.
