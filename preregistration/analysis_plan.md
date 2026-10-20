@@ -1,6 +1,8 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.12, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: FROZEN v1.0, 2026-10-20.** This text is tagged `prereg-v1.0` in git, and the pipeline it describes is tagged `pipeline-v1.0`. Dr. Lin registers the same text publicly on OSF (D-09); the registration's DOI and date are then recorded in `DECISIONS.md`, not here, so this text stays the registered text. From this version on, any change is a deviation: it needs Dr. Lin's approval and a dated entry in `DECISIONS.md` (§9; `INSTRUCTIONS.md` §1.4).
+>
+> Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
@@ -8,6 +10,7 @@
 > - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
 > - v0.6 applies D-26 to D-28, decided by Dr. Lin on 2026-10-19 from the pilot's Stages 4 and 5: normalization success by description type (§7.2.2); normal findings recorded as the absent abnormality (§6.2); the gatekeeper checks every value, including its link to the person (§6.4).
 > - v0.7 folds in the pilot report (`reports/poc_report.md` §10; D-29 to D-31, decided 2026-10-19). It also records the five-disease corpus searches and screening, the Mondo IDs and the dated ClinVar counts (2026-10-19). Changed sections: §4.1, §5.1, §5.2, §6.2 to §6.5, §7.1, §7.2 (matching, D-19 split, new §7.2.7 completeness), §10 and §13. No metric, threshold or disease was changed.
+> - v1.0 (2026-10-20) freezes the plan. The pre-freeze smoke run of extraction v6 and gatekeeper v4 met its check (§6.5), and Dr. Lin chose to freeze v6 as tested (D-36). §6.1 records the model and dates; §6.5 the smoke run; §13 the freeze record. No metric, threshold or disease was changed.
 > - v0.12 (2026-10-20) settles D-11 (the panel note goes out without asking for hours; optional add-ons only if time is offered) and D-35 (every remaining [proposed] default accepted). No [D-nn] item blocks the freeze any longer; what remains is the v6/v4 smoke run, the git tag and the OSF registration (§13).
 > - v0.11 (2026-10-20) applies D-34: the human check of screening stopped at 20 items, all agreeing or unsure, and the screening calls stand (§5.1, §13).
 > - v0.10 (2026-10-20) applies D-10: the open-weight comparator is DeepSeek-V4.1-Flash, run on HA20 and SSADH deficiency through an agent harness (§7.5, §13).
@@ -179,6 +182,12 @@ Direct, dated counts per gene (ClinVar records by classification; OMIM allelic v
 
 **Primary extractor and gatekeeper:** Claude Opus. The exact model ID, any sampling parameters and the dates of use are recorded when the pipeline is frozen (§6.5) and not changed afterwards. A model change is a deviation. The model's published training cutoff is recorded too, for the memorization probe (§7.4.3).
 
+**Recorded at the freeze (2026-10-20):**
+- **Model:** the Claude Opus model the Claude Code session served for the smoke run. Its exact ID, as the session reported it, is in `runs/poc-ha20-v6-smoke/manifest.json` (`notes.served_model_reported`). Each six-disease run records the ID its session reports; a different ID is a deviation.
+- **Sampling parameters:** none are set on this route. Helpers run with Claude Code's defaults, and the session's effort setting is recorded in each run manifest.
+- **Training data cutoff:** June 2026, from Anthropic's models overview (platform.claude.com/docs/en/models/overview, read 2026-10-20). Every paper published before then may have been in training data, which the memorization probe (§7.4.3) takes into account.
+- **Dates of use:** the pilot ran 2026-10-18 to 2026-10-20; the six-disease runs record their own dates.
+
 **Access route (D-17, decided).** As in the pilot (D-20): Claude Code helper agents, run in a Claude Code session on the funded claude.ai account. Each run records the model ID the session reports, the instructions' sha256 and the session's usage readings. Per-call token counts are not available on this route, which is why the cost model uses session readings. Whether usage beyond the plan's limits (overage) is covered by the award credits is being confirmed with Anthropic (draft in `reports/drafts/anthropic_credits_question.md`).
 
 **Supporting tools:** VariantValidator, the phenopacket schema validator, and pyphetools CohortValidator (`pyphetools_software`). Each is pinned by version or access date.
@@ -250,8 +259,11 @@ The candidates for `pipeline-v1.0` (sha256, first 12 characters, from the report
 | `pipeline/extract/claude_code/schema_ha20_v5.json` | `f0fdf6b3bfea` |
 | `pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md` | `55ab99df7f17` |
 
-- **Not yet run on any paper.** Extraction v6 and gatekeeper v4 have not been tried.
-  - (D-35, decided) Before tagging `pipeline-v1.0`, run both on the same 20-paper HA20 subset as the D-29 re-run, with a span check only. There is no new audit; this proves the prompts run end to end.
+- **Smoke run done (2026-10-20; `reports/poc_smoke_v6_findings.md`).** As D-35 required, extraction v6 and gatekeeper v4 were run on the same 20-paper HA20 subset as the D-29 re-run before tagging `pipeline-v1.0`.
+  - **The check was met:** the span check found 0 problems in 13,382 values (162 individuals).
+  - **Gatekeeper v4** judged 4,538 claims: 23 unsupported and 75 partially supported. These are gatekeeper rates, not an estimate of the audit target (O1).
+  - **One known gap is frozen as tested (D-36):** extraction v6 has no rule for hedged phrases ("suggested", "possible"), while the gatekeeper does. A status that rests only on a hedge is recorded as observed, then judged unsupported, and so becomes "not reported" in the phenopackets (§6.4).
+  - The files tagged `pipeline-v1.0` are the four in the table above, with those hashes.
   - The six-disease schema generalizes `schema_ha20_v5.json` with a per-disease checklist. Each disease's checklist is written from its GeneReviews or key review before extraction. It is never written from `phenotype.hpoa`.
 - **Normalization carries the D-26 repairs.** Success is reported by description type.
 
@@ -549,16 +561,16 @@ Month 1 starts on the date the first credit deposit landed, provisionally 2026-0
 | Month 5 | 2027-01-21 to 2027-02-20 | Submissions after sign-off; bias arm and memorization probe (O4); model comparison |
 | Month 6 | 2027-02-21 to 2027-03-20 | Write-up; all results published whether favorable or not |
 
-## 13. Decisions needed before freezing
+## 13. Decisions and the freeze record
 
 See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, D-22 to D-31 on 2026-10-19, and D-08 to D-12, D-17, D-19 and D-32 to D-35 on 2026-10-20. Dr. Lin approved the pilot report as drafted on 2026-10-20.
 
 No [D-nn] item blocks the freeze. D-11 was settled on 2026-10-20: the panel is asked without a request for hours, and optional add-ons depend on time offered. Every [proposed] default was accepted (D-35).
 
-Steps left before the freeze:
-1. The smoke run of extraction v6 and gatekeeper v4 on the 20-paper HA20 subset, with a span check only (§6.5). Estimated at about $80 from the D-29 run's rates.
-2. Tag the pinned files as `pipeline-v1.0` and this text as `prereg-v1.0`.
-3. Dr. Lin registers the same text publicly on OSF (D-09).
+Freeze record (2026-10-20):
+1. **Done:** the smoke run of extraction v6 and gatekeeper v4 on the 20-paper HA20 subset (§6.5). The span check found 0 problems; the session readings rose by $53.50 against an estimate of about $80. Dr. Lin chose to freeze v6 as tested (D-36).
+2. **Done:** the pinned files are tagged `pipeline-v1.0` and this text `prereg-v1.0`, both on the same commit.
+3. **Dr. Lin's step:** register this text publicly on OSF (D-09). The registration's DOI and date go into `DECISIONS.md`.
 
 Full-text screening is done (§5.1).
 

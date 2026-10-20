@@ -68,9 +68,14 @@ How to maintain it:
   - **Fix before Stage 3:** the Markdown converter's merged-cell bug, and `extract_v2`.
 - **How the pilot runs (D-20).** Claude Code helper agents do the model work. No API key is needed; see the D-20 box at the top of `POC_DESIGN.md`.
 - **Network (re-tested 2026-10-18, later the same day).** The research domains are now allowed: NCBI E-utilities, PMC, Europe PMC REST, VariantValidator, ClinVar FTP and purl.obolibrary.org all answer. The europepmc.org website itself still returns 403, but the REST API works.
-- **Blocking the pre-registration freeze:** no open decision (D-11 settled without hours; all [proposed] defaults accepted as D-35; pre-registration v0.12). Left: the v6/v4 smoke run (about $80), the `pipeline-v1.0` and `prereg-v1.0` tags, and Jimmy's OSF registration. Read *Open decisions* in `DECISIONS.md` before starting work.
+- **The pre-registration is frozen (v1.0, 2026-10-20; D-36).** Tags `prereg-v1.0` and `pipeline-v1.0` sit on the same commit. From now on, any change to the plan or the four pinned files (extract_v6, gatekeeper_v4, schema_ha20_v5, extraction_rules_v1) is a deviation: it needs Jimmy's approval and an entry under *Pre-registration deviations* in `DECISIONS.md`.
+  - **Smoke run** `poc-ha20-v6-smoke`: span check clean, gatekeeper v4 judged 23 of 4,538 claims unsupported, +$53.50 (`reports/poc_smoke_v6_findings.md`).
+  - **Known gap, frozen on purpose:** extraction v6 has no hedge rule, so the gatekeeper drops hedged "observed" statuses. Don't "fix" it in v6.
+  - **Tags:** they point at commit `ef3133e`. This session's git access refused the tag push (HTTP 403; only the session branch is writable), so Jimmy pushes them; the commands are in `reports/drafts/osf_registration.md` §1. Don't retry the push or route around the refusal.
+  - **Left for Jimmy:** the OSF registration, using `reports/drafts/osf_registration.md`. Put the DOI and date in `DECISIONS.md`, never in the frozen plan.
+  - **Next for the study:** the cost estimate for the six-disease run (pre-registration §6.5: scale HA20's measured cost per input token by each corpus's token count), then Jimmy's approval before running. Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**
-  - Everything up to 2026-10-20 is on `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7) and PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), all merged with Jimmy's approval. Start new work from `main`.
+  - On `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7), PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), PR #6 (D-34, v0.11) and PR #7 (D-11, D-35, v0.12), all merged with Jimmy's approval. The smoke run and the freeze (D-36, v1.0, tags) are on branch `claude/gracious-pascal-j7krug` until Jimmy says to merge. Start new work from `main` once that is merged.
   - Merge to `main` only when Jimmy says so.
   - Branch `claude/zealous-meitner-k7moex` (the pilot-design session) is archived and must not be merged: it commits full-text Markdown. Its one asset, Jimmy's 40 screening labels, was applied here on 2026-10-19.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
@@ -187,7 +192,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-36**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-37**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
