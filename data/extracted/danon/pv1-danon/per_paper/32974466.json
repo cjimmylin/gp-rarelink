@@ -1,0 +1,2376 @@
+{
+ "pmid": "32974466",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Single-patient case report of a woman with a LAMP2 variant and Danon disease: \"Genetic testing revealed a heterozygous missense variant (c.928G>A) with effect on splicing of lysosome-associated membrane protein 2 (LAMP-2)\".",
+ "method_note": "Read the whole paper by hand; a short Python script only assembled the JSON and checked spans. One in-scope person, the single unnamed patient of the case report (label 'patient'). The two elder brothers and the parents are mentioned only as 'clinically healthy' (family history), with no genetic testing and no individual-level detail, so they were given no rows. Inheritance left 'not reported': the paper calls the variant de novo ('Family history indicated a de novo mutation, since the two elder brothers and the parents of the patient are clinically healthy'; the abstract says 'Genetic testing revealed a de novo mutation'), but states no parental testing, so rule 8 / D-24 does not allow 'de novo'; parental_testing_statement is 'not reported' for the same reason. Variant type recorded as 'missense' as printed ('heterozygous missense variant (c.928G>A) with effect on splicing'); the authors also describe a splicing effect, but no assay is reported, so functional_evidence_statement is 'not reported'. No transcript or protein change printed. No pathogenicity class stated ('as previously described in Danon disease' is not a classification). Ages: only age at presentation (24 years) is printed; age at onset, last evaluation and diagnosis are not stated as ages (symptoms 'over the past 4 months' before presentation; diagnosis at month 5; follow-up 16 months), so all left 'not reported'. Normal findings recorded per D-27: 'normal CK and CK-MB levels' and CK/CK-MB/CRP 'within normal ranges' -> elevated CK, elevated CK-MB, elevated CRP excluded. The Discussion states 'Our patient did not present any other extra-cardiac symptoms.' after discussing cognitive impairment and muscle weakness; recorded as one excluded feature 'other extra-cardiac symptoms', but by analogy with D-27 (a negative statement excludes nothing more specific than what it names) the specific extra-cardiac checklist items (muscle weakness, cognitive impairment etc.) were left 'not reported'. 'Generalized weakness' at presentation was recorded as observed as written and not mapped to proximal muscle weakness. Left ventricular hypertrophy left 'not reported': only histological cardiomyocyte hypertrophy and septal thickness 11 mm are reported; 'pre-existent genetic (hypertrophic) cardiomyopathy' is a suspicion, not a finding. Ventricular tachycardia checklist item observed from 'non-sustained ventricular tachycardias' (Holter, month 3); sustained VT was explicitly absent at later checks (separate excluded feature, not a contradiction). Vital status 'alive' from the statement that she was clinically stable during the 16-month follow-up. No contradictions found.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "first_author": {
+     "value": "Popa",
+     "span": "Authors: Popa Miruna-Andreea"
+    },
+    "year": {
+     "value": 2020,
+     "span": "Journal: European Heart Journal: Case Reports (2020)"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "An unusual case of severe myocarditis in a genetic cardiomyopathy: a case report"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "This report explores a rare case of severe myocarditis occurring in an inherited cardiomyopathy."
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "sex": {
+     "value": "female",
+     "span": "A 24-year-old female patient"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": "During the 16-month follow-up, the patient was clinically stable and tolerating immunosuppressive therapy."
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "heart failure therapy and oral anticoagulation (apixaban); ICD-CRT system implantation; prednisolone (1 mg/kg/day then tapering), discontinued then re-initiated with i.v. pulse and intensified with tacrolimus (1 mg 2x/day) and mycophenolate mofetil (500 mg 2x/day); maintenance prednisolone 7.5 mg/day, tacrolimus and mycophenolate mofetil",
+     "span": [
+      "→ Initiation of heart failure therapy and direct acting oral anticoagulant (DOAC) (apixaban)",
+      "prior to internal cardioverter-defibrillator (ICD)-CRT-system implantation",
+      "Immunosuppressive therapy with prednisolone (1 mg/kg/day, followed by a tapering regimen as specified in the timeline) was initiated.",
+      "→ Restarting of immunosuppressive therapy: initial prednisolone pulse therapy with 250 mg i.v. for 3 days, subsequently 1 mg/kg/day prednisolone for 4 weeks, followed by the above-mentioned tapering regimen + treatment intensification with tacrolimus (1 mg 2×/day), and mycophenolate mofetil (500 mg 2×/day)",
+      "→ Continuation of immunosuppressive therapy: prednisolone 7.5 mg/day (maintenance dose), tacrolimus 1 mg 2×/day, and mycophenolate mofetil 500 mg 2×/day"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease",
+     "span": "Diagnosis of Danon disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing (heterozygous LAMP-2 variant c.928G>A) with PAS staining of endomyocardial biopsies showing glycogen storage",
+     "span": [
+      "Genetic testing revealed a heterozygous missense variant (c.928G>A) with effect on splicing of lysosome-associated membrane protein 2 (LAMP-2), as previously described in Danon disease.",
+      "PAS staining revealed a significantly enhanced storage of glycogen in cardiomyocytes of all biopsies investigated"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP-2",
+     "span": "lysosome-associated membrane protein 2 (LAMP-2)"
+    },
+    "variant_original_string": {
+     "value": "c.928G>A",
+     "span": "Genetic testing revealed a heterozygous missense variant (c.928G>A)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.928G>A",
+     "span": "Genetic testing revealed a heterozygous missense variant (c.928G>A)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "Genetic testing revealed a heterozygous missense variant (c.928G>A)"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Genetic testing revealed a heterozygous missense variant (c.928G>A)"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "progressing shortness of breath",
+     "span": "A 24-year-old female patient presented with progressing shortness of breath"
+    },
+    "status": {
+     "value": "observed",
+     "span": "A 24-year-old female patient presented with progressing shortness of breath"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "A 24-year-old female patient presented with progressing shortness of breath"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Dyspnea",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002094",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "chest discomfort",
+     "span": "progressing shortness of breath, chest discomfort, and generalized weakness over the past 4 months"
+    },
+    "status": {
+     "value": "observed",
+     "span": "progressing shortness of breath, chest discomfort, and generalized weakness over the past 4 months"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "progressing shortness of breath, chest discomfort, and generalized weakness over the past 4 months"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Chest pain",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "generalized weakness",
+     "span": "progressing shortness of breath, chest discomfort, and generalized weakness over the past 4 months"
+    },
+    "status": {
+     "value": "observed",
+     "span": "progressing shortness of breath, chest discomfort, and generalized weakness over the past 4 months"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "progressing shortness of breath, chest discomfort, and generalized weakness over the past 4 months"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "over the past 4 months",
+     "span": "generalized weakness over the past 4 months"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "orthopnoea",
+     "span": "Upon admission, she presented with orthopnoea"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Upon admission, she presented with orthopnoea"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Upon admission, she presented with orthopnoea"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Orthopnea",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012764",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "elevated high-sensitive troponin T",
+     "span": "elevated high-sensitive troponin T (0.213 ng/mL)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "elevated high-sensitive troponin T (0.213 ng/mL)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "elevated high-sensitive troponin T (0.213 ng/mL)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "0.213 ng/mL; later 0.132 ng/mL",
+     "span": [
+      "elevated high-sensitive troponin T (0.213 ng/mL)",
+      "Troponin T (hs) 0.132 ng/mL (normal range: <0.014 ng/mL)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "elevated NT-proBNP",
+     "span": [
+      "elevated high-sensitive troponin T (0.213 ng/mL), and NT-proBNP (4440 ng/L)",
+      "NT-proBNP 4440 ng/L (normal range: <170 ng/L)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "elevated high-sensitive troponin T (0.213 ng/mL), and NT-proBNP (4440 ng/L)",
+      "NT-proBNP 4440 ng/L (normal range: <170 ng/L)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "elevated high-sensitive troponin T (0.213 ng/mL), and NT-proBNP (4440 ng/L)",
+      "NT-proBNP 4440 ng/L (normal range: <170 ng/L)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "4440 ng/L; later 4170 ng/L",
+     "span": [
+      "NT-proBNP 4440 ng/L (normal range: <170 ng/L)",
+      "NT-proBNP 4170 ng/L (normal range: <170 ng/L)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "elevated creatine kinase",
+     "span": [
+      "but normal CK and CK-MB levels",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "but normal CK and CK-MB levels",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "but normal CK and CK-MB levels",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating creatine kinase concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003236",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "elevated CK-MB",
+     "span": [
+      "but normal CK and CK-MB levels",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "but normal CK and CK-MB levels",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "but normal CK and CK-MB levels",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "elevated CRP",
+     "span": [
+      "C-reactive protein (CRP) (<5 mg/L) within normal ranges",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "C-reactive protein (CRP) (<5 mg/L) within normal ranges",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "C-reactive protein (CRP) (<5 mg/L) within normal ranges",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating C-reactive protein concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011227",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "irregular pulse",
+     "span": "Physical examination revealed an irregular pulse (64 b.p.m.)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Physical examination revealed an irregular pulse (64 b.p.m.)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Physical examination revealed an irregular pulse (64 b.p.m.)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "64 b.p.m.",
+     "span": "an irregular pulse (64 b.p.m.)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "holosystolic murmur over the mitral valve",
+     "span": "a holosystolic murmur over the mitral valve"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a holosystolic murmur over the mitral valve"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a holosystolic murmur over the mitral valve"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Heart murmur",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "coarse crackles on the lungs",
+     "span": "coarse crackles on the lungs"
+    },
+    "status": {
+     "value": "observed",
+     "span": "coarse crackles on the lungs"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "coarse crackles on the lungs"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "hypotension",
+     "span": "hypotension (80/55 mmHg)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "hypotension (80/55 mmHg)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "hypotension (80/55 mmHg)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "80/55 mmHg",
+     "span": "hypotension (80/55 mmHg)"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypotension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002615",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "atrial fibrillation",
+     "span": [
+      "The initial electrocardiogram showed atrial fibrillation (AF)",
+      "Paroxysmal AF, sick sinus syndrome"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The initial electrocardiogram showed atrial fibrillation (AF)",
+      "Paroxysmal AF, sick sinus syndrome"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "The initial electrocardiogram showed atrial fibrillation (AF)",
+      "Paroxysmal AF, sick sinus syndrome"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "paroxysmal; mode-switch episodes of the ICD-CRT",
+     "span": "increasing mode-switch episodes of the ICD-CRT due to paroxysmal AF"
+    },
+    "hpo_label_candidate": {
+     "value": "Atrial fibrillation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0005110",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "severe conduction abnormalities",
+     "span": "atrial fibrillation (AF) with severe conduction abnormalities"
+    },
+    "status": {
+     "value": "observed",
+     "span": "atrial fibrillation (AF) with severe conduction abnormalities"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "atrial fibrillation (AF) with severe conduction abnormalities"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "wide QRS complexes with left and right bundle branch block pattern",
+     "span": "Atrial fibrillation (AF), wide QRS complexes (170 ms) with left and right bundle branch block pattern"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Atrial fibrillation (AF), wide QRS complexes (170 ms) with left and right bundle branch block pattern"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Atrial fibrillation (AF), wide QRS complexes (170 ms) with left and right bundle branch block pattern"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "170 ms",
+     "span": "wide QRS complexes (170 ms)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "ventricular extrasystoles",
+     "span": [
+      "severe conduction abnormalities and ventricular extrasystoles",
+      "intermittent complete atrioventricular block with junctional escape rhythm, ventricular extrasystoles"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "severe conduction abnormalities and ventricular extrasystoles",
+      "intermittent complete atrioventricular block with junctional escape rhythm, ventricular extrasystoles"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "severe conduction abnormalities and ventricular extrasystoles",
+      "intermittent complete atrioventricular block with junctional escape rhythm, ventricular extrasystoles"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Premature ventricular contraction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0006682",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "sick sinus syndrome",
+     "span": "Paroxysmal AF, sick sinus syndrome"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Paroxysmal AF, sick sinus syndrome"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Paroxysmal AF, sick sinus syndrome"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Sick sinus syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011704",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "intermittent complete atrioventricular block with junctional escape rhythm",
+     "span": "intermittent complete atrioventricular block with junctional escape rhythm"
+    },
+    "status": {
+     "value": "observed",
+     "span": "intermittent complete atrioventricular block with junctional escape rhythm"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "intermittent complete atrioventricular block with junctional escape rhythm"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Third degree atrioventricular block",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001709",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "non-sustained ventricular tachycardias",
+     "span": "ventricular extrasystoles, and non-sustained ventricular tachycardias"
+    },
+    "status": {
+     "value": "observed",
+     "span": "ventricular extrasystoles, and non-sustained ventricular tachycardias"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "ventricular extrasystoles, and non-sustained ventricular tachycardias"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "sustained ventricular tachycardias",
+     "span": [
+      "no sustained ventricular tachycardias, no ICD discharges",
+      "but no sustained ventricular tachycardias"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "no sustained ventricular tachycardias, no ICD discharges",
+      "but no sustained ventricular tachycardias"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "no sustained ventricular tachycardias, no ICD discharges",
+      "but no sustained ventricular tachycardias"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "dilated left ventricle",
+     "span": [
+      "Echocardiography revealed a dilated left ventricle (LV) and right ventricle (RV)",
+      "Severely dilated left ventricle (LV) (interventricular septal wall thickness in diastole 11 mm, LV end-diastolic diameter 64 mm, LV end-systolic diameter 57 mm)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Echocardiography revealed a dilated left ventricle (LV) and right ventricle (RV)",
+      "Severely dilated left ventricle (LV) (interventricular septal wall thickness in diastole 11 mm, LV end-diastolic diameter 64 mm, LV end-systolic diameter 57 mm)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Echocardiography revealed a dilated left ventricle (LV) and right ventricle (RV)",
+      "Severely dilated left ventricle (LV) (interventricular septal wall thickness in diastole 11 mm, LV end-diastolic diameter 64 mm, LV end-systolic diameter 57 mm)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "severely dilated; LV end-diastolic diameter 64 mm",
+     "span": "Severely dilated left ventricle (LV) (interventricular septal wall thickness in diastole 11 mm, LV end-diastolic diameter 64 mm, LV end-systolic diameter 57 mm)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "dilated right ventricle",
+     "span": "Echocardiography revealed a dilated left ventricle (LV) and right ventricle (RV)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Echocardiography revealed a dilated left ventricle (LV) and right ventricle (RV)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Echocardiography revealed a dilated left ventricle (LV) and right ventricle (RV)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "severely reduced biventricular function",
+     "span": [
+      "with severely reduced biventricular function consistent with a DCM",
+      "in the LV (EF 10%), together with mid-myocardial LGE in the inferior septum and in the right ventricle (EF 15%)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "with severely reduced biventricular function consistent with a DCM",
+      "in the LV (EF 10%), together with mid-myocardial LGE in the inferior septum and in the right ventricle (EF 15%)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "with severely reduced biventricular function consistent with a DCM",
+      "in the LV (EF 10%), together with mid-myocardial LGE in the inferior septum and in the right ventricle (EF 15%)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LV-EF 10% (CMR), RV EF 15%; LV-EF 20%, 25%, 32%, 25% on echocardiography over follow-up",
+     "span": [
+      "in the LV (EF 10%), together with mid-myocardial LGE in the inferior septum and in the right ventricle (EF 15%)",
+      "LV-ejection fraction (EF) 20%",
+      "An improvement of LV-EF (32%)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased left ventricular ejection fraction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012664",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "dilated cardiomyopathy (DCM)",
+     "span": "Echocardiography and cardiac magnetic resonance imaging revealed dilated cardiomyopathy (DCM) with severe biventricular dysfunction"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Echocardiography and cardiac magnetic resonance imaging revealed dilated cardiomyopathy (DCM) with severe biventricular dysfunction"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Echocardiography and cardiac magnetic resonance imaging revealed dilated cardiomyopathy (DCM) with severe biventricular dysfunction"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Dilated cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001644",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "akinesia of the thin basal anteroseptal and apical inferior wall",
+     "span": "akinesia of the thin basal anteroseptal and apical inferior wall"
+    },
+    "status": {
+     "value": "observed",
+     "span": "akinesia of the thin basal anteroseptal and apical inferior wall"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "akinesia of the thin basal anteroseptal and apical inferior wall"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "functional mitral regurgitation",
+     "span": [
+      "Functional mitral valve insufficiency III/IV°",
+      "functional mitral regurgitation III–IV°/IV°"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Functional mitral valve insufficiency III/IV°",
+      "functional mitral regurgitation III–IV°/IV°"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Functional mitral valve insufficiency III/IV°",
+      "functional mitral regurgitation III–IV°/IV°"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "III–IV°/IV°; later II–III°/IV°",
+     "span": [
+      "functional mitral regurgitation III–IV°/IV°",
+      "mitral regurgitation II–III°/IV°"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Mitral regurgitation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001653",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "thrombus in the left atrial appendage",
+     "span": [
+      "a thrombus in the left atrial appendage were also identified",
+      "Left atrial appendage (LAA) thrombus (15 mm × 6 mm)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "a thrombus in the left atrial appendage were also identified",
+      "Left atrial appendage (LAA) thrombus (15 mm × 6 mm)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "a thrombus in the left atrial appendage were also identified",
+      "Left atrial appendage (LAA) thrombus (15 mm × 6 mm)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "15 mm × 6 mm; resolved by month 3",
+     "span": [
+      "Left atrial appendage (LAA) thrombus (15 mm × 6 mm)",
+      "Resolved LAA thrombus"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "extensive subendocardial to transmural late gadolinium enhancement (LGE) of the LV",
+     "span": "Cardiac magnetic resonance (CMR) imaging revealed extensive subendocardial to transmural late gadolinium enhancement (LGE) of the LV"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Cardiac magnetic resonance (CMR) imaging revealed extensive subendocardial to transmural late gadolinium enhancement (LGE) of the LV"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Cardiac magnetic resonance (CMR) imaging revealed extensive subendocardial to transmural late gadolinium enhancement (LGE) of the LV"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "mid-myocardial LGE of the inferior septum and of the RV",
+     "span": "as well as mid-myocardial LGE of the inferior septum and of the RV"
+    },
+    "status": {
+     "value": "observed",
+     "span": "as well as mid-myocardial LGE of the inferior septum and of the RV"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "as well as mid-myocardial LGE of the inferior septum and of the RV"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "marked increase in extracellular volume",
+     "span": "a marked increase in extracellular volume is observed in these areas (up to 60%)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a marked increase in extracellular volume is observed in these areas (up to 60%)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a marked increase in extracellular volume is observed in these areas (up to 60%)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "up to 60%",
+     "span": "a marked increase in extracellular volume is observed in these areas (up to 60%)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "increased T2 signal intensity in the mid-cavity septum",
+     "span": "T2-TSE shows an increased signal intensity in the mid-cavity septum"
+    },
+    "status": {
+     "value": "observed",
+     "span": "T2-TSE shows an increased signal intensity in the mid-cavity septum"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "T2-TSE shows an increased signal intensity in the mid-cavity septum"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "severe chronic lymphocytic myocarditis",
+     "span": "Endomyocardial biopsy revealed a severe chronic lymphocytic myocarditis with diffuse infiltration of CD3^+ T-lymphocytes (42 T cells/mm^2)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Endomyocardial biopsy revealed a severe chronic lymphocytic myocarditis with diffuse infiltration of CD3^+ T-lymphocytes (42 T cells/mm^2)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Endomyocardial biopsy revealed a severe chronic lymphocytic myocarditis with diffuse infiltration of CD3^+ T-lymphocytes (42 T cells/mm^2)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "42 T cells/mm^2; 21 T cells/mm^2 after 3 months; 56 T cells/mm^2 after stopping immunosuppression",
+     "span": [
+      "diffuse infiltration of CD3^+ T-lymphocytes (42 T cells/mm^2)",
+      "slightly resolving inflammatory reaction (21 T cells/mm^2 lymphocytes)",
+      "Endomyocardial biopsy revealed an increased inflammatory activity (56 T cells/mm^2)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Myocarditis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012819",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "severe architectural disarray including diffuse interstitial fibrosis and marked cardiomyocyte hypertrophy",
+     "span": "the myocardium presented with a severe architectural disarray including diffuse interstitial fibrosis and marked cardiomyocyte hypertrophy"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the myocardium presented with a severe architectural disarray including diffuse interstitial fibrosis and marked cardiomyocyte hypertrophy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the myocardium presented with a severe architectural disarray including diffuse interstitial fibrosis and marked cardiomyocyte hypertrophy"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "enhanced storage of glycogen in cardiomyocytes",
+     "span": "PAS staining revealed a significantly enhanced storage of glycogen in cardiomyocytes of all biopsies investigated"
+    },
+    "status": {
+     "value": "observed",
+     "span": "PAS staining revealed a significantly enhanced storage of glycogen in cardiomyocytes of all biopsies investigated"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "PAS staining revealed a significantly enhanced storage of glycogen in cardiomyocytes of all biopsies investigated"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "infection with cardiotropic pathogens",
+     "span": "Acute or persistent infection with cardiotropic pathogens was excluded in all biopsies by polymerase chain reaction (PCR)."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Acute or persistent infection with cardiotropic pathogens was excluded in all biopsies by polymerase chain reaction (PCR)."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Acute or persistent infection with cardiotropic pathogens was excluded in all biopsies by polymerase chain reaction (PCR)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "acute decompensated heart failure",
+     "span": "the patient presented with progressing dyspnoea and acute decompensated heart failure after discontinuing immunosuppressive therapy"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient presented with progressing dyspnoea and acute decompensated heart failure after discontinuing immunosuppressive therapy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented with progressing dyspnoea and acute decompensated heart failure after discontinuing immunosuppressive therapy"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "NYHA III–IV at presentation and at month 10",
+     "span": [
+      "Initial presentation with chest discomfort, severe dyspnoea [New York Heart Association (NYHA) III–IV]",
+      "Acute clinical deterioration (NYHA III–IV)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Congestive heart failure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001635",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "feature_text_as_stated": {
+     "value": "other extra-cardiac symptoms",
+     "span": "Our patient did not present any other extra-cardiac symptoms."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Our patient did not present any other extra-cardiac symptoms."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Our patient did not present any other extra-cardiac symptoms."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Echocardiography revealed a dilated left ventricle (LV) and right ventricle (RV)",
+      "with severely reduced biventricular function consistent with a DCM"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Echocardiography revealed a dilated left ventricle (LV) and right ventricle (RV)",
+      "with severely reduced biventricular function consistent with a DCM"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient presented with progressing dyspnoea and acute decompensated heart failure after discontinuing immunosuppressive therapy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented with progressing dyspnoea and acute decompensated heart failure after discontinuing immunosuppressive therapy"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Cardiac magnetic resonance (CMR) imaging revealed extensive subendocardial to transmural late gadolinium enhancement (LGE) of the LV"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Cardiac magnetic resonance (CMR) imaging revealed extensive subendocardial to transmural late gadolinium enhancement (LGE) of the LV"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "intermittent complete atrioventricular block with junctional escape rhythm"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "intermittent complete atrioventricular block with junctional escape rhythm"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The initial electrocardiogram showed atrial fibrillation (AF)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The initial electrocardiogram showed atrial fibrillation (AF)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "ventricular extrasystoles, and non-sustained ventricular tachycardias"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "ventricular extrasystoles, and non-sustained ventricular tachycardias"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "but normal CK and CK-MB levels",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "but normal CK and CK-MB levels",
+      "CK, CK-MB, and CRP within normal ranges"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32974466",
+     "span": "PMID: 32974466"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 24-year-old female patient presented with progressing dyspnoea and chest discomfort."
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
