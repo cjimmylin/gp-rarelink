@@ -33,10 +33,18 @@ def count_tokens(text: str) -> tuple[int, str]:
     return len(text) // 4, "estimate:chars/4 (no API key)"
 
 
-def convert_pdf(path: Path) -> str:
-    from docling.document_converter import DocumentConverter  # optional dependency
+_CONVERTER = None
 
-    return DocumentConverter().convert(str(path)).document.export_to_markdown()
+
+def convert_pdf(path: Path) -> str:
+    global _CONVERTER
+    if _CONVERTER is None:  # load Docling's models once per run
+        from docling.document_converter import (
+            DocumentConverter,  # optional dependency (uv sync --group pdf)
+        )
+
+        _CONVERTER = DocumentConverter()
+    return _CONVERTER.convert(str(path)).document.export_to_markdown()
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -44,6 +52,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--pmid", nargs="*", default=None, help="subset of PMIDs")
     ap.add_argument("--no-count", action="store_true", help="skip token counting")
+    ap.add_argument("--formats", nargs="+", default=["nxml", "pdf"], choices=["nxml", "pdf"], help="source formats to convert")
+    ap.add_argument("--skip-existing", action="store_true", help="skip papers that already have Markdown")
     args = ap.parse_args(argv)
     assert_isolated()
 
@@ -54,10 +64,12 @@ def main(argv: list[str] | None = None) -> int:
     manifest_rows = {r["pmid"]: r for r in csv.DictReader((base / "manifest.csv").open(newline=""))}
     done = 0
     for f in sorted(src.glob("*")):
-        if f.suffix not in (".nxml", ".pdf"):
+        if f.suffix[1:] not in args.formats:
             continue
         pmid = f.stem
         if args.pmid and pmid not in args.pmid:
+            continue
+        if args.skip_existing and (dst / f"{pmid}.md").exists():
             continue
         meta = {"pmid": pmid, "source_file": f.name, "source_format": f.suffix[1:]}
         if f.suffix == ".nxml":
@@ -70,6 +82,9 @@ def main(argv: list[str] | None = None) -> int:
             meta.update(n_tables=art.n_tables, n_figures=art.n_figures, pmcid=art.pmcid, doi=art.doi)
         else:
             md = f"PMID: {pmid}\nTitle: {manifest_rows.get(pmid, {}).get('title', '')}\n\n" + convert_pdf(f)
+            from importlib.metadata import version
+
+            meta.update(converter=f"docling {version('docling')}", n_tables=md.count("\n|---") or None)
         if not args.no_count:
             n, method = count_tokens(md)
             meta.update(tokens=n, token_count_method=method)

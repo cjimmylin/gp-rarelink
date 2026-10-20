@@ -1,6 +1,6 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.8, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.9, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
@@ -8,6 +8,7 @@
 > - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
 > - v0.6 applies D-26 to D-28, decided by Dr. Lin on 2026-10-19 from the pilot's Stages 4 and 5: normalization success by description type (§7.2.2); normal findings recorded as the absent abnormality (§6.2); the gatekeeper checks every value, including its link to the person (§6.4).
 > - v0.7 folds in the pilot report (`reports/poc_report.md` §10; D-29 to D-31, decided 2026-10-19). It also records the five-disease corpus searches and screening, the Mondo IDs and the dated ClinVar counts (2026-10-19). Changed sections: §4.1, §5.1, §5.2, §6.2 to §6.5, §7.1, §7.2 (matching, D-19 split, new §7.2.7 completeness), §10 and §13. No metric, threshold or disease was changed.
+> - v0.9 (2026-10-20) applies D-09 (OSF), D-11 (raters), D-12 (OMIM access requested), D-17 (Claude Code route) and D-33 (literature-summary reviews included, flagged), plus the screening-check design and Dr. Lin's approval of the pilot report (§1, §5.1, §5.2, §6.1, §7.1, §7.5, §11, §13).
 > - v0.8 applies D-08 (substitute trigger: an absolute count), D-19 (no ClinVar-cited seeds) and D-32 (open access only), decided by Dr. Lin on 2026-10-20 (§4.2, §5.1, §13).
 >
 > - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
@@ -15,9 +16,9 @@
 > - Items marked **[proposed]** are Claude's defaults. Accept, change or delete each one.
 > - Everything else restates commitments already made in `CONTEXT.md` and the grant application. Changing those after freezing is a deviation (`INSTRUCTIONS.md` §1.4).
 >
-> Until the plan is frozen, edits to this draft are ordinary revisions, not deviations. **Freezing** means: all [D-nn] items resolved, the file tagged in git (e.g. `prereg-v1.0`), and the same text registered with the chosen registry [D-09]. Freezing happens after the one-disease pilot (§6.5, D-18) and before any extraction run for the six-disease study.
+> Until the plan is frozen, edits to this draft are ordinary revisions, not deviations. **Freezing** means: all [D-nn] items resolved, the file tagged in git (e.g. `prereg-v1.0`), and the same text registered publicly on OSF (D-09, decided). Freezing happens after the one-disease pilot (§6.5, D-18) and before any extraction run for the six-disease study.
 
-Structure follows the usual sections of a preregistration for analysis of existing data (study information, data, prior knowledge, variables, analysis plan). Check the registry's current template when the venue is chosen [D-09] and re-map sections if needed.
+Structure follows the usual sections of a preregistration for analysis of existing data (study information, data, prior knowledge, variables, analysis plan). Check OSF's current preregistration template at registration (D-09) and re-map sections if needed.
 
 ---
 
@@ -29,7 +30,7 @@ Structure follows the usual sections of a preregistration for analysis of existi
 | **Investigators** | Dr. Jimmy Lin (PI, Rare Genomics Institute); Prof. Monica Lam (co-lead, AI methods, Stanford OVAL Lab); adjudication panel Drs. Eva Wu, Gabriela Balderrama, Anita Chacko. *[OVAL contributors to be added by Prof. Lam.]* |
 | **Funding** | Anthropic AI for Science Program, Rare Disease program, Basic science track. Awarded 2026-08-31: $45,000 in claude.ai usage credits, covering chat, Claude Code, Cowork and Claude Science (`grant/AWARD_EMAIL.md`). Credits only; no cash. |
 | **Project dates** | Six months. Month 1 starts on the date the first credit deposit landed, provisionally 2026-09-21; Month 6 then ends 2027-03-20 (D-01, decided). |
-| **Registry** | *To be decided* [D-09] |
+| **Registry** | OSF, public, registered at the freeze, after the pilot report was approved and before the six-disease run (D-09, decided) |
 
 ## 2. Background and research question
 
@@ -103,12 +104,15 @@ Whether to add them before the freeze is open [proposed: not added; the PubMed s
 
 **Comparator holdouts.** The natural-history comparators of §7.4.1 found by the search are marked out of the extraction corpus in each manifest (`in_extraction_corpus = false`, with the reason), by `pipeline/extract/corpus/disease_seeds.py`.
 
-**Eligibility [proposed].**
+**Eligibility [proposed; D-33, decided].**
 - *Include:* primary publications (case reports, case series, cohort papers) that report individual-level genotype and/or phenotype for at least one person with the pilot disease. Any publication year.
-- *Exclude from extraction:* reviews with no new individuals (these are used only for citation searching), animal or cell-only studies, conference abstracts, and papers with no English full text. Excluded papers are logged with the reason.
+- *Include, flagged (D-33, decided):* reviews with a per-patient table or list of individuals from earlier papers, as the HA20 pilot did (308 of its 799 people came from such tables). Their people are tagged secondary-source, deduplicated against primary reports (§6.3), and every patient-level result is reported with and without them. Under open access only (D-32), such tables are often the only open record of patients whose original papers are paywalled.
+- *Exclude from extraction:* reviews with no new individuals and no per-patient table (these are used only for citation searching), animal or cell-only studies, conference abstracts, and papers with no English full text. Excluded papers are logged with the reason.
 - Papers about the same individuals are **not** excluded. Overlap is handled by patient-level deduplication (§6.3).
 
-**Screening [proposed].** Title/abstract screening, then full-text screening. Claude may screen, but every decision is logged with a reason, and a human checks a random 10% of inclusions and all exclusions made at full-text stage. Each disease gets a PRISMA-style flow count, produced by script.
+**Screening (decided by Dr. Lin, 2026-10-20).** Title/abstract screening, then full-text screening. Claude may screen, but every decision is logged with a reason, and a human checks a random 10% of inclusions at title/abstract stage and all exclusions made at full-text stage. Each disease gets a PRISMA-style flow count, produced by script.
+
+- **Full-text screening** uses `pipeline/extract/claude_code/prompts/screen_fulltext_v1.md` and `pipeline/extract/corpus/claude_code_fulltext_screen.py`. Each decision carries a verbatim evidence quote, checked by script against the paper.
 
 - **Title and abstract screening is done** for all six diseases (2026-10-19 for the five new ones). Claude Code helper agents did it with `screen_v2.md`, the disease-neutral form of the pilot's prompt, logged with its sha256 in each `screening_log.json`.
 - "Yes" and "unclear" both go forward to full text. For Tangier disease, papers on heterozygous *ABCA1* carriers with familial HDL deficiency are "unclear", so the full text decides.
@@ -135,7 +139,7 @@ All snapshots are taken on one date, as close as possible to the corpus search d
 | Source | What | Used for |
 |---|---|---|
 | ClinVar | Dated release: variant summary, GRCh38 VCF, citation table | O2, O3 |
-| OMIM | Allelic variants and clinical synopses for the six phenotype MIMs, **only via a licensed route** [D-12] | O2, O3 |
+| OMIM | Allelic variants and clinical synopses for the six phenotype MIMs, **only via a licensed route**. Dr. Lin requests API access (D-12, decided). Until access arrives, O2 and O3 run on ClinVar, and the OMIM half is reported as "not yet assessed", never as concordant or absent | O2, O3 |
 | HPO disease annotations (`phenotype.hpoa`, dated release) | HPO terms annotated to each OMIM disease | O2 phenotype concordance |
 | Natural-history cohort papers (§7.4) | Cohort phenotype frequencies | O4 |
 
@@ -172,7 +176,7 @@ Direct, dated counts per gene (ClinVar records by classification; OMIM allelic v
 
 **Primary extractor and gatekeeper:** Claude Opus. The exact model ID, any sampling parameters and the dates of use are recorded when the pipeline is frozen (§6.5) and not changed afterwards. A model change is a deviation. The model's published training cutoff is recorded too, for the memorization probe (§7.4.3).
 
-**Access route [D-17].** How the pipeline calls Claude is not yet decided: through a claude.ai surface the award credits cover, or through the API. Whichever route is chosen, it must let us record and fix the exact model ID and settings for every call. The route is stated in the frozen plan.
+**Access route (D-17, decided).** As in the pilot (D-20): Claude Code helper agents, run in a Claude Code session on the funded claude.ai account. Each run records the model ID the session reports, the instructions' sha256 and the session's usage readings. Per-call token counts are not available on this route, which is why the cost model uses session readings. Whether usage beyond the plan's limits (overage) is covered by the award credits is being confirmed with Anthropic (draft in `reports/drafts/anthropic_credits_question.md`).
 
 **Supporting tools:** VariantValidator, the phenopacket schema validator, and pyphetools CohortValidator (`pyphetools_software`). Each is pinned by version or access date.
 
@@ -276,7 +280,7 @@ Every record is checked against the phenopacket v2 schema and with CohortValidat
 **Sample.** 250 claims drawn by simple random sampling, stratified by disease in proportion to claim volume [proposed]. The draw is made by script with a recorded seed, after the frozen pipeline has run on all six diseases and before anyone looks at concordance results.
 
 **Rating [proposed].**
-- Two panel members rate each claim independently against the source paper, blind to the gatekeeper's verdict. A third resolves disagreements. Cohen's κ is reported.
+- Two panel members rate each claim independently against the source paper, blind to the gatekeeper's verdict. A third resolves disagreements. Cohen's κ is reported (D-11, decided 2026-10-20; hours and optional add-ons wait on the panel's availability).
 - Labels:
   - *supported*;
   - *unsupported:* the span does not entail the value;
@@ -478,7 +482,7 @@ Metrics:
 - cost per paper (Claude: API cost; open-weight: compute cost at a stated rate);
 - wall-clock time.
 
-Results are published either way. Still to decide: which model, which disease(s), audit size, and where the open-weight model runs. The grant's $2,000 line covers Claude credits only. The comparison also depends on [D-17], because an identical scaffold needs both models to be called the same way.
+Results are published either way. Still to decide: which model, which disease(s), audit size, and where the open-weight model runs. The grant's $2,000 line covers Claude credits only. Claude runs as Claude Code helper agents (D-17). The open-weight model therefore needs an agent harness with the same instructions, file tools and inputs, and the write-up must say how the two scaffolds differ. Next step (Dr. Lin, 2026-10-20): Claude drafts a shortlist of open-weight models (open license, long context, tool use) with hosting options and cost. Dr. Lin picks one before the freeze; it runs on HA20 plus one other disease.
 
 ### 7.6 Exploratory analyses (labeled as such in any report)
 
@@ -524,7 +528,7 @@ Stated so readers can judge the risk of data-informed choices.
 
 - **Pipeline code** is released open source (`CONTEXT.md` §7).
 - **Phenopackets and evidence tables** are released after adjudication. The license is undecided, and so is how verbatim spans from non-open-access papers are handled [D-16].
-- **OMIM content** is not redistributed. Storage depends on the licensing route [D-12].
+- **OMIM content** is not redistributed. Storage follows the terms of the API access Dr. Lin requests (D-12).
 - **ClinVar snapshots** are re-downloadable. The repo holds the download script and manifest, not the files.
 - **No patient data** of any kind is used.
 - **Acknowledgment.** Every publication that used the award credits acknowledges Anthropic's AI for Science program (award email, 2026-08-31).
@@ -544,10 +548,11 @@ Month 1 starts on the date the first credit deposit landed, provisionally 2026-0
 
 ## 13. Decisions needed before freezing
 
-See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, and D-22 to D-31 on 2026-10-19. The pilot report is drafted (`reports/poc_report.md`) and is waiting on Dr. Lin's review.
+See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, D-22 to D-31 on 2026-10-19, and D-08, D-09, D-11, D-12, D-17, D-19, D-32 and D-33 on 2026-10-20. Dr. Lin approved the pilot report as drafted on 2026-10-20.
 
 Still blocking this plan:
-- **D-09 to D-12, and D-17.** (D-08, D-19 and D-32 were decided on 2026-10-20.)
+- **D-10:** the open-weight model, picked by Dr. Lin from Claude's shortlist.
+- **D-11:** the panel's availability, which sets audit hours and optional add-ons. The rater design itself is decided.
 
 Also to settle before the freeze:
 - the [proposed] items added in v0.7:

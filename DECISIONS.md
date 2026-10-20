@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.8 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-09 to D-12 and D-17.
+**Pre-registration status:** draft v0.9 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-10 (model pick) and D-11 (panel hours).
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -13,27 +13,7 @@ How to use this file:
 
 ## Open decisions
 
-### Needed now, for the pilot
-
-**D-17 · How the pipeline calls Claude** (opened 2026-10-18)
-- **The problem:**
-  - The grant assumed extraction, gatekeeper, concordance and bias runs would call Claude from code. The application gave a Console org ID for API credits.
-  - The award email says the credits sit on a claude.ai account and work across chat, Claude Code, Cowork and Claude Science. It doesn't mention API usage.
-- **Now urgent:** the pilot's code calls the Anthropic API with an `ANTHROPIC_API_KEY` (pilot decision 2, below). Unless Bailey confirms the award covers API calls, the pilot's model spend (estimated $200–400, ceiling $1,000) bills to whichever account owns the key, not to the grant credits.
-- **Why it matters beyond the pilot:** most of the core budget (lines 1–3, 5 and 6) is model runs inside the pipeline. The route also affects two parts of the plan:
-  - pinning the model ID and settings (§6.1);
-  - the identical-scaffold comparison with an open-weight model (§7.5), which is simplest when both models are called from code.
-- **Options:**
-  - Run the pipeline's model calls through a claude.ai surface the credits cover, such as Claude Code running the pipeline scripts, or Claude Science. This works only if that surface supports the batch runs and logging the plan needs.
-  - Use the API with separate funding not covered by the award.
-  - Ask Bailey whether the credits can cover API calls from the pipeline.
-- **Recommendation:** Jimmy asks Bailey before adding the key (Claude does not contact anyone). If the answer is slow, the pilot can still go ahead on a separately funded key, logged in `BUDGET.md` with the account it billed to. The pilot's SLIDERS adapter already keeps model calls behind one provider setting, so the route can change later without touching extraction logic.
-
 ### Needed before the pre-registration can be frozen
-
-**D-09 · Registry and timing**
-- **Recommendation:** register on OSF, publicly. Freeze after the pilot report and before the six-disease run (D-18).
-- **Alternatives:** an embargoed OSF registration, or attaching the plan to a preprint.
 
 **D-10 · Open-weight comparison: model, disease(s), compute**
 - **Questions:**
@@ -43,19 +23,11 @@ How to use this file:
   - Where does it run? The $2,000 line is Claude credits; open-weight compute isn't budgeted.
 - **Recommendation:** pick the model by the time of the freeze, on the criteria open weights, long context and tool use. Run it on A20 haploinsufficiency (the pilot disease) plus one other.
 - **Depends on D-17:** an identical scaffold needs both models to be called the same way.
+- **Plan (Jimmy, 2026-10-20):** Claude drafts a shortlist (open license, long context, tool use), with hosting options and cost, for Jimmy to pick from before the freeze. It runs on HA20 plus one other disease. Under D-17, Claude runs as Claude Code helpers, so the open-weight model needs an agent harness with the same instructions and inputs.
 
-**D-11 · Panel time**
-- **Questions:**
-  - Who rates the 250-claim audit (two raters plus a tie-breaker is drafted)?
-  - Which optional add-ons can the panel afford: a pre-gatekeeper sample, gatekeeper calibration, a false-abstention check, an open-weight audit sample, discordance triage?
-- **Status:** needs the panel's availability. No time estimate is given here because none has been measured.
-- **Pilot:** Jimmy rates the pilot's 50 claims himself (pilot decision 5). The panel is reserved for the 250-claim audit and Month-4 adjudication.
-
-**D-12 · OMIM access route**
-- **The problem:** omim.org blocks automated reading. The archived terms bar redistribution without a license (`grant_claim_checks.md` §13).
-- **Options:** request API or download access; read the current terms by hand; or limit OMIM concordance to what can be lawfully obtained.
-- **Blocks:** the OMIM half of concordance (O2) and the OMIM gap definition (O3).
-- **Progress:** the pilot session drafted the access request (`reports/drafts/omim_access_request.md`), for Jimmy to submit (pilot decision 4). Its terms table is blank because omim.org was unreachable. Until access arrives, the pilot's concordance is ClinVar-only.
+**D-11 · Panel time** (rater design decided 2026-10-20; hours open)
+- **Decided:** two panel members rate the 250-claim audit independently and the third resolves disagreements (decision log, 2026-10-20).
+- **Still open:** the panel's availability. It sets the audit hours and which optional add-ons fit: a pre-gatekeeper sample, gatekeeper calibration, a false-abstention check, an open-weight audit sample, discordance triage. Jimmy sends `reports/drafts/panel_availability.md`.
 
 ### Needed later
 
@@ -89,6 +61,17 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-20 · Pilot report approved; D-09, D-11, D-12, D-17 and D-33 decided; screening-check design accepted
+Jimmy's answers to eight questions (asked in the session, 2026-10-20). Each took the recommended option.
+- **Pilot report** (`reports/poc_report.md`): approved as drafted. The Stage 7 gate is passed, and its §10 changes go into the frozen pipeline (pre-registration v0.7 to v0.9).
+- **D-17 · How the pipeline calls Claude:** Claude Code helper agents on the funded claude.ai account, as in the pilot (D-20). Each run records the model ID, the instructions' sha256 and the session usage readings. The Bailey draft still goes out, to confirm how overage is billed.
+- **D-09 · Registry:** OSF, public, registered at the freeze, before the six-disease run.
+- **D-12 · OMIM:** Jimmy submits the drafted API access request (`reports/drafts/omim_access_request.md`). Until access arrives, concordance and the gap definition run on ClinVar, and OMIM is reported as "not yet assessed".
+- **D-11 · Audit raters:** two panel members rate and the third breaks ties, as drafted. Hours wait on the panel's availability, so D-11 stays open for those.
+- **D-10 · Open-weight comparison:** Claude drafts a shortlist first. D-10 stays open until Jimmy picks a model.
+- **D-33 · Literature-summary reviews (new):** reviews whose only patient data are per-patient tables of earlier cases are included in extraction, as in the HA20 pilot. Their people are tagged secondary-source and deduplicated against primary reports, and results are reported with and without them. This changes pre-registration §5.1 eligibility (draft v0.9) and the full-text screening instructions (`screen_fulltext_v1.md`).
+- **Screening check:** as drafted in pre-registration §5.1. Jimmy rates a random 10% of title/abstract inclusions per disease, plus every full-text exclusion, on one rating page.
 
 ### 2026-10-20 · D-08, D-19 and D-32 decided: absolute substitute trigger, no ClinVar seeds, open access only
 Jimmy's answers to four questions (asked in the session, 2026-10-20):
