@@ -52,7 +52,7 @@ How to use this file:
 - **What happened:**
   - The catalogue check before extraction (§7.2.7, D-35; `analysis/catalogue/catalogue_check_2026-10-20.md`, commit `3622d03`) dropped the AxD candidate, Grossi 2024 (PMID 39420046). Its per-variant table is in the supplement, and Europe PMC answered HTTP 500 when the supplement was fetched.
   - So `pv1-axd` extracted that paper from its main text only.
-  - A single retry at 19:3x UTC, after AxD extraction finished, downloaded the three supplement files (`data/literature/axd/supplementary/manifest.csv`).
+  - A single retry at about 19:32 UTC, after AxD extraction finished, downloaded the three supplement files (`data/literature/axd/supplementary/manifest.csv`).
   - They have **not** been appended to the paper's text, so `pv1-axd`'s inputs stay as they were run.
 - **Options:**
   - (a) **Keep it dropped, as the frozen rule says** ("checked by script before extraction starts"): AxD reports no completeness figure and the report says why.
