@@ -1,0 +1,6729 @@
+{
+ "pmid": "36211342",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Supplementary Table S2 gives individual-level data (sex, ages, TNFAIP3 genotype, initial diagnosis, treatment) for the nine HA20 patients: \"nine patients (from six unrelated families) in the study were diagnosed with HA20\".",
+ "method_note": "Read by hand; a short Python script assembled the JSON and cut spans from the fixed-width text lines of supplementary Table S2 (checked against the table). Scope: only the nine HA20 patients of Table S2 are in scope; the other cohort members (undiagnosed patients P1-19 in Table 2 incl. the PSMB8 patient, IPH, CAEBV/HMB patients, controls) get no rows. Labels: Table S2's 'Patient' column holds bare numbers 1-9 (5a, 6a, 7a carry footnote 'a'), so labels are 'Table S2 #<n>'; this also avoids confusion with the different people numbered 1-19 in Table 2. Table S2 is a PDF-converted fixed-width table: each patient's protein change, part of the diagnosis and treatment wrap onto the next line, so multi-line values use span lists; 'adrenal insufficiency' (#9) and 'Early childhood' (#7) are split across lines and quoted as two spans. Age at IS analysis recorded as age at last evaluation; 'Disease-onset age' as age at onset. Features come from the 'Initial diagnosis before genetic analysis' and 'Symptoms at IS analysis' columns; diagnosis labels SLE (#1) and 'FMF like autoinflammatory disease' (#5) were not recorded as features. Crohn's disease / intestinal Behçet's disease / intestinal BD mapped to the GI inflammation checklist item, Hashimoto's disease to autoimmune thyroiditis, lymphadenitis to lymphadenopathy, pJIA/sJIA/psoriatic arthritis to arthritis. 'Stomatitis' (#4, #7) was not mapped to oral ulcers. CRP at IS analysis (mg/L) values were not judged elevated or normal because the paper gives no reference range; checklist left not reported. 'Symptoms at IS analysis: None' was not used to exclude anything. 'All patients had elevated ISs' applied to all nine as a group statement. Pathogenicity and NF-kB functional evidence recorded only for p.Lys329Asn*1 (#1) and p.Gly583* (#3), the two variants the text names; the others are only 'several previously reported variants (32)' without saying which. No variant types are stated by the authors. Inheritance: footnote says Patients 6 and 7 are the mother and grandmother of patient 5, all three with c.2209delC, so #5 is inherited maternal; #6's relation to #7 (her mother or mother-in-law) is not stated, so #6 is not reported. Text says six unrelated families but does not say which other patients are related (#2 and #4 share c.133C>T; relationship not stated, not inferred). cites_prior_report_of_same_patients is true only because Table 2 footnote c says Patients 7 and 11 (undiagnosed, non-HA20, out of scope) were previously studied (34, 35); no HA20 patient is said to be previously reported. Gene symbol TNFAIP3 is not printed in Table S2; taken from the main-text sentence on the HA20 patients' TNFAIP3 variants. No contradictions found.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "first_author": {
+     "value": "Miyamoto",
+     "span": "Authors: Miyamoto Takayuki"
+    },
+    "year": {
+     "value": 2022,
+     "span": "Journal: Frontiers in Immunology (2022)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "A total of 117 samples from 94 patients with inflammatory diseases, including 37 undiagnosed cases, were analyzed."
+    },
+    "n_patients_reported": {
+     "value": 9,
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "cohort_size_as_stated": {
+     "value": 94,
+     "span": "A total of 117 samples from 94 patients with inflammatory diseases"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": "c: Patient 7 and 11 have been previously studied (34, 35)."
+    },
+    "prior_report_citation": {
+     "value": "(34, 35)",
+     "span": "c: Patient 7 and 11 have been previously studied (34, 35)."
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "1          F"
+    },
+    "age_at_onset_original_text": {
+     "value": "Infancy",
+     "span": "1          F        37y        Infancy"
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "37y",
+     "span": "1          F        37y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P37Y",
+     "span": "1          F        37y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "PSL, Hydroxychloroquine (treatment at IS analysis)",
+     "span": [
+      "None                PSL,",
+      "arthritis)                                                  Hydroxychloroquine"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "2          M"
+    },
+    "age_at_onset_original_text": {
+     "value": "4y",
+     "span": "2          M         15y         4y"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P4Y",
+     "span": "2          M         15y         4y"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "15y",
+     "span": "2          M         15y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P15Y",
+     "span": "2          M         15y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Colchicine, Mesalamin (treatment at IS analysis)",
+     "span": [
+      "None            Colchicine,",
+      "p.Arg45* hetero                                                                                    Mesalamin"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "3          F"
+    },
+    "age_at_onset_original_text": {
+     "value": "7m",
+     "span": "3          F         6y          7m"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P7M",
+     "span": "3          F         6y          7m"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "6y",
+     "span": "3          F         6y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P6Y",
+     "span": "3          F         6y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "No treatment (at IS analysis)",
+     "span": [
+      "7             c.1747G>T,        Recurrent fever with arthralgia and          7               None            No treatment"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "4          M"
+    },
+    "age_at_onset_original_text": {
+     "value": "1y1m",
+     "span": "4          M         10y       1y1m"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P1Y1M",
+     "span": "4          M         10y       1y1m"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "10y",
+     "span": "4          M         10y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P10Y",
+     "span": "4          M         10y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Colchicine (treatment at IS analysis)",
+     "span": [
+      "Stomatitis          Colchicine"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "5a         F"
+    },
+    "age_at_onset_original_text": {
+     "value": "6m",
+     "span": "5a         F         5y          6m"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P6M",
+     "span": "5a         F         5y          6m"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "5y",
+     "span": "5a         F         5y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P5Y",
+     "span": "5a         F         5y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Etanercept (treatment at IS analysis)",
+     "span": [
+      "<0.2             None              Etanercept"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "6a         F"
+    },
+    "age_at_onset_original_text": {
+     "value": "5y",
+     "span": "6a         F         29y         5y"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P5Y",
+     "span": "6a         F         29y         5y"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "29y",
+     "span": "6a         F         29y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P29Y",
+     "span": "6a         F         29y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "No treatment (at IS analysis)",
+     "span": [
+      "7.1             None             No treatment"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "7a         F"
+    },
+    "age_at_onset_original_text": {
+     "value": "Early childhood",
+     "span": [
+      "7a         F         68y        Early",
+      "childhood"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "68y",
+     "span": "7a         F         68y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P68Y",
+     "span": "7a         F         68y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "No treatment (at IS analysis)",
+     "span": [
+      "N/D              None             No treatment"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "8          F"
+    },
+    "age_at_onset_original_text": {
+     "value": "11y",
+     "span": "8          F         19y         11y"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P11Y",
+     "span": "8          F         19y         11y"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "19y",
+     "span": "8          F         19y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P19Y",
+     "span": "8          F         19y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "ADA, PSL, Celecoxib, Iguratimod (treatment at IS analysis)",
+     "span": [
+      "0.8             None              ADA, PSL,",
+      "p.Trp85Glyfs*11 hetero                                                                             Celecoxib, Iguratimod"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "9          M"
+    },
+    "age_at_onset_original_text": {
+     "value": "1y",
+     "span": "9          M         4y          1y"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P1Y",
+     "span": "9          M         4y          1y"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "4y",
+     "span": "9          M         4y"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P4Y",
+     "span": "9          M         4y"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "IFX, MTX, PSL, Naproxen, Colchicine (treatment at IS analysis)",
+     "span": [
+      "Skin erythema,     IFX, MTX, PSL,",
+      "adrenal      Naproxen, Colchicine"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "nine patients (from six unrelated families) in the study were diagnosed with HA20"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic analysis: determination of the patients' genotypes and TNFAIP3 variants",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.986+1 G>T",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.986+1 G>T",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Lys329Asn*1",
+     "span": "p.Lys329Asn*1 hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.Lys329Asn*1 hetero"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "NF-κB reporter gene activity assay confirmed pathogenicity; suppression of TNF-α induced NF-κB activity by the TNFAIP3 variants was significantly lower than WT",
+     "span": [
+      "two variants (p.Lys329Asn*1 and p.Gly583*) newly confirmed to be pathogenic using a NF-κB reporter gene activity assay",
+      "Suppression of the TNF-α induced NF-κB activity by",
+      "the TNFAIP3 variants was significantly lower than that seen in the WT."
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "newly confirmed to be pathogenic",
+     "span": "two variants (p.Lys329Asn*1 and p.Gly583*) newly confirmed to be pathogenic using a NF-κB reporter gene activity assay"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.133C>T",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.133C>T",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Arg45*",
+     "span": "p.Arg45* hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.Arg45* hetero"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.1747G>T",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1747G>T",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Gly583*",
+     "span": "p.Gly583* hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.Gly583* hetero"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "NF-κB reporter gene activity assay confirmed pathogenicity; suppression of TNF-α induced NF-κB activity by the TNFAIP3 variants was significantly lower than WT",
+     "span": [
+      "two variants (p.Lys329Asn*1 and p.Gly583*) newly confirmed to be pathogenic using a NF-κB reporter gene activity assay",
+      "Suppression of the TNF-α induced NF-κB activity by",
+      "the TNFAIP3 variants was significantly lower than that seen in the WT."
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "newly confirmed to be pathogenic",
+     "span": "two variants (p.Lys329Asn*1 and p.Gly583*) newly confirmed to be pathogenic using a NF-κB reporter gene activity assay"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.133C>T",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.133C>T",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Arg45*",
+     "span": "p.Arg45* hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.Arg45* hetero"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.2209delC",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.2209delC",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Gln737Serfs*79",
+     "span": "p.Gln737Serfs*79 hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.Gln737Serfs*79 hetero"
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": [
+      "a: Patients 6 and 7 are the mother and grandmother of patient 5, respectively.",
+      "6a         F         29y         5y       56.0            c.2209delC,"
+     ]
+    },
+    "parental_testing_statement": {
+     "value": "Patient 6, the mother of patient 5, carries the same variant (c.2209delC, p.Gln737Serfs*79 hetero)",
+     "span": [
+      "a: Patients 6 and 7 are the mother and grandmother of patient 5, respectively.",
+      "6a         F         29y         5y       56.0            c.2209delC,",
+      "5a         F         5y          6m       46.2            c.2209delC,"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.2209delC",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.2209delC",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Gln737Serfs*79",
+     "span": "p.Gln737Serfs*79 hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.Gln737Serfs*79 hetero"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.2209delC",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.2209delC",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Gln737Serfs*79",
+     "span": "p.Gln737Serfs*79 hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.Gln737Serfs*79 hetero"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.252delC",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.252delC",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Trp85Glyfs*11",
+     "span": "p.Trp85Glyfs*11 hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.Trp85Glyfs*11 hetero"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Determination of the patients’ genotypes and TNFAIP3 variants"
+    },
+    "variant_original_string": {
+     "value": "c.2088+5G>C",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.2088+5G>C",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.His636Glufs*55",
+     "span": "p.His636Glufs*55 hetero"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "p.His636Glufs*55 hetero"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "1          F        37y        Infancy    40.3"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "1          F        37y        Infancy    40.3"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "1          F        37y        Infancy    40.3"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 40.3",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "1          F        37y        Infancy    40.3"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "Recurrent fever",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    },
+    "status": {
+     "value": "observed",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001954",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "lymphadenitis",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    },
+    "status": {
+     "value": "observed",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Lymphadenitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "arthritis",
+     "span": "p.Lys329Asn*1 hetero                  arthritis)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "p.Lys329Asn*1 hetero                  arthritis)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "p.Lys329Asn*1 hetero                  arthritis)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "2          M         15y         4y       41.0"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "2          M         15y         4y       41.0"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "2          M         15y         4y       41.0"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 41.0",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "2          M         15y         4y       41.0"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "Crohn’s disease",
+     "span": "c.133C>T,                   Crohn’s disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "c.133C>T,                   Crohn’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "c.133C>T,                   Crohn’s disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "initial diagnosis before genetic analysis",
+     "span": "c.133C>T,                   Crohn’s disease"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "3          F         6y          7m       51.7"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "3          F         6y          7m       51.7"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "3          F         6y          7m       51.7"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 51.7",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "3          F         6y          7m       51.7"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "Recurrent fever",
+     "span": "Recurrent fever with arthralgia and"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Recurrent fever with arthralgia and"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Recurrent fever with arthralgia and"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001954",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "arthralgia",
+     "span": "Recurrent fever with arthralgia and"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Recurrent fever with arthralgia and"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Recurrent fever with arthralgia and"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthralgia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002829",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "abdominal pain",
+     "span": "p.Gly583* hetero               abdominal pain"
+    },
+    "status": {
+     "value": "observed",
+     "span": "p.Gly583* hetero               abdominal pain"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "p.Gly583* hetero               abdominal pain"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abdominal pain",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002027",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "4          M         10y       1y1m       48.2"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "4          M         10y       1y1m       48.2"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "4          M         10y       1y1m       48.2"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 48.2",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "4          M         10y       1y1m       48.2"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "PFAPA-like recurrent fever",
+     "span": "PFAPA-like recurrent fever →"
+    },
+    "status": {
+     "value": "observed",
+     "span": "PFAPA-like recurrent fever →"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "PFAPA-like recurrent fever →"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001954",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "intestinal Behçet's disease",
+     "span": "p.Arg45* hetero          intestinal Behçet's disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "p.Arg45* hetero          intestinal Behçet's disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "p.Arg45* hetero          intestinal Behçet's disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "initial diagnosis before genetic analysis",
+     "span": "p.Arg45* hetero          intestinal Behçet's disease"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "feature_text_as_stated": {
+     "value": "Stomatitis",
+     "span": "5             Stomatitis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "5             Stomatitis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "5             Stomatitis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "symptom at IS analysis",
+     "span": "5             Stomatitis"
+    },
+    "hpo_label_candidate": {
+     "value": "Stomatitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "5a         F         5y          6m       46.2"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "5a         F         5y          6m       46.2"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "5a         F         5y          6m       46.2"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 46.2",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "5a         F         5y          6m       46.2"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "6a         F         29y         5y       56.0"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "6a         F         29y         5y       56.0"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "6a         F         29y         5y       56.0"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 56.0",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "6a         F         29y         5y       56.0"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "Crohn’s disease",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "initial diagnosis before genetic analysis",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "Hashimoto’s disease",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "initial diagnosis before genetic analysis",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "hpo_label_candidate": {
+     "value": "Hashimoto thyroiditis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "7a         F         68y        Early     44.3"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "7a         F         68y        Early     44.3"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "7a         F         68y        Early     44.3"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 44.3",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "7a         F         68y        Early     44.3"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "Recurrent stomatitis",
+     "span": "c.2209delC,               Recurrent stomatitis,"
+    },
+    "status": {
+     "value": "observed",
+     "span": "c.2209delC,               Recurrent stomatitis,"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "c.2209delC,               Recurrent stomatitis,"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Stomatitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "Hashimoto’s disease",
+     "span": "p.Gln737Serfs*79 hetero          Hashimoto’s disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "p.Gln737Serfs*79 hetero          Hashimoto’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "p.Gln737Serfs*79 hetero          Hashimoto’s disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "initial diagnosis before genetic analysis",
+     "span": "p.Gln737Serfs*79 hetero          Hashimoto’s disease"
+    },
+    "hpo_label_candidate": {
+     "value": "Hashimoto thyroiditis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "8          F         19y         11y      27.1"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "8          F         19y         11y      27.1"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "8          F         19y         11y      27.1"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 27.1",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "8          F         19y         11y      27.1"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "pJIA",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "status": {
+     "value": "observed",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "RF negative; initial diagnosis before genetic analysis",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "positive RF",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "RF negative",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "feature_text_as_stated": {
+     "value": "intestinal BD",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "status": {
+     "value": "observed",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "initial diagnosis before genetic analysis",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated ISs",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "9          M         4y          1y       24.7"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "9          M         4y          1y       24.7"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "9          M         4y          1y       24.7"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IS 24.7",
+     "span": [
+      "All patients had elevated ISs (Figure 1).",
+      "9          M         4y          1y       24.7"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "feature_text_as_stated": {
+     "value": "sJIA",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "initial diagnosis before genetic analysis",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "feature_text_as_stated": {
+     "value": "Psoriatic arthritis",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "initial diagnosis before genetic analysis",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "feature_text_as_stated": {
+     "value": "Skin erythema",
+     "span": "11.3         Skin erythema,"
+    },
+    "status": {
+     "value": "observed",
+     "span": "11.3         Skin erythema,"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "11.3         Skin erythema,"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "symptom at IS analysis",
+     "span": "11.3         Skin erythema,"
+    },
+    "hpo_label_candidate": {
+     "value": "Erythema",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0010783",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "feature_text_as_stated": {
+     "value": "adrenal insufficiency",
+     "span": [
+      "adrenal",
+      "insufficiency"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "adrenal",
+      "insufficiency"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "adrenal",
+      "insufficiency"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "symptom at IS analysis",
+     "span": [
+      "adrenal",
+      "insufficiency"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Adrenal insufficiency",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000846",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "p.Lys329Asn*1 hetero                  arthritis)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "p.Lys329Asn*1 hetero                  arthritis)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "SLE (Recurrent fever, lymphadenitis,"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #1",
+     "span": "1          F        37y        Infancy    40.3           c.986+1 G>T,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "c.133C>T,                   Crohn’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "c.133C>T,                   Crohn’s disease"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #2",
+     "span": "2          M         15y         4y       41.0              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Recurrent fever with arthralgia and"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Recurrent fever with arthralgia and"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Recurrent fever with arthralgia and"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Recurrent fever with arthralgia and"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #3",
+     "span": "3          F         6y          7m       51.7             c.1747G>T,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "p.Arg45* hetero          intestinal Behçet's disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "p.Arg45* hetero          intestinal Behçet's disease"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "PFAPA-like recurrent fever →"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "PFAPA-like recurrent fever →"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #4",
+     "span": "4          M         10y       1y1m       48.2              c.133C>T,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #5",
+     "span": "5a         F         5y          6m       46.2            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "c.2209delC,        Crohn’s disease, Hashimoto’s disease"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #6",
+     "span": "6a         F         29y         5y       56.0            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "p.Gln737Serfs*79 hetero          Hashimoto’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "p.Gln737Serfs*79 hetero          Hashimoto’s disease"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #7",
+     "span": "7a         F         68y        Early     44.3            c.2209delC,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "RF negative pJIA → intestinal BD"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "RF negative pJIA → intestinal BD"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "RF negative pJIA → intestinal BD"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #8",
+     "span": "8          F         19y         11y      27.1             c.252delC,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "sJIA → Psoriatic arthritis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "sJIA → Psoriatic arthritis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "11.3         Skin erythema,"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "11.3         Skin erythema,"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36211342",
+     "span": "PMID: 36211342"
+    },
+    "individual_label_in_paper": {
+     "value": "Table S2 #9",
+     "span": "9          M         4y          1y       24.7           c.2088+5G>C,"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
