@@ -34,6 +34,11 @@ Confidence labels (policy v4, 2026-10-19, D-23):
   blocked_conflict   same variant but a conflict. A conflict is a stated sex that
                      differs (this blocks even an explicit citation), or, without an
                      explicit citation, stated onset ages more than 2 years apart.
+  duplicate_publication  (added 2026-10-20, D-40) the two papers are listed in
+                     configs/duplicate_publications.csv as versions of one study
+                     (a preprint and its journal version), the rows carry the same
+                     individual label and the same variant, and sex is not in
+                     conflict. Ranked above explicit_citation.
 Explicit and strong candidates are merged only if both hold:
   - one-to-one: within the other paper, each row is the other's unique best
     candidate. Candidates are ranked by confidence, then by agreement score
@@ -92,9 +97,18 @@ def v(cell):
     return (cell or {}).get("value")
 
 
+# Other names the six-disease papers use for a target gene (D-40; counted in the pv1 runs on
+# 2026-10-20). Greek beta is folded to B and a hyphen between letters and digits is dropped
+# first, so 'ITGβ2', 'ITGß2' and 'LAMP-2' need no entry.
+GENE_ALIASES = {"ALDH5A1": ("SSADH",), "ITGB2": ("CD18",)}
+
+
 def is_gene(stated, gene: str) -> bool:
-    """True if the gene as stated names the target gene, e.g. 'TNFAIP3' or 'A20/TNFAIP3'."""
-    return gene.upper() in re.split(r"[^A-Z0-9]+", str(stated or "").upper())
+    """True if the gene as stated names the target gene, e.g. 'TNFAIP3', 'A20/TNFAIP3', 'LAMP-2' or 'ITGβ2'."""
+    s = str(stated or "").replace("ß", "B").replace("β", "B").upper().replace("Β", "B").replace("ẞ", "B")
+    s = re.sub(r"(?<=[A-Z])-(?=\d)", "", s)
+    tokens = set(re.split(r"[^A-Z0-9]+", s))
+    return gene.upper() in tokens or any(a in tokens for a in GENE_ALIASES.get(gene.upper(), ()))
 
 
 # ---- variant keys -------------------------------------------------------------
@@ -272,13 +286,24 @@ def load(run_dir: Path, xml_dir: Path, gene: str) -> tuple[list[dict], dict[str,
     return people, papers
 
 
-def compare(a: dict, b: dict, papers: dict[str, dict], sex_onset_merges: bool = False) -> dict | None:
+def duplicate_pairs(disease: str, path: Path = Path("configs/duplicate_publications.csv")) -> dict[frozenset, str]:
+    if not path.exists():
+        return {}
+    return {frozenset((r["pmid_a"], r["pmid_b"])): r["evidence"] for r in csv.DictReader(path.open()) if r["disease"] == disease}
+
+
+def compare(a: dict, b: dict, papers: dict[str, dict], sex_onset_merges: bool = False, duplicates: dict | None = None) -> dict | None:
     key = next((k for va in a["variants"] for vb in b["variants"] if (k := same_variant(va, vb))), None)
     if key is None:
         return None
     conflicts = []
     if a["sex"] not in MISSING and b["sex"] not in MISSING and a["sex"] != b["sex"]:
         conflicts.append(f"sex {a['sex']} vs {b['sex']}")
+    dup = (duplicates or {}).get(frozenset((a["pmid"], b["pmid"])))
+    if dup and str(a["label"]) == str(b["label"]) and not any(c.startswith("sex") for c in conflicts):
+        return {"variant_key": key, "confidence": "duplicate_publication", "candidate": True, "score": 3,
+                "evidence": f"same {gene_key_kind(key)} {key}; same label {a['label']!r} in two versions of one study ({dup})",
+                "conflicts": "; ".join(conflicts)}
     if a["onset"] is not None and b["onset"] is not None and abs(a["onset"] - b["onset"]) > 2:
         conflicts.append(f"onset {a['onset']:.1f}y vs {b['onset']:.1f}y")
     evidence = [f"same {gene_key_kind(key)} {key}"]
@@ -323,10 +348,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--disease", required=True)
     ap.add_argument("--run-id", required=True)
     ap.add_argument("--gene", default="TNFAIP3")
+    ap.add_argument("--no-config", action="store_true", help="ignore configs/stage4/<disease>.json")
     ap.add_argument("--policy", choices=["v4", "v3"], default="v4",
                     help="v4 (default, D-23): merge on citations only. v3: also merge same variant + same sex + "
                          "onset within 1 year; outputs get the suffix _policy_v3.")
     args = ap.parse_args(argv)
+    cfg_path = Path("configs/stage4") / f"{args.disease}.json"
+    if cfg_path.exists() and not args.no_config:  # D-40: target gene per disease
+        args.gene = json.loads(cfg_path.read_text())["gene"]
+    duplicates = duplicate_pairs(args.disease)
     sex_onset_merges = args.policy == "v3"
     policy = POLICY_VERSION if args.policy == "v4" else "merge_policy_v3"
     suffix = "" if args.policy == "v4" else "_policy_v3"
@@ -340,12 +370,12 @@ def main(argv: list[str] | None = None) -> int:
         a, b = people[i], people[j]
         if a["pmid"] == b["pmid"]:
             continue
-        res = compare(a, b, papers, sex_onset_merges=sex_onset_merges)
+        res = compare(a, b, papers, sex_onset_merges=sex_onset_merges, duplicates=duplicates)
         if res:
             pairs.append((i, j, res))
 
     # one-to-one: keep a candidate pair only if each row is the other's unique best in that paper
-    conf_rank = {"explicit_citation": 2, "strong_match": 1}
+    conf_rank = {"duplicate_publication": 3, "explicit_citation": 2, "strong_match": 1}
     options: dict[tuple[int, str], list[tuple[tuple[int, int], int]]] = defaultdict(list)
     for i, j, res in pairs:
         if res["candidate"]:
