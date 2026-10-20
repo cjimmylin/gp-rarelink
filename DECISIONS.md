@@ -48,18 +48,6 @@ How to use this file:
 - **Questions:** Which license applies to released phenopackets and evidence tables? How are verbatim spans from non-open-access papers handled on release?
 - **Needed by:** Month 6.
 
-**D-39 · AxD completeness catalogue: its supplement came through only after extraction (raised 2026-10-20)**
-- **What happened:**
-  - The catalogue check before extraction (§7.2.7, D-35; `analysis/catalogue/catalogue_check_2026-10-20.md`, commit `3622d03`) dropped the AxD candidate, Grossi 2024 (PMID 39420046). Its per-variant table is in the supplement, and Europe PMC answered HTTP 500 when the supplement was fetched.
-  - So `pv1-axd` extracted that paper from its main text only.
-  - A single retry at about 19:32 UTC, after AxD extraction finished, downloaded the three supplement files (`data/literature/axd/supplementary/manifest.csv`).
-  - They have **not** been appended to the paper's text, so `pv1-axd`'s inputs stay as they were run.
-- **Options:**
-  - (a) **Keep it dropped, as the frozen rule says** ("checked by script before extraction starts"): AxD reports no completeness figure and the report says why.
-  - (b) **Use the supplement on the harness side only.** Transcribe the table for the completeness check and log a deviation, since the check would then use input that wasn't there before extraction. Extraction is untouched; no re-run.
-- **Recommendation:** (b), as a logged deviation. The catalogue never reaches extraction, and the drop was a server error, not a property of the catalogue. Report both: the figure, and the fact that it was added after the fact.
-- **Needed by:** the six-disease concordance step.
-
 ---
 
 ## Decision log
@@ -616,6 +604,18 @@ These were recorded on `claude/zealous-meitner-k7moex` between 18:22 and 18:36 U
 - **Expected effect on results:** none on HA20. For the other five, the checklist is new by design (§6.5). Everything else matches the smoke-tested pipeline.
 - **Reported where:** the six-disease results report, methods section.
 
+
+### 2026-10-20 · D-39 · AxD completeness catalogue checked with a supplement fetched after extraction
+- **Registered:** §7.2.7 (D-35): "Each candidate's suitability is checked by script before extraction starts; a candidate without a per-variant table naming source papers is dropped, and that disease reports no completeness figure." The AxD candidate is Grossi 2024 (PMID 39420046).
+- **What happened:**
+  - The pre-extraction check (`analysis/catalogue/catalogue_check_2026-10-20.md`, commit `3622d03`) dropped Grossi 2024. Its per-variant table is in the supplement, and Europe PMC answered HTTP 500 when the supplement was fetched.
+  - `pv1-axd` therefore extracted that paper from its main text only.
+  - One retry at about 19:32 UTC, after AxD extraction finished, downloaded the three supplement files (recorded in `data/literature/axd/supplementary/manifest.csv`).
+- **Change:** the supplement's per-variant table is transcribed on the harness side only, outside the extraction text. If it passes the same suitability check, AxD reports completeness under §7.2.7. Nothing is appended to the paper text `pv1-axd` read, and extraction is not re-run.
+- **Reason:** the drop came from a server error, not from the catalogue lacking a suitable table. The catalogue never reaches extraction (§5.3), so using it later cannot affect what was extracted.
+- **Approved by:** Jimmy Lin, 2026-10-20 ("Use it, log deviation").
+- **Expected effect on results:** AxD gains a completeness figure it would otherwise lack. No effect on extraction, gatekeeper or any other disease.
+- **Reported where:** the six-disease results report, beside the AxD completeness figure, saying the catalogue was added after extraction and why.
 
 Entry format once frozen:
 
