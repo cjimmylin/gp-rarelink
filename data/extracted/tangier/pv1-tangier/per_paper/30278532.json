@@ -1,0 +1,3750 @@
+{
+ "pmid": "30278532",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Single-patient case report of a 14-year-old boy with an ABCA1 variant diagnosed with Tangier disease: 'we diagnosed the patient with a genetic Tangier disease'.",
+ "method_note": "Read the whole paper by hand; a short Python script assembled the JSON and checked spans. Three people in scope: the unnamed proband ('patient'), his mother (tested carrier) and his father (tested, no mutation); other family members ('immediate family members of the parents') are described only as a group and get no rows. Table 1 (blood lipids of patient and parents at 3 years) has no content in the Markdown, so nothing was read from it. Contradictions/inconsistencies in the paper: (1) the abstract says 'ABCD1 gene mutation' while the text says ABCA1; gene recorded as ABCA1 from the case text. (2) The variant is printed as 'c.598G>A, p.1068R>H' (exon22) in the text but as '3203G>A' in the Figure 3 legend; the text string was recorded and the figure-legend string not split into a second variant row. (3) The Discussion says the patient had 'hepatosplenomegaly' (case presentation ultrasound mentions only fatty liver) but also that he 'did not present anemia, liver abnormalities'; both rows emitted, hepatomegaly checklist set to not reported. (4) The mother is called 'a healthy gene carrier' but also has a history of 'hypertension and diabetes'. (5) The Discussion says the patient's HDL 'normalized after treatment' yet HDL was 0.506 mmol/L three months after discharge. (6) Cervical vessel ultrasound reported normal while DSA showed left internal carotid stenosis (C6/C7 segments). Numeric lab values printed only with reference ranges and not characterized in words (uric acid, creatine kinase, LDH, LDL 3.24 mmol/L, ESR, CRP) were not turned into features; low LDL checklist left not reported. Normal whole investigations ('blood routine test', coagulation tests, electrocardiogram, heart and cervical-vessel ultrasound) were recorded as written and exclude nothing more specific; thrombocytopenia left not reported. Coronary artery disease marked excluded for the patient from 'without high-risk factors, such as ... heart disease'. Mother's diabetes not mapped to the glucose-intolerance checklist item. Parents' normal HDL taken from the Discussion statement naming 'the parents'. Variant type, pathogenicity and functional evidence are not stated for the variant. Mother's variant row uses the proband's printed variant because the paper states the patient's mutation was acquired from her; her zygosity is not stated. Resolution of aphasia at 3-year follow-up ('no aphasia') was not recorded as an excluded row, since it describes recovery of an observed feature.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "first_author": {
+     "value": "Liang",
+     "span": "Liang Zhigang"
+    },
+    "year": {
+     "value": 2018,
+     "span": "Journal: Medicine (2018)"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "The diagnosis and treatment ideas of stroke caused by Tangier disease via the summary of the diagnosis and treatment process of one case with juvenile stroke were explored."
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "the diagnosis and treatment process of one case with juvenile cerebral infarction, caused by Tangier disease, was reported"
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": false,
+     "span": "The authors have not published or submitted this manuscript or its accompanying data elsewhere"
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "sex": {
+     "value": "male",
+     "span": "A 14-year-old male patient"
+    },
+    "age_at_onset_original_text": {
+     "value": "14-year-old",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness and weakness in the right limb weakness for 8 hours."
+    },
+    "age_at_onset_iso8601": {
+     "value": "P14Y",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness and weakness in the right limb weakness for 8 hours."
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": "The patient was followed up for 3 years. The patient could take care of his daily routines and studies."
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "anti-platelet aggregation and statin, and other comprehensive treatments; body weight control, low-salt low-fat diet and physical rehabilitation training",
+     "span": [
+      "The patient was administered anti-platelet aggregation and statin, and other comprehensive treatments.",
+      "the patient underwent body weight control, ingested diet with low salt and low fat, and physical rehabilitation training"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "genetic Tangier disease",
+     "span": "we diagnosed the patient with a genetic Tangier disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "low HDL-C and atherosclerotic stenosis plus ABCA1 gene examination and family verification",
+     "span": [
+      "Lower HDL-C (0.506–0.94) and atherosclerotic stenosis of the patient were detected by comprehensive serological examination and vascular examination, respectively.",
+      "the serum lipid metabolism-related gene examinations showed exon22 in ABCA1 gene",
+      "Based on the above results, we diagnosed the patient with a genetic Tangier disease."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "The mother was a healthy gene carrier"
+    },
+    "sex": {
+     "value": "female",
+     "span": "The mother was a healthy gene carrier"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "healthy gene carrier",
+     "span": "The mother was a healthy gene carrier"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "the father did not have a gene mutation"
+    },
+    "sex": {
+     "value": "male",
+     "span": "the father did not have a gene mutation"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "exon22 in ABCA1 gene; c.598G>A, p.1068R>H"
+    },
+    "variant_original_string": {
+     "value": "c.598G>A, p.1068R>H",
+     "span": "c.598G>A, p.1068R>H"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.598G>A",
+     "span": "c.598G>A"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.1068R>H",
+     "span": "p.1068R>H"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "revealed a heterozygous mutation of the Tangier disease-related ABCA1 gene in the sample of the patient"
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": [
+      "The mother was a healthy gene carrier, and the father did not have a gene mutation.",
+      "the gene mutation of the patient was acquired from the mother"
+     ]
+    },
+    "parental_testing_statement": {
+     "value": "Both parents tested: the mother carries the variant (healthy carrier); the father did not have a gene mutation.",
+     "span": [
+      "The mother was a healthy gene carrier, and the father did not have a gene mutation.",
+      "which was proved by family verification results (Fig. 3) that were from the mother",
+      "a comprehensive detection of parents’ genes and pedigree verification results showed that the gene mutation of the patient was acquired from the mother"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "exon22 in ABCA1 gene; c.598G>A, p.1068R>H"
+    },
+    "variant_original_string": {
+     "value": "c.598G>A, p.1068R>H",
+     "span": [
+      "c.598G>A, p.1068R>H",
+      "the gene mutation of the patient was acquired from the mother",
+      "The mother also carried the mutant gene."
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.598G>A",
+     "span": [
+      "c.598G>A",
+      "the gene mutation of the patient was acquired from the mother"
+     ]
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.1068R>H",
+     "span": [
+      "p.1068R>H",
+      "the gene mutation of the patient was acquired from the mother"
+     ]
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "sudden speechlessness",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "status": {
+     "value": "observed",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "onset_original_text": {
+     "value": "14-year-old",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "onset_iso8601": {
+     "value": "P14Y",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "weakness in the right limb",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness and weakness in the right limb weakness for 8 hours."
+    },
+    "status": {
+     "value": "observed",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness and weakness in the right limb weakness for 8 hours."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness and weakness in the right limb weakness for 8 hours."
+    },
+    "onset_original_text": {
+     "value": "14-year-old",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness and weakness in the right limb weakness for 8 hours."
+    },
+    "onset_iso8601": {
+     "value": "P14Y",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness and weakness in the right limb weakness for 8 hours."
+    },
+    "severity_or_detail": {
+     "value": "right upper limb grade 0, right lower limb grade 2",
+     "span": "the muscle strength level of the right upper limb is grade 0 and the muscle strength of the right lower limb grade 2"
+    },
+    "hpo_label_candidate": {
+     "value": "Hemiparesis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "unconsciousness with a transient twitch in the right limb",
+     "span": "he became unconsciousness with a transient twitch in the right limb"
+    },
+    "status": {
+     "value": "observed",
+     "span": "he became unconsciousness with a transient twitch in the right limb"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "he became unconsciousness with a transient twitch in the right limb"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "headache",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Headache",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002315",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "dizziness",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Dizziness",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "fever",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001945",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "diarrhea",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient had no headache, dizziness, fever, and diarrhea before the illness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Diarrhea",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002014",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "bronchial asthma",
+     "span": "the patient had a history of “bronchial asthma”"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient had a history of “bronchial asthma”"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient had a history of “bronchial asthma”"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "for 11 years",
+     "span": "for 11 years"
+    },
+    "hpo_label_candidate": {
+     "value": "Asthma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002099",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "allergic rhinitis",
+     "span": "“allergic rhinitis” for 11 years"
+    },
+    "status": {
+     "value": "observed",
+     "span": "“allergic rhinitis” for 11 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "“allergic rhinitis” for 11 years"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "for 11 years",
+     "span": "for 11 years"
+    },
+    "hpo_label_candidate": {
+     "value": "Allergic rhinitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "motor aphasia",
+     "span": "the patient had a clear consciousness but also motor aphasia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient had a clear consciousness but also motor aphasia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient had a clear consciousness but also motor aphasia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "incomplete motor aphasia before discharge",
+     "span": "Physical examination revealed incomplete motor aphasia"
+    },
+    "hpo_label_candidate": {
+     "value": "Expressive aphasia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "both eyes gazing towards the left side",
+     "span": "Both eyes were gazing towards the left side"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Both eyes were gazing towards the left side"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Both eyes were gazing towards the left side"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "right side of the nasolabial sulcus was shallow",
+     "span": "the right side of the nasolabial sulcus was shallow"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the right side of the nasolabial sulcus was shallow"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the right side of the nasolabial sulcus was shallow"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "tongue biased towards the right side while stretching",
+     "span": "the tongue was biased towards the right side while stretching"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the tongue was biased towards the right side while stretching"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the tongue was biased towards the right side while stretching"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "muscle tension on the right side slightly lower",
+     "span": "The muscle tension on the right side is slightly lower"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The muscle tension on the right side is slightly lower"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The muscle tension on the right side is slightly lower"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "pathological sign on the right side",
+     "span": "The pathological sign of the left side was (−) and that of the right side was (+)."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The pathological sign of the left side was (−) and that of the right side was (+)."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The pathological sign of the left side was (−) and that of the right side was (+)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "low serum high-density lipoprotein (HDL)",
+     "span": "The laboratory tests found low serum high-density lipoprotein (HDL)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The laboratory tests found low serum high-density lipoprotein (HDL)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The laboratory tests found low serum high-density lipoprotein (HDL)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "HDL cholesterol: 0.94 mmol/L (1.04–1.96); Lower HDL-C (0.506–0.94)",
+     "span": [
+      "HDL cholesterol: 0.94 mmol/L (1.04–1.96)",
+      "Lower HDL-C (0.506–0.94)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased HDL cholesterol concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal blood routine test",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal coagulation tests",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated glycosylated hemoglobin",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated hemoglobin A1c",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0040217",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "positive autoantibody test",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "positive anti-neutrophil cytoplasmic antibody",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "positive anticardiolipin antibodies",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated blood lactic acid",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of blood routine test, 4 coagulation tests, urine routine test, stool routine test, glycosylated hemoglobin, pre-transfusion test, autoantibody test, humoral immune series, anti-neutrophil cytoplasmic antibody and subtype, anticardiolipin antibodies, and blood lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Increased circulating lactate concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "multiple flake-shaped shadow of longer T1 and T2 signals in the left basal ganglia and frontal-parietal lobes (infarct lesions)",
+     "span": "showed multiple flake-shaped shadow of longer T1 and T2 signals in the left basal ganglia and frontal-parietal lobes"
+    },
+    "status": {
+     "value": "observed",
+     "span": "showed multiple flake-shaped shadow of longer T1 and T2 signals in the left basal ganglia and frontal-parietal lobes"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "showed multiple flake-shaped shadow of longer T1 and T2 signals in the left basal ganglia and frontal-parietal lobes"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "ischemic stroke",
+     "span": "The patient was diagnosed as ischemic stroke."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient was diagnosed as ischemic stroke."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient was diagnosed as ischemic stroke."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Ischemic stroke",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002140",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "new cerebral infarction lesions on the left basal ganglia and frontal lobe",
+     "span": "MRI examination showed new cerebral infarction lesions on the left basal ganglia and frontal lobe."
+    },
+    "status": {
+     "value": "observed",
+     "span": "MRI examination showed new cerebral infarction lesions on the left basal ganglia and frontal lobe."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "MRI examination showed new cerebral infarction lesions on the left basal ganglia and frontal lobe."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "fatty liver",
+     "span": "displayed a fatty liver at 2 cm under the liver ribs"
+    },
+    "status": {
+     "value": "observed",
+     "span": "displayed a fatty liver at 2 cm under the liver ribs"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "displayed a fatty liver at 2 cm under the liver ribs"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatic steatosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001397",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "hepatosplenomegaly",
+     "span": "In this case, the patient had fatty liver, hepatosplenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "In this case, the patient had fatty liver, hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "In this case, the patient had fatty liver, hepatosplenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatosplenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001433",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "liver abnormalities",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "anemia",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Anemia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001903",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "kidney abnormalities",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "patient did not present anemia, liver abnormalities, kidney abnormalities"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal electrocardiogram",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal color ultrasound of heart",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal color ultrasound of cervical vessels",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The results of electrocardiogram, color ultrasound of heart, cervical vessels, lower extremity veins, and brain CT were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "stenosis of C6 and C7 segments on the left internal carotid artery",
+     "span": "showed stenosis of C6 and C7 segments on the left internal carotid artery, with stenosis rate of about 60% to 70% and 80%, respectively"
+    },
+    "status": {
+     "value": "observed",
+     "span": "showed stenosis of C6 and C7 segments on the left internal carotid artery, with stenosis rate of about 60% to 70% and 80%, respectively"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "showed stenosis of C6 and C7 segments on the left internal carotid artery, with stenosis rate of about 60% to 70% and 80%, respectively"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "stenosis rate of about 60% to 70% and 80%, respectively",
+     "span": "with stenosis rate of about 60% to 70% and 80%, respectively"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "intracranial vascular multiple stenosis",
+     "span": "MRA presented intracranial vascular multiple stenosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "MRA presented intracranial vascular multiple stenosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "MRA presented intracranial vascular multiple stenosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "atherosclerotic plaques on the left atrial carotid artery and the MCA",
+     "span": "showed atherosclerotic plaques on the left atrial carotid artery and the MCA"
+    },
+    "status": {
+     "value": "observed",
+     "span": "showed atherosclerotic plaques on the left atrial carotid artery and the MCA"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "showed atherosclerotic plaques on the left atrial carotid artery and the MCA"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "proximal occlusion on the left anterior cerebral artery and the MCA",
+     "span": "Digital subtraction angiography (DSA) showed severe stenosis at the end of the left internal carotid artery and proximal occlusion on the left anterior cerebral artery and the MCA."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Digital subtraction angiography (DSA) showed severe stenosis at the end of the left internal carotid artery and proximal occlusion on the left anterior cerebral artery and the MCA."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Digital subtraction angiography (DSA) showed severe stenosis at the end of the left internal carotid artery and proximal occlusion on the left anterior cerebral artery and the MCA."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "hypertension",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000822",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "diabetes",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Diabetes mellitus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000819",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "heart disease",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "feature_text_as_stated": {
+     "value": "patent foramen ovale",
+     "span": "Patent foramen ovale (PFO) was also ruled out."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Patent foramen ovale (PFO) was also ruled out."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Patent foramen ovale (PFO) was also ruled out."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Patent foramen ovale",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001655",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "feature_text_as_stated": {
+     "value": "hypertension",
+     "span": "The patient's mother has a history of “hypertension and diabetes.”"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient's mother has a history of “hypertension and diabetes.”"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient's mother has a history of “hypertension and diabetes.”"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000822",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "feature_text_as_stated": {
+     "value": "diabetes",
+     "span": "The patient's mother has a history of “hypertension and diabetes.”"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient's mother has a history of “hypertension and diabetes.”"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient's mother has a history of “hypertension and diabetes.”"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Diabetes mellitus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000819",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "feature_text_as_stated": {
+     "value": "cerebral infarction",
+     "span": "the mother was found to be normal without any cerebral infarction"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the mother was found to be normal without any cerebral infarction"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the mother was found to be normal without any cerebral infarction"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "feature_text_as_stated": {
+     "value": "low HDL",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased HDL cholesterol concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "feature_text_as_stated": {
+     "value": "low HDL",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased HDL cholesterol concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The laboratory tests found low serum high-density lipoprotein (HDL)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The laboratory tests found low serum high-density lipoprotein (HDL)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "In this case, the patient had fatty liver, hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "In this case, the patient had fatty liver, hepatosplenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented an adolescent onset, without high-risk factors, such as hypertension, diabetes, heart disease, and other cerebrovascular diseases"
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "showed atherosclerotic plaques on the left atrial carotid artery and the MCA",
+      "showed stenosis of C6 and C7 segments on the left internal carotid artery"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "showed atherosclerotic plaques on the left atrial carotid artery and the MCA",
+      "showed stenosis of C6 and C7 segments on the left internal carotid artery"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 14-year-old male patient exhibited a sudden speechlessness"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "The mother also carried the mutant gene."
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "After 3 years of follow-up, the results of the parents’ blood lipid tests showed that the HDL level was normal"
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "30278532",
+     "span": "PMID: 30278532"
+    },
+    "individual_label_in_paper": {
+     "value": "father of patient",
+     "span": "the father did not have a gene mutation"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
