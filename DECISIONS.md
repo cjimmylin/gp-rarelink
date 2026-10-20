@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.10 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-11 (panel hours).
+**Pre-registration status:** draft v0.11 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-11 (panel hours).
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -52,10 +52,25 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-20 · D-34 decided: the screening calls stand after a 20-item human check
+- **Jimmy's words:** "I screened 20 - and mostly agree - so let's just do with your calls." Recorded as his decision; this is the first use of D-34.
+- **What he rated** (`adjudication/screening_check/ratings.csv`, `ratings_summary.json`, collected from the page's store with `apply_ratings.py`):
+  - Part A: 15 abstract-stage inclusions, all Alexander disease. He would include 14 and was unsure of 1 (PMID 9044406), with no exclusions. Agreement 14 of 15 (exact 95% CI 68–100%).
+  - Part B: 5 full-text exclusions, all LAD-I. He agreed with all 5 (48–100%).
+- **What changes:**
+  - The drafted check (a 10% sample of inclusions and every full-text exclusion; 137 and 71 items) stops at these 20 items.
+  - The title/abstract and full-text screening labels stand as the corpus decisions.
+  - The plan is not frozen, so this is a revision (pre-registration v0.11, §5.1), not a deviation.
+- **Limitations stated in every report:**
+  - the check covered two diseases and 20 items, by one rater;
+  - its intervals are wide;
+  - the full-text exclusions of non-English papers and of papers whose per-patient data sit in supplements were not individually reviewed.
+- **Freeze:** with this, only the panel's hours (D-11) remain before the freeze.
+
 ### 2026-10-20 · Five-disease work merged to `main`
 - Jimmy: "merge all to main" (this session). Merged as PR #5 (cjimmylin/gp-rarelink#5), merge commit `15bff47`.
 - Checked before merging: 52 tests pass. No full text, PDFs, Markdown conversions, reference snapshots or `.env` are tracked.
-- The pre-registration stays unfrozen. It waits on the panel's hours (D-11) and Jimmy's screening check.
+- The pre-registration stays unfrozen. It waits on the panel's hours (D-11) and Jimmy's screening check (settled the same day by D-34).
 
 ### 2026-10-20 · D-10 decided: DeepSeek-V4.1-Flash on HA20 and SSADH deficiency, agent harness, about $50 from contingency
 Jimmy chose the recommended option on all four questions (asked in the session, 2026-10-20; shortlist in `reports/drafts/d10_open_weight_shortlist.md`):
