@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.6 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-08 to D-12, D-17 and D-19.
+**Pre-registration status:** draft v0.10 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-11 (panel hours).
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -13,61 +13,11 @@ How to use this file:
 
 ## Open decisions
 
-### Needed now, for the pilot
-
-**D-17 · How the pipeline calls Claude** (opened 2026-10-18)
-- **The problem:**
-  - The grant assumed extraction, gatekeeper, concordance and bias runs would call Claude from code. The application gave a Console org ID for API credits.
-  - The award email says the credits sit on a claude.ai account and work across chat, Claude Code, Cowork and Claude Science. It doesn't mention API usage.
-- **Now urgent:** the pilot's code calls the Anthropic API with an `ANTHROPIC_API_KEY` (pilot decision 2, below). Unless Bailey confirms the award covers API calls, the pilot's model spend (estimated $200–400, ceiling $1,000) bills to whichever account owns the key, not to the grant credits.
-- **Why it matters beyond the pilot:** most of the core budget (lines 1–3, 5 and 6) is model runs inside the pipeline. The route also affects two parts of the plan:
-  - pinning the model ID and settings (§6.1);
-  - the identical-scaffold comparison with an open-weight model (§7.5), which is simplest when both models are called from code.
-- **Options:**
-  - Run the pipeline's model calls through a claude.ai surface the credits cover, such as Claude Code running the pipeline scripts, or Claude Science. This works only if that surface supports the batch runs and logging the plan needs.
-  - Use the API with separate funding not covered by the award.
-  - Ask Bailey whether the credits can cover API calls from the pipeline.
-- **Recommendation:** Jimmy asks Bailey before adding the key (Claude does not contact anyone). If the answer is slow, the pilot can still go ahead on a separately funded key, logged in `BUDGET.md` with the account it billed to. The pilot's SLIDERS adapter already keeps model calls behind one provider setting, so the route can change later without touching extraction logic.
-
-**D-19 · ClinVar-cited papers as corpus seeds** (opened 2026-10-18)
-- **The conflict:** the pilot's Stage 1 adds the PMIDs ClinVar cites for *TNFAIP3* to the corpus search. This is done on the harness side, and the papers are tagged `seed_source = clinvar_citations`. The pre-registration draft (§5.1) excludes ClinVar and OMIM citation lists from corpus building.
-- **Why it matters:** papers ClinVar already cites are more likely to agree with ClinVar. Seeding from them inflates concordance and hides gap variants.
-- **Recommendation:**
-  - For the pilot, keep the ClinVar-seeded papers but report every result with and without them; the tags make this cheap.
-  - Use the difference between the two to set the rule for the six-disease study before the freeze.
-
 ### Needed before the pre-registration can be frozen
 
-**D-08 · Substitute-disease trigger**
-- **Question:** What open-access threshold replaces a pilot disease with a substitute?
-- **Placeholder for discussion:** fewer than 15 accessible eligible reports, or less than 50% of eligible reports accessible.
-- **Constraint:** decided before extraction, on access grounds only.
-
-**D-09 · Registry and timing**
-- **Recommendation:** register on OSF, publicly. Freeze after the pilot report and before the six-disease run (D-18).
-- **Alternatives:** an embargoed OSF registration, or attaching the plan to a preprint.
-
-**D-10 · Open-weight comparison: model, disease(s), compute**
-- **Questions:**
-  - Which open-weight model?
-  - Run on which disease(s)?
-  - How many audited claims per model?
-  - Where does it run? The $2,000 line is Claude credits; open-weight compute isn't budgeted.
-- **Recommendation:** pick the model by the time of the freeze, on the criteria open weights, long context and tool use. Run it on A20 haploinsufficiency (the pilot disease) plus one other.
-- **Depends on D-17:** an identical scaffold needs both models to be called the same way.
-
-**D-11 · Panel time**
-- **Questions:**
-  - Who rates the 250-claim audit (two raters plus a tie-breaker is drafted)?
-  - Which optional add-ons can the panel afford: a pre-gatekeeper sample, gatekeeper calibration, a false-abstention check, an open-weight audit sample, discordance triage?
-- **Status:** needs the panel's availability. No time estimate is given here because none has been measured.
-- **Pilot:** Jimmy rates the pilot's 50 claims himself (pilot decision 5). The panel is reserved for the 250-claim audit and Month-4 adjudication.
-
-**D-12 · OMIM access route**
-- **The problem:** omim.org blocks automated reading. The archived terms bar redistribution without a license (`grant_claim_checks.md` §13).
-- **Options:** request API or download access; read the current terms by hand; or limit OMIM concordance to what can be lawfully obtained.
-- **Blocks:** the OMIM half of concordance (O2) and the OMIM gap definition (O3).
-- **Progress:** the pilot session drafted the access request (`reports/drafts/omim_access_request.md`), for Jimmy to submit (pilot decision 4). Its terms table is blank because omim.org was unreachable. Until access arrives, the pilot's concordance is ClinVar-only.
+**D-11 · Panel time** (rater design decided 2026-10-20; hours open)
+- **Decided:** two panel members rate the 250-claim audit independently and the third resolves disagreements (decision log, 2026-10-20).
+- **Still open:** the panel's availability. It sets the audit hours and which optional add-ons fit: a pre-gatekeeper sample, gatekeeper calibration, a false-abstention check, an open-weight audit sample, discordance triage. Jimmy sends `reports/drafts/panel_availability.md`.
 
 ### Needed later
 
@@ -82,6 +32,7 @@ How to use this file:
   - **Danon:** change ">100 families" to "about 100 families; ≥146 molecularly confirmed patients".
   - **phenopacket-store:** replace "408 cohorts", which has no published source, with a dated count.
   - **LAD-I** (new, found 2026-10-18): the impact statement says "genotypes for 184 LAD-I patients whose variants were published but never structured". 184 = 323 − 139, and the source review reports that genotype was *not* reported for those patients. If so, extraction cannot recover them. This affects how LAD-I gap closure is described. Check against `almarzanovoa2018_lad1_review`.
+  - **LAD-I ORPHA number** (new, found 2026-10-19): Mondo release 2026-10-06 cross-references LAD-I (MONDO:0007293) to Orphanet:99842, not to ORPHA 2968 as `CONTEXT.md` and the application give. Check against Orphanet; records will use Mondo's cross-reference (pre-registration §4.1, §6.2).
 - **Scope:** the disease set is unchanged; these are wording and number fixes.
 
 **D-15 · Budget tracking**
@@ -100,6 +51,99 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-20 · D-10 decided: DeepSeek-V4.1-Flash on HA20 and SSADH deficiency, agent harness, about $50 from contingency
+Jimmy chose the recommended option on all four questions (asked in the session, 2026-10-20; shortlist in `reports/drafts/d10_open_weight_shortlist.md`):
+- **Model:** DeepSeek-V4.1-Flash (MIT, 1M context), pinned to the 2026-09-10 checkpoint, on a hosted API.
+- **Diseases:** A20 haploinsufficiency plus SSADH deficiency.
+- **Budget:** about $50 of open-weight compute from contingency, logged in `BUDGET.md` with the host's invoice. Opening an account with a host is Jimmy's step.
+- **Scaffold:** an open-source agent harness given the same instruction files, inputs and file tools as the Claude Code helpers; differences stated in the write-up.
+- Pre-registration draft v0.10 (§7.5, §13). The audit size per model is still open, with D-11.
+
+### 2026-10-20 · Full-text screening done for the five new diseases; D-08 met by all five (Claude's run, Jimmy's instruction)
+- **What ran:** Jimmy asked for the full-text screening ("do this: Still to do"). Sonnet helpers applied `screen_fulltext_v1.md` (pre-registration §5.1 with D-33) to all 336 open full texts. That is 293 JATS XML papers plus 43 open PDFs, which Docling converted.
+- **Quotes:** every decision carries an evidence quote, and all of them were found verbatim in the paper by the import script.
+- **Results** (`analysis/corpus/coverage_2026-10-20.md`):
+
+| Disease | Eligible papers with full text | Of which case reports or series |
+|---|---|---|
+| Alexander disease | 69 | 68 |
+| LAD-I | 42 | 38 |
+| SSADH deficiency | 40 | 36 |
+| Danon disease | 83 | 82 |
+| Tangier disease | 31 | 28 |
+
+  Every disease meets D-08 (at least 15 eligible primary reports). No substitution is needed.
+- **Exclusions to check:**
+  - 71 papers were excluded at full text. Jimmy rates all of them in Part B of the screening-check page.
+  - 10 of the 71 were excluded as not in English. Most are Japanese case reports with a GFAP, ITGB2, LAMP2 or ABCA1 variant, which pre-registration §5.1 excludes ("no English full text").
+  - Several "aggregate only" exclusions say the per-patient data sit in supplementary tables we did not fetch.
+  - Both points are flagged for Jimmy; neither changes the registered rule.
+- **Human check:** the screening-check page is https://claude.ai/artifact/1JoRKB2uVCap3XAJUDw3RN. Part A has 137 abstracts, Part B the 71 full-text exclusions.
+
+### 2026-10-20 · Pilot report approved; D-09, D-11, D-12, D-17 and D-33 decided; screening-check design accepted
+Jimmy's answers to eight questions (asked in the session, 2026-10-20). Each took the recommended option.
+- **Pilot report** (`reports/poc_report.md`): approved as drafted. The Stage 7 gate is passed, and its §10 changes go into the frozen pipeline (pre-registration v0.7 to v0.9).
+- **D-17 · How the pipeline calls Claude:** Claude Code helper agents on the funded claude.ai account, as in the pilot (D-20). Each run records the model ID, the instructions' sha256 and the session usage readings. The Bailey draft still goes out, to confirm how overage is billed.
+- **D-09 · Registry:** OSF, public, registered at the freeze, before the six-disease run.
+- **D-12 · OMIM:** Jimmy submits the drafted API access request (`reports/drafts/omim_access_request.md`). Until access arrives, concordance and the gap definition run on ClinVar, and OMIM is reported as "not yet assessed".
+- **D-11 · Audit raters:** two panel members rate and the third breaks ties, as drafted. Hours wait on the panel's availability, so D-11 stays open for those.
+- **D-10 · Open-weight comparison:** Claude drafts a shortlist first. D-10 stays open until Jimmy picks a model.
+- **D-33 · Literature-summary reviews (new):** reviews whose only patient data are per-patient tables of earlier cases are included in extraction, as in the HA20 pilot. Their people are tagged secondary-source and deduplicated against primary reports, and results are reported with and without them. This changes pre-registration §5.1 eligibility (draft v0.9) and the full-text screening instructions (`screen_fulltext_v1.md`).
+- **Screening check:** as drafted in pre-registration §5.1. Jimmy rates a random 10% of title/abstract inclusions per disease, plus every full-text exclusion, on one rating page.
+
+### 2026-10-20 · D-08, D-19 and D-32 decided: absolute substitute trigger, no ClinVar seeds, open access only
+Jimmy's answers to four questions (asked in the session, 2026-10-20):
+- **D-08 · Substitute-disease trigger: absolute count** (recommended option).
+  - A pilot disease is replaced only if, after full-text screening, it has fewer than 15 accessible eligible primary reports (case reports, case series or cohorts).
+  - There is no share rule. Coverage per disease is reported as a limitation, with accessible and inaccessible papers compared by publication decade.
+  - Evidence as of 2026-10-19 (`analysis/corpus/coverage_2026-10-19.md`): all five new diseases meet the count on fetched full text. Tangier disease only just does, with 17 relevant primary papers.
+- **D-19 · ClinVar-cited papers as corpus seeds: not used** (recommended option).
+  - Pre-registration §5.1 stands as written for the six-disease study. Every concordance figure is still reported with and without ClinVar-cited papers.
+  - The pilot's ClinVar-seeded HA20 corpus stays as run. When HA20 is re-extracted for the six-disease study, the papers that came only from ClinVar citations are reported separately.
+- **D-32 · Full-text access: open access only** (new).
+  - The study uses openly available full text only: PMC and Europe PMC, plus open copies found through Unpaywall. No institutional or library access.
+  - Paywalled papers stay in the manifests as not accessible and are listed in reports.
+  - The "institutional access" route in pre-registration §5.1 is removed (draft v0.8).
+- **Unpaywall contact address:** Jimmy gave `jimmy.lin@raregenomics.org`. It is stored only in the git-ignored `.env` as `UNPAYWALL_EMAIL` and sent only to api.unpaywall.org.
+- **Unpaywall pass (2026-10-20).** It fetched 43 open PDFs across the five diseases (`analysis/corpus/coverage_2026-10-20.md`, `unpaywall_hosts_2026-10-20.json`). Most open copies it found could not be fetched:
+  - publisher sites answered with HTTP errors to automated downloads (Wiley, ScienceDirect, Neurology, AHA, OUP and others). This was not worked around;
+  - a few hosts are refused by the environment's network policy, mainly www.jci.org (14 links). Jimmy could allow them;
+  - PMC's own PDF pages are behind a reCAPTCHA.
+  - Under D-08, all five diseases now meet the count provisionally: 24 (Tangier) to 81 (Danon) relevance-"yes" primary papers with full text. Full-text screening decides.
+  - The PDFs need conversion before extraction (`to_markdown.py` uses Docling, not yet installed).
+
+### 2026-10-19 · Five-disease corpus searched and screened; dated ClinVar counts; pre-registration v0.7
+Jimmy: "Yes. Perform items 1-5" (this session), after Claude listed them. Items 1–4 are done here; the item 5 drafts are in `reports/drafts/`, for Jimmy to send.
+- **Searches and screening (Alexander disease, LAD-I, SSADH deficiency, Danon disease, Tangier disease).** Settings: `configs/diseases.yaml`. Per-disease logs: `data/literature/<disease>/search.md`.
+  - Claude's calls:
+    - no ClinVar or OMIM citation seeds, following pre-registration §5.1 (D-19 stays open; the recommendation is unchanged);
+    - searches run from database inception;
+    - the Europe PMC full-text search and LitVar were not run;
+    - comparator holdouts were marked out of the corpus (pre-registration §7.4.1).
+  - Screening was done by Sonnet helper agents with `screen_v2.md` (the disease-neutral form of `screen_v1.md`), each with its own scratch directory.
+  - Human check of a 10% sample: not yet done.
+- **Full text.** Fetched from Europe PMC and PMC only. Unpaywall was skipped: it needs an email address, and Claude does not send Jimmy's address to a third party without his say. `pipeline/extract/corpus/oa_elsewhere.py` lists, without downloading, which remaining papers Europe PMC shows as free elsewhere. Coverage, from `analysis/corpus/coverage_2026-10-19.md`:
+
+| Disease | Search hits | Records | In corpus | Full text | + free elsewhere (upper bound) | Yes-relevance primary papers with full text | D-08 placeholder on full text |
+|---|---|---|---|---|---|---|---|
+| ha20 | 716 | 838 | 160 | 85 (53.1%) | 96 (60.0%) | 55 of 95 (57.9%) | met |
+| axd | 513 | 539 | 363 | 74 (20.4%) | 135 (37.2%) | 66 of 283 (23.3%) | not met |
+| lad1 | 869 | 874 | 274 | 51 (18.6%) | 98 (35.8%) | 30 of 180 (16.7%) | not met |
+| ssadh | 254 | 357 | 171 | 52 (30.4%) | 78 (45.6%) | 38 of 135 (28.1%) | not met |
+| danon | 408 | 416 | 244 | 86 (35.2%) | 110 (45.1%) | 74 of 203 (36.5%) | not met |
+| tangier | 519 | 529 | 284 | 30 (10.6%) | 98 (34.5%) | 17 of 186 (9.1%) | not met |
+
+  "In corpus" counts title and abstract screening only, so full-text screening will lower every denominator. "Free elsewhere" is an upper bound; those papers were not fetched.
+
+- **ClinVar counts.** `CONTEXT.md` §4 now gives direct counts for all six genes from one release (2026-10-12, read 2026-10-19), with the application's figures beside them (`analysis/poc/reference_snapshot/2026-10-19/counts_<GENE>.json`). The snapshot content stays outside the repository.
+- **Mondo IDs.** Recorded in pre-registration §4.1. The LAD-I Orphanet mismatch has been added to D-14.
+- **Pre-registration v0.7.** This revision folds in the pilot report §10 and the items above (header of `preregistration/analysis_plan.md`). It is a revision, not a deviation: the plan is not frozen. No metric, threshold or disease was changed.
+
+### 2026-10-19 · Pilot Stages 3–7 merged to `main`
+- Jimmy: "Merge to main" (this session). Merged as PR #4 (cjimmylin/gp-rarelink#4), merge commit `ca4fb71`; `main` had not moved since PR #3.
+- Checked before merging: 45 tests pass; no full-text Markdown, PDFs, reference snapshots or secrets tracked.
+- The pilot report still waits for Jimmy's review (Stage 7 gate).
 
 ### 2026-10-19 · Pilot report drafted (Stage 7); waiting for Jimmy's review
 - `reports/poc_report.md`, generated by `analysis/poc_report.py` from committed outputs. Recommendation: go, with the D-29 and D-31 fixes frozen into the pipeline (Jimmy's choice in the D-31 entry).

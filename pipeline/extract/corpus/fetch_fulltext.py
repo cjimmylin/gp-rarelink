@@ -68,17 +68,27 @@ def fetch_one(client: Client, row: dict, out: Path, unpaywall_email: str | None)
     if doi and unpaywall_email:
         r = client.get(UNPAYWALL + doi, {"email": unpaywall_email})
         if r.status_code == 200:
-            best = (r.json() or {}).get("best_oa_location") or {}
-            url = best.get("url_for_pdf")
-            if url:
+            data = r.json() or {}
+            best = data.get("best_oa_location") or {}
+            # best location first, then the other open locations that offer a PDF
+            locs = [best] + [loc for loc in (data.get("oa_locations") or []) if loc and loc != best]
+            for loc in locs:
+                url = loc.get("url_for_pdf")
+                if not url:
+                    continue
                 try:
                     blob = client.download(url)
-                    if blob[:4] == b"%PDF":
-                        (out / f"{pmid}.pdf").write_bytes(blob)
-                        meta.update(source="unpaywall:" + str(best.get("host_type")), license=best.get("license"), format="pdf", sha256=sha256(blob))
-                        return meta
-                except (Unreachable, httpx.HTTPError):
-                    pass
+                except (Unreachable, httpx.HTTPError) as exc:
+                    meta.setdefault("errors", []).append(f"unpaywall {url}: {type(exc).__name__}")
+                    continue
+                if blob[:4] == b"%PDF":
+                    (out / f"{pmid}.pdf").write_bytes(blob)
+                    meta.update(source="unpaywall:" + str(loc.get("host_type")), license=loc.get("license"), format="pdf",
+                                sha256=sha256(blob), oa_version=loc.get("version"), url=url)
+                    return meta
+                meta.setdefault("errors", []).append(f"unpaywall {url}: not a PDF")
+            if data.get("is_oa"):
+                meta["oa_landing_url"] = best.get("url")
     meta["source"] = "paywalled" if doi else "not_found"
     return meta
 

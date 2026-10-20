@@ -78,7 +78,7 @@ def export(disease: str, batch_size: int) -> int:
     return 0
 
 
-def import_labels(disease: str, seed: int) -> int:
+def import_labels(disease: str, seed: int, prompt: Path = PROMPT) -> int:
     base = Path("data/literature") / disease
     manifest = base / "manifest.csv"
     rows = list(csv.DictReader(manifest.open(newline="")))
@@ -138,8 +138,8 @@ def import_labels(disease: str, seed: int) -> int:
     log["runs"].append({
         "date": date.today().isoformat(),
         "route": "claude_code (D-20)",
-        "prompt_file": str(PROMPT),
-        "prompt_sha256": hashlib.sha256(PROMPT.read_bytes()).hexdigest() if PROMPT.exists() else None,
+        "prompt_file": str(prompt),
+        "prompt_sha256": hashlib.sha256(prompt.read_bytes()).hexdigest() if prompt.exists() else None,
         "label_files": [str(f) for f in label_files],
         "n_labels": len(labels),
         "n_rows_still_unlabelled": len(missing),
@@ -161,8 +161,9 @@ def main(argv: list[str] | None = None) -> int:
     i = sub.add_parser("import")
     i.add_argument("--disease", required=True)
     i.add_argument("--seed", type=int, default=20261018)
+    i.add_argument("--prompt", default=str(PROMPT), help="screening instructions the helpers followed (logged with its hash)")
     args = ap.parse_args(argv)
-    return export(args.disease, args.batch_size) if args.cmd == "export" else import_labels(args.disease, args.seed)
+    return export(args.disease, args.batch_size) if args.cmd == "export" else import_labels(args.disease, args.seed, Path(args.prompt))
 
 
 if __name__ == "__main__":

@@ -31,6 +31,6 @@ git -C "$VENDOR" apply "$PATCH"
 echo "SLIDERS $SLIDERS_COMMIT + $(basename "$PATCH") checked out in $VENDOR"
 
 cd "$ROOT"
-uv sync --group extract
+uv sync --inexact --group extract --group dev   # --inexact keeps the optional pdf group (Docling) if installed
 uv pip install --no-deps "$VENDOR"
 uv run python -c "import sliders, sliders.llm.anthropic_client as a; print('sliders import OK; anthropic provider module:', a.__name__)"
