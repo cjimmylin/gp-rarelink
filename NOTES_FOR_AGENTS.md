@@ -75,7 +75,7 @@ How to maintain it:
   - **Left for Jimmy:** the OSF registration, using `reports/drafts/osf_registration.md`. Put the DOI and date in `DECISIONS.md`, never in the frozen plan.
   - **Next for the study:** the cost estimate for the six-disease run (pre-registration §6.5: scale HA20's measured cost per input token by each corpus's token count), then Jimmy's approval before running. Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**
-  - On `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7), PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), PR #6 (D-34, v0.11) and PR #7 (D-11, D-35, v0.12), all merged with Jimmy's approval. The smoke run and the freeze (D-36, v1.0, tags) are on branch `claude/gracious-pascal-j7krug` until Jimmy says to merge. Start new work from `main` once that is merged.
+  - On `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7), PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), PR #6 (D-34, v0.11), PR #7 (D-11, D-35, v0.12) and PR #8 (smoke run, freeze v1.0, D-36; merged with a merge commit so the tagged commit `ef3133e` is in `main`'s history), all merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
   - Branch `claude/zealous-meitner-k7moex` (the pilot-design session) is archived and must not be merged: it commits full-text Markdown. Its one asset, Jimmy's 40 screening labels, was applied here on 2026-10-19.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
