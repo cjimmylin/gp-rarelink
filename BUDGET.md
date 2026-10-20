@@ -80,6 +80,9 @@ Pilot model work in this session (D-20), from the session's own list-price usage
   - 336 papers were screened by 37 Sonnet helpers (31 batches for XML papers, then 6 for papers converted from PDF). One more helper was launched as a duplicate by mistake and stopped before it wrote anything.
   - The same window covers the Docling PDF conversion, which ran on the CPU with no model calls, and the screening-check page.
   - Readings: $689.74 at 02:48 UTC to $717.13 at 03:15 UTC, so +$27.39 including orchestration. That is within the $30–60 estimated before the run.
+- **Pre-freeze smoke run (2026-10-20; extraction v6 + gatekeeper v4 on the 20 D-29 papers):**
+  - 20 Opus extraction helpers (one repair-only resume) and 24 Opus gatekeeper helpers (`runs/poc-ha20-v6-smoke/manifest.json`).
+  - Readings: $724.22 at 04:27 UTC (before launch) to $777.72 at about 04:44 UTC (after the merge), so +$53.50 including orchestration. The estimate was about $80; the D-29 run on the same papers read +$58.92.
 
 For scale, the two Claude Code sessions' own metadata reported about $10 ("Claude Code repo status") and about $17 ("Rarelink POC study design") as of about 18:00 UTC on 2026-10-18. These are list-price estimates the sessions report about themselves, not billing figures; the ledger needs figures from Settings > Usage.
 
@@ -117,7 +120,7 @@ Estimate method for scaling extraction:
 | 2026-10-19 | D-29 re-run: instructions v5 on 20 HA20 papers, gatekeeper v3 on all their values | Extraction, gatekeeper | Run-2 rates (`analysis/poc/pick_v5_subset.py`): $35.84 + $46.77 | $82.61 (Jimmy approved about $110) | **Jimmy, 2026-10-19 (D-29)** | — (session readings: +$58.92, $614.97 to $673.89, including concurrent Stage 6 and re-audit work; an estimate) |
 | 2026-10-19 | Title and abstract screening for the five other diseases (2,715 records, Sonnet helpers) | Extraction (corpus building; no closer line) | HA20 screening rate, $11.83 per 838 abstracts | about $38 (range given to Jimmy: $50–100) | **Jimmy, 2026-10-19 ("Yes. Perform items 1-5")** | — (reading frozen at $685.10; see above) |
 | 2026-10-20 | Full-text screening of the five new corpora (336 open full texts, Sonnet helpers) | Extraction (corpus building) | about 2.6M tokens of full text; HA20-style helper overhead | $30–60 | **Jimmy, 2026-10-20 ("do this: Still to do")** | — (session readings +$27.39, $689.74 to $717.13; an estimate) |
-| 2026-10-20 | Pre-freeze smoke run: extraction v6 + gatekeeper v4 on the 20 D-29 papers (span check only) | Extraction, gatekeeper | D-29 run's session readings: +$58.92 for the same 20 papers (incl. overlapping work) | about $80 | **Jimmy, 2026-10-20 ("Run it now")** | — (running; reading $724.22 at 04:27 UTC before launch) |
+| 2026-10-20 | Pre-freeze smoke run: extraction v6 + gatekeeper v4 on the 20 D-29 papers (span check only) | Extraction, gatekeeper | D-29 run's session readings: +$58.92 for the same 20 papers (incl. overlapping work) | about $80 | **Jimmy, 2026-10-20 ("Run it now")** | — (session readings +$53.50, $724.22 to $777.72; an estimate) |
 | 2026-10-20 | Open-weight comparison (D-10): DeepSeek-V4.1-Flash on HA20 and SSADH deficiency | Contingency (open-weight compute is outside the $2,000 Claude line) | OpenRouter prices read 2026-10-20; 300K–1M input tokens per paper | about $50 | **Jimmy, 2026-10-20 (D-10)** | — (not run) |
 | 2026-10-18 | Pilot (POC) on A20 haploinsufficiency, all model-calling stages | Extraction (mostly), gatekeeper, harness, bias arm | `POC_DESIGN.md` §5. Per-stage rows to be added before each run, after Stage 2 measures per-paper cost | $200–400; ceiling $1,000; hard stop $1,500 | Jimmy (chat, 2026-10-18) | — |
 
