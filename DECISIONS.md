@@ -24,6 +24,7 @@ How to use this file:
 - **Recommendation:** pick the model by the time of the freeze, on the criteria open weights, long context and tool use. Run it on A20 haploinsufficiency (the pilot disease) plus one other.
 - **Depends on D-17:** an identical scaffold needs both models to be called the same way.
 - **Plan (Jimmy, 2026-10-20):** Claude drafts a shortlist (open license, long context, tool use), with hosting options and cost, for Jimmy to pick from before the freeze. It runs on HA20 plus one other disease. Under D-17, Claude runs as Claude Code helpers, so the open-weight model needs an agent harness with the same instructions and inputs.
+- **Shortlist drafted 2026-10-20** (`reports/drafts/d10_open_weight_shortlist.md`). Recommendation: DeepSeek-V4.1-Flash (MIT, 1M context), pinned to its checkpoint and run on a hosted API through an open-source agent harness with the same instructions and inputs. Compute is about $50 from contingency; SSADH deficiency is suggested as the second disease. Waiting on Jimmy's pick.
 
 **D-11 · Panel time** (rater design decided 2026-10-20; hours open)
 - **Decided:** two panel members rate the 250-claim audit independently and the third resolves disagreements (decision log, 2026-10-20).

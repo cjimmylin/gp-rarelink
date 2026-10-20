@@ -83,6 +83,13 @@ def summarise(disease: str) -> dict:
         "yes_primary_fulltext": yp_text,
         "yes_primary_fulltext_or_free": yp_text + yp_free if oa else None,
         "d08_met_provisional": yp_text >= D08_MIN_N,
+        "fulltext_screen": dict(Counter(r.get("fulltext_screen") or "pending" for r in corpus)),
+        "fulltext_exclusion_reasons": dict(Counter(r.get("fulltext_screen_reason") for r in corpus if r.get("fulltext_screen") == "exclude")),
+        "eligible_primary": sum(1 for r in corpus if r.get("fulltext_screen") == "include"
+                                and r.get("fulltext_study_type") in ("case report", "case series/cohort")),
+        "eligible_literature_table": sum(1 for r in corpus if r.get("fulltext_screen") == "include"
+                                         and r.get("fulltext_literature_table") == "yes"),
+        "eligible_all": sum(1 for r in corpus if r.get("fulltext_screen") == "include"),
     }
 
 
@@ -137,10 +144,12 @@ def search_md(s: dict, cfg: dict) -> str:
 
 ## Full text
 
-- **Fetched:** {s['fulltext']} of {s['in_corpus']} corpus papers ({pct(s['fulltext'], s['in_corpus'])}) as JATS XML from Europe PMC or PMC (`fetch_fulltext.py`). Access status in the corpus: {acc}.
-- **"Paywalled" here means no PMC copy.** Unpaywall was skipped because `UNPAYWALL_EMAIL` is unset. Of the papers without full text, {free}.
+- **Fetched:** {s['fulltext']} of {s['in_corpus']} corpus papers ({pct(s["fulltext"], s["in_corpus"])}): JATS XML from Europe PMC or PMC, or an open PDF found through Unpaywall (`fetch_fulltext.py`). Access status in the corpus: {acc}.
+- **Unpaywall** open PDFs were fetched on 2026-10-20 (D-32: open access only). Of the papers still without full text, {free}.
 - **Relevance yes, primary papers** (case reports and series): {s['yes_primary']}; with full text {s['yes_primary_fulltext']} ({pct(s['yes_primary_fulltext'], s['yes_primary'])}).
-- **D-08 (decided: at least {D08_MIN_N} eligible primary reports with accessible full text):** provisionally {'met' if s['d08_met_provisional'] else 'not met'} ({s['yes_primary_fulltext']} relevance-"yes" primary papers with full text; full-text screening will decide).
+- **Full-text screening** (`screen_fulltext_v1.md`; `screening_fulltext/screening_log.json`): {', '.join(f'{k} {v}' for k, v in sorted(s['fulltext_screen'].items()))}. Exclusion reasons: {', '.join(f'{k} {v}' for k, v in sorted(s['fulltext_exclusion_reasons'].items())) or 'none'}.
+- **Eligible with full text:** {s['eligible_all']} papers, of which {s['eligible_primary']} primary reports (case reports and series) and {s['eligible_literature_table']} with a per-patient literature table (D-33).
+- **D-08 (decided: at least {D08_MIN_N} eligible primary reports with accessible full text):** {('met' if s['eligible_primary'] >= D08_MIN_N else 'not met') if not s['fulltext_screen'].get('pending') else 'pending (' + str(s['fulltext_screen'].get('pending')) + ' papers not yet screened)'} ({s['eligible_primary']} eligible primary reports).
 """
 
 
@@ -162,13 +171,14 @@ def main() -> int:
          "\"Free elsewhere\" is a Europe PMC listing of a free or open copy outside PMC, not fetched. HA20's corpus was "
          "seeded partly from ClinVar citations (D-19); the other five were not.*"),
         "",
-        "| Disease | Search hits | Records | In corpus | Full text | + free elsewhere (upper bound) | Yes-relevance primary papers with full text | D-08 (≥ 15), provisional |",
+        "| Disease | Search hits | Records | In corpus | Full text | + free elsewhere (upper bound) | Eligible after full-text screening (primary) | D-08 (≥ 15 primary) |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for s in out:
         fe = "n/a" if s["free_elsewhere_listed"] is None else f"{s['fulltext'] + s['free_elsewhere_listed']} ({pct(s['fulltext'] + s['free_elsewhere_listed'], s['in_corpus'])})"
         lines.append(f"| {s['disease']} | {s['query_hits']} | {s['manifest_rows']} | {s['in_corpus']} | {s['fulltext']} ({pct(s['fulltext'], s['in_corpus'])}) | {fe} | "
-                     f"{s['yes_primary_fulltext']} of {s['yes_primary']} ({pct(s['yes_primary_fulltext'], s['yes_primary'])}) | {'met' if s['d08_met_provisional'] else 'not met'} |")
+                     + (f"{s['eligible_all']} ({s['eligible_primary']})" if s['eligible_all'] else "not screened") + " | "
+                     + ("pending" if s['fulltext_screen'].get('pending') or not s['eligible_all'] else ('met' if s['eligible_primary'] >= D08_MIN_N else 'not met')) + " |")
     (OUT / f"coverage_{today}.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     return 0

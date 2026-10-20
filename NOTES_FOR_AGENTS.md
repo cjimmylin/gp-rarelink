@@ -56,6 +56,11 @@ How to maintain it:
   - **Dated ClinVar counts** for all six genes are in `CONTEXT.md` §4 (`analysis/poc/reference_snapshot/2026-10-19/counts_<GENE>.json`).
   - **Pre-registration v0.7.**
   - **Message drafts** in `reports/drafts/`, for Jimmy to send.
+- **2026-10-20 (Jimmy: "do this: Still to do", plus eight answers):**
+  - **Decisions:** pilot report approved; D-09, D-11 (rater design), D-12, D-17 and D-33 decided; D-10 shortlist in `reports/drafts/d10_open_weight_shortlist.md`. Pre-registration draft v0.9. Still blocking the freeze: the D-10 model pick and the panel's hours (D-11).
+  - **Docling** is installed as the `pdf` dependency group with CPU torch: `uv sync --group pdf --group dev --group extract`. Then re-run `scripts/install_sliders.sh`, because a sync removes the no-deps SLIDERS install and its 2 tests skip.
+  - **Full-text screening** runs as Sonnet helpers with `screen_fulltext_v1.md`, through `claude_code_fulltext_screen.py export/import`. Import checks every evidence quote verbatim.
+  - **Human check:** the screening-check page is https://claude.ai/artifact/1JoRKB2uVCap3XAJUDw3RN, with store collections `abstract_check` and `exclusion_check`. It is built by `adjudication/screening_check/make_sample.py` and `make_page.py`.
 - **Pilot progress (2026-10-18, earlier):**
   - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
   - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
