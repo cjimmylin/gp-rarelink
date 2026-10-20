@@ -1,6 +1,6 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.9, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.10, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
@@ -8,6 +8,7 @@
 > - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
 > - v0.6 applies D-26 to D-28, decided by Dr. Lin on 2026-10-19 from the pilot's Stages 4 and 5: normalization success by description type (§7.2.2); normal findings recorded as the absent abnormality (§6.2); the gatekeeper checks every value, including its link to the person (§6.4).
 > - v0.7 folds in the pilot report (`reports/poc_report.md` §10; D-29 to D-31, decided 2026-10-19). It also records the five-disease corpus searches and screening, the Mondo IDs and the dated ClinVar counts (2026-10-19). Changed sections: §4.1, §5.1, §5.2, §6.2 to §6.5, §7.1, §7.2 (matching, D-19 split, new §7.2.7 completeness), §10 and §13. No metric, threshold or disease was changed.
+> - v0.10 (2026-10-20) applies D-10: the open-weight comparator is DeepSeek-V4.1-Flash, run on HA20 and SSADH deficiency through an agent harness (§7.5, §13).
 > - v0.9 (2026-10-20) applies D-09 (OSF), D-11 (raters), D-12 (OMIM access requested), D-17 (Claude Code route) and D-33 (literature-summary reviews included, flagged), plus the screening-check design and Dr. Lin's approval of the pilot report (§1, §5.1, §5.2, §6.1, §7.1, §7.5, §11, §13).
 > - v0.8 applies D-08 (substitute trigger: an absolute count), D-19 (no ClinVar-cited seeds) and D-32 (open access only), decided by Dr. Lin on 2026-10-20 (§4.2, §5.1, §13).
 >
@@ -472,7 +473,7 @@ Log-probability probes (`shi2024_mink_prob`) may be run on the open-weight model
 
 **Expert time.** The adjudication interface logs active minutes per record. The headline metric is expert-minutes per accepted record, where an accepted record is a gap-variant record approved by the panel. Audit minutes per claim are reported separately.
 
-**Claude vs open-weight model [D-10].** Both models run on the same papers with the same scaffold, prompts, chunking, tools and inputs. If the open-weight model's context window forces smaller chunks, both models use them. No fine-tuning.
+**Claude vs open-weight model (D-10, decided 2026-10-20).** Comparator: DeepSeek-V4.1-Flash (MIT license; 1,048,576-token context; read from its Hugging Face card on 2026-10-20), pinned to the 2026-09-10 checkpoint and called on a hosted API whose name, model ID and serving date are recorded. Diseases: A20 haploinsufficiency and SSADH deficiency. Scaffold: an open-source agent harness given the same instruction files, inputs and file tools as the Claude Code helpers (D-17); the write-up states every remaining difference. Compute: about $50 from contingency, logged with the host's invoice. Both models run on the same papers with the same scaffold, prompts, chunking, tools and inputs. If the open-weight model's context window forces smaller chunks, both models use them. No fine-tuning.
 
 Metrics:
 - span-not-found rate (all values);
@@ -482,7 +483,7 @@ Metrics:
 - cost per paper (Claude: API cost; open-weight: compute cost at a stated rate);
 - wall-clock time.
 
-Results are published either way. Still to decide: which model, which disease(s), audit size, and where the open-weight model runs. The grant's $2,000 line covers Claude credits only. Claude runs as Claude Code helper agents (D-17). The open-weight model therefore needs an agent harness with the same instructions, file tools and inputs, and the write-up must say how the two scaffolds differ. Next step (Dr. Lin, 2026-10-20): Claude drafts a shortlist of open-weight models (open license, long context, tool use) with hosting options and cost. Dr. Lin picks one before the freeze; it runs on HA20 plus one other disease.
+Results are published either way. Still to decide: the audit sample size per model (with D-11). The grant's $2,000 line covers Claude credits only. Claude runs as Claude Code helper agents (D-17). The open-weight model therefore needs an agent harness with the same instructions, file tools and inputs, and the write-up must say how the two scaffolds differ. Next step (Dr. Lin, 2026-10-20): Claude drafts a shortlist of open-weight models (open license, long context, tool use) with hosting options and cost. Dr. Lin picks one before the freeze; it runs on HA20 plus one other disease.
 
 ### 7.6 Exploratory analyses (labeled as such in any report)
 
@@ -551,7 +552,6 @@ Month 1 starts on the date the first credit deposit landed, provisionally 2026-0
 See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, D-22 to D-31 on 2026-10-19, and D-08, D-09, D-11, D-12, D-17, D-19, D-32 and D-33 on 2026-10-20. Dr. Lin approved the pilot report as drafted on 2026-10-20.
 
 Still blocking this plan:
-- **D-10:** the open-weight model, picked by Dr. Lin from Claude's shortlist.
 - **D-11:** the panel's availability, which sets audit hours and optional add-ons. The rater design itself is decided.
 
 Also to settle before the freeze:

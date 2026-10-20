@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.9 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-10 (model pick) and D-11 (panel hours).
+**Pre-registration status:** draft v0.10 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-11 (panel hours).
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -14,17 +14,6 @@ How to use this file:
 ## Open decisions
 
 ### Needed before the pre-registration can be frozen
-
-**D-10 · Open-weight comparison: model, disease(s), compute**
-- **Questions:**
-  - Which open-weight model?
-  - Run on which disease(s)?
-  - How many audited claims per model?
-  - Where does it run? The $2,000 line is Claude credits; open-weight compute isn't budgeted.
-- **Recommendation:** pick the model by the time of the freeze, on the criteria open weights, long context and tool use. Run it on A20 haploinsufficiency (the pilot disease) plus one other.
-- **Depends on D-17:** an identical scaffold needs both models to be called the same way.
-- **Plan (Jimmy, 2026-10-20):** Claude drafts a shortlist (open license, long context, tool use), with hosting options and cost, for Jimmy to pick from before the freeze. It runs on HA20 plus one other disease. Under D-17, Claude runs as Claude Code helpers, so the open-weight model needs an agent harness with the same instructions and inputs.
-- **Shortlist drafted 2026-10-20** (`reports/drafts/d10_open_weight_shortlist.md`). Recommendation: DeepSeek-V4.1-Flash (MIT, 1M context), pinned to its checkpoint and run on a hosted API through an open-source agent harness with the same instructions and inputs. Compute is about $50 from contingency; SSADH deficiency is suggested as the second disease. Waiting on Jimmy's pick.
 
 **D-11 · Panel time** (rater design decided 2026-10-20; hours open)
 - **Decided:** two panel members rate the 250-claim audit independently and the third resolves disagreements (decision log, 2026-10-20).
@@ -62,6 +51,14 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-20 · D-10 decided: DeepSeek-V4.1-Flash on HA20 and SSADH deficiency, agent harness, about $50 from contingency
+Jimmy chose the recommended option on all four questions (asked in the session, 2026-10-20; shortlist in `reports/drafts/d10_open_weight_shortlist.md`):
+- **Model:** DeepSeek-V4.1-Flash (MIT, 1M context), pinned to the 2026-09-10 checkpoint, on a hosted API.
+- **Diseases:** A20 haploinsufficiency plus SSADH deficiency.
+- **Budget:** about $50 of open-weight compute from contingency, logged in `BUDGET.md` with the host's invoice. Opening an account with a host is Jimmy's step.
+- **Scaffold:** an open-source agent harness given the same instruction files, inputs and file tools as the Claude Code helpers; differences stated in the write-up.
+- Pre-registration draft v0.10 (§7.5, §13). The audit size per model is still open, with D-11.
 
 ### 2026-10-20 · Full-text screening done for the five new diseases; D-08 met by all five (Claude's run, Jimmy's instruction)
 - **What ran:** Jimmy asked for the full-text screening ("do this: Still to do"). Sonnet helpers applied `screen_fulltext_v1.md` (pre-registration §5.1 with D-33) to all 336 open full texts. That is 293 JATS XML papers plus 43 open PDFs, which Docling converted.
