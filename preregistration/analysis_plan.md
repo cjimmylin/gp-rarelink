@@ -1,6 +1,6 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.10, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.11, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
@@ -8,6 +8,7 @@
 > - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
 > - v0.6 applies D-26 to D-28, decided by Dr. Lin on 2026-10-19 from the pilot's Stages 4 and 5: normalization success by description type (§7.2.2); normal findings recorded as the absent abnormality (§6.2); the gatekeeper checks every value, including its link to the person (§6.4).
 > - v0.7 folds in the pilot report (`reports/poc_report.md` §10; D-29 to D-31, decided 2026-10-19). It also records the five-disease corpus searches and screening, the Mondo IDs and the dated ClinVar counts (2026-10-19). Changed sections: §4.1, §5.1, §5.2, §6.2 to §6.5, §7.1, §7.2 (matching, D-19 split, new §7.2.7 completeness), §10 and §13. No metric, threshold or disease was changed.
+> - v0.11 (2026-10-20) applies D-34: the human check of screening stopped at 20 items, all agreeing or unsure, and the screening calls stand (§5.1, §13).
 > - v0.10 (2026-10-20) applies D-10: the open-weight comparator is DeepSeek-V4.1-Flash, run on HA20 and SSADH deficiency through an agent harness (§7.5, §13).
 > - v0.9 (2026-10-20) applies D-09 (OSF), D-11 (raters), D-12 (OMIM access requested), D-17 (Claude Code route) and D-33 (literature-summary reviews included, flagged), plus the screening-check design and Dr. Lin's approval of the pilot report (§1, §5.1, §5.2, §6.1, §7.1, §7.5, §11, §13).
 > - v0.8 applies D-08 (substitute trigger: an absolute count), D-19 (no ClinVar-cited seeds) and D-32 (open access only), decided by Dr. Lin on 2026-10-20 (§4.2, §5.1, §13).
@@ -113,7 +114,7 @@ Whether to add them before the freeze is open [proposed: not added; the PubMed s
 
 **Screening (decided by Dr. Lin, 2026-10-20).** Title/abstract screening, then full-text screening. Claude may screen, but every decision is logged with a reason, and a human checks a random 10% of inclusions at title/abstract stage and all exclusions made at full-text stage. Each disease gets a PRISMA-style flow count, produced by script.
 
-- **Full-text screening** uses `pipeline/extract/claude_code/prompts/screen_fulltext_v1.md` and `pipeline/extract/corpus/claude_code_fulltext_screen.py`. Each decision carries a verbatim evidence quote, checked by script against the paper. Done on 2026-10-20 for the five new diseases. Eligible primary reports with open full text: Alexander disease 68, LAD-I 38, SSADH deficiency 36, Danon disease 82, Tangier disease 28 (`analysis/corpus/coverage_2026-10-20.md`). All five meet the D-08 count. Dr. Lin's check of the screening is in progress.
+- **Full-text screening** uses `pipeline/extract/claude_code/prompts/screen_fulltext_v1.md` and `pipeline/extract/corpus/claude_code_fulltext_screen.py`. Each decision carries a verbatim evidence quote, checked by script against the paper. Done on 2026-10-20 for the five new diseases. Eligible primary reports with open full text: Alexander disease 68, LAD-I 38, SSADH deficiency 36, Danon disease 82, Tangier disease 28 (`analysis/corpus/coverage_2026-10-20.md`). All five meet the D-08 count. Human check (D-34, decided): Dr. Lin rated 20 items. Of 15 abstract-stage inclusions, he would include 14 and was unsure of 1 (exact 95% CI for agreement 68–100%). He agreed with all 5 full-text exclusions he rated (48–100%). Then he accepted the screening calls without rating the rest of the drafted sample (137 abstracts and 71 exclusions). The check is therefore smaller than drafted, and every report states this (`adjudication/screening_check/ratings_summary.json`).
 
 - **Title and abstract screening is done** for all six diseases (2026-10-19 for the five new ones). Claude Code helper agents did it with `screen_v2.md`, the disease-neutral form of the pilot's prompt, logged with its sha256 in each `screening_log.json`.
 - "Yes" and "unclear" both go forward to full text. For Tangier disease, papers on heterozygous *ABCA1* carriers with familial HDL deficiency are "unclear", so the full text decides.
@@ -549,7 +550,7 @@ Month 1 starts on the date the first credit deposit landed, provisionally 2026-0
 
 ## 13. Decisions needed before freezing
 
-See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, D-22 to D-31 on 2026-10-19, and D-08, D-09, D-11, D-12, D-17, D-19, D-32 and D-33 on 2026-10-20. Dr. Lin approved the pilot report as drafted on 2026-10-20.
+See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, D-22 to D-31 on 2026-10-19, and D-08 to D-12, D-17, D-19 and D-32 to D-34 on 2026-10-20. Dr. Lin approved the pilot report as drafted on 2026-10-20.
 
 Still blocking this plan:
 - **D-11:** the panel's availability, which sets audit hours and optional add-ons. The rater design itself is decided.
@@ -559,8 +560,8 @@ Also to settle before the freeze:
   - a smoke run of extraction v6 and gatekeeper v4 (§6.5);
   - the merge re-check sample (§6.3);
   - the completeness catalogues (§7.2.7);
-  - whether the Europe PMC full-text search is added (§5.1);
-- the human 10% check of screening for the five new diseases (§5.1);
-- full-text screening.
+  - whether the Europe PMC full-text search is added (§5.1).
+
+Full-text screening is done (§5.1).
 
 D-13 to D-16 can follow, but D-13 should be settled before Month-4 adjudication begins.
