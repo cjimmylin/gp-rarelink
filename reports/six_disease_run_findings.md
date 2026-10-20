@@ -9,7 +9,8 @@
 - **These are not error rates.** In the pilot the gatekeeper found far fewer problems than the human audit did (pre-registration §6.4). The pre-registered measure is the human audit of 250 claims (O1, §7.1), which has not started.
 - **The most common cause of an unsupported claim** is a gene or variant field for a relative or a cited patient, quoted from a sentence about the proband. The second is a status resting on hedged wording ("suggested", "typically", "consistent with"); extraction v6 has no hedge rule, which was a known gap when the pipeline was frozen.
 - **Unsupported claims cluster in a few papers.** In five of six diseases the three worst papers hold half or more of that disease's unsupported claims.
-- **Spend:** session readings put the six-disease run at +$670.74 by the end of Danon ($780.63 to $1,451.37), or about $725 on helper-token estimates, against the $1,200 ceiling (`BUDGET.md`). The repeat is priced separately in §6.
+- **Run-to-run repeat (38 papers):** checklist statuses agree in 97–100% of cells. Variants agree on folded keys at 0.92–1.00 in four diseases and 0.83–0.86 in Tangier and Danon. In both of those, one paper caused the drop, and the two runs recorded the same variants in different notation (§6).
+- **Spend:** +$768.87 by session readings for the whole run including the repeat ($780.63 to $1,549.50), against the $1,200 ceiling (`BUDGET.md`).
 
 ## 2. What ran
 
@@ -72,7 +73,26 @@ These come from helper reports and are not counted in any metric. They affect wh
 
 ## 6. 10% run-to-run repeat
 
-*(filled in from `analysis/six_disease/repeat_agreement_2026-10-20.md` when all 38 papers are done)*
+The pre-registration's run-to-run stability check ("re-extract a random 10% of papers and measure agreement, if budget allows"). Each disease's sample is ceil(10%) of its papers, drawn by script (seed 20261020) from papers with at least one individual row. That is 38 papers (`runs/pv1-<d>-repeat/selection.json`), re-extracted with the same pinned files. The gatekeeper was not run on the repeat.
+
+| Disease | Papers | Same individual count | Label Jaccard | Variant (strings) | Variant (keys) | Checklist agreement (cells) | Features (label-free) |
+|---|---|---|---|---|---|---|---|
+| HA20 | 9 | 7 | 0.69 | 0.67 | 0.94 | 0.996 (1,300) | 0.71 |
+| SSADH | 4 | 4 | 1.00 | 1.00 | 1.00 | 1.000 (160) | 0.43 |
+| Tangier | 4 | 3 | 0.63 | 0.86 | 0.83 | 0.970 (200) | 0.57 |
+| LAD-I | 5 | 3 | 0.88 | 0.55 | 0.92 | 0.998 (440) | 0.64 |
+| AxD | 7 | 7 | 0.83 | 0.95 | 1.00 | 0.997 (1,340) | 0.69 |
+| Danon | 9 | 7 | 0.87 | 0.65 | 0.86 | 0.996 (680) | 0.59 |
+
+- **Checklist statuses are stable:** 97–100% of cells agree in every disease.
+- **Variants agree on folded keys in four diseases** (0.92–1.00). They fall below the pilot's 0.9 guide in Tangier (0.83) and Danon (0.86). In each case one paper is responsible, and both runs recorded the same variants in different notation:
+  - Danon 20173215: Case-3's deletion is quoted as "genetic deletion of exons-4–10" in one run and "deletion of exons-4–10" in the other. Exon-level deletions have no folded key, so the strings are compared.
+  - Tangier 38538338: one run copied the paper's full-width asterisk ("＊") into the protein field, the other a plain "*".
+- **Variant strings agree less than keys** (0.55–1.00). The causes are notation and which sentence was quoted, as in the pilot.
+- **Features agree least** (0.43–0.71 label-free). The two runs word features differently and quote them from different places. This is the measure most sensitive to wording, and the pilot saw the same.
+- **Individual counts differ in 9 of 38 papers.** The causes are scope calls on relatives and on patients cited from earlier reports, the same issue the pilot found in cohort papers.
+- **Span check on the repeat:** 0 problems in four diseases. In two papers (LAD-I 24995649, 122 cells; AxD 40350261, 45 cells) the label spans in child tables were left empty. These are bookkeeping fields the agreement measures don't use, so they were not repaired.
+- **Cost:** helper tokens of 6.48 weighted M, about $39 at the HA20 rate (`analysis/cost/helper_tokens.py`).
 
 ## 7. AxD completeness catalogue (D-39)
 
@@ -91,10 +111,10 @@ Nothing was appended to the paper text `pv1-axd` read. AxD therefore reports com
 | HA20 | about +$204 | — |
 | SSADH, Tangier, LAD-I (overlapping) | +$220.61 together | $95 + $52 + $87 |
 | AxD | +$129.20 | $131 |
-| Danon | +$111.99 (provisional; the reading may lag) | $167 |
-| **Run to end of Danon** | **+$670.74** | **about $725** |
+| Danon and the 10% repeat | +$210.12 ($1,339.38 to $1,549.50; the Danon-only reading of +$111.99 had lagged) | $167 + $39 |
+| **Six-disease run including the repeat** | **+$768.87 ($780.63 to $1,549.50)** | **about $764** |
 
-The repeat is reported in §6. All figures and their caveats are in `BUDGET.md`.
+That leaves $431 under the $1,200 ceiling by the session reading. All figures and their caveats are in `BUDGET.md`.
 
 ## 9. What comes next
 
