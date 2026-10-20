@@ -1,6 +1,6 @@
 # GP-RareLink pre-registration: analysis plan
 
-> **Status: DRAFT v0.11, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
+> **Status: DRAFT v0.12, 2026-10-20. Not frozen.** Prepared by Claude Code at Dr. Jimmy Lin's request, for review by Dr. Lin and Prof. Monica Lam (and by Drs. Wu, Balderrama and Chacko for sections 7.1 and 7.3).
 >
 > - v0.2 applied decisions D-02 to D-07, made by Dr. Lin on 2026-10-18.
 > - v0.3 added the award details (award email of 2026-08-31) and open decision D-17.
@@ -8,6 +8,7 @@
 > - v0.5 applies D-18: pilot first. The one-disease pilot (`POC_DESIGN.md`) becomes the development phase, A20 haploinsufficiency is reported separately, and the plan is frozen after the pilot. It also notes the pilot's ClinVar-seeded search (D-19).
 > - v0.6 applies D-26 to D-28, decided by Dr. Lin on 2026-10-19 from the pilot's Stages 4 and 5: normalization success by description type (§7.2.2); normal findings recorded as the absent abnormality (§6.2); the gatekeeper checks every value, including its link to the person (§6.4).
 > - v0.7 folds in the pilot report (`reports/poc_report.md` §10; D-29 to D-31, decided 2026-10-19). It also records the five-disease corpus searches and screening, the Mondo IDs and the dated ClinVar counts (2026-10-19). Changed sections: §4.1, §5.1, §5.2, §6.2 to §6.5, §7.1, §7.2 (matching, D-19 split, new §7.2.7 completeness), §10 and §13. No metric, threshold or disease was changed.
+> - v0.12 (2026-10-20) settles D-11 (the panel note goes out without asking for hours; optional add-ons only if time is offered) and D-35 (every remaining [proposed] default accepted). No [D-nn] item blocks the freeze any longer; what remains is the v6/v4 smoke run, the git tag and the OSF registration (§13).
 > - v0.11 (2026-10-20) applies D-34: the human check of screening stopped at 20 items, all agreeing or unsure, and the screening calls stand (§5.1, §13).
 > - v0.10 (2026-10-20) applies D-10: the open-weight comparator is DeepSeek-V4.1-Flash, run on HA20 and SSADH deficiency through an agent harness (§7.5, §13).
 > - v0.9 (2026-10-20) applies D-09 (OSF), D-11 (raters), D-12 (OMIM access requested), D-17 (Claude Code route) and D-33 (literature-summary reviews included, flagged), plus the screening-check design and Dr. Lin's approval of the pilot report (§1, §5.1, §5.2, §6.1, §7.1, §7.5, §11, §13).
@@ -15,7 +16,7 @@
 >
 > - Items marked **[D-nn]** still need a decision recorded in `DECISIONS.md` before the plan is frozen.
 > - Items marked **(D-nn, decided)** are settled; the decision and its date are in `DECISIONS.md`.
-> - Items marked **[proposed]** are Claude's defaults. Accept, change or delete each one.
+> - Items marked **[proposed]** were Claude's defaults. Dr. Lin accepted all of them on 2026-10-20 (D-35); they now read **(D-35, decided)**.
 > - Everything else restates commitments already made in `CONTEXT.md` and the grant application. Changing those after freezing is a deviation (`INSTRUCTIONS.md` §1.4).
 >
 > Until the plan is frozen, edits to this draft are ordinary revisions, not deviations. **Freezing** means: all [D-nn] items resolved, the file tagged in git (e.g. `prereg-v1.0`), and the same text registered publicly on OSF (D-09, decided). Freezing happens after the one-disease pilot (§6.5, D-18) and before any extraction run for the six-disease study.
@@ -88,7 +89,7 @@ A pilot disease is replaced only if, after full-text screening (§5.1), fewer th
 
 ### 5.1 Literature corpus
 
-**Search [proposed].** For each disease, search PubMed and Europe PMC (including full text) from database inception to a single search date that is recorded. Queries combine the gene symbol with disease names and synonyms, taken from Mondo, Orphanet and the GeneReviews chapter. Add backward citation searching of the key reviews: `grossi2024_axd_meta`, `almarzanovoa2018_lad1_review`, `elhani2024_ha20_177`, `didiasova2020_ssadh_update`, `brambatti2019_danon_gender`, `koseki2021_tangier_review`. Exact query strings are saved in `data/literature/<disease>/search.md` with the date run and the hit count.
+**Search (D-35, decided).** For each disease, search PubMed from database inception to a single search date that is recorded. Queries combine the gene symbol with disease names and synonyms, taken from Mondo, Orphanet and the GeneReviews chapter. Add backward citation searching of the key reviews: `grossi2024_axd_meta`, `almarzanovoa2018_lad1_review`, `elhani2024_ha20_177`, `didiasova2020_ssadh_update`, `brambatti2019_danon_gender`, `koseki2021_tangier_review`. Exact query strings are saved in `data/literature/<disease>/search.md` with the date run and the hit count.
 
 **Not used to build the corpus:** ClinVar and OMIM citation lists, or any index queried by ClinVar variant IDs. A corpus built from database citations would bias concordance upward and gap discovery downward. LitVar (`allot2023_litvar2`) may be queried by gene symbol only, and every PMID records which source found it. After extraction, the harness reports what share of the corpus is cited by ClinVar or OMIM (§7.2.5).
 
@@ -102,11 +103,11 @@ Two parts of the proposed search were not run:
 - the Europe PMC full-text search;
 - LitVar.
 
-Whether to add them before the freeze is open [proposed: not added; the PubMed search plus review references is the registered search, and its date is the cut-off].
+They are not added (D-35, decided): the PubMed search plus review references is the registered search, and its date is the cut-off.
 
 **Comparator holdouts.** The natural-history comparators of §7.4.1 found by the search are marked out of the extraction corpus in each manifest (`in_extraction_corpus = false`, with the reason), by `pipeline/extract/corpus/disease_seeds.py`.
 
-**Eligibility [proposed; D-33, decided].**
+**Eligibility (D-35, decided; D-33, decided).**
 - *Include:* primary publications (case reports, case series, cohort papers) that report individual-level genotype and/or phenotype for at least one person with the pilot disease. Any publication year.
 - *Include, flagged (D-33, decided):* reviews with a per-patient table or list of individuals from earlier papers, as the HA20 pilot did (308 of its 799 people came from such tables). Their people are tagged secondary-source, deduplicated against primary reports (§6.3), and every patient-level result is reported with and without them. Under open access only (D-32), such tables are often the only open record of patients whose original papers are paywalled.
 - *Exclude from extraction:* reviews with no new individuals and no per-patient table (these are used only for citation searching), animal or cell-only studies, conference abstracts, and papers with no English full text. Excluded papers are logged with the reason.
@@ -165,9 +166,9 @@ Direct, dated counts per gene (ClinVar records by classification; OMIM allelic v
 - Natural-history comparator papers, in extraction prompts or few-shot examples
 - Reviews' variant tables, as few-shot examples
 
-**VariantValidator [proposed].** Only the normalization fields of its response (genomic, transcript and protein HGVS; validation warnings) pass into the pipeline. Any database annotations in the response are dropped before the pipeline sees them.
+**VariantValidator (D-35, decided).** Only the normalization fields of its response (genomic, transcript and protein HGVS; validation warnings) pass into the pipeline. Any database annotations in the response are dropped before the pipeline sees them.
 
-**Enforcement [proposed].**
+**Enforcement (D-35, decided).**
 1. Code under `pipeline/` never reads `data/reference/`, the comparator papers or the annotation files. An automated test fails if any such path or loader is referenced from `pipeline/`.
 2. Every prompt sent to a model is logged with its hash, so any leak can be audited after the fact.
 3. Only the concordance harness reads both the extracted records and `data/reference/`.
@@ -206,7 +207,7 @@ One GA4GH Phenopacket (v2) per individual, plus a per-paper evidence table. Ever
 
 The reconciliation agent proposes merges of individuals reported in more than one paper. A merge records its evidence, for example: shared family ID or pedigree, identical genotype plus consistent demographics, overlapping authors or center, or an explicit statement that the patient was previously reported.
 
-**Merge policy v4 (D-23, decided).** Merges are made only on a citation that ties a person to an earlier report, and one-to-one. A citation naming several papers is not person-specific. The pilot dropped the sex-and-onset route: all 6 false merges of 93 under policy v3 came from it. Recurrent variants and relatives in one family match on sex and onset. Policy v4 had no false merges in the hand-checked set, but it was chosen after that check, so the six-disease study re-checks a random sample of merges by hand [proposed: 50 merges, or all if fewer].
+**Merge policy v4 (D-23, decided).** Merges are made only on a citation that ties a person to an earlier report, and one-to-one. A citation naming several papers is not person-specific. The pilot dropped the sex-and-onset route: all 6 false merges of 93 under policy v3 came from it. Recurrent variants and relatives in one family match on sex and onset. Policy v4 had no false merges in the hand-checked set, but it was chosen after that check, so the six-disease study re-checks a random sample of 50 merges by hand, or all if fewer, with a recorded seed (D-35, decided).
 
 Patient-level statistics use deduplicated individuals. Counts are reported with and without merges so the effect of deduplication is visible.
 
@@ -250,7 +251,7 @@ The candidates for `pipeline-v1.0` (sha256, first 12 characters, from the report
 | `pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md` | `55ab99df7f17` |
 
 - **Not yet run on any paper.** Extraction v6 and gatekeeper v4 have not been tried.
-  - [proposed] Before tagging `pipeline-v1.0`, run both on the same 20-paper HA20 subset as the D-29 re-run, with a span check only. There is no new audit; this proves the prompts run end to end.
+  - (D-35, decided) Before tagging `pipeline-v1.0`, run both on the same 20-paper HA20 subset as the D-29 re-run, with a span check only. There is no new audit; this proves the prompts run end to end.
   - The six-disease schema generalizes `schema_ha20_v5.json` with a per-disease checklist. Each disease's checklist is written from its GeneReviews or key review before extraction. It is never written from `phenotype.hpoa`.
 - **Normalization carries the D-26 repairs.** Success is reported by description type.
 
@@ -266,7 +267,7 @@ Every record is checked against the phenopacket v2 schema and with CohortValidat
 
 ## 7. Outcomes and analysis
 
-**General [proposed]:**
+**General (D-35, decided):**
 - All figures are produced by scripts in `analysis/` from dated inputs at a recorded commit.
 - Proportions get 95% confidence intervals:
   - Wilson intervals for simple proportions (`brown2001_binomial_ci`);
@@ -279,9 +280,9 @@ Every record is checked against the phenopacket v2 schema and with CohortValidat
 
 **Claim pool.** Every value asserted in the final (post-gatekeeper) records across the six diseases, at atomic level. Examples of one claim: one HPO term with its state for one individual; one variant string for one individual; zygosity; sex; onset age; diagnosis; author-asserted pathogenicity. "Not reported" outputs carry no span and are not in the pool.
 
-**Sample.** 250 claims drawn by simple random sampling, stratified by disease in proportion to claim volume [proposed]. The draw is made by script with a recorded seed, after the frozen pipeline has run on all six diseases and before anyone looks at concordance results.
+**Sample.** 250 claims drawn by simple random sampling, stratified by disease in proportion to claim volume (D-35, decided). The draw is made by script with a recorded seed, after the frozen pipeline has run on all six diseases and before anyone looks at concordance results.
 
-**Rating [proposed].**
+**Rating (D-35, decided).**
 - Two panel members rate each claim independently against the source paper, blind to the gatekeeper's verdict. A third resolves disagreements. Cohen's κ is reported (D-11, decided 2026-10-20; hours and optional add-ons wait on the panel's availability).
 - Labels:
   - *supported*;
@@ -310,7 +311,7 @@ To keep that limit visible, every report:
 - states the highest rate the audit cannot exclude;
 - never describes a pass as proof that the true rate is below 2%.
 
-**Secondary audit measures (each needs panel time; see [D-11]):**
+**Secondary audit measures (D-11, decided 2026-10-20).** (b) comes from the main audit's own blinded ratings and needs no extra panel time, so it is always reported. (a) and (c) are done only if panel members offer time beyond the main audit. If they are not done, the report says so.
 - (a) The unsupported rate *before* the gatekeeper, on a separate random sample. This measures what the gatekeeper adds.
 - (b) Gatekeeper accuracy against human labels (`huang2024_no_self_correct`, `zheng2023_llm_judge`).
 - (c) A false-abstention check: a sample of "not reported" values where the panel checks whether the paper did report the feature.
@@ -319,7 +320,7 @@ To keep that limit visible, every report:
 
 The matched sets below are built by the harness from the frozen extraction and the dated snapshots.
 
-**Variant matching [proposed].** Extracted variants and reference variants are compared on the same normalized GRCh38 representation (normalized identically on both sides). Matches fall into tiers:
+**Variant matching (D-35, decided).** Extracted variants and reference variants are compared on the same normalized GRCh38 representation (normalized identically on both sides). Matches fall into tiers:
 1. exact genomic allele;
 2. protein-level only, for papers that give no c. or g. description;
 3. unmatched.
@@ -361,7 +362,7 @@ Reported as a confusion matrix plus percent agreement among stated values. This 
 - **(a) Variant → disease.** For matched variants, the share whose ClinVar condition, or whose OMIM allelic-variant entry, corresponds to the pilot disease (mapped through Mondo cross-references).
 - **(b) Disease phenotype profile, ontology-aware.** Matching counts the same term or a descendant. Two numbers:
   - the share of HPO terms annotated to the OMIM disease (`phenotype.hpoa`) that are observed in at least one extracted individual;
-  - the share of terms observed in at least 2 deduplicated individuals [proposed threshold] that match an annotated term.
+  - the share of terms observed in at least 2 deduplicated individuals (D-35, decided) that match an annotated term.
 
 Reference annotations are known to be incomplete (`connelly2026_fanconi_annotations`), so (b) is descriptive.
 
@@ -375,7 +376,7 @@ Two descriptive numbers:
 
 ClinVar contains misclassified variants (`wright2021_ddd_clinvar`), and literature nomenclature is often wrong (`lansdon2026_nomenclature_errors`). So:
 - The primary concordance figures count **every** miss as discordant.
-- A random sample of misses (size set with [D-11]) is then triaged into five categories:
+- A random sample of 50 misses, or all if fewer, with a recorded seed, is then triaged into five categories (D-11, D-35, decided). The triage is done by a panel member if one offers time, otherwise by Dr. Lin. If neither has time, the breakdown is reported as not done:
   1. extraction error;
   2. normalization error;
   3. error in the paper (e.g. a typo or legacy numbering);
@@ -395,7 +396,7 @@ ClinVar contains misclassified variants (`wright2021_ddd_clinvar`), and literatu
 
 **Outcome type.** This is a secondary, descriptive outcome with no threshold. The pilot's ≥ 80% gate (Q7) was a development gate only.
 
-**The catalogue is fixed per disease before extraction [proposed; suitability not yet checked].** Each candidate must have a per-variant table naming its source papers:
+**The catalogue is fixed per disease before extraction (D-35, decided).** Each candidate's suitability is checked by script before extraction starts; a candidate without a per-variant table naming source papers is dropped, and that disease reports no completeness figure. Each candidate must have a per-variant table naming its source papers:
 
 | Disease | Candidate catalogue |
 |---|---|
@@ -437,7 +438,7 @@ The grant wording is ambiguous. The proposal text says "held-out *diseases* with
 
 Reading adopted: for each pilot disease, natural-history or genotype-first cohort papers are held out of the extraction corpus and used as comparators. No extra diseases are added. Dr. Lin will obtain Prof. Lam's confirmation of this reading before the plan is frozen.
 
-[proposed] If no suitable comparator is found for a disease by the freeze, the bias arm leaves that disease out and says why.
+(D-35, decided) If no suitable comparator is found for a disease by the freeze, the bias arm leaves that disease out and says why.
 
 Candidates from the background bibliography, not yet checked for suitability:
 
@@ -451,7 +452,7 @@ Candidates from the background bibliography, not yet checked for suitability:
 
 Most comparators are themselves clinically ascertained, so "cohort truth" is relative. Genotype-first cohorts such as UK Biobank are the closest to unbiased and are reported separately.
 
-#### 7.4.2 Frequency deviation [proposed]
+#### 7.4.2 Frequency deviation (D-35, decided)
 
 1. For each comparator, a human lists HPO-mappable features and their cohort frequencies **before** literature frequencies are computed.
 2. Literature frequency per feature is computed over deduplicated individuals, excluding anyone in the comparator cohort:
@@ -459,7 +460,7 @@ Most comparators are themselves clinically ascertained, so "cohort truth" is rel
    - **secondary:** observed ÷ all individuals.
 3. Report the per-feature difference (literature minus cohort) and the per-disease mean absolute deviation, with a publication-cluster bootstrap CI. This is where the three-state coding matters (`almail2024_reporting_gaps`).
 
-#### 7.4.3 Memorization probe [proposed]
+#### 7.4.3 Memorization probe (D-35, decided)
 
 The probe must work identically on Claude and the open-weight model, so it is black-box only (`grant_claim_checks.md` §15). Per disease, a stratified sample of corpus papers is drawn, split by publication date relative to each model's training cutoff (`roberts2024_lens_of_time`). Two probes:
 
@@ -550,17 +551,14 @@ Month 1 starts on the date the first credit deposit landed, provisionally 2026-0
 
 ## 13. Decisions needed before freezing
 
-See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, D-22 to D-31 on 2026-10-19, and D-08 to D-12, D-17, D-19 and D-32 to D-34 on 2026-10-20. Dr. Lin approved the pilot report as drafted on 2026-10-20.
+See `DECISIONS.md` → *Open decisions*. D-01 to D-07 and D-18 were decided on 2026-10-18, D-22 to D-31 on 2026-10-19, and D-08 to D-12, D-17, D-19 and D-32 to D-35 on 2026-10-20. Dr. Lin approved the pilot report as drafted on 2026-10-20.
 
-Still blocking this plan:
-- **D-11:** the panel's availability, which sets audit hours and optional add-ons. The rater design itself is decided.
+No [D-nn] item blocks the freeze. D-11 was settled on 2026-10-20: the panel is asked without a request for hours, and optional add-ons depend on time offered. Every [proposed] default was accepted (D-35).
 
-Also to settle before the freeze:
-- the [proposed] items added in v0.7:
-  - a smoke run of extraction v6 and gatekeeper v4 (§6.5);
-  - the merge re-check sample (§6.3);
-  - the completeness catalogues (§7.2.7);
-  - whether the Europe PMC full-text search is added (§5.1).
+Steps left before the freeze:
+1. The smoke run of extraction v6 and gatekeeper v4 on the 20-paper HA20 subset, with a span check only (§6.5). Estimated at about $80 from the D-29 run's rates.
+2. Tag the pinned files as `pipeline-v1.0` and this text as `prereg-v1.0`.
+3. Dr. Lin registers the same text publicly on OSF (D-09).
 
 Full-text screening is done (§5.1).
 

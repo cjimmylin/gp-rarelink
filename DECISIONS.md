@@ -2,7 +2,7 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.11 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. Still blocking the freeze: D-11 (panel hours).
+**Pre-registration status:** draft v0.12 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. No open decision blocks the freeze; left are the v6/v4 smoke run, the git tags and the OSF registration.
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -15,9 +15,7 @@ How to use this file:
 
 ### Needed before the pre-registration can be frozen
 
-**D-11 · Panel time** (rater design decided 2026-10-20; hours open)
-- **Decided:** two panel members rate the 250-claim audit independently and the third resolves disagreements (decision log, 2026-10-20).
-- **Still open:** the panel's availability. It sets the audit hours and which optional add-ons fit: a pre-gatekeeper sample, gatekeeper calibration, a false-abstention check, an open-weight audit sample, discordance triage. Jimmy sends `reports/drafts/panel_availability.md`.
+*None. Every decision needed before the freeze is settled (2026-10-20).*
 
 ### Needed later
 
@@ -51,6 +49,29 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-20 · D-11 settled without panel hours; D-35 decided: all remaining [proposed] defaults accepted
+- **D-11 · Panel time.**
+  - Jimmy: "I can send the D-11 without the hours." The panel note no longer asks for hours (`reports/drafts/panel_availability.md`, revised; still Jimmy's to send). The panel's availability is no longer a freeze condition.
+  - The rater design stands: two raters and a tie-breaker.
+  - Gatekeeper accuracy (§7.1 (b)) comes from the main audit's own ratings.
+  - The pre-gatekeeper sample (a), the false-abstention check (c), the open-weight audit sample and discordance triage are done only if panel members offer time. Discordance triage falls back to Jimmy. Anything not done is reported as not done.
+- **D-35 · [proposed] defaults.** Jimmy: "settle proposals with defaults." Every item the plan marked [proposed] is accepted as written, now marked (D-35, decided). This includes:
+  - the search, eligibility and screening rules;
+  - the VariantValidator field filter and the isolation enforcement;
+  - the general statistics (Wilson and exact intervals, cluster bootstrap);
+  - stratified audit sampling and the rating labels;
+  - variant matching tiers and the 2-individual phenotype threshold;
+  - the per-disease completeness catalogues, checked by script before extraction;
+  - leaving out of the bias arm any disease without a comparator, and the frequency-deviation and memorization-probe designs;
+  - 50 hand-checked merges (or all if fewer);
+  - no Europe PMC full-text search or LitVar;
+  - the smoke run of extraction v6 and gatekeeper v4 on the 20-paper HA20 subset before tagging `pipeline-v1.0`.
+- **The discordance triage sample** is set at 50 misses, or all if fewer.
+- **Pre-registration draft v0.12.** No [D-nn] item blocks the freeze. Left:
+  - the smoke run, about $80 at the D-29 rates (not yet run);
+  - the `pipeline-v1.0` and `prereg-v1.0` tags;
+  - Jimmy's OSF registration.
 
 ### 2026-10-20 · D-34 decided: the screening calls stand after a 20-item human check
 - **Jimmy's words:** "I screened 20 - and mostly agree - so let's just do with your calls." Recorded as his decision; this is the first use of D-34.
