@@ -1,0 +1,173 @@
+{
+  "id": "lad1-pv1-lad1-LAD1-ID0098",
+  "subject": {
+    "id": "LAD1-ID0098",
+    "sex": "FEMALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0031551",
+        "label": "Reduced cell surface marker level"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32009323",
+            "description": "| 13 | F | 6 yr | CD18/CD11 | 0.0 | 100.0 | ITGB2 | c.533C > T | p.Pro178Leu | AR | \u2026 The results of the FCM showed the absence of cell surface CD18 expression without and with stimulation, which strongly suggested a presumptive diagnosis of LAD1"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "LAD1-ID0098-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0007293",
+          "label": "leukocyte adhesion deficiency 1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "LAD1-ID0098",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "LAD1-ID0098-var1",
+                "label": "c.533C > T",
+                "description": "c.533C > T",
+                "geneContext": {
+                  "valueId": "HGNC:6155",
+                  "symbol": "ITGB2"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000211.5:c.533C>T"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000202.3:p.(Pro178Leu)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000021.9:g.44901700G>A"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "21",
+                  "pos": "44901700",
+                  "ref": "G",
+                  "alt": "A"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "LAD1-ID0098",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "LAD1-ID0098-var2",
+                "label": "c.82_95del14",
+                "description": "c.82_95del14",
+                "geneContext": {
+                  "valueId": "HGNC:6155",
+                  "symbol": "ITGB2"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000211.5:c.82_95del"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000202.3:p.(Phe28LeufsTer26)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000021.9:g.44910338_44910351del"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "21",
+                  "pos": "44910335",
+                  "ref": "GCTGCTGACCTTGAA",
+                  "alt": "G"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0007293",
+        "label": "leukocyte adhesion deficiency 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-10-20T00:00:00Z",
+    "createdBy": "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32009323"
+      }
+    ]
+  }
+}
