@@ -2,7 +2,9 @@
 
 Dated log of project decisions and, once the pre-registration is frozen, every deviation from it (`INSTRUCTIONS.md` §1.4). Newest entries go at the top of each section.
 
-**Pre-registration status:** draft v0.12 (`preregistration/analysis_plan.md`), **not frozen**. Until it is frozen, changes to the draft are revisions, not deviations. Under D-18 the freeze comes after the pilot report. No open decision blocks the freeze; left are the v6/v4 smoke run, the git tags and the OSF registration.
+**Pre-registration status:** **frozen v1.0, 2026-10-20** (`preregistration/analysis_plan.md`; git tags `prereg-v1.0` and `pipeline-v1.0`). Any change from here on is a deviation, logged below with Jimmy's approval. Left: Jimmy registers the same text on OSF (D-09); record the registration's DOI and date here when it exists.
+
+**OSF registration:** DOI ______, registered ______ (to fill in after Jimmy registers).
 
 How to use this file:
 - **Open decisions** lists what needs Jimmy's call, with options and a recommendation. When one is decided, move it to the decision log with the date and who decided.
@@ -49,6 +51,21 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-20 · D-36 decided: freeze extraction v6 as tested; pre-registration frozen v1.0
+- **The smoke run** (D-35; `reports/poc_smoke_v6_findings.md`, `runs/poc-ha20-v6-smoke/manifest.json`):
+  - extraction v6 and gatekeeper v4 ran on the 20 D-29 papers;
+  - the span check found 0 problems in 13,382 values;
+  - gatekeeper v4 judged 4,538 claims: 23 unsupported, 75 partial;
+  - session readings +$53.50 against an estimate of about $80.
+- **The gap it found:** extraction v6 has no rule for hedged phrases, while the gatekeeper has one (since v2). A status that rests only on "suggested" or "possible" is extracted as observed, then judged unsupported (5 of the 23), and so ends as "not reported".
+- **Options put to Jimmy:** freeze v6 as tested, or write extraction v7 with the hedge rule and repeat the smoke run (about $55) first.
+- **Decision (Jimmy, 2026-10-20):** "Freeze v6 as tested". The gap is listed in the pre-registration as a known behavior (§6.5).
+- **Done the same day:**
+  - pre-registration v1.0 records the model, sampling settings, training cutoff (June 2026, from Anthropic's models overview, read 2026-10-20) and dates of use (§6.1), plus the smoke run (§6.5) and the freeze record (§13);
+  - the commit carrying them is tagged `prereg-v1.0` and `pipeline-v1.0`.
+- **Left:** Jimmy's OSF registration (D-09). Registering the tagged text unchanged keeps the two identical.
+- **No change** to metrics, thresholds, diseases or the four pinned files.
 
 ### 2026-10-20 · D-11 settled without panel hours; D-35 decided: all remaining [proposed] defaults accepted
 - **D-11 · Panel time.**
@@ -557,7 +574,7 @@ These were recorded on `claude/zealous-meitner-k7moex` between 18:22 and 18:36 U
 
 ## Pre-registration deviations
 
-None. The pre-registration is not frozen yet.
+None. The pre-registration was frozen as v1.0 on 2026-10-20.
 
 Entry format once frozen:
 
