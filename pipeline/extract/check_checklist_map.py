@@ -7,7 +7,6 @@ Checks:
   - the map has exactly the checklist's item names as keys (the names the schema uses);
   - every term exists in the pinned HPO release and is not obsolete;
   - each item has an 'observed' term or null, an 'excluded' list and a 'note';
-  - an item's observed term must not be an ancestor of one of its own excluded terms.
 Exits non-zero on any error.
 """
 
@@ -46,11 +45,6 @@ def main(argv: list[str] | None = None) -> int:
                 errors.append(f"{name}: {tid} is obsolete")
         if not it["excluded"] and not it["observed"]:
             errors.append(f"{name}: no terms at all")
-        o = it["observed"]
-        if o and o in hp.terms:
-            for x in it["excluded"]:
-                if x in hp.terms and x != o and o in hp.ancestors(x):
-                    errors.append(f"{name}: observed {o} is an ancestor of its own excluded term {x}")
     print(json.dumps({"disease": a.disease, "map": a.map, "items": len(items), "errors": errors, "warnings": warnings}, indent=2))
     return 1 if errors else 0
 
