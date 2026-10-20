@@ -19,22 +19,6 @@ How to use this file:
 
 *None. Every decision needed before the freeze is settled (2026-10-20).*
 
-### Needed now (after the six-disease run, 2026-10-20)
-
-**D-40 · Stage 4 settings per disease (a deviation if approved)**
-- **The problem:** the audit's claim pool is "every value asserted in the final (post-gatekeeper) records" (§7.1), so the 250-claim draw waits on Stage 4 (normalization, HPO and Mondo binding, phenopackets). The Stage 4 scripts at `pipeline-v1.0` assume HA20: `normalize_variants --mane NM_001270508.2`, `configs/ha20_checklist_hpo.json`, the HA20 Mondo label rule and `HGNC = {"TNFAIP3": …}` in `to_phenopackets`.
-- **Proposal:** per-disease settings, like D-38 did for the extraction prompt:
-  - gene, HGNC ID and MANE Select transcript per disease, read from VariantValidator;
-  - a checklist-to-HPO map per disease, built from the pinned HPO release the way HA20's was, and flagged for review;
-  - a Mondo term per disease from the pinned Mondo release.
-  
-  No change to the four pinned files, metrics or thresholds. The model-assisted HPO binding is about $28 (D-37 estimate), within the $1,200 ceiling ($431 left).
-- **Recommendation:** approve. Then build Stage 4 for the five new diseases, draw the 250-claim sample by script with a recorded seed before any concordance, and build the blinded rating page for Jimmy to send to the panel.
-- **Also for Jimmy (no change proposed):**
-  - the SSADH corpus holds one study twice (37503297, preprint; 37962671, journal version with the same open text). Keep both and let the merge join their patients, with evidence;
-  - the 60,000-character supplement cap cut LAD-I 33391282's Table S1. Leave `pv1-lad1` as run and report the limit.
-- Details: `reports/six_disease_run_findings.md` §9–10.
-
 ### Needed later
 
 **D-13 · ClinVar collection method for our submissions**
@@ -633,6 +617,20 @@ These were recorded on `claude/zealous-meitner-k7moex` between 18:22 and 18:36 U
 - **Expected effect on results:** AxD gains a completeness figure it would otherwise lack. No effect on extraction, gatekeeper or any other disease.
 - **Reported where:** the six-disease results report, beside the AxD completeness figure, saying the catalogue was added after extraction and why.
 - **Outcome (2026-10-20):** `pipeline/harness/catalogue_grossi2024.py` transcribed Supplementary Table 2 to the reference root outside the repo. It has 553 rows, 187 references and 180 protein changes, and it is suitable under `catalogue_check.judge`. `judge()` chose the allele column "REF" as the source column; with "Reference (PMID)" the share of rows with both is 0.995. The rule was not changed. Manifest: `analysis/catalogue/grossi2024_manifest_2026-10-20.json`.
+
+### 2026-10-20 · D-40 · Stage 4 (normalization, binding, phenopackets) given per-disease settings
+- **Registered:** the audit's claim pool is "every value asserted in the final (post-gatekeeper) records across the six diseases" (§7.1). Records are built by normalization (VariantValidator, MANE Select), HPO and Mondo binding and phenopacket building. At `pipeline-v1.0` those scripts assume HA20: `normalize_variants --mane NM_001270508.2`, `configs/ha20_checklist_hpo.json`, the HA20 Mondo label rule and a TNFAIP3-only HGNC table in `to_phenopackets`.
+- **Change:** the Stage 4 scripts read per-disease settings:
+  - the gene, its HGNC ID and its MANE Select transcript, read from VariantValidator and recorded with the date;
+  - a checklist-to-HPO map per disease, built from the pinned HPO release the way HA20's was, and flagged for review by Jimmy or the panel;
+  - a Mondo term per disease, from the pinned Mondo release.
+
+  HA20's settings are its existing ones, so HA20's records are built as before. No change to the four pinned files, metrics or thresholds. The model-assisted HPO binding step uses `hpo_binding_v1.md` unchanged.
+- **Reason:** Stage 4 cannot run on another disease without naming its gene, transcript, disease term and checklist terms. This follows the pattern of D-38.
+- **Approved by:** Jimmy Lin, 2026-10-20 ("Approve", the recommended option).
+- **Also decided (no deviation):** the SSADH corpus holds one study twice (37503297, a preprint; 37962671, the journal version, whose open copy is the same text). Both stay in the corpus; the cross-paper merge joins their patients, with the merge evidence recorded, and the report says so (Jimmy Lin, 2026-10-20, "Keep both, merge patients").
+- **Expected effect on results:** none on extraction or the gatekeeper. The five new diseases get records, which the audit draw and concordance need.
+- **Reported where:** the six-disease results report, methods section.
 
 Entry format once frozen:
 
