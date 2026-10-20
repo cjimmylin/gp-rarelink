@@ -57,6 +57,24 @@ from pathlib import Path
 import pandas as pd
 
 RELEVANT = re.compile(r"TNFAIP3|\bA20\b|HA20|haploinsufficiency of A20", re.IGNORECASE)
+
+
+def relevant_pattern(disease: str) -> re.Pattern:
+    """Lines worth keeping from an oversized file: the disease's gene or name.
+
+    HA20 keeps the pilot's pattern unchanged. The other diseases use the gene
+    symbol and name from configs/diseases.yaml (generalized 2026-10-20 for the
+    six-disease run; logged in DECISIONS.md under D-37).
+    """
+    if disease == "ha20":
+        return RELEVANT
+    import yaml
+
+    cfg = yaml.safe_load(Path("configs/diseases.yaml").read_text())["diseases"][disease]
+    name = cfg["name"]
+    terms = [re.sub(r"\s*\(.*?\)", "", name).strip(), *re.findall(r"\((.*?)\)", name)]
+    alts = "|".join(rf"\b{re.escape(t)}\b" for t in [cfg["gene"], *terms] if t)
+    return re.compile(alts, re.IGNORECASE)
 HGVS = re.compile(r"\b[cp]\.\s?\(?[*-]?[A-Za-z]{0,3}\d+")
 HEADER_HINT = re.compile(r"^\s*\|.*\|\s*$|^\s*(patient|case|family|pt|no\.|id)\b", re.IGNORECASE)
 ADMIN_NAME = re.compile(r"coif|conflict|disclosure|icmje|checklist|mdar|peer.?review|reviewer|response.?to|cover.?letter"
@@ -175,14 +193,14 @@ def to_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="ignore")
 
 
-def excerpt(text: str, context: int) -> str:
+def excerpt(text: str, context: int, relevant: re.Pattern = RELEVANT) -> str:
     lines = text.splitlines()
     keep = set()
     for i, line in enumerate(lines[:400]):
         if HEADER_HINT.match(line) and i < 40:
             keep.add(i)
     for i, line in enumerate(lines):
-        if RELEVANT.search(line) or HGVS.search(line):
+        if relevant.search(line) or HGVS.search(line):
             keep.update(range(max(0, i - context), min(len(lines), i + context + 1)))
     out, prev = [], -2
     for i in sorted(keep):
@@ -202,6 +220,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--filter", choices=["v2", "v1"], default="v2")
     args = ap.parse_args(argv)
     base = Path("data/literature") / args.disease
+    relevant = relevant_pattern(args.disease)
+    label = "TNFAIP3, A20 or HA20" if args.disease == "ha20" else re.sub(r"\\(.)", r"\1", relevant.pattern.replace("\\b", "")).replace("|", ", ")
     files_dir = base / "supplementary" / "files"
     md_dir = base / "fulltext_md"
     log = []
@@ -221,7 +241,7 @@ def main(argv: list[str] | None = None) -> int:
                 log.append({"pmid": pmid, "file": f.name, "status": f"error: {type(e).__name__}", "chars_in": "", "chars_out": ""})
                 continue
             text = re.sub(r"\n{3,}", "\n\n", text).strip()
-            if args.filter == "v1" and not RELEVANT.search(text):
+            if args.filter == "v1" and not relevant.search(text):
                 log.append({"pmid": pmid, "file": f.name, "status": "skipped_no_TNFAIP3_or_A20_mention", "chars_in": len(text), "chars_out": 0})
                 continue
             if args.filter == "v2" and is_administrative(f, text):
@@ -232,11 +252,11 @@ def main(argv: list[str] | None = None) -> int:
                 continue
             status, body = "included_full", text
             if len(text) > args.max_file_chars:
-                ex = excerpt(text, args.context)
-                if any(RELEVANT.search(x) or HGVS.search(x) for x in ex.splitlines()):
+                ex = excerpt(text, args.context, relevant)
+                if any(relevant.search(x) or HGVS.search(x) for x in ex.splitlines()):
                     status = "included_excerpt"
-                    body = (f"*Excerpt: the file has {len(text):,} characters; shown are the lines mentioning TNFAIP3, A20 "
-                            f"or HA20 or printing a variant, with {args.context} lines around each, and the first header "
+                    body = (f"*Excerpt: the file has {len(text):,} characters; shown are the lines mentioning {label} "
+                            f"or printing a variant, with {args.context} lines around each, and the first header "
                             f"lines.*\n\n" + ex)
                 else:
                     status = "included_truncated"
