@@ -74,6 +74,10 @@ How to maintain it:
   - **Tags:** they point at commit `ef3133e`. This session's git access refused the tag push (HTTP 403; only the session branch is writable), so Jimmy pushes them; the commands are in `reports/drafts/osf_registration.md` §1. Don't retry the push or route around the refusal.
   - **Left for Jimmy:** the OSF registration, using `reports/drafts/osf_registration.md`. Put the DOI and date in `DECISIONS.md`, never in the frozen plan.
   - **Six-disease run approved (D-37, 2026-10-20): up to $1,200** (estimate in `analysis/cost/six_disease_estimate_2026-10-20.md`). Prep first (supplements, per-disease checklists, catalogue check), then disease by disease. Stop and ask before a full re-run or past $1,200. Read *Open decisions* in `DECISIONS.md` before starting work.
+  - **D-38 (2026-10-20, a deviation):** the frozen prompt and schema are instantiated per disease by `pipeline/extract/claude_code/instantiate_disease.py` (disease name, gene, checklist only); checklists in `configs/checklists/<d>.json`, checked by `check_checklist.py`.
+  - **HA20 done (`pv1-ha20`, 2026-10-20):** 85 papers, span check clean, gatekeeper v4 judged 46 of 23,129 model claims unsupported (0.20%) and 400 partial. Manifest `runs/pv1-ha20/manifest.json`; cost reading in `BUDGET.md` (provisional).
+  - **Supplements for the five new corpora:** fetch one paper per call (`fetch_supplementary --pmid <one>`), one process per disease. A single run over a whole corpus stops at the first Europe PMC error and writes its manifest only at the end, so it loses everything; Europe PMC zips are large and slow.
+  - **Helper slot tracking:** at most 20 helpers at once. Record a chunk as launched only after its Agent call goes out, or the tracker overcounts.
 - **Git:**
   - On `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7), PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), PR #6 (D-34, v0.11), PR #7 (D-11, D-35, v0.12) and PR #8 (smoke run, freeze v1.0, D-36; merged with a merge commit so the tagged commit `ef3133e` is in `main`'s history), all merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
@@ -192,7 +196,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-38**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-39**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
