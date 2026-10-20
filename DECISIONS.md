@@ -586,7 +586,24 @@ These were recorded on `claude/zealous-meitner-k7moex` between 18:22 and 18:36 U
 
 ## Pre-registration deviations
 
-None. The pre-registration was frozen as v1.0 on 2026-10-20.
+### 2026-10-20 · D-38 · Frozen extraction prompt and schema instantiated per disease
+- **Registered:** the frozen pipeline is `extract_v6.md`, `gatekeeper_v4.md`, `schema_ha20_v5.json` and `extraction_rules_v1.md` (§6.5). The prompt and schema name A20 haploinsufficiency and TNFAIP3. §6.5 says the six-disease schema generalizes `schema_ha20_v5.json` with a per-disease checklist written from each disease's GeneReviews or key review, but says nothing about the prompt.
+- **Change:** for each of the other five diseases, `pipeline/extract/claude_code/instantiate_disease.py` writes `prompts/extract_v6_<disease>.md` and `schema_<disease>_v5.json`. It swaps only:
+  - the disease name and gene symbol;
+  - the schema path;
+  - the 20-item checklist from `configs/checklists/<disease>.json`.
+
+  Every rule, field name, enum and example stays as frozen. The field `reports_individuals_with_tnfaip3_variant` keeps its name. Each swap must match an exact count, the frozen files' sha256 are checked first, and a diff is written to `pipeline/extract/claude_code/instantiated/<disease>.diff`: 12 changed lines per disease. The gatekeeper and the rules file are disease-neutral and used unchanged.
+- **Checklists:** written by Opus helpers under `prompts/checklist_from_review_v1.md`. Each has exactly 20 items, so the frozen prompt's "each of the 20 checklist features" stays true. Every quote is checked verbatim against its source by `check_checklist.py`. Sources:
+  - SSADH deficiency: 38452608 (2024 consensus guidelines);
+  - Danon disease: 37821174 (2023 international consensus);
+  - Tangier disease: 33994407 (Koseki 2021).
+  - Alexander disease and LAD-I: GeneReviews is behind a reCAPTCHA, and Almarza Novoa 2018 is not open. Their first sources, 39420046 (a genetics meta-analysis) and 42011429 (a treatment consensus), named only 14–16 suitable features, and the helpers stopped rather than pad. Claude's call: two more open reviews or large series each, so each checklist has three sources (recorded in `source_pmid`). AxD: 32779598 and 40520824. LAD-I: 23207660 and 33391282.
+- **Reason:** the frozen files cannot run on another disease without naming it. The swap is the smallest change that does.
+- **Approved by:** Jimmy Lin, 2026-10-20 ("Approve scripted swap").
+- **Expected effect on results:** none on HA20. For the other five, the checklist is new by design (§6.5). Everything else matches the smoke-tested pipeline.
+- **Reported where:** the six-disease results report, methods section.
+
 
 Entry format once frozen:
 
