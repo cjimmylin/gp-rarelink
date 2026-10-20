@@ -52,6 +52,18 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-20 · D-37 decided: six-disease run approved up to $1,200
+- **Estimate** (`analysis/cost/six_disease_estimate_2026-10-20.md`, method of pre-registration §6.5):
+  - 350 papers, about 3.35M input tokens;
+  - one clean pass about $795 (extraction about 70%, gatekeeper 30%);
+  - with repairs (1.25×) about $994; upper-bound rate $876–$1,095;
+  - one full re-run (2×) about $1,590.
+- **Decision (Jimmy, 2026-10-20):** "Up to $1,200". This covers the run with repairs at the upper-bound rate, plus the 10% run-to-run repeat (plan §7.6, about $80). Claude stops and asks before any full re-run, or if the readings pass $1,200.
+- **Order:**
+  1. Prep steps, at little or no model cost: supplements for the five new corpora; the per-disease checklists, written from each disease's GeneReviews or key review (§6.5); the scripted catalogue check (§7.2.7).
+  2. The run itself, disease by disease, with concordance on each as it finishes.
+- **Billing lines:** extraction (line 1) and gatekeeper (line 2). Session readings are logged per disease in `BUDGET.md`.
+
 ### 2026-10-20 · D-36 decided: freeze extraction v6 as tested; pre-registration frozen v1.0
 - **The smoke run** (D-35; `reports/poc_smoke_v6_findings.md`, `runs/poc-ha20-v6-smoke/manifest.json`):
   - extraction v6 and gatekeeper v4 ran on the 20 D-29 papers;
