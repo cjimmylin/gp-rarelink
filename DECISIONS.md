@@ -52,6 +52,11 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-20 · Five-disease work merged to `main`
+- Jimmy: "merge all to main" (this session). Merged as PR #5 (cjimmylin/gp-rarelink#5), merge commit `15bff47`.
+- Checked before merging: 52 tests pass. No full text, PDFs, Markdown conversions, reference snapshots or `.env` are tracked.
+- The pre-registration stays unfrozen. It waits on the panel's hours (D-11) and Jimmy's screening check.
+
 ### 2026-10-20 · D-10 decided: DeepSeek-V4.1-Flash on HA20 and SSADH deficiency, agent harness, about $50 from contingency
 Jimmy chose the recommended option on all four questions (asked in the session, 2026-10-20; shortlist in `reports/drafts/d10_open_weight_shortlist.md`):
 - **Model:** DeepSeek-V4.1-Flash (MIT, 1M context), pinned to the 2026-09-10 checkpoint, on a hosted API.

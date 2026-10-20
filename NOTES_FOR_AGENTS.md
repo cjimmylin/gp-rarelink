@@ -70,7 +70,7 @@ How to maintain it:
 - **Network (re-tested 2026-10-18, later the same day).** The research domains are now allowed: NCBI E-utilities, PMC, Europe PMC REST, VariantValidator, ClinVar FTP and purl.obolibrary.org all answer. The europepmc.org website itself still returns 403, but the REST API works.
 - **Blocking the pre-registration freeze:** the panel's hours (D-11) and Jimmy's screening check (the pilot report was approved 2026-10-20); everything else is decided as of 2026-10-20 (pre-registration v0.10). Read *Open decisions* in `DECISIONS.md` before starting work.
 - **Git:**
-  - Everything up to 2026-10-19 (pilot Stages 1–7, D-01 to D-31) is on `main`: PR #3 (Stages 1–2) and PR #4 (Stages 3–7), both merged with Jimmy's approval. Start new work from `main`.
+  - Everything up to 2026-10-20 is on `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7) and PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), all merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
   - Branch `claude/zealous-meitner-k7moex` (the pilot-design session) is archived and must not be merged: it commits full-text Markdown. Its one asset, Jimmy's 40 screening labels, was applied here on 2026-10-19.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
