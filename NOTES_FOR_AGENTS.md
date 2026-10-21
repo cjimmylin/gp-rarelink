@@ -100,6 +100,9 @@ How to maintain it:
     - Pending submission records `submissions/make_records.py` (format waits on D-13).
     - The LAD-I deduplication benchmark is not computable.
   - **D-10 open-weight runs done (2026-10-21):** `ow-ha20` (85) and `ow-ssadh` (40), DeepSeek-V4.1-Flash on OpenRouter pinned to DeepInfra fp8, $20.35 on the key. Report `reports/openweight_comparison_findings.md` (regenerate: `analysis/openweight/summary.py`, then `report.py`); manifests `runs/ow-<d>/manifest.json`. Blinded audit still to do (waits on D-11).
+    - **Gatekeeper v4 on both open-weight runs done (2026-10-21, $136 on helper tokens):** open-weight unsupported 8.64% (HA20) and 6.14% (SSADH) vs Claude 0.20% and 0.38%; mostly claims with no quote. Report §6–7 (`analysis/openweight/gatekeeper_compare.py`, then `report.py`). Open-weight memorization probe done too ($0.05; `analysis/bias/memorization/openweight_scores_summary.md`).
+    - **`gatekeeper_prep` does not drop claims whose quote the span check failed**, but gatekeeper v4 tells helpers every quote is verbatim. It never mattered for Claude's runs (0 such claims); for open-weight runs, count them apart.
+    - **The OpenRouter key is shared with other projects**, so key-usage deltas are upper bounds. Use the host-reported cost in each log.
     - **The OpenRouter key is a network secret the proxy adds for openrouter.ai**; the session never sees it. Check spend with `curl https://openrouter.ai/api/v1/key`.
     - **DeepInfra drops connections often** (reset by peer, in-stream 502). The client retries; expect ~50 retries per 125 papers.
     - **Run batches detached** (`setsid nohup`), not as a background Bash job: those are killed at 2 hours and the run takes ~12. Watch the log with Monitor.
@@ -118,6 +121,7 @@ How to maintain it:
   - **`catalogue_check.judge()` can pick an allele column named 'REF' as the source column.** Report the intended column's share beside it (done for Grossi 2024).
   - **D-39 (deviation, 2026-10-20):** the AxD catalogue's supplement (Grossi 2024) came through only after extraction. Transcribe it on the harness side for completeness; never append it to the extraction text.
   - **Supplements for the five new corpora:** fetch one paper per call (`fetch_supplementary --pmid <one>`), one process per disease. A single run over a whole corpus stops at the first Europe PMC error and writes its manifest only at the end, so it loses everything; Europe PMC zips are large and slow.
+  - **Don't wait on a process with `pgrep -f <script name>` inside a Bash loop.** The loop's own command line contains the name, so it never ends. Match the interpreter path (`pgrep -f "python3 path/to/script"`) or wait on an output file.
   - **Helper slot tracking:** at most 20 helpers at once. Record a chunk as launched only after its Agent call goes out, or the tracker overcounts.
 - **Git:**
   - On `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7), PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), PR #6 (D-34, v0.11), PR #7 (D-11, D-35, v0.12) and PR #8 (smoke run, freeze v1.0, D-36; merged with a merge commit so the tagged commit `ef3133e` is in `main`'s history), all merged with Jimmy's approval. Start new work from `main`.
