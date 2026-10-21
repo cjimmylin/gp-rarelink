@@ -62,6 +62,8 @@ How to use this file:
 - **Harness fixes during the run (Claude's call, 2026-10-21; to confirm with Jimmy).**
   - Retries: the client resends a call (up to 3 times, waits 30/60/120 s) after a dropped connection or a 408/429/5xx error, including DeepInfra's in-stream "502 Network connection lost". Ten HA20 papers launched before this failed and are re-run in full.
   - JSON check (tools v2): the frozen instructions say "Validate that your file parses as JSON". The Claude helpers did this with a shell command; the open-weight loop has no shell, and one HA20 paper (38183052) ended with a trailing comma. From now on, a write or edit of a `.json` file tells the model whether the file parses. Transcripts record `tools_version`. Papers whose output does not parse are re-run with v2; HA20 papers that finished under v1 with valid JSON are kept. SSADH runs on v2 throughout. The write-up states this.
+  - Re-runs start clean: before a failed paper is re-run, its scratch files and any partial or invalid output are moved to `runs/ow-ha20/failed_attempts/` (with the failed log and transcript), so the new attempt cannot see the earlier one's work. Two re-runs launched before this check were stopped after a few turns and restarted clean.
+  - SSADH was started at 10:05 UTC while the last two HA20 papers were still running, keeping 10 papers in flight in total.
   - Prompt, instruction files, schema, model and provider are unchanged.
 - **Cost estimate:** about $7–15 for HA20 + SSADH (125 papers) at that provider's list price. That is inside the ~$50 contingency approved under D-10. A one-paper pilot comes first.
 

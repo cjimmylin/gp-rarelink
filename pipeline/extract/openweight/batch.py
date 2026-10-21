@@ -54,10 +54,17 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--stop-usd", type=float, default=40.0)
     ap.add_argument("--baseline-usd", type=float, default=None,
                     help="key usage to count spend from (default: usage when this batch starts); pass the first batch's start to cap several batches together")
+    ap.add_argument("--pmids", default=None, help="comma-separated PMIDs to run (default: all of the run's papers)")
     ap.add_argument("--scratch", default="/tmp/openweight_scratch")
     a = ap.parse_args(argv)
     src = a.papers_from or f"pv1-{a.disease}"
     papers = sorted(p.stem for p in (ROOT / f"data/extracted/{a.disease}/{src}/per_paper").glob("*.json"))
+    if a.pmids:
+        wanted = set(a.pmids.split(","))
+        unknown = wanted - set(papers)
+        if unknown:
+            raise SystemExit(f"not papers of {src}: {sorted(unknown)}")
+        papers = [p for p in papers if p in wanted]
     todo = [p for p in papers if not done(a.run_id, p, a.disease)]
     logs = ROOT / f"runs/{a.run_id}/logs"
     logs.mkdir(parents=True, exist_ok=True)
@@ -65,7 +72,7 @@ def main(argv: list[str] | None = None) -> int:
     status = {"run_id": a.run_id, "disease": a.disease, "papers": len(papers), "skipped_done": len(papers) - len(todo),
               "start_key_usage": start_usage, "stop_usd": a.stop_usd, "finished": {}, "stopped_for_spend": False,
               "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
-    status_path = ROOT / f"runs/{a.run_id}/batch_status.json"
+    status_path = ROOT / f"runs/{a.run_id}/batch_status{'_rerun' if a.pmids else ''}.json"
 
     def write_status() -> None:
         status["key_usage_now"] = key_usage()

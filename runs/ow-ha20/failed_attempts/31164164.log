@@ -1,0 +1,37 @@
+turn 1: ['read_file', 'read_file'] tokens 892+124
+turn 2: ['read_file', 'read_file'] tokens 13576+240
+turn 3: ['grep', 'grep'] tokens 42254+35080
+turn 4: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 72360+51766
+turn 5: ['grep', 'grep', 'grep', 'grep'] tokens 102992+52277
+turn 6: ['grep', 'grep', 'grep', 'grep'] tokens 138398+101155
+turn 7: ['grep', 'grep', 'grep', 'grep'] tokens 174556+136384
+turn 8: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 211320+140734
+turn 9: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 248923+141322
+turn 10: ['grep', 'grep', 'grep', 'grep'] tokens 287913+141698
+turn 11: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 328643+144540
+turn 12: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 370783+174293
+turn 13: ['grep', 'grep', 'grep', 'grep'] tokens 417498+176737
+turn 14: ['grep', 'grep', 'grep', 'grep'] tokens 464856+178379
+turn 15: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 514007+179704
+turn 16: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 564384+219665
+turn 17: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 616120+220343
+turn 18: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 668715+268170
+turn 19: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 723559+295503
+turn 20: ['write_file'] tokens 781690+361039
+turn 21: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 839924+394543
+turn 22: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 903917+439775
+turn 23: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 970122+461312
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 294, in <module>
+    a = ap.parse_args(argv)
+                     ^^^^^^
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 285, in main
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 225, in run
+    text = p.read_text()
+       ^^^^^^^^^^^^^^^^^
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 107, in complete
+    if attempt == self.retries:
+        ^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: provider error: {'code': 502, 'message': 'Network connection lost.', 'metadata': {'error_type': 'provider_unavailable'}}
