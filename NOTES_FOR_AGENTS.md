@@ -91,6 +91,15 @@ How to maintain it:
     - **WS7 exploratory:** GPSEA in its own uv project, `analysis/exploratory/gpsea/`.
     - **WS8 open-weight loop:** `pipeline/extract/openweight/agent.py`, waiting on the D-10 account.
     - **WS9:** drafts in `reports/drafts/`.
+  - **Follow-on, same day (no spend):**
+    - ClinVar re-check against the 2026-10-19 release: all 215 candidates still absent (`adjudication/o3_gaps/recheck_2026-10-21.json`).
+    - Triage flags on the adjudication page (152 of 215 flagged; `triage_flags.py`).
+    - O2 triage page https://claude.ai/artifact/EHHNW9LyvvKJG6s15vtDPU (store `triage`).
+    - O1 collector `adjudication/o1_audit/collect_o1.py` (export both rater stores with `ArtifactData list ratings` + `out_dir`).
+    - 19 proposed same-person groups, not merged (`adjudication/o3_gaps/proposed_merges.csv`).
+    - Pending submission records `submissions/make_records.py` (format waits on D-13).
+    - The LAD-I deduplication benchmark is not computable.
+  - **The proxy cuts the 456 MB ClinVar variant_summary download near the end about half the time** (RemoteProtocolError). Run genes one at a time and retry up to three times; only a gene with a MANIFEST has a complete, md5-checked file.
   - **GPSEA needs pandas < 3; the frozen pipeline is locked to pandas 3.0.6.** Never add GPSEA to the main `pyproject.toml`; use `analysis/exploratory/gpsea` (`uv sync` there). GPSEA needs a genotype on every call, so that run fills missing zygosity by a stated assumption; the records stay three-state.
   - **The isolation test also rejects 'harness' and 'clinvar' anywhere in `pipeline/extract`.** The open-weight module avoids those words.
   - **Memorization-probe passages can be publisher boilerplate** (Elsevier "Journal Pre-proof"). `score_probes.py` excludes them by pattern and names them.

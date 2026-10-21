@@ -272,6 +272,19 @@ Run on 2026-10-20 against the ClinVar snapshot of 2026-10-19 (release 2026-10-12
 - Of the 35 extracted Tangier variants, 19 are not in ClinVar.
 - This is a lower bound: the corpus is 31 open-access papers (D-32), and most ABCA1 records come from testing unrelated to Tangier disease.
 
+### Follow-on work without spend (2026-10-21, later)
+
+- **ClinVar re-check of the gap candidates (§7.3):** a fresh snapshot of the ClinVar release of 2026-10-19 was taken under `/home/user/gp-rarelink-reference/2026-10-21/`; the manifests and counts are in `analysis/poc/reference_snapshot/2026-10-21/`. Results are in `adjudication/o3_gaps/recheck_2026-10-21.json`, from `pipeline/harness/gap_recheck.py`. **All 215 candidates are still absent by GRCh38 allele** in the newer release. G-lad1-077, whose paper cites an SCV accession, is not in this release either; it may be under review or released later.
+- **Triage flags for the panel:** `adjudication/o3_gaps/triage.csv` and `triage_summary.json`, from `triage_flags.py`. These are keyword pointers drawn from the evidence sheets' concerns and from the candidate list, not verdicts. The adjudication page now shows them first on each sheet. 152 of the 215 candidates carry at least one flag: possible same person twice 77, other variant in the same person 51, carriers not attached 39, review-only evidence 35, stated protein differs from prediction 25, notation conflict 14, mosaic or somatic 13, a cited database accession 1.
+- **Unmerged same-person groups:** `adjudication/o3_gaps/proposed_merges.csv`.
+  - The helpers named 19 groups of identities that are probably the same person, mostly a patient re-cited by a later review or cohort paper. If all were confirmed, up to 3.8% of HA20 identities would collapse, and 0.2–1.2% elsewhere. That is a lower bound, because only the gap candidates' papers were examined.
+  - Nothing is merged. Changing the records after the freeze would be a deviation, and each group needs a person to confirm it.
+- **O2 triage page:** https://claude.ai/artifact/EHHNW9LyvvKJG6s15vtDPU (private; store collection `triage`).
+  - For 28 of the 50 sampled misses, a script found no mention of the variant's cDNA position or protein residue in the paper text. That suggests "citation does not describe the variant", or text that is only in a supplement we lack. The rater decides.
+- **O1 collection is ready:** `adjudication/o1_audit/collect_o1.py` combines the two raters and reports percent agreement and Cohen's κ. It writes the tie-breaker sheet and applies rule C, with the exact interval and the highest rate not excluded. It was tested on synthetic ratings only.
+- **Submission records:** `submissions/make_records.py` writes one format-neutral, pending record per panel-approved variant. It covers variant, condition, PMIDs, individuals with HPO terms, the panel's criteria and class, and a sign-off slot. The final format waits on D-13.
+- **LAD-I deduplication check (§7.6): not computable.** The 2018 review's Table E2 (open repository copy) flags only one overlap: 10 cases in Anderson and Springer 1987, a paper outside the corpus, with no case pairs named. There is nothing to score our merges against.
+
 ## 12. Cost to date
 
 The six-disease run, the repeat and Stage 4 together come to +$832.70 by session reading ($780.63 to $1,613.33, at 22:25 UTC), against the $1,200 ceiling.
