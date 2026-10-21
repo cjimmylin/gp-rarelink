@@ -57,6 +57,17 @@ TOOLS = [
 ]
 
 
+class ProviderError(RuntimeError):
+    """An error the endpoint reports inside a streamed reply (e.g. 502 'Network connection lost')."""
+
+    def __init__(self, err: dict):
+        super().__init__(f"provider error: {err}")
+        self.code = err.get("code") if isinstance(err, dict) else None
+
+
+RETRY_CODES = (408, 429, 500, 502, 503, 504)
+
+
 class ChatClient(Protocol):
     def complete(self, messages: list[dict], tools: list[dict]) -> dict: ...
 
@@ -83,20 +94,21 @@ class OpenAICompatClient:
 
     def complete(self, messages: list[dict], tools: list[dict]) -> dict:
         """One model call, retried up to `retries` times on a dropped connection or a 429/5xx answer
+        (HTTP status or an error reported inside the stream)
         (the same request is sent again; each retry is logged in `retried`)."""
         import httpx
         for attempt in range(self.retries + 1):
             try:
                 return self._complete_once(messages, tools)
-            except (httpx.TransportError, httpx.HTTPStatusError) as e:
-                status = getattr(getattr(e, "response", None), "status_code", None)
-                if isinstance(e, httpx.HTTPStatusError) and status not in (408, 429, 500, 502, 503, 504):
+            except (httpx.TransportError, httpx.HTTPStatusError, ProviderError) as e:
+                status = e.code if isinstance(e, ProviderError) else getattr(getattr(e, "response", None), "status_code", None)
+                if not isinstance(e, httpx.TransportError) and status not in RETRY_CODES:
                     raise
                 if attempt == self.retries:
                     raise
                 self.retried.append({"attempt": attempt + 1, "error": f"{type(e).__name__}: {e}"[:300]})
                 print(f"  retry {attempt + 1}/{self.retries} after {type(e).__name__}: {e}", flush=True)
-                time.sleep(10 * 2 ** attempt)
+                time.sleep(30 * 2 ** attempt)
         raise AssertionError("unreachable")
 
     def _complete_once(self, messages: list[dict], tools: list[dict]) -> dict:
@@ -125,7 +137,7 @@ class OpenAICompatClient:
                     break
                 ev = json.loads(data)
                 if ev.get("error"):
-                    raise RuntimeError(f"provider error: {ev['error']}")
+                    raise ProviderError(ev["error"])
                 meta.update({k: ev[k] for k in ("provider", "model", "id") if k in ev})
                 if ev.get("usage"):
                     usage = ev["usage"]

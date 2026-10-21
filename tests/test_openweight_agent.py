@@ -92,3 +92,34 @@ def test_client_does_not_retry_client_error(monkeypatch):
     with pytest.raises(httpx.HTTPStatusError):
         c.complete([], [])
     assert c.retried == []
+
+
+def test_client_retries_provider_error_in_stream(monkeypatch):
+    from pipeline.extract.openweight import agent as ag
+    c = ag.OpenAICompatClient("https://example.invalid/v1", "m", "")
+    calls = {"n": 0}
+
+    def flaky(messages, tools):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise ag.ProviderError({"code": 502, "message": "Network connection lost."})
+        return {"ok": True}
+
+    monkeypatch.setattr(c, "_complete_once", flaky)
+    monkeypatch.setattr(ag.time, "sleep", lambda s: None)
+    assert c.complete([], []) == {"ok": True}
+    assert len(c.retried) == 1
+
+
+def test_client_does_not_retry_provider_client_error(monkeypatch):
+    import pytest
+
+    from pipeline.extract.openweight import agent as ag
+    c = ag.OpenAICompatClient("https://example.invalid/v1", "m", "")
+
+    def bad(messages, tools):
+        raise ag.ProviderError({"code": 400, "message": "bad request"})
+
+    monkeypatch.setattr(c, "_complete_once", bad)
+    with pytest.raises(ag.ProviderError):
+        c.complete([], [])
