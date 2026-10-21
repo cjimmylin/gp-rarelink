@@ -52,6 +52,13 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-21 · D-10 hosting: OpenRouter (Jimmy's suggestion; key not yet visible to the session)
+- **Jimmy, 2026-10-21:** "I have an openrouter saved already on this account - can you use that?"
+- **What fits D-10:** OpenRouter's model id `deepseek/deepseek-v4.1-flash` is the 2026-09-10 checkpoint the plan pins (OpenRouter model list, read 2026-10-21; a later snapshot, `-1017`, exists and is not used). It supports tool calls. OpenRouter is a hosted API whose name, model id and serving date the agent records, as §7.5 requires.
+- **Claude's call, for fairness:** many upstream providers serve the model at different precisions (fp4, fp8, unstated). The run pins one fp8 provider with fallbacks off (`OPENWEIGHT_PROVIDER`), and logs which provider served each call. Proposed default: `deepinfra/fp8`.
+- **Blocker:** no OpenRouter key is visible in this session's environment or `.env`. It has to be added to the cloud environment's settings (as `OPENROUTER_API_KEY`), and a new session picks it up.
+- **Cost estimate:** about $7–15 for HA20 + SSADH (125 papers) at that provider's list price. That is inside the ~$50 contingency approved under D-10. A one-paper pilot comes first.
+
 ### 2026-10-21 · D-41 decided: model work while human rating waits
 - **Context:** Jimmy deferred the human rating (O1 raters, O2 triage, merge hand check, checklist-map review) and asked what model work can go ahead. Plan: `reports/plan_next_work_2026-10-21.md`. He said "go" for all of it and answered three approvals up front.
 - **Approved by Jimmy, 2026-10-21:**

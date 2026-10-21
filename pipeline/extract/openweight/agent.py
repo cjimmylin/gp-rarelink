@@ -14,8 +14,11 @@ it to run small checking scripts) and Claude Code's own system prompt; this loop
 
 The model is called through an OpenAI-compatible chat-completions endpoint (the hosted APIs
 for DeepSeek-V4.1-Flash use that format). Endpoint, model id and key come from the environment
-(OPENWEIGHT_BASE_URL, OPENWEIGHT_MODEL, OPENWEIGHT_API_KEY) and are recorded in the transcript,
-never the key. Nothing runs until Jimmy opens the hosted account (D-10).
+(OPENWEIGHT_BASE_URL, OPENWEIGHT_MODEL, OPENWEIGHT_API_KEY, OPENWEIGHT_PROVIDER), or from
+OPENROUTER_API_KEY alone, which selects OpenRouter (https://openrouter.ai/api/v1) and the model id
+deepseek/deepseek-v4.1-flash, the 2026-09-10 checkpoint (read from OpenRouter's model list on
+2026-10-21). Endpoint, model, pinned provider and the provider that served each call are
+recorded in the transcript, never the key.
 
   uv run python -m pipeline.extract.openweight.agent --disease danon --pmid 22290069 \
       --run-id ow-danon-pilot --dry-run      # prints the filled prompt and the tool allowlist
@@ -60,19 +63,32 @@ class ChatClient(Protocol):
 
 @dataclass
 class OpenAICompatClient:
-    """Minimal OpenAI-compatible chat client over httpx (no new dependency)."""
+    """Minimal OpenAI-compatible chat client over httpx (no new dependency).
+
+    With OpenRouter, `provider` pins one upstream endpoint (e.g. "deepinfra/fp8") with fallbacks
+    off, so every call is served by the same provider and precision; the provider that answered
+    is read back from each response and logged."""
     base_url: str
     model: str
     api_key: str
+    provider: str | None = None
     timeout: float = 600.0
+    served_by: list = field(default_factory=list)
 
     def complete(self, messages: list[dict], tools: list[dict]) -> dict:
         import httpx
+        body: dict[str, Any] = {"model": self.model, "messages": messages, "tools": tools, "temperature": 0}
+        if "openrouter.ai" in self.base_url:
+            body["usage"] = {"include": True}
+            if self.provider:
+                body["provider"] = {"order": [self.provider], "allow_fallbacks": False}
         r = httpx.post(self.base_url.rstrip("/") + "/chat/completions", timeout=self.timeout,
-                       headers={"Authorization": f"Bearer {self.api_key}"},
-                       json={"model": self.model, "messages": messages, "tools": tools, "temperature": 0})
+                       headers={"Authorization": f"Bearer {self.api_key}"}, json=body)
         r.raise_for_status()
-        return r.json()
+        out = r.json()
+        self.served_by.append({"provider": out.get("provider"), "model": out.get("model"),
+                               "cost": (out.get("usage") or {}).get("cost")})
+        return out
 
 
 @dataclass
@@ -192,14 +208,26 @@ def main(argv: list[str] | None = None) -> int:
         print("reads allowed:", [str(paths[k]) for k in ("instructions", "schema", "rules", "paper")])
         print("writes allowed:", str(paths["output"]), "and", str(paths["scratch"]))
         return 0
-    base, model, key = (os.environ.get(k) for k in ("OPENWEIGHT_BASE_URL", "OPENWEIGHT_MODEL", "OPENWEIGHT_API_KEY"))
-    if not (base and model and key):
-        raise SystemExit("set OPENWEIGHT_BASE_URL, OPENWEIGHT_MODEL and OPENWEIGHT_API_KEY in .env (D-10: waiting on the hosted account)")
-    meta = {"endpoint": base, "model": model, "run_id": a.run_id, "disease": a.disease, "pmid": a.pmid,
+    envf = ROOT / ".env"  # git-ignored; keys never go in code or commits
+    if envf.exists():
+        for line in envf.read_text().splitlines():
+            if "=" in line and not line.lstrip().startswith("#"):
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip())
+    key = os.environ.get("OPENWEIGHT_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
+    base = os.environ.get("OPENWEIGHT_BASE_URL") or ("https://openrouter.ai/api/v1" if os.environ.get("OPENROUTER_API_KEY") else None)
+    model = os.environ.get("OPENWEIGHT_MODEL") or "deepseek/deepseek-v4.1-flash"  # OpenRouter id of the 2026-09-10 checkpoint (D-10)
+    provider = os.environ.get("OPENWEIGHT_PROVIDER") or None
+    if not (base and key):
+        raise SystemExit("no key: set OPENROUTER_API_KEY (or OPENWEIGHT_API_KEY and OPENWEIGHT_BASE_URL) in the environment (D-10)")
+    client = OpenAICompatClient(base, model, key, provider)
+    meta = {"endpoint": base, "model": model, "provider_pinned": provider, "run_id": a.run_id, "disease": a.disease, "pmid": a.pmid,
             "date": time.strftime("%Y-%m-%d", time.gmtime())}
-    res = run(OpenAICompatClient(base, model, key), paths,
-              ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta)
-    print(json.dumps({k: res[k] for k in ("usage", "wall_seconds", "output_written", "refused_calls")}))
+    res = run(client, paths, ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta)
+    served = client.served_by
+    res["served_by"] = sorted({f"{x['provider']}|{x['model']}" for x in served})
+    res["cost_usd_reported"] = round(sum(x["cost"] or 0 for x in served), 6)
+    print(json.dumps({k: res[k] for k in ("usage", "wall_seconds", "output_written", "refused_calls", "served_by", "cost_usd_reported")}))
     return 0
 
 
