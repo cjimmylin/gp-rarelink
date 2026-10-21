@@ -187,6 +187,9 @@ const STRENGTHS = [["", "—"], ["default", "Met"], ["supporting", "Supporting"]
 const CLASSES = [["P", "Pathogenic"], ["LP", "Likely pathogenic"], ["VUS", "VUS"], ["LB", "Likely benign"], ["B", "Benign"]];
 const DECISIONS = [["approve", "Approve record"], ["reject", "Reject record"], ["discuss", "Needs discussion"]];
 const COLL = "adjudications";
+const FLAG_LABEL = { protein_mismatch: "Stated protein differs from prediction", review_only: "Only review papers", possible_same_person: "Possible same person twice",
+  notation_conflict: "Notation conflict in a paper", carriers_not_attached: "Carriers not attached", other_variant: "Other variant in the same person",
+  mosaic_or_somatic: "Mosaic or somatic", possible_existing_record: "Paper cites a database accession", newly_in_clinvar: "Now in ClinVar" };
 const IDLE_MS = 90000;
 
 const state = {};           // candidate_id -> {criteria, classification, decision, note, active_seconds}
@@ -301,6 +304,13 @@ function detail(c) {
   add("Population data", g);
   head.append(facts, el("div", { class: "dbnote", text: "Database status: no ClinVar GRCh38 record with this allele in the snapshot of " + DATA.snapshot + ". OMIM allelic variants were not checked (no OMIM access)." + (c.only_reviews ? " All supporting papers are reviews." : "") }));
   root.append(head);
+  const fl = Object.entries(c.flags || {});
+  if (fl.length) {
+    const fp = el("div", { class: "panel" }, el("h2", { text: "Flags to check first" }),
+      el("p", { class: "stmt empty", text: "Pointers found by script in the sheet and the candidate list; not verdicts." }));
+    for (const [k, v] of fl) fp.append(el("div", { class: "item" }, el("span", { class: "chip warn", text: FLAG_LABEL[k] || k }), el("p", { class: "stmt", text: v })));
+    root.append(fp);
+  }
   const concerns = d.concerns || [];
   if (concerns.length) {
     root.append(el("div", { class: "panel concern" }, el("h2", { text: "Points the sheet flags" }), el("ul", { class: "concerns" }, ...concerns.map((x) => el("li", { text: x })))));
@@ -333,7 +343,8 @@ function renderList() {
     const b = el("button", { class: "row", type: "button", "data-d": (state[c.id] || {}).decision || "", "aria-current": String(c.id === current) },
       el("span", { class: "dot", "aria-hidden": "true" }),
       el("span", {}, el("div", { class: "hgvs", text: c.hgvs_c.split(":").pop() + "  " + (c.hgvs_p.split(":").pop() || "") }),
-        el("div", { class: "sub" }, el("span", { text: c.disease_name }), el("span", { text: c.pmids.length + (c.pmids.length === 1 ? " paper" : " papers") }), el("span", { text: c.id }))));
+        el("div", { class: "sub" }, el("span", { text: c.disease_name }), el("span", { text: c.pmids.length + (c.pmids.length === 1 ? " paper" : " papers") }), el("span", { text: c.id }),
+          Object.keys(c.flags || {}).length ? el("span", { text: Object.keys(c.flags).length + (Object.keys(c.flags).length === 1 ? " flag" : " flags") }) : null)));
     b.addEventListener("click", () => open(c.id));
     list.append(b);
   }

@@ -39,6 +39,10 @@ def main(argv: list[str] | None = None) -> int:
         for c in doc["candidates"]:
             meta[c["candidate_id"]] = {"disease_name": doc["disease_name"], "inheritance": doc["inheritance"]}
     summary = json.loads((HERE / "summary.json").read_text())
+    triage = {}
+    if (HERE / "triage.csv").exists():  # pre-adjudication pointers from triage_flags.py
+        for t in csv.DictReader((HERE / "triage.csv").open()):
+            triage[t["candidate_id"]] = json.loads(t["evidence"] or "{}")
     out, missing = [], 0
     for c in cands:
         f = HERE / "dossiers" / f"{c['candidate_id']}.json"
@@ -53,7 +57,8 @@ def main(argv: list[str] | None = None) -> int:
                     "hgvs_c": c["hgvs_c"], "hgvs_p": c["hgvs_p_predicted"], "vcf": c["vcf_grch38"],
                     "pmids": c["pmids"].split(), "n_identities": int(c["n_identities"]),
                     "original_strings": c["original_strings"], "protein_check": c["protein_check"],
-                    "only_reviews": c.get("n_non_review_papers") == "0", "dossier": dossier})
+                    "only_reviews": c.get("n_non_review_papers") == "0", "flags": triage.get(c["candidate_id"], {}),
+                    "dossier": dossier})
     order = ["ssadh", "tangier", "lad1", "axd", "danon", "ha20"]  # HA20 last: development disease (D-18)
     out.sort(key=lambda c: (order.index(c["disease"]) if c["disease"] in order else 99, c["id"]))
     data = {"title": f"Gap-variant adjudication, adjudicator {a.adjudicator}", "adjudicator": a.adjudicator,
