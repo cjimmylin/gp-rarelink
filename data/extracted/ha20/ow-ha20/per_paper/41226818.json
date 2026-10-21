@@ -1,0 +1,441 @@
+{
+  "pmid": "41226818",
+  "instructions_version": "extract_v6",
+  "reports_individuals_with_tnfaip3_variant": true,
+  "relevance_note": "The paper describes one identifiable patient who carries a TNFAIP3 variant, \"a heterozygous variant of uncertain significance in TNFAIP3\", with individual-level clinical detail (13-year-old female with pustular psoriasis and CdLS features).",
+  "method_note": "Read the paper (case report, one patient), the schema and the rules; no script was used to transcribe tables (the paper has no patient table). The paper reports a single proband (single-patient case study, \"in a single patient\"), so one individuals row. The patient's label follows rule 5: the paper only uses role words (\"The proband\", \"the patient\"), never a patient label. A TNFAIP3 variant row is kept with variant_original_string 'c.2199C>A' (printed elsewhere with a space: 'c.2199 C>A'); a RAD21 variant row is kept because the paper attributes it unambiguously to this in-scope person. Inheritance: the Figure 2 and Figure 3 legends call both variants 'de novo', but the paper never states parental testing with the variant absent in both parents, so per D-24/rule 8 inheritance is 'not reported' for both variants. The mother (\"a maternal history of cleft palate\") and the 'vanishing twin' are not described as persons (no label, no testing, no individual-level description) and get no rows. Contradictions found in the paper: (a) the first skin biopsy 'revealed findings compatible with pemphigus foliaceus' while histopathology later 'confirmed the diagnosis of pustular psoriasis'; (b) the RAD21 genomic location is printed as 'chr8:10,673,499-10,658,686' in the text but as 'chromosome 8: position 116,852,561 (GRCh38/hg38)' in the Figure 2 legend, and section 4.3 says GRCh37/hg19 was used; (c) the RAD21 transcript is printed both as NM_006265.2 and NM_006265.1, and for TNFAIP3 both NM_001270507.1 and 'Transcript: ENST00000612899.5' are printed (the RefSeq NM was put in transcript_as_stated); (d) both variant sections say the variant 'causes change on the Glycine amino acid with termination codon' although the variants are p.(Gln436*) and p.(Cys733*); (e) the TNFAIP3 cDNA is printed as 'c.2199C>A' in the Results but as 'c.2199 C>A' and 'cDNA: c.2197–2199' in the protein section, so variant_original_string uses the Results spelling. The differential 'pemphigus foliaceus' is not recorded as a feature of the patient (it is a biopsy impression that the paper then contradicts). No stacked cells (' / ') and no patient-level tables occur in this paper. No feature is reported absent for the patient, so no phenotypic_features row has status 'excluded'. For the checklist, 'skin lesions', 'growth failure' and 'central nervous system involvement' (from 'Neurocognitive features include dysprosody and limited social interaction') are the only observed items.",
+  "tables": {
+    "publications": [
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "first_author": {"value": "Orozco", "span": "Authors: Orozco Beatriz E"},
+        "year": {"value": 2025, "span": "Journal: International Journal of Molecular Sciences (2025)"},
+        "study_type": {"value": "case report", "span": "Here we report the first case of molecular co-occurrence of CdLS and generalized pustular psoriasis"},
+        "n_patients_reported": {"value": 1, "span": "genetic, transcriptomic, and structural data on both RAD21 and TNFAIP3 variants in a single patient"},
+        "cohort_size_as_stated": {"value": 1, "span": "in a single patient"},
+        "cites_prior_report_of_same_patients": {"value": false, "span": "This variant is novel and has not been previously reported in the literature or among individuals diagnosed with TNFAIP3-related disorders"},
+        "prior_report_citation": {"value": "not reported", "span": null}
+      }
+    ],
+    "individuals": [
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "family_label_in_paper": {"value": "not reported", "span": null},
+        "is_proband": {"value": true, "span": "The proband is a 13-year-old female"},
+        "sex": {"value": "female", "span": "The proband is a 13-year-old female"},
+        "age_at_onset_original_text": {"value": "not reported", "span": null},
+        "age_at_onset_iso8601": {"value": null, "span": null},
+        "age_at_last_evaluation_original_text": {"value": "13-year-old", "span": "The proband is a 13-year-old female"},
+        "age_at_last_evaluation_iso8601": {"value": "P13Y", "span": "The proband is a 13-year-old female"},
+        "age_at_diagnosis_original_text": {"value": "not reported", "span": null},
+        "age_at_diagnosis_iso8601": {"value": null, "span": null},
+        "ethnicity_or_country": {"value": "Colombian", "span": "The proband is a 13-year-old female, Colombian"},
+        "consanguinity": {"value": "not reported", "span": null},
+        "vital_status": {"value": "not reported", "span": null},
+        "deceased_age_iso8601": {"value": null, "span": null},
+        "cause_of_death": {"value": "not reported", "span": null},
+        "treatment_summary": {"value": "not reported", "span": null},
+        "disease_label_as_stated": {"value": "pustular psoriasis; CdLS type 4 (CdLS4)", "span": ["Histopathology confirmed pustular psoriasis", "a heterozygous likely pathogenic variant in RAD21, associated with CdLS type 4 (CdLS4)"]},
+        "clinical_diagnosis_basis": {"value": "histopathology (skin biopsy) and clinical exome sequencing", "span": ["Histopathology confirmed pustular psoriasis", "Skin biopsies and a clinical exome were requested", "clinical exome sequencing identified a heterozygous likely pathogenic variant in RAD21"]},
+        "source_reference_in_review": {"value": "not reported", "span": null}
+      }
+    ],
+    "variants": [
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "gene_symbol_as_stated": {"value": "TNFAIP3", "span": "The TNFAIP3 variant c.2199C>A, resulting in p.(Cys733*)"},
+        "variant_original_string": {"value": "c.2199C>A", "span": "The TNFAIP3 variant c.2199C>A, resulting in p.(Cys733*)"},
+        "transcript_as_stated": {"value": "NM_001270507.1", "span": "TNFAIP3 NM_001270507.1:c.2199 C>A"},
+        "cdna_hgvs_as_stated": {"value": "c.2199C>A", "span": "The TNFAIP3 variant c.2199C>A, resulting in p.(Cys733*)"},
+        "protein_hgvs_as_stated": {"value": "p.(Cys733*)", "span": "The TNFAIP3 variant c.2199C>A, resulting in p.(Cys733*)"},
+        "genomic_coordinates_as_stated": {"value": "chromosome 6: position 137,881,145 (GRCh38/hg38)", "span": "This nonsense mutation occurs on the plus strand in exon 9 of 9 at chromosome 6: position 137,881,145 (GRCh38/hg38)."},
+        "variant_type_as_stated": {"value": "nonsense", "span": "Characterization of a de novo heterozygous TNFAIP3 nonsense mutation in the proband"},
+        "zygosity": {"value": "heterozygous", "span": "a heterozygous variant of uncertain significance in TNFAIP3"},
+        "inheritance": {"value": "not reported", "span": null},
+        "parental_testing_statement": {"value": "not reported", "span": null},
+        "functional_evidence_statement": {"value": "not reported", "span": null},
+        "pathogenicity_as_stated_by_authors": {"value": "variant of uncertain significance", "span": "it is currently classified as a variant of uncertain significance"},
+        "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "gene_symbol_as_stated": {"value": "RAD21", "span": "The RAD21 c.1306C>T p.(Gln436*) variant generates a premature stop codon in exon 10 (of 14)"},
+        "variant_original_string": {"value": "c.1306C>T", "span": "The RAD21 c.1306C>T p.(Gln436*) variant generates a premature stop codon in exon 10 (of 14)"},
+        "transcript_as_stated": {"value": "NM_006265.2", "span": "Specific mutation in RAD21, NM_006265.2:c.1306C>T p.(Gln436*)"},
+        "cdna_hgvs_as_stated": {"value": "c.1306C>T", "span": "The RAD21 c.1306C>T p.(Gln436*) variant generates a premature stop codon in exon 10 (of 14)"},
+        "protein_hgvs_as_stated": {"value": "p.(Gln436*)", "span": "The RAD21 c.1306C>T p.(Gln436*) variant generates a premature stop codon in exon 10 (of 14)"},
+        "genomic_coordinates_as_stated": {"value": "chr8:10,673,499–10,658,686", "span": "located at chr8:10,673,499–10,658,686 (Figure 2a)"},
+        "variant_type_as_stated": {"value": "nonsense", "span": "novel heterozygous nonsense variant in RAD21 (c.1306C>T, p.Gln436*)"},
+        "zygosity": {"value": "heterozygous", "span": "a heterozygous likely pathogenic variant in RAD21"},
+        "inheritance": {"value": "not reported", "span": null},
+        "parental_testing_statement": {"value": "not reported", "span": null},
+        "functional_evidence_statement": {"value": "not reported", "span": null},
+        "pathogenicity_as_stated_by_authors": {"value": "likely pathogenic", "span": "clinical exome sequencing identified a heterozygous likely pathogenic variant in RAD21"},
+        "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+      }
+    ],
+    "phenotypic_features": [
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "erythematous, scaly, and pruritic plaques", "span": "She presented with an 8-month history of erythematous, scaly, and pruritic plaques initially localized to the periareolar and supraumbilical regions"},
+        "status": {"value": "observed", "span": "She presented with an 8-month history of erythematous, scaly, and pruritic plaques initially localized to the periareolar and supraumbilical regions"},
+        "evidence_basis": {"value": "stated for this individual", "span": "She presented with an 8-month history of erythematous, scaly, and pruritic plaques initially localized to the periareolar and supraumbilical regions"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "8-month history", "span": "She presented with an 8-month history of erythematous, scaly, and pruritic plaques"},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "erythroderma", "span": "which progressively extended to the scalp, anterior trunk, and lower extremities, culminating in erythroderma"},
+        "status": {"value": "observed", "span": "which progressively extended to the scalp, anterior trunk, and lower extremities, culminating in erythroderma"},
+        "evidence_basis": {"value": "stated for this individual", "span": "which progressively extended to the scalp, anterior trunk, and lower extremities, culminating in erythroderma"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Erythroderma", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "short stature", "span": "Physical examination revealed short stature, low weight-for-age"},
+        "status": {"value": "observed", "span": "Physical examination revealed short stature, low weight-for-age"},
+        "evidence_basis": {"value": "stated for this individual", "span": "Physical examination revealed short stature, low weight-for-age"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Short stature", "span": null},
+        "hpo_id_candidate": {"value": "HP:0004322", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "low weight-for-age", "span": "Physical examination revealed short stature, low weight-for-age"},
+        "status": {"value": "observed", "span": "Physical examination revealed short stature, low weight-for-age"},
+        "evidence_basis": {"value": "stated for this individual", "span": "Physical examination revealed short stature, low weight-for-age"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Low weight for age", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "a long face", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "status": {"value": "observed", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "evidence_basis": {"value": "stated for this individual", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Long face", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "micrognathia", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "status": {"value": "observed", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "evidence_basis": {"value": "stated for this individual", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Micrognathia", "span": null},
+        "hpo_id_candidate": {"value": "HP:0000347", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "arched eyebrows with synophrys", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "status": {"value": "observed", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "evidence_basis": {"value": "stated for this individual", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Synophrys", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "hypertrichosis", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "status": {"value": "observed", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "evidence_basis": {"value": "stated for this individual", "span": "a long face, micrognathia, arched eyebrows with synophrys, hypertrichosis"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Hypertrichosis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "upper-limb reduction defects", "span": "upper-limb reduction defects that range from subtle phalangeal abnormalities to oligodactyly (missing digits)"},
+        "status": {"value": "observed", "span": "upper-limb reduction defects that range from subtle phalangeal abnormalities to oligodactyly (missing digits)"},
+        "evidence_basis": {"value": "stated for this individual", "span": "upper-limb reduction defects that range from subtle phalangeal abnormalities to oligodactyly (missing digits)"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "subtle phalangeal abnormalities to oligodactyly (missing digits)", "span": "upper-limb reduction defects that range from subtle phalangeal abnormalities to oligodactyly (missing digits)"},
+        "hpo_label_candidate": {"value": "Upper limb reduction defect", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "mild hirsutism", "span": "mild hirsutism, and hypertelorism in the mammary region"},
+        "status": {"value": "observed", "span": "mild hirsutism, and hypertelorism in the mammary region"},
+        "evidence_basis": {"value": "stated for this individual", "span": "mild hirsutism, and hypertelorism in the mammary region"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "mild", "span": "mild hirsutism, and hypertelorism in the mammary region"},
+        "hpo_label_candidate": {"value": "Hirsutism", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "hypertelorism in the mammary region", "span": "mild hirsutism, and hypertelorism in the mammary region"},
+        "status": {"value": "observed", "span": "mild hirsutism, and hypertelorism in the mammary region"},
+        "evidence_basis": {"value": "stated for this individual", "span": "mild hirsutism, and hypertelorism in the mammary region"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "ivory-colored circinate lesions with peripheral pustules on the thighs", "span": "ivory-colored circinate lesions with peripheral pustules on the thighs"},
+        "status": {"value": "observed", "span": "ivory-colored circinate lesions with peripheral pustules on the thighs"},
+        "evidence_basis": {"value": "stated for this individual", "span": "ivory-colored circinate lesions with peripheral pustules on the thighs"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Pustular skin lesions", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "coalescent purulent lakes in the bilateral pretibial areas", "span": "coalescent purulent lakes in the bilateral pretibial areas, with associated palmoplantar scaling"},
+        "status": {"value": "observed", "span": "coalescent purulent lakes in the bilateral pretibial areas, with associated palmoplantar scaling"},
+        "evidence_basis": {"value": "stated for this individual", "span": "coalescent purulent lakes in the bilateral pretibial areas, with associated palmoplantar scaling"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "palmoplantar scaling", "span": "coalescent purulent lakes in the bilateral pretibial areas, with associated palmoplantar scaling"},
+        "status": {"value": "observed", "span": "coalescent purulent lakes in the bilateral pretibial areas, with associated palmoplantar scaling"},
+        "evidence_basis": {"value": "stated for this individual", "span": "coalescent purulent lakes in the bilateral pretibial areas, with associated palmoplantar scaling"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Palmoplantar scaling", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "dysprosody", "span": "Neurocognitive features include dysprosody and limited social interaction"},
+        "status": {"value": "observed", "span": "Neurocognitive features include dysprosody and limited social interaction"},
+        "evidence_basis": {"value": "stated for this individual", "span": "Neurocognitive features include dysprosody and limited social interaction"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "limited social interaction", "span": "Neurocognitive features include dysprosody and limited social interaction"},
+        "status": {"value": "observed", "span": "Neurocognitive features include dysprosody and limited social interaction"},
+        "evidence_basis": {"value": "stated for this individual", "span": "Neurocognitive features include dysprosody and limited social interaction"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "subcorneal pustules", "span": "neutrophil collections within the stratum corneum forming subcorneal pustules"},
+        "status": {"value": "observed", "span": "neutrophil collections within the stratum corneum forming subcorneal pustules"},
+        "evidence_basis": {"value": "stated for this individual", "span": "neutrophil collections within the stratum corneum forming subcorneal pustules"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Subcorneal pustules", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "feature_text_as_stated": {"value": "psoriasiform acanthosis of the epidermis", "span": "regular psoriasiform acanthosis of the epidermis"},
+        "status": {"value": "observed", "span": "regular psoriasiform acanthosis of the epidermis"},
+        "evidence_basis": {"value": "stated for this individual", "span": "regular psoriasiform acanthosis of the epidermis"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "regular", "span": "regular psoriasiform acanthosis of the epidermis"},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      }
+    ],
+    "phenotype_checklist": [
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "oral ulcers", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "genital ulcers", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "gastrointestinal ulcers or inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "recurrent fever", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "arthritis or arthralgia", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "uveitis or other ocular inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "skin lesions (rash, folliculitis, erythema nodosum)", "span": null},
+        "status": {"value": "observed", "span": "She presented with an 8-month history of erythematous, scaly, and pruritic plaques initially localized to the periareolar and supraumbilical regions"},
+        "evidence_basis": {"value": "stated for this individual", "span": "She presented with an 8-month history of erythematous, scaly, and pruritic plaques initially localized to the periareolar and supraumbilical regions"}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "autoimmune thyroiditis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "type 1 diabetes", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "autoimmune hepatitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "cytopenia (autoimmune)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "lymphoproliferation or lymphadenopathy", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "central nervous system involvement", "span": null},
+        "status": {"value": "observed", "span": "Neurocognitive features include dysprosody and limited social interaction"},
+        "evidence_basis": {"value": "stated for this individual", "span": "Neurocognitive features include dysprosody and limited social interaction"}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "recurrent infections", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "elevated inflammatory markers (CRP/ESR)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "autoantibodies (ANA/other)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "growth failure", "span": null},
+        "status": {"value": "observed", "span": "Physical examination revealed short stature, low weight-for-age"},
+        "evidence_basis": {"value": "stated for this individual", "span": "Physical examination revealed short stature, low weight-for-age"}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "pericarditis or other serositis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "interstitial lung disease", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "41226818", "span": "PMID: 41226818"},
+        "individual_label_in_paper": {"value": "patient", "span": "The proband is a 13-year-old female, Colombian, born from a vanishing twin pregnancy, with a maternal history of cleft palate."},
+        "checklist_feature": {"value": "vasculitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      }
+    ]
+  }
+}

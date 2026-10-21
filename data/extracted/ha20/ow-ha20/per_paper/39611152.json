@@ -1,0 +1,280 @@
+{
+  "pmid": "39611152",
+  "instructions_version": "extract_v6",
+  "reports_individuals_with_tnfaip3_variant": true,
+  "relevance_note": "The paper describes one identifiable patient with a germline TNFAIP3 variant, with individual-level detail in Table 2 ('| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years ...').",
+  "method_note": "Read only the paper, the schema and the rules; no script was used, all rows were written by hand. Scope: of the 24 AOSD patients, only the single patient with a TNFAIP3 variant (Table 2 'Patient 4') is in scope; the other four patients with variants (NOD2, TNFRSF1A, SCN9A) have no TNFAIP3 variant and no HA20 diagnosis and got no rows, their number is kept in publications.cohort_size_as_stated = 24. Table 3 (literature review) columns for the prior studies hold cohort-level counts only, no individual-level data, so no rows come from them. Table 3's 'VUS (n)' row for the 'Present study (2024)' column is a stacked cell whose values were on separate lines in one cell ('TNFRSF1A: P75L / NOD2: R675W, E751K / TNFAIP3: T647P / SCN9A: G884S'); each line is labelled with its gene, so I did not assign anything by position, and 'T647P' is recorded as the protein string of this study's single TNFAIP3 variant because the study prints exactly one TNFAIP3 variant (c.1939A>C); the paper never states that T647P is the protein change of c.1939A>C. Table 2 gives ages only as e.g. 'Female, 60 years' without saying whether this is age at diagnosis or at last evaluation; I recorded it under age_at_diagnosis because the study's only age measure is 'Age at diagnosis (years)' (Table 1, range 18-70) and did not fill age_at_last_evaluation. is_proband and cites_prior_report_of_same_patients are false with no span: the paper never calls this patient a proband or index case, is a cohort of 24 rather than a single-patient case report, and never says its patients were published before. The Discussion sentence 'the patient with the TNFAIP variant did not show atypical symptoms' is vague; I kept it as one excluded phenotypic_features row ('atypical symptoms') with a null HPO candidate. The abstract's 'except for one patient with the TNFAIP3 VUS' was not used as a phenotype row because it concerns atypical manifestations and/or treatment refractoriness together. Cohort-level counts in Table 1 were not used to exclude anything for this patient; the only group statement used is 'all patients had elevated acute-phase reactant levels and hyperferritinemia' (checklist item 'elevated inflammatory markers (CRP/ESR)', observed, inferred from group statement). Variant class, zygosity, inheritance, functional evidence and ACMG codes are not reported: the paper classifies the variant only as a VUS and prints no ACMG codes.",
+  "tables": {
+    "publications": [
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "first_author": {"value": "Prieto-Peña", "span": "Prieto-Peña Diana"},
+        "year": {"value": 2024, "span": "Frontiers in Immunology (2024)"},
+        "study_type": {"value": "case series/cohort", "span": "We conducted an observational, multicenter study in all patients with AOSD diagnosis in whom NGS analysis was performed."},
+        "n_patients_reported": {"value": 1, "span": "in another patient in TNFAIP3 (c.1939A>C)"},
+        "cohort_size_as_stated": {"value": 24, "span": "We identified 24 patients with AOSD diagnosis in whom NGS analysis was performed"},
+        "cites_prior_report_of_same_patients": {"value": false, "span": null},
+        "prior_report_citation": {"value": "not reported", "span": null}
+      }
+    ],
+    "individuals": [
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "family_label_in_paper": {"value": "not reported", "span": null},
+        "is_proband": {"value": false, "span": null},
+        "sex": {"value": "female", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years"},
+        "age_at_onset_original_text": {"value": "not reported", "span": null},
+        "age_at_onset_iso8601": {"value": null, "span": null},
+        "age_at_last_evaluation_original_text": {"value": "not reported", "span": null},
+        "age_at_last_evaluation_iso8601": {"value": null, "span": null},
+        "age_at_diagnosis_original_text": {"value": "60 years", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years"},
+        "age_at_diagnosis_iso8601": {"value": "P60Y", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years"},
+        "ethnicity_or_country": {"value": "not reported", "span": null},
+        "consanguinity": {"value": "not reported", "span": null},
+        "vital_status": {"value": "not reported", "span": null},
+        "deceased_age_iso8601": {"value": null, "span": null},
+        "cause_of_death": {"value": "not reported", "span": null},
+        "treatment_summary": {"value": "Complete response with GC; achieved a complete response with glucocorticoids alone", "span": ["Complete response with GC", "the patient with the TNFAIP variant did not show atypical symptoms and achieved a complete response with glucocorticoids alone"]},
+        "disease_label_as_stated": {"value": "AOSD", "span": "Clinical manifestations and course of the disease in AOSD patients with genetic variants."},
+        "clinical_diagnosis_basis": {"value": "AOSD diagnosis based on the Yamaguchi and/or Fautrel criteria; TNFAIP3 variant detected by NGS panel", "span": ["AOSD diagnosis was based on the Yamaguchi (23) and/or Fautrel (24) criteria.", "| Patient 4 | TNFAIP3 (c.1939A>C) |"]},
+        "source_reference_in_review": {"value": "not reported", "span": null}
+      }
+    ],
+    "variants": [
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "gene_symbol_as_stated": {"value": "TNFAIP3", "span": "TNFAIP3 (c.1939A>C)"},
+        "variant_original_string": {"value": "c.1939A>C", "span": "TNFAIP3 (c.1939A>C)"},
+        "transcript_as_stated": {"value": "not reported", "span": null},
+        "cdna_hgvs_as_stated": {"value": "c.1939A>C", "span": "TNFAIP3 (c.1939A>C)"},
+        "protein_hgvs_as_stated": {"value": "T647P", "span": "TNFAIP3: T647P"},
+        "genomic_coordinates_as_stated": {"value": null, "span": null},
+        "variant_type_as_stated": {"value": "not reported", "span": null},
+        "zygosity": {"value": "not reported", "span": null},
+        "inheritance": {"value": "not reported", "span": null},
+        "parental_testing_statement": {"value": "not reported", "span": null},
+        "functional_evidence_statement": {"value": "not reported", "span": null},
+        "pathogenicity_as_stated_by_authors": {"value": "variant of uncertain significance (VUS)", "span": "Variants of uncertain significance (VUS) were identified in two patients in NOD2 (c.2104C>T and c.2251G>A), in one patient in TNFRSF1A (c.224C>T), in another patient in TNFAIP3 (c.1939A>C)"},
+        "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+      }
+    ],
+    "phenotypic_features": [
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "feature_text_as_stated": {"value": "Fever", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years Fever, macular rash, arthritis, odynophagia, asthenia |"},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Fever", "span": null},
+        "hpo_id_candidate": {"value": "HP:0001945", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "feature_text_as_stated": {"value": "macular rash", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years Fever, macular rash, arthritis, odynophagia, asthenia |"},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Skin rash", "span": null},
+        "hpo_id_candidate": {"value": "HP:0000988", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "feature_text_as_stated": {"value": "arthritis", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years Fever, macular rash, arthritis, odynophagia, asthenia |"},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Arthritis", "span": null},
+        "hpo_id_candidate": {"value": "HP:0001369", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "feature_text_as_stated": {"value": "odynophagia", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years Fever, macular rash, arthritis, odynophagia, asthenia |"},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Odynophagia", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "feature_text_as_stated": {"value": "asthenia", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years Fever, macular rash, arthritis, odynophagia, asthenia |"},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Asthenia", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "feature_text_as_stated": {"value": "atypical symptoms", "span": "the patient with the TNFAIP variant did not show atypical symptoms"},
+        "status": {"value": "excluded", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      }
+    ],
+    "phenotype_checklist": [
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "oral ulcers", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "genital ulcers", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "gastrointestinal ulcers or inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "recurrent fever", "span": null},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years Fever, macular rash, arthritis, odynophagia, asthenia |"}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "arthritis or arthralgia", "span": null},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years Fever, macular rash, arthritis, odynophagia, asthenia |"}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "uveitis or other ocular inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "skin lesions (rash, folliculitis, erythema nodosum)", "span": null},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) | Female, 60 years Fever, macular rash, arthritis, odynophagia, asthenia |"}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "autoimmune thyroiditis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "type 1 diabetes", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "autoimmune hepatitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "cytopenia (autoimmune)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "lymphoproliferation or lymphadenopathy", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "central nervous system involvement", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "recurrent infections", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "elevated inflammatory markers (CRP/ESR)", "span": null},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "inferred from group statement", "span": "all patients had elevated acute-phase reactant levels and hyperferritinemia"}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "autoantibodies (ANA/other)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "growth failure", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "pericarditis or other serositis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "interstitial lung disease", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "39611152", "span": "PMID: 39611152"},
+        "individual_label_in_paper": {"value": "Patient 4", "span": "| Patient 4 | TNFAIP3 (c.1939A>C) |"},
+        "checklist_feature": {"value": "vasculitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      }
+    ]
+  }
+}
