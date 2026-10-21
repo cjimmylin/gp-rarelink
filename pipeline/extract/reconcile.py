@@ -255,7 +255,7 @@ def load(run_dir: Path, xml_dir: Path, gene: str) -> tuple[list[dict], dict[str,
     people, papers = [], {}
     for path in sorted((run_dir / "per_paper").glob("*.json")):
         doc = json.loads(path.read_text())
-        pmid = str(doc.get("pmid") or path.stem)
+        pmid = str(doc.get("pmid")) if str(doc.get("pmid") or "").isdigit() else path.stem  # a malformed pmid field falls back to the file name
         t = doc.get("tables") or {}
         pub = (t.get("publications") or [{}])[0]
         refs = reference_list(xml_dir / f"{pmid}.nxml")

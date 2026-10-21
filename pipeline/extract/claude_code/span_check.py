@@ -93,7 +93,7 @@ def check_paper(path: Path, md_dir: Path, schema: dict[str, dict], features: lis
         doc = json.loads(path.read_text())
     except json.JSONDecodeError as e:
         return [], [f"{path.stem}: output does not parse as JSON ({e})"], Counter({"papers_unparseable": 1})
-    pmid = str(doc.get("pmid", path.stem))
+    pmid = str(doc.get("pmid")) if str(doc.get("pmid") or "").isdigit() else path.stem  # a malformed pmid field falls back to the file name
     problems: list[str] = []
     counts: Counter = Counter()
     md_path = md_dir / f"{pmid}.md"
