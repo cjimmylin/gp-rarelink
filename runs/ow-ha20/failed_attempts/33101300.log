@@ -1,28 +1,4 @@
 turn 1: ['read_file', 'read_file'] tokens 892+124
 turn 2: ['read_file', 'read_file'] tokens 13576+249
-turn 3: ['read_file'] tokens 40308+447
-turn 4: ['grep', 'grep'] tokens 73215+62089
-turn 5: ['grep', 'read_file'] tokens 110400+123730
-turn 6: ['grep', 'grep', 'grep', 'grep', 'grep'] tokens 149976+183592
-  ... 29694 characters streamed, 755 s
-turn 7: ['write_file'] tokens 190260+235932
-  ... 75638 characters streamed, 674 s
-turn 8: ['write_file'] tokens 238998+281772
-  ... 26315 characters streamed, 179 s
-turn 9: ['write_file'] tokens 306229+295017
-Traceback (most recent call last):
-  File "<frozen runpy>", line 203, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 316, in <module>
-    raise SystemExit(main())
-                     ~~~~^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 306, in main
-    res = run(client, paths, ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta, progress=True)
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 246, in run
-    resp = client.complete(messages, TOOLS)
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 90, in complete
-    return self._complete_once(messages, tools)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 128, in _complete_once
-    raise RuntimeError(f"provider error: {ev['error']}")
-RuntimeError: provider error: {'code': 502, 'message': 'Network connection lost.', 'metadata': {'error_type': 'provider_unavailable'}}
+turn 3: ['read_file'] tokens 40308+338
+{"usage": {"prompt_tokens": 73199, "completion_tokens": 65874, "calls": 4}, "wall_seconds": 844.9, "output_written": false, "refused_calls": 0, "served_by": ["DeepInfra|deepseek/deepseek-v4.1-flash"], "cost_usd_reported": 0.035899, "retried_calls": []}

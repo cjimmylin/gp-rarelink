@@ -1,35 +1,30 @@
-turn 1: ['read_file', 'read_file', 'read_file'] tokens 892+178
-turn 2: ['read_file'] tokens 14110+245
-turn 3: ['grep', 'grep', 'grep', 'grep'] tokens 35851+28805
-turn 4: ['grep', 'grep', 'grep', 'grep'] tokens 62092+58099
-turn 5: ['grep', 'grep', 'grep', 'grep'] tokens 92499+65887
-turn 6: ['grep', 'grep', 'grep', 'grep'] tokens 130711+66933
-turn 7: ['grep', 'grep', 'grep', 'grep'] tokens 171972+68746
-turn 8: ['grep', 'grep', 'grep', 'grep'] tokens 214274+93858
-turn 9: ['grep', 'grep', 'grep', 'grep'] tokens 257598+95455
-turn 10: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 303886+125175
-turn 11: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 353870+150377
-turn 12: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 409650+178432
-turn 13: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 467756+216820
-turn 14: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 530658+217526
-turn 15: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 595528+256719
-turn 16: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 665928+257940
-Traceback (most recent call last):
-  File "<frozen runpy>", line 203, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 316, in <module>
-    meta = {"endpoint": base, "model": model, "provider_pinned": provider, "run_id": a.run_id, "disease": a.disease, "pmid": a.pmid,
-                     ^^^^^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 306, in main
-    os.environ.setdefault(k.strip(), v.strip())
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 246, in run
-    box = Sandbox(reads={paths[k].resolve() for k in ("instructions", "schema", "rules", "paper")},
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 90, in complete
-    call_wall_seconds: float = 3600.0
-                       ^^^^^^^^^^^^^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 128, in _complete_once
-    timeout=httpx.Timeout(self.timeout, read=300.0)) as r:
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-RuntimeError: provider error: {'code': 502, 'message': 'Network connection lost.', 'metadata': {'error_type': 'provider_unavailable'}}
+turn 1: ['read_file', 'read_file'] tokens 892+124
+turn 2: ['read_file', 'read_file'] tokens 13576+321
+  ... 26825 characters streamed, 770 s
+turn 3: ['write_file'] tokens 35317+65857
+  ... 30266 characters streamed, 548 s
+turn 4: ['write_file'] tokens 57133+119188
+  ... 22252 characters streamed, 99 s
+turn 5: ['edit_file'] tokens 87031+129270
+turn 6: ['edit_file'] tokens 122371+131306
+turn 7: ['write_file'] tokens 157957+138127
+turn 8: ['edit_file'] tokens 195617+138233
+turn 9: ['edit_file'] tokens 233422+138877
+  ... 24734 characters streamed, 48 s
+turn 10: ['edit_file'] tokens 271372+146112
+  ... 25960 characters streamed, 38 s
+turn 11: ['edit_file'] tokens 315265+152576
+  ... 25497 characters streamed, 38 s
+turn 12: ['edit_file'] tokens 365545+158636
+turn 13: ['grep', 'grep'] tokens 421883+161245
+turn 14: ['grep', 'read_file'] tokens 481056+161882
+turn 15: ['edit_file'] tokens 544579+164842
+turn 16: ['edit_file'] tokens 608463+168068
+turn 17: ['edit_file'] tokens 672670+168322
+turn 18: ['grep'] tokens 737150+169139
+turn 19: ['read_file'] tokens 802720+170342
+turn 20: ['grep'] tokens 869316+173262
+turn 21: ['edit_file'] tokens 940499+177572
+turn 22: ['grep', 'grep'] tokens 1012048+180142
+turn 23: ['edit_file'] tokens 1095546+183929
+{"usage": {"prompt_tokens": 1179551, "completion_tokens": 184344, "calls": 24}, "wall_seconds": 1910.5, "output_written": true, "refused_calls": 0, "served_by": ["DeepInfra|deepseek/deepseek-v4.1-flash"], "cost_usd_reported": 0.093803, "retried_calls": []}

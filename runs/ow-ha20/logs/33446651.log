@@ -1,30 +1,57 @@
-turn 1: ['read_file', 'read_file'] tokens 892+123
-turn 2: ['read_file', 'read_file'] tokens 13575+248
-turn 3: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 32179+45176
-turn 4: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 53136+77488
-turn 5: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 74734+78001
-turn 6: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 98922+83956
-turn 7: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 125513+95052
-turn 8: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 152854+95709
-turn 9: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 182583+103610
-turn 10: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 214627+104188
-turn 11: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 248543+137974
-turn 12: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 284523+173765
-  retry 1/3 after ReadError: [Errno 104] Connection reset by peer
-turn 13: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 322492+235706
-Traceback (most recent call last):
-  File "<frozen runpy>", line 203, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 316, in <module>
-    raise SystemExit(main())
-                     ~~~~^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 306, in main
-    res = run(client, paths, ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta, progress=True)
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 246, in run
-    resp = client.complete(messages, TOOLS)
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 90, in complete
-    return self._complete_once(messages, tools)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 128, in _complete_once
-    raise RuntimeError(f"provider error: {ev['error']}")
-RuntimeError: provider error: {'code': 502, 'message': 'Network connection lost.', 'metadata': {'error_type': 'provider_unavailable'}}
+turn 1: ['read_file', 'read_file'] tokens 892+124
+turn 2: ['read_file', 'read_file'] tokens 13576+240
+turn 3: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 32181+41800
+turn 4: ['grep', 'grep', 'grep', 'grep'] tokens 51545+42348
+turn 5: ['write_file'] tokens 73384+43028
+turn 6: ['glob'] tokens 95843+43081
+turn 7: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 118368+62770
+turn 8: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 143180+63592
+turn 9: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 170837+65617
+turn 10: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 201199+123678
+turn 11: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 233306+135156
+turn 12: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 267202+191251
+turn 13: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 303041+224119
+turn 14: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 340254+268271
+turn 15: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 380412+302585
+turn 16: ['write_file'] tokens 422736+368121
+turn 17: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 465112+397641
+turn 18: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 509184+421360
+turn 19: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 555435+453502
+turn 20: ['write_file'] tokens 604239+519038
+turn 21: ['write_file'] tokens 653106+584574
+  ... 34676 characters streamed, 605 s
+turn 22: ['write_file'] tokens 702025+629469
+  ... 45766 characters streamed, 313 s
+turn 23: ['edit_file'] tokens 760650+654156
+  ... 62362 characters streamed, 186 s
+turn 24: ['edit_file'] tokens 831158+675094
+turn 25: ['read_file'] tokens 919404+675772
+turn 26: ['grep', 'grep', 'grep', 'grep'] tokens 1008417+680590
+turn 27: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 1098526+681912
+turn 28: ['edit_file'] tokens 1189920+685270
+turn 29: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 1281882+687303
+turn 30: ['grep', 'grep', 'grep', 'grep'] tokens 1374643+688812
+turn 31: ['grep'] tokens 1468427+690850
+turn 32: ['read_file'] tokens 1563683+694201
+turn 33: ['edit_file'] tokens 1661812+697429
+turn 34: ['edit_file'] tokens 1760255+699478
+turn 35: ['edit_file'] tokens 1858975+701514
+turn 36: ['edit_file'] tokens 1959750+702185
+turn 37: ['edit_file'] tokens 2060772+702491
+turn 38: ['edit_file'] tokens 2162013+703616
+turn 39: ['edit_file'] tokens 2263597+704547
+turn 40: ['edit_file'] tokens 2365463+706624
+turn 41: ['read_file'] tokens 2467621+707118
+turn 42: ['edit_file'] tokens 2570951+707896
+turn 43: ['grep', 'grep'] tokens 2674871+709480
+turn 44: ['edit_file'] tokens 2797970+712456
+turn 45: ['grep', 'grep'] tokens 2921707+713047
+turn 46: ['grep', 'grep', 'grep'] tokens 3045631+714547
+turn 47: ['read_file'] tokens 3171974+715737
+turn 48: ['edit_file'] tokens 3298749+716502
+turn 49: ['edit_file'] tokens 3425896+716877
+turn 50: ['edit_file'] tokens 3553409+719797
+turn 51: ['edit_file'] tokens 3681112+720348
+turn 52: ['edit_file'] tokens 3809140+721116
+turn 53: ['grep', 'grep', 'grep', 'grep'] tokens 3937502+723070
+{"usage": {"prompt_tokens": 4068117, "completion_tokens": 724218, "calls": 54}, "wall_seconds": 9827.8, "output_written": true, "refused_calls": 0, "served_by": ["DeepInfra|deepseek/deepseek-v4.1-flash"], "cost_usd_reported": 0.339095, "retried_calls": []}

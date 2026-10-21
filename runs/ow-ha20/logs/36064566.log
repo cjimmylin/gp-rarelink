@@ -1,20 +1,36 @@
-turn 1: ['read_file', 'read_file'] tokens 892+123
-turn 2: ['read_file', 'read_file'] tokens 13575+248
-turn 3: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 35972+35523
-turn 4: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 60572+50346
-Traceback (most recent call last):
-  File "<frozen runpy>", line 203, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 316, in <module>
-    raise SystemExit(main())
-                     ~~~~^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 306, in main
-    res = run(client, paths, ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta, progress=True)
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 246, in run
-    resp = client.complete(messages, TOOLS)
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 90, in complete
-    return self._complete_once(messages, tools)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 128, in _complete_once
-    raise RuntimeError(f"provider error: {ev['error']}")
-RuntimeError: provider error: {'code': 502, 'message': 'Network connection lost.', 'metadata': {'error_type': 'provider_unavailable'}}
+turn 1: ['read_file', 'read_file'] tokens 892+124
+turn 2: ['read_file', 'read_file'] tokens 13576+248
+  ... 33809 characters streamed, 543 s
+turn 3: ['write_file'] tokens 35974+46511
+turn 4: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 67641+48159
+  ... 159861 characters streamed, 354 s
+turn 5: ['write_file'] tokens 101371+92926
+turn 6: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 178427+93687
+turn 7: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 256586+94218
+turn 8: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 336256+97740
+turn 9: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 417777+102252
+turn 10: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 501514+106283
+turn 11: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 585921+106987
+turn 12: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 671997+107924
+turn 13: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 759062+110334
+turn 14: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 847600+113131
+turn 15: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 939568+117094
+turn 16: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 1033489+119382
+turn 17: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 1130464+121853
+turn 18: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 1229476+125501
+turn 19: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 1330241+129708
+turn 20: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 1432617+131758
+turn 21: ['grep', 'grep', 'grep', 'grep'] tokens 1536838+135082
+turn 22: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 1643084+138041
+turn 23: ['edit_file'] tokens 1751367+141495
+turn 24: ['edit_file'] tokens 1859995+142383
+turn 25: ['edit_file'] tokens 1969066+142541
+turn 26: ['edit_file'] tokens 2078314+142845
+turn 27: ['grep', 'grep', 'grep', 'grep', 'grep'] tokens 2187885+145243
+turn 28: ['edit_file'] tokens 2298440+145951
+turn 29: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 2409217+148111
+turn 30: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 2520943+150384
+turn 31: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 2633906+151068
+turn 32: ['grep', 'grep'] tokens 2748444+153953
+turn 33: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 2910971+159247
+{"usage": {"prompt_tokens": 3076184, "completion_tokens": 160061, "calls": 34}, "wall_seconds": 1669.6, "output_written": true, "refused_calls": 0, "served_by": ["DeepInfra|deepseek/deepseek-v4.1-flash"], "cost_usd_reported": 0.106926, "retried_calls": []}
