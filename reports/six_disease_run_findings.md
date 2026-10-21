@@ -297,6 +297,6 @@ The six-disease run, the repeat and Stage 4 together come to +$832.70 by session
 1. Jimmy shares the two rater pages with two panel members (D-11).
 1a. Jimmy shares the adjudication page (https://claude.ai/artifact/UUWN2ULAGkYYNQj4zDy9ta) when the panel starts O3; read `adjudication/o3_gaps/helper_notes_2026-10-21.md` first.
 1b. A person fills the four comparator sheets (`analysis/bias/comparator_sheets/README.md`) without looking at literature frequencies first.
-1c. Jimmy opens the hosted account for the open-weight comparison (D-10).
+1c. ~~Jimmy opens the hosted account for the open-weight comparison (D-10).~~ Done 2026-10-21 through OpenRouter; results in `reports/openweight_comparison_findings.md`. The blinded audit of both models' samples still waits on D-11.
 2. Triage of the 50 sampled O2 misses (a panel member if one offers time, otherwise Jimmy, §7.2.6).
 3. Optional: review the five checklist-to-HPO maps (`configs/checklist_hpo/`).

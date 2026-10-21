@@ -6,7 +6,7 @@ How to maintain it:
 - Add what a future session would need to know. Keep entries short and dated.
 - Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
 
-*Last updated 2026-10-20.*
+*Last updated 2026-10-21.*
 
 ## 1. Where things stand (2026-10-18)
 
@@ -89,7 +89,7 @@ How to maintain it:
     - **WS5 memorization probe:** `analysis/bias/memorization/`, no recall found, $5.
     - **WS6 bias prep:** comparator sheets await a person (`analysis/bias/comparator_sheets/README.md`).
     - **WS7 exploratory:** GPSEA in its own uv project, `analysis/exploratory/gpsea/`.
-    - **WS8 open-weight loop:** `pipeline/extract/openweight/agent.py`, waiting on the D-10 account.
+    - **WS8 open-weight loop:** `pipeline/extract/openweight/agent.py`; run on 2026-10-21 (below).
     - **WS9:** drafts in `reports/drafts/`.
   - **Follow-on, same day (no spend):**
     - ClinVar re-check against the 2026-10-19 release: all 215 candidates still absent (`adjudication/o3_gaps/recheck_2026-10-21.json`).
@@ -99,6 +99,13 @@ How to maintain it:
     - 19 proposed same-person groups, not merged (`adjudication/o3_gaps/proposed_merges.csv`).
     - Pending submission records `submissions/make_records.py` (format waits on D-13).
     - The LAD-I deduplication benchmark is not computable.
+  - **D-10 open-weight runs done (2026-10-21):** `ow-ha20` (85) and `ow-ssadh` (40), DeepSeek-V4.1-Flash on OpenRouter pinned to DeepInfra fp8, $20.35 on the key. Report `reports/openweight_comparison_findings.md` (regenerate: `analysis/openweight/summary.py`, then `report.py`); manifests `runs/ow-<d>/manifest.json`. Blinded audit still to do (waits on D-11).
+    - **The OpenRouter key is a network secret the proxy adds for openrouter.ai**; the session never sees it. Check spend with `curl https://openrouter.ai/api/v1/key`.
+    - **DeepInfra drops connections often** (reset by peer, in-stream 502). The client retries; expect ~50 retries per 125 papers.
+    - **Run batches detached** (`setsid nohup`), not as a background Bash job: those are killed at 2 hours and the run takes ~12. Watch the log with Monitor.
+    - **Before re-running a failed paper, move its scratch files and partial output away** (`runs/ow-<d>/failed_attempts/`), or the new attempt sees the old one's work.
+    - **Open-weight outputs break the schema shape in small ways** (a cell as a bare string, a pmid given as a cell). `span_check`, the Stage 4 readers and `concordance_o2` now tolerate these; pv1 outputs were checked byte-identical after each change.
+    - **`concordance_o2 --run-prefix ow --diseases ha20 ssadh --out analysis/openweight/o2`** scores the open-weight runs with Claude's harness.
   - **The proxy cuts the 456 MB ClinVar variant_summary download near the end about half the time** (RemoteProtocolError). Run genes one at a time and retry up to three times; only a gene with a MANIFEST has a complete, md5-checked file.
   - **GPSEA needs pandas < 3; the frozen pipeline is locked to pandas 3.0.6.** Never add GPSEA to the main `pyproject.toml`; use `analysis/exploratory/gpsea` (`uv sync` there). GPSEA needs a genotype on every call, so that run fills missing zygosity by a stated assumption; the records stay three-state.
   - **The isolation test also rejects 'harness' and 'clinvar' anywhere in `pipeline/extract`.** The open-weight module avoids those words.
