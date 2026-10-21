@@ -1,128 +1,134 @@
 {
- "status": "running",
- "meta": {
-  "endpoint": "https://openrouter.ai/api/v1",
-  "model": "deepseek/deepseek-v4.1-flash",
-  "provider_pinned": "deepinfra/fp8",
-  "run_id": "ow-ha20",
-  "disease": "ha20",
-  "pmid": "41654260",
-  "date": "2026-10-21"
+ "result": {
+  "meta": {
+   "endpoint": "https://openrouter.ai/api/v1",
+   "model": "deepseek/deepseek-v4.1-flash",
+   "provider_pinned": "deepinfra/fp8",
+   "run_id": "ow-ha20",
+   "disease": "ha20",
+   "pmid": "41654260",
+   "date": "2026-10-21"
+  },
+  "prompt_file": "pipeline/extract/openweight/launch_prompt_v1.txt",
+  "usage": {
+   "prompt_tokens": 472716,
+   "completion_tokens": 60791,
+   "calls": 11
+  },
+  "wall_seconds": 725.9,
+  "tool_log": [
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/pipeline/extract/claude_code/prompts/extract_v6.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/pipeline/extract/claude_code/schema_ha20_v5.json"
+    },
+    "ok": true
+   },
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md",
+     "offset": 247
+    },
+    "ok": true
+   },
+   {
+    "tool": "grep",
+    "args": {
+     "pattern": " / ",
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "grep",
+    "args": {
+     "pattern": "TNFAIP3",
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "write_file",
+    "args": {
+     "path": "/tmp/openweight_scratch/ow-ha20/41654260/build.py"
+    },
+    "ok": true
+   },
+   {
+    "tool": "edit_file",
+    "args": {
+     "path": "/tmp/openweight_scratch/ow-ha20/41654260/build.py",
+     "old": "            \"variant_original_string\": {\"value\": protein, \"span\": seg},",
+     "new": "            \"variant_original_string\": {\"value\": vtype, \"span\": seg},"
+    },
+    "ok": false,
+    "error": "old string must occur exactly once"
+   },
+   {
+    "tool": "write_file",
+    "args": {
+     "path": "/tmp/openweight_scratch/ow-ha20/41654260/build.py"
+    },
+    "ok": true
+   },
+   {
+    "tool": "write_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/41654260.json"
+    },
+    "ok": true
+   },
+   {
+    "tool": "grep",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md",
+     "pattern": "\\| TNFAIP3 \\| chr6:137876099:C>A \\| p.Tyr246Ter \\||LYM, Lymphoproliferation|DEF, Immune Deficiency|DYS, Immune Dysregulation|Schmitz Elizabeth G\\.|Patient 66 had a nonsense mutation|two other patients with predicted LOF|The patient here has a lymphoproliferative phenotype"
+    },
+    "ok": true
+   },
+   {
+    "tool": "grep",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md",
+     "pattern": "Immune cells isolated from blood demonstrated|Patient 99 had an early frameshift|LMP, Likely mosaic pathogenic|\\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\||\\| 66 \\| LYM"
+    },
+    "ok": true
+   },
+   {
+    "tool": "grep",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md",
+     "pattern": "\\| 99 \\| DYS \\| TNFAIP3 \\| p.Asn98LysfsTer27 \\| 28.1 \\| Novel \\| None \\| AD-LOF \\| NM \\| LMP \\||\\| 507 \\| DEF \\| TNFAIP3 \\| p.Leu147GlnfsTer7 \\| 28.4 \\| Novel \\| Germline\\^34 \\| AD-LOF \\| NM \\| LMP \\||\\| TNFAIP3 \\| chr6:137871512:G>GAAAAC \\| p.Asn98LysfsTer27 \\||\\| TNFAIP3 \\| chr6:137874984:GTC>G \\| p.Leu147GlnfsTer7 \\||\\| 99 \\| V1 \\| 17 \\| F \\| TNFAIP3 \\||\\| 507 \\| V2 \\| 50 \\| M \\| TNFAIP3 \\||\\(2026\\)"
+    },
+    "ok": true
+   }
+  ],
+  "final_reply": "Done. Output written and every span re-checked verbatim against the paper.\n\n**Rows per table:** publications 1; individuals 3; variants 3; phenotypic_features 3; phenotype_checklist 60 (3 × 20).\n\n**Individuals:** 3 (Patient ID 66, Patient ID 99, Patient ID 507 — the only people with a *TNFAIP3* variant). The other 449 affected and 154 healthy cohort members are out of scope.\n\n**reports_individuals_with_tnfaip3_variant:** `true` (individual-level sex, age, variant and phenotype are given for each).\n\n**Uncertainties**\n1. `disease_label_as_stated` uses the Table 3 \"Clin. Pheno\" codes (LYM/DYS/DEF); the authors never give these patients an HA20 diagnosis, and Table 3 conflicts with the text (all three said to have lymphoproliferation).\n2. Table 1's \"Age\" column is undefined — recorded as age at last evaluation; may be age at sampling.\n3. Variant type \"frameshift\" for Patient ID 507 rests only on the table's class heading, not a sentence.\n4. \"mosaic\" zygosity comes from a group sentence; germline vs somatic is never stated for these three, and no parental testing is reported.\n5. Clinical detail (Supplemental Table S5) is unavailable, so nearly all checklist items are \"not reported\".",
+  "output_written": true,
+  "refused_calls": 0
  },
- "usage": {
-  "prompt_tokens": 403137,
-  "completion_tokens": 60374,
-  "calls": 10
- },
- "tool_log": [
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/pipeline/extract/claude_code/prompts/extract_v6.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/pipeline/extract/claude_code/schema_ha20_v5.json"
-   },
-   "ok": true
-  },
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md",
-    "offset": 247
-   },
-   "ok": true
-  },
-  {
-   "tool": "grep",
-   "args": {
-    "pattern": " / ",
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "grep",
-   "args": {
-    "pattern": "TNFAIP3",
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "write_file",
-   "args": {
-    "path": "/tmp/openweight_scratch/ow-ha20/41654260/build.py"
-   },
-   "ok": true
-  },
-  {
-   "tool": "edit_file",
-   "args": {
-    "path": "/tmp/openweight_scratch/ow-ha20/41654260/build.py",
-    "old": "            \"variant_original_string\": {\"value\": protein, \"span\": seg},",
-    "new": "            \"variant_original_string\": {\"value\": vtype, \"span\": seg},"
-   },
-   "ok": false,
-   "error": "old string must occur exactly once"
-  },
-  {
-   "tool": "write_file",
-   "args": {
-    "path": "/tmp/openweight_scratch/ow-ha20/41654260/build.py"
-   },
-   "ok": true
-  },
-  {
-   "tool": "write_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/41654260.json"
-   },
-   "ok": true
-  },
-  {
-   "tool": "grep",
-   "args": {
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md",
-    "pattern": "\\| TNFAIP3 \\| chr6:137876099:C>A \\| p.Tyr246Ter \\||LYM, Lymphoproliferation|DEF, Immune Deficiency|DYS, Immune Dysregulation|Schmitz Elizabeth G\\.|Patient 66 had a nonsense mutation|two other patients with predicted LOF|The patient here has a lymphoproliferative phenotype"
-   },
-   "ok": true
-  },
-  {
-   "tool": "grep",
-   "args": {
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md",
-    "pattern": "Immune cells isolated from blood demonstrated|Patient 99 had an early frameshift|LMP, Likely mosaic pathogenic|\\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\| \\*\\*Frameshift\\*\\* \\||\\| 66 \\| LYM"
-   },
-   "ok": true
-  },
-  {
-   "tool": "grep",
-   "args": {
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/41654260.md",
-    "pattern": "\\| 99 \\| DYS \\| TNFAIP3 \\| p.Asn98LysfsTer27 \\| 28.1 \\| Novel \\| None \\| AD-LOF \\| NM \\| LMP \\||\\| 507 \\| DEF \\| TNFAIP3 \\| p.Leu147GlnfsTer7 \\| 28.4 \\| Novel \\| Germline\\^34 \\| AD-LOF \\| NM \\| LMP \\||\\| TNFAIP3 \\| chr6:137871512:G>GAAAAC \\| p.Asn98LysfsTer27 \\||\\| TNFAIP3 \\| chr6:137874984:GTC>G \\| p.Leu147GlnfsTer7 \\||\\| 99 \\| V1 \\| 17 \\| F \\| TNFAIP3 \\||\\| 507 \\| V2 \\| 50 \\| M \\| TNFAIP3 \\||\\(2026\\)"
-   },
-   "ok": true
-  }
- ],
  "messages": [
   {
    "role": "user",
@@ -369,6 +375,10 @@
    "role": "tool",
    "tool_call_id": "chatcmpl-tool-9ca9673a9fe71db4",
    "content": "5\tJournal: The Journal of allergy and clinical immunology (2026)\n163\t| 99 | V1 | 17 | F | TNFAIP3 | chr6:137871512:G>GAAAAC | p.Asn98LysfsTer27 | 0.016 | 0.0148 | 0.0162 |\n168\t| 507 | V2 | 50 | M | TNFAIP3 | chr6:137874984:GTC>G | p.Leu147GlnfsTer7 | 0.060 | ND | ND |\n255\t| 99 | DYS | TNFAIP3 | p.Asn98LysfsTer27 | 28.1 | Novel | None | AD-LOF | NM | LMP |\n260\t| 507 | DEF | TNFAIP3 | p.Leu147GlnfsTer7 | 28.4 | Novel | Germline^34 | AD-LOF | NM | LMP |"
+  },
+  {
+   "role": "assistant",
+   "content": "Done. Output written and every span re-checked verbatim against the paper.\n\n**Rows per table:** publications 1; individuals 3; variants 3; phenotypic_features 3; phenotype_checklist 60 (3 × 20).\n\n**Individuals:** 3 (Patient ID 66, Patient ID 99, Patient ID 507 — the only people with a *TNFAIP3* variant). The other 449 affected and 154 healthy cohort members are out of scope.\n\n**reports_individuals_with_tnfaip3_variant:** `true` (individual-level sex, age, variant and phenotype are given for each).\n\n**Uncertainties**\n1. `disease_label_as_stated` uses the Table 3 \"Clin. Pheno\" codes (LYM/DYS/DEF); the authors never give these patients an HA20 diagnosis, and Table 3 conflicts with the text (all three said to have lymphoproliferation).\n2. Table 1's \"Age\" column is undefined — recorded as age at last evaluation; may be age at sampling.\n3. Variant type \"frameshift\" for Patient ID 507 rests only on the table's class heading, not a sentence.\n4. \"mosaic\" zygosity comes from a group sentence; germline vs somatic is never stated for these three, and no parental testing is reported.\n5. Clinical detail (Supplemental Table S5) is unavailable, so nearly all checklist items are \"not reported\"."
   }
  ]
 }

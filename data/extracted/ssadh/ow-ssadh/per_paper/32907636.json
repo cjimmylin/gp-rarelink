@@ -1,0 +1,87 @@
+{
+ "pmid": "32907636",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "One in-scope person is described: patient 17, whose Table 2 row reads \"| ALDH5A1 | c.515G>A, p.(Arg172His) homozygous | Succinic semialdehyde dehydrogenase deficiency |\".",
+ "method_note": "I read the whole paper by hand (it has no supplementary-material section); no script transcribed any table, but I built this JSON with a short script in my scratch directory and re-checked every span against the Markdown by hand. Scope: of the 66 recruited patients only patient 17 (Table 2) carries an ALDH5A1 variant and has a succinic semialdehyde dehydrogenase deficiency diagnosis; every other cohort member is out of scope and counted in publications.cohort_size_as_stated. Label: the text uses the form \"patient 11\"/\"patient 10\" and Table 2's first column is \"Patient no./sex\" with the cell \"17/M\", so I used \"Patient 17\" (rule 1); family_label_in_paper is not reported because no family label is printed. The age cell \"3.5 yo/9 yo\" was split using the column header \"Age of onset/age of last follow-up\", not by position within a stacked cell. Table-symbol caution: the Table 1/Table 2 notes define only \"M male, F female, mo month(s), yo year(s), CNS central nervous system\" and \"^aAge at death\"; neither the minus nor the plus sign is defined as absent/present, so no phenotypic_features rows were emitted for patient 17's marked columns (Muscular, CNS, Heart, Vision, Hearing, Neuro-imaging) and all 20 checklist items are \"not reported\". Variant fields: pathogenicity, inheritance and variant type are left \"not reported\" because the paper's relevant statements (\"Disease-causing variants were detected in 10 patients by using singleton WES analysis.\", \"Segregation analysis helped classify the variants in 12 cases as pathogenic or likely pathogenic.\") are cohort-level and do not name a group that is this person; \"homozygous\" is taken from this patient's own Table 2 cell. Contradictions found: none.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {"value": "32907636", "span": "PMID: 32907636"},
+    "first_author": {"value": "Tsang", "span": "Authors: Tsang Mandy H.Y."},
+    "year": {"value": 2020, "span": "Journal: Human Genomics (2020)"},
+    "study_type": {"value": "case series/cohort", "span": "Sixty-six patients with pre-biopsy MDC scores of 3\u20138 were recruited."},
+    "n_patients_reported": {"value": 1, "span": "| ALDH5A1 | c.515G>A, p.(Arg172His) homozygous | Succinic semialdehyde dehydrogenase deficiency |"},
+    "cohort_size_as_stated": {"value": 66, "span": "Sixty-six patients with pre-biopsy MDC scores of 3\u20138 were recruited."},
+    "cites_prior_report_of_same_patients": {"value": true, "span": "our team published the largest COQ4 cases series with 11 Chinese patients from nine families (including patients 1 to 4 in this study) in collaboration with a Taiwanese group [16]."},
+    "prior_report_citation": {"value": "Yu MH-C, Tsang MH-Y, Lai S, et al, 2019, Primary coenzyme Q10 deficiency-7: expanded phenotypic spectrum and a founder mutation in southern Chinese, npj Genomic Med PMID:31396399", "span": "Yu MH-C, Tsang MH-Y, Lai S, et al, 2019, Primary coenzyme Q10 deficiency-7: expanded phenotypic spectrum and a founder mutation in southern Chinese, npj Genomic Med PMID:31396399"}
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {"value": "32907636", "span": "PMID: 32907636"},
+    "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"},
+    "family_label_in_paper": {"value": "not reported", "span": null},
+    "is_proband": {"value": false, "span": null},
+    "sex": {"value": "male", "span": "| 17/M |"},
+    "age_at_onset_original_text": {"value": "3.5 yo", "span": "| 17/M | \u2212 | 3.5 yo/9 yo |"},
+    "age_at_onset_iso8601": {"value": "P3Y6M", "span": "| 17/M | \u2212 | 3.5 yo/9 yo |"},
+    "age_at_last_evaluation_original_text": {"value": "9 yo", "span": "| 17/M | \u2212 | 3.5 yo/9 yo |"},
+    "age_at_last_evaluation_iso8601": {"value": "P9Y", "span": "| 17/M | \u2212 | 3.5 yo/9 yo |"},
+    "age_at_diagnosis_original_text": {"value": "not reported", "span": null},
+    "age_at_diagnosis_iso8601": {"value": null, "span": null},
+    "ethnicity_or_country": {"value": "Chinese", "span": "We recruited Chinese patients who had paediatric-onset MDs and a minimum mitochondrial disease criteria (MDC) score of 3."},
+    "consanguinity": {"value": "no", "span": "The patients recruited were from 63 non-consanguineous Chinese families"},
+    "vital_status": {"value": "not reported", "span": null},
+    "deceased_age_iso8601": {"value": null, "span": null},
+    "cause_of_death": {"value": "not reported", "span": null},
+    "treatment_summary": {"value": "not reported", "span": null},
+    "disease_label_as_stated": {"value": "Succinic semialdehyde dehydrogenase deficiency", "span": "| c.515G>A, p.(Arg172His) homozygous | Succinic semialdehyde dehydrogenase deficiency |"},
+    "clinical_diagnosis_basis": {"value": "genetic testing: disease-causing variant found by whole-exome sequencing", "span": ["| ALDH5A1 | c.515G>A, p.(Arg172His) homozygous | Succinic semialdehyde dehydrogenase deficiency |", "WES was performed for 55 patients as singletons, four as duos (three pairs of affected siblings and an affected mother-child pair), and seven as trios."]},
+    "source_reference_in_review": {"value": "not reported", "span": null}
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {"value": "32907636", "span": "PMID: 32907636"},
+    "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"},
+    "gene_symbol_as_stated": {"value": "ALDH5A1", "span": "| ALDH5A1 | c.515G>A, p.(Arg172His) homozygous |"},
+    "variant_original_string": {"value": "c.515G>A", "span": "c.515G>A"},
+    "transcript_as_stated": {"value": "not reported", "span": null},
+    "cdna_hgvs_as_stated": {"value": "c.515G>A", "span": "c.515G>A"},
+    "protein_hgvs_as_stated": {"value": "p.(Arg172His)", "span": "p.(Arg172His)"},
+    "genomic_coordinates_as_stated": {"value": null, "span": null},
+    "variant_type_as_stated": {"value": "not reported", "span": null},
+    "zygosity": {"value": "homozygous", "span": "| ALDH5A1 | c.515G>A, p.(Arg172His) homozygous |"},
+    "inheritance": {"value": "not reported", "span": null},
+    "parental_testing_statement": {"value": "not reported", "span": null},
+    "functional_evidence_statement": {"value": "not reported", "span": null},
+    "pathogenicity_as_stated_by_authors": {"value": "not reported", "span": null},
+    "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+   }
+  ],
+  "phenotypic_features": [],
+  "phenotype_checklist": [
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "intellectual disability", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "speech or language impairment", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "hypotonia", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "gross or fine motor deficits", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "seizures or epilepsy", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "EEG abnormality (background slowing or epileptiform activity)", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "ataxia", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "dystonia", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "exertional dyskinesia", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "hemiballismus", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "autism spectrum disorder or autistic behaviors", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "attention problems or ADHD", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "anxiety", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "obsessive-compulsive traits", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "aggression or disruptive behavior", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "sleep disturbances", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "depression or mood fluctuation", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "psychotic symptoms (hallucinations or delusions)", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}},
+   {"pmid": {"value": "32907636", "span": "PMID: 32907636"}, "individual_label_in_paper": {"value": "Patient 17", "span": "| 17/M |"}, "checklist_feature": {"value": "cerebral or cerebellar atrophy", "span": null}, "status": {"value": "not reported", "span": null}, "evidence_basis": {"value": "not reported", "span": null}}
+  ]
+ }
+}

@@ -1,0 +1,19 @@
+  retry 1/3 after ReadError: [Errno 104] Connection reset by peer
+turn 1: ['read_file', 'read_file'] tokens 899+127
+turn 2: ['read_file', 'read_file'] tokens 13648+244
+turn 3: ['write_file'] tokens 32023+65780
+  ... 66769 characters streamed, 559 s
+turn 4: ['write_file'] tokens 50453+124757
+turn 5: ['write_file'] tokens 85446+126892
+  ... 55390 characters streamed, 118 s
+turn 6: ['edit_file'] tokens 121672+143589
+turn 7: ['edit_file'] tokens 172138+144224
+turn 8: ['grep'] tokens 223220+144349
+turn 9: ['grep', 'read_file'] tokens 276436+144786
+turn 10: ['edit_file'] tokens 345399+147782
+turn 11: ['grep'] tokens 414719+147978
+turn 12: ['grep'] tokens 485499+148260
+turn 13: ['edit_file'] tokens 560640+149419
+turn 14: ['edit_file'] tokens 636078+149703
+turn 15: ['read_file', 'read_file'] tokens 711819+150244
+{"usage": {"prompt_tokens": 789074, "completion_tokens": 151411, "calls": 16}, "wall_seconds": 1460.0, "output_written": true, "refused_calls": 0, "served_by": ["DeepInfra|deepseek/deepseek-v4.1-flash"], "cost_usd_reported": 0.077382, "retried_calls": [{"attempt": 1, "error": "ReadError: [Errno 104] Connection reset by peer"}]}

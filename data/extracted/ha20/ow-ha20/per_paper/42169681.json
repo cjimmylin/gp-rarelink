@@ -1,0 +1,25 @@
+{
+  "pmid": "42169681",
+  "instructions_version": "extract_v6",
+  "reports_individuals_with_tnfaip3_variant": false,
+  "relevance_note": "This is a narrative review of HA20, \"an immune dysregulation disease caused by loss-of-function TNFAIP3 variants\", that reports only group-level data (cohort percentages in Table 1, treatment frequencies in Table S1) and describes no individual patient with a TNFAIP3 variant, so no person is in scope.",
+  "method_note": "I read only the paper Markdown, the schema and the rules. The paper is a 'How I Treat' review with no case descriptions: Table 1 gives aggregate percentages and counts for five published cohorts (199, 177, 54, 12, 185 patients; 130 families etc.), Table 2 is a list of recommended evaluations, and Supplementary Table S1 gives treatment frequencies for literature cohorts and the authors' multicenter cohort. No per-patient row, column, label, sex, age or variant string is printed for any person, so the individuals, variants, phenotypic_features and phenotype_checklist tables are empty and reports_individuals_with_tnfaip3_variant is false. Because Table 1 values are counts and percentages for whole cohorts, they exclude no one; no positional reading was done anywhere. Stacked cells (v6, D-31): in Supplementary Table S1 the header cells hold several values separated by ' / ' (e.g. 'Karri 2024 / (Karri et al., 2024) / n = 189'); I recorded nothing from those cells and assigned no value to any person. Contradiction found: the text attributes the multicenter cohort of 185 cases to reference (22) ('an international multicenter cohort from our group describing 185 cases assessed longitudinally in 41 clinics and seven countries (22)'), while the same column of Table 1 is headed 'Multicenter cohort (27)'; the two citations do not agree. One anonymous patient is mentioned once in the treatment section ('In one severe and refractory case, we have referred a patient for allogeneic stem cell transplantation, who has been in drug-free remission for over 2 years after transplant'); the paper gives no label, sex, age, variant or explicit diagnosis for that person, so I did not treat them as an identifiable in-scope person (had I done so, the label would be 'unnamed person 1'). Numeric study-level fields are null because the review states no number of patients of its own and no total cohort of its own ('to date ~200 cases have been reported worldwide' refers to the literature, not to patients described in this document).",
+  "tables": {
+    "publications": [
+      {
+        "pmid": {"value": "42169681", "span": "PMID: 42169681"},
+        "first_author": {"value": "Li", "span": "Authors: Li Jonathan; Zhou Jeffrey Y.; Carpio Tumba Manuel; He Tingyan; Cetin Gedik Kader; Schwartz Daniella M."},
+        "year": {"value": 2026, "span": "Journal: Journal of Human Immunity (2026)"},
+        "study_type": {"value": "review/meta-analysis", "span": "Given the paucity of validated clinical criteria and guidelines for diagnosing, monitoring, or treating HA20, this review aims to highlight key principles in our approach to patients with known or suspected HA20."},
+        "n_patients_reported": {"value": null, "span": null},
+        "cohort_size_as_stated": {"value": null, "span": null},
+        "cites_prior_report_of_same_patients": {"value": false, "span": null},
+        "prior_report_citation": {"value": "not reported", "span": null}
+      }
+    ],
+    "individuals": [],
+    "variants": [],
+    "phenotypic_features": [],
+    "phenotype_checklist": []
+  }
+}
