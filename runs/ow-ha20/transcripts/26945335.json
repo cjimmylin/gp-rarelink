@@ -1,72 +1,109 @@
 {
- "status": "running",
- "meta": {
-  "endpoint": "https://openrouter.ai/api/v1",
-  "model": "deepseek/deepseek-v4.1-flash",
-  "provider_pinned": "deepinfra/fp8",
-  "run_id": "ow-ha20",
-  "disease": "ha20",
-  "pmid": "26945335",
-  "date": "2026-10-21"
+ "result": {
+  "meta": {
+   "endpoint": "https://openrouter.ai/api/v1",
+   "model": "deepseek/deepseek-v4.1-flash",
+   "provider_pinned": "deepinfra/fp8",
+   "run_id": "ow-ha20",
+   "disease": "ha20",
+   "pmid": "26945335",
+   "date": "2026-10-21"
+  },
+  "prompt_file": "pipeline/extract/openweight/launch_prompt_v1.txt",
+  "usage": {
+   "prompt_tokens": 158586,
+   "completion_tokens": 5950,
+   "calls": 8
+  },
+  "wall_seconds": 99.4,
+  "tool_log": [
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/pipeline/extract/claude_code/prompts/extract_v6.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/pipeline/extract/claude_code/schema_ha20_v5.json"
+    },
+    "ok": true
+   },
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/26945335.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "grep",
+    "args": {
+     "pattern": "TNFAIP3|A20 haploinsufficiency|This review focuses",
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/26945335.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "grep",
+    "args": {
+     "pattern": "Rosenbaum|2016|PMID: 26945335",
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/26945335.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "write_file",
+    "args": {
+     "path": "/tmp/openweight_scratch/ow-ha20/26945335/notes.md"
+    },
+    "ok": true
+   },
+   {
+    "tool": "write_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/26945335.json"
+    },
+    "ok": true
+   },
+   {
+    "tool": "grep",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/26945335.md",
+     "pattern": "Authors: Rosenbaum James T\\.; Sibley Cailin H\\.; Lin Phoebe|Journal: Current opinion in rheumatology \\(2016\\)|Title: Retinal Vasculitis|This review focuses on new developments in the understanding and treatment of retinal vasculitis\\.|leading to A20 haploinsufficiency|Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis\\."
+    },
+    "ok": true
+   },
+   {
+    "tool": "read_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/26945335.json"
+    },
+    "ok": true
+   },
+   {
+    "tool": "edit_file",
+    "args": {
+     "path": "/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/26945335.json",
+     "old": "  \"relevance_note\": \"This review mentions HA20 only at group level: a Behçet's-like autoinflammatory disease \\\"leading to A20 haploinsufficiency\\\", with \\\"Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis\\\", but it describes no identifiable person with a TNFAIP3 variant.\",",
+     "new": "  \"relevance_note\": \"TNFAIP3 is mentioned only as a gene for a disease \\\"leading to A20 haploinsufficiency\\\", and the HA20 description is group-level (\\\"Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis.\\\"); no identifiable person with a TNFAIP3 variant is described.\","
+    },
+    "ok": true
+   }
+  ],
+  "final_reply": "Done. Output written to `/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/26945335.json` (valid JSON; all spans verified verbatim; every schema field present).\n\n- Rows per table: publications 1; individuals 0; variants 0; phenotypic_features 0; phenotype_checklist 0.\n- Individuals: 0 (no in-scope person; the only TNFAIP3/HA20 text is group-level: \"Patients present early in life with oral ulcers…\").\n- `reports_individuals_with_tnfaip3_variant`: **false** (nothing but counts/group statements).\n- Uncertainties:\n1. `cohort_size_as_stated`: left null — the \"207 patients\" series is attributed to an earlier paper (^3), not this document; arguably it could be 207.\n2. `cites_prior_report_of_same_patients`: left null (no span exists for \"false\"); a literal reading might make it false.\n3. Figure 1's 25-year-old Saudi male with Behçet's disease — not HA20, so no row; if reviewers consider any TNFAIP3-mentioning paper's patients in scope, he'd be a row.\n4. Ref [12] (Zhou 2016) summarizes HA20 patients, but the paper gives no individual-level fact, so no rows under D-22/v4; borderline.\n5. `study_type` could be \"review/meta-analysis\" vs \"other\"; I used the former, with Title/review-sentence spans.",
+  "output_written": true,
+  "refused_calls": 0
  },
- "usage": {
-  "prompt_tokens": 57773,
-  "completion_tokens": 3074,
-  "calls": 4
- },
- "tool_log": [
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/pipeline/extract/claude_code/prompts/extract_v6.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/pipeline/extract/claude_code/schema_ha20_v5.json"
-   },
-   "ok": true
-  },
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "read_file",
-   "args": {
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/26945335.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "grep",
-   "args": {
-    "pattern": "TNFAIP3|A20 haploinsufficiency|This review focuses",
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/26945335.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "grep",
-   "args": {
-    "pattern": "Rosenbaum|2016|PMID: 26945335",
-    "path": "/home/user/gp-rarelink/data/literature/ha20/fulltext_md/26945335.md"
-   },
-   "ok": true
-  },
-  {
-   "tool": "write_file",
-   "args": {
-    "path": "/tmp/openweight_scratch/ow-ha20/26945335/notes.md"
-   },
-   "ok": true
-  }
- ],
  "messages": [
   {
    "role": "user",
@@ -186,6 +223,80 @@
    "role": "tool",
    "tool_call_id": "chatcmpl-tool-97174c9b9a8a0598",
    "content": "wrote 4191 characters"
+  },
+  {
+   "role": "assistant",
+   "content": null,
+   "tool_calls": [
+    {
+     "id": "chatcmpl-tool-8c215192439a5ab0",
+     "type": "function",
+     "function": {
+      "name": "write_file",
+      "arguments": "{\"content\": \"{\\n  \\\"pmid\\\": \\\"26945335\\\",\\n  \\\"instructions_version\\\": \\\"extract_v6\\\",\\n  \\\"reports_individuals_with_tnfaip3_variant\\\": false,\\n  \\\"relevance_note\\\": \\\"This review mentions HA20 only at group level: a Behçet's-like autoinflammatory disease \\\\\\\"leading to A20 haploinsufficiency\\\\\\\", with \\\\\\\"Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis\\\\\\\", but it describes no identifiable person with a TNFAIP3 variant.\\\",\\n  \\\"method_note\\\": \\\"Read the full paper (a review of retinal vasculitis; the only TNFAIP3/HA20 content is one paragraph in 'New insights into pathogenesis' and the reference [12] entry, Zhou Q et al 2016, PMID:26642243). No in-scope person: the HA20 description is a group-level summary of a prior report and gives no sex, age, variant, count or individual feature for anyone, so no individuals, variants, phenotypic_features or phenotype_checklist rows were emitted. Other people named in the paper are out of scope (Figure 1's 25 year-old Saudi male with Behçet's disease, the Behçet's patient treated with prednisone/azathioprine/infliximab, and patients from summarized earlier reports such as refs ^5, ^36, ^37): none has a TNFAIP3 variant or HA20 diagnosis, and none is a relative of an in-scope person. The 207 patients in 'our own series' are cited to an earlier publication (^3), not to this document, so publications.cohort_size_as_stated was left null. No tables with patients as rows or columns and no stacked cells (' / ') occur in this paper, so D-31 does not apply. No contradictions found. All spans were checked verbatim against the Markdown file.\\\",\\n  \\\"tables\\\": {\\n    \\\"publications\\\": [\\n      {\\n        \\\"pmid\\\": {\\\"value\\\": \\\"26945335\\\", \\\"span\\\": \\\"PMID: 26945335\\\"},\\n        \\\"first_author\\\": {\\\"value\\\": \\\"Rosenbaum\\\", \\\"span\\\": \\\"Authors: Rosenbaum James T.; Sibley Cailin H.; Lin Phoebe\\\"},\\n        \\\"year\\\": {\\\"value\\\": 2016, \\\"span\\\": \\\"Journal: Current opinion in rheumatology (2016)\\\"},\\n        \\\"study_type\\\": {\\\"value\\\": \\\"review/meta-analysis\\\", \\\"span\\\": [\\\"Title: Retinal Vasculitis\\\", \\\"This review focuses on new developments in the understanding and treatment of retinal vasculitis.\\\"]},\\n        \\\"n_patients_reported\\\": {\\\"value\\\": null, \\\"span\\\": null},\\n        \\\"cohort_size_as_stated\\\": {\\\"value\\\": null, \\\"span\\\": null},\\n        \\\"cites_prior_report_of_same_patients\\\": {\\\"value\\\": null, \\\"span\\\": null},\\n        \\\"prior_report_citation\\\": {\\\"value\\\": \\\"not reported\\\", \\\"span\\\": null}\\n      }\\n    ],\\n    \\\"individuals\\\": [],\\n    \\\"variants\\\": [],\\n    \\\"phenotypic_features\\\": [],\\n    \\\"phenotype_checklist\\\": []\\n  }\\n}\\n\", \"path\": \"/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/26945335.json\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "chatcmpl-tool-8c215192439a5ab0",
+   "content": "wrote 2577 characters"
+  },
+  {
+   "role": "assistant",
+   "content": null,
+   "tool_calls": [
+    {
+     "id": "chatcmpl-tool-8573645be4202ab5",
+     "type": "function",
+     "function": {
+      "name": "grep",
+      "arguments": "{\"path\": \"/home/user/gp-rarelink/data/literature/ha20/fulltext_md/26945335.md\", \"pattern\": \"Authors: Rosenbaum James T\\\\.; Sibley Cailin H\\\\.; Lin Phoebe|Journal: Current opinion in rheumatology \\\\(2016\\\\)|Title: Retinal Vasculitis|This review focuses on new developments in the understanding and treatment of retinal vasculitis\\\\.|leading to A20 haploinsufficiency|Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis\\\\.\"}"
+     }
+    },
+    {
+     "id": "chatcmpl-tool-be99972aee9ba311",
+     "type": "function",
+     "function": {
+      "name": "read_file",
+      "arguments": "{\"path\": \"/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/26945335.json\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "chatcmpl-tool-8573645be4202ab5",
+   "content": "4\tTitle: Retinal Vasculitis\n5\tJournal: Current opinion in rheumatology (2016)\n6\tAuthors: Rosenbaum James T.; Sibley Cailin H.; Lin Phoebe\n20\tThis review focuses on new developments in the understanding and treatment of retinal vasculitis. However, before summarizing those papers, we begin with a summary of some basic concepts relative to retinal vasculitis so that the reader will be armed with the background to appreciate the recent literature. These concepts include:\n35\tVery rare genetic causes of retinal vascular inflammatory disease are now being recognized and may help better elucidate the pathogenesis of certain types of retinal vasculitis. ADNIV (autosomal dominant neovascular inflammatory vitreoretinopathy), a condition that results in anterior chamber and vitreous inflammation, as well as retinal and iris neovascularization, is caused by mutations in Calpain 5 ^7, a calcium-dependent cysteine protease coded by the CAPN5 gene. A mouse model of uveitis resulting from a mutation in calpain 5 has been described ^8. Several different mutations of calpain 5 can result in ophthalmic disease ^7. The neovascularization that occurs in ADNIV might be secondary to ischemia rather than an intrinsic disease of retinal vasculature. In addition to ADNIV, another inherited retinal vasculopathy is caused by mutations in TREX1, an exonuclease ^9 . Polymorphisms in TREX1 have been associated with predisposition to systemic lupus erythematosus (SLE)^10 . Mutation in TREX1 can cause abnormal retinal and cerebral vasculature and retinal ischemia. The syndrome has been labelled retinal vasculopathy with cerebral leukodystrophy^9 . Mutations of the same gene cause Aicardi-Goutieres Syndrome^11. A novel Behçet’s-like autoinflammatory disease was recently reported due to mutations in TNFAIP3 (tumor necrosis factor alpha-induced protein 3) leading to A20 haploinsufficiency and increased expression of NF-κB–mediated inflammatory cytokines^12. Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis.\n137\t[12**] Zhou Q, Wang H, Schwartz DM, 2016, Loss-of-function mutations in TNFAIP3 leading to A20 haploinsufficiency cause an early-onset autoinflammatory disease, Nat Genet PMID:26642243"
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "chatcmpl-tool-be99972aee9ba311",
+   "content": "1\t{\n2\t  \"pmid\": \"26945335\",\n3\t  \"instructions_version\": \"extract_v6\",\n4\t  \"reports_individuals_with_tnfaip3_variant\": false,\n5\t  \"relevance_note\": \"This review mentions HA20 only at group level: a Behçet's-like autoinflammatory disease \\\"leading to A20 haploinsufficiency\\\", with \\\"Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis\\\", but it describes no identifiable person with a TNFAIP3 variant.\",\n6\t  \"method_note\": \"Read the full paper (a review of retinal vasculitis; the only TNFAIP3/HA20 content is one paragraph in 'New insights into pathogenesis' and the reference [12] entry, Zhou Q et al 2016, PMID:26642243). No in-scope person: the HA20 description is a group-level summary of a prior report and gives no sex, age, variant, count or individual feature for anyone, so no individuals, variants, phenotypic_features or phenotype_checklist rows were emitted. Other people named in the paper are out of scope (Figure 1's 25 year-old Saudi male with Behçet's disease, the Behçet's patient treated with prednisone/azathioprine/infliximab, and patients from summarized earlier reports such as refs ^5, ^36, ^37): none has a TNFAIP3 variant or HA20 diagnosis, and none is a relative of an in-scope person. The 207 patients in 'our own series' are cited to an earlier publication (^3), not to this document, so publications.cohort_size_as_stated was left null. No tables with patients as rows or columns and no stacked cells (' / ') occur in this paper, so D-31 does not apply. No contradictions found. All spans were checked verbatim against the Markdown file.\",\n7\t  \"tables\": {\n8\t    \"publications\": [\n9\t      {\n10\t        \"pmid\": {\"value\": \"26945335\", \"span\": \"PMID: 26945335\"},\n11\t        \"first_author\": {\"value\": \"Rosenbaum\", \"span\": \"Authors: Rosenbaum James T.; Sibley Cailin H.; Lin Phoebe\"},\n12\t        \"year\": {\"value\": 2016, \"span\": \"Journal: Current opinion in rheumatology (2016)\"},\n13\t        \"study_type\": {\"value\": \"review/meta-analysis\", \"span\": [\"Title: Retinal Vasculitis\", \"This review focuses on new developments in the understanding and treatment of retinal vasculitis.\"]},\n14\t        \"n_patients_reported\": {\"value\": null, \"span\": null},\n15\t        \"cohort_size_as_stated\": {\"value\": null, \"span\": null},\n16\t        \"cites_prior_report_of_same_patients\": {\"value\": null, \"span\": null},\n17\t        \"prior_report_citation\": {\"value\": \"not reported\", \"span\": null}\n18\t      }\n19\t    ],\n20\t    \"individuals\": [],\n21\t    \"variants\": [],\n22\t    \"phenotypic_features\": [],\n23\t    \"phenotype_checklist\": []\n24\t  }\n25\t}"
+  },
+  {
+   "role": "assistant",
+   "content": null,
+   "tool_calls": [
+    {
+     "id": "chatcmpl-tool-9d24abf97d122d88",
+     "type": "function",
+     "function": {
+      "name": "edit_file",
+      "arguments": "{\"path\": \"/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/26945335.json\", \"old\": \"  \\\"relevance_note\\\": \\\"This review mentions HA20 only at group level: a Behçet's-like autoinflammatory disease \\\\\\\"leading to A20 haploinsufficiency\\\\\\\", with \\\\\\\"Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis\\\\\\\", but it describes no identifiable person with a TNFAIP3 variant.\\\",\", \"new\": \"  \\\"relevance_note\\\": \\\"TNFAIP3 is mentioned only as a gene for a disease \\\\\\\"leading to A20 haploinsufficiency\\\\\\\", and the HA20 description is group-level (\\\\\\\"Patients present early in life with oral ulcers, pathergy, dermal abscesses, chorioretinal scarring, and macular fibrosis secondary to retinal vasculitis.\\\\\\\"); no identifiable person with a TNFAIP3 variant is described.\\\",\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "chatcmpl-tool-9d24abf97d122d88",
+   "content": "edited"
+  },
+  {
+   "role": "assistant",
+   "content": "Done. Output written to `/home/user/gp-rarelink/data/extracted/ha20/ow-ha20/per_paper/26945335.json` (valid JSON; all spans verified verbatim; every schema field present).\n\n- Rows per table: publications 1; individuals 0; variants 0; phenotypic_features 0; phenotype_checklist 0.\n- Individuals: 0 (no in-scope person; the only TNFAIP3/HA20 text is group-level: \"Patients present early in life with oral ulcers…\").\n- `reports_individuals_with_tnfaip3_variant`: **false** (nothing but counts/group statements).\n- Uncertainties:\n1. `cohort_size_as_stated`: left null — the \"207 patients\" series is attributed to an earlier paper (^3), not this document; arguably it could be 207.\n2. `cites_prior_report_of_same_patients`: left null (no span exists for \"false\"); a literal reading might make it false.\n3. Figure 1's 25-year-old Saudi male with Behçet's disease — not HA20, so no row; if reviewers consider any TNFAIP3-mentioning paper's patients in scope, he'd be a row.\n4. Ref [12] (Zhou 2016) summarizes HA20 patients, but the paper gives no individual-level fact, so no rows under D-22/v4; borderline.\n5. `study_type` could be \"review/meta-analysis\" vs \"other\"; I used the former, with Title/review-sentence spans."
   }
  ]
 }
