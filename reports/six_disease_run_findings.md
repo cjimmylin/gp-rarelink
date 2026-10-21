@@ -241,6 +241,37 @@ Run on 2026-10-20 against the ClinVar snapshot of 2026-10-19 (release 2026-10-12
   The exploratory question of whether audit and concordance results differ by memorization has nothing to split on here.
 - **Cost:** 12 helpers, 0.89M weighted tokens, about $5 on the bias-arm line (D-41 ceiling $60).
 
+### Exploratory analyses (§7.6, labeled exploratory; 2026-10-21)
+
+**Genotype–phenotype maps with GPSEA.**
+- *Source:* `analysis/exploratory/gpsea/results/` (`summary.json` and one CSV per analysis), from `gp_maps.py`. GPSEA 0.10.0 runs in its own uv project because it needs pandas < 3 and pipeline-v1.0 is locked to 3.0.6. HPO is pinned at 2026-09-01 (hp.json, sha256 prefix a7b3a012e7b4).
+- *Annotation:* Ensembl VEP is not reachable here, so variant effects come from each phenopacket's own VariantValidator HGVS; no external call is made.
+- *Method:* Fisher exact test with GPSEA's IfHpoFilter and Benjamini–Hochberg correction at 0.05. A feature that is not reported is not counted as excluded.
+- *Zygosity is an analysis assumption here only; the records leave it unset when the paper does.* Rules and per-disease counts are in `summary.json`:
+  - **Dominant:** heterozygous. Danon males are taken as hemizygous and females as heterozygous.
+  - **Recessive:** two distinct unstated calls are taken as compound heterozygous; a lone unstated call is left out.
+- *Who is included:* only individuals with a variant placed on GRCh38 and at least one phenotype. For example, 217 of HA20's 499 phenopackets with a variant.
+
+| Disease | Analysis | Individuals | Terms tested | Significant (BH 0.05) |
+|---|---|---|---|---|
+| ha20 | truncating vs missense | 217 | 11 | 0 |
+| axd | hotspot R79/R88/R239 vs other missense | 83 | 14 | 0 |
+| danon | truncating vs missense | 130 | 9 | 2: arrhythmia 57/59 vs 4/7, ventricular arrhythmia 45/47 vs 3/6 (both p_BH 0.035) |
+| danon | sex | 130 | 10 | 3: proximal muscle weakness, male 11/25 vs female 1/28; left ventricular hypertrophy 41/41 vs 25/33 (both p_BH 0.0046); hypertrophic cardiomyopathy 34/34 vs 19/24 (p_BH 0.031) |
+| ssadh | biallelic, truncating vs other | 77 | 9 | 0 |
+| tangier | biallelic, truncating vs other | 16 | 0 | — |
+| lad1 | biallelic, truncating vs other | 38 | 3 | 0 |
+
+- **Danon sex difference:** the extracted cohort reproduces the published pattern, with males more often showing myopathy and hypertrophy. This is a reproduction check, not independent replication, because the papers overlap with the published series.
+- **Danon truncating vs missense:** the missense group is small (6–9 people), so read it as a lead only.
+- **Tangier and LAD-I:** too few placeable, phased genotypes to test.
+
+**Tangier: share of ClinVar ABCA1 records matched in the literature.**
+- *Source:* `analysis/exploratory/tangier_clinvar_share.json`, from `tangier_clinvar_share.py`, using O2's tier-1 and tier-2 matches.
+- 16 of 2,006 single-gene GRCh38 ABCA1 records (0.8%), and 7 of the 85 P/LP records (8.2%), match variants extracted from the Tangier corpus.
+- Of the 35 extracted Tangier variants, 19 are not in ClinVar.
+- This is a lower bound: the corpus is 31 open-access papers (D-32), and most ABCA1 records come from testing unrelated to Tangier disease.
+
 ## 12. Cost to date
 
 The six-disease run, the repeat and Stage 4 together come to +$832.70 by session reading ($780.63 to $1,613.33, at 22:25 UTC), against the $1,200 ceiling.
