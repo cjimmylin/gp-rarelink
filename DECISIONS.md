@@ -59,6 +59,10 @@ How to use this file:
 - **Key (resolved, 2026-10-21):** Jimmy: "there is already a "openrouter.ai" secret in the env document already - can you look". The key is a network secret that the environment's egress proxy adds to requests for openrouter.ai, so the session never sees it and the agent sends no Authorization header. Key limit $50.
 - **One-paper pilot (2026-10-21):** PMID 37324276 on HA20, run `ow-ha20-pilot`: 16 calls, all served by DeepInfra, 29 minutes, $0.069. Same 4 variants as pv1; checklist agreement 0.95 on 80 shared cells; 99.4% of quotes found verbatim (`analysis/openweight/compare_ow-ha20-pilot.json`).
 - **Run approved by Jimmy, 2026-10-21** ("Run both now (Recommended)"): HA20 (85 papers, `ow-ha20`) then SSADH (40, `ow-ssadh`), 10 papers at a time, through `pipeline/extract/openweight/batch.py`. Stop and ask past $40 of key spend across both, counted from key usage $1.0689 at launch, or if anything breaks.
+- **Harness fixes during the run (Claude's call, 2026-10-21; to confirm with Jimmy).**
+  - Retries: the client resends a call (up to 3 times, waits 30/60/120 s) after a dropped connection or a 408/429/5xx error, including DeepInfra's in-stream "502 Network connection lost". Ten HA20 papers launched before this failed and are re-run in full.
+  - JSON check (tools v2): the frozen instructions say "Validate that your file parses as JSON". The Claude helpers did this with a shell command; the open-weight loop has no shell, and one HA20 paper (38183052) ended with a trailing comma. From now on, a write or edit of a `.json` file tells the model whether the file parses. Transcripts record `tools_version`. Papers whose output does not parse are re-run with v2; HA20 papers that finished under v1 with valid JSON are kept. SSADH runs on v2 throughout. The write-up states this.
+  - Prompt, instruction files, schema, model and provider are unchanged.
 - **Cost estimate:** about $7–15 for HA20 + SSADH (125 papers) at that provider's list price. That is inside the ~$50 contingency approved under D-10. A one-paper pilot comes first.
 
 ### 2026-10-21 · D-41 decided: model work while human rating waits

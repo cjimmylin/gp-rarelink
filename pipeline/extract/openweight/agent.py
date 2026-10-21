@@ -9,6 +9,8 @@ the open-weight model the same task in the same shape:
     allowed only for the paper, the schema, the rules, the instructions file and the scratch
     directory; writes only for the output file and the scratch directory. A refused call
     returns an error message to the model and is logged.
+  - from 2026-10-21 (tools v2), a write or edit of a .json file reports whether the file parses,
+    because the instructions ask for that check and the Claude helpers made it with a shell.
 Remaining differences, to state in the write-up: the Claude helpers also had a shell (they used
 it to run small checking scripts) and Claude Code's own system prompt; this loop has neither.
 
@@ -38,6 +40,7 @@ from typing import Any, Callable, Protocol
 ROOT = Path(__file__).resolve().parents[3]
 PROMPT = Path(__file__).with_name("launch_prompt_v1.txt")
 MAX_TURNS = 200
+TOOLS_VERSION = "v2"  # v1: no JSON check on writes; v2 (2026-10-21): writes to .json report whether the file parses
 MAX_READ_CHARS = 60_000
 
 TOOLS = [
@@ -221,13 +224,26 @@ class Sandbox:
             p.parent.mkdir(parents=True, exist_ok=True)
             if name == "write_file":
                 p.write_text(a["content"])
-                return f"wrote {len(a['content'])} characters"
+                return f"wrote {len(a['content'])} characters" + json_note(p)
             text = p.read_text()
             if text.count(a["old"]) != 1:
                 raise ValueError("old string must occur exactly once")
             p.write_text(text.replace(a["old"], a["new"]))
-            return "edited"
+            return "edited" + json_note(p)
         raise ValueError(f"unknown tool {name}")
+
+
+def json_note(p: Path) -> str:
+    """After a write to a .json file, say whether it parses (v2 tools, 2026-10-21). The Claude
+    helpers checked their output with a shell command, as the instructions ask; this loop has no
+    shell, so the write result carries the same information."""
+    if p.suffix != ".json":
+        return ""
+    try:
+        json.loads(p.read_text())
+        return "; the file parses as JSON"
+    except json.JSONDecodeError as e:
+        return f"; WARNING: the file does not parse as JSON: {e}"
 
 
 def task_paths(disease: str, pmid: str, run_id: str, scratch: Path) -> dict[str, Path]:
@@ -313,7 +329,8 @@ def main(argv: list[str] | None = None) -> int:
     if not key and "openrouter.ai" not in base:
         raise SystemExit("no key for a non-OpenRouter endpoint: set OPENWEIGHT_API_KEY (D-10)")
     client = OpenAICompatClient(base, model, key, provider)
-    meta = {"endpoint": base, "model": model, "provider_pinned": provider, "run_id": a.run_id, "disease": a.disease, "pmid": a.pmid,
+    meta = {"endpoint": base, "model": model, "provider_pinned": provider, "tools_version": TOOLS_VERSION,
+            "run_id": a.run_id, "disease": a.disease, "pmid": a.pmid,
             "date": time.strftime("%Y-%m-%d", time.gmtime())}
     res = run(client, paths, ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta, progress=True)
     served = client.served_by

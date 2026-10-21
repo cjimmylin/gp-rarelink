@@ -32,13 +32,16 @@ def key_usage() -> float | None:
         return None
 
 
-def done(run_id: str, pmid: str) -> bool:
+def done(run_id: str, pmid: str, disease: str) -> bool:
+    """Finished = the transcript holds a final result and the output file parses as JSON."""
     t = ROOT / f"runs/{run_id}/transcripts/{pmid}.json"
-    if not t.exists():
-        return False
+    out = ROOT / f"data/extracted/{disease}/{run_id}/per_paper/{pmid}.json"
     try:
-        return "result" in json.loads(t.read_text())
-    except json.JSONDecodeError:
+        if "result" not in json.loads(t.read_text()):
+            return False
+        json.loads(out.read_text())
+        return True
+    except (OSError, json.JSONDecodeError):
         return False
 
 
@@ -55,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
     a = ap.parse_args(argv)
     src = a.papers_from or f"pv1-{a.disease}"
     papers = sorted(p.stem for p in (ROOT / f"data/extracted/{a.disease}/{src}/per_paper").glob("*.json"))
-    todo = [p for p in papers if not done(a.run_id, p)]
+    todo = [p for p in papers if not done(a.run_id, p, a.disease)]
     logs = ROOT / f"runs/{a.run_id}/logs"
     logs.mkdir(parents=True, exist_ok=True)
     start_usage = a.baseline_usd if a.baseline_usd is not None else key_usage()

@@ -123,3 +123,14 @@ def test_client_does_not_retry_provider_client_error(monkeypatch):
     monkeypatch.setattr(c, "_complete_once", bad)
     with pytest.raises(ag.ProviderError):
         c.complete([], [])
+
+
+def test_json_note_reports_parse_errors(tmp_path):
+    from pipeline.extract.openweight.agent import json_note
+    good, bad, txt = tmp_path / "a.json", tmp_path / "b.json", tmp_path / "c.md"
+    good.write_text('{"a": [1, 2]}')
+    bad.write_text('{"a": [1, 2,]}')
+    txt.write_text("x")
+    assert "parses" in json_note(good)
+    assert "does not parse" in json_note(bad)
+    assert json_note(txt) == ""
