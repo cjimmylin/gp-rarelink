@@ -82,6 +82,12 @@ def spans_of(cell) -> list[str]:
     return [s for s in (span if isinstance(span, list) else [span]) if isinstance(s, str) and s.strip()]
 
 
+def cv(row, name: str):
+    """A cell's value, or None if the row or cell is not in the {value, span} shape (reported elsewhere)."""
+    cell = row.get(name) if isinstance(row, dict) else None
+    return cell.get("value") if isinstance(cell, dict) else None
+
+
 def check_paper(path: Path, md_dir: Path, schema: dict[str, dict], features: list[str]) -> tuple[list[dict], list[str], Counter]:
     doc = json.loads(path.read_text())
     pmid = str(doc.get("pmid", path.stem))
@@ -101,6 +107,9 @@ def check_paper(path: Path, md_dir: Path, schema: dict[str, dict], features: lis
             continue
         counts[f"rows:{tname}"] += len(rows)
         for i, row in enumerate(rows):
+            if not isinstance(row, dict):
+                problems.append(f"{pmid}: {tname}[{i}] is not an object")
+                continue
             for fname, fdef in tdef["fields"].items():
                 if fname not in row:
                     problems.append(f"{pmid}: {tname}[{i}] missing field {fname}")
@@ -139,23 +148,23 @@ def check_paper(path: Path, md_dir: Path, schema: dict[str, dict], features: lis
     # evidence basis (schema v2): count rows inferred from group statements for the audit
     for tname in ("phenotypic_features", "phenotype_checklist"):
         for row in tables.get(tname) or []:
-            eb = (row.get("evidence_basis") or {}).get("value")
+            eb = cv(row, "evidence_basis")
             if eb:
                 counts[f"evidence_basis:{tname}:{eb}"] += 1
     # three-state and checklist completeness
     for i, row in enumerate(tables.get("phenotypic_features") or []):
-        st = (row.get("status") or {}).get("value")
+        st = cv(row, "status")
         if st not in ("observed", "excluded"):
             problems.append(f"{pmid}: phenotypic_features[{i}] status {st!r} (only observed/excluded allowed)")
-    labels = {(r.get("individual_label_in_paper") or {}).get("value") for r in tables.get("individuals") or []}
+    labels = {cv(r, "individual_label_in_paper") for r in tables.get("individuals") or []}
     for tname in ("variants", "phenotypic_features", "phenotype_checklist"):
         for i, row in enumerate(tables.get(tname) or []):
-            lab = (row.get("individual_label_in_paper") or {}).get("value")
+            lab = cv(row, "individual_label_in_paper")
             if lab not in labels:
                 problems.append(f"{pmid}: {tname}[{i}] names individual {lab!r} not in individuals table")
     seen = Counter()
     for row in tables.get("phenotype_checklist") or []:
-        seen[((row.get("individual_label_in_paper") or {}).get("value"), (row.get("checklist_feature") or {}).get("value"))] += 1
+        seen[(cv(row, "individual_label_in_paper"), cv(row, "checklist_feature"))] += 1
     for lab in labels:
         for feat in features:
             if seen[(lab, feat)] != 1:
