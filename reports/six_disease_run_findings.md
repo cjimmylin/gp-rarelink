@@ -205,6 +205,20 @@ Run on 2026-10-20 against the ClinVar snapshot of 2026-10-19 (release 2026-10-12
 - **Restricted denominators are small** because most catalogue source papers are not open (D-32): 9 of 32 variants for HA20, 56 of 183 for AxD.
 - **Patients per source paper:** for AxD, the run has at least as many carriers as the catalogue in all 43 source papers it shares (107 catalogue patients, 253 run carriers; papers describe relatives and others the catalogue did not take). For HA20, two papers have fewer run carriers than catalogue patients: 30022980 (1 of 4) and 30526650 (2 of 3). They are candidates for the merge or scope check.
 
+### O3 stage 1: gap-variant candidates (§7.3, 2026-10-21)
+
+*Source: `adjudication/o3_gaps/summary.md` and `summary.json`, from `pipeline/harness/gap_candidates.py`. All candidates are pending adjudication.*
+
+- **Definition, as registered:** tier-1 allele; absent from the 2026-10-19 ClinVar snapshot by GRCh38 allele; at least one variant row whose identifying values (gene, strings, cDNA, protein, transcript, coordinates, person label) gatekeeper v4 all judged supported. **OMIM is not checked (D-12)**, so these are ClinVar gaps only.
+- **Count:** 215 candidates from 466 tier-1 alleles, of which 221 were absent from ClinVar. In 6 the rows all failed the gatekeeper (`failed_gatekeeper.csv`).
+  - Per disease: HA20 64, SSADH 10, Tangier 7, LAD-I 82, AxD 17, Danon 35.
+- **Spot check:** HA20's c.271A>T (p.Lys91Ter) and c.559C>T (p.Gln187Ter) have no GRCh38 record in the snapshot, while their neighbors (c.268–270, c.556) do. The gaps hold up for these two.
+- **LAD-I needs care:**
+  - 66 of its 82 candidates come only from papers ClinVar cites for *ITGB2*, and 34 only from reviews. Most come from van de Vijver 2012, a mutation update.
+  - A variant cited but absent by allele may be a numbering or normalization slip rather than a true gap. The protein check flags 10 LAD-I candidates whose stated protein differs from the protein predicted from the cDNA.
+- **Reclassification candidates (exploratory):** 53 supported tier-1 variants are in ClinVar only as VUS or conflicting. 15 meet the proposed "strong" rule (at least 2 papers or 3 deduplicated people).
+- **Next:** the WS3 evidence dossiers (D-41) are built from `evidence_rows.jsonl` and the papers. That file holds no ClinVar or OMIM content.
+
 ## 12. Cost to date
 
 The six-disease run, the repeat and Stage 4 together come to +$832.70 by session reading ($780.63 to $1,613.33, at 22:25 UTC), against the $1,200 ceiling.
