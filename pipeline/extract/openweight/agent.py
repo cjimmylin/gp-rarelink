@@ -76,7 +76,7 @@ class OpenAICompatClient:
     served_by: list = field(default_factory=list)
 
     max_tokens: int = 65536
-    call_wall_seconds: float = 1800.0
+    call_wall_seconds: float = 3600.0
 
     def complete(self, messages: list[dict], tools: list[dict]) -> dict:
         """Streams the reply (so a long JSON answer shows progress and a stalled call is caught)
