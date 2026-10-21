@@ -10,7 +10,9 @@ the open-weight model the same task in the same shape:
     directory; writes only for the output file and the scratch directory. A refused call
     returns an error message to the model and is logged.
   - from 2026-10-21 (tools v2), a write or edit of a .json file reports whether the file parses,
-    because the instructions ask for that check and the Claude helpers made it with a shell.
+    because the instructions ask for that check and the Claude helpers made it with a shell;
+  - from 2026-10-21 (tools v3), a reply cut off at the output limit without a tool call is followed
+    by a request to resume (up to 3 times), as Claude Code does for its helpers.
 Remaining differences, to state in the write-up: the Claude helpers also had a shell (they used
 it to run small checking scripts) and Claude Code's own system prompt; this loop has neither.
 
@@ -40,7 +42,12 @@ from typing import Any, Callable, Protocol
 ROOT = Path(__file__).resolve().parents[3]
 PROMPT = Path(__file__).with_name("launch_prompt_v1.txt")
 MAX_TURNS = 200
-TOOLS_VERSION = "v2"  # v1: no JSON check on writes; v2 (2026-10-21): writes to .json report whether the file parses
+TOOLS_VERSION = "v3"  # v1: no JSON check on writes; v2 (2026-10-21): writes to .json report whether the file parses;
+# v3 (2026-10-21): a reply cut off at the output limit (finish_reason "length") with no tool call is followed by a
+# request to resume, up to MAX_CONTINUATIONS times, instead of ending the run
+MAX_CONTINUATIONS = 3
+CONTINUE_MESSAGE = ("Your last reply hit the output token limit and was cut off. Resume directly from where it stopped, "
+                    "without repeating earlier work. Write your output file with the tools, in smaller pieces if needed.")
 MAX_READ_CHARS = 60_000
 
 TOOLS = [
@@ -145,6 +152,8 @@ class OpenAICompatClient:
                 if ev.get("usage"):
                     usage = ev["usage"]
                 for ch in ev.get("choices") or []:
+                    if ch.get("finish_reason"):
+                        meta["finish_reason"] = ch["finish_reason"]
                     dl = ch.get("delta") or {}
                     if dl.get("content"):
                         content.append(dl["content"])
@@ -263,7 +272,7 @@ def run(client: ChatClient, paths: dict[str, Path], transcript: Path, meta: dict
                   writes={paths["output"].resolve()}, scratch=paths["scratch"].resolve())
     messages: list[dict[str, Any]] = [{"role": "user", "content": prompt}]
     usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
-    t0, final = now(), ""
+    t0, final, continuations = now(), "", 0
     transcript.parent.mkdir(parents=True, exist_ok=True)
 
     def save(status: str) -> None:  # written after every turn, so an interrupted run keeps its transcript
@@ -278,6 +287,16 @@ def run(client: ChatClient, paths: dict[str, Path], transcript: Path, meta: dict
         msg = resp["choices"][0]["message"]
         messages.append({k: v for k, v in msg.items() if k in ("role", "content", "tool_calls")})
         calls = msg.get("tool_calls") or []
+        if not calls and resp.get("finish_reason") == "length" and continuations < MAX_CONTINUATIONS:
+            # tools v3: the reply was cut off at the output limit; ask the model to resume, as Claude Code
+            # does for its helpers, instead of taking the cut-off text as the final reply
+            continuations += 1
+            messages[-1]["content"] = messages[-1].get("content") or ""
+            messages.append({"role": "user", "content": CONTINUE_MESSAGE})
+            save("running")
+            if progress:
+                print(f"turn {turn + 1}: reply cut off at the output limit; asked to resume ({continuations}/{MAX_CONTINUATIONS})", flush=True)
+            continue
         if not calls:
             final = msg.get("content") or ""
             break
@@ -294,7 +313,7 @@ def run(client: ChatClient, paths: dict[str, Path], transcript: Path, meta: dict
                   flush=True)
     result = {"meta": meta or {}, "prompt_file": str(PROMPT.relative_to(ROOT)), "usage": usage, "wall_seconds": round(now() - t0, 1),
               "tool_log": box.log, "final_reply": final, "output_written": paths["output"].exists(),
-              "refused_calls": sum(1 for x in box.log if "refused" in x)}
+              "refused_calls": sum(1 for x in box.log if "refused" in x), "continuations": continuations}
     transcript.parent.mkdir(parents=True, exist_ok=True)
     transcript.write_text(json.dumps({"result": result, "messages": messages}, indent=1, ensure_ascii=False) + "\n")
     return result

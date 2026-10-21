@@ -134,3 +134,32 @@ def test_json_note_reports_parse_errors(tmp_path):
     assert "parses" in json_note(good)
     assert "does not parse" in json_note(bad)
     assert json_note(txt) == ""
+
+
+class StubFinish(Stub):
+    def complete(self, messages, tools):
+        out = super().complete(messages, tools)
+        fr = out["choices"][0]["message"].pop("finish", None)
+        if fr:
+            out["finish_reason"] = fr
+        return out
+
+
+def test_loop_resumes_after_cut_off_reply(tmp_path):
+    p = make_paths(tmp_path)
+    stub = StubFinish([
+        {"content": "half a table", "finish": "length"},
+        {"content": None, "tool_calls": [call(1, "write_file", path=str(p["output"]), content='{"tables": {}}')]},
+        {"content": "done", "finish": "stop"},
+    ])
+    res = agent.run(stub, p, tmp_path / "t.json", {"model": "stub"}, now=lambda: 0.0)
+    assert res["output_written"] and res["continuations"] == 1 and res["final_reply"] == "done"
+    t = json.loads((tmp_path / "t.json").read_text())
+    assert t["messages"][2] == {"role": "user", "content": agent.CONTINUE_MESSAGE}
+
+
+def test_loop_stops_after_max_continuations(tmp_path):
+    p = make_paths(tmp_path)
+    stub = StubFinish([{"content": "", "finish": "length"}] * (agent.MAX_CONTINUATIONS + 1))
+    res = agent.run(stub, p, tmp_path / "t.json", {"model": "stub"}, now=lambda: 0.0)
+    assert res["continuations"] == agent.MAX_CONTINUATIONS and not res["output_written"]
