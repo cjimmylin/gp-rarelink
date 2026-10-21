@@ -189,6 +189,22 @@ Run on 2026-10-20 against the ClinVar snapshot of 2026-10-19 (release 2026-10-12
 - **D-19:** recall cannot be computed without ClinVar-cited papers, since its reference pairs come from them. Overlap and classification agreement are given both ways.
 - **HPO profile (7.2.4 b):** 71–94% of annotated terms are seen in at least one person. Only 6–40% of terms seen in 2 or more people match an annotated term. Annotations are known to be incomplete, so this is descriptive.
 
+### Completeness against published catalogues (§7.2.7, 2026-10-21)
+
+*Source: `analysis/six_disease/completeness_pv1-ha20.json` and `completeness_pv1-axd.json`, from `pipeline/harness/completeness.py` (generalized 2026-10-21; the pilot's output on `poc-ha20-run-2` is unchanged by the rewrite). Secondary and descriptive; no threshold. Only HA20 and AxD have a suitable catalogue (D-35); the other four report no figure, as registered.*
+
+| Disease | Catalogue | Variants (patients) | Restricted recall, primary papers | Unrestricted recall, primary papers |
+|---|---|---|---|---|
+| ha20 | Chen 2020 Table S1 (D-30) | 32 (89) | 9 of 9 (100%; 70.1–100) | 29 of 32 (90.6%; 75.8–96.8) |
+| axd | Grossi 2024 Suppl. Table 2 (D-39, added after extraction) | 183 (553) | 54 of 56 (96.4%; 87.9–99.0) | 91 of 169 (53.8%; 46.3–61.2) |
+
+- **AxD, by level:** protein 52 of 56; cDNA 36 of 56. AxD papers often print cDNA without "c.", so the cDNA level finds fewer.
+- **AxD, the two misses are notation, not absence:** "R270-A272del" (26478912) is extracted with a hyphen where the catalogue has p.Arg270_Ala272del, and the whole-gene deletion p.Met1_Met432del (36425948) is extracted as "deletion (exons 1–9)". The matcher was not changed after seeing this, so the figure stays 54 of 56.
+- **AxD, not used:** the catalogue's genomic column. Of 47 distinct alleles whose cDNA VariantValidator also normalized, none match as printed: 30 are one position off and 16 are on the coding strand.
+- **AxD, outside both denominators:** 14 variants (47 patients) with no PMID source, mostly "patient from internal database" and three Web of Science IDs.
+- **Restricted denominators are small** because most catalogue source papers are not open (D-32): 9 of 32 variants for HA20, 56 of 183 for AxD.
+- **Patients per source paper:** for AxD, the run has at least as many carriers as the catalogue in all 43 source papers it shares (107 catalogue patients, 253 run carriers; papers describe relatives and others the catalogue did not take). For HA20, two papers have fewer run carriers than catalogue patients: 30022980 (1 of 4) and 30526650 (2 of 3). They are candidates for the merge or scope check.
+
 ## 12. Cost to date
 
 The six-disease run, the repeat and Stage 4 together come to +$832.70 by session reading ($780.63 to $1,613.33, at 22:25 UTC), against the $1,200 ceiling.
