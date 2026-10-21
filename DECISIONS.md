@@ -21,20 +21,6 @@ How to use this file:
 
 ### Needed later
 
-**D-13 · ClinVar collection method for our submissions**
-- **The problem:** "Literature only" means no added submitter curation and recommends no classification (`clinvar_submission_docs`). Our panel-adjudicated, classified records may fit "curation" better (`grant_claim_checks.md` §12).
-- **Needed by:** before Month-4 adjudication, because it shapes what the panel records.
-- **Note:** the grant says "literature-only submissions", so switching to "curation" is a change to log here.
-
-**D-14 · Correct figures in `CONTEXT.md`**
-- **Proposed edits:**
-  - **Tangier:** change "~200 published patients" to ~100–150 (`koseki2021_tangier_review`).
-  - **Danon:** change ">100 families" to "about 100 families; ≥146 molecularly confirmed patients".
-  - **phenopacket-store:** replace "408 cohorts", which has no published source, with a dated count.
-  - **LAD-I** (new, found 2026-10-18): the impact statement says "genotypes for 184 LAD-I patients whose variants were published but never structured". 184 = 323 − 139, and the source review reports that genotype was *not* reported for those patients. If so, extraction cannot recover them. This affects how LAD-I gap closure is described. Check against `almarzanovoa2018_lad1_review`.
-  - **LAD-I ORPHA number** (new, found 2026-10-19): Mondo release 2026-10-06 cross-references LAD-I (MONDO:0007293) to Orphanet:99842, not to ORPHA 2968 as `CONTEXT.md` and the application give. Check against Orphanet; records will use Mondo's cross-reference (pre-registration §4.1, §6.2).
-- **Scope:** the disease set is unchanged; these are wording and number fixes.
-
 **D-15 · Budget tracking**
 - **Answered by the award email:** the credits are one pool on a claude.ai account, covering chat, Claude Code, Cowork and Claude Science. Cowork and Claude Code sessions on the funded account draw on that pool. There are no separate Claude Science and Claude Code allocations.
 - **Still open:**
@@ -51,6 +37,28 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-21 · D-13 and D-14 decided; D-10 audit waits on D-11; more open-weight work approved
+- **Jimmy, 2026-10-21 (question tool):**
+  - **D-13: "Curation (Recommended)".** Our ClinVar submissions use the *curation* collection method, not *literature only*, because the records are panel-adjudicated and carry a classification. This is a change from the grant's wording ("literature-only submissions"), logged here.
+  - **D-14: "Apply all (Recommended)".** `CONTEXT.md` now gives Tangier ~100–150 patients, Danon about 100 families and ≥146 confirmed patients, phenopacket-store as 731 gene folders at commit `85ffd78` (2026-10-07), and reads LAD-I's "184" as patients without a reported genotype. LAD-I's ORPHA number stays marked to check (Mondo: Orphanet:99842). Sources: `background/grant_claim_checks.md` §1–5. Disease set unchanged.
+  - **D-10 blinded audit: "Wait for D-11 (Recommended)".** Size it with the panel's hours; same raters as O1. Nothing drawn yet.
+  - **More model work: "Gatekeeper on open-weight runs" and "Open-weight memorization probe".** Gatekeeper v4 (Claude helpers) over `ow-ha20` and `ow-ssadh`, offered at about $60–90 on the gatekeeper line, so both models' unsupported rates come from the same judge (supplementary to the registered blinded audit). The WS5 probe files run on DeepSeek-V4.1-Flash, about $1–3 on the OpenRouter key.
+- **Previous text of the two open items, kept for the record:**
+
+> **D-13 · ClinVar collection method for our submissions**
+> - **The problem:** "Literature only" means no added submitter curation and recommends no classification (`clinvar_submission_docs`). Our panel-adjudicated, classified records may fit "curation" better (`grant_claim_checks.md` §12).
+> - **Needed by:** before Month-4 adjudication, because it shapes what the panel records.
+> - **Note:** the grant says "literature-only submissions", so switching to "curation" is a change to log here.
+>
+> **D-14 · Correct figures in `CONTEXT.md`**
+> - **Proposed edits:**
+>   - **Tangier:** change "~200 published patients" to ~100–150 (`koseki2021_tangier_review`).
+>   - **Danon:** change ">100 families" to "about 100 families; ≥146 molecularly confirmed patients".
+>   - **phenopacket-store:** replace "408 cohorts", which has no published source, with a dated count.
+>   - **LAD-I** (new, found 2026-10-18): the impact statement says "genotypes for 184 LAD-I patients whose variants were published but never structured". 184 = 323 − 139, and the source review reports that genotype was *not* reported for those patients. If so, extraction cannot recover them. This affects how LAD-I gap closure is described. Check against `almarzanovoa2018_lad1_review`.
+>   - **LAD-I ORPHA number** (new, found 2026-10-19): Mondo release 2026-10-06 cross-references LAD-I (MONDO:0007293) to Orphanet:99842, not to ORPHA 2968 as `CONTEXT.md` and the application give. Check against Orphanet; records will use Mondo's cross-reference (pre-registration §4.1, §6.2).
+> - **Scope:** the disease set is unchanged; these are wording and number fixes.
 
 ### 2026-10-21 · D-10 hosting: OpenRouter (Jimmy's suggestion; run approved)
 - **Jimmy, 2026-10-21:** "I have an openrouter saved already on this account - can you use that?"
