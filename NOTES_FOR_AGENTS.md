@@ -234,6 +234,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 
 ## 4. Working with Jimmy
 
+- **No publishing** (`CLAUDE.md`, Jimmy, 2026-10-21): no artifact pages, new or updated, and no posts or public uploads until he says otherwise. The existing rating and adjudication pages stay as they are.
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.

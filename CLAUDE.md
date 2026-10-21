@@ -41,6 +41,7 @@ If anything here seems to conflict with INSTRUCTIONS.md, INSTRUCTIONS.md wins.
 - **Secrets.** API keys go in `.env` (git-ignored), never in code or commits.
 - **Stop and ask Jimmy** before contacting external parties, submitting to a
   public database, large spend, or changing anything pre-registered.
+- **No publishing (Jimmy, 2026-10-21): "No publishing at all until you hear from me differently."** Claude publishes nothing: no new or updated artifact pages, no posts, no public releases or uploads. Write results to files in the repo and tell Jimmy where they are. This lasts until Jimmy says otherwise.
 - **No contact (Jimmy, 2026-10-18).** Claude does not contact anyone by any
   channel: collaborators (including Prof. Lam and the panel), database
   maintainers, foundations or Anthropic. Draft messages for Jimmy to send;
