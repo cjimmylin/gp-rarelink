@@ -207,7 +207,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-41**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-42**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically

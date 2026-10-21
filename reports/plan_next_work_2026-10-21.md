@@ -128,7 +128,7 @@ Ordered by value for the effort. "Model spend" means helper agents. Every estima
   - this plan;
   - `NOTES_FOR_AGENTS.md` §1 (latest entries at the end of the 2026-10-20 block);
   - `reports/six_disease_run_findings.md`;
-  - `DECISIONS.md` (next free decision number: D-41).
+  - `DECISIONS.md` (next free decision number: D-42).
 - **Reference root:** `/home/user/gp-rarelink-reference/`, outside the repo, with dated folders 2026-10-19 (ClinVar, HPO annotations, Chen 2020) and 2026-10-20 (Grossi catalogue). It disappears with the container. Re-create it:
   - `pipeline/harness/snapshot_reference.py --per-gene`;
   - `pipeline/harness/benchmark_chen2020.py`;

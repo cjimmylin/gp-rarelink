@@ -52,6 +52,15 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-21 · D-41 decided: model work while human rating waits
+- **Context:** Jimmy deferred the human rating (O1 raters, O2 triage, merge hand check, checklist-map review) and asked what model work can go ahead. Plan: `reports/plan_next_work_2026-10-21.md`. He said "go" for all of it and answered three approvals up front.
+- **Approved by Jimmy, 2026-10-21:**
+  - **WS3 gap-variant evidence dossiers:** charged to the "ClinVar/OMIM reconciliation + concordance harness" line ($6,000). Estimate $40–80; stop and ask past $100.
+  - **WS5 memorization probe, Claude side:** charged to the "Ascertainment-bias arm" line ($4,000). Pilot on one disease first, then the other five; stop and ask past $60.
+  - **WS7:** add the GPSEA package as an optional uv dependency group for the exploratory genotype–phenotype maps.
+- **Also going ahead (no spend, per the plan):** WS1 completeness, WS2 gap candidates, WS4 adjudication page (built, not shared), WS6 bias-arm prep, WS8 open-weight harness on a stub, WS9 drafts.
+- **Not changed:** the frozen plan, prompts, metrics and thresholds. Dossiers propose no classification, and helpers never see ClinVar or OMIM content (§5.3). Cost reading at the start: $1,628.03 (2026-10-21 00:50 UTC).
+
 ### 2026-10-20 · D-37 decided: six-disease run approved up to $1,200
 - **Estimate** (`analysis/cost/six_disease_estimate_2026-10-20.md`, method of pre-registration §6.5):
   - 350 papers, about 3.35M input tokens;
