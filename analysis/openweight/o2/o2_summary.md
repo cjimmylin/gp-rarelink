@@ -5,9 +5,11 @@
 | Disease | Gene (7.2.1) | HGVS recall, tier 1 | HGVS recall, tiers 1+2 | Overlap, tier 1 | Classification agreement | Condition names disease | HPO annotation recall | Terms in ≥2 people matching | PMIDs ClinVar cites |
 |---|---|---|---|---|---|---|---|---|---|
 | ha20 | 99.8% (574/575; 99.0–100.0) | 19.2% (15/78; 12.0–29.3) | 19.2% (15/78; 12.0–29.3) | 41.1% (37/90; 31.5–51.4) | 90.0% (18/20; 69.9–97.2) | 46.4% (26/56; 34.0–59.3) | not computed | not computed | 20.0% (17/85; 12.9–29.7) |
+| ssadh | 100.0% (307/307; 98.8–100.0) | 10.1% (16/158; 6.3–15.8) | 15.2% (24/158; 10.4–21.6) | 87.2% (68/78; 78.0–92.9) | 88.5% (46/52; 77.0–94.6) | 98.8% (82/83; 93.5–99.8) | not computed | not computed | 45.0% (18/40; 30.7–60.2) |
 
 ## Without ClinVar-cited papers (D-19)
 
 | Disease | HGVS recall, tiers 1+2 | Overlap, tier 1 | Classification agreement |
 |---|---|---|---|
 | ha20 | — | 38.4% (28/73; 28.1–49.8) | 87.5% (14/16; 64.0–96.5) |
+| ssadh | — | 83.0% (39/47; 69.9–91.1) | 93.5% (29/31; 79.3–98.2) |

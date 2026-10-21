@@ -1,0 +1,56 @@
+{
+ "run_id": "ow-ha20",
+ "disease": "ha20",
+ "date": "2026-10-21",
+ "model": "deepseek/deepseek-v4.1-flash",
+ "endpoint": "https://openrouter.ai/api/v1",
+ "provider_pinned": "deepinfra/fp8",
+ "served_by_final_attempts": {
+  "DeepInfra|deepseek/deepseek-v4.1-flash": 85
+ },
+ "papers": 85,
+ "papers_from": "pv1-ha20",
+ "input_files_sha256_16": {
+  "pipeline/extract/claude_code/prompts/extract_v6.md": "aa689f24b470d5e6",
+  "pipeline/extract/claude_code/schema_ha20_v5.json": "f0fdf6b3bfead62e",
+  "pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md": "55ab99df7f17cdb6",
+  "pipeline/extract/openweight/launch_prompt_v1.txt": "4c064d7c2c7a24bb"
+ },
+ "tools_version_of_final_attempt": {
+  "v1": 72,
+  "v2": 10,
+  "v3": 3
+ },
+ "final_attempts": {
+  "calls": 2792,
+  "prompt_tokens": 348491871,
+  "completion_tokens": 15814795,
+  "cost_usd_reported_by_host": 10.2493,
+  "wall_seconds_sum": 206444,
+  "retried_calls": 36,
+  "resumes_after_cut_off_reply": 0
+ },
+ "papers_with_failed_attempts": [
+  "28659290",
+  "29682366",
+  "31164164",
+  "31175876",
+  "33101300",
+  "33446651",
+  "34030699",
+  "35760412",
+  "35897075",
+  "36064566",
+  "38183052",
+  "40574834",
+  "41741169"
+ ],
+ "harness": "pipeline/extract/openweight/agent.py + batch.py (DECISIONS.md, D-10 OpenRouter entry)",
+ "key_spend_both_runs_usd": {
+  "start": 1.0689,
+  "end": 21.423704553,
+  "spent": 20.3548,
+  "note": "OpenRouter key usage (GET /api/v1/key) before HA20 and after SSADH; covers both runs, failed and stopped attempts included"
+ },
+ "written_at_commit": "49a5bc2"
+}
