@@ -36,6 +36,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 from collections import Counter, defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
@@ -131,7 +132,8 @@ def one(disease: str, snap: Path) -> tuple[dict, list[dict], list[dict], list[di
         ok = a["rows_ok"]
         pmids = sorted({x["pmid"] for x in ok})
         idents = sorted({x["identity"] or f"{x['pmid']}|{x['label']}" for x in ok})
-        stated_prot = {str(x["values"].get("protein_hgvs_as_stated") or "") for x in ok + a["rows_failed"]} - {"", "None", "not reported"}
+        stated_prot = {re.sub(r"^p\(", "p.(", str(x["values"].get("protein_hgvs_as_stated") or "").strip())
+                       for x in ok + a["rows_failed"]} - {"", "None", "not reported"}
         base = {"disease": disease, "gene": gene, "vcf_grch38": allele,
                 "hgvs_c": n.get("mane_hgvs_transcript") or n.get("hgvs_transcript", ""),
                 "hgvs_p_predicted": n.get("mane_hgvs_protein") or n.get("hgvs_protein", ""),

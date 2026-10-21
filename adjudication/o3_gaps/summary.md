@@ -16,7 +16,7 @@
 
 - ha20: agrees 50, differs 8, no stated protein 6
 - ssadh: agrees 7, differs 1, no stated protein 2
-- tangier: agrees 4, differs 2, no stated protein 1
+- tangier: agrees 5, differs 1, no stated protein 1
 - lad1: agrees 63, differs 10, no stated protein 9
 - axd: agrees 12, differs 3, no stated protein 2
 - danon: agrees 18, differs 2, no stated protein 15
