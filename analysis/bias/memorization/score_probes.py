@@ -38,6 +38,10 @@ HPO = Path("data/ontologies/2026-10-19/hp.obo")
 CDNA = re.compile(r"c\.\s*[-*]?\d[\w+\-*_>]*", re.I)
 PROT = re.compile(r"p\.\s*\(?[A-Za-z]{1,3}\d+[A-Za-z*]*(?:fs\*?\d*|\*)?\)?")
 WORD = re.compile(r"[a-z0-9]+")
+# A completion item whose opening is publisher boilerplate, not the paper's text, says nothing about
+# memorizing the paper; it is excluded and listed. Found after the first scoring run (2026-10-21):
+# tangier-33346003's selected paragraph was Elsevier's "Journal Pre-proof" notice.
+BOILERPLATE = re.compile(r"This is a PDF file of an article that has undergone enhancements", re.I)
 
 
 def hpo_lookup(path: Path) -> dict[str, str]:
@@ -109,7 +113,7 @@ def main() -> int:
     sample = {(r["disease"], r["pmid"]): r for r in csv.DictReader((ROOT / "sample.csv").open())}
     valid = {b: all(x["valid"] for x in v) for b, v in json.loads((ROOT / "tool_check.json").read_text()).items()}
     look, parents, cache = hpo_lookup(HPO), load_obo_parents(HPO), {}
-    rows, dropped = [], []
+    rows, dropped, excluded = [], [], []
     for (d, pmid), s in sorted(sample.items()):
         gene = json.loads(Path(f"configs/stage4/{d}.json").read_text())["gene"]
         rows.append({"disease": d, "pmid": pmid, "stratum": s["stratum"], "year": int(s["year"])})
@@ -166,10 +170,14 @@ def main() -> int:
         cp = ROOT / "responses" / f"{d}_completion.json"
         if cp.exists() and valid.get(f"{d}_completion", False):
             tg = json.loads((ROOT / "targets" / f"{d}_completion.json").read_text())
+            openings = {it["id"]: it["opening"] for it in json.loads((ROOT / "batches" / f"{d}_completion.json").read_text())["items"]}
             for a in json.loads(cp.read_text())["answers"]:
                 pmid = a["id"].split("-", 1)[1]
                 r = by_key.get((d, pmid))
                 if r is None or a["id"] not in tg:
+                    continue
+                if BOILERPLATE.search(openings.get(a["id"], "")):
+                    excluded.append(a["id"])
                     continue
                 c, t = words(a.get("continuation") or "")[:50], words(tg[a["id"]])
                 l = lcs(c, t)
@@ -198,7 +206,7 @@ def main() -> int:
                 "cp_mean_rougeL_f1": mean([r["cp_rougeL_f1"] for r in cp]), "cp_max_longest_run": max([r["cp_longest_run"] for r in cp], default=None),
                 "cp_mean_5gram_share": mean([r["cp_5gram_share"] for r in cp]),
                 "cp_papers_run_ge_8": sum(r["cp_longest_run"] >= 8 for r in cp)}
-    out = {"date": datetime.now(UTC).date().isoformat(), "dropped_batches": dropped, "by_disease_stratum": {}, "by_stratum": {}, "fits": {}}
+    out = {"date": datetime.now(UTC).date().isoformat(), "dropped_batches": dropped, "excluded_boilerplate_items": excluded, "by_disease_stratum": {}, "by_stratum": {}, "fits": {}}
     for d in sorted({r["disease"] for r in rows}):
         for s in ("after", "recent", "older"):
             sel = [r for r in rows if r["disease"] == d and r["stratum"] == s]
@@ -222,6 +230,8 @@ def main() -> int:
                  f"{x['cb_phen_given']}, {x['cb_phen_mapped']}, {x['cb_phen_hits']} | {x['cp_mean_rougeL_f1']} | {x['cp_mean_5gram_share']} | {x['cp_max_longest_run']} | {x['cp_papers_run_ge_8']} |")
     if dropped:
         L += ["", f"Dropped for disallowed tool use: {', '.join(dropped)}."]
+    if excluded:
+        L += ["", f"Completion items excluded because the opening was publisher boilerplate, not paper text: {', '.join(excluded)}."]
     (ROOT / "scores_summary.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))
     return 0

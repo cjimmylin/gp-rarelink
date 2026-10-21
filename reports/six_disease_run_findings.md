@@ -219,6 +219,28 @@ Run on 2026-10-20 against the ClinVar snapshot of 2026-10-19 (release 2026-10-12
 - **Reclassification candidates (exploratory):** 53 supported tier-1 variants are in ClinVar only as VUS or conflicting. 15 meet the proposed "strong" rule (at least 2 papers or 3 deduplicated people).
 - **Next:** the WS3 evidence dossiers (D-41) are built from `evidence_rows.jsonl` and the papers. That file holds no ClinVar or OMIM content.
 
+### Memorization probe, Claude side (§7.4.3, exploratory; D-41; 2026-10-21)
+
+*Source: `analysis/bias/memorization/scores_summary.md`, `scores.csv` and `tool_check.json`, from `make_probes.py` (seed 20261021), `check_transcripts.py` and `score_probes.py`. Scored against the pv1 full-text extraction, never against ClinVar or OMIM.*
+
+- **Design:**
+  - 180 papers, 30 per disease, split by first publication date against the helper model's documented cutoff (Claude Opus 5.5: training data and reliable knowledge cutoff Jun 2026, per the models overview read 2026-10-21);
+  - strata: 10 papers after the cutoff (every one in the corpus), 51 recent (2024-07 to 2026-06), 119 older;
+  - two black-box probes, written so the open-weight model can run the same files later (D-10): closed-book recall from PMID, title and year; and continuation of a 50-word passage opening;
+  - every helper transcript was checked: each made only its allowed calls, Write of its answer and at most one Read of its own batch file.
+- **Closed-book recall:**
+  - "Specific" recall was claimed for 4 of 180 papers, all older, and in each case for phenotypes only, naming no variant;
+  - 4 papers had a variant hit, all labelled guesses, including recurrent variants such as LAMP2 p.Arg293Ter. No stratum shows more.
+- **Completion:**
+  - mean word-level ROUGE-L F1 is 0.16 after the cutoff, 0.19 recent and 0.19 older; 5-gram share is under 0.015 in every stratum;
+  - runs of 8 or more matching words occur in 3 older papers, and all three are formulaic ("approved by the institutional review board", "written informed consent was obtained from all patients", "recurrent life threatening bacterial and fungal infections");
+  - one item was excluded after the first scoring run: the passage chosen for Tangier 33346003 was Elsevier's "Journal Pre-proof" notice, which the model reproduced word for word. That is publisher boilerplate, not the paper's text.
+- **Reading:** neither probe shows the model recalling these papers' variants or their text. Two caveats:
+  - only 10 papers postdate the cutoff, so the before/after comparison has little power;
+  - the probes are black-box, so they can miss memorization that changes extraction without surfacing as recall.
+  The exploratory question of whether audit and concordance results differ by memorization has nothing to split on here.
+- **Cost:** 12 helpers, 0.89M weighted tokens, about $5 on the bias-arm line (D-41 ceiling $60).
+
 ## 12. Cost to date
 
 The six-disease run, the repeat and Stage 4 together come to +$832.70 by session reading ($780.63 to $1,613.33, at 22:25 UTC), against the $1,200 ceiling.

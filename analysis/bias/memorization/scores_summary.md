@@ -4,6 +4,8 @@
 
 | Stratum | Papers | Closed-book: specific / guess / none | Papers with a variant hit | Variants given (hits) | Phenotype terms given, mapped to HPO, hits | Completion: mean ROUGE-L F1 | Mean 5-gram share | Longest run (max) | Runs of 8+ words |
 |---|---|---|---|---|---|---|---|---|---|
-| after | 10 | 0 / 2 / 1 | 0 | 0 (0) | 8, 6, 3 | 0.2047 | 0.0 | 4 | 0 |
-| recent | 51 | 0 / 11 / 1 | 0 | 0 (0) | 47, 36, 20 | 0.1846 | 0.0087 | 7 | 0 |
-| older | 119 | 0 / 11 / 4 | 0 | 0 (0) | 37, 34, 22 | 0.1701 | 0.0115 | 11 | 1 |
+| after | 10 | 0 / 6 / 4 | 0 | 0 (0) | 24, 20, 12 | 0.158 | 0.0 | 4 | 0 |
+| recent | 51 | 0 / 44 / 7 | 2 | 9 (2) | 163, 132, 68 | 0.1901 | 0.0042 | 7 | 0 |
+| older | 119 | 4 / 95 / 20 | 2 | 3 (2) | 306, 248, 153 | 0.1899 | 0.0061 | 11 | 3 |
+
+Completion items excluded because the opening was publisher boilerplate, not paper text: tangier-33346003.
