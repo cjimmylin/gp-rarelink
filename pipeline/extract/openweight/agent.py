@@ -127,6 +127,8 @@ class OpenAICompatClient:
         import httpx
         body: dict[str, Any] = {"model": self.model, "messages": messages, "tools": tools, "temperature": 0,
                                 "max_tokens": self.max_tokens, "stream": True}
+        if not tools:
+            body.pop("tools")  # a plain call with no tools (used by the memorization probe)
         if "openrouter.ai" in self.base_url:
             body["usage"] = {"include": True}
             if self.provider:
