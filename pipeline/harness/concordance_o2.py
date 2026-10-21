@@ -81,10 +81,10 @@ def variant_key(r: dict) -> str:
     return f"{tx or ''}|{cdna or ''}|{prot or ''}|{'' if (cdna or prot) else clean(orig).lower()}"
 
 
-def one(disease: str, snap: Path, hp_parents, cache) -> tuple[dict, list[dict], list[dict]]:
+def one(disease: str, snap: Path, hp_parents, cache, prefix: str = "pv1") -> tuple[dict, list[dict], list[dict]]:
     cfg = json.loads(Path(f"configs/stage4/{disease}.json").read_text())
     gene = cfg["gene"]
-    run = Path(f"data/extracted/{disease}/pv1-{disease}")
+    run = Path(f"data/extracted/{disease}/{prefix}-{disease}")
     man_path = snap / (f"MANIFEST_{gene}.json" if (snap / f"MANIFEST_{gene}.json").exists() else "MANIFEST.json")
     sman = json.loads(man_path.read_text())
     if sman.get("gene", gene) != gene:
@@ -229,18 +229,20 @@ def one(disease: str, snap: Path, hp_parents, cache) -> tuple[dict, list[dict], 
         t = json.loads((run / "per_paper" / f"{p}.json").read_text()).get("tables") or {}
         for tab, rows in t.items():
             for r in rows or []:
-                for fld, cell in r.items():
+                for fld, cell in (r.items() if isinstance(r, dict) else ()):
                     if isinstance(cell, dict) and "value" in cell:
                         cov[f"{tab}.{fld}"][1] += 1
                         cov[f"{tab}.{fld}"][0] += cell.get("value") not in (None, "", "not reported", "unknown", [])
-    summary = {"disease": disease, "run_id": f"pv1-{disease}", "gene": gene, "disease_ids": sorted(dis),
+    has_pp = (run / "phenopackets").is_dir()  # the open-weight runs (D-10) stop before phenopackets
+    summary = {"disease": disease, "run_id": f"{prefix}-{disease}", "gene": gene, "disease_ids": sorted(dis),
                "snapshot_date": sman["date"], "clinvar_variant_summary_last_modified": sman["files"]["variant_summary"]["last_modified"],
                "omim": "not checked (no OMIM access, D-12)",
                "gene_7_2_1": wilson(sum("target" in s for s in with_gene), len(with_gene)),
                "normalization_7_2_2": json.loads((run / "normalization_summary.json").read_text())["status_counts"],
                "all_papers": var_block("all"), "without_clinvar_cited_papers_D19": var_block("non_cited"),
                "phenotype_7_2_4b": {"annotated_terms": len(annotated), "annotation_recall": wilson(len(recalled), len(annotated)),
-                                    "terms_in_2plus_individuals_matching_annotation": wilson(sum(bool(ancestors_or_self(t, hp_parents, cache) & annotated) for t in two), len(two))},
+                                    "terms_in_2plus_individuals_matching_annotation": wilson(sum(bool(ancestors_or_self(t, hp_parents, cache) & annotated) for t in two), len(two))}
+                                   if has_pp else None,
                "corpus_overlap_7_2_5": wilson(len(cited_pmids & run_pmids), len(run_pmids)),
                "coverage_7_2_5": {k: round(a / b, 4) for k, (a, b) in sorted(cov.items()) if b},
                "intervals": "Wilson 95%"}
@@ -254,13 +256,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--out", default="analysis/six_disease/o2")
     ap.add_argument("--triage-sample", action="store_true")
     ap.add_argument("--seed", type=int)
+    ap.add_argument("--run-prefix", default="pv1", help="score data/extracted/<d>/<prefix>-<d> (default pv1; ow for the D-10 runs)")
+    ap.add_argument("--diseases", nargs="+", default=DISEASES)
     a = ap.parse_args(argv)
     snap, out = Path(a.snapshot), Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     parents, cache = load_obo_parents(Path(a.hp_obo)), {}
     allsum, allvar, allmiss = [], [], []
-    for d in DISEASES:
-        s, vr, ms = one(d, snap, parents, cache)
+    for d in a.diseases:
+        s, vr, ms = one(d, snap, parents, cache, a.run_prefix)
         allsum.append(s); allvar += vr; allmiss += ms
         (out / f"o2_{d}.json").write_text(json.dumps(s, indent=1) + "\n")
     for name, rows in (("o2_variants.csv", allvar), ("o2_recall_misses.csv", allmiss)):
@@ -275,8 +279,8 @@ def main(argv: list[str] | None = None) -> int:
     for s in allsum:
         b = s["all_papers"]
         L.append(f"| {s['disease']} | {pct(s['gene_7_2_1'])} | {pct(b['hgvs_recall_tier1'])} | {pct(b['hgvs_recall_tier12'])} | {pct(b['overlap_tier1'])} | "
-                 f"{pct(b['classification_agreement_among_stated'])} | {pct(b['condition_names_disease'])} | {pct(s['phenotype_7_2_4b']['annotation_recall'])} | "
-                 f"{pct(s['phenotype_7_2_4b']['terms_in_2plus_individuals_matching_annotation'])} | {pct(s['corpus_overlap_7_2_5'])} |")
+                 f"{pct(b['classification_agreement_among_stated'])} | {pct(b['condition_names_disease'])} | {pct(s['phenotype_7_2_4b']['annotation_recall']) if s['phenotype_7_2_4b'] else 'not computed'} | "
+                 f"{pct(s['phenotype_7_2_4b']['terms_in_2plus_individuals_matching_annotation']) if s['phenotype_7_2_4b'] else 'not computed'} | {pct(s['corpus_overlap_7_2_5'])} |")
     L += ["", "## Without ClinVar-cited papers (D-19)", "", "| Disease | HGVS recall, tiers 1+2 | Overlap, tier 1 | Classification agreement |", "|---|---|---|---|"]
     for s in allsum:
         b = s["without_clinvar_cited_papers_D19"]

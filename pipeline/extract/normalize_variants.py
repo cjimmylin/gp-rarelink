@@ -80,7 +80,7 @@ LEGACY_SUB = re.compile(r"^c\.([ACGT])(\d+)([ACGT])$", re.IGNORECASE)  # c.A271T
 
 
 def v(cell):
-    return (cell or {}).get("value")
+    return cell.get("value") if isinstance(cell, dict) else None  # a cell not in {value, span} shape reads as missing
 
 
 def clean(s) -> str:

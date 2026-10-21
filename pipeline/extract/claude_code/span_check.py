@@ -89,7 +89,10 @@ def cv(row, name: str):
 
 
 def check_paper(path: Path, md_dir: Path, schema: dict[str, dict], features: list[str]) -> tuple[list[dict], list[str], Counter]:
-    doc = json.loads(path.read_text())
+    try:
+        doc = json.loads(path.read_text())
+    except json.JSONDecodeError as e:
+        return [], [f"{path.stem}: output does not parse as JSON ({e})"], Counter({"papers_unparseable": 1})
     pmid = str(doc.get("pmid", path.stem))
     problems: list[str] = []
     counts: Counter = Counter()

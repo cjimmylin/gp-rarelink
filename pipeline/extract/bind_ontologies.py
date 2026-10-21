@@ -69,7 +69,7 @@ HA20_LABEL = re.compile(r"\bHA20\b|A20\s+haploinsufficien|haploinsufficiency\s+o
 
 
 def v(cell):
-    return (cell or {}).get("value")
+    return cell.get("value") if isinstance(cell, dict) else None  # a cell not in {value, span} shape reads as missing
 
 
 def fold(s) -> str:

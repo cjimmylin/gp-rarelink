@@ -101,7 +101,7 @@ NOT_PATHOGENIC = re.compile(r"\b(uncertain|VUS|benign|non-?pathogenic)\b", re.IG
 
 
 def v(cell):
-    return (cell or {}).get("value")
+    return cell.get("value") if isinstance(cell, dict) else None  # a cell not in {value, span} shape reads as missing
 
 
 def span_text(cell) -> str:

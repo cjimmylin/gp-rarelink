@@ -94,7 +94,7 @@ ISO_PART = re.compile(r"(\d+(?:\.\d+)?)([YMWD])")
 
 
 def v(cell):
-    return (cell or {}).get("value")
+    return cell.get("value") if isinstance(cell, dict) else None  # a cell not in {value, span} shape reads as missing
 
 
 # Other names the six-disease papers use for a target gene (D-40; counted in the pv1 runs on
