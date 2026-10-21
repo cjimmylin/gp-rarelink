@@ -52,11 +52,13 @@ How to use this file:
 
 ## Decision log
 
-### 2026-10-21 · D-10 hosting: OpenRouter (Jimmy's suggestion; key not yet visible to the session)
+### 2026-10-21 · D-10 hosting: OpenRouter (Jimmy's suggestion; run approved)
 - **Jimmy, 2026-10-21:** "I have an openrouter saved already on this account - can you use that?"
 - **What fits D-10:** OpenRouter's model id `deepseek/deepseek-v4.1-flash` is the 2026-09-10 checkpoint the plan pins (OpenRouter model list, read 2026-10-21; a later snapshot, `-1017`, exists and is not used). It supports tool calls. OpenRouter is a hosted API whose name, model id and serving date the agent records, as §7.5 requires.
 - **Claude's call, for fairness:** many upstream providers serve the model at different precisions (fp4, fp8, unstated). The run pins one fp8 provider with fallbacks off (`OPENWEIGHT_PROVIDER`), and logs which provider served each call. Proposed default: `deepinfra/fp8`.
-- **Blocker:** no OpenRouter key is visible in this session's environment or `.env`. It has to be added to the cloud environment's settings (as `OPENROUTER_API_KEY`), and a new session picks it up.
+- **Key (resolved, 2026-10-21):** Jimmy: "there is already a "openrouter.ai" secret in the env document already - can you look". The key is a network secret that the environment's egress proxy adds to requests for openrouter.ai, so the session never sees it and the agent sends no Authorization header. Key limit $50.
+- **One-paper pilot (2026-10-21):** PMID 37324276 on HA20, run `ow-ha20-pilot`: 16 calls, all served by DeepInfra, 29 minutes, $0.069. Same 4 variants as pv1; checklist agreement 0.95 on 80 shared cells; 99.4% of quotes found verbatim (`analysis/openweight/compare_ow-ha20-pilot.json`).
+- **Run approved by Jimmy, 2026-10-21** ("Run both now (Recommended)"): HA20 (85 papers, `ow-ha20`) then SSADH (40, `ow-ssadh`), 10 papers at a time, through `pipeline/extract/openweight/batch.py`. Stop and ask past $40 of key spend across both, counted from key usage $1.0689 at launch, or if anything breaks.
 - **Cost estimate:** about $7–15 for HA20 + SSADH (125 papers) at that provider's list price. That is inside the ~$50 contingency approved under D-10. A one-paper pilot comes first.
 
 ### 2026-10-21 · D-41 decided: model work while human rating waits
