@@ -56,3 +56,39 @@ def test_prompt_matches_the_claude_helpers():
     assert text.startswith("You are an extraction helper for the GP-RareLink research study")
     for ph in ("{instructions}", "{schema}", "{rules}", "{paper}", "{output}", "{scratch}"):
         assert ph in text
+
+
+def test_client_retries_dropped_connection(monkeypatch):
+    import httpx
+
+    from pipeline.extract.openweight import agent as ag
+    c = ag.OpenAICompatClient("https://example.invalid/v1", "m", "")
+    calls = {"n": 0}
+
+    def flaky(messages, tools):
+        calls["n"] += 1
+        if calls["n"] < 3:
+            raise httpx.ReadError("Connection reset by peer")
+        return {"ok": True}
+
+    monkeypatch.setattr(c, "_complete_once", flaky)
+    monkeypatch.setattr(ag.time, "sleep", lambda s: None)
+    assert c.complete([], []) == {"ok": True}
+    assert len(c.retried) == 2
+
+
+def test_client_does_not_retry_client_error(monkeypatch):
+    import httpx
+    import pytest
+
+    from pipeline.extract.openweight import agent as ag
+    c = ag.OpenAICompatClient("https://example.invalid/v1", "m", "")
+    req = httpx.Request("POST", "https://example.invalid/v1/chat/completions")
+
+    def bad(messages, tools):
+        raise httpx.HTTPStatusError("bad", request=req, response=httpx.Response(400, request=req))
+
+    monkeypatch.setattr(c, "_complete_once", bad)
+    with pytest.raises(httpx.HTTPStatusError):
+        c.complete([], [])
+    assert c.retried == []

@@ -78,7 +78,28 @@ class OpenAICompatClient:
     max_tokens: int = 65536
     call_wall_seconds: float = 3600.0
 
+    retries: int = 3
+    retried: list = field(default_factory=list)
+
     def complete(self, messages: list[dict], tools: list[dict]) -> dict:
+        """One model call, retried up to `retries` times on a dropped connection or a 429/5xx answer
+        (the same request is sent again; each retry is logged in `retried`)."""
+        import httpx
+        for attempt in range(self.retries + 1):
+            try:
+                return self._complete_once(messages, tools)
+            except (httpx.TransportError, httpx.HTTPStatusError) as e:
+                status = getattr(getattr(e, "response", None), "status_code", None)
+                if isinstance(e, httpx.HTTPStatusError) and status not in (408, 429, 500, 502, 503, 504):
+                    raise
+                if attempt == self.retries:
+                    raise
+                self.retried.append({"attempt": attempt + 1, "error": f"{type(e).__name__}: {e}"[:300]})
+                print(f"  retry {attempt + 1}/{self.retries} after {type(e).__name__}: {e}", flush=True)
+                time.sleep(10 * 2 ** attempt)
+        raise AssertionError("unreachable")
+
+    def _complete_once(self, messages: list[dict], tools: list[dict]) -> dict:
         """Streams the reply (so a long JSON answer shows progress and a stalled call is caught)
         and reassembles it into one chat-completions response."""
         import httpx
@@ -286,7 +307,8 @@ def main(argv: list[str] | None = None) -> int:
     served = client.served_by
     res["served_by"] = sorted({f"{x['provider']}|{x['model']}" for x in served})
     res["cost_usd_reported"] = round(sum(x["cost"] or 0 for x in served), 6)
-    print(json.dumps({k: res[k] for k in ("usage", "wall_seconds", "output_written", "refused_calls", "served_by", "cost_usd_reported")}))
+    res["retried_calls"] = client.retried
+    print(json.dumps({k: res[k] for k in ("usage", "wall_seconds", "output_written", "refused_calls", "served_by", "cost_usd_reported", "retried_calls")}))
     return 0
 
 
