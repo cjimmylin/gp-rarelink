@@ -75,17 +75,60 @@ class OpenAICompatClient:
     timeout: float = 600.0
     served_by: list = field(default_factory=list)
 
+    max_tokens: int = 65536
+    call_wall_seconds: float = 1800.0
+
     def complete(self, messages: list[dict], tools: list[dict]) -> dict:
+        """Streams the reply (so a long JSON answer shows progress and a stalled call is caught)
+        and reassembles it into one chat-completions response."""
         import httpx
-        body: dict[str, Any] = {"model": self.model, "messages": messages, "tools": tools, "temperature": 0}
+        body: dict[str, Any] = {"model": self.model, "messages": messages, "tools": tools, "temperature": 0,
+                                "max_tokens": self.max_tokens, "stream": True}
         if "openrouter.ai" in self.base_url:
             body["usage"] = {"include": True}
             if self.provider:
                 body["provider"] = {"order": [self.provider], "allow_fallbacks": False}
-        r = httpx.post(self.base_url.rstrip("/") + "/chat/completions", timeout=self.timeout,
-                       headers={"Authorization": f"Bearer {self.api_key}"}, json=body)
-        r.raise_for_status()
-        out = r.json()
+        headers = {"Authorization": f"Bearer {self.api_key}"} if self.api_key else {}  # empty: the environment's proxy adds the key
+        content, reasoning, calls, usage, meta = [], [], {}, {}, {}
+        t0, last_report = time.time(), 0
+        with httpx.stream("POST", self.base_url.rstrip("/") + "/chat/completions", headers=headers, json=body,
+                          timeout=httpx.Timeout(self.timeout, read=300.0)) as r:
+            r.raise_for_status()
+            for line in r.iter_lines():
+                if time.time() - t0 > self.call_wall_seconds:
+                    raise TimeoutError(f"call exceeded {self.call_wall_seconds:.0f} s")
+                if not line.startswith("data:"):
+                    continue  # SSE comments are keep-alives
+                data = line[5:].strip()
+                if data == "[DONE]":
+                    break
+                ev = json.loads(data)
+                if ev.get("error"):
+                    raise RuntimeError(f"provider error: {ev['error']}")
+                meta.update({k: ev[k] for k in ("provider", "model", "id") if k in ev})
+                if ev.get("usage"):
+                    usage = ev["usage"]
+                for ch in ev.get("choices") or []:
+                    dl = ch.get("delta") or {}
+                    if dl.get("content"):
+                        content.append(dl["content"])
+                    if dl.get("reasoning"):
+                        reasoning.append(dl["reasoning"])
+                    for tc in dl.get("tool_calls") or []:
+                        slot = calls.setdefault(tc.get("index", 0), {"id": "", "type": "function", "function": {"name": "", "arguments": ""}})
+                        if tc.get("id"):
+                            slot["id"] = tc["id"]
+                        fn = tc.get("function") or {}
+                        slot["function"]["name"] += fn.get("name") or ""
+                        slot["function"]["arguments"] += fn.get("arguments") or ""
+                n = sum(len(x) for x in content) + sum(len(c["function"]["arguments"]) for c in calls.values())
+                if n - last_report > 20000:
+                    last_report = n
+                    print(f"  ... {n} characters streamed, {time.time() - t0:.0f} s", flush=True)
+        msg: dict[str, Any] = {"role": "assistant", "content": "".join(content) or None}
+        if calls:
+            msg["tool_calls"] = [calls[i] for i in sorted(calls)]
+        out = {"choices": [{"message": msg}], "usage": usage, **meta, "reasoning_chars": sum(len(x) for x in reasoning)}
         self.served_by.append({"provider": out.get("provider"), "model": out.get("model"),
                                "cost": (out.get("usage") or {}).get("cost")})
         return out
@@ -164,7 +207,7 @@ def task_paths(disease: str, pmid: str, run_id: str, scratch: Path) -> dict[str,
 
 
 def run(client: ChatClient, paths: dict[str, Path], transcript: Path, meta: dict | None = None,
-        now: Callable[[], float] = time.time) -> dict:
+        now: Callable[[], float] = time.time, progress: bool = False) -> dict:
     prompt = PROMPT.read_text().format(**{k: str(v) for k, v in paths.items()})
     paths["scratch"].mkdir(parents=True, exist_ok=True)
     box = Sandbox(reads={paths[k].resolve() for k in ("instructions", "schema", "rules", "paper")},
@@ -172,7 +215,13 @@ def run(client: ChatClient, paths: dict[str, Path], transcript: Path, meta: dict
     messages: list[dict[str, Any]] = [{"role": "user", "content": prompt}]
     usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
     t0, final = now(), ""
-    for _ in range(MAX_TURNS):
+    transcript.parent.mkdir(parents=True, exist_ok=True)
+
+    def save(status: str) -> None:  # written after every turn, so an interrupted run keeps its transcript
+        transcript.write_text(json.dumps({"status": status, "meta": meta or {}, "usage": usage, "tool_log": box.log,
+                                          "messages": messages}, indent=1, ensure_ascii=False) + "\n")
+
+    for turn in range(MAX_TURNS):
         resp = client.complete(messages, TOOLS)
         usage["calls"] += 1
         for k in ("prompt_tokens", "completion_tokens"):
@@ -184,8 +233,16 @@ def run(client: ChatClient, paths: dict[str, Path], transcript: Path, meta: dict
             final = msg.get("content") or ""
             break
         for c in calls:
-            args = json.loads(c["function"].get("arguments") or "{}")
-            messages.append({"role": "tool", "tool_call_id": c["id"], "content": box.call(c["function"]["name"], args)})
+            try:
+                args = json.loads(c["function"].get("arguments") or "{}")
+            except json.JSONDecodeError:
+                args = None
+            content = box.call(c["function"]["name"], args) if isinstance(args, dict) else "ERROR: arguments were not valid JSON"
+            messages.append({"role": "tool", "tool_call_id": c["id"], "content": content})
+        save("running")
+        if progress:
+            print(f"turn {turn + 1}: {[c['function']['name'] for c in calls]} tokens {usage['prompt_tokens']}+{usage['completion_tokens']}",
+                  flush=True)
     result = {"meta": meta or {}, "prompt_file": str(PROMPT.relative_to(ROOT)), "usage": usage, "wall_seconds": round(now() - t0, 1),
               "tool_log": box.log, "final_reply": final, "output_written": paths["output"].exists(),
               "refused_calls": sum(1 for x in box.log if "refused" in x)}
@@ -214,16 +271,18 @@ def main(argv: list[str] | None = None) -> int:
             if "=" in line and not line.lstrip().startswith("#"):
                 k, v = line.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip())
-    key = os.environ.get("OPENWEIGHT_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
-    base = os.environ.get("OPENWEIGHT_BASE_URL") or ("https://openrouter.ai/api/v1" if os.environ.get("OPENROUTER_API_KEY") else None)
+    key = os.environ.get("OPENWEIGHT_API_KEY") or os.environ.get("OPENROUTER_API_KEY") or ""
+    # Default: OpenRouter. In this cloud environment the key is a network secret for openrouter.ai that the
+    # proxy adds to each request, so the session never holds it (checked 2026-10-21 with GET /api/v1/key).
+    base = os.environ.get("OPENWEIGHT_BASE_URL") or "https://openrouter.ai/api/v1"
     model = os.environ.get("OPENWEIGHT_MODEL") or "deepseek/deepseek-v4.1-flash"  # OpenRouter id of the 2026-09-10 checkpoint (D-10)
-    provider = os.environ.get("OPENWEIGHT_PROVIDER") or None
-    if not (base and key):
-        raise SystemExit("no key: set OPENROUTER_API_KEY (or OPENWEIGHT_API_KEY and OPENWEIGHT_BASE_URL) in the environment (D-10)")
+    provider = os.environ.get("OPENWEIGHT_PROVIDER") or "deepinfra/fp8"  # one fp8 provider, no fallbacks (DECISIONS 2026-10-21)
+    if not key and "openrouter.ai" not in base:
+        raise SystemExit("no key for a non-OpenRouter endpoint: set OPENWEIGHT_API_KEY (D-10)")
     client = OpenAICompatClient(base, model, key, provider)
     meta = {"endpoint": base, "model": model, "provider_pinned": provider, "run_id": a.run_id, "disease": a.disease, "pmid": a.pmid,
             "date": time.strftime("%Y-%m-%d", time.gmtime())}
-    res = run(client, paths, ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta)
+    res = run(client, paths, ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta, progress=True)
     served = client.served_by
     res["served_by"] = sorted({f"{x['provider']}|{x['model']}" for x in served})
     res["cost_usd_reported"] = round(sum(x["cost"] or 0 for x in served), 6)
