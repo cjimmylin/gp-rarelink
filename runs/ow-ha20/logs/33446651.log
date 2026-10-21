@@ -3,3 +3,28 @@ turn 2: ['read_file', 'read_file'] tokens 13575+248
 turn 3: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 32179+45176
 turn 4: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 53136+77488
 turn 5: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 74734+78001
+turn 6: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 98922+83956
+turn 7: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 125513+95052
+turn 8: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 152854+95709
+turn 9: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 182583+103610
+turn 10: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 214627+104188
+turn 11: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 248543+137974
+turn 12: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 284523+173765
+  retry 1/3 after ReadError: [Errno 104] Connection reset by peer
+turn 13: ['grep', 'grep', 'grep', 'grep', 'grep', 'grep'] tokens 322492+235706
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 316, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 306, in main
+    res = run(client, paths, ROOT / f"runs/{a.run_id}/transcripts/{a.pmid}.json", meta, progress=True)
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 246, in run
+    resp = client.complete(messages, TOOLS)
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 90, in complete
+    return self._complete_once(messages, tools)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 128, in _complete_once
+    raise RuntimeError(f"provider error: {ev['error']}")
+RuntimeError: provider error: {'code': 502, 'message': 'Network connection lost.', 'metadata': {'error_type': 'provider_unavailable'}}
