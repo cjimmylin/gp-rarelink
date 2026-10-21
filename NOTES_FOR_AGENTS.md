@@ -81,6 +81,20 @@ How to maintain it:
   - **D-40 done (2026-10-20):** per-disease Stage 4 settings (`configs/stage4/`, `pipeline/extract/stage4_config.py`), checklist-to-HPO maps (`configs/checklist_hpo/`), 2,836 phenopackets, all valid. Report §9 (`reports/six_disease_run_findings.md`).
   - **O1 audit sample drawn (seed 40250)** before any pv1 concordance: `adjudication/o1_audit/`. Rater pages A https://claude.ai/artifact/Jvk4nxzG79u9AchAXvwPe4 and B https://claude.ai/artifact/1VVgQNgSpyzDrsApErz8YU (store collection `ratings`, docs keyed O1-nnn). Waiting on Jimmy to share them with two panel members. Then a tie-breaker page for the disagreements.
   - **O2 done (2026-10-20):** `pipeline/harness/concordance_o2.py`, snapshot 2026-10-19 (re-create it with `snapshot_reference.py --per-gene` if the container is new). Results in `analysis/six_disease/o2/`, report §11. HGVS recall is low and concentrated in single papers. Triage sample of 50 misses: `adjudication/o2_triage/` (seed 72650), waiting on a person.
+  - **2026-10-21, D-41 (plan `reports/plan_next_work_2026-10-21.md`; human rating deferred):**
+    - **WS1 completeness:** HA20 9/9 restricted, AxD 54/56 (`analysis/six_disease/completeness_pv1-<d>.json`).
+    - **WS2 gap candidates:** 215 (`adjudication/o3_gaps/`, `pipeline/harness/gap_candidates.py`).
+    - **WS3 evidence sheets:** 215 dossiers, 4,725 quotes all verbatim, $64 by helper tokens. The helpers' flags are in `adjudication/o3_gaps/helper_notes_2026-10-21.md`; several candidates may not be gaps (e.g. G-ssadh-003, G-axd-017, G-lad1-077).
+    - **WS4 adjudication page:** https://claude.ai/artifact/UUWN2ULAGkYYNQj4zDy9ta (adjudicator A, store `adjudications`), private and not shared.
+    - **WS5 memorization probe:** `analysis/bias/memorization/`, no recall found, $5.
+    - **WS6 bias prep:** comparator sheets await a person (`analysis/bias/comparator_sheets/README.md`).
+    - **WS7 exploratory:** GPSEA in its own uv project, `analysis/exploratory/gpsea/`.
+    - **WS8 open-weight loop:** `pipeline/extract/openweight/agent.py`, waiting on the D-10 account.
+    - **WS9:** drafts in `reports/drafts/`.
+  - **GPSEA needs pandas < 3; the frozen pipeline is locked to pandas 3.0.6.** Never add GPSEA to the main `pyproject.toml`; use `analysis/exploratory/gpsea` (`uv sync` there). GPSEA needs a genotype on every call, so that run fills missing zygosity by a stated assumption; the records stay three-state.
+  - **The isolation test also rejects 'harness' and 'clinvar' anywhere in `pipeline/extract`.** The open-weight module avoids those words.
+  - **Memorization-probe passages can be publisher boilerplate** (Elsevier "Journal Pre-proof"). `score_probes.py` excludes them by pattern and names them.
+  - **Copy one pv1 helper's first message before writing a comparison prompt.** The exact launch prompt is in `pipeline/extract/openweight/launch_prompt_v1.txt`.
   - **The isolation test rejects the token 'omim' anywhere in `pipeline/extract`.** Look up Mondo terms by name, not by cross-reference.
   - **'ß'.upper() is 'SS' in Python.** Fold Greek beta and German sharp s before upper-casing (see `reconcile.is_gene`).
   - **HPO binding helpers cost more than estimated** ($72 vs $28): they grep hp.obo repeatedly. Give them a lookup tool next time.

@@ -29,7 +29,7 @@
 - ClinVar submissions after panel sign-off.
 
 **Spend** (list-price readings of this project's Claude Code session):
-- about $1,628 to date;
+- at least about $1,628 to date (the reading froze during the latest work; take a fresh reading before sending);
 - of which the six-disease extraction and verification run was about $833 (lines 1–2);
 - evidence sheets for the gap variants about $64 (line 3);
 - the memorization probe about $5 (line 5).
