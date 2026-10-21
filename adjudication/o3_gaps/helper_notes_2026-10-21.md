@@ -50,6 +50,41 @@
 - **AxD 38540409 vs 41443241:** the two papers disagree on the age at death of the same patient.
 - **HA20 42012563:** P22 is male in Table 1 but female in the supplementary tables.
 
+## HA20 (development disease, D-18), batches 01 and 04–07
+
+- **Same person under several identities:**
+  - G-ha20-001: HA20-ID0709, ID0218, ID0586 and ID0584 are probably one woman; 34011076 enters one family twice.
+  - G-ha20-009: ID0097, ID0618 and ID0721 are probably one boy; his father is both ID0100 and ID0342.
+  - G-ha20-016: 34011076 row 7 (ID0136) is probably 40574834 P13 (ID0713), the same Shigemura family.
+  - ID0764 (41905891) is P3 of 36325013 (ID0222).
+  - G-ha20-021 and -032: the two Zhengzhou series (40859316, 41890736) share at least one child (identical laboratory values). Review 39125844 only restates primary-paper people already in the batch.
+- **Carriers not attached:**
+  - G-ha20-032: 41890736 Patient 2 (c.1243_1247delAAAAC, de novo) was missed, probably because of the notation.
+  - 36211342 patient 1 probably matches 40574834 P50 (G-ha20-023).
+  - Relatives in 34011076 family blocks have no variant printed in their rows.
+  - Two carrier mothers (G-ha20-012, -034).
+- **Notation conflicts to settle:**
+  - c.986+1 is G>C or G>T, inconsistently, in 40574834 and 36211342 (G-ha20-023).
+  - 40859316 gives c.1243_1247del in the text but c.1247_1251del in a table (G-ha20-032).
+  - G-ha20-036: c.1316_1317del vs c.1318_1319del.
+  - G-ha20-029: c.1127delC vs c.1128del.
+  - G-ha20-017: the paper's transcript is NM_001270507.2.
+- **Batches 02 and 03:**
+  - G-ha20-060: 19 identities are one Hori family in four papers, likely 7–8 people.
+  - G-ha20-033: ID0489, ID0594 and ID0718 are the Takagi 2017 boy. His father is reported as mosaic, which contradicts a review's "de novo".
+  - G-ha20-046: ID0213 = ID0734.
+  - G-ha20-055: ID0219 = ID0730, and the mosaic mother is not attached.
+  - G-ha20-015: ID0752 = ID0250.
+  - G-ha20-043: the mother and sisters are entered twice (ID0630/0201, ID0636/0205, ID0637/0206).
+  - G-ha20-002: 30402268 and 39167656 Family-4 are probably the same family.
+  - Notation: G-ha20-054 is c.2099+1 in the text but c.2088+1 in the tables. G-ha20-033 is c.1245_1248del vs c.1249_1252del, a 3′ shift the paper itself explains. G-ha20-047 is c.1760_1770del11 vs c.1763_1773del.
+  - 35958611 (A547T) contradicts itself on whether the variant was validated. 37342083 contradicts itself on L236P and T602S classes.
+  - G-ha20-024 and the 34011076 row 29 carrier: see the c.986+1 notes above.
+- **Splice variants with RNA or minigene evidence:** c.487-1G>A, c.805+1G>A, c.986+1 and c.1906+2T>G (G-ha20-053); G-ha20-052 shares the same donor site. The batch's predicted protein is p.? for these.
+- **Mosaic or somatic:** G-ha20-019 (the figures disagree between text and supplement; c.806-1G>T is somatic in an excluded person).
+- **Not independent of the ground truth:** 41226818 (G-ha20-059) bases its classification on ClinVar.
+- **Phenotypes the papers call atypical:** G-ha20-058 (type 1 diabetes), G-ha20-049 ("Osteomyelitis/CGD"), G-ha20-035 (a lab control only), G-ha20-037 and G-ha20-059.
+
 ## Evidence that is thin by nature
 
 - **Review-table rows with no case description:** about 34 LAD-I candidates rest only on van de Vijver 2012, a mutation update. The same holds for some Danon entries (c.940del, c.808dup, Bottillo c.453del).
