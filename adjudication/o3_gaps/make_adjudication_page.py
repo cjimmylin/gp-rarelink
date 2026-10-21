@@ -54,6 +54,8 @@ def main(argv: list[str] | None = None) -> int:
                     "pmids": c["pmids"].split(), "n_identities": int(c["n_identities"]),
                     "original_strings": c["original_strings"], "protein_check": c["protein_check"],
                     "only_reviews": c.get("n_non_review_papers") == "0", "dossier": dossier})
+    order = ["ssadh", "tangier", "lad1", "axd", "danon", "ha20"]  # HA20 last: development disease (D-18)
+    out.sort(key=lambda c: (order.index(c["disease"]) if c["disease"] in order else 99, c["id"]))
     data = {"title": f"Gap-variant adjudication, adjudicator {a.adjudicator}", "adjudicator": a.adjudicator,
             "snapshot": summary["snapshot"], "store_key": f"o3-adjudication-{a.adjudicator}-v1", "candidates": out}
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
