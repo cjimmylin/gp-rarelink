@@ -15,7 +15,11 @@ for f in glob.glob(os.path.join(sys.argv[1], "a*.output")):
             txt = json.dumps(m.get("content"))
             o = re.search(r"Output file: /home/user/gp-rarelink/data/extracted/(\w+)/([\w-]+)/(per_paper|gatekeeper_v4|gatekeeper|hpo_model_bindings)/", txt)
             mp = re.search(r"map_prompt_(\w+)\.txt", txt)
-            if o: key = (o.group(1), o.group(2), {"per_paper": "extract", "hpo_model_bindings": "hpo_binding"}.get(o.group(3), "gatekeeper"))
+            ds = re.search(r"o3_gaps/batches/(batch_\d+)\.json", txt)
+            mem = re.search(r"memorization/(?:batches|prompts)/(\w+)", txt)
+            if ds: key = ("o3", ds.group(1), "dossier")  # WS3 evidence dossiers (D-41)
+            elif mem: key = ("bias", mem.group(1), "memorization_probe")  # WS5 (D-41)
+            elif o: key = (o.group(1), o.group(2), {"per_paper": "extract", "hpo_model_bindings": "hpo_binding"}.get(o.group(3), "gatekeeper"))
             elif mp: key = (mp.group(1), "stage4", "checklist_hpo_map")  # D-40 map drafting helpers
             elif "checklist" in txt.lower(): key = ("other", "checklist", "other")
             else: key = ("other", "other", "other")

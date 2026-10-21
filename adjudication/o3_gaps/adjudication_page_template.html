@@ -1,0 +1,444 @@
+<title>Gap Variant Adjudication</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+/* Layout: a curation desk. Sticky header with filters and progress; a variant list on the left, the evidence sheet and the decision form on the right (stacked on phones). Same tokens as the O1 audit pages. */
+:root {
+  --paper: #f3f5f6;
+  --surface: #ffffff;
+  --ink: #17212b;
+  --muted: #5a6670;
+  --rule: #d8dee3;
+  --accent: #2c5a86;
+  --accent-soft: #e4edf6;
+  --ok: #2b7a4b;
+  --ok-soft: #e3f2e9;
+  --part: #9a6a07;
+  --part-soft: #fbf0d6;
+  --bad: #b03636;
+  --bad-soft: #f8e3e3;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-quote: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #11161b; --surface: #182027; --ink: #e5eaee; --muted: #9ba7b2; --rule: #2a343e;
+    --accent: #8db3da; --accent-soft: #1d2b39;
+    --ok: #6cc28f; --ok-soft: #173025; --part: #e2b456; --part-soft: #352a12; --bad: #ec8484; --bad-soft: #3a1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #11161b; --surface: #182027; --ink: #e5eaee; --muted: #9ba7b2; --rule: #2a343e;
+  --accent: #8db3da; --accent-soft: #1d2b39;
+  --ok: #6cc28f; --ok-soft: #173025; --part: #e2b456; --part-soft: #352a12; --bad: #ec8484; --bad-soft: #3a1c1e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--rule); }
+header.top .wrap { padding-block: 12px 10px; display: grid; gap: 8px; }
+.title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+h1 { font-size: 19px; font-weight: 600; margin: 0; text-wrap: balance; }
+.save-state { font-size: 12.5px; color: var(--muted); }
+.save-state.warn { color: var(--bad); }
+.tools { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 13.5px; color: var(--muted); }
+.tools select, .tools input[type=search] { font: inherit; font-size: 13.5px; padding: 4px 8px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); }
+.tools .spacer { flex: 1; }
+.meter { height: 4px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+.meter > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .25s ease; }
+button.plain { font: inherit; font-size: 13.5px; background: none; border: 1px solid var(--rule); color: var(--ink); padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible, .row:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+main .wrap { padding-block: 16px 64px; display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 860px) { main .wrap { grid-template-columns: minmax(0, 1fr); } }
+.list { display: grid; gap: 6px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 128px); max-height: calc(100vh - 150px); overflow: auto; padding-right: 2px; }
+@media (max-width: 860px) { .list { position: static; max-height: 46vh; } }
+.row { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: 8px; align-items: start; text-align: left; font: inherit; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 7px; padding: 8px 10px; cursor: pointer; }
+.row[aria-current="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.row .dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; border: 2px solid var(--rule); }
+.row[data-d="approve"] .dot { background: var(--ok); border-color: var(--ok); }
+.row[data-d="reject"] .dot { background: var(--bad); border-color: var(--bad); }
+.row[data-d="discuss"] .dot { background: var(--part); border-color: var(--part); }
+.row .hgvs { font-family: var(--font-data); font-size: 13px; overflow-wrap: anywhere; }
+.row .sub { font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 2px 8px; }
+
+.sheet { display: grid; gap: 14px; min-width: 0; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: grid; gap: 10px; min-width: 0; }
+.panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0; font-weight: 600; }
+.variant-title { font-family: var(--font-data); font-size: 17px; font-weight: 500; overflow-wrap: anywhere; margin: 0; }
+.variant-sub { font-family: var(--font-data); font-size: 13.5px; color: var(--muted); overflow-wrap: anywhere; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+.chip.warn { background: var(--part-soft); color: var(--part); }
+.facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 3px 14px; margin: 0; font-size: 14px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.facts a, .quote-src a { color: var(--accent); }
+.dbnote { font-size: 13.5px; border: 1px dashed var(--rule); border-radius: 6px; padding: 8px 10px; color: var(--muted); }
+.item { display: grid; gap: 6px; padding-top: 10px; border-top: 1px solid var(--rule); }
+.item:first-of-type { border-top: 0; padding-top: 0; }
+.item h3 { margin: 0; font-size: 14.5px; font-weight: 600; }
+.item .hint { font-weight: 400; color: var(--muted); font-size: 12.5px; margin-left: 6px; }
+.item .stmt { margin: 0; max-width: 75ch; }
+.item .stmt.empty { color: var(--muted); font-style: italic; }
+blockquote.quote { margin: 0; padding: 8px 12px; border-left: 2px solid var(--accent); background: var(--paper); font-family: var(--font-quote); font-size: 15px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; border-radius: 0 6px 6px 0; }
+.quote-src { font-family: var(--font-data); font-size: 11.5px; color: var(--muted); display: block; margin-top: 4px; font-style: normal; }
+.people { display: grid; gap: 8px; }
+.person { border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; display: grid; gap: 6px; }
+.person .who { font-size: 13.5px; display: flex; flex-wrap: wrap; gap: 2px 10px; }
+.person .who b { font-weight: 600; }
+.concerns { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.concerns li { max-width: 75ch; }
+.panel.concern { border-color: var(--part); background: var(--part-soft); }
+
+.criteria { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px 10px; }
+.crit { display: grid; grid-template-columns: 52px minmax(0, 1fr); align-items: center; gap: 6px; font-size: 13px; }
+.crit label { font-family: var(--font-data); font-weight: 500; }
+.crit select { font: inherit; font-size: 12.5px; padding: 3px 4px; border: 1px solid var(--rule); border-radius: 5px; background: var(--surface); color: var(--ink); min-width: 0; }
+.crit select.on { border-color: var(--accent); background: var(--accent-soft); }
+.subhead { font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 7px; overflow: hidden; }
+.seg button { font: inherit; font-size: 14px; padding: 7px 12px; border: 0; background: var(--surface); color: var(--ink); cursor: pointer; border-right: 1px solid var(--rule); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); font-weight: 600; }
+.seg.decision button[aria-pressed="true"][data-v="approve"] { background: var(--ok-soft); color: var(--ok); }
+.seg.decision button[aria-pressed="true"][data-v="reject"] { background: var(--bad-soft); color: var(--bad); }
+.seg.decision button[aria-pressed="true"][data-v="discuss"] { background: var(--part-soft); color: var(--part); }
+textarea.note { width: 100%; min-height: 80px; font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); }
+.form-foot { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 13px; color: var(--muted); }
+.timer { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.empty-state { color: var(--muted); padding: 24px 4px; }
+.copy-box { width: 100%; min-height: 120px; font-family: var(--font-data); font-size: 12px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); padding: 8px; }
+.intro { font-size: 14px; color: var(--muted); max-width: 75ch; display: grid; gap: 6px; }
+.intro p { margin: 0; }
+.intro b { color: var(--ink); font-weight: 600; }
+@media (max-width: 520px) { .facts { grid-template-columns: minmax(0, 1fr); gap: 0; } .facts dt { margin-top: 6px; } }
+@media (prefers-reduced-motion: reduce) { .meter > i { transition: none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="title-row">
+      <h1 id="page-title">Gap-variant adjudication</h1>
+      <span class="save-state" id="save-state">Connecting to the store…</span>
+    </div>
+    <div class="tools">
+      <label for="f-disease">Disease</label>
+      <select id="f-disease"><option value="">All</option></select>
+      <label for="f-status">Show</label>
+      <select id="f-status">
+        <option value="">All</option>
+        <option value="open">Not decided</option>
+        <option value="approve">Approved</option>
+        <option value="reject">Rejected</option>
+        <option value="discuss">Needs discussion</option>
+      </select>
+      <input type="search" id="f-text" placeholder="Search HGVS or PMID" aria-label="Search HGVS or PMID">
+      <span class="spacer"></span>
+      <span id="count">0 of 0 decided</span>
+      <button class="plain" id="copy-btn" type="button">Copy all decisions as text</button>
+    </div>
+    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <nav class="list" id="list" aria-label="Variants"></nav>
+    <section class="sheet" id="sheet" aria-live="polite">
+      <div class="panel">
+        <div class="intro">
+          <p><b>Classify each variant from its evidence sheet, then approve or reject the record.</b> Each sheet was assembled by a model from the papers only: every statement carries a verbatim quote and PMID, and "not reported" means the papers say nothing. The model was not shown ClinVar or OMIM and proposes no classification.</p>
+          <p><b>Population data (PM2/BA1/BS1) is not in the sheets.</b> Check it yourself; the gnomAD link opens the variant. Before any submission the variant is re-checked against live ClinVar.</p>
+          <p><b>Approve</b> means the record can go forward as a draft submission with your classification. <b>Reject</b> means it should not, for example an extraction or numbering error. Time on each variant is logged while its sheet is open and you are active (§7.5).</p>
+        </div>
+      </div>
+      <textarea id="copy-box" class="copy-box" hidden readonly aria-label="Decisions as text"></textarea>
+      <div id="detail"><p class="empty-state">Pick a variant from the list.</p></div>
+    </section>
+  </div>
+</main>
+
+<script>
+const DATA = /*__DATA__*/null;
+const ITEMS = [
+  ["cases", "Cases", "people carrying the variant"],
+  ["phenotype_specificity", "Phenotype fit and other causes excluded", "PP4"],
+  ["segregation", "Segregation", "PP1 / BS4"],
+  ["de_novo", "De novo", "PS2 / PM6"],
+  ["in_trans", "In trans with another allele", "PM3"],
+  ["functional", "Functional studies", "PS3 / BS3"],
+  ["variant_type_and_mechanism", "Variant type and disease mechanism", "PVS1 / PM1 / PM4 / PP2"],
+  ["computational_predictions", "Computational predictions in the papers", "PP3 / BP4"],
+  ["population_data_in_papers", "Population data stated in the papers", "PM2 (check gnomAD too)"],
+  ["authors_classification", "Authors' own classification", ""],
+];
+const CRITERIA = {
+  Pathogenic: ["PVS1", "PS1", "PS2", "PS3", "PS4", "PM1", "PM2", "PM3", "PM4", "PM5", "PM6", "PP1", "PP2", "PP3", "PP4", "PP5"],
+  Benign: ["BA1", "BS1", "BS2", "BS3", "BS4", "BP1", "BP2", "BP3", "BP4", "BP5", "BP6", "BP7"],
+};
+const STRENGTHS = [["", "—"], ["default", "Met"], ["supporting", "Supporting"], ["moderate", "Moderate"], ["strong", "Strong"], ["very_strong", "Very strong"]];
+const CLASSES = [["P", "Pathogenic"], ["LP", "Likely pathogenic"], ["VUS", "VUS"], ["LB", "Likely benign"], ["B", "Benign"]];
+const DECISIONS = [["approve", "Approve record"], ["reject", "Reject record"], ["discuss", "Needs discussion"]];
+const COLL = "adjudications";
+const IDLE_MS = 90000;
+
+const state = {};           // candidate_id -> {criteria, classification, decision, note, active_seconds}
+let db = null, store = "none", current = null, lastActive = Date.now(), dirtyTime = false;
+const byId = Object.fromEntries(DATA.candidates.map((c) => [c.id, c]));
+
+const $ = (id) => document.getElementById(id);
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v; else if (k === "text") n.textContent = v; else n.setAttribute(k, v);
+  }
+  for (const c of kids) if (c != null) n.append(c);
+  return n;
+};
+const rec = (id) => (state[id] = state[id] || { criteria: {}, classification: "", decision: "", note: "", active_seconds: 0 });
+const fmt = (s) => { s = Math.round(s || 0); const m = Math.floor(s / 60); return m + " min " + String(s % 60).padStart(2, "0") + " s"; };
+const pubmed = (p) => el("a", { href: "https://pubmed.ncbi.nlm.nih.gov/" + p + "/", target: "_blank", rel: "noopener", text: p });
+
+function quoteEl(q) {
+  const b = el("blockquote", { class: "quote" }, q.quote);
+  b.append(el("span", { class: "quote-src" }, "PMID ", pubmed(q.pmid)));
+  return b;
+}
+
+function itemEl(key, label, hint, it) {
+  const box = el("div", { class: "item" }, el("h3", {}, label, hint ? el("span", { class: "hint", text: hint }) : null));
+  if (!it) { box.append(el("p", { class: "stmt empty", text: "Missing from the sheet." })); return box; }
+  const st = (it.statement || "").trim();
+  const empty = /^not (reported|applicable)\.?$/i.test(st);
+  box.append(el("p", { class: "stmt" + (empty ? " empty" : ""), text: st || "—" }));
+  if (it.scope === "cohort-level") box.append(el("span", { class: "chip warn", text: "cohort-level statement" }));
+  if (key === "cases" && Array.isArray(it.people)) {
+    const ppl = el("div", { class: "people" });
+    for (const p of it.people) {
+      const who = el("div", { class: "who" }, el("b", { text: p.label || "person" }), "PMID ", pubmed(p.pmid),
+        p.identity ? el("span", { text: p.identity }) : null,
+        p.sex ? el("span", { text: p.sex }) : null,
+        p.zygosity_or_genotype ? el("span", { text: p.zygosity_or_genotype }) : null,
+        p.other_allele && !/^not (reported|applicable)/i.test(p.other_allele) ? el("span", { text: "other allele: " + p.other_allele }) : null);
+      const card = el("div", { class: "person" }, who);
+      if (p.key_phenotypes) card.append(el("div", { text: p.key_phenotypes }));
+      (p.quotes || []).forEach((q) => card.append(quoteEl(q)));
+      ppl.append(card);
+    }
+    box.append(ppl);
+  }
+  (it.quotes || []).forEach((q) => box.append(quoteEl(q)));
+  return box;
+}
+
+function formEl(c) {
+  const r = rec(c.id);
+  const panel = el("div", { class: "panel", id: "form" }, el("h2", { text: "Your classification" }));
+  for (const [side, codes] of Object.entries(CRITERIA)) {
+    panel.append(el("div", { class: "subhead", text: side + " criteria applied" }));
+    const grid = el("div", { class: "criteria" });
+    for (const code of codes) {
+      const sel = el("select", { id: "crit-" + code, "aria-label": code + " strength" });
+      for (const [v, l] of STRENGTHS) { const o = el("option", { value: v, text: l }); if ((r.criteria[code] || "") === v) o.selected = true; sel.append(o); }
+      sel.classList.toggle("on", !!r.criteria[code]);
+      sel.addEventListener("change", () => {
+        if (sel.value) r.criteria[code] = sel.value; else delete r.criteria[code];
+        sel.classList.toggle("on", !!sel.value); touch(); save(c.id);
+      });
+      grid.append(el("div", { class: "crit" }, el("label", { for: "crit-" + code, text: code }), sel));
+    }
+    panel.append(grid);
+  }
+  panel.append(el("div", { class: "subhead", text: "Classification" }), seg("classification", CLASSES, c.id, ""));
+  panel.append(el("div", { class: "subhead", text: "Decision on this record" }), seg("decision", DECISIONS, c.id, "decision"));
+  const note = el("textarea", { class: "note", id: "note", placeholder: "Reasoning, and for a rejection what is wrong (e.g. numbering error, wrong person)", "aria-label": "Notes" });
+  note.value = r.note || "";
+  let t = null;
+  note.addEventListener("input", () => { touch(); clearTimeout(t); t = setTimeout(() => { r.note = note.value; save(c.id); }, 800); });
+  note.addEventListener("blur", () => { clearTimeout(t); if ((r.note || "") !== note.value) { r.note = note.value; save(c.id); } });
+  panel.append(el("div", { class: "subhead", text: "Notes" }), note);
+  panel.append(el("div", { class: "form-foot" }, el("span", {}, "Active time on this variant: ", el("span", { class: "timer", id: "timer", text: fmt(r.active_seconds) })), el("span", { id: "saved" })));
+  return panel;
+}
+
+function seg(field, choices, id, cls) {
+  const r = rec(id);
+  const s = el("div", { class: "seg " + cls, role: "group", "aria-label": field });
+  for (const [v, l] of choices) {
+    const b = el("button", { type: "button", "data-v": v, "aria-pressed": String(r[field] === v), text: l });
+    b.addEventListener("click", () => {
+      r[field] = r[field] === v ? "" : v;
+      s.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(r[field] === x.dataset.v)));
+      touch(); save(id); renderList();
+    });
+    s.append(b);
+  }
+  return s;
+}
+
+function detail(c) {
+  const root = el("div", { class: "sheet" });
+  const d = c.dossier || {};
+  const head = el("div", { class: "panel" },
+    el("div", { class: "chips" }, el("span", { class: "chip", text: c.disease_name }), el("span", { class: "chip", text: c.gene }), el("span", { class: "chip", text: c.inheritance }), el("span", { class: "chip", text: c.id })),
+    el("p", { class: "variant-title", text: c.hgvs_c }),
+    el("div", { class: "variant-sub", text: c.hgvs_p + "  ·  GRCh38 " + c.vcf }));
+  const facts = el("dl", { class: "facts" });
+  const add = (k, v) => { if (v == null || v === "") return; facts.append(el("dt", { text: k }), el("dd", {}, v)); };
+  const papers = el("span"); c.pmids.forEach((p, i) => { if (i) papers.append(", "); papers.append(pubmed(p)); });
+  add("Papers", papers);
+  add("People (deduplicated)", String(c.n_identities));
+  add("As written", c.original_strings);
+  add("Stated vs predicted protein", c.protein_check);
+  const g = el("a", { href: "https://gnomad.broadinstitute.org/variant/" + c.vcf.replaceAll(":", "-") + "?dataset=gnomad_r4", target: "_blank", rel: "noopener", text: "open in gnomAD" });
+  add("Population data", g);
+  head.append(facts, el("div", { class: "dbnote", text: "Database status: no ClinVar GRCh38 record with this allele in the snapshot of " + DATA.snapshot + ". OMIM allelic variants were not checked (no OMIM access)." + (c.only_reviews ? " All supporting papers are reviews." : "") }));
+  root.append(head);
+  const concerns = d.concerns || [];
+  if (concerns.length) {
+    root.append(el("div", { class: "panel concern" }, el("h2", { text: "Points the sheet flags" }), el("ul", { class: "concerns" }, ...concerns.map((x) => el("li", { text: x })))));
+  }
+  const ev = el("div", { class: "panel" }, el("h2", { text: "Evidence from the papers" }));
+  if (!c.dossier) ev.append(el("p", { class: "stmt empty", text: "The evidence sheet for this variant has not been written yet." }));
+  else ITEMS.forEach(([k, l, h]) => ev.append(itemEl(k, l, h, (d.items || {})[k])));
+  if (d.notes_for_panel) ev.append(el("div", { class: "item" }, el("h3", { text: "Note from the sheet" }), el("p", { class: "stmt", text: d.notes_for_panel })));
+  root.append(ev, formEl(c));
+  return root;
+}
+
+function visible() {
+  const fd = $("f-disease").value, fs = $("f-status").value, ft = $("f-text").value.trim().toLowerCase();
+  return DATA.candidates.filter((c) => {
+    const d = (state[c.id] || {}).decision || "";
+    if (fd && c.disease !== fd) return false;
+    if (fs === "open" && d) return false;
+    if (fs && fs !== "open" && d !== fs) return false;
+    if (ft && !(c.hgvs_c + " " + c.hgvs_p + " " + c.pmids.join(" ") + " " + c.id).toLowerCase().includes(ft)) return false;
+    return true;
+  });
+}
+
+function renderList() {
+  const list = $("list");
+  list.replaceChildren();
+  const rows = visible();
+  for (const c of rows) {
+    const b = el("button", { class: "row", type: "button", "data-d": (state[c.id] || {}).decision || "", "aria-current": String(c.id === current) },
+      el("span", { class: "dot", "aria-hidden": "true" }),
+      el("span", {}, el("div", { class: "hgvs", text: c.hgvs_c.split(":").pop() + "  " + (c.hgvs_p.split(":").pop() || "") }),
+        el("div", { class: "sub" }, el("span", { text: c.disease_name }), el("span", { text: c.pmids.length + (c.pmids.length === 1 ? " paper" : " papers") }), el("span", { text: c.id }))));
+    b.addEventListener("click", () => open(c.id));
+    list.append(b);
+  }
+  if (!rows.length) list.append(el("p", { class: "empty-state", text: "No variants match these filters." }));
+  const n = DATA.candidates.filter((c) => (state[c.id] || {}).decision).length;
+  $("count").textContent = n + " of " + DATA.candidates.length + " decided";
+  $("meter").style.width = (100 * n / DATA.candidates.length) + "%";
+}
+
+function open(id) {
+  if (current && current !== id) flushTime();
+  current = id; touch();
+  $("detail").replaceChildren(detail(byId[id]));
+  renderList();
+  if (window.matchMedia("(max-width: 860px)").matches) $("detail").scrollIntoView({ block: "start" });
+}
+
+// Active time: counts while a sheet is open, the page is visible, and there was input in the last 90 s.
+function touch() { lastActive = Date.now(); }
+["pointerdown", "keydown", "scroll", "wheel", "pointermove"].forEach((ev) => document.addEventListener(ev, touch, { passive: true, capture: true }));
+setInterval(() => {
+  if (!current || document.visibilityState !== "visible" || Date.now() - lastActive > IDLE_MS) return;
+  const r = rec(current); r.active_seconds = (r.active_seconds || 0) + 1; dirtyTime = true;
+  const t = $("timer"); if (t) t.textContent = fmt(r.active_seconds);
+}, 1000);
+setInterval(() => { if (current && dirtyTime) flushTime(); }, 30000);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && current && dirtyTime) flushTime(); });
+function flushTime() { if (!current || !dirtyTime) return; dirtyTime = false; save(current, true); }
+
+// One write at a time per document; each write sends the whole record.
+const chains = {};
+function save(id, quiet) {
+  const r = rec(id);
+  const body = { criteria: r.criteria, classification: r.classification || "", decision: r.decision || "", note: r.note || "",
+                 active_seconds: Math.round(r.active_seconds || 0), adjudicator: DATA.adjudicator, updated_at: new Date().toISOString() };
+  const key = COLL + "/" + id;
+  const mark = $("saved");
+  if (mark && !quiet && current === id) mark.textContent = "Saving…";
+  chains[key] = (chains[key] || Promise.resolve()).then(async () => {
+    if (store !== "db") { saveLocal(); return; }
+    try { await db.doc(key).set(body); }
+    catch (e) {
+      if (e && e.code === "unavailable") { await new Promise((res) => setTimeout(res, 400 + Math.random() * 600)); await db.doc(key).set(body); }
+      else throw e;
+    }
+  }).then(() => { if (mark && current === id && !quiet) mark.textContent = store === "db" ? "Saved" : "Saved in this browser"; })
+    .catch((e) => setSaveState("Not saved: " + ((e && e.message) || "the store refused the write") + ". Use Copy all decisions as text as a backup.", true));
+}
+
+const LS_KEY = DATA.store_key;
+function saveLocal() { try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable */ } }
+function loadLocal() { try { Object.assign(state, JSON.parse(localStorage.getItem(LS_KEY) || "{}")); } catch (e) { /* ignore */ } }
+function setSaveState(text, warn) { const s = $("save-state"); s.textContent = text; s.classList.toggle("warn", !!warn); }
+
+function csvCell(s) { s = String(s ?? ""); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+function decisionsText() {
+  const lines = ["candidate_id,hgvs_c,classification,decision,criteria,active_seconds,note"];
+  for (const c of DATA.candidates) {
+    const r = state[c.id] || {};
+    const crit = Object.entries(r.criteria || {}).map(([k, v]) => k + (v === "default" ? "" : "_" + v)).join(" ");
+    lines.push([c.id, c.hgvs_c, r.classification || "", r.decision || "", crit, Math.round(r.active_seconds || 0), r.note || ""].map(csvCell).join(","));
+  }
+  return lines.join("\n");
+}
+
+function build() {
+  $("page-title").textContent = DATA.title;
+  const seen = [];
+  for (const c of DATA.candidates) if (!seen.includes(c.disease)) { seen.push(c.disease); $("f-disease").append(el("option", { value: c.disease, text: c.disease_name })); }
+  ["f-disease", "f-status"].forEach((id) => $(id).addEventListener("change", renderList));
+  $("f-text").addEventListener("input", renderList);
+  $("copy-btn").addEventListener("click", async () => {
+    const text = decisionsText();
+    try { await navigator.clipboard.writeText(text); $("copy-btn").textContent = "Copied"; setTimeout(() => ($("copy-btn").textContent = "Copy all decisions as text"), 1500); }
+    catch (e) { const box = $("copy-box"); box.value = text; box.hidden = false; box.focus(); box.select(); }
+  });
+  renderList();
+  const first = DATA.candidates[0];
+  if (first) open(first.id);
+}
+
+async function connect() {
+  const api = window.claude && window.claude.use ? await window.claude.use("db") : null;
+  if (!api) {
+    store = "local"; loadLocal(); renderList(); if (current) open(current);
+    setSaveState("Saved only in this browser. When done, use Copy all decisions as text and send it to Jimmy Lin.", true);
+    return;
+  }
+  db = api; store = "db";
+  setSaveState("Decisions save to this page's store as you go.");
+  db.collection(COLL).onSnapshot((snap) => {
+    let reopen = false;
+    for (const d of snap.docs) {
+      const body = d.data() || {};
+      const local = rec(d.id);
+      // keep the larger active time, so a stale snapshot never rolls the timer back
+      const secs = Math.max(local.active_seconds || 0, body.active_seconds || 0);
+      if (d.id !== current) { state[d.id] = { ...local, ...body, active_seconds: secs }; }
+      else if (!local.updated_once) { state[d.id] = { ...local, ...body, active_seconds: secs, updated_once: true }; reopen = true; }
+    }
+    renderList();
+    if (reopen && current) $("detail").replaceChildren(detail(byId[current]));
+  }, (e) => setSaveState("Lost the connection to the store (" + (e && e.code) + "). Reload the page; copy your decisions first.", true));
+}
+
+build();
+connect();
+</script>
