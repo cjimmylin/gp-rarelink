@@ -1,0 +1,2280 @@
+{
+ "pmid": "38791277",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "The paper describes an individual ALDH5A1-variant patient and relatives: 'the patient was found to be heterozygous for two missense variants in the ALDH5A1 gene'.",
+ "method_note": "Read the whole paper by hand; a short Python script only assembled the JSON from values I chose. The paper is a functional study of one SSADH-D family: the index patient (label 'patient', rule 5; 'index patient' is a role word), his mother (healthy carrier) and his younger sister (heterozygous carrier). The father is never described as a person: the paper only calls Cys93Phe the 'paternal variant' and says 'The parents provided a signed informed consent', so he gets no row; the patient's Cys93Phe is recorded as inherited paternal from that attribution. His180Tyr (c.538T>C, rs2760118, allelic frequency 0.348) is a common SNP the authors call benign/not pathogenic per se, so per the v4 rule it gets no variant row; it lies in cis with Asn255Asp on the maternal allele (patient and mother), which is noted in the Asn255Asp rows. Val90Ala is not described as common and was a VUS shown to be non-pathogenic; it is kept for the mother and sister. Variant type 'missense' for mother and sister rows comes from Methods 4.3, which names these exact variants as 'SSADH missense variants'. Patient zygosity 'compound heterozygous' combines 'heterozygous for two missense variants' with the Figure 1 legend; mother's zygosity is not stated ('healthy carrier'), so not reported. Functional and pathogenicity statements are about these exact variants (cell-line assays and patient fibroblasts). The fibroblast drug treatments (arimoclomol, betaine, celastrol) were in vitro only, not given to the patient, so treatment_summary is not reported. The acknowledgment of 'Nana, who passed away' refers to an author (Tiegel Nana), not the patient. Contradictions in the paper: (1) Methods 4.1 gives 'c.278G>T, p.Cys93Phe' while Results and Figure 1 give 'c.278C>T'; the Results/Figure form is recorded. (2) Methods 4.1 places '(paternal)' after 'c.538T>C' (His180Tyr), while Results/Figure 1 say Cys93Phe is paternal and His180Tyr is on the maternal allele. (3) The Introduction once writes 'Asn255Ala' where everywhere else the variant is Asn255Asp. (4) The Figure 1 legend says all four variants were 'present in a compound heterozygous form' although Val90Ala was not found in the patient. No transcript is given for the variants (NM_001080.3 appears only for gRNA design) so transcript is not reported. No stacked cells; no tables with patients.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "first_author": {
+     "value": "Didiasova",
+     "span": "Authors: Didiasova Miroslava"
+    },
+    "year": {
+     "value": 2024,
+     "span": "Journal: International Journal of Molecular Sciences (2024)"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "Here, we describe a family exhibiting four different SSADH variants"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "A 1.5-year-old male German SSADH deficiency patient"
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term as the first child of a non-consanguineous German couple"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "The younger sister of the index patient"
+    },
+    "sex": {
+     "value": "male",
+     "span": "A male infant was born in-term"
+    },
+    "age_at_onset_original_text": {
+     "value": "from early childhood on",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "about 18 months",
+     "span": "At the age of about 18 months, urine analysis revealed an increased amount of GHB, a hallmark of SSADH-D, and the diagnosis of SSADH-D was confirmed by genetic sequencing by a diagnostic company"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P18M",
+     "span": "At the age of about 18 months, urine analysis revealed an increased amount of GHB, a hallmark of SSADH-D, and the diagnosis of SSADH-D was confirmed by genetic sequencing by a diagnostic company"
+    },
+    "ethnicity_or_country": {
+     "value": "German",
+     "span": [
+      "non-consanguineous German couple",
+      "A 1.5-year-old male German SSADH deficiency patient"
+     ]
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "the first child of a non-consanguineous German couple"
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH-D",
+     "span": "the diagnosis of SSADH-D was confirmed by genetic sequencing"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "both: urine analysis showing increased GHB, confirmed by genetic sequencing",
+     "span": "At the age of about 18 months, urine analysis revealed an increased amount of GHB, a hallmark of SSADH-D, and the diagnosis of SSADH-D was confirmed by genetic sequencing by a diagnostic company"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient, who is a healthy carrier"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "in the mother of the patient, who is a healthy carrier"
+    },
+    "sex": {
+     "value": "female",
+     "span": "in the mother of the patient"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "German",
+     "span": "non-consanguineous German couple"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "healthy carrier",
+     "span": "the mother of the patient, who is a healthy carrier"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient in this family was later found to be a heterozygous carrier"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "The younger sister of the index patient in this family"
+    },
+    "sex": {
+     "value": "female",
+     "span": "The younger sister of the index patient"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "non-consanguineous German couple"
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "heterozygous for two missense variants in the ALDH5A1 gene"
+    },
+    "variant_original_string": {
+     "value": "c.278C>T, p.Cys93Phe",
+     "span": "The paternal variant, c.278C>T, p.Cys93Phe"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.278C>T",
+     "span": "The paternal variant, c.278C>T, p.Cys93Phe"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Cys93Phe",
+     "span": "The paternal variant, c.278C>T, p.Cys93Phe"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "the patient was found to be heterozygous for two missense variants"
+    },
+    "zygosity": {
+     "value": "compound heterozygous",
+     "span": [
+      "the patient was found to be heterozygous for two missense variants in the ALDH5A1 gene",
+      "four different genetic variants that were all present in a compound heterozygous form"
+     ]
+    },
+    "inheritance": {
+     "value": "inherited paternal",
+     "span": [
+      "The paternal variant, c.278C>T, p.Cys93Phe",
+      "(a) Paternal variant c.278C>T, p.Cys93Phe"
+     ]
+    },
+    "parental_testing_statement": {
+     "value": "paternal variant: c.278C>T, p.Cys93Phe",
+     "span": [
+      "The paternal variant, c.278C>T, p.Cys93Phe",
+      "(a) Paternal variant c.278C>T, p.Cys93Phe"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "very low protein expression and SSADH activity below 5% of WT on transient overexpression; very low expression and only background activity in stable knock-in cells",
+     "span": [
+      "whereas Cys93Phe, Asn255Asp, and His180Tyr/Asn255Asp were expressed in very low amounts (Figure 3a)",
+      "the SSADH activity of the latter three variants was barely measurable (below 5% of the WT)",
+      "In contrast, Cys93Phe, Asn255Asp, and His180Tyr/Asn255Asp showed only background activity comparable with the SSADH knockout cells (Figure 4b)"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "known pathogenic SSADH variant; pathogenic",
+     "span": [
+      "is a known pathogenic SSADH variant",
+      "show that Cys93Phe and Asn255Asp are pathogenic variants"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "heterozygous for two missense variants in the ALDH5A1 gene"
+    },
+    "variant_original_string": {
+     "value": "c.763A>G, p.Asn255Asp",
+     "span": [
+      "c.763A>G, p.Asn255Asp that were found in the patient",
+      "whereas the maternal variant, c.763A>G (p.Asn255Asp, Figure 1b)"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.763A>G",
+     "span": "whereas the maternal variant, c.763A>G (p.Asn255Asp, Figure 1b)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Asn255Asp",
+     "span": "whereas the maternal variant, c.763A>G (p.Asn255Asp, Figure 1b)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "the patient was found to be heterozygous for two missense variants"
+    },
+    "zygosity": {
+     "value": "compound heterozygous",
+     "span": [
+      "the patient was found to be heterozygous for two missense variants in the ALDH5A1 gene",
+      "four different genetic variants that were all present in a compound heterozygous form"
+     ]
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": [
+      "whereas the maternal variant, c.763A>G (p.Asn255Asp, Figure 1b)",
+      "the pathogenic His180Tyr/Asn255Asp in the mother of the patient"
+     ]
+    },
+    "parental_testing_statement": {
+     "value": "maternal variant c.763A>G (p.Asn255Asp), in cis with His180Tyr on the maternal allele; mother is a healthy carrier of His180Tyr/Asn255Asp",
+     "span": [
+      "whereas the maternal variant, c.763A>G (p.Asn255Asp, Figure 1b)",
+      "the His180Tyr variant indeed turned out to be present in the same maternal allele as the Asn255Asp variant",
+      "the pathogenic His180Tyr/Asn255Asp in the mother of the patient, who is a healthy carrier"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "very low protein expression and SSADH activity below 5% of WT on transient overexpression; only background activity in stable knock-in cells; recombinant Asn255Asp insoluble in E. coli; His180Tyr/Asn255Asp (cis) recombinant activity 0.1% with ~10-fold decreased NAD+ affinity",
+     "span": [
+      "whereas Cys93Phe, Asn255Asp, and His180Tyr/Asn255Asp were expressed in very low amounts (Figure 3a)",
+      "the SSADH activity of the latter three variants was barely measurable (below 5% of the WT)",
+      "In contrast, Cys93Phe, Asn255Asp, and His180Tyr/Asn255Asp showed only background activity comparable with the SSADH knockout cells (Figure 4b)",
+      "Further analysis of the recombinant Asn255Asp variant was prevented by the fact that it turned out to be an insoluble species",
+      "the activity of the His180Tyr/Asn255Asp variant dramatically drops to 0.1% (0.09 s^−1)"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic (originally a variant of unknown significance (VUS))",
+     "span": [
+      "show that Cys93Phe and Asn255Asp are pathogenic variants",
+      "was a novel one, i.e., a variant of unknown significance (VUS)"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "heterozygous for two missense variants in the ALDH5A1 gene"
+    },
+    "variant_original_string": {
+     "value": "c.763A>G, p.Asn255Asp",
+     "span": "c.763A>G, p.Asn255Asp (both maternal)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.763A>G",
+     "span": "c.763A>G, p.Asn255Asp (both maternal)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Asn255Asp",
+     "span": "c.763A>G, p.Asn255Asp (both maternal)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "to generate the SSADH missense variants Val90Ala, Cys93Phe; His180Tyr; Asn255Asp"
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "very low protein expression and SSADH activity below 5% of WT on transient overexpression; only background activity in stable knock-in cells; recombinant Asn255Asp insoluble in E. coli; His180Tyr/Asn255Asp (cis) recombinant activity 0.1% with ~10-fold decreased NAD+ affinity",
+     "span": [
+      "whereas Cys93Phe, Asn255Asp, and His180Tyr/Asn255Asp were expressed in very low amounts (Figure 3a)",
+      "the SSADH activity of the latter three variants was barely measurable (below 5% of the WT)",
+      "In contrast, Cys93Phe, Asn255Asp, and His180Tyr/Asn255Asp showed only background activity comparable with the SSADH knockout cells (Figure 4b)",
+      "Further analysis of the recombinant Asn255Asp variant was prevented by the fact that it turned out to be an insoluble species",
+      "the activity of the His180Tyr/Asn255Asp variant dramatically drops to 0.1% (0.09 s^−1)"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic (originally a variant of unknown significance (VUS))",
+     "span": [
+      "show that Cys93Phe and Asn255Asp are pathogenic variants",
+      "was a novel one, i.e., a variant of unknown significance (VUS)"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "heterozygous for two missense variants in the ALDH5A1 gene"
+    },
+    "variant_original_string": {
+     "value": "c.269T>C, p.Val90Ala",
+     "span": [
+      "c.269T>C, p.Val90Ala, was detected in the mother but not in the patient",
+      "c.269T>C, p.Val90Ala (maternal)"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.269T>C",
+     "span": "c.269T>C, p.Val90Ala, was detected in the mother but not in the patient"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Val90Ala",
+     "span": "c.269T>C, p.Val90Ala, was detected in the mother but not in the patient"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "to generate the SSADH missense variants Val90Ala, Cys93Phe; His180Tyr; Asn255Asp"
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "WT-like expression and activity",
+     "span": [
+      "The Val90Ala variant showed a WT-like expression and activity, thus confirming its non-pathogenic nature.",
+      "whereas the activities of Val90Ala and His180Tyr were comparable to the WT SSADH activity (Figure 3b)"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "non-pathogenic variant (originally a VUS)",
+     "span": [
+      "Val90Ala is a non-pathogenic variant",
+      "even though Val90Ala was a novel, uncharacterized variant (i.e., a VUS)"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "heterozygous for two missense variants in the ALDH5A1 gene"
+    },
+    "variant_original_string": {
+     "value": "Cys93Phe",
+     "span": "heterozygous carrier of Cys93Phe (paternal) and Val90Ala (maternal) variants"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.278C>T",
+     "span": "The paternal variant, c.278C>T, p.Cys93Phe"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Cys93Phe",
+     "span": "The paternal variant, c.278C>T, p.Cys93Phe"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "to generate the SSADH missense variants Val90Ala, Cys93Phe; His180Tyr; Asn255Asp"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "heterozygous carrier of Cys93Phe (paternal) and Val90Ala (maternal) variants"
+    },
+    "inheritance": {
+     "value": "inherited paternal",
+     "span": "heterozygous carrier of Cys93Phe (paternal) and Val90Ala (maternal) variants"
+    },
+    "parental_testing_statement": {
+     "value": "Cys93Phe (paternal)",
+     "span": "heterozygous carrier of Cys93Phe (paternal) and Val90Ala (maternal) variants"
+    },
+    "functional_evidence_statement": {
+     "value": "very low protein expression and SSADH activity below 5% of WT on transient overexpression; very low expression and only background activity in stable knock-in cells",
+     "span": [
+      "whereas Cys93Phe, Asn255Asp, and His180Tyr/Asn255Asp were expressed in very low amounts (Figure 3a)",
+      "the SSADH activity of the latter three variants was barely measurable (below 5% of the WT)",
+      "In contrast, Cys93Phe, Asn255Asp, and His180Tyr/Asn255Asp showed only background activity comparable with the SSADH knockout cells (Figure 4b)"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "known pathogenic SSADH variant; pathogenic",
+     "span": [
+      "is a known pathogenic SSADH variant",
+      "show that Cys93Phe and Asn255Asp are pathogenic variants"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "heterozygous for two missense variants in the ALDH5A1 gene"
+    },
+    "variant_original_string": {
+     "value": "Val90Ala",
+     "span": "heterozygous carrier of Cys93Phe (paternal) and Val90Ala (maternal) variants"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.269T>C",
+     "span": "c.269T>C, p.Val90Ala, was detected in the mother but not in the patient"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Val90Ala",
+     "span": "c.269T>C, p.Val90Ala, was detected in the mother but not in the patient"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "to generate the SSADH missense variants Val90Ala, Cys93Phe; His180Tyr; Asn255Asp"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "heterozygous carrier of Cys93Phe (paternal) and Val90Ala (maternal) variants"
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": [
+      "heterozygous carrier of Cys93Phe (paternal) and Val90Ala (maternal) variants",
+      "the Val90Ala variant resided in the other maternal allele that was not inherited by the patient, but was later found in the younger sister"
+     ]
+    },
+    "parental_testing_statement": {
+     "value": "Val90Ala (maternal); detected in the mother; resided in the other maternal allele, later found in the younger sister",
+     "span": [
+      "heterozygous carrier of Cys93Phe (paternal) and Val90Ala (maternal) variants",
+      "c.269T>C, p.Val90Ala, was detected in the mother but not in the patient",
+      "the Val90Ala variant resided in the other maternal allele that was not inherited by the patient, but was later found in the younger sister"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "WT-like expression and activity",
+     "span": [
+      "The Val90Ala variant showed a WT-like expression and activity, thus confirming its non-pathogenic nature.",
+      "whereas the activities of Val90Ala and His180Tyr were comparable to the WT SSADH activity (Figure 3b)"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "non-pathogenic variant (originally a VUS)",
+     "span": [
+      "Val90Ala is a non-pathogenic variant",
+      "even though Val90Ala was a novel, uncharacterized variant (i.e., a VUS)"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "feature_text_as_stated": {
+     "value": "mild developmental delay",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "onset_original_text": {
+     "value": "from early childhood on",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mild",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "hpo_label_candidate": {
+     "value": "Global developmental delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001263",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "feature_text_as_stated": {
+     "value": "muscle hypotonia",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "onset_original_text": {
+     "value": "from early childhood on",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypotonia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001252",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "feature_text_as_stated": {
+     "value": "increased amount of GHB",
+     "span": "urine analysis revealed an increased amount of GHB"
+    },
+    "status": {
+     "value": "observed",
+     "span": "urine analysis revealed an increased amount of GHB"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "urine analysis revealed an increased amount of GHB"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "urine analysis at the age of about 18 months",
+     "span": "At the age of about 18 months, urine analysis revealed an increased amount of GHB"
+    },
+    "hpo_label_candidate": {
+     "value": "4-Hydroxybutyric aciduria",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "feature_text_as_stated": {
+     "value": "SSADH activity was significantly reduced in the patient fibroblasts",
+     "span": "SSADH activity was significantly reduced in the patient fibroblasts"
+    },
+    "status": {
+     "value": "observed",
+     "span": "SSADH activity was significantly reduced in the patient fibroblasts"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "SSADH activity was significantly reduced in the patient fibroblasts"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "fibroblasts",
+     "span": "SSADH activity was significantly reduced in the patient fibroblasts"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "feature_text_as_stated": {
+     "value": "barely any detectable SSADH expression in the patient fibroblasts",
+     "span": "Western Blot analysis with anti-SSADH antibody revealed barely any detectable SSADH expression in the patient fibroblasts"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Western Blot analysis with anti-SSADH antibody revealed barely any detectable SSADH expression in the patient fibroblasts"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Western Blot analysis with anti-SSADH antibody revealed barely any detectable SSADH expression in the patient fibroblasts"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Western blot of fibroblasts",
+     "span": "Western Blot analysis with anti-SSADH antibody revealed barely any detectable SSADH expression in the patient fibroblasts"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a mild developmental delay and muscle hypotonia were observed in the patient from early childhood on"
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A male infant was born in-term"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "in the mother of the patient"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "38791277",
+     "span": "PMID: 38791277"
+    },
+    "individual_label_in_paper": {
+     "value": "younger sister of patient",
+     "span": "The younger sister of the index patient"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

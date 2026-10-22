@@ -95,13 +95,13 @@ from pipeline.extract.reconcile import is_gene, protein_key
 MISSING = {None, "", "not reported", "unknown"}
 ECO_ID = "ECO:0007539"
 GENO = {"heterozygous": "GENO:0000135", "homozygous": "GENO:0000136", "hemizygous": "GENO:0000134", "mosaic": "GENO:0000964"}
-HGNC = {"TNFAIP3": ("HGNC:11896", "TNFAIP3")}
+HGNC = {"TNFAIP3": ("HGNC:11896", "TNFAIP3")}  # other genes come from configs/stage4/<disease>.json (D-40)
 PATHOGENIC = re.compile(r"\b(likely\s+)?pathogenic\b", re.IGNORECASE)
 NOT_PATHOGENIC = re.compile(r"\b(uncertain|VUS|benign|non-?pathogenic)\b", re.IGNORECASE)
 
 
 def v(cell):
-    return (cell or {}).get("value")
+    return cell.get("value") if isinstance(cell, dict) else None  # a cell not in {value, span} shape reads as missing
 
 
 def span_text(cell) -> str:
@@ -135,13 +135,20 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--created", default=date.today().isoformat())
     ap.add_argument("--gatekeeper", choices=("not_supported", "unsupported", "none"), default="not_supported")
     ap.add_argument("--out-name", default="phenopackets", help="output directory and summary name under the run directory")
+    ap.add_argument("--gatekeeper-file", default="gatekeeper.csv", help="merged gatekeeper verdicts under the run directory (gatekeeper_v4.csv for pv1 runs)")
+    ap.add_argument("--no-config", action="store_true", help="ignore configs/stage4/<disease>.json")
     args = ap.parse_args(argv)
+    cfg_path = Path("configs/stage4") / f"{args.disease}.json"
+    if cfg_path.exists() and not args.no_config:
+        cfg = json.loads(cfg_path.read_text())
+        args.gene, args.group_mondo, args.checklist_map = cfg["gene"], cfg["group_mondo"], cfg["checklist_map"]
+        HGNC[cfg["gene"]] = (cfg["hgnc_id"], cfg["gene"])
     run_dir = Path("data/extracted") / args.disease / args.run_id
     drop = {"not_supported": {"partially_supported", "unsupported", "span_not_found"},
             "unsupported": {"unsupported", "span_not_found"}, "none": set()}[args.gatekeeper]
     bad: set[tuple[str, str, int, str]] = set()
     if drop:
-        gk_path = run_dir / "gatekeeper.csv"
+        gk_path = run_dir / args.gatekeeper_file
         if not gk_path.exists():
             raise SystemExit(f"{gk_path} not found; run gatekeeper_merge or pass --gatekeeper none")
         for g in csv.DictReader(gk_path.open()):
@@ -276,7 +283,7 @@ def main(argv: list[str] | None = None) -> int:
         d_terms = {d["mondo_id"] for d in dis_ok.values() if d["mondo_id"]}
         for mid in sorted(d_terms):
             pp.diseases.append(Disease(term=OntologyClass(id=mid, label=mondo.terms[mid].name)))
-        ha20_stated = any(d.get("method") == "ha20_label_rule" for d in dis_ok.values())
+        ha20_stated = any(d.get("method") in ("ha20_label_rule", "label_rule") for d in dis_ok.values())
         # variants
         gis = []
         seen = set()
@@ -333,7 +340,8 @@ def main(argv: list[str] | None = None) -> int:
                 interp.diagnosis.genomic_interpretations.append(g)
             pp.interpretations.append(interp)
         # metadata
-        md = MetaData(created_by="GP-RareLink pilot (Claude Code route, D-20)", phenopacket_schema_version="2.0")
+        md = MetaData(created_by="GP-RareLink pilot (Claude Code route, D-20)" if args.run_id.startswith("poc-") else "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+                      phenopacket_schema_version="2.0")
         md.created.FromJsonString(f"{args.created}T00:00:00Z")
         for prefix, onto, name, url, iri in (("HP", hp, "Human Phenotype Ontology", "http://purl.obolibrary.org/obo/hp.owl", "http://purl.obolibrary.org/obo/HP_"),
                                              ("MONDO", mondo, "Mondo Disease Ontology", "http://purl.obolibrary.org/obo/mondo.obo", "http://purl.obolibrary.org/obo/MONDO_"),

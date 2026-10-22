@@ -1,0 +1,152 @@
+{
+  "description": "HPO terms for the 20 axd checklist items (configs/checklists/axd.json), chosen on 2026-10-20 by a Claude helper from the pinned HPO release by name and synonym search and hierarchy checks (pipeline/extract/hpo_lookup.py), D-40. 'observed' is the one term a phenopacket may assert when the item is observed; null where the item is a composite, or has no HPO term of exactly its scope, so the specific free-text feature rows carry the term instead. 'excluded' lists every term a phenopacket may mark excluded when the item is explicitly absent; it is empty where HPO has no term at or below the item's scope. Two items with no term of their own (periventricular rim, contrast enhancement on MRI) assert a broader implied term when observed and exclude nothing. Flagged for review by Jimmy or the panel; not a pre-registered choice.",
+  "hpo_release": "hp/releases/2026-09-01",
+  "items": {
+    "seizures": {
+      "observed": "HP:0001250",
+      "excluded": [
+        "HP:0001250"
+      ],
+      "note": "Seizure (EXACT synonym 'Seizures')."
+    },
+    "macrocephaly or megalencephaly": {
+      "observed": null,
+      "excluded": [
+        "HP:0000256",
+        "HP:0001355"
+      ],
+      "note": "Macrocephaly (head size, under Increased head circumference) and Megalencephaly (brain size, under Abnormal cerebral morphology) have no common term of the item's scope, so observed is null and both are excluded."
+    },
+    "developmental delay": {
+      "observed": "HP:0001263",
+      "excluded": [
+        "HP:0001263"
+      ],
+      "note": "Global developmental delay (EXACT synonyms 'Developmental delay', 'Psychomotor delay'). Its parent Neurodevelopmental delay is broader (includes isolated speech or motor delay) and is not used."
+    },
+    "hydrocephalus or raised intracranial pressure": {
+      "observed": null,
+      "excluded": [
+        "HP:0000238",
+        "HP:0002516"
+      ],
+      "note": "Hydrocephalus and Increased intracranial pressure sit in different branches with no common term of the item's scope."
+    },
+    "dysphagia": {
+      "observed": "HP:0002015",
+      "excluded": [
+        "HP:0002015"
+      ],
+      "note": "Dysphagia (EXACT 'Difficulty swallowing')."
+    },
+    "dysarthria or dysphonia": {
+      "observed": null,
+      "excluded": [
+        "HP:0001260",
+        "HP:0001618"
+      ],
+      "note": "Dysarthria (under Abnormal speech pattern) and Dysphonia (under Abnormality of the voice); no common term of the item's scope."
+    },
+    "limb weakness": {
+      "observed": "HP:0003690",
+      "excluded": [
+        "HP:0003690"
+      ],
+      "note": "Limb muscle weakness (EXACT 'Limb weakness')."
+    },
+    "spasticity or pyramidal signs": {
+      "observed": null,
+      "excluded": [
+        "HP:0001257",
+        "HP:0007256"
+      ],
+      "note": "Spasticity and Abnormal pyramidal sign (EXACT 'Pyramidal signs'). Their common parent Upper motor neuron dysfunction (EXACT 'Pyramidal tract dysfunction') is broader (also weakness due to UMN dysfunction) and is an ancestor of both excluded terms, so observed is null."
+    },
+    "ataxia or cerebellar signs": {
+      "observed": null,
+      "excluded": [
+        "HP:0001251"
+      ],
+      "note": "Ataxia (EXACT 'Cerebellar ataxia'; dysmetria and dysdiadochokinesis are descendants). HPO has no 'cerebellar signs' term; Intention tremor ('Cerebellar tremor' is not an EXACT synonym) and nystagmus are not listed because they have non-cerebellar causes."
+    },
+    "palatal tremor": {
+      "observed": "HP:0010530",
+      "excluded": [
+        "HP:0010530"
+      ],
+      "note": "Palatal tremor (EXACT 'Palatal myoclonus')."
+    },
+    "recurrent vomiting": {
+      "observed": "HP:0002572",
+      "excluded": [
+        "HP:0002572"
+      ],
+      "note": "Episodic vomiting; HPO has no 'recurrent vomiting' term and its parent Vomiting is broader than the item (a single episode), so Vomiting is neither asserted nor excluded."
+    },
+    "autonomic dysfunction (orthostatic hypotension, bladder or bowel dysfunction, sleep apnea)": {
+      "observed": null,
+      "excluded": [
+        "HP:0012332",
+        "HP:0001278",
+        "HP:0005341",
+        "HP:0000011",
+        "HP:0002607"
+      ],
+      "note": "Abnormal autonomic nervous system physiology (EXACT 'Autonomic dysfunction', 'Dysautonomia') does not cover Sleep apnea in HPO, so observed is null. Excluded: that term plus the named components Orthostatic hypotension, Autonomic bladder dysfunction, Neurogenic bladder, Bowel incontinence and Sleep apnea; HPO has no 'bowel dysfunction' term, and Constipation is left out as too unspecific. Review (Claude, 2026-10-20): Sleep apnea removed from the excluded list; a paper's statement that autonomic dysfunction is absent does not establish that sleep apnea is."
+    },
+    "cognitive decline": {
+      "observed": "HP:0001268",
+      "excluded": [
+        "HP:0001268"
+      ],
+      "note": "Mental deterioration (EXACT 'Cognitive decline', 'Intellectual deterioration'); Dementia is a descendant. Distinct from Global developmental delay."
+    },
+    "eye movement abnormality or diplopia": {
+      "observed": null,
+      "excluded": [
+        "HP:0000496",
+        "HP:0000651"
+      ],
+      "note": "Abnormality of eye movement and Diplopia (under Abnormality of binocular vision) are in different branches."
+    },
+    "scoliosis": {
+      "observed": "HP:0002650",
+      "excluded": [
+        "HP:0002650"
+      ],
+      "note": "Scoliosis."
+    },
+    "cerebral white matter abnormality": {
+      "observed": "HP:0002500",
+      "excluded": [
+        "HP:0002500"
+      ],
+      "note": "Abnormal cerebral white matter morphology (EXACT 'Cerebral white matter abnormalities', 'White matter abnormalities')."
+    },
+    "periventricular rim": {
+      "observed": "HP:0002518",
+      "excluded": [],
+      "note": "HPO has no periventricular rim term, and the check needs at least one term, so observed is Abnormal periventricular white matter morphology, which a rim implies but which is broader than the item; it is therefore not excluded. Flagged for review: an exception to the never-broader rule."
+    },
+    "basal ganglia or thalamic abnormality": {
+      "observed": null,
+      "excluded": [
+        "HP:0002134",
+        "HP:0010663"
+      ],
+      "note": "Abnormal basal ganglia morphology (under cerebral subcortex) and Abnormal thalamus morphology (under diencephalon) have no common term of the item's scope."
+    },
+    "contrast enhancement on MRI": {
+      "observed": "HP:0410263",
+      "excluded": [],
+      "note": "HPO has no general brain contrast-enhancement term (only specific ones such as Ring-enhancing cerebral lesion and Leptomeningeal enhancement). The check needs at least one term, so observed is Brain imaging abnormality (EXACT 'Abnormal brain imaging'), which enhancement on brain MRI implies but which is far broader; it is therefore not excluded. Flagged for review: an exception to the never-broader rule."
+    },
+    "medulla or cervical spinal cord atrophy or signal abnormality": {
+      "observed": null,
+      "excluded": [
+        "HP:0010873"
+      ],
+      "note": "Only Cervical spinal cord atrophy matches a component exactly. HPO has no medulla atrophy or medulla signal term; Abnormal medulla oblongata morphology, Abnormal brainstem MRI signal intensity, Brainstem atrophy and Hyperintensity of MRI T2 signal of the spinal cord (whole cord) are broader than the item and are not used."
+    }
+  }
+}

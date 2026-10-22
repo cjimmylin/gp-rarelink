@@ -1,0 +1,232 @@
+{
+  "id": "axd-pv1-axd-AXD-ID0234",
+  "subject": {
+    "id": "AXD-ID0234",
+    "sex": "MALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000238",
+        "label": "Hydrocephalus"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:39503736",
+            "description": "showed hydrocephalus secondary to aqueduct stenosis"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000496",
+        "label": "Abnormality of eye movement"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:39503736",
+            "description": "alongside the onset of abnormal eye movement and seizures"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000737",
+        "label": "Irritability"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P2M"
+        }
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:39503736",
+            "description": "Patient presenting irritability starting at 2\u2009months of age"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:39503736",
+            "description": "the patient still had frequent daily seizures"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002878",
+        "label": "Respiratory failure"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:39503736",
+            "description": "He died at 13\u2009months of age due to respiratory failure secondary to brain stem involvement of the disease"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0010845",
+        "label": "EEG with generalized slow activity"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:39503736",
+            "description": "EEG at 6\u2009months of life showed left temporal epileptiform discharges and a disorganized background activity with diffuse delta\u2010theta waves."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "AXD-ID0234-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0008752",
+          "label": "Alexander disease"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "AXD-ID0234",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "AXD-ID0234-var1",
+                "label": "c.716G>A (p.Arg239His)",
+                "description": "c.716G>A (p.Arg239His)",
+                "geneContext": {
+                  "valueId": "HGNC:4235",
+                  "symbol": "GFAP"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_002055.5:c.716G>A"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_002046.1:p.(Arg239His)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000017.11:g.44913333C>T"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "17",
+                  "pos": "44913333",
+                  "ref": "C",
+                  "alt": "T"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0008752",
+        "label": "Alexander disease"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-10-20T00:00:00Z",
+    "createdBy": "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:39503736"
+      }
+    ]
+  }
+}

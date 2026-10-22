@@ -1,0 +1,111 @@
+{
+ "run_id": "pv1-lad1",
+ "decision": "D-37 (six-disease run, ceiling $1,200); D-38 (per-disease instantiation of the frozen prompt and schema)",
+ "pipeline": "pipeline-v1.0 (commit ef3133e) instantiated for lad1 by instantiate_disease.py (D-38); then gatekeeper_v4.md",
+ "launch_commit": "559aeacf02c142900a7bfb359c3ad380bab8b11e",
+ "model": "Claude Code helper agents (opus)",
+ "route": "claude_code helper agents, opus (D-20, D-17)",
+ "finished": "2026-10-20T18:46:00+00:00",
+ "n_documents": 42,
+ "documents": [
+  "1694220",
+  "12488604",
+  "19255011",
+  "20351460",
+  "20371747",
+  "20929531",
+  "21103413",
+  "21461256",
+  "22134107",
+  "22965369",
+  "23268471",
+  "23716823",
+  "24373416",
+  "24995649",
+  "25024979",
+  "25741691",
+  "28328326",
+  "29548898",
+  "30167939",
+  "30254829",
+  "30312521",
+  "30565245",
+  "32009323",
+  "32793328",
+  "33391282",
+  "33686591",
+  "34310689",
+  "34877395",
+  "35281597",
+  "36185095",
+  "36353617",
+  "37131167",
+  "37601427",
+  "37846943",
+  "38560722",
+  "38578558",
+  "39081307",
+  "39845947",
+  "41069700",
+  "41994155",
+  "42170585",
+  "42625796"
+ ],
+ "prompt_sha256": {
+  "pipeline/extract/claude_code/prompts/extract_v6_lad1.md": "39d61e90119411949959b10de8b68a210a7d01d1cf6fe50967f3fe899c7e2faa",
+  "pipeline/extract/claude_code/schema_lad1_v5.json": "9ee9cbbf5fe8dd3920892e311f7903e2d8e6293f957c0b3fa25b0e842140feda",
+  "pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md": "55ab99df7f17cdb67bc162e1bf78d0277e6e31322c4c7328164259bfea1b5737",
+  "pipeline/extract/claude_code/prompts/gatekeeper_v4.md": "48ec4f05e65fd5d1d0ee040cd1b74e9629c82764d41093f0ed3b9b37a8781ba8"
+ },
+ "instantiation_record": "pipeline/extract/claude_code/instantiated/lad1.json",
+ "pinned_files_checked_at_finish": "sha256 unchanged at finish",
+ "helpers": "42 extraction helpers (5 repair-only resumes for empty label spans: 1694220, 25024979, 30254829, 41069700, 42625796; each diff showed only the target spans changed) and 58 gatekeeper v4 helpers, all opus",
+ "checks": {
+  "span_check": "0 problems; span found rate 1.0, exact rate 1.0",
+  "gatekeeper_merge": "no missing chunks; every model claim judged once"
+ },
+ "results": {
+  "claims": 36280,
+  "verdict_counts_all_claims": {
+   "not_judged": 25416,
+   "supported": 10487,
+   "partially_supported": 330,
+   "unsupported": 47
+  },
+  "model_claims_judged": 10864,
+  "unsupported_or_not_found": 47,
+  "unsupported_share": 0.004326,
+  "unsupported_ci95": [
+   0.00318,
+   0.005749
+  ],
+  "not_supported_share": 0.034702,
+  "not_supported_ci95": [
+   0.031339,
+   0.038316
+  ],
+  "source": "data/extracted/lad1/pv1-lad1/gatekeeper_v4_summary.json"
+ },
+ "outputs": [
+  "data/extracted/lad1/pv1-lad1/per_paper/*.json",
+  "data/extracted/lad1/pv1-lad1/claims.csv",
+  "data/extracted/lad1/pv1-lad1/span_check.json",
+  "data/extracted/lad1/pv1-lad1/gatekeeper_v4.csv",
+  "data/extracted/lad1/pv1-lad1/gatekeeper_v4_summary.json"
+ ],
+ "estimate_usd": {
+  "central": 88.06,
+  "upper": 96.98,
+  "source": "analysis/cost/six_disease_estimate_2026-10-20.md"
+ },
+ "session_cost_usd_before": 996.3,
+ "cost": {
+  "method": "helper-token estimate: weighted tokens (input 1, cache write 5m 1.25, 1h 2, cache read 0.1, output 5) summed from the helper transcripts, priced at the pv1-ha20 ratio of session-cost delta to helper weighted tokens ($203.79 / 33.99 M = $5.996 per M; includes orchestration overhead at the HA20 share)",
+  "extraction_weighted_mtok": 7.48,
+  "gatekeeper_weighted_mtok": 7.09,
+  "estimate_usd": 87.36,
+  "why": "the session cost reading froze at 996.30 from about 18:10 UTC, during SSADH, Tangier and LAD-I work, which overlapped; per-disease readings are not separable",
+  "script": "analysis/cost/helper_tokens.py"
+ },
+ "cost_usd_field": "per-call usage is not available on this route"
+}

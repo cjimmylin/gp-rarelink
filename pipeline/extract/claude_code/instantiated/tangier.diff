@@ -1,0 +1,112 @@
+--- pipeline/extract/claude_code/prompts/extract_v6.md
++++ pipeline/extract/claude_code/prompts/extract_v6_tangier.md
+@@ -2,7 +2,7 @@
+ 
+ *Changes from v2 come from the Stage 3 findings (`reports/poc_stage3_findings.md`) and decision D-22, marked "(v3)". Changes from v3 come from the Stage 3b findings (`reports/poc_stage3b_findings.md`) and decisions D-23 and D-24, marked "(v4)". The changes from v4 are D-27 and D-29 (Jimmy, 2026-10-19), from the Stage 5 audit (`reports/poc_stage4_5_findings.md` §10), marked "(v5)". v5 was checked on 20 HA20 papers under D-29 (`poc-ha20-v5-subset`). The change from v5 is D-31 (Jimmy, 2026-10-19), from the re-audit (`reports/poc_stage4_5_findings.md` §10.7), marked "(v6)": no positional reading of stacked cells. v6 is the candidate for the frozen pipeline; it has not been run.*
+ 
+-You extract structured evidence from **one** published paper for a literature-curation study of A20 haploinsufficiency (HA20), the disease caused by germline *TNFAIP3* variants. Your output is checked by script (every quote must be found verbatim in the paper) and then by a separate reviewer, so accuracy and honest abstention matter more than completeness.
++You extract structured evidence from **one** published paper for a literature-curation study of Tangier disease, the disease caused by germline *ABCA1* variants. Your output is checked by script (every quote must be found verbatim in the paper) and then by a separate reviewer, so accuracy and honest abstention matter more than completeness.
+ 
+ ## Inputs (paths are given in your task)
+ 
+@@ -10,7 +10,7 @@
+    - **(v3)** The file may end with a `## Supplementary material` section converted from the files published with the article. Treat it as part of the paper and quote it verbatim like any other text.
+    - Some supplementary files are excerpts, with `[...]` marking omitted lines. Never join text across `[...]`.
+    - **(v4)** In tables converted from supplementary files, ` / ` separates values that were stacked on separate lines inside one cell (see "Stacked cells" below; changed in v6).
+-2. **The schema**: `pipeline/extract/claude_code/schema_ha20_v5.json`. It defines five tables, their fields, types, allowed values, and a description for each.
++2. **The schema**: `pipeline/extract/claude_code/schema_tangier_v5.json`. It defines five tables, their fields, types, allowed values, and a description for each.
+ 3. **The rules**: `pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md`. Apply all nine. Where this file is more specific (scope, labels, table symbols), this file wins.
+ 
+ **What you may read.** Read only these three files.
+@@ -23,7 +23,7 @@
+ ## Scope: who gets a row (v3, D-22)
+ 
+ - **In scope:**
+-  - every person the paper describes who has a *TNFAIP3* variant or an HA20 (A20 haploinsufficiency) diagnosis;
++  - every person the paper describes who has a *ABCA1* variant or a diagnosis of Tangier disease;
+   - relatives the paper describes in relation to such a person, whether tested (including tested negative) or affected.
+ - **Out of scope:** other members of a cohort, for example patients whose variants are in other genes, or who have no variant. They get **no** rows. Record the study's total number of patients, as the authors state it, in `publications.cohort_size_as_stated`.
+ - **People from summaries of earlier reports are in scope** when they meet the rule above: a literature table in a case report, or a review describing individuals. Each gets its own row, with `source_reference_in_review` filled verbatim.
+@@ -35,7 +35,7 @@
+   - **(v4)** do not create a row for a variant the paper names but does not describe (no printed variant), for example "variants in PIK3R1 and HBB";
+   - if the attribution is contradictory, leave it out and say so in `method_note`.
+ - **(v4) Other variant rows to leave out:** common variants the authors dismiss as non-causal (for example a frequent SNP they call benign), and variants found only in tumour tissue (somatic).
+-- **(v4) Mosaic carriers:** a person with a germline mosaic *TNFAIP3* variant is in scope; record zygosity `mosaic`.
++- **(v4) Mosaic carriers:** a person with a germline mosaic *ABCA1* variant is in scope; record zygosity `mosaic`.
+ - **`reports_individuals_with_tnfaip3_variant`** is `true` only when the paper describes at least one identifiable in-scope person, that is, with any individual-level detail. A paper that mentions such patients only as counts or at group level gets `false`.
+ 
+ ## Labels (v3, D-22)
+@@ -109,7 +109,7 @@
+ - **`individuals`:** one row per in-scope person (see Scope), labelled by the Labels rules.
+ - **`variants`:** one row per (person, variant).
+   - `variant_original_string` is the **shortest** contiguous text giving the variant, not a whole sentence. Put the transcript, cDNA and protein parts in their own fields.
+-  - **(v3)** If the paper ties a *TNFAIP3* variant to the person but prints no variant description (only in a figure or an unavailable supplement), keep the row with `variant_original_string` = `"not reported"`. Never fill it from memory.
++  - **(v3)** If the paper ties a *ABCA1* variant to the person but prints no variant description (only in a figure or an unavailable supplement), keep the row with `variant_original_string` = `"not reported"`. Never fill it from memory.
+ - **`phenotypic_features`:** one row per feature the paper explicitly reports present (`observed`) or explicitly reports absent (`excluded`) for that person. No rows for features the paper doesn't mention.
+ - **`phenotype_checklist`:** for **every** individual, one row for **each** of the 20 checklist features in the schema's description of that table, using the names exactly as listed there. Status is `observed`, `excluded` or `not reported` under rule 4.
+ 
+--- pipeline/extract/claude_code/schema_ha20_v5.json
++++ pipeline/extract/claude_code/schema_tangier_v5.json
+@@ -49,7 +49,7 @@
+      "name": "n_patients_reported",
+      "data_type": "int",
+      "required": false,
+-     "description": "Number of patients with a TNFAIP3 variant described in this document, as stated by the authors.",
++     "description": "Number of patients with a ABCA1 variant described in this document, as stated by the authors.",
+      "unit": null,
+      "scale": null,
+      "enum_values": null
+@@ -58,7 +58,7 @@
+      "name": "cohort_size_as_stated",
+      "data_type": "int",
+      "required": false,
+-     "description": "(v3, D-22) Total number of patients in the study as the authors state it (e.g. 'a cohort of 49 patients'); null if not stated. People outside the extraction scope (no TNFAIP3 variant or HA20 diagnosis, and not a relative described in relation to an in-scope person) are counted here and get no rows.",
++     "description": "(v3, D-22) Total number of patients in the study as the authors state it (e.g. 'a cohort of 49 patients'); null if not stated. People outside the extraction scope (no ABCA1 variant or diagnosis of Tangier disease, and not a relative described in relation to an in-scope person) are counted here and get no rows.",
+      "unit": null,
+      "scale": null,
+      "enum_values": null
+@@ -85,7 +85,7 @@
+   },
+   {
+    "name": "individuals",
+-   "description": "(v3, D-22) One row per person in scope: everyone the document describes with a TNFAIP3 variant or an HA20 diagnosis, plus relatives the document describes in relation to such a person (tested or affected). Other cohort members get no rows; their number goes in publications.cohort_size_as_stated. Never merge two people. Never invent a person who is not described. (v4, D-24) A previously published person mentioned in passing (for example in the Discussion) is in scope only when the document gives at least one individual-level fact about that person beyond the diagnosis: sex, age, variant or a feature.",
++   "description": "(v3, D-22) One row per person in scope: everyone the document describes with a ABCA1 variant or a diagnosis of Tangier disease, plus relatives the document describes in relation to such a person (tested or affected). Other cohort members get no rows; their number goes in publications.cohort_size_as_stated. Never merge two people. Never invent a person who is not described. (v4, D-24) A previously published person mentioned in passing (for example in the Discussion) is in scope only when the document gives at least one individual-level fact about that person beyond the diagnosis: sex, age, variant or a feature.",
+    "fields": [
+     {
+      "name": "pmid",
+@@ -248,7 +248,7 @@
+      "name": "disease_label_as_stated",
+      "data_type": "str",
+      "required": false,
+-     "description": "The diagnosis the authors give this person, verbatim (e.g. 'A20 haploinsufficiency', 'Behcet-like disease').",
++     "description": "The diagnosis the authors give this person, verbatim (e.g. 'Tangier disease', 'Behcet-like disease').",
+      "unit": null,
+      "scale": null,
+      "enum_values": null
+@@ -295,7 +295,7 @@
+      "name": "gene_symbol_as_stated",
+      "data_type": "str",
+      "required": true,
+-     "description": "Gene symbol exactly as printed (expected TNFAIP3; record whatever is printed).",
++     "description": "Gene symbol exactly as printed (expected ABCA1; record whatever is printed).",
+      "unit": null,
+      "scale": null,
+      "enum_values": null
+@@ -304,7 +304,7 @@
+      "name": "variant_original_string",
+      "data_type": "str",
+      "required": true,
+-     "description": "The shortest contiguous text that gives the variant description exactly as printed (for example 'c.1727dupC' or 'NM_006290.3:c.653del:p.Leu218TrpfsTer10'). When the paper prints the cDNA, transcript and protein in separate places, record the cDNA (or, failing that, the protein) string here and the other parts in their own fields. (v3, D-22) If the document ties a TNFAIP3 variant to this person but prints no variant description (for example it is only in a figure or an unavailable supplement), keep the row with value 'not reported'; such rows are left out of variant counts and concordance.",
++     "description": "The shortest contiguous text that gives the variant description exactly as printed (for example 'c.1727dupC' or 'NM_006290.3:c.653del:p.Leu218TrpfsTer10'). When the paper prints the cDNA, transcript and protein in separate places, record the cDNA (or, failing that, the protein) string here and the other parts in their own fields. (v3, D-22) If the document ties a ABCA1 variant to this person but prints no variant description (for example it is only in a figure or an unavailable supplement), keep the row with value 'not reported'; such rows are left out of variant counts and concordance.",
+      "unit": null,
+      "scale": null,
+      "enum_values": null
+@@ -533,7 +533,7 @@
+   },
+   {
+    "name": "phenotype_checklist",
+-   "description": "For each individual and each feature in the fixed HA20 checklist below, the three-state status. Emit one row per (individual, checklist feature), always all features. Checklist: oral ulcers; genital ulcers; gastrointestinal ulcers or inflammation; recurrent fever; arthritis or arthralgia; uveitis or other ocular inflammation; skin lesions (rash, folliculitis, erythema nodosum); autoimmune thyroiditis; type 1 diabetes; autoimmune hepatitis; cytopenia (autoimmune); lymphoproliferation or lymphadenopathy; central nervous system involvement; recurrent infections; elevated inflammatory markers (CRP/ESR); autoantibodies (ANA/other); growth failure; pericarditis or other serositis; interstitial lung disease; vasculitis.",
++   "description": "For each individual and each feature in the fixed Tangier disease checklist below, the three-state status. Emit one row per (individual, checklist feature), always all features. Checklist: low HDL cholesterol; low apolipoprotein A-I; orange-colored or enlarged tonsils; recurrent tonsillitis or tonsillectomy; splenomegaly; hepatomegaly; thrombocytopenia; reticulocytosis; lymphadenopathy; corneal opacity; skin lipid deposits; intestinal mucosal lipid deposits; peripheral neuropathy; reduced tendon reflexes; reduced deep sensation; coronary artery disease; non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis); glucose intolerance or impaired insulin secretion; low LDL cholesterol; hypertriglyceridemia.",
+    "fields": [
+     {
+      "name": "pmid",

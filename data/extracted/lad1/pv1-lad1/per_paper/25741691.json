@@ -1,0 +1,4445 @@
+{
+ "pmid": "25741691",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "The paper describes five individually labelled LAD-I patients (mLAD1-4, sLAD) with age, sex, CD18 (ITGB2) mutations and clinical problems: \"We evaluated five patients with LAD-I\".",
+ "method_note": "Read by hand; a short Python script assembled the JSON from my own transcription of Table 1 and supplementary Table S1 (ppat.1004698.s003.docx), checked against the tables. In scope: the five LAD-I patients mLAD1, mLAD2, mLAD3, mLAD4 and sLAD (labels as in the paper). The 12 healthy controls (H1-H12) are out of scope and get no rows; the paper states no single total cohort size (five LAD-I patients and 'twelve patients' healthy stated separately), so cohort_size_as_stated is null. Variants are in the Table 1 'CD18 Mutation' column; the gene is printed as CD18 there (the Introduction says 'CD18 (ITGB2) gene'). Variant strings are copied as printed, without c./p. prefixes; '850G(R)A' is printed with '(R)' (probably a converted arrow) and kept as is. mLAD2's 'Null allele (specific mutation unknown)' gets a row with variant_original_string 'not reported'. mLAD3's CD18 Mutation cell is empty; a row with 'not reported' was kept because the paper says all five were diagnosed by CD18 mutation. Variant type 'frameshift' only for C2070 del T, from 'fs transmembrane domain' in the same cell; sLAD's 'del exon 12,13' class not stated, left not reported. Zygosity left not reported except sLAD ('Homozygous'); the Methods group statement 'defined biallelic CD18 mutations' has no matching enum value and was not converted to compound heterozygous. Table 1 'Age' column taken as age at evaluation (years assumed from context, e.g. 'at the age of 13'). Supplementary Table S1 cells use ' / ' within ONE patient's row (one patient per row), so all stacked values in a row belong to that patient; no positional assignment across patients was needed (D-31 not triggered). The S1 antibiotic column is duplicated in the conversion. Table 1 'Missing Teeth' = 0 for mLAD1 and mLAD2 is not used to exclude tooth loss (a 0 cell counts as excluded only if defined; not defined), so tooth loss is not reported for them. 'Mild clinical phenotype' and 'Minimal secondary infections' (mLAD2, mLAD3) were not recorded as features. Folliculitis and Skin lesions were not mapped to 'skin or soft tissue infections'; Gastroenteritis (sLAD) was not mapped to gastrointestinal infections or colitis; only Cellulitis was mapped to skin or soft tissue infections. Periodontitis for mLAD1-4 comes from 'All five patients were diagnosed with generalized moderate to severe periodontitis' (group naming all five); caries excluded for all five from 'none of the patients had a single carious lesion' (named cohort). Gingivitis/periodontitis absence statements concern healthy controls only. Unnamed subsets (e.g. 'Representative of 3 LAD patients with tooth extractions') were not assigned to anyone. No contradictions found.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "first_author": {
+     "value": "Moutsopoulos",
+     "span": "Authors: Moutsopoulos Niki M."
+    },
+    "year": {
+     "value": 2015,
+     "span": "Journal: PLoS Pathogens (2015)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "we sought to characterize the composition of the subgingival microbiome in a cohort of LAD-I patients"
+    },
+    "n_patients_reported": {
+     "value": 5,
+     "span": "We evaluated five patients with LAD-I"
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "14",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P14Y",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Prophylactic Antibiotic Use (Trimethoprim-Sulfamethoxazole)",
+     "span": [
+      "Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae | Prophylactic Antibiotic Use / (Trimethoprim-Sulfamethoxazole) |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "LAD-I",
+     "span": "We evaluated five patients with LAD-I"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "medical history, CD18 mutation and low CD18 expression of peripheral neutrophils; biallelic CD18 mutations and flow cytometric analysis of CD18 expression",
+     "span": [
+      "diagnosed by medical history, CD18 mutation and low CD18 expression of peripheral neutrophils",
+      "Patients were diagnosed with LAD-I based on defined biallelic CD18 mutations and flow cytometric analysis of CD18 expression on peripheral neutrophils"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "12",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P12Y",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "No antibiotics used for >6 months; sporadic antibiotic use",
+     "span": [
+      "Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum | No antibiotics used for >6 months / Sporadic antibiotic use |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "LAD-I",
+     "span": "We evaluated five patients with LAD-I"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "medical history, CD18 mutation and low CD18 expression of peripheral neutrophils; biallelic CD18 mutations and flow cytometric analysis of CD18 expression",
+     "span": [
+      "diagnosed by medical history, CD18 mutation and low CD18 expression of peripheral neutrophils",
+      "Patients were diagnosed with LAD-I based on defined biallelic CD18 mutations and flow cytometric analysis of CD18 expression on peripheral neutrophils"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "26",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P26Y",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "No antibiotics used for >1 year; sporadic antibiotic use",
+     "span": [
+      "Minimal secondary infections / Folliculitis / Major Oral Apthae | No antibiotics used for >1 year / Sporadic antibiotic use |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "LAD-I",
+     "span": "We evaluated five patients with LAD-I"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "medical history, CD18 mutation and low CD18 expression of peripheral neutrophils; biallelic CD18 mutations and flow cytometric analysis of CD18 expression",
+     "span": [
+      "diagnosed by medical history, CD18 mutation and low CD18 expression of peripheral neutrophils",
+      "Patients were diagnosed with LAD-I based on defined biallelic CD18 mutations and flow cytometric analysis of CD18 expression on peripheral neutrophils"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "38",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P38Y",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Prophylactic Antibiotics (Amoxicillin/Clavulanate)",
+     "span": [
+      "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae | Prophylactic Antibiotics / (Amoxicillin/Clavulanate) |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "LAD-I",
+     "span": "We evaluated five patients with LAD-I"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "medical history, CD18 mutation and low CD18 expression of peripheral neutrophils; biallelic CD18 mutations and flow cytometric analysis of CD18 expression",
+     "span": [
+      "diagnosed by medical history, CD18 mutation and low CD18 expression of peripheral neutrophils",
+      "Patients were diagnosed with LAD-I based on defined biallelic CD18 mutations and flow cytometric analysis of CD18 expression on peripheral neutrophils"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "13",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P13Y",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Prophylactic Antibiotics (Amoxicillin/Clavulanate); full mouth extractions shortly after initial protocol enrollment at the age of 13",
+     "span": [
+      "Cellulitis / Warts / Myositis | Prophylactic Antibiotics / (Amoxicillin/Clavulanate) |",
+      "one had exceptionally severe periodontitis (sLAD) and required full mouth extractions shortly after initial protocol enrollment at the age of 13"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "LAD-I",
+     "span": "We evaluated five patients with LAD-I"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "medical history, CD18 mutation and low CD18 expression of peripheral neutrophils; biallelic CD18 mutations and flow cytometric analysis of CD18 expression",
+     "span": [
+      "diagnosed by medical history, CD18 mutation and low CD18 expression of peripheral neutrophils",
+      "Patients were diagnosed with LAD-I based on defined biallelic CD18 mutations and flow cytometric analysis of CD18 expression on peripheral neutrophils"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 | 850G(R)A; G284S and C2070 del T; fs transmembrane domain |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "CD18",
+     "span": "CD18 Mutation"
+    },
+    "variant_original_string": {
+     "value": "850G(R)A; G284S",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 | 850G(R)A; G284S and C2070 del T; fs transmembrane domain |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "850G(R)A",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 | 850G(R)A; G284S and C2070 del T; fs transmembrane domain |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "G284S",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 | 850G(R)A; G284S and C2070 del T; fs transmembrane domain |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 | 850G(R)A; G284S and C2070 del T; fs transmembrane domain |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "CD18",
+     "span": "CD18 Mutation"
+    },
+    "variant_original_string": {
+     "value": "C2070 del T",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 | 850G(R)A; G284S and C2070 del T; fs transmembrane domain |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "C2070 del T",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 | 850G(R)A; G284S and C2070 del T; fs transmembrane domain |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "frameshift",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 | 850G(R)A; G284S and C2070 del T; fs transmembrane domain |"
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 | Null allele (specific mutation unknown);C2070 del T; fs transmembrane domain |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "CD18",
+     "span": "CD18 Mutation"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 | Null allele (specific mutation unknown);C2070 del T; fs transmembrane domain |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "CD18",
+     "span": "CD18 Mutation"
+    },
+    "variant_original_string": {
+     "value": "C2070 del T",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 | Null allele (specific mutation unknown);C2070 del T; fs transmembrane domain |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "C2070 del T",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 | Null allele (specific mutation unknown);C2070 del T; fs transmembrane domain |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "frameshift",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 | Null allele (specific mutation unknown);C2070 del T; fs transmembrane domain |"
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |  |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "CD18",
+     "span": "CD18 Mutation"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 | 1052 A→G; N351S and 741–14C→ A; 247+ PSSQ |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "CD18",
+     "span": "CD18 Mutation"
+    },
+    "variant_original_string": {
+     "value": "1052 A→G; N351S",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 | 1052 A→G; N351S and 741–14C→ A; 247+ PSSQ |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "1052 A→G",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 | 1052 A→G; N351S and 741–14C→ A; 247+ PSSQ |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "N351S",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 | 1052 A→G; N351S and 741–14C→ A; 247+ PSSQ |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 | 1052 A→G; N351S and 741–14C→ A; 247+ PSSQ |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "CD18",
+     "span": "CD18 Mutation"
+    },
+    "variant_original_string": {
+     "value": "741–14C→ A; 247+ PSSQ",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 | 1052 A→G; N351S and 741–14C→ A; 247+ PSSQ |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "741–14C→ A",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 | 1052 A→G; N351S and 741–14C→ A; 247+ PSSQ |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "247+ PSSQ",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 | 1052 A→G; N351S and 741–14C→ A; 247+ PSSQ |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 | Homozygous del exon 12,13 |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "CD18",
+     "span": "CD18 Mutation"
+    },
+    "variant_original_string": {
+     "value": "del exon 12,13",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 | Homozygous del exon 12,13 |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 | Homozygous del exon 12,13 |"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "generalized moderate to severe periodontitis",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Full Mouth CAL 3.6 ± 0.31; PD 3–4mm",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Periodontitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000704",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "carious lesion",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Carious teeth",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000670",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "generalized moderate to severe periodontitis",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Full Mouth CAL 3 ± 0.12; PD 3–4mm",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Periodontitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000704",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "carious lesion",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Carious teeth",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000670",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "generalized moderate to severe periodontitis",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Full Mouth CAL 4.5 ± 0.23; PD 5–6mm",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Periodontitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000704",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "carious lesion",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Carious teeth",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000670",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "feature_text_as_stated": {
+     "value": "generalized moderate to severe periodontitis",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Full Mouth CAL 4.8 ± 0.34; PD 5–6mm",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Periodontitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000704",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "feature_text_as_stated": {
+     "value": "carious lesion",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Carious teeth",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000670",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "exceptionally severe periodontitis",
+     "span": "one had exceptionally severe periodontitis (sLAD)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "one had exceptionally severe periodontitis (sLAD)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "one had exceptionally severe periodontitis (sLAD)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Full Mouth CAL 7.2 ± 0.72; PD >7mm",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Periodontitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000704",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "carious lesion",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "none of the patients had a single carious lesion"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Carious teeth",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000670",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Missing Teeth",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "8 missing teeth",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Premature loss of teeth",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Missing Teeth",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "20 missing teeth",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Premature loss of teeth",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Missing Teeth",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "4 missing teeth",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Premature loss of teeth",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Otitis Media Infections",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Otitis media",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000388",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Skin ulcerative lesions",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Skin ulcer",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0200042",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Pyoderma Gangrenosum",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pyoderma gangrenosum",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Major Oral Apthae",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Oral aphthae",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Skin lesions",
+     "span": "| mLAD2 | 12 | F | Mild clinical phenotype / Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD2 | 12 | F | Mild clinical phenotype / Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD2 | 12 | F | Mild clinical phenotype / Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Pyoderma Gangrenosum",
+     "span": "| mLAD2 | 12 | F | Mild clinical phenotype / Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD2 | 12 | F | Mild clinical phenotype / Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD2 | 12 | F | Mild clinical phenotype / Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pyoderma gangrenosum",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Folliculitis",
+     "span": "| mLAD3 | 26 | M | Mild clinical phenotype / Minimal secondary infections / Folliculitis / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD3 | 26 | M | Mild clinical phenotype / Minimal secondary infections / Folliculitis / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD3 | 26 | M | Mild clinical phenotype / Minimal secondary infections / Folliculitis / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Folliculitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Major Oral Apthae",
+     "span": "| mLAD3 | 26 | M | Mild clinical phenotype / Minimal secondary infections / Folliculitis / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD3 | 26 | M | Mild clinical phenotype / Minimal secondary infections / Folliculitis / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD3 | 26 | M | Mild clinical phenotype / Minimal secondary infections / Folliculitis / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Oral aphthae",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Skin lesions",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Folliculitis",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Folliculitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Major Oral Apthae",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD4 | 38 | M | Skin lesions / Folliculitis / Major Oral Apthae |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Oral aphthae",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Recurrent Otitis Media",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent otitis media",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000403",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Gastroenteritis",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Gastroenteritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Skin lesions",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Cellulitis",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cellulitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100658",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Warts",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Verrucae",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "Myositis",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myositis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100614",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD1 | 14 | M | Otitis Media Infections / Skin ulcerative lesions / Pyoderma Gangrenosum / Major Oral Apthae |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD1",
+     "span": "| mLAD1 | 14 | M | 3.6 ± 0.31 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD2 | 12 | F | Mild clinical phenotype / Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD2 | 12 | F | Mild clinical phenotype / Minimal secondary infections / Skin lesions / Pyoderma Gangrenosum |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD2",
+     "span": "| mLAD2 | 12 | F | 3 ± 0.12 | 3–4mm | 0 |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD3",
+     "span": "| mLAD3 | 26 | M | 4.5 ± 0.23 | 5–6mm | 8 |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All five patients were diagnosed with generalized moderate to severe periodontitis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "mLAD4",
+     "span": "| mLAD4 | 38 | M | 4.8 ± 0.34 | 5–6mm | 20 |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "one had exceptionally severe periodontitis (sLAD)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "one had exceptionally severe periodontitis (sLAD)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| sLAD | 13 | M | Recurrent Otitis Media / Gastroenteritis / Skin lesions / Cellulitis / Warts / Myositis |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25741691",
+     "span": "PMID: 25741691"
+    },
+    "individual_label_in_paper": {
+     "value": "sLAD",
+     "span": "| sLAD | 13 | M | 7.2 ± 0.72 | >7mm | 4 |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

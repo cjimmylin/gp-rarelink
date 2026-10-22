@@ -1,0 +1,7784 @@
+{
+ "pmid": "32657043",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Cohort study of 60 young female patients with advanced heart failure that describes seven female Danon disease patients individually (Tables 2 and 3: 'LAMP2 molecular genetic analyses, and LAMP2 myocardial expression in Danon disease female patients') plus three relatives carrying LAMP2 variants.",
+ "method_note": "Read the whole Markdown including the supplementary docx. A Python script in my scratch directory assembled the JSON; every value was entered by hand from my reading, and the script only located each span verbatim in the paper (tolerating non-breaking spaces and U+2010 hyphens) and filled the 20 checklist rows per person. Scope: 7 female DD patients (#1-#7, Tables 2-3) labelled 'Patient #n'; relatives with LAMP2 variants: daughter of #5 (III.3, family CZ6), mother of #6 (II.2, obligatory heterozygote, CZ4) and older brother of #6 (labelled III.1 in the supplement's 'gave birth to a son - III.1' and III/1 elsewhere). The other 53 cohort patients are out of scope (cohort_size 60). Relatives of #3, #4 and #7 ('the only affected individuals in their families') have no individual detail and get no rows. Patients #1-#4 were reported before (Table 2 'Note' column, copied to source_reference_in_review); the family labels in those notes ('family 2', 'family 1') belong to the earlier paper and were not used as family_label_in_paper. Table 1 is group-level (counts and medians) and was not used for individuals; e.g. atrial fibrillation 3 (43%) of DD patients is not attributed. Heart failure was not marked for #1-#7: AHF is the study inclusion criterion and is not stated per person; heart transplantation ages are recorded as treatment only. Table 3 numeric echo/ECG values (QRS, LVEDD, LVEF, IVS, PW) were kept as detail on the DCM/HCM rows, not turned into features (e.g. LVEF 20% in HCM patients #3 and #5 not marked as reduced EF). HCM was mapped to the LVH checklist item and DCM to the dilated LV item. Table 3 'Absent' under Delta waves was taken as explicit absence (a word, not a symbol). Patient #2's HTx cell '—' is undefined, so not reported. Variants: #4 has one Xq24 deletion spanning CUL4B (partial), LAMP2, ATP1B4, TMEM255A and ZBTB33, recorded as one LAMP2 row. Protein strings are copied with the converter's '^*' artefact. The daughter's variant string comes from 'Patient #5 transmitted the LAMP2 mutation' plus #5's cDNA; her zygosity and type are left not reported. Inheritance 'inherited maternal' for #6 and the brother rests on the paper calling the mother an 'obligatory heterozygote' (not tested). A 4.9 kb mtDNA deletion (low heteroplasmy, skeletal muscle) in the brother and 'the same deletion' in #6 are recorded as gene 'mtDNA' rows. No stacked supplementary-table cells were used (the SOP table is not patient data). No internal contradictions found, except that #6's age at DD diagnosis (25) is lower than her age at HTx (27), which is not a contradiction as such.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "first_author": {
+     "value": "Gurka",
+     "span": "Authors: Gurka Jiri"
+    },
+    "year": {
+     "value": 2020,
+     "span": "Journal: ESC Heart Failure (2020)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "This was a two‐centre cohort study."
+    },
+    "n_patients_reported": {
+     "value": 7,
+     "span": "the total prevalence of DD in this cohort of female patients with non‐ischemic heart failure was 12% (7/60)"
+    },
+    "cohort_size_as_stated": {
+     "value": 60,
+     "span": "The study cohort comprised 60 female patients"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": [
+      "| III.2 in Majer et al.^10 |",
+      "II.1 (family 2) in reference Majer et al. ^13",
+      "II.1 in Majer et al. ^14"
+     ]
+    },
+    "prior_report_citation": {
+     "value": "Majer et al.^10 (Patient #1); Majer et al. ^13 (Patients #2 and #3); Majer et al. ^14 (Patient #4)",
+     "span": [
+      "III.2 in Majer et al.^10",
+      "II.1 (family 2) in reference Majer et al. ^13",
+      "II.1 in Majer et al. ^14"
+     ]
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "all six female DD patients (#1–3 and #5–7)"
+    },
+    "age_at_onset_original_text": {
+     "value": "15 years",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #1 | 15 |"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": "P15Y",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #1 | 15 |"
+     ]
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "33 years",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #1 | 15 | 29 | 33 |"
+     ]
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P33Y",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #1 | 15 | 29 | 33 |"
+     ]
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "heart transplantation (HTx) at age 29 years",
+     "span": [
+      "Age at HTx (years)",
+      "| #1 | 15 | 29 |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease (DD)",
+     "span": [
+      "LAMP2 myocardial expression in Danon disease female patients",
+      "Patients #1^10 and #2,^13 who were diagnosed with DD"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "DD diagnosis established prior the LAMP2 FC screening study; LAMP2 flow cytometry and molecular genetic analysis (frame-shift LAMP2 mutation)",
+     "span": [
+      "^bDD diagnosis established prior the LAMP2 FC screening study.",
+      "| #1^b | 87.2 | 84.9 | Not informative | p.[Ala314Glnfs^*32];[=] / mosaic expression |",
+      "Patient #1 was heterozygous for a frame‐shift c.del940G LAMP2 mutation"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "III.2 in Majer et al.^10",
+     "span": "III.2 in Majer et al.^10"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "all six female DD patients (#1–3 and #5–7)"
+    },
+    "age_at_onset_original_text": {
+     "value": "11 years",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #2 | 11 |"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": "P11Y",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #2 | 11 |"
+     ]
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "17 years",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #2 | 11 | — | 17 |"
+     ]
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P17Y",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #2 | 11 | — | 17 |"
+     ]
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease (DD)",
+     "span": [
+      "LAMP2 myocardial expression in Danon disease female patients",
+      "Patients #1^10 and #2,^13 who were diagnosed with DD"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "DD diagnosis established prior the LAMP2 FC screening study; LAMP2 flow cytometry and molecular genetic analysis (LAMP2 exon CNV)",
+     "span": [
+      "^bDD diagnosis established prior the LAMP2 FC screening study.",
+      "| #2^b | 32.3 | 38.0 | 30:70 | g.19925_45401[del25477];[=], deletion of LAMP2 exons 4–9C/no tissue available |",
+      "Patients #2 and #3 carried heterozygous deletion exon copy number variants"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "II.1 (family 2) in reference Majer et al. ^13",
+     "span": "II.1 (family 2) in reference Majer et al. ^13"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "all six female DD patients (#1–3 and #5–7)"
+    },
+    "age_at_onset_original_text": {
+     "value": "12 years",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #3 | 12 |"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": "P12Y",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #3 | 12 |"
+     ]
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "42 years",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #3 | 12 | 21 | 42 |"
+     ]
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P42Y",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #3 | 12 | 21 | 42 |"
+     ]
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "heart transplantation (HTx) at age 21 years",
+     "span": [
+      "Age at HTx (years)",
+      "| #3 | 12 | 21 |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease (DD)",
+     "span": [
+      "LAMP2 myocardial expression in Danon disease female patients",
+      "characterization of the LAMP2 mutations in DD patients #3 and #4"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "DD diagnosis established by the LAMP2 FC screening study (LAMP2 flow cytometry in WBCs), with molecular genetic analysis of LAMP2",
+     "span": [
+      "^cDD diagnosis established by the LAMP2 FC screening study.",
+      "| #3^c | 35.5 | 49.1 | 40:60 | g.17916_29069[del11154];[=], deletion of LAMP2 exons 4‐8/no tissue available |",
+      "Patients #2 and #3 carried heterozygous deletion exon copy number variants"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "II.1 (family 1) in Majer et al. .^13",
+     "span": "II.1 (family 1) in Majer et al. .^13"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": [
+      "LAMP2 myocardial expression in Danon disease female patients",
+      "| #4^c | 2.6 | 3.9 | 96:4^a | Heterozygous deletion of CUL4B, LAMP2, ATP1B4, TMEM255A, and ZBTB33 genes/mosaic expression |"
+     ]
+    },
+    "age_at_onset_original_text": {
+     "value": "25 years",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #4 | 25 |"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": "P25Y",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #4 | 25 |"
+     ]
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "36 years",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #4 | 25 | 26 | 36 |"
+     ]
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P36Y",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #4 | 25 | 26 | 36 |"
+     ]
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "heart transplantation (HTx) at age 26 years",
+     "span": [
+      "Age at HTx (years)",
+      "| #4 | 25 | 26 |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease (DD)",
+     "span": [
+      "LAMP2 myocardial expression in Danon disease female patients",
+      "characterization of the LAMP2 mutations in DD patients #3 and #4"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "DD diagnosis established by the LAMP2 FC screening study (LAMP2 flow cytometry in WBCs), with molecular genetic analysis of LAMP2",
+     "span": [
+      "^cDD diagnosis established by the LAMP2 FC screening study.",
+      "| #4^c | 2.6 | 3.9 | 96:4^a | Heterozygous deletion of CUL4B, LAMP2, ATP1B4, TMEM255A, and ZBTB33 genes/mosaic expression |",
+      "Patient #4 had an Xq24 re‐arrangement"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "II.1 in Majer et al. ^14",
+     "span": "II.1 in Majer et al. ^14"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "family_label_in_paper": {
+     "value": "CZ6",
+     "span": "Family CZ6 (patient \\#5, Tab. 2)"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "all six female DD patients (#1–3 and #5–7)"
+    },
+    "age_at_onset_original_text": {
+     "value": "25 years",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #5 | 25 |"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": "P25Y",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #5 | 25 |"
+     ]
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "48 years",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #5 | 25 | 28 | 48 |"
+     ]
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P48Y",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #5 | 25 | 28 | 48 |"
+     ]
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "heart transplantation (HTx) at age 28 years",
+     "span": [
+      "Age at HTx (years)",
+      "| #5 | 25 | 28 |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease (DD)",
+     "span": [
+      "LAMP2 myocardial expression in Danon disease female patients",
+      "In DD patients #5, #6 and #7"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "DD diagnosis established by the LAMP2 FC screening study (LAMP2 flow cytometry in WBCs), with molecular genetic analysis of LAMP2",
+     "span": [
+      "^cDD diagnosis established by the LAMP2 FC screening study.",
+      "| #5^c | 66.7 | 70.8 | 57:44 | p.[Asp149Phefs^*2];[=] /mosaic expression |",
+      "Patient #5 was heterozygous for a novel frameshift c.445_449delGACCT mutation"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "family_label_in_paper": {
+     "value": "CZ4",
+     "span": "Family CZ4 (patient \\#6, Tab. 2)"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "all six female DD patients (#1–3 and #5–7)"
+    },
+    "age_at_onset_original_text": {
+     "value": "16 years",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #6 | 16 |"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": "P16Y",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #6 | 16 |"
+     ]
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "25 years",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #6 | 16 | 27 | 25 |"
+     ]
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P25Y",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #6 | 16 | 27 | 25 |"
+     ]
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "heart transplantation (HTx) at age 27 years",
+     "span": [
+      "Age at HTx (years)",
+      "| #6 | 16 | 27 |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease (DD)",
+     "span": [
+      "LAMP2 myocardial expression in Danon disease female patients",
+      "In DD patients #5, #6 and #7"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "DD diagnosis established by the LAMP2 FC screening study (LAMP2 flow cytometry in WBCs), with molecular genetic analysis of LAMP2",
+     "span": [
+      "^cDD diagnosis established by the LAMP2 FC screening study.",
+      "| #6^c | 25.2 | 28.9 | 20:80 | p.[Gln240^*];[=] / mosaic expression |",
+      "c.718C>T non‐sense mutation (Figure\nS1B) in the LAMP2 exon 5 was found in patient #6"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "family_label_in_paper": {
+     "value": "CZ7",
+     "span": "Family CZ7 (patient \\#7, Tab. 2)"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "all six female DD patients (#1–3 and #5–7)"
+    },
+    "age_at_onset_original_text": {
+     "value": "23 years",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #7 | 23 |"
+     ]
+    },
+    "age_at_onset_iso8601": {
+     "value": "P23Y",
+     "span": [
+      "| Patient | Age at disease onset (years)",
+      "| #7 | 23 |"
+     ]
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "23 years",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #7 | 23 | 24 | 23 |"
+     ]
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P23Y",
+     "span": [
+      "Age at DD diagnosis (years)",
+      "| #7 | 23 | 24 | 23 |"
+     ]
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "heart transplantation (HTx) at age 24 years",
+     "span": [
+      "Age at HTx (years)",
+      "| #7 | 23 | 24 |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease (DD)",
+     "span": [
+      "LAMP2 myocardial expression in Danon disease female patients",
+      "In DD patients #5, #6 and #7"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "DD diagnosis established by the LAMP2 FC screening study (LAMP2 flow cytometry in WBCs), with molecular genetic analysis of LAMP2",
+     "span": [
+      "^cDD diagnosis established by the LAMP2 FC screening study.",
+      "| #7^c | 44.3 | 52.7 | 46:54 | p.[Leu139Phefs^*8];[=] / mosaic expression |",
+      "Patient #7 was heterozygous for a novel frameshift c.418delC mutation"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "family_label_in_paper": {
+     "value": "CZ6",
+     "span": [
+      "Family CZ6 (patient \\#5, Tab. 2)",
+      "her daughter (III.3, Figure\nS1A)"
+     ]
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Patient #5 transmitted the LAMP2 mutation to her daughter (III.3, Figure"
+    },
+    "sex": {
+     "value": "female",
+     "span": "Patient #5 transmitted the LAMP2 mutation to her daughter"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "30 years of age",
+     "span": "At 30 years of age, the daughter had"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P30Y",
+     "span": "At 30 years of age, the daughter had"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "family_label_in_paper": {
+     "value": "CZ4",
+     "span": "Clinical history of CZ4 (Fig. S1B) DD family members"
+    },
+    "is_proband": {
+     "value": false,
+     "span": "The mother (obligatory heterozygote for the LAMP2 *c.718C\\>T* mutation, *Fig. S1B*, II.2) of patient \\#6"
+    },
+    "sex": {
+     "value": "female",
+     "span": "The mother (obligatory heterozygote"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "She died aged 27 years because of severe right heart failure"
+    },
+    "deceased_age_iso8601": {
+     "value": "P27Y",
+     "span": [
+      "She died aged 27 years",
+      "died at 27 years of age"
+     ]
+    },
+    "cause_of_death": {
+     "value": "severe right heart failure shortly after heart transplantation",
+     "span": "She died aged 27 years because of severe right heart failure shortly after heart transplantation"
+    },
+    "treatment_summary": {
+     "value": "heart transplantation",
+     "span": "severe right heart failure shortly after heart transplantation"
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "family_label_in_paper": {
+     "value": "CZ4",
+     "span": "Clinical history of CZ4 (Fig. S1B) DD family members"
+    },
+    "is_proband": {
+     "value": false,
+     "span": "the patient's brother who carried the same LAMP2 mutation as Patient #6"
+    },
+    "sex": {
+     "value": "male",
+     "span": [
+      "gave birth to a son - III.1",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "died aged 18 years"
+    },
+    "deceased_age_iso8601": {
+     "value": "P18Y",
+     "span": "carried the same LAMP2 mutation as Patient #6 and died aged 18 years"
+    },
+    "cause_of_death": {
+     "value": "low cardiac output and pneumonia",
+     "span": "he died while on the waiting list few months later due to low cardiac output and pneumonia"
+    },
+    "treatment_summary": {
+     "value": "referred to the heart transplant program with AHF; died while on the waiting list",
+     "span": [
+      "The patient was referred to the heart transplant program with AHF due to suspected mitochondrial disease at the age of 18 years",
+      "he died while on the waiting list"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "LAMP2 mutation identified retrospectively in archived gDNA after DD was identified in his sister; IHC showed uniform LAMP2 deficiency in archived myocardial tissue",
+     "span": [
+      "the same non-sense *LAMP2* mutation (*c.718C\\>T*) was identified retrospectively also in his archived gDNA",
+      "IHC confirmed uniform LAMP2 deficiency in his archived myocardial tissue"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Patient #1 was heterozygous for a frame‐shift c.del940G LAMP2 mutation"
+    },
+    "variant_original_string": {
+     "value": "c.del940G",
+     "span": "Patient #1 was heterozygous for a frame‐shift c.del940G LAMP2 mutation"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.del940G",
+     "span": "Patient #1 was heterozygous for a frame‐shift c.del940G LAMP2 mutation"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.[Ala314Glnfs^*32];[=]",
+     "span": "| #1^b | 87.2 | 84.9 | Not informative | p.[Ala314Glnfs^*32];[=] / mosaic expression |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "frameshift",
+     "span": "Patient #1 was heterozygous for a frame‐shift c.del940G LAMP2 mutation"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Patient #1 was heterozygous for a frame‐shift c.del940G LAMP2 mutation"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "LAMP2 flow cytometry: LAMP2def granulocytes 87.2%, LAMP2def monocytes 84.9%; LAMP2 cardiac IHC: mosaic expression",
+     "span": "| #1^b | 87.2 | 84.9 | Not informative | p.[Ala314Glnfs^*32];[=] / mosaic expression |"
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "| #2^b | 32.3 | 38.0 | 30:70 | g.19925_45401[del25477];[=], deletion of LAMP2 exons 4–9C/no tissue available |"
+    },
+    "variant_original_string": {
+     "value": "g.19925_45401[del25477];[=]",
+     "span": "| #2^b | 32.3 | 38.0 | 30:70 | g.19925_45401[del25477];[=], deletion of LAMP2 exons 4–9C/no tissue available |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": "g.19925_45401[del25477];[=]",
+     "span": "| #2^b | 32.3 | 38.0 | 30:70 | g.19925_45401[del25477];[=], deletion of LAMP2 exons 4–9C/no tissue available |"
+    },
+    "variant_type_as_stated": {
+     "value": "large deletion/CNV",
+     "span": "Patients #2 and #3 carried heterozygous deletion exon copy number variants encompassing LAMP2 exons 4‐9C and 4‐8, respectively."
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Patients #2 and #3 carried heterozygous deletion exon copy number variants encompassing LAMP2 exons 4‐9C and 4‐8, respectively."
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "LAMP2 flow cytometry: LAMP2def granulocytes 32.3%, LAMP2def monocytes 38.0%; XCI in WBCs (HUMARA) 30:70; LAMP2 cardiac IHC: no tissue available",
+     "span": "| #2^b | 32.3 | 38.0 | 30:70 | g.19925_45401[del25477];[=], deletion of LAMP2 exons 4–9C/no tissue available |"
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "| #3^c | 35.5 | 49.1 | 40:60 | g.17916_29069[del11154];[=], deletion of LAMP2 exons 4‐8/no tissue available |"
+    },
+    "variant_original_string": {
+     "value": "g.17916_29069[del11154];[=]",
+     "span": "| #3^c | 35.5 | 49.1 | 40:60 | g.17916_29069[del11154];[=], deletion of LAMP2 exons 4‐8/no tissue available |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": "g.17916_29069[del11154];[=]",
+     "span": "| #3^c | 35.5 | 49.1 | 40:60 | g.17916_29069[del11154];[=], deletion of LAMP2 exons 4‐8/no tissue available |"
+    },
+    "variant_type_as_stated": {
+     "value": "large deletion/CNV",
+     "span": "Patients #2 and #3 carried heterozygous deletion exon copy number variants encompassing LAMP2 exons 4‐9C and 4‐8, respectively."
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Patients #2 and #3 carried heterozygous deletion exon copy number variants encompassing LAMP2 exons 4‐9C and 4‐8, respectively."
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "LAMP2 flow cytometry: LAMP2def granulocytes 35.5%, LAMP2def monocytes 49.1%; XCI in WBCs (HUMARA) 40:60; LAMP2 cardiac IHC: no tissue available",
+     "span": "| #3^c | 35.5 | 49.1 | 40:60 | g.17916_29069[del11154];[=], deletion of LAMP2 exons 4‐8/no tissue available |"
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Patient #4 had an Xq24 re‐arrangement that caused a heterozygous deletion of several C‐terminal exons of CUL4B and the complete deletion of LAMP2, ATP1B4, TMEM255A, and ZBTB33 genes."
+    },
+    "variant_original_string": {
+     "value": "Heterozygous deletion of CUL4B, LAMP2, ATP1B4, TMEM255A, and ZBTB33 genes",
+     "span": "| #4^c | 2.6 | 3.9 | 96:4^a | Heterozygous deletion of CUL4B, LAMP2, ATP1B4, TMEM255A, and ZBTB33 genes/mosaic expression |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "large deletion/CNV",
+     "span": "Patient #4 had an Xq24 re‐arrangement that caused a heterozygous deletion of several C‐terminal exons of CUL4B and the complete deletion of LAMP2, ATP1B4, TMEM255A, and ZBTB33 genes."
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Patient #4 had an Xq24 re‐arrangement that caused a heterozygous deletion of several C‐terminal exons of CUL4B and the complete deletion of LAMP2, ATP1B4, TMEM255A, and ZBTB33 genes."
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "LAMP2 flow cytometry: LAMP2def granulocytes 2.6%, LAMP2def monocytes 3.9%; XCI in WBCs (HUMARA) 96:4 (extremely skewed, effect of the parallel CUL4B mutation); LAMP2 cardiac IHC: mosaic expression",
+     "span": [
+      "| #4^c | 2.6 | 3.9 | 96:4^a | Heterozygous deletion of CUL4B, LAMP2, ATP1B4, TMEM255A, and ZBTB33 genes/mosaic expression |",
+      "The extremely skewed WBC XCI ratios in patient #4 (96:4) were an effect of the parallel mutation in the CUL4B gene."
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Patient #5 was heterozygous for a novel frameshift c.445_449delGACCT mutation in the LAMP2 exon 4"
+    },
+    "variant_original_string": {
+     "value": "c.445_449delGACCT",
+     "span": "Patient #5 was heterozygous for a novel frameshift c.445_449delGACCT mutation in the LAMP2 exon 4"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.445_449delGACCT",
+     "span": "Patient #5 was heterozygous for a novel frameshift c.445_449delGACCT mutation in the LAMP2 exon 4"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.[Asp149Phefs^*2];[=]",
+     "span": "| #5^c | 66.7 | 70.8 | 57:44 | p.[Asp149Phefs^*2];[=] /mosaic expression |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "frameshift",
+     "span": "Patient #5 was heterozygous for a novel frameshift c.445_449delGACCT mutation in the LAMP2 exon 4"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Patient #5 was heterozygous for a novel frameshift c.445_449delGACCT mutation in the LAMP2 exon 4"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "LAMP2 flow cytometry: LAMP2def granulocytes 66.7%, LAMP2def monocytes 70.8%; XCI in WBCs (HUMARA) 57:44; LAMP2 cardiac IHC: mosaic expression; only the wild-type allele mRNA/cDNA transcripts detectable",
+     "span": [
+      "| #5^c | 66.7 | 70.8 | 57:44 | p.[Asp149Phefs^*2];[=] /mosaic expression |",
+      "Only the wild-type allele mRNA/cDNA transcripts are detectable in all three patients."
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "Novel LAMP2 mutation",
+     "span": "| #5^c | 66.7 | 70.8 | 57:44 | p.[Asp149Phefs^*2];[=] /mosaic expression | Novel LAMP2 mutation"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "A previously reported^17 heterozygous c.718C>T non‐sense mutation (Figure\nS1B) in the LAMP2 exon 5 was found in patient #6."
+    },
+    "variant_original_string": {
+     "value": "c.718C>T",
+     "span": "A previously reported^17 heterozygous c.718C>T non‐sense mutation (Figure\nS1B) in the LAMP2 exon 5 was found in patient #6."
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.718C>T",
+     "span": "A previously reported^17 heterozygous c.718C>T non‐sense mutation (Figure\nS1B) in the LAMP2 exon 5 was found in patient #6."
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.[Gln240^*];[=]",
+     "span": "| #6^c | 25.2 | 28.9 | 20:80 | p.[Gln240^*];[=] / mosaic expression |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "nonsense",
+     "span": "A previously reported^17 heterozygous c.718C>T non‐sense mutation (Figure\nS1B) in the LAMP2 exon 5 was found in patient #6."
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "A previously reported^17 heterozygous c.718C>T non‐sense mutation (Figure\nS1B) in the LAMP2 exon 5 was found in patient #6."
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": "Her mother (an obligatory heterozygote for the LAMP2 mutation)"
+    },
+    "parental_testing_statement": {
+     "value": "Her mother (an obligatory heterozygote for the LAMP2 mutation)",
+     "span": [
+      "Her mother (an obligatory heterozygote for the LAMP2 mutation)",
+      "The mother (obligatory heterozygote for the LAMP2 *c.718C\\>T* mutation, *Fig. S1B*, II.2) of patient \\#6"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "LAMP2 flow cytometry: LAMP2def granulocytes 25.2%, LAMP2def monocytes 28.9%; XCI in WBCs (HUMARA) 20:80; LAMP2 cardiac IHC: mosaic expression; only the wild-type allele mRNA/cDNA transcripts detectable",
+     "span": [
+      "| #6^c | 25.2 | 28.9 | 20:80 | p.[Gln240^*];[=] / mosaic expression |",
+      "Only the wild-type allele mRNA/cDNA transcripts are detectable in all three patients."
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "Known LAMP2 mutation",
+     "span": "| #6^c | 25.2 | 28.9 | 20:80 | p.[Gln240^*];[=] / mosaic expression | Known LAMP2 mutation"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Patient #7 was heterozygous for a novel frameshift c.418delC mutation in the LAMP2 exon 4"
+    },
+    "variant_original_string": {
+     "value": "c.418delC",
+     "span": "Patient #7 was heterozygous for a novel frameshift c.418delC mutation in the LAMP2 exon 4"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.418delC",
+     "span": "Patient #7 was heterozygous for a novel frameshift c.418delC mutation in the LAMP2 exon 4"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.[Leu139Phefs^*8];[=]",
+     "span": "| #7^c | 44.3 | 52.7 | 46:54 | p.[Leu139Phefs^*8];[=] / mosaic expression |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "frameshift",
+     "span": "Patient #7 was heterozygous for a novel frameshift c.418delC mutation in the LAMP2 exon 4"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "Patient #7 was heterozygous for a novel frameshift c.418delC mutation in the LAMP2 exon 4"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "LAMP2 flow cytometry: LAMP2def granulocytes 44.3%, LAMP2def monocytes 52.7%; XCI in WBCs (HUMARA) 46:54; LAMP2 cardiac IHC: mosaic expression; only the wild-type allele mRNA/cDNA transcripts detectable",
+     "span": [
+      "| #7^c | 44.3 | 52.7 | 46:54 | p.[Leu139Phefs^*8];[=] / mosaic expression |",
+      "Only the wild-type allele mRNA/cDNA transcripts are detectable in all three patients."
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "Novel LAMP2 mutation",
+     "span": "| #7^c | 44.3 | 52.7 | 46:54 | p.[Leu139Phefs^*8];[=] / mosaic expression | Novel LAMP2 mutation"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "gene_symbol_as_stated": {
+     "value": "mtDNA",
+     "span": "The same deletion was found in patient \\#6."
+    },
+    "variant_original_string": {
+     "value": "large mtDNA deletion (4.9 kb)",
+     "span": [
+      "a large mtDNA deletion (4.9 kb)",
+      "The same deletion was found in patient \\#6."
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "large deletion/CNV",
+     "span": [
+      "a large mtDNA deletion (4.9 kb)",
+      "The same deletion was found in patient \\#6."
+     ]
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Patient #5 transmitted the LAMP2 mutation to her daughter (III.3, Figure"
+    },
+    "variant_original_string": {
+     "value": "c.445_449delGACCT",
+     "span": [
+      "Patient #5 transmitted the LAMP2 mutation to her daughter (III.3, Figure",
+      "Patient #5 was heterozygous for a novel frameshift c.445_449delGACCT mutation in the LAMP2 exon 4"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.445_449delGACCT",
+     "span": [
+      "Patient #5 transmitted the LAMP2 mutation to her daughter (III.3, Figure",
+      "Patient #5 was heterozygous for a novel frameshift c.445_449delGACCT mutation in the LAMP2 exon 4"
+     ]
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": "Patient #5 transmitted the LAMP2 mutation to her daughter (III.3, Figure"
+    },
+    "parental_testing_statement": {
+     "value": "Patient #5 transmitted the LAMP2 mutation to her daughter",
+     "span": "Patient #5 transmitted the LAMP2 mutation to her daughter (III.3, Figure"
+    },
+    "functional_evidence_statement": {
+     "value": "LAMP2def granulocytes 22.1% and LAMP2def monocytes 27.2%; XCI ratios by HUMARA 33:67",
+     "span": "The populations of her LAMP2def granulocytes and monocytes were 22.1% and 27.2%, respectively. XCI ratios by HUMARA were 33:67."
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "The mother (obligatory heterozygote for the LAMP2 *c.718C\\>T* mutation, *Fig. S1B*, II.2)"
+    },
+    "variant_original_string": {
+     "value": "c.718C>T",
+     "span": "The mother (obligatory heterozygote for the LAMP2 *c.718C\\>T* mutation, *Fig. S1B*, II.2)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.718C>T",
+     "span": "The mother (obligatory heterozygote for the LAMP2 *c.718C\\>T* mutation, *Fig. S1B*, II.2)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "The mother (obligatory heterozygote for the LAMP2 *c.718C\\>T* mutation, *Fig. S1B*, II.2)"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The patient’s older brother (III/1)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "the same non-sense *LAMP2* mutation (*c.718C\\>T*) was identified retrospectively also in his archived gDNA"
+    },
+    "variant_original_string": {
+     "value": "c.718C>T",
+     "span": "the same non-sense *LAMP2* mutation (*c.718C\\>T*) was identified retrospectively also in his archived gDNA"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.718C>T",
+     "span": "the same non-sense *LAMP2* mutation (*c.718C\\>T*) was identified retrospectively also in his archived gDNA"
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "nonsense",
+     "span": "the same non-sense *LAMP2* mutation (*c.718C\\>T*) was identified retrospectively also in his archived gDNA"
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": [
+      "Her mother (an obligatory heterozygote for the LAMP2 mutation)",
+      "The mother (obligatory heterozygote for the LAMP2 *c.718C\\>T* mutation, *Fig. S1B*, II.2)"
+     ]
+    },
+    "parental_testing_statement": {
+     "value": "Her mother (an obligatory heterozygote for the LAMP2 mutation)",
+     "span": [
+      "Her mother (an obligatory heterozygote for the LAMP2 mutation)",
+      "The mother (obligatory heterozygote for the LAMP2 *c.718C\\>T* mutation, *Fig. S1B*, II.2)"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "IHC confirmed uniform LAMP2 deficiency in his archived myocardial tissue",
+     "span": "IHC confirmed uniform LAMP2 deficiency in his archived myocardial tissue"
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": "The patient’s older brother (III/1)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "mtDNA",
+     "span": "a large mtDNA deletion (4.9 kb) was found in his skeletal muscle"
+    },
+    "variant_original_string": {
+     "value": "large mtDNA deletion (4.9 kb)",
+     "span": "a large mtDNA deletion (4.9 kb) was found in his skeletal muscle"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "large deletion/CNV",
+     "span": "a large mtDNA deletion (4.9 kb) was found in his skeletal muscle"
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "feature_text_as_stated": {
+     "value": "DCM",
+     "span": "| #1 | 15 | 29 | 33 | DCM |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #1 | 15 | 29 | 33 | DCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #1 | 15 | 29 | 33 | DCM |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVEDD 67 mm, LVEF 15%, IVS 10 mm, PW 10 mm",
+     "span": "| #1 | 15 | 29 | 33 | DCM | 140 | I, aVL, V4–6 | 67 | 15 | 10 | 10 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Dilated cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001644",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "feature_text_as_stated": {
+     "value": "delta waves",
+     "span": "| #1 | 15 | 29 | 33 | DCM | 140 | I, aVL, V4–6 |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #1 | 15 | 29 | 33 | DCM | 140 | I, aVL, V4–6 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #1 | 15 | 29 | 33 | DCM | 140 | I, aVL, V4–6 |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "I, aVL, V4–6 (leads)",
+     "span": "| #1 | 15 | 29 | 33 | DCM | 140 | I, aVL, V4–6 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM",
+     "span": "| #2 | 11 | — | 17 | HCM |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #2 | 11 | — | 17 | HCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #2 | 11 | — | 17 | HCM |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVEDD 33 mm, LVEF 60%, IVS 22 mm, PW 21 mm",
+     "span": "| #2 | 11 | — | 17 | HCM | 134 | I, II, III, aVF, V5–6 | 33 | 60 | 22 | 21 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "feature_text_as_stated": {
+     "value": "delta waves",
+     "span": "| #2 | 11 | — | 17 | HCM | 134 | I, II, III, aVF, V5–6 |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #2 | 11 | — | 17 | HCM | 134 | I, II, III, aVF, V5–6 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #2 | 11 | — | 17 | HCM | 134 | I, II, III, aVF, V5–6 |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "I, II, III, aVF, V5–6 (leads)",
+     "span": "| #2 | 11 | — | 17 | HCM | 134 | I, II, III, aVF, V5–6 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM",
+     "span": "| #3 | 12 | 21 | 42 | HCM |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #3 | 12 | 21 | 42 | HCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #3 | 12 | 21 | 42 | HCM |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVEDD 68 mm, LVEF 20%, IVS 15 mm, PW 15 mm",
+     "span": "| #3 | 12 | 21 | 42 | HCM | 208 | Absent | 68 | 20 | 15 | 15 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "feature_text_as_stated": {
+     "value": "delta waves",
+     "span": "| #3 | 12 | 21 | 42 | HCM | 208 | Absent |"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #3 | 12 | 21 | 42 | HCM | 208 | Absent |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #3 | 12 | 21 | 42 | HCM | 208 | Absent |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "feature_text_as_stated": {
+     "value": "DCM",
+     "span": "| #4 | 25 | 26 | 36 | DCM |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #4 | 25 | 26 | 36 | DCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #4 | 25 | 26 | 36 | DCM |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVEDD 62 mm, LVEF 20%, IVS 8 mm, PW 7 mm",
+     "span": "| #4 | 25 | 26 | 36 | DCM | 112 | Absent | 62 | 20 | 8 | 7 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Dilated cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001644",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "feature_text_as_stated": {
+     "value": "delta waves",
+     "span": "| #4 | 25 | 26 | 36 | DCM | 112 | Absent |"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #4 | 25 | 26 | 36 | DCM | 112 | Absent |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #4 | 25 | 26 | 36 | DCM | 112 | Absent |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM",
+     "span": "| #5 | 25 | 28 | 48 | HCM |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #5 | 25 | 28 | 48 | HCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #5 | 25 | 28 | 48 | HCM |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVEDD 68 mm, LVEF 20%, IVS 14 mm, PW 14 mm",
+     "span": "| #5 | 25 | 28 | 48 | HCM | 200 | Absent | 68 | 20 | 14 | 14 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "feature_text_as_stated": {
+     "value": "delta waves",
+     "span": "| #5 | 25 | 28 | 48 | HCM | 200 | Absent |"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #5 | 25 | 28 | 48 | HCM | 200 | Absent |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #5 | 25 | 28 | 48 | HCM | 200 | Absent |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM",
+     "span": "| #6 | 16 | 27 | 25 | HCM |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #6 | 16 | 27 | 25 | HCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #6 | 16 | 27 | 25 | HCM |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVEDD 40 mm, LVEF 55%, IVS 14 mm, PW 12 mm",
+     "span": "| #6 | 16 | 27 | 25 | HCM | 174 | I, II, III, aVF, V4–6 | 40 | 55 | 14 | 12 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "feature_text_as_stated": {
+     "value": "delta waves",
+     "span": "| #6 | 16 | 27 | 25 | HCM | 174 | I, II, III, aVF, V4–6 |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #6 | 16 | 27 | 25 | HCM | 174 | I, II, III, aVF, V4–6 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #6 | 16 | 27 | 25 | HCM | 174 | I, II, III, aVF, V4–6 |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "I, II, III, aVF, V4–6 (leads)",
+     "span": "| #6 | 16 | 27 | 25 | HCM | 174 | I, II, III, aVF, V4–6 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "feature_text_as_stated": {
+     "value": "DCM",
+     "span": "| #7 | 23 | 24 | 23 | DCM |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #7 | 23 | 24 | 23 | DCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #7 | 23 | 24 | 23 | DCM |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVEDD 59 mm, LVEF 23%, IVS 9 mm, PW 10 mm",
+     "span": "| #7 | 23 | 24 | 23 | DCM | 144 | Absent | 59 | 23 | 9 | 10 |"
+    },
+    "hpo_label_candidate": {
+     "value": "Dilated cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001644",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "feature_text_as_stated": {
+     "value": "delta waves",
+     "span": "| #7 | 23 | 24 | 23 | DCM | 144 | Absent |"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #7 | 23 | 24 | 23 | DCM | 144 | Absent |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #7 | 23 | 24 | 23 | DCM | 144 | Absent |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "feature_text_as_stated": {
+     "value": "short PQ interval",
+     "span": "a sinus rhythm with a short PQ interval (98 ms)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a sinus rhythm with a short PQ interval (98 ms)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a sinus rhythm with a short PQ interval (98 ms)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "98 ms",
+     "span": "a short PQ interval (98 ms)"
+    },
+    "hpo_label_candidate": {
+     "value": "Shortened PR interval",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "feature_text_as_stated": {
+     "value": "discrete delta waves",
+     "span": "discrete delta waves in leads I, II, aVF, and V4–V6"
+    },
+    "status": {
+     "value": "observed",
+     "span": "discrete delta waves in leads I, II, aVF, and V4–V6"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "discrete delta waves in leads I, II, aVF, and V4–V6"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "discrete; leads I, II, aVF, and V4–V6",
+     "span": "discrete delta waves in leads I, II, aVF, and V4–V6"
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "feature_text_as_stated": {
+     "value": "borderline systolic function of the left ventricle",
+     "span": "Her echocardiography showed a borderline systolic function of the non‐dilated left ventricle"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her echocardiography showed a borderline systolic function of the non‐dilated left ventricle"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her echocardiography showed a borderline systolic function of the non‐dilated left ventricle"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "ejection fraction 50–55%",
+     "span": "ejection fraction 50–55%"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "feature_text_as_stated": {
+     "value": "dilated left ventricle",
+     "span": "borderline systolic function of the non‐dilated left ventricle (end‐diastolic diameter 49 mm"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "borderline systolic function of the non‐dilated left ventricle (end‐diastolic diameter 49 mm"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "borderline systolic function of the non‐dilated left ventricle (end‐diastolic diameter 49 mm"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "end-diastolic diameter 49 mm",
+     "span": "end‐diastolic diameter 49 mm"
+    },
+    "hpo_label_candidate": {
+     "value": "Left ventricular dilatation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "feature_text_as_stated": {
+     "value": "dilated cardiomyopathy",
+     "span": [
+      "developed dilated cardiomyopathy during her first pregnancy",
+      "Her mother (an obligatory heterozygote for the LAMP2 mutation) had a DCM"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "developed dilated cardiomyopathy during her first pregnancy",
+      "Her mother (an obligatory heterozygote for the LAMP2 mutation) had a DCM"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "developed dilated cardiomyopathy during her first pregnancy",
+      "Her mother (an obligatory heterozygote for the LAMP2 mutation) had a DCM"
+     ]
+    },
+    "onset_original_text": {
+     "value": "during her first pregnancy",
+     "span": "developed dilated cardiomyopathy during her first pregnancy"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Dilated cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001644",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "feature_text_as_stated": {
+     "value": "severe right heart failure",
+     "span": "She died aged 27 years because of severe right heart failure"
+    },
+    "status": {
+     "value": "observed",
+     "span": "She died aged 27 years because of severe right heart failure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "She died aged 27 years because of severe right heart failure"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "severe",
+     "span": "severe right heart failure"
+    },
+    "hpo_label_candidate": {
+     "value": "Right ventricular failure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "incipient hypertrophic cardiomyopathy",
+     "span": [
+      "was diagnosed with incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years",
+      "Hypertrophic cardiomyopathy was diagnosed in the patient's brother"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "was diagnosed with incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years",
+      "Hypertrophic cardiomyopathy was diagnosed in the patient's brother"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "was diagnosed with incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years",
+      "Hypertrophic cardiomyopathy was diagnosed in the patient's brother"
+     ]
+    },
+    "onset_original_text": {
+     "value": "at the age of 6 years",
+     "span": "incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years"
+    },
+    "onset_iso8601": {
+     "value": "P6Y",
+     "span": "incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years"
+    },
+    "severity_or_detail": {
+     "value": "incipient",
+     "span": "incipient hypertrophic cardiomyopathy"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "preexcitation",
+     "span": "incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Preexcitation syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "decreased cognitive capacity",
+     "span": "The boy had decreased cognitive capacity."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The boy had decreased cognitive capacity."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The boy had decreased cognitive capacity."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cognitive impairment",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100543",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "myopia",
+     "span": "Ophthalmologic evaluation revealed myopia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Ophthalmologic evaluation revealed myopia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Ophthalmologic evaluation revealed myopia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myopia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000545",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "mild macular degeneration",
+     "span": "revealed myopia, mild macular degeneration"
+    },
+    "status": {
+     "value": "observed",
+     "span": "revealed myopia, mild macular degeneration"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "revealed myopia, mild macular degeneration"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mild",
+     "span": "mild macular degeneration"
+    },
+    "hpo_label_candidate": {
+     "value": "Macular degeneration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "some displacement of retinal pigment",
+     "span": "some displacement of retinal pigment"
+    },
+    "status": {
+     "value": "observed",
+     "span": "some displacement of retinal pigment"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "some displacement of retinal pigment"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "exercise intolerance",
+     "span": "Aged 9 years, he developed exercise intolerance due to progression of the cardiomyopathy"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Aged 9 years, he developed exercise intolerance due to progression of the cardiomyopathy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Aged 9 years, he developed exercise intolerance due to progression of the cardiomyopathy"
+    },
+    "onset_original_text": {
+     "value": "Aged 9 years",
+     "span": "Aged 9 years, he developed exercise intolerance"
+    },
+    "onset_iso8601": {
+     "value": "P9Y",
+     "span": "Aged 9 years, he developed exercise intolerance"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Exercise intolerance",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "mild skeletal myopathy",
+     "span": "Aged 9 years, he developed exercise intolerance due to progression of the cardiomyopathy and mild skeletal myopathy"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Aged 9 years, he developed exercise intolerance due to progression of the cardiomyopathy and mild skeletal myopathy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Aged 9 years, he developed exercise intolerance due to progression of the cardiomyopathy and mild skeletal myopathy"
+    },
+    "onset_original_text": {
+     "value": "Aged 9 years",
+     "span": "Aged 9 years, he developed exercise intolerance due to progression of the cardiomyopathy and mild skeletal myopathy"
+    },
+    "onset_iso8601": {
+     "value": "P9Y",
+     "span": "Aged 9 years, he developed exercise intolerance due to progression of the cardiomyopathy and mild skeletal myopathy"
+    },
+    "severity_or_detail": {
+     "value": "mild",
+     "span": "mild skeletal myopathy"
+    },
+    "hpo_label_candidate": {
+     "value": "Myopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003198",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "aminotransferases increased",
+     "span": "The brother’s aminotransferases were increased (5-7 ukat/l, reference range \\<0.6)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The brother’s aminotransferases were increased (5-7 ukat/l, reference range \\<0.6)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The brother’s aminotransferases were increased (5-7 ukat/l, reference range \\<0.6)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "5-7 ukat/l, reference range <0.6",
+     "span": "(5-7 ukat/l, reference range \\<0.6)"
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating hepatic transaminase concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "creatine kinase elevated",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5) and myoglobin (496-1012 ug/l, reference range \\< 80) were elevated"
+    },
+    "status": {
+     "value": "observed",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5) and myoglobin (496-1012 ug/l, reference range \\< 80) were elevated"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5) and myoglobin (496-1012 ug/l, reference range \\< 80) were elevated"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "21 ukat/l, reference range < 2.5",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5)"
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating creatine kinase concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "myoglobin elevated",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5) and myoglobin (496-1012 ug/l, reference range \\< 80) were elevated"
+    },
+    "status": {
+     "value": "observed",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5) and myoglobin (496-1012 ug/l, reference range \\< 80) were elevated"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5) and myoglobin (496-1012 ug/l, reference range \\< 80) were elevated"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "496-1012 ug/l, reference range < 80",
+     "span": "myoglobin (496-1012 ug/l, reference range \\< 80)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "AHF",
+     "span": "referred to the heart transplant program with AHF due to suspected mitochondrial disease at the age of 18 years"
+    },
+    "status": {
+     "value": "observed",
+     "span": "referred to the heart transplant program with AHF due to suspected mitochondrial disease at the age of 18 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "referred to the heart transplant program with AHF due to suspected mitochondrial disease at the age of 18 years"
+    },
+    "onset_original_text": {
+     "value": "at the age of 18 years",
+     "span": "referred to the heart transplant program with AHF due to suspected mitochondrial disease at the age of 18 years"
+    },
+    "onset_iso8601": {
+     "value": "P18Y",
+     "span": "referred to the heart transplant program with AHF due to suspected mitochondrial disease at the age of 18 years"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Congestive heart failure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "low cardiac output",
+     "span": "he died while on the waiting list few months later due to low cardiac output and pneumonia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "he died while on the waiting list few months later due to low cardiac output and pneumonia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "he died while on the waiting list few months later due to low cardiac output and pneumonia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "pneumonia",
+     "span": "he died while on the waiting list few months later due to low cardiac output and pneumonia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "he died while on the waiting list few months later due to low cardiac output and pneumonia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "he died while on the waiting list few months later due to low cardiac output and pneumonia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pneumonia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002090",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #1 | 15 | 29 | 33 | DCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #1 | 15 | 29 | 33 | DCM |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #1 | 15 | 29 | 33 | DCM | 140 | I, aVL, V4–6 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #1 | 15 | 29 | 33 | DCM | 140 | I, aVL, V4–6 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #1",
+     "span": "Patient #1 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #2 | 11 | — | 17 | HCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #2 | 11 | — | 17 | HCM |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #2 | 11 | — | 17 | HCM | 134 | I, II, III, aVF, V5–6 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #2 | 11 | — | 17 | HCM | 134 | I, II, III, aVF, V5–6 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #2",
+     "span": "| #2^b | 32.3"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #3 | 12 | 21 | 42 | HCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #3 | 12 | 21 | 42 | HCM |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #3 | 12 | 21 | 42 | HCM | 208 | Absent |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #3 | 12 | 21 | 42 | HCM | 208 | Absent |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #3",
+     "span": "| #3^c | 35.5"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #4 | 25 | 26 | 36 | DCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #4 | 25 | 26 | 36 | DCM |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #4 | 25 | 26 | 36 | DCM | 112 | Absent |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #4 | 25 | 26 | 36 | DCM | 112 | Absent |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #4",
+     "span": "| #4^c | 2.6"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #5 | 25 | 28 | 48 | HCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #5 | 25 | 28 | 48 | HCM |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #5 | 25 | 28 | 48 | HCM | 200 | Absent |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #5 | 25 | 28 | 48 | HCM | 200 | Absent |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #5",
+     "span": "Patient #5 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #6 | 16 | 27 | 25 | HCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #6 | 16 | 27 | 25 | HCM |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #6 | 16 | 27 | 25 | HCM | 174 | I, II, III, aVF, V4–6 |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #6 | 16 | 27 | 25 | HCM | 174 | I, II, III, aVF, V4–6 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #6",
+     "span": "| #6^c | 25.2"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| #7 | 23 | 24 | 23 | DCM |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #7 | 23 | 24 | 23 | DCM |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| #7 | 23 | 24 | 23 | DCM | 144 | Absent |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| #7 | 23 | 24 | 23 | DCM | 144 | Absent |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient #7",
+     "span": "Patient #7 was heterozygous"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "a sinus rhythm with a short PQ interval (98 ms) and discrete delta waves in leads I, II, aVF, and V4–V6"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a sinus rhythm with a short PQ interval (98 ms) and discrete delta waves in leads I, II, aVF, and V4–V6"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.3",
+     "span": "her daughter (III.3, Figure"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "developed dilated cardiomyopathy during her first pregnancy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "developed dilated cardiomyopathy during her first pregnancy"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "She died aged 27 years because of severe right heart failure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "She died aged 27 years because of severe right heart failure"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "II.2",
+     "span": "*Fig. S1B*, II.2) of patient \\#6"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "was diagnosed with incipient hypertrophic cardiomyopathy",
+      "Hypertrophic cardiomyopathy was diagnosed in the patient's brother"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "was diagnosed with incipient hypertrophic cardiomyopathy",
+      "Hypertrophic cardiomyopathy was diagnosed in the patient's brother"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "referred to the heart transplant program with AHF"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "referred to the heart transplant program with AHF"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "incipient hypertrophic cardiomyopathy without signs of preexcitation at the age of 6 years"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "progression of the cardiomyopathy and mild skeletal myopathy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "progression of the cardiomyopathy and mild skeletal myopathy"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5) and myoglobin (496-1012 ug/l, reference range \\< 80) were elevated"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "creatine kinase (21 ukat/l, reference range \\< 2.5) and myoglobin (496-1012 ug/l, reference range \\< 80) were elevated"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The boy had decreased cognitive capacity."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The boy had decreased cognitive capacity."
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "mild macular degeneration and some displacement of retinal pigment"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "mild macular degeneration and some displacement of retinal pigment"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Ophthalmologic evaluation revealed myopia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Ophthalmologic evaluation revealed myopia"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The brother’s aminotransferases were increased"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The brother’s aminotransferases were increased"
+    }
+   },
+   {
+    "pmid": {
+     "value": "32657043",
+     "span": "PMID: 32657043"
+    },
+    "individual_label_in_paper": {
+     "value": "III.1",
+     "span": [
+      "(gave birth to a son - III.1)",
+      "The patient’s older brother (III/1)"
+     ]
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

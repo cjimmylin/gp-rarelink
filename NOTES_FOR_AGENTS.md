@@ -6,7 +6,7 @@ How to maintain it:
 - Add what a future session would need to know. Keep entries short and dated.
 - Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
 
-*Last updated 2026-10-20.*
+*Last updated 2026-10-21.*
 
 ## 1. Where things stand (2026-10-18)
 
@@ -73,9 +73,58 @@ How to maintain it:
   - **Known gap, frozen on purpose:** extraction v6 has no hedge rule, so the gatekeeper drops hedged "observed" statuses. Don't "fix" it in v6.
   - **Tags:** they point at commit `ef3133e`. This session's git access refused the tag push (HTTP 403; only the session branch is writable), so Jimmy pushes them; the commands are in `reports/drafts/osf_registration.md` §1. Don't retry the push or route around the refusal.
   - **Left for Jimmy:** the OSF registration, using `reports/drafts/osf_registration.md`. Put the DOI and date in `DECISIONS.md`, never in the frozen plan.
-  - **Next for the study:** the cost estimate for the six-disease run (pre-registration §6.5: scale HA20's measured cost per input token by each corpus's token count), then Jimmy's approval before running. Read *Open decisions* in `DECISIONS.md` before starting work.
+  - **Six-disease run approved (D-37, 2026-10-20): up to $1,200** (estimate in `analysis/cost/six_disease_estimate_2026-10-20.md`). Prep first (supplements, per-disease checklists, catalogue check), then disease by disease. Stop and ask before a full re-run or past $1,200. Read *Open decisions* in `DECISIONS.md` before starting work.
+  - **D-38 (2026-10-20, a deviation):** the frozen prompt and schema are instantiated per disease by `pipeline/extract/claude_code/instantiate_disease.py` (disease name, gene, checklist only); checklists in `configs/checklists/<d>.json`, checked by `check_checklist.py`.
+  - **HA20 done (`pv1-ha20`, 2026-10-20):** 85 papers, span check clean, gatekeeper v4 judged 46 of 23,129 model claims unsupported (0.20%) and 400 partial. Manifest `runs/pv1-ha20/manifest.json`; cost reading in `BUDGET.md` (provisional).
+  - **SSADH, Tangier, LAD-I and AxD done (2026-10-20):** unsupported 37 of 9,759 (0.38%), 15 of 4,830 (0.31%), 47 of 10,864 (0.43%), 39 of 14,403 (0.27%). Manifests in `runs/pv1-<d>/manifest.json`. Run spend $553.60 after AxD (`BUDGET.md`). Danon next; Jimmy chose to start it after the five-hour usage reset (20:00 UTC) rather than run on overage.
+  - **Danon done and the 10% repeat done (2026-10-20):** Danon 110 of 17,963 unsupported (0.61%; three papers hold 60). All six: 294 of 80,948 (0.36%). Repeat (38 papers, seed 20261020): checklist 97-100% agreement; variant keys 0.83-1.00, the two dips are notation only. Run spend +$768.87 of $1,200. Report: `reports/six_disease_run_findings.md`; tables by `analysis/six_disease/run_summary.py` and `repeat_summary.py`.
+  - **D-40 done (2026-10-20):** per-disease Stage 4 settings (`configs/stage4/`, `pipeline/extract/stage4_config.py`), checklist-to-HPO maps (`configs/checklist_hpo/`), 2,836 phenopackets, all valid. Report §9 (`reports/six_disease_run_findings.md`).
+  - **O1 audit sample drawn (seed 40250)** before any pv1 concordance: `adjudication/o1_audit/`. Rater pages A https://claude.ai/artifact/Jvk4nxzG79u9AchAXvwPe4 and B https://claude.ai/artifact/1VVgQNgSpyzDrsApErz8YU (store collection `ratings`, docs keyed O1-nnn). Waiting on Jimmy to share them with two panel members. Then a tie-breaker page for the disagreements.
+  - **O2 done (2026-10-20):** `pipeline/harness/concordance_o2.py`, snapshot 2026-10-19 (re-create it with `snapshot_reference.py --per-gene` if the container is new). Results in `analysis/six_disease/o2/`, report §11. HGVS recall is low and concentrated in single papers. Triage sample of 50 misses: `adjudication/o2_triage/` (seed 72650), waiting on a person.
+  - **2026-10-21, D-41 (plan `reports/plan_next_work_2026-10-21.md`; human rating deferred):**
+    - **WS1 completeness:** HA20 9/9 restricted, AxD 54/56 (`analysis/six_disease/completeness_pv1-<d>.json`).
+    - **WS2 gap candidates:** 215 (`adjudication/o3_gaps/`, `pipeline/harness/gap_candidates.py`).
+    - **WS3 evidence sheets:** 215 dossiers, 4,725 quotes all verbatim, $64 by helper tokens. The helpers' flags are in `adjudication/o3_gaps/helper_notes_2026-10-21.md`; several candidates may not be gaps (e.g. G-ssadh-003, G-axd-017, G-lad1-077).
+    - **WS4 adjudication page:** https://claude.ai/artifact/UUWN2ULAGkYYNQj4zDy9ta (adjudicator A, store `adjudications`), private and not shared.
+    - **WS5 memorization probe:** `analysis/bias/memorization/`, no recall found, $5.
+    - **WS6 bias prep:** comparator sheets await a person (`analysis/bias/comparator_sheets/README.md`).
+    - **WS7 exploratory:** GPSEA in its own uv project, `analysis/exploratory/gpsea/`.
+    - **WS8 open-weight loop:** `pipeline/extract/openweight/agent.py`; run on 2026-10-21 (below).
+    - **WS9:** drafts in `reports/drafts/`.
+  - **Follow-on, same day (no spend):**
+    - ClinVar re-check against the 2026-10-19 release: all 215 candidates still absent (`adjudication/o3_gaps/recheck_2026-10-21.json`).
+    - Triage flags on the adjudication page (152 of 215 flagged; `triage_flags.py`).
+    - O2 triage page https://claude.ai/artifact/EHHNW9LyvvKJG6s15vtDPU (store `triage`).
+    - O1 collector `adjudication/o1_audit/collect_o1.py` (export both rater stores with `ArtifactData list ratings` + `out_dir`).
+    - 19 proposed same-person groups, not merged (`adjudication/o3_gaps/proposed_merges.csv`).
+    - Pending submission records `submissions/make_records.py` (format waits on D-13).
+    - The LAD-I deduplication benchmark is not computable.
+  - **D-10 open-weight runs done (2026-10-21):** `ow-ha20` (85) and `ow-ssadh` (40), DeepSeek-V4.1-Flash on OpenRouter pinned to DeepInfra fp8, $20.35 on the key. Report `reports/openweight_comparison_findings.md` (regenerate: `analysis/openweight/summary.py`, then `report.py`); manifests `runs/ow-<d>/manifest.json`. Blinded audit still to do (waits on D-11).
+    - **Gatekeeper v4 on both open-weight runs done (2026-10-21, $136 on helper tokens):** open-weight unsupported 8.64% (HA20) and 6.14% (SSADH) vs Claude 0.20% and 0.38%; mostly claims with no quote. Report §6–7 (`analysis/openweight/gatekeeper_compare.py`, then `report.py`). Open-weight memorization probe done too ($0.05; `analysis/bias/memorization/openweight_scores_summary.md`).
+    - **`gatekeeper_prep` does not drop claims whose quote the span check failed**, but gatekeeper v4 tells helpers every quote is verbatim. It never mattered for Claude's runs (0 such claims); for open-weight runs, count them apart.
+    - **The OpenRouter key is shared with other projects**, so key-usage deltas are upper bounds. Use the host-reported cost in each log.
+    - **The OpenRouter key is a network secret the proxy adds for openrouter.ai**; the session never sees it. Check spend with `curl https://openrouter.ai/api/v1/key`.
+    - **DeepInfra drops connections often** (reset by peer, in-stream 502). The client retries; expect ~50 retries per 125 papers.
+    - **Run batches detached** (`setsid nohup`), not as a background Bash job: those are killed at 2 hours and the run takes ~12. Watch the log with Monitor.
+    - **Before re-running a failed paper, move its scratch files and partial output away** (`runs/ow-<d>/failed_attempts/`), or the new attempt sees the old one's work.
+    - **Open-weight outputs break the schema shape in small ways** (a cell as a bare string, a pmid given as a cell). `span_check`, the Stage 4 readers and `concordance_o2` now tolerate these; pv1 outputs were checked byte-identical after each change.
+    - **`concordance_o2 --run-prefix ow --diseases ha20 ssadh --out analysis/openweight/o2`** scores the open-weight runs with Claude's harness.
+  - **The proxy cuts the 456 MB ClinVar variant_summary download near the end about half the time** (RemoteProtocolError). Run genes one at a time and retry up to three times; only a gene with a MANIFEST has a complete, md5-checked file.
+  - **GPSEA needs pandas < 3; the frozen pipeline is locked to pandas 3.0.6.** Never add GPSEA to the main `pyproject.toml`; use `analysis/exploratory/gpsea` (`uv sync` there). GPSEA needs a genotype on every call, so that run fills missing zygosity by a stated assumption; the records stay three-state.
+  - **The isolation test also rejects 'harness' and 'clinvar' anywhere in `pipeline/extract`.** The open-weight module avoids those words.
+  - **Memorization-probe passages can be publisher boilerplate** (Elsevier "Journal Pre-proof"). `score_probes.py` excludes them by pattern and names them.
+  - **Copy one pv1 helper's first message before writing a comparison prompt.** The exact launch prompt is in `pipeline/extract/openweight/launch_prompt_v1.txt`.
+  - **The isolation test rejects the token 'omim' anywhere in `pipeline/extract`.** Look up Mondo terms by name, not by cross-reference.
+  - **'ß'.upper() is 'SS' in Python.** Fold Greek beta and German sharp s before upper-casing (see `reconcile.is_gene`).
+  - **HPO binding helpers cost more than estimated** ($72 vs $28): they grep hp.obo repeatedly. Give them a lookup tool next time.
+  - **The session cost reading lagged again:** +$111.99 for Danon at 20:40, but Danon plus the repeat read +$210.12 at 20:55 against $206 on token estimates. Check against `helper_tokens.py`.
+  - **`catalogue_check.judge()` can pick an allele column named 'REF' as the source column.** Report the intended column's share beside it (done for Grossi 2024).
+  - **D-39 (deviation, 2026-10-20):** the AxD catalogue's supplement (Grossi 2024) came through only after extraction. Transcribe it on the harness side for completeness; never append it to the extraction text.
+  - **Supplements for the five new corpora:** fetch one paper per call (`fetch_supplementary --pmid <one>`), one process per disease. A single run over a whole corpus stops at the first Europe PMC error and writes its manifest only at the end, so it loses everything; Europe PMC zips are large and slow.
+  - **Don't wait on a process with `pgrep -f <script name>` inside a Bash loop.** The loop's own command line contains the name, so it never ends. Match the interpreter path (`pgrep -f "python3 path/to/script"`) or wait on an output file.
+  - **Helper slot tracking:** at most 20 helpers at once. Record a chunk as launched only after its Agent call goes out, or the tracker overcounts.
 - **Git:**
-  - On `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7), PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), PR #6 (D-34, v0.11) and PR #7 (D-11, D-35, v0.12), all merged with Jimmy's approval. The smoke run and the freeze (D-36, v1.0, tags) are on branch `claude/gracious-pascal-j7krug` until Jimmy says to merge. Start new work from `main` once that is merged.
+  - On `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7), PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), PR #6 (D-34, v0.11), PR #7 (D-11, D-35, v0.12) and PR #8 (smoke run, freeze v1.0, D-36; merged with a merge commit so the tagged commit `ef3133e` is in `main`'s history), all merged with Jimmy's approval. Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
   - Branch `claude/zealous-meitner-k7moex` (the pilot-design session) is archived and must not be merged: it commits full-text Markdown. Its one asset, Jimmy's 40 screening labels, was applied here on 2026-10-19.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
@@ -189,10 +238,11 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 
 ## 4. Working with Jimmy
 
+- **No publishing** (`CLAUDE.md`, Jimmy, 2026-10-21): no artifact pages, new or updated, and no posts or public uploads until he says otherwise. The existing rating and adjudication pages stay as they are.
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-37**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-42**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically

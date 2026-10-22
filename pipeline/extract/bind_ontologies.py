@@ -29,7 +29,8 @@ model_rejected and the row stays unbound. A 'broader' answer is not used for an
 excluded row, because it would overstate the exclusion
 (model_broader_excluded_dropped).
 
-Checklist rows use the fixed mapping in configs/ha20_checklist_hpo.json.
+Checklist rows use the fixed mapping in configs/ha20_checklist_hpo.json, or the
+disease's map named in configs/stage4/<disease>.json (D-40).
 
 Disease: the stated disease label is matched to a Mondo name or EXACT synonym.
 Labels naming A20 haploinsufficiency or HA20 are bound to the disease term
@@ -38,6 +39,11 @@ familial, Behcet-like 1', whose Mondo cross-references are the disease IDs in
 CONTEXT.md). Mondo's gene-based grouping term for TNFAIP3 disease
 (MONDO:0100222) is recorded as the group term. Claude's call of 2026-10-19,
 flagged for review.
+
+Other diseases (D-40): configs/stage4/<disease>.json, read automatically when it
+exists, gives the disease's Mondo term, its label rule (a regular expression),
+its group term and checklist map. A stated label matching the rule is bound to
+the disease term with method 'label_rule'; HA20 keeps 'ha20_label_rule'.
 
 Writes, under data/extracted/<disease>/<run_id>/:
   hpo_bindings.csv      one row per phenotypic_features row
@@ -63,7 +69,7 @@ HA20_LABEL = re.compile(r"\bHA20\b|A20\s+haploinsufficien|haploinsufficiency\s+o
 
 
 def v(cell):
-    return (cell or {}).get("value")
+    return cell.get("value") if isinstance(cell, dict) else None  # a cell not in {value, span} shape reads as missing
 
 
 def fold(s) -> str:
@@ -131,7 +137,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--checklist-map", default="configs/ha20_checklist_hpo.json")
     ap.add_argument("--model-bindings", nargs="*", default=[], help="helper output CSVs (text_id, hpo_id, hpo_name, match, note)")
     ap.add_argument("--model-keymap", help="CSV mapping text_id to the folded feature text")
+    ap.add_argument("--no-config", action="store_true", help="ignore configs/stage4/<disease>.json")
     args = ap.parse_args(argv)
+    label_rule, rule_method = HA20_LABEL, "ha20_label_rule"
+    cfg_path = Path("configs/stage4") / f"{args.disease}.json"
+    if cfg_path.exists() and not args.no_config:
+        cfg = json.loads(cfg_path.read_text())
+        args.ha20_mondo, args.group_mondo, args.checklist_map = cfg["disease_mondo"], cfg["group_mondo"], cfg["checklist_map"]
+        label_rule = re.compile(cfg["disease_label_rule"], re.IGNORECASE)
+        rule_method = "ha20_label_rule" if args.disease == "ha20" else "label_rule"
     run_dir = Path("data/extracted") / args.disease / args.run_id
     snap = ontologies.latest_dir()
     hp, mondo = ontologies.load("hp", snap), ontologies.load("mondo", snap)
@@ -179,8 +193,8 @@ def main(argv: list[str] | None = None) -> int:
             label = v(r.get("disease_label_as_stated"))
             if label in (None, "", "not reported"):
                 mid, method = "", "not_stated"
-            elif HA20_LABEL.search(str(label)):
-                mid, method = args.ha20_mondo, "ha20_label_rule"
+            elif label_rule.search(str(label)):
+                mid, method = args.ha20_mondo, rule_method
             else:
                 mid = midx.exact(label) or ""
                 method = "label" if mid else "unbound"
@@ -198,8 +212,10 @@ def main(argv: list[str] | None = None) -> int:
         w.writerows(dis_rows)
     n_feat = sum(v_ for k, v_ in c.items() if k.startswith("features:"))
     summary = {"run_id": args.run_id, "hpo_release": hp.version, "mondo_release": mondo.version,
-               "ha20_mondo": args.ha20_mondo, "ha20_mondo_label": mondo.terms[args.ha20_mondo].name,
-               "ha20_mondo_xrefs": mondo.terms[args.ha20_mondo].xrefs,
+               "ha20_mondo" if args.disease == "ha20" else "disease_mondo": args.ha20_mondo,
+               "ha20_mondo_label" if args.disease == "ha20" else "disease_mondo_label": mondo.terms[args.ha20_mondo].name,
+               "ha20_mondo_xrefs" if args.disease == "ha20" else "disease_mondo_xrefs": mondo.terms[args.ha20_mondo].xrefs,
+               "disease_label_rule": label_rule.pattern,
                "group_mondo": args.group_mondo, "group_mondo_label": mondo.terms[args.group_mondo].name,
                "checklist_map": args.checklist_map, "feature_rows": n_feat,
                "counts": dict(sorted(c.items())),

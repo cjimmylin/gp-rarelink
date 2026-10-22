@@ -1,0 +1,249 @@
+{
+  "pmid": "38458754",
+  "instructions_version": "extract_v6",
+  "reports_individuals_with_tnfaip3_variant": true,
+  "relevance_note": "The paper ties two ALDH5A1 variants to a dystonia family whose disease column reads 'Succinic semialdehyde dehydrogenase deficiency (MIM 271980)', so it describes an in-scope person (family DYS-71).",
+  "method_note": "Read only the paper, schema_ssadh_v5.json and extraction_rules_v1.md. No script was used; table 2 was transcribed by hand and checked against the markdown (repeated merged header cells 'Findings in the established dystonia genes'/'Findings in the uncommon dystonia genes' are section labels, not data rows). Only family DYS-71 has ALDH5A1 variants; every other patient named in the text (DYS-98 IV.3/IV.6, DYS-66 IV.2/IV.5, DYS-4 siblings, DYS-80 II.2, etc.) has variants in other genes and is out of scope, so no rows were made for them. The paper gives no individual patient label, sex or age for DYS-71: it describes the affected family member only through the family label and through the variant rows of table 2, so one individual row was made, labelled 'DYS-71' (the paper's own label for that unit), with family_label_in_paper 'DYS-71'; the number of affected people in DYS-71 is never stated, so the number of individuals is uncertain. is_proband is null (the word proband/index case is never used) and n_patients_reported is null (no patient count for ALDH5A1 is stated). Table 2's 'Disease involvement' column is defined in the table notes as 'OMIM-based information indicating the involvement of the genes in the diseases' (gene-level), and the 'Metabolic findings' column as 'Metabolic findings suggesting the abnormal levels of associated metabolites'; both were recorded for the DYS-71 person because the row is tied to that family. Zygosity 'CH' (defined in the table notes as compound heterozygous) and the pathogenicity cells were taken from the DYS-71 variant rows. variant_type was left 'not reported' for both variants: the paper states no class for them (the 'missense (n=12/17)' sentence is about the established dystonia genes and is a general statement), and the cDNA string was not used to derive a type. No parental testing is reported, so inheritance is 'not reported'. functional_evidence_statement is 'not reported': the urine metabolite measurement is a clinical laboratory finding, not an assay of the variant. No stacked cells (' / ') occur in table 2; table 3 was not used for any row. Features: 'T2 hyperintensity in BG' (basal ganglia, per table note 'BG, basal ganglia') was mapped to the checklist item 'T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI' as observed - a slight broadening, since the paper does not name the globus pallidus; the same statement and the metabolic cell were treated as group statements naming family DYS-71 (evidence_basis 'inferred from group statement'). Counts in table 1 (e.g. 'Cerebellar atrophy 0 / 1 (2.3%)') name no one and were not used. ethnicity_or_country 'Turkey' comes from the cohort statement that the families were recruited in Turkey, not from a per-person statement.",
+  "tables": {
+    "publications": [
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "first_author": {"value": "Atasu", "span": "Authors: Atasu Burcu; Simón-Sánchez Javier; Hanagasi Hasmet; Bilgic Basar; Hauser Ann-Kathrin; Guven Gamze; Heutink Peter; Gasser Thomas; Lohmann Ebba"},
+        "year": {"value": 2024, "span": "Journal: Journal of Medical Genetics (2024)"},
+        "study_type": {"value": "case series/cohort", "span": "A total of 42 dystonia families, which are compatible with the AR mode of inheritance, including 46 affected and 47 non-affected individuals, were recruited in Turkey for the study"},
+        "n_patients_reported": {"value": null, "span": null},
+        "cohort_size_as_stated": {"value": 46, "span": "including 46 affected and 47 non-affected individuals"},
+        "cites_prior_report_of_same_patients": {"value": true, "span": "(n=15 (n=3 published elsewhere28 29); 36%)"},
+        "prior_report_citation": {"value": "28 29", "span": "published elsewhere28 29"}
+      }
+    ],
+    "individuals": [
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "family_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "is_proband": {"value": null, "span": null},
+        "sex": {"value": "not reported", "span": null},
+        "age_at_onset_original_text": {"value": "not reported", "span": null},
+        "age_at_onset_iso8601": {"value": null, "span": null},
+        "age_at_last_evaluation_original_text": {"value": "not reported", "span": null},
+        "age_at_last_evaluation_iso8601": {"value": null, "span": null},
+        "age_at_diagnosis_original_text": {"value": "not reported", "span": null},
+        "age_at_diagnosis_iso8601": {"value": null, "span": null},
+        "ethnicity_or_country": {"value": "Turkey", "span": "were recruited in Turkey for the study"},
+        "consanguinity": {"value": "not reported", "span": null},
+        "vital_status": {"value": "not reported", "span": null},
+        "deceased_age_iso8601": {"value": null, "span": null},
+        "cause_of_death": {"value": "not reported", "span": null},
+        "treatment_summary": {"value": "not reported", "span": null},
+        "disease_label_as_stated": {"value": "Succinic semialdehyde dehydrogenase deficiency (MIM 271980)", "span": "Succinic semialdehyde dehydrogenase deficiency (MIM 271980) | Decreased urine 4-hydroxybutyric acid (0 mmol/mol) | Pathogenic | DYS-71"},
+        "clinical_diagnosis_basis": {"value": "genetic testing (exome sequencing; variants confirmed by Sanger sequencing) with metabolic findings (decreased urine 4-hydroxybutyric acid)", "span": ["All the retrieved variants were confirmed and co-segregation analysis was performed by Sanger sequencing using the Big Dye Terminator Cycle Sequencing Ready Reaction kit on an ABI 3730 automated sequencer.", "Decreased urine 4-hydroxybutyric acid (0 mmol/mol)"]},
+        "source_reference_in_review": {"value": "not reported", "span": null}
+      }
+    ],
+    "variants": [
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "gene_symbol_as_stated": {"value": "ALDH5A1", "span": "| ALDH5A1 | NM_170740:c.1441+1G>T |"},
+        "variant_original_string": {"value": "NM_170740:c.1441+1G>T", "span": "NM_170740:c.1441+1G>T"},
+        "transcript_as_stated": {"value": "NM_170740", "span": "NM_170740:c.1441+1G>T"},
+        "cdna_hgvs_as_stated": {"value": "c.1441+1G>T", "span": "NM_170740:c.1441+1G>T"},
+        "protein_hgvs_as_stated": {"value": null, "span": null},
+        "genomic_coordinates_as_stated": {"value": null, "span": null},
+        "variant_type_as_stated": {"value": "not reported", "span": null},
+        "zygosity": {"value": "compound heterozygous", "span": "| CH | Succinic semialdehyde dehydrogenase deficiency (MIM 271980)"},
+        "inheritance": {"value": "not reported", "span": null},
+        "parental_testing_statement": {"value": "not reported", "span": null},
+        "functional_evidence_statement": {"value": "not reported", "span": null},
+        "pathogenicity_as_stated_by_authors": {"value": "Pathogenic", "span": "| Pathogenic | DYS-71 |"},
+        "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "gene_symbol_as_stated": {"value": "ALDH5A1", "span": "| ALDH5A1 | NM_170740:c.1604A>G:p.D535G |"},
+        "variant_original_string": {"value": "NM_170740:c.1604A>G:p.D535G", "span": "NM_170740:c.1604A>G:p.D535G"},
+        "transcript_as_stated": {"value": "NM_170740", "span": "NM_170740:c.1604A>G:p.D535G"},
+        "cdna_hgvs_as_stated": {"value": "c.1604A>G", "span": "NM_170740:c.1604A>G:p.D535G"},
+        "protein_hgvs_as_stated": {"value": "p.D535G", "span": "NM_170740:c.1604A>G:p.D535G"},
+        "genomic_coordinates_as_stated": {"value": null, "span": null},
+        "variant_type_as_stated": {"value": "not reported", "span": null},
+        "zygosity": {"value": "compound heterozygous", "span": "| CH | Succinic semialdehyde dehydrogenase deficiency (MIM 271980)"},
+        "inheritance": {"value": "not reported", "span": null},
+        "parental_testing_statement": {"value": "not reported", "span": null},
+        "functional_evidence_statement": {"value": "not reported", "span": null},
+        "pathogenicity_as_stated_by_authors": {"value": "Likely pathogenic", "span": "| Likely pathogenic | DYS-71 |"},
+        "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+      }
+    ],
+    "phenotypic_features": [
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "feature_text_as_stated": {"value": "T2 hyperintensity in BG", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "status": {"value": "observed", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "evidence_basis": {"value": "inferred from group statement", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "feature_text_as_stated": {"value": "Decreased urine 4-hydroxybutyric acid", "span": "Decreased urine 4-hydroxybutyric acid (0 mmol/mol)"},
+        "status": {"value": "observed", "span": "Decreased urine 4-hydroxybutyric acid (0 mmol/mol)"},
+        "evidence_basis": {"value": "inferred from group statement", "span": "Decreased urine 4-hydroxybutyric acid (0 mmol/mol)"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "0 mmol/mol", "span": "Decreased urine 4-hydroxybutyric acid (0 mmol/mol)"},
+        "hpo_label_candidate": {"value": null, "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      }
+    ],
+    "phenotype_checklist": [
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "intellectual disability", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "speech or language impairment", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "hypotonia", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "gross or fine motor deficits", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "seizures or epilepsy", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "EEG abnormality (background slowing or epileptiform activity)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "ataxia", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "dystonia", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "exertional dyskinesia", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "hemiballismus", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "autism spectrum disorder or autistic behaviors", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "attention problems or ADHD", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "anxiety", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "obsessive-compulsive traits", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "aggression or disruptive behavior", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "sleep disturbances", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "depression or mood fluctuation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "psychotic symptoms (hallucinations or delusions)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI", "span": null},
+        "status": {"value": "observed", "span": null},
+        "evidence_basis": {"value": "inferred from group statement", "span": null}
+      },
+      {
+        "pmid": {"value": "38458754", "span": "PMID: 38458754"},
+        "individual_label_in_paper": {"value": "DYS-71", "span": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG."},
+        "checklist_feature": {"value": "cerebral or cerebellar atrophy", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      }
+    ]
+  }
+}

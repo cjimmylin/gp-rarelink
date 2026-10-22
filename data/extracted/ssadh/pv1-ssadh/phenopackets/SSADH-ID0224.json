@@ -1,0 +1,208 @@
+{
+  "id": "ssadh-pv1-ssadh-SSADH-ID0224",
+  "subject": {
+    "id": "SSADH-ID0224"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001332",
+        "label": "Dystonia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38458754",
+            "description": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants \u2026 Exome sequencing analysis was performed in 42 Turkish dystonia families"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0012751",
+        "label": "Abnormal basal ganglia MRI signal intensity"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38458754",
+            "description": "Only one family (DYS-71) with ALDH5A1 biallelic pathogenic variants was found to have T2 hyperintensity in BG"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:6000531",
+        "label": "Abnormal urinary organic compound level"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38458754",
+            "description": "| ALDH5A1 | NM_170740:c.1441+1G>T | 0 | 34, NA, NA, DC, NA, NA | CH | Succinic semialdehyde dehydrogenase deficiency (MIM 271980) | Decreased urine 4-hydroxybutyric acid (0 mmol/mol) |"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "SSADH-ID0224-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0010083",
+          "label": "succinic semialdehyde dehydrogenase deficiency"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "SSADH-ID0224",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "SSADH-ID0224-var1",
+                "label": "NM_170740:c.1441+1G>T",
+                "description": "NM_170740:c.1441+1G>T",
+                "geneContext": {
+                  "valueId": "HGNC:408",
+                  "symbol": "ALDH5A1"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_001080.3:c.1402+1G>T"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_001071.1:p.?"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000006.12:g.24532178G>T"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "6",
+                  "pos": "24532178",
+                  "ref": "G",
+                  "alt": "T"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "SSADH-ID0224",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "SSADH-ID0224-var2",
+                "label": "NM_170740:c.1604A>G:p.D535G",
+                "description": "NM_170740:c.1604A>G:p.D535G",
+                "geneContext": {
+                  "valueId": "HGNC:408",
+                  "symbol": "ALDH5A1"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_001080.3:c.1565A>G"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_001071.1:p.(Asp522Gly)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000006.12:g.24533669A>G"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "6",
+                  "pos": "24533669",
+                  "ref": "A",
+                  "alt": "G"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0010083",
+        "label": "succinic semialdehyde dehydrogenase deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-10-20T00:00:00Z",
+    "createdBy": "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:38458754"
+      }
+    ]
+  }
+}

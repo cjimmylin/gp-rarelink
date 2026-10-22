@@ -46,20 +46,20 @@ Can the **SLIDERS** method, powered by Claude, build consolidated variant ↔ ph
 
 ## 4. Pilot diseases
 
-All six are absent from phenopacket-store's 408 cohorts. Together they span four inheritance modes and six organ systems.
+All six are absent from phenopacket-store (731 gene folders at repository commit `85ffd78`, 2026-10-07; the application's "408 cohorts" has no published source, D-14). Together they span four inheritance modes and six organ systems.
 
 | Disease | Gene | OMIM | ORPHA | Inheritance | System | Why it's in the set |
 |---|---|---|---|---|---|---|
 | Alexander disease | *GFAP* | 203450 | 58 | AD / de novo | Neurology | 2024 review: 550 patients, 182 causative variants. ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 627 records, 76 P/LP vs 262 VUS (application: 72 P/LP). ~12 OMIM allelic (proxy). Active foundation (United Leukodystrophy Foundation). |
-| Leukocyte adhesion deficiency I | *ITGB2* | 116920 | 2968 | AR | Immunology | 323 published cases, genotype reported for only 139: the clearest gap in the set. ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 949 records, 87 P/LP vs 345 VUS (no ClinVar figure in the application). Mondo cross-references Orphanet:99842, not 2968: to check. |
+| Leukocyte adhesion deficiency I | *ITGB2* | 116920 | 2968 | AR | Immunology | 323 published cases to 2017, genotype reported for only 139: the clearest gap in the set. The application's "184 patients whose variants were published but never structured" are probably the 184 without a reported genotype, which extraction cannot recover (D-14). ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 949 records, 87 P/LP vs 345 VUS (no ClinVar figure in the application). Mondo cross-references Orphanet:99842, not 2968: to check. |
 | A20 haploinsufficiency | *TNFAIP3* | 616744 | 476102 | AD | Auto-inflammatory | 177 published patients. ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 764 records, 99 P/LP vs 375 VUS (application: 542 records, ~58 pathogenic vs ~289 VUS). Described 2016, so the corpus is entirely open-access era. |
 | SSADH deficiency | *ALDH5A1* | 271980 | 22 | AR | Neurometabolic | ~450 published patients; ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 914 records, 152 P/LP vs 333 VUS (application: 143 P/LP vs 262 VUS); proxy count of 5 OMIM allelic variants. Active patient association. |
-| Danon disease | *LAMP2* | 300257 | 34587 | X-linked dominant | Cardiac / neuromuscular | >100 published families; ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 986 records, 154 P/LP vs 292 VUS (application: 162 P/LP vs 345 VUS). Sex-differential severity tests whether genotype–phenotype structure survives extraction. |
-| Tangier disease | *ABCA1* | 205400 | 31150 | AR | Lipid metabolism | ~200 published patients; ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 2,006 records but only 85 P/LP, with 705 VUS (application: 1,302 records, 69 P/LP). Big gene, small pathogenic core: the monogenic series must be separated from unrelated testing. |
+| Danon disease | *LAMP2* | 300257 | 34587 | X-linked dominant | Cardiac / neuromuscular | About 100 published families; ≥146 molecularly confirmed patients (D-14; application: >100 families); ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 986 records, 154 P/LP vs 292 VUS (application: 162 P/LP vs 345 VUS). Sex-differential severity tests whether genotype–phenotype structure survives extraction. |
+| Tangier disease | *ABCA1* | 205400 | 31150 | AR | Lipid metabolism | ~100–150 published patients (Koseki 2021 counts ~144; GeneReviews says fewer than 100; application: ~200; D-14); ClinVar (release 2026-10-12, read 2026-10-19; GRCh38, single-gene records): 2,006 records but only 85 P/LP, with 705 VUS (application: 1,302 records, 69 P/LP). Big gene, small pathogenic core: the monogenic series must be separated from unrelated testing. |
 
 **Substitutes** (held in reserve if open-access coverage is thin; also the Stretch extension to 12 diseases): Blau syndrome (*NOD2*), Majeed syndrome (*LPIN2*), familial LCAT deficiency (*LCAT*), GAMT deficiency (*GAMT*), arterial tortuosity syndrome (*SLC2A10*), PAPA syndrome (*PSTPIP1*).
 
-**Caveats on the numbers:** ClinVar counts came from MyVariant.info and ClinVar Miner at application time, and were replaced on 2026-10-19 with direct counts from one ClinVar release (2026-10-12), kept beside the application's figures: A20 haploinsufficiency in `analysis/poc/reference_snapshot/2026-10-19/counts.json` (Jimmy's decision), the other five in `counts_<GENE>.json` in the same folder (`DECISIONS.md`, 2026-10-19). Counts are distinct VariationIDs on single-gene GRCh38 records; P/LP sums Pathogenic, Likely pathogenic and Pathogenic/Likely pathogenic; conflicting records are counted apart from VUS. The six-disease study re-counts from a fresh snapshot taken before extraction. OMIM counts are still proxy lower bounds (no OMIM access, D-12). Patient counts are still the application's; see D-14 for corrections.
+**Caveats on the numbers:** ClinVar counts came from MyVariant.info and ClinVar Miner at application time, and were replaced on 2026-10-19 with direct counts from one ClinVar release (2026-10-12), kept beside the application's figures: A20 haploinsufficiency in `analysis/poc/reference_snapshot/2026-10-19/counts.json` (Jimmy's decision), the other five in `counts_<GENE>.json` in the same folder (`DECISIONS.md`, 2026-10-19). Counts are distinct VariationIDs on single-gene GRCh38 records; P/LP sums Pathogenic, Likely pathogenic and Pathogenic/Likely pathogenic; conflicting records are counted apart from VUS. The six-disease study re-counts from a fresh snapshot taken before extraction. OMIM counts are still proxy lower bounds (no OMIM access, D-12). Patient counts for Tangier, Danon and LAD-I were corrected on 2026-10-21 (D-14, Jimmy's decision; sources in `background/grant_claim_checks.md`); the others are the application's. LAD-I's ORPHA number is still to check: Mondo gives Orphanet:99842.
 
 ## 5. Methodology
 
@@ -171,7 +171,7 @@ Cost is driven by multipliers, not corpus size: SLIDERS is agentic and re-reads 
 |---|---|
 | ClinVar | Ground truth for concordance; target for literature-only submissions |
 | OMIM | Ground truth for concordance; target for allelic-variant candidates |
-| Monarch phenopacket-store | Existing coverage (408 cohorts; pilot diseases absent) |
+| Monarch phenopacket-store | Existing coverage (731 gene folders at commit `85ffd78`, 2026-10-07; pilot diseases absent) |
 | HPO | Phenotype terms |
 | Mondo, Orphanet | Disease identifiers |
 | GA4GH Phenopacket schema | Output format |

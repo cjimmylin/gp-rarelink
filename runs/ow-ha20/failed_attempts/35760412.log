@@ -1,0 +1,30 @@
+turn 1: ['read_file', 'read_file'] tokens 892+124
+turn 2: ['read_file', 'read_file'] tokens 13576+249
+  retry 1/3 after ReadError: [Errno 104] Connection reset by peer
+turn 3: ['write_file'] tokens 29497+23812
+turn 4: ['glob'] tokens 49916+23865
+turn 5: ['glob'] tokens 70401+24018
+turn 6: ['glob'] tokens 90942+24083
+turn 7: ['grep', 'grep'] tokens 111537+25956
+turn 8: ['grep', 'grep'] tokens 132520+27269
+  ... 34153 characters streamed, 82 s
+turn 9: ['write_file'] tokens 154547+36508
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 316, in <module>
+    meta = {"endpoint": base, "model": model, "provider_pinned": provider, "run_id": a.run_id, "disease": a.disease, "pmid": a.pmid,
+                     ^^^^^^
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 306, in main
+    os.environ.setdefault(k.strip(), v.strip())
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 246, in run
+    box = Sandbox(reads={paths[k].resolve() for k in ("instructions", "schema", "rules", "paper")},
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 90, in complete
+    call_wall_seconds: float = 3600.0
+                       ^^^^^^^^^^^^^^
+  File "/home/user/gp-rarelink/pipeline/extract/openweight/agent.py", line 128, in _complete_once
+    timeout=httpx.Timeout(self.timeout, read=300.0)) as r:
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: provider error: {'code': 502, 'message': 'Network connection lost.', 'metadata': {'error_type': 'provider_unavailable'}}

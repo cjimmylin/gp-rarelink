@@ -1,0 +1,33 @@
+{
+  "repeat_run_id": "pv1-ha20-repeat",
+  "source_run_id": "pv1-ha20",
+  "date": "2026-10-20",
+  "seed": 20261020,
+  "n": 9,
+  "eligible_rule": "source-run papers with at least one individual row",
+  "n_eligible": 77,
+  "selected": [
+    "29682366",
+    "30402268",
+    "31175876",
+    "32743991",
+    "34011076",
+    "36467491",
+    "40822695",
+    "41226818",
+    "41654260"
+  ],
+  "decision": "D-37 (up to $1,200 incl. the 10% repeat); pre-registration 'Run-to-run stability: re-extract a random 10% of papers and measure agreement'",
+  "n_rule": "ceil(10% of the disease's pv1 papers), drawn from papers with at least one individual row",
+  "pipeline": "pipeline-v1.0 (ef3133e) with D-38 instantiation; same prompt, schema and rules files as the source run",
+  "prompt_sha256": {
+    "pipeline/extract/claude_code/prompts/extract_v6.md": "aa689f24b470d5e6224010f34209fddd95d3ba3f8481f53feea3de3b8b99a409",
+    "pipeline/extract/claude_code/schema_ha20_v5.json": "f0fdf6b3bfead62e2f617584502b2ee6b36bc0d8b39af026c3007da437b902dd",
+    "pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md": "55ab99df7f17cdb67bc162e1bf78d0277e6e31322c4c7328164259bfea1b5737",
+    "pipeline/extract/claude_code/prompts/gatekeeper_v4.md": "48ec4f05e65fd5d1d0ee040cd1b74e9629c82764d41093f0ed3b9b37a8781ba8"
+  },
+  "launch_commit": "b6d97ae85cbc70d7ebd231de4dd1e955c480398f",
+  "session_cost_usd_before": 1451.37,
+  "session_cost_note": "reading unchanged since 20:40:16 UTC and possibly lagging; price the repeat from helper tokens (analysis/cost/helper_tokens.py)",
+  "gatekeeper": "not run on repeat outputs; agreement only (analysis/poc/run_agreement.py)"
+}

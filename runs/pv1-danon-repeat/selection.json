@@ -1,0 +1,33 @@
+{
+  "repeat_run_id": "pv1-danon-repeat",
+  "source_run_id": "pv1-danon",
+  "date": "2026-10-20",
+  "seed": 20261020,
+  "n": 9,
+  "eligible_rule": "source-run papers with at least one individual row",
+  "n_eligible": 83,
+  "selected": [
+    "20173215",
+    "25228319",
+    "28289499",
+    "29637036",
+    "31709377",
+    "34362124",
+    "37609033",
+    "38256360",
+    "38606381"
+  ],
+  "decision": "D-37 (up to $1,200 incl. the 10% repeat); pre-registration 'Run-to-run stability: re-extract a random 10% of papers and measure agreement'",
+  "n_rule": "ceil(10% of the disease's pv1 papers), drawn from papers with at least one individual row",
+  "pipeline": "pipeline-v1.0 (ef3133e) with D-38 instantiation; same prompt, schema and rules files as the source run",
+  "prompt_sha256": {
+    "pipeline/extract/claude_code/prompts/extract_v6_danon.md": "7a3d66bb8f4b5fae3b621d428f97549509d2739db75bb68b596f51b1b14572b7",
+    "pipeline/extract/claude_code/schema_danon_v5.json": "52552effb49359d8b17df31413698f4606d563307c329100f367f28211140937",
+    "pipeline/extract/sliders_adapter/prompts/extraction_rules_v1.md": "55ab99df7f17cdb67bc162e1bf78d0277e6e31322c4c7328164259bfea1b5737",
+    "pipeline/extract/claude_code/prompts/gatekeeper_v4.md": "48ec4f05e65fd5d1d0ee040cd1b74e9629c82764d41093f0ed3b9b37a8781ba8"
+  },
+  "launch_commit": "b6d97ae85cbc70d7ebd231de4dd1e955c480398f",
+  "session_cost_usd_before": 1451.37,
+  "session_cost_note": "reading unchanged since 20:40:16 UTC and possibly lagging; price the repeat from helper tokens (analysis/cost/helper_tokens.py)",
+  "gatekeeper": "not run on repeat outputs; agreement only (analysis/poc/run_agreement.py)"
+}

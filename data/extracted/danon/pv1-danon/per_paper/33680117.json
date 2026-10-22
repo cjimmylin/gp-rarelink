@@ -1,0 +1,7353 @@
+{
+ "pmid": "33680117",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "The paper describes seven individually tabulated LAMP2 carriers: 'Each of the seven patients was identified with one mutation in the LAMP2 gene (Table I and Fig. 2)'.",
+ "method_note": "Read the whole paper by hand; a short Python script transcribed Table I (patients as columns; column headers are 'Family F1 III-9' ... 'Family F7 III-8', used verbatim as labels) and built the JSON; every transcribed cell was checked against the table. Spans for Table I quote the row from its label through the patient's cell. Scope: the 7 LAMP2 patients plus the father of the Family F2 proband (described as having milder disease, not stated to be tested; no variant row). Other relatives appear only in Figure 1 (not in text) and are not extracted; PRKAG2, Fabry and sarcomere patients are out of scope. Table I symbols: '-' cells (sudden death, syncope, SAM) are not defined as absent in the legend, so they are not reported; '^b' = lack of assessment and '^a' = lack of information are not reported; '+' was read as present. 'History of sudden death' (^c within pedigree, + for F2) is a family history, not recorded as the patient's feature. 'Arrhythmia: Normal' (F1, F3, F6) recorded as arrhythmia excluded; per the normal-findings rule it does not exclude specific checklist arrhythmias. 'Ocular manifestation: No' (F3) does not exclude retinopathy or myopia. 'Cognitive impairment: No' (F1, F3, F4) is narrower than the composite checklist item, so that item is left not reported. CK-MB (cardiac isoenzyme) was not taken as elevated creatine kinase. NYHA class III and LVEF 20.6% for F7 were not mapped to heart failure or reduced EF (no explicit statement). Group statements about unnamed subsets (four with fQRS, one with mild skeletal myopathy, two asymptomatic frameshift carriers before age 1, one male missense patient with chest tightness at 11 years, four variants found in a parent / one de novo / two untested, three point and four frameshift mutations, five novel) were not assigned to individuals, so variant type, inheritance and parental testing are not reported. 'All patients had an HCM phenotype on presentation' was applied to all seven as a named-group statement (LVH observed). Pathogenicity 'pathogenic' comes from the named-group statement 'A pathogenic mutation in LAMP2 was identified in 7 patients'. Only F2, F3 and F5 are explicitly called probands; is_proband is null for the others. F3 had normal LVOT gradient and diastolic function at first visit but LVOTO and damaged diastolic function later (temporal change, both rows emitted; checklist LVOTO observed). Contradictions/inconsistencies in the paper: text gives mean MLVWT 17 mm (range 14-24 mm) but Table I lists 8-25 mm (F7 MLVWT 8 mm despite 'all patients had an HCM phenotype'); Table II reports pacemaker implantation 0 (0) in Danon patients but Table I lists CRT-P for Family F4 III-3; F3 S_V1+R_V5 is 10.4 mV in Table I but RV5 + SV1=12.2 mV in the case report; text says two patients had preexcitation (F4, F5 in Table I) while F3 later developed delta waves resembling WPW; text says 2 patients were asymptomatic (Table I 'None' for F4 and F6) while the Discussion says two asymptomatic frameshift carriers were found before their first birthday (F4 is a 20-year-old with c.928G>A).",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "first_author": {
+     "value": "Wang",
+     "span": "Authors: Wang Xuan-Ying"
+    },
+    "year": {
+     "value": 2021,
+     "span": "Journal: Experimental and Therapeutic Medicine (2021)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "Clinical and molecular characterization of seven patients with Danon disease"
+    },
+    "n_patients_reported": {
+     "value": 7,
+     "span": "A pathogenic mutation in LAMP2 was identified in 7 patients"
+    },
+    "cohort_size_as_stated": {
+     "value": 770,
+     "span": "was performed in 770 patients with HCM using second-generation sequencing"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "family_label_in_paper": {
+     "value": "F1",
+     "span": "Family F1 III-9"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Sex | Male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "11 years",
+     "span": "| Age at diagnosis | 11 years"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P11Y",
+     "span": "| Age at diagnosis | 11 years"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Treatment with blocker: None; pacemaker implantation: None",
+     "span": [
+      "| Treatment with blocker | None",
+      "| Pacemaker implantation | None"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease",
+     "span": "Clinical, demographic and genetic data of patients with Danon disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: exon and boarding intron analysis of 96 cardio disease-associated genes by second-generation sequencing in patients with HCM identified one LAMP2 mutation",
+     "span": [
+      "exon and boarding intron analysis of 96 cardio disease-associated genes (Table SI) was performed in 770 patients with HCM using second-generation sequencing",
+      "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "family_label_in_paper": {
+     "value": "F2",
+     "span": "Family F2 III-2"
+    },
+    "is_proband": {
+     "value": true,
+     "span": "the proband of Family F2"
+    },
+    "sex": {
+     "value": "female",
+     "span": "| Sex | Male | Female"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "3 years",
+     "span": "| Age at diagnosis | 11 years | 3 years"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P3Y",
+     "span": "| Age at diagnosis | 11 years | 3 years"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Treatment with blocker: Metoprolol; pacemaker implantation: None",
+     "span": [
+      "| Treatment with blocker | None | Metoprolol",
+      "| Pacemaker implantation | None | None"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease",
+     "span": "Clinical, demographic and genetic data of patients with Danon disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: exon and boarding intron analysis of 96 cardio disease-associated genes by second-generation sequencing in patients with HCM identified one LAMP2 mutation",
+     "span": [
+      "exon and boarding intron analysis of 96 cardio disease-associated genes (Table SI) was performed in 770 patients with HCM using second-generation sequencing",
+      "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "family_label_in_paper": {
+     "value": "F3",
+     "span": "Family F3 III-3"
+    },
+    "is_proband": {
+     "value": true,
+     "span": "The proband (III-3) of family F3"
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Sex | Male | Female | Male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "12 years",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P12Y",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Treatment with blocker: Bisoprolol; irbesartan tablets, bisoprolol, polyene phosphatidylcholine capsules and risuvastatin calcium tablets; later valsartan, metoprolol, hydrochlorothiazide and coenzyme Q10; then additionally carvedilol, nicorandil and silibinin; pacemaker implantation: None",
+     "span": [
+      "| Treatment with blocker | None | Metoprolol | Bisoprolol",
+      "was administered irbesartan tablets, bisoprolol, polyene phosphatidylcholine capsules and risuvastatin calcium tablets",
+      "The proband was prescribed valsartan, metoprolol, hydrochlorothiazide and coenzyme Q10",
+      "The patient was additionally administered with carvedilol, nicorandil and silibinin",
+      "| Pacemaker implantation | None | None | None"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease",
+     "span": "Clinical, demographic and genetic data of patients with Danon disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: exon and boarding intron analysis of 96 cardio disease-associated genes by second-generation sequencing in patients with HCM identified one LAMP2 mutation",
+     "span": [
+      "exon and boarding intron analysis of 96 cardio disease-associated genes (Table SI) was performed in 770 patients with HCM using second-generation sequencing",
+      "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "family_label_in_paper": {
+     "value": "F4",
+     "span": "Family F4 III-3"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Sex | Male | Female | Male | Male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "20 years",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years | 20 years"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P20Y",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years | 20 years"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Treatment with blocker: None; pacemaker implantation: CRT-P (cardiac resynchronization therapy with pacemaker)",
+     "span": [
+      "| Treatment with blocker | None | Metoprolol | Bisoprolol | None",
+      "| Pacemaker implantation | None | None | None | CRT-P",
+      "CRT-P, cardiac resynchronization therapy with pacemaker"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease",
+     "span": "Clinical, demographic and genetic data of patients with Danon disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: exon and boarding intron analysis of 96 cardio disease-associated genes by second-generation sequencing in patients with HCM identified one LAMP2 mutation",
+     "span": [
+      "exon and boarding intron analysis of 96 cardio disease-associated genes (Table SI) was performed in 770 patients with HCM using second-generation sequencing",
+      "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "family_label_in_paper": {
+     "value": "F5",
+     "span": "Family F5 III-1"
+    },
+    "is_proband": {
+     "value": true,
+     "span": "The proband (III-1) of family F5"
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Sex | Male | Female | Male | Male | Male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "6 months",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years | 20 years | 6 months"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P6M",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years | 20 years | 6 months"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Treatment with blocker: Metoprolol; pacemaker implantation: None",
+     "span": [
+      "| Treatment with blocker | None | Metoprolol | Bisoprolol | None | Metoprolol",
+      "| Pacemaker implantation | None | None | None | CRT-P | None"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease",
+     "span": "Clinical, demographic and genetic data of patients with Danon disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: exon and boarding intron analysis of 96 cardio disease-associated genes by second-generation sequencing in patients with HCM identified one LAMP2 mutation",
+     "span": [
+      "exon and boarding intron analysis of 96 cardio disease-associated genes (Table SI) was performed in 770 patients with HCM using second-generation sequencing",
+      "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "family_label_in_paper": {
+     "value": "F6",
+     "span": "Family F6 III-2"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Sex | Male | Female | Male | Male | Male | Male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "1 year",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years | 20 years | 6 months | 1 year"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P1Y",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years | 20 years | 6 months | 1 year"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Treatment with blocker: None; pacemaker implantation: None",
+     "span": [
+      "| Treatment with blocker | None | Metoprolol | Bisoprolol | None | Metoprolol | None",
+      "| Pacemaker implantation | None | None | None | CRT-P | None | None"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease",
+     "span": "Clinical, demographic and genetic data of patients with Danon disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: exon and boarding intron analysis of 96 cardio disease-associated genes by second-generation sequencing in patients with HCM identified one LAMP2 mutation",
+     "span": [
+      "exon and boarding intron analysis of 96 cardio disease-associated genes (Table SI) was performed in 770 patients with HCM using second-generation sequencing",
+      "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "family_label_in_paper": {
+     "value": "F7",
+     "span": "Family F7 III-8"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| Sex | Male | Female | Male | Male | Male | Male | Female"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "23 years",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years | 20 years | 6 months | 1 year | 23 years"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P23Y",
+     "span": "| Age at diagnosis | 11 years | 3 years | 12 years | 20 years | 6 months | 1 year | 23 years"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Treatment with blocker: Bisoprolol; pacemaker implantation: None",
+     "span": [
+      "| Treatment with blocker | None | Metoprolol | Bisoprolol | None | Metoprolol | None | Bisoprolol",
+      "| Pacemaker implantation | None | None | None | CRT-P | None | None | None"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon disease",
+     "span": "Clinical, demographic and genetic data of patients with Danon disease"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: exon and boarding intron analysis of 96 cardio disease-associated genes by second-generation sequencing in patients with HCM identified one LAMP2 mutation",
+     "span": [
+      "exon and boarding intron analysis of 96 cardio disease-associated genes (Table SI) was performed in 770 patients with HCM using second-generation sequencing",
+      "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "family_label_in_paper": {
+     "value": "F2",
+     "span": "the proband of Family F2"
+    },
+    "is_proband": {
+     "value": false,
+     "span": "in the proband's father"
+    },
+    "sex": {
+     "value": "male",
+     "span": "in the proband's father"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "36 years old",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P36Y",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+    },
+    "variant_original_string": {
+     "value": "c.388G>A (p.E130K)",
+     "span": "| Genetic analysis | c.388G>A (p.E130K)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.388G>A",
+     "span": "| Genetic analysis | c.388G>A (p.E130K)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.E130K",
+     "span": "| Genetic analysis | c.388G>A (p.E130K)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "A pathogenic mutation in LAMP2 was identified in 7 patients"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+    },
+    "variant_original_string": {
+     "value": "c.959A>G (p.Y320C)",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.959A>G",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Y320C",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "A pathogenic mutation in LAMP2 was identified in 7 patients"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+    },
+    "variant_original_string": {
+     "value": "c.779-782del (p.H260fs)",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.779-782del",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.H260fs",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "A pathogenic mutation in LAMP2 was identified in 7 patients"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+    },
+    "variant_original_string": {
+     "value": "c.928G>A (p.V310I)",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.928G>A",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.V310I",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "A pathogenic mutation in LAMP2 was identified in 7 patients"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+    },
+    "variant_original_string": {
+     "value": "c.121delT (p.C41Afs)",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.121delT",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.C41Afs",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "A pathogenic mutation in LAMP2 was identified in 7 patients"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+    },
+    "variant_original_string": {
+     "value": "c.750delA (p.V251Lfs^*32)",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs) | c.750delA (p.V251Lfs^*32)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.750delA",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs) | c.750delA (p.V251Lfs^*32)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.V251Lfs^*32",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs) | c.750delA (p.V251Lfs^*32)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "A pathogenic mutation in LAMP2 was identified in 7 patients"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "Each of the seven patients was identified with one mutation in the LAMP2 gene"
+    },
+    "variant_original_string": {
+     "value": "c.1054delG (p.V352Ffs^*5)",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs) | c.750delA (p.V251Lfs^*32) | c.1054delG (p.V352Ffs^*5)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1054delG",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs) | c.750delA (p.V251Lfs^*32) | c.1054delG (p.V352Ffs^*5)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.V352Ffs^*5",
+     "span": "| Genetic analysis | c.388G>A (p.E130K) | c.959A>G (p.Y320C) | c.779-782del (p.H260fs) | c.928G>A (p.V310I) | c.121delT (p.C41Afs) | c.750delA (p.V251Lfs^*32) | c.1054delG (p.V352Ffs^*5)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "A pathogenic mutation in LAMP2 was identified in 7 patients"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM phenotype",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "MLVWT (mm) 14",
+     "span": "| MLVWT (mm) | 14"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM phenotype",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "MLVWT (mm) 17",
+     "span": "| MLVWT (mm) | 14 | 17"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM phenotype",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "MLVWT (mm) 25",
+     "span": "| MLVWT (mm) | 14 | 17 | 25"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM phenotype",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "MLVWT (mm) 18",
+     "span": "| MLVWT (mm) | 14 | 17 | 25 | 18"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM phenotype",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "MLVWT (mm) 16",
+     "span": "| MLVWT (mm) | 14 | 17 | 25 | 18 | 16"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM phenotype",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "MLVWT (mm) 15",
+     "span": "| MLVWT (mm) | 14 | 17 | 25 | 18 | 16 | 15"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM phenotype",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "MLVWT (mm) 8",
+     "span": "| MLVWT (mm) | 14 | 17 | 25 | 18 | 16 | 15 | 8"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "feature_text_as_stated": {
+     "value": "syncope",
+     "span": [
+      "| History of syncope^d | +",
+      "^dIn the patient and not within pedigree"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| History of syncope^d | +",
+      "^dIn the patient and not within pedigree"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| History of syncope^d | +",
+      "^dIn the patient and not within pedigree"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Syncope",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001279",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "feature_text_as_stated": {
+     "value": "Chest tightness",
+     "span": "| Clinical presentation | Chest tightness"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Clinical presentation | Chest tightness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Clinical presentation | Chest tightness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "Tachypnea",
+     "span": [
+      "| Clinical presentation | Chest tightness | Tachypnea",
+      "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Clinical presentation | Chest tightness | Tachypnea",
+      "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Clinical presentation | Chest tightness | Tachypnea",
+      "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+     ]
+    },
+    "onset_original_text": {
+     "value": "at the age of 3 years",
+     "span": "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+    },
+    "onset_iso8601": {
+     "value": "P3Y",
+     "span": "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Tachypnea",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002789",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "mitral regurgitation",
+     "span": "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+    },
+    "status": {
+     "value": "observed",
+     "span": "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+    },
+    "onset_original_text": {
+     "value": "at the age of 3 years",
+     "span": "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+    },
+    "onset_iso8601": {
+     "value": "P3Y",
+     "span": "exhibited tachypnea and mitral regurgitation at the age of 3 years"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Mitral regurgitation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001653",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "LVH",
+     "span": "had LVH and LVOTO with systolic anterior motion"
+    },
+    "status": {
+     "value": "observed",
+     "span": "had LVH and LVOTO with systolic anterior motion"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "had LVH and LVOTO with systolic anterior motion"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Left ventricular hypertrophy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001712",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "LVOTO",
+     "span": [
+      "had LVH and LVOTO with systolic anterior motion",
+      "| LVOT-PG (mmHg) | 4 | 90"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "had LVH and LVOTO with systolic anterior motion",
+      "| LVOT-PG (mmHg) | 4 | 90"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "had LVH and LVOTO with systolic anterior motion",
+      "| LVOT-PG (mmHg) | 4 | 90"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVOT-PG (mmHg) 90",
+     "span": "| LVOT-PG (mmHg) | 4 | 90"
+    },
+    "hpo_label_candidate": {
+     "value": "Left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "systolic anterior motion",
+     "span": [
+      "had LVH and LVOTO with systolic anterior motion",
+      "| SAM | - | +"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "had LVH and LVOTO with systolic anterior motion",
+      "| SAM | - | +"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "had LVH and LVOTO with systolic anterior motion",
+      "| SAM | - | +"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "Sinus tachycardia",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Heart rate (bpm) 117",
+     "span": "| Heart rate (bpm) | 79 | 117"
+    },
+    "hpo_label_candidate": {
+     "value": "Sinus tachycardia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011703",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "chest tightness and pectoralgia during exercise",
+     "span": [
+      "with complaints of chest tightness and pectoralgia during exercise",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "with complaints of chest tightness and pectoralgia during exercise",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "with complaints of chest tightness and pectoralgia during exercise",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated troponin",
+     "span": [
+      "along with elevated troponin (Trop)",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "along with elevated troponin (Trop)",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "along with elevated troponin (Trop)",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "troponin T (TropT), 15.93 ng/ml; later TropT, 10.283 ng/ml",
+     "span": [
+      "troponin T (TropT), 15.93 ng/ml",
+      "TropT, 10.283 ng/ml"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "myocardial damage",
+     "span": "myocardial damage [troponin T (TropT), 15.93 ng/ml; myoglobin (Mb), 366.9 ng/ml; creatine kinase isoenzyme MB (CK-MB), 7.9 ng/ml]"
+    },
+    "status": {
+     "value": "observed",
+     "span": "myocardial damage [troponin T (TropT), 15.93 ng/ml; myoglobin (Mb), 366.9 ng/ml; creatine kinase isoenzyme MB (CK-MB), 7.9 ng/ml]"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "myocardial damage [troponin T (TropT), 15.93 ng/ml; myoglobin (Mb), 366.9 ng/ml; creatine kinase isoenzyme MB (CK-MB), 7.9 ng/ml]"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "myoglobin (Mb), 366.9 ng/ml; creatine kinase isoenzyme MB (CK-MB), 7.9 ng/ml; later increased levels of TropT, Mb and CK-MB (Mb, 279.80 ng/ml; CK-MB, 11.700 ng/ml)",
+     "span": [
+      "myoglobin (Mb), 366.9 ng/ml; creatine kinase isoenzyme MB (CK-MB), 7.9 ng/ml",
+      "increased levels of transaminases, ALP, TropT, Mb and CK-MB",
+      "Mb, 279.80 ng/ml; CK-MB, 11.700 ng/ml"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "sinus irregularity",
+     "span": "His ECG exhibited sinus irregularity with a high voltage"
+    },
+    "status": {
+     "value": "observed",
+     "span": "His ECG exhibited sinus irregularity with a high voltage"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "His ECG exhibited sinus irregularity with a high voltage"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "high voltage",
+     "span": "His ECG exhibited sinus irregularity with a high voltage (RV5 + SV1=12.2 mV"
+    },
+    "status": {
+     "value": "observed",
+     "span": "His ECG exhibited sinus irregularity with a high voltage (RV5 + SV1=12.2 mV"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "His ECG exhibited sinus irregularity with a high voltage (RV5 + SV1=12.2 mV"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "RV5 + SV1=12.2 mV",
+     "span": "(RV5 + SV1=12.2 mV"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "increased IVS",
+     "span": "Echocardiography indicated a particularly increased IVS (25 mm) and LVPW (20 mm"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Echocardiography indicated a particularly increased IVS (25 mm) and LVPW (20 mm"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Echocardiography indicated a particularly increased IVS (25 mm) and LVPW (20 mm"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "IVS (25 mm) and LVPW (20 mm)",
+     "span": "increased IVS (25 mm) and LVPW (20 mm"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "reduced LVEF",
+     "span": "preserved LVEF (65%)"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "preserved LVEF (65%)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "preserved LVEF (65%)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVEF (65%)",
+     "span": "preserved LVEF (65%)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated LVOT gradient",
+     "span": "normal LVOT gradient (6 mmHg)"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "normal LVOT gradient (6 mmHg)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "normal LVOT gradient (6 mmHg)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LVOT gradient (6 mmHg)",
+     "span": "normal LVOT gradient (6 mmHg)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "diastolic dysfunction",
+     "span": "normal LVOT gradient (6 mmHg) and diastolic function (E/e'=15.4)"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "normal LVOT gradient (6 mmHg) and diastolic function (E/e'=15.4)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "normal LVOT gradient (6 mmHg) and diastolic function (E/e'=15.4)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "E/e'=15.4",
+     "span": "diastolic function (E/e'=15.4)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "hepatic lesions",
+     "span": "hepatic lesions [alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l; alkaline phosphatase (ALP), 249 IU/l]"
+    },
+    "status": {
+     "value": "observed",
+     "span": "hepatic lesions [alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l; alkaline phosphatase (ALP), 249 IU/l]"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "hepatic lesions [alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l; alkaline phosphatase (ALP), 249 IU/l]"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "increased levels of transaminases",
+     "span": [
+      "hepatic lesions [alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l",
+      "increased levels of transaminases"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "hepatic lesions [alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l",
+      "increased levels of transaminases"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "hepatic lesions [alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l",
+      "increased levels of transaminases"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "ALT, 246 IU/; AST, 241 IU/l; later ALT, 230 IU/l; AST, 288 IU/l",
+     "span": [
+      "alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l",
+      "ALT, 230 IU/l; AST, 288 IU/l"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating hepatic transaminase concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002910",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "increased levels of ALP",
+     "span": [
+      "alkaline phosphatase (ALP), 249 IU/l",
+      "increased levels of transaminases, ALP"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "alkaline phosphatase (ALP), 249 IU/l",
+      "increased levels of transaminases, ALP"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "alkaline phosphatase (ALP), 249 IU/l",
+      "increased levels of transaminases, ALP"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "ALP, 249 IU/l; later ALP, 261 IU/l",
+     "span": [
+      "alkaline phosphatase (ALP), 249 IU/l",
+      "ALP, 261 IU/l"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating alkaline phosphatase concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "mild fatty change in certain hepatic cells",
+     "span": "A further liver biopsy revealed mild fatty change and lipofuscin in certain hepatic cells"
+    },
+    "status": {
+     "value": "observed",
+     "span": "A further liver biopsy revealed mild fatty change and lipofuscin in certain hepatic cells"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "A further liver biopsy revealed mild fatty change and lipofuscin in certain hepatic cells"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatic steatosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001397",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "lipofuscin in certain hepatic cells",
+     "span": "A further liver biopsy revealed mild fatty change and lipofuscin in certain hepatic cells"
+    },
+    "status": {
+     "value": "observed",
+     "span": "A further liver biopsy revealed mild fatty change and lipofuscin in certain hepatic cells"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "A further liver biopsy revealed mild fatty change and lipofuscin in certain hepatic cells"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "massive LV hypertrophy",
+     "span": "Magnetic resonance imaging assessment confirmed massive LV hypertrophy"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Magnetic resonance imaging assessment confirmed massive LV hypertrophy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Magnetic resonance imaging assessment confirmed massive LV hypertrophy"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "LV anterior wall (LVAW), 30 mm; LV lateral wall, 34 mm; IVS, 18-20 mm",
+     "span": "LV anterior wall (LVAW), 30 mm; LV lateral wall, 34 mm; IVS, 18-20 mm"
+    },
+    "hpo_label_candidate": {
+     "value": "Left ventricular hypertrophy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001712",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "late gadolinium enhancement",
+     "span": "Late gadolinium enhancement revealed focal changes in the thickened subendocardial IVS and diffused abnormal enhancement in the subendocardial anterior and lateral wall"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Late gadolinium enhancement revealed focal changes in the thickened subendocardial IVS and diffused abnormal enhancement in the subendocardial anterior and lateral wall"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Late gadolinium enhancement revealed focal changes in the thickened subendocardial IVS and diffused abnormal enhancement in the subendocardial anterior and lateral wall"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "focal changes in the thickened subendocardial IVS and diffused abnormal enhancement in the subendocardial anterior and lateral wall",
+     "span": "focal changes in the thickened subendocardial IVS and diffused abnormal enhancement in the subendocardial anterior and lateral wall"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "gradually shortening PR intervals",
+     "span": "the patient's ECG indicated gradually shortening PR intervals (from 134 to 104 msec)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient's ECG indicated gradually shortening PR intervals (from 134 to 104 msec)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient's ECG indicated gradually shortening PR intervals (from 134 to 104 msec)"
+    },
+    "onset_original_text": {
+     "value": "From July 2015 to Oct. 2017",
+     "span": "From July 2015 to Oct. 2017"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "from 134 to 104 msec",
+     "span": "gradually shortening PR intervals (from 134 to 104 msec)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "gradually wider QRS durations",
+     "span": "gradually wider QRS durations (from 100 to 144 msec)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "gradually wider QRS durations (from 100 to 144 msec)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "gradually wider QRS durations (from 100 to 144 msec)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "from 100 to 144 msec",
+     "span": "gradually wider QRS durations (from 100 to 144 msec)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "delta waves resembling the WPW pattern",
+     "span": "gradually wider QRS durations (from 100 to 144 msec) with delta waves resembling the WPW pattern"
+    },
+    "status": {
+     "value": "observed",
+     "span": "gradually wider QRS durations (from 100 to 144 msec) with delta waves resembling the WPW pattern"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "gradually wider QRS durations (from 100 to 144 msec) with delta waves resembling the WPW pattern"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "fQRS",
+     "span": [
+      "The ECG also exhibited fQRS in the V3 lead and in additional limb leads (V3-V5",
+      "ECG indicated intraventricular block with fQRS in limb leads (V3-V6) and chest leads (I, aVL"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The ECG also exhibited fQRS in the V3 lead and in additional limb leads (V3-V5",
+      "ECG indicated intraventricular block with fQRS in limb leads (V3-V6) and chest leads (I, aVL"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "The ECG also exhibited fQRS in the V3 lead and in additional limb leads (V3-V5",
+      "ECG indicated intraventricular block with fQRS in limb leads (V3-V6) and chest leads (I, aVL"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "increased thickness of the basal IVS",
+     "span": [
+      "Echocardiography exhibited an increased thickness of the basal IVS (from 14 to 37 mm)",
+      "The thickness of basal IVS had increased to 47 mm"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Echocardiography exhibited an increased thickness of the basal IVS (from 14 to 37 mm)",
+      "The thickness of basal IVS had increased to 47 mm"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Echocardiography exhibited an increased thickness of the basal IVS (from 14 to 37 mm)",
+      "The thickness of basal IVS had increased to 47 mm"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "from 14 to 37 mm; increased to 47 mm",
+     "span": [
+      "increased thickness of the basal IVS (from 14 to 37 mm)",
+      "The thickness of basal IVS had increased to 47 mm"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "increased thickness of the basal LVAW",
+     "span": "basal LVAW (from 16 to 39 mm"
+    },
+    "status": {
+     "value": "observed",
+     "span": "basal LVAW (from 16 to 39 mm"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "basal LVAW (from 16 to 39 mm"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "from 16 to 39 mm",
+     "span": "basal LVAW (from 16 to 39 mm"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "damaged diastolic function",
+     "span": [
+      "damaged diastolic function (E/e' from 15.4 to 21.0)",
+      "damaged E/e' (26.0)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "damaged diastolic function (E/e' from 15.4 to 21.0)",
+      "damaged E/e' (26.0)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "damaged diastolic function (E/e' from 15.4 to 21.0)",
+      "damaged E/e' (26.0)"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "E/e' from 15.4 to 21.0; E/e' (26.0)",
+     "span": [
+      "damaged diastolic function (E/e' from 15.4 to 21.0)",
+      "damaged E/e' (26.0)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "palpitations",
+     "span": "the patient had palpitations and chest tightness after eating rich food or overeating"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient had palpitations and chest tightness after eating rich food or overeating"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient had palpitations and chest tightness after eating rich food or overeating"
+    },
+    "onset_original_text": {
+     "value": "In Jan. 2018",
+     "span": "In Jan. 2018, the patient had palpitations"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "after eating rich food or overeating",
+     "span": "after eating rich food or overeating"
+    },
+    "hpo_label_candidate": {
+     "value": "Palpitations",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001962",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "intraventricular block",
+     "span": "ECG indicated intraventricular block with fQRS"
+    },
+    "status": {
+     "value": "observed",
+     "span": "ECG indicated intraventricular block with fQRS"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "ECG indicated intraventricular block with fQRS"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "LVOT obstruction (LVOTO)",
+     "span": "along with LVOT obstruction (LVOTO) with a gradient of 20 mmHg"
+    },
+    "status": {
+     "value": "observed",
+     "span": "along with LVOT obstruction (LVOTO) with a gradient of 20 mmHg"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "along with LVOT obstruction (LVOTO) with a gradient of 20 mmHg"
+    },
+    "onset_original_text": {
+     "value": "In Jan. 2018",
+     "span": "In Jan. 2018"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "gradient of 20 mmHg",
+     "span": "LVOT obstruction (LVOTO) with a gradient of 20 mmHg"
+    },
+    "hpo_label_candidate": {
+     "value": "Left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "feature_text_as_stated": {
+     "value": "arrhythmia",
+     "span": "| Arrhythmia | Normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Arrhythmia | Normal"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arrhythmia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011675",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "arrhythmia",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arrhythmia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011675",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "feature_text_as_stated": {
+     "value": "arrhythmia",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW | Normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW | Normal"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW | Normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arrhythmia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011675",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "Second-degree AV block",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Second degree atrioventricular block",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "WPW",
+     "span": [
+      "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW",
+      "WPW, Wolff-Parkinson-White syndrome"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW",
+      "WPW, Wolff-Parkinson-White syndrome"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW",
+      "WPW, Wolff-Parkinson-White syndrome"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Wolff-Parkinson-White syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "feature_text_as_stated": {
+     "value": "WPW",
+     "span": [
+      "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW",
+      "WPW, Wolff-Parkinson-White syndrome"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW",
+      "WPW, Wolff-Parkinson-White syndrome"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW",
+      "WPW, Wolff-Parkinson-White syndrome"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Wolff-Parkinson-White syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "feature_text_as_stated": {
+     "value": "Premature ventricular contraction",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW | Normal | Premature ventricular contraction"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW | Normal | Premature ventricular contraction"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW | Normal | Premature ventricular contraction"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Premature ventricular contraction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "Skeletal myopathy",
+     "span": "| Skeletal myopathy | ^b | ^b | ^b | Yes"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Skeletal myopathy | ^b | ^b | ^b | Yes"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Skeletal myopathy | ^b | ^b | ^b | Yes"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003198",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "feature_text_as_stated": {
+     "value": "head hemangioma",
+     "span": [
+      "was diagnosed incidentally when he was in the hospital to cure a head hemangioma",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "was diagnosed incidentally when he was in the hospital to cure a head hemangioma",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "was diagnosed incidentally when he was in the hospital to cure a head hemangioma",
+      "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hemangioma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001028",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "feature_text_as_stated": {
+     "value": "SAM",
+     "span": [
+      "| SAM | - | + | - | - | +",
+      "SAM, systolic anterior motion"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| SAM | - | + | - | - | +",
+      "SAM, systolic anterior motion"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| SAM | - | + | - | - | +",
+      "SAM, systolic anterior motion"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "feature_text_as_stated": {
+     "value": "Fatigue",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Fatigue",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012378",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "feature_text_as_stated": {
+     "value": "chest tightness",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "feature_text_as_stated": {
+     "value": "breathlessness",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Clinical presentation | Chest tightness | Tachypnea | Chest pain, troponin | None | Angeioma | None | Fatigue, chest tightness, breathlessness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Dyspnea",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002094",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "feature_text_as_stated": {
+     "value": "NYHA class III",
+     "span": "| NYHA class | I | I | I | I | I | I | III"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| NYHA class | I | I | I | I | I | I | III"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| NYHA class | I | I | I | I | I | I | III"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "ocular manifestation",
+     "span": "| Ocular manifestation | ^b | ^b | No"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Ocular manifestation | ^b | ^b | No"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Ocular manifestation | ^b | ^b | No"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the eye",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000478",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "feature_text_as_stated": {
+     "value": "cognitive impairment",
+     "span": "| Cognitive impairment | No"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Cognitive impairment | No"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Cognitive impairment | No"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cognitive impairment",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100543",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "cognitive impairment",
+     "span": "| Cognitive impairment | No | ^b | No"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Cognitive impairment | No | ^b | No"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Cognitive impairment | No | ^b | No"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cognitive impairment",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100543",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "feature_text_as_stated": {
+     "value": "cognitive impairment",
+     "span": "| Cognitive impairment | No | ^b | No | No"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "| Cognitive impairment | No | ^b | No | No"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Cognitive impairment | No | ^b | No | No"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cognitive impairment",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100543",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F1 III-9",
+     "span": "Family F1 III-9"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "had LVH and LVOTO with systolic anterior motion"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "had LVH and LVOTO with systolic anterior motion"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "had LVH and LVOTO with systolic anterior motion"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "had LVH and LVOTO with systolic anterior motion"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F2 III-2",
+     "span": "Family F2 III-2"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Magnetic resonance imaging assessment confirmed massive LV hypertrophy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Magnetic resonance imaging assessment confirmed massive LV hypertrophy"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "along with LVOT obstruction (LVOTO) with a gradient of 20 mmHg"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "along with LVOT obstruction (LVOTO) with a gradient of 20 mmHg"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Late gadolinium enhancement revealed focal changes in the thickened subendocardial IVS and diffused abnormal enhancement in the subendocardial anterior and lateral wall"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Late gadolinium enhancement revealed focal changes in the thickened subendocardial IVS and diffused abnormal enhancement in the subendocardial anterior and lateral wall"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "gradually shortening PR intervals (from 134 to 104 msec)",
+      "with delta waves resembling the WPW pattern"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "gradually shortening PR intervals (from 134 to 104 msec)",
+      "with delta waves resembling the WPW pattern"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "hepatic lesions [alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l",
+      "increased levels of transaminases"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "hepatic lesions [alanine aminotransferase (ALT), 246 IU/; aspartate aminotransferase (AST), 241 IU/l",
+      "increased levels of transaminases"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F3 III-3",
+     "span": "Family F3 III-3"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Skeletal myopathy | ^b | ^b | ^b | Yes"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Skeletal myopathy | ^b | ^b | ^b | Yes"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F4 III-3",
+     "span": "Family F4 III-3"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Arrhythmia | Normal | Sinus tachycardia | Normal | Second-degree AV block and WPW | WPW"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F5 III-1",
+     "span": "Family F5 III-1"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F6 III-2",
+     "span": "Family F6 III-2"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "All patients had an HCM phenotype on presentation"
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "All patients had an HCM phenotype on presentation"
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "Family F7 III-8",
+     "span": "Family F7 III-8"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "33680117",
+     "span": "PMID: 33680117"
+    },
+    "individual_label_in_paper": {
+     "value": "father of Family F2 III-2",
+     "span": "in the proband's father, who was 36 years old, the disease was not as severe"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

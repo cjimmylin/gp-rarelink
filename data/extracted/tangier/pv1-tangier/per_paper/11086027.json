@@ -1,0 +1,8757 @@
+{
+ "pmid": "11086027",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Cohort study of ABCA1 heterozygotes and TD patients whose Table 3 lists individual carriers by label with their mutation and vascular disease, e.g. \"| TD1-363                   | C1477R              | 30            | MI (51)\".",
+ "method_note": "Cohort of 77 ABCA1 heterozygotes from 11 families plus 5 TD patients and 156 unaffected family members; only Table 3 gives individual-level data, so rows are the 14 people in Table 3 (the TD proband TD1, 8 heterozygotes, and 5 unaffected family members recorded as tested-negative relatives, mutation 'none', who get no variant rows). Table 3 was transcribed by a short Python script that copies cell text from the Markdown; I checked its output against the table. Family labels are taken from the family prefix of each individual label (e.g. FHA5-215 -> FHA5), matching the family names in Table 2. Table 3 Exon column (e.g. 30, intron 25, 22, 41, 48) has no schema field and is not recorded. Variant notation is legacy (no c./p.); protein-style strings are put in protein_hgvs_as_stated as printed; 'ivs25+1GfiC' is printed with a garbled arrow ('fi') and kept as printed. TD1 carries C1477R and ivs25+1GfiC; zygosity left not reported (paper only says 'Patients with mutations on both alleles'). TD4-201's variant is 'unidentified' (TD4 second mutation not found; heterozygosity assigned by haplotype), so the variant row has variant_original_string 'not reported' and zygosity not reported. Heterozygous zygosity for the other 7 carriers comes from the Table 3 group header 'ABCA1 heterozygotes'. Only M1091T gets a stated variant type (missense) and a functional statement; other variant classes were described only generally (severe vs missense) and are not reported. FHA3-301 CAD is from the Methods sentence that FHA2-301 and FHA3-301 were referred on the basis of CAD; Table 3 lists FHA3-301 only with PVD (<54). PVD and CVA were recorded as features but not mapped to the non-coronary atherosclerotic checklist item. AP (angina) counted as CAD per the text ('CAD was manifest as angina in two cases'); TIA not counted as CAD. '-' cells in Table 3 are undefined and treated as not reported. Smoking and BMI risk factors were not recorded as phenotypes. Group means (HDL-C, apoAI, TG, LDL in Tables 1, 2 and 4) are not individual-level and were not assigned to anyone. The sentence 'Patients with mutations on both alleles manifest with splenomegaly alone or in association with CAD (TD1; data not shown)' was judged too ambiguous to mark splenomegaly for TD1. Possible inconsistencies in the paper: the text says heterozygotes had 'myocardial infarctions (five, one fatal)' but Table 3 lists MI for four heterozygotes; the text says CAD in unaffected individuals was 'angina in two cases and ... a transient ischemic attack', but Table 3 also lists MI for two unaffected members (FHA2-315, TD1-205). n_patients_reported is the 77 heterozygotes as stated; the 5 TD patients are reported separately in Table 1.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "first_author": {
+     "value": "Clee",
+     "span": "Clee, S.M.; Kastelein"
+    },
+    "year": {
+     "value": 2000,
+     "span": "Publication date 2000"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "Our cohort comprised 77 individuals from 11 families identified as heterozygous for mutations in the ABCA1 gene"
+    },
+    "n_patients_reported": {
+     "value": 77,
+     "span": "have examined the phenotypes of 77 individuals heterozygous for mutations in the ABCA1 gene"
+    },
+    "cohort_size_as_stated": {
+     "value": 77,
+     "span": "Our cohort comprised 77 individuals from 11 families"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": "Subjects heterozygous for mutations in the ABCA1 gene were individuals identified from seven TD and FHA families described previously (10, 23)"
+    },
+    "prior_report_citation": {
+     "value": "(10, 23)",
+     "span": "Subjects heterozygous for mutations in the ABCA1 gene were individuals identified from seven TD and FHA families described previously (10, 23)"
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "family_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "is_proband": {
+     "value": true,
+     "span": "| TD proband"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "TD",
+     "span": "| TD proband"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "clinical features of TD; mutations identified by genomic sequencing of probands",
+     "span": [
+      "Families with TD have been ascertained on the basis of the clinical features of TD",
+      "mutations identified by genomic sequencing of probands from each family"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "family_label_in_paper": {
+     "value": "TD4",
+     "span": "| TD4-201"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "second mutation not identified in TD4; individuals bearing the affected haplotype (marker adjacent to ABCA1 cosegregating with low HDL) considered heterozygotes",
+     "span": [
+      "The second mutation has not been identified in one of the TD kindreds (TD4); however, a marker immediately adjacent to ABCA1 cosegregates with the low HDL phenotype (data not shown)",
+      "Individuals bearing the affected haplotype were considered heterozygotes"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "family_label_in_paper": {
+     "value": "FHA5",
+     "span": "| FHA5-215"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "mutation identified in the family proband by genomic sequencing, confirmed in family members by RFLPs",
+     "span": [
+      "The presence or absence of mutations identified by genomic sequencing of probands from each family was subsequently confirmed in family members by RFLPs, to define heterozygous and unaffected individuals, respectively"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "family_label_in_paper": {
+     "value": "FHA5",
+     "span": "| FHA5-303"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "mutation identified in the family proband by genomic sequencing, confirmed in family members by RFLPs",
+     "span": [
+      "The presence or absence of mutations identified by genomic sequencing of probands from each family was subsequently confirmed in family members by RFLPs, to define heterozygous and unaffected individuals, respectively"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "family_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1-363"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "mutation identified in the family proband by genomic sequencing, confirmed in family members by RFLPs",
+     "span": [
+      "The presence or absence of mutations identified by genomic sequencing of probands from each family was subsequently confirmed in family members by RFLPs, to define heterozygous and unaffected individuals, respectively"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "family_label_in_paper": {
+     "value": "FHA3",
+     "span": "| FHA3-301"
+    },
+    "is_proband": {
+     "value": true,
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "FHA",
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genomic sequencing of probands from each family",
+     "span": [
+      "mutations identified by genomic sequencing of probands from each family"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "family_label_in_paper": {
+     "value": "FHA3",
+     "span": "| FHA3-305"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "mutation identified in the family proband by genomic sequencing, confirmed in family members by RFLPs",
+     "span": [
+      "The presence or absence of mutations identified by genomic sequencing of probands from each family was subsequently confirmed in family members by RFLPs, to define heterozygous and unaffected individuals, respectively"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "family_label_in_paper": {
+     "value": "FHA6",
+     "span": "| FHA6-201"
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "deceased_age_iso8601": {
+     "value": "P58Y",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "cause_of_death": {
+     "value": "fatal MI",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "mutation identified in the family proband by genomic sequencing, confirmed in family members by RFLPs",
+     "span": [
+      "The presence or absence of mutations identified by genomic sequencing of probands from each family was subsequently confirmed in family members by RFLPs, to define heterozygous and unaffected individuals, respectively"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "family_label_in_paper": {
+     "value": "FHA2",
+     "span": "| FHA2-301"
+    },
+    "is_proband": {
+     "value": true,
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "PTCA (47), femoral angioplasty (48), CABG (<50)",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50)"
+    },
+    "disease_label_as_stated": {
+     "value": "FHA",
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genomic sequencing of probands from each family",
+     "span": [
+      "mutations identified by genomic sequencing of probands from each family"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "family_label_in_paper": {
+     "value": "FHA5",
+     "span": "| FHA5-212"
+    },
+    "is_proband": {
+     "value": false,
+     "span": "| FHA5-212                  | none"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "family_label_in_paper": {
+     "value": "TD3",
+     "span": "| TD3-109"
+    },
+    "is_proband": {
+     "value": false,
+     "span": "| TD3-109                   | none"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "family_label_in_paper": {
+     "value": "FHA2",
+     "span": "| FHA2-315"
+    },
+    "is_proband": {
+     "value": false,
+     "span": "| FHA2-315                  | none"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "family_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1-205"
+    },
+    "is_proband": {
+     "value": false,
+     "span": "| TD1-205                   | none"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "family_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1-216"
+    },
+    "is_proband": {
+     "value": false,
+     "span": "| TD1-216                   | none"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "We have now identified 13 ABCA1mutations in 11 families"
+    },
+    "variant_original_string": {
+     "value": "C1477R",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "C1477R",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "We have now identified 13 ABCA1mutations in 11 families"
+    },
+    "variant_original_string": {
+     "value": "ivs25+1GfiC",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "variant_original_string": {
+     "value": "M1091T",
+     "span": "| FHA5-215                  | M1091T"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "M1091T",
+     "span": "| FHA5-215                  | M1091T"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "the M1091T missense mutation is the most severe mutation"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "the M1091T missense mutation is the most severe mutation both by effects on efflux and HDL-C levels",
+     "span": "the M1091T missense mutation is the most severe mutation both by effects on efflux and HDL-C levels"
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "variant_original_string": {
+     "value": "M1091T",
+     "span": "| FHA5-303                  | M1091T"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "M1091T",
+     "span": "| FHA5-303                  | M1091T"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "the M1091T missense mutation is the most severe mutation"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "the M1091T missense mutation is the most severe mutation both by effects on efflux and HDL-C levels",
+     "span": "the M1091T missense mutation is the most severe mutation both by effects on efflux and HDL-C levels"
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "variant_original_string": {
+     "value": "C1477R",
+     "span": "| TD1-363                   | C1477R"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "C1477R",
+     "span": "| TD1-363                   | C1477R"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "variant_original_string": {
+     "value": "Del E,D 1893,94",
+     "span": "| FHA3-301                  | Del E,D 1893,94"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "Del E,D 1893,94",
+     "span": "| FHA3-301                  | Del E,D 1893,94"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "variant_original_string": {
+     "value": "Del E,D 1893,94",
+     "span": "| FHA3-305                  | Del E,D 1893,94"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "Del E,D 1893,94",
+     "span": "| FHA3-305                  | Del E,D 1893,94"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "variant_original_string": {
+     "value": "P2150L",
+     "span": "| FHA6-201                  | P2150L"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "P2150L",
+     "span": "| FHA6-201                  | P2150L"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ABCA1",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "variant_original_string": {
+     "value": "R2144X",
+     "span": "| FHA2-301                  | R2144X"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "R2144X",
+     "span": "| FHA2-301                  | R2144X"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "| ABCA1 heterozygotes"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "feature_text_as_stated": {
+     "value": "CHD",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC | 30, intron 25 | CHD (38)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC | 30, intron 25 | CHD (38)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC | 30, intron 25 | CHD (38)"
+    },
+    "onset_original_text": {
+     "value": "38",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC | 30, intron 25 | CHD (38)"
+    },
+    "onset_iso8601": {
+     "value": "P38Y",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC | 30, intron 25 | CHD (38)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Coronary artery atherosclerosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001677",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "feature_text_as_stated": {
+     "value": "MI",
+     "span": "| TD4-201                   | unidentified        | -             | MI (<58)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD4-201                   | unidentified        | -             | MI (<58)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD4-201                   | unidentified        | -             | MI (<58)"
+    },
+    "onset_original_text": {
+     "value": "<58",
+     "span": "| TD4-201                   | unidentified        | -             | MI (<58)"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myocardial infarction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001658",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "feature_text_as_stated": {
+     "value": "MI",
+     "span": "| FHA5-215                  | M1091T              | 22            | MI (61)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA5-215                  | M1091T              | 22            | MI (61)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA5-215                  | M1091T              | 22            | MI (61)"
+    },
+    "onset_original_text": {
+     "value": "61",
+     "span": "| FHA5-215                  | M1091T              | 22            | MI (61)"
+    },
+    "onset_iso8601": {
+     "value": "P61Y",
+     "span": "| FHA5-215                  | M1091T              | 22            | MI (61)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myocardial infarction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001658",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "feature_text_as_stated": {
+     "value": "CHD",
+     "span": "| FHA5-303                  | M1091T              | 22            | CHD (<45)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA5-303                  | M1091T              | 22            | CHD (<45)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA5-303                  | M1091T              | 22            | CHD (<45)"
+    },
+    "onset_original_text": {
+     "value": "<45",
+     "span": "| FHA5-303                  | M1091T              | 22            | CHD (<45)"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Coronary artery atherosclerosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001677",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "feature_text_as_stated": {
+     "value": "MI",
+     "span": "| TD1-363                   | C1477R              | 30            | MI (51)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD1-363                   | C1477R              | 30            | MI (51)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD1-363                   | C1477R              | 30            | MI (51)"
+    },
+    "onset_original_text": {
+     "value": "51",
+     "span": "| TD1-363                   | C1477R              | 30            | MI (51)"
+    },
+    "onset_iso8601": {
+     "value": "P51Y",
+     "span": "| TD1-363                   | C1477R              | 30            | MI (51)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myocardial infarction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001658",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "feature_text_as_stated": {
+     "value": "PVD",
+     "span": "| FHA3-301                  | Del E,D 1893,94     | 41            | PVD (<54)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA3-301                  | Del E,D 1893,94     | 41            | PVD (<54)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA3-301                  | Del E,D 1893,94     | 41            | PVD (<54)"
+    },
+    "onset_original_text": {
+     "value": "<54",
+     "span": "| FHA3-301                  | Del E,D 1893,94     | 41            | PVD (<54)"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "feature_text_as_stated": {
+     "value": "CHD",
+     "span": "| FHA3-305                  | Del E,D 1893,94     | 41            | CHD (44)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA3-305                  | Del E,D 1893,94     | 41            | CHD (44)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA3-305                  | Del E,D 1893,94     | 41            | CHD (44)"
+    },
+    "onset_original_text": {
+     "value": "44",
+     "span": "| FHA3-305                  | Del E,D 1893,94     | 41            | CHD (44)"
+    },
+    "onset_iso8601": {
+     "value": "P44Y",
+     "span": "| FHA3-305                  | Del E,D 1893,94     | 41            | CHD (44)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Coronary artery atherosclerosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001677",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "feature_text_as_stated": {
+     "value": "CVA",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "onset_original_text": {
+     "value": "36",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "onset_iso8601": {
+     "value": "P36Y",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Stroke",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001297",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "feature_text_as_stated": {
+     "value": "MI",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "onset_original_text": {
+     "value": "58",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "onset_iso8601": {
+     "value": "P58Y",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "severity_or_detail": {
+     "value": "fatal",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "hpo_label_candidate": {
+     "value": "Myocardial infarction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001658",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "feature_text_as_stated": {
+     "value": "CAD",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50)"
+    },
+    "onset_original_text": {
+     "value": "42",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50)"
+    },
+    "onset_iso8601": {
+     "value": "P42Y",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Coronary artery atherosclerosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001677",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "feature_text_as_stated": {
+     "value": "hypertensive",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50) | hypertensive"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50) | hypertensive"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50) | hypertensive"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000822",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "feature_text_as_stated": {
+     "value": "AP",
+     "span": "| FHA5-212                  | none                | -             | AP (62)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA5-212                  | none                | -             | AP (62)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA5-212                  | none                | -             | AP (62)"
+    },
+    "onset_original_text": {
+     "value": "62",
+     "span": "| FHA5-212                  | none                | -             | AP (62)"
+    },
+    "onset_iso8601": {
+     "value": "P62Y",
+     "span": "| FHA5-212                  | none                | -             | AP (62)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Angina pectoris",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001681",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "feature_text_as_stated": {
+     "value": "TIA",
+     "span": "| TD3-109                   | none                | -             | TIA (80)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD3-109                   | none                | -             | TIA (80)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD3-109                   | none                | -             | TIA (80)"
+    },
+    "onset_original_text": {
+     "value": "80",
+     "span": "| TD3-109                   | none                | -             | TIA (80)"
+    },
+    "onset_iso8601": {
+     "value": "P80Y",
+     "span": "| TD3-109                   | none                | -             | TIA (80)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Transient ischemic attack",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002326",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "feature_text_as_stated": {
+     "value": "diabetic",
+     "span": "| TD3-109                   | none                | -             | TIA (80)                                                  | diabetic"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD3-109                   | none                | -             | TIA (80)                                                  | diabetic"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD3-109                   | none                | -             | TIA (80)                                                  | diabetic"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Diabetes mellitus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000819",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "feature_text_as_stated": {
+     "value": "MI",
+     "span": "| FHA2-315                  | none                | -             | MI (51)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA2-315                  | none                | -             | MI (51)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA2-315                  | none                | -             | MI (51)"
+    },
+    "onset_original_text": {
+     "value": "51",
+     "span": "| FHA2-315                  | none                | -             | MI (51)"
+    },
+    "onset_iso8601": {
+     "value": "P51Y",
+     "span": "| FHA2-315                  | none                | -             | MI (51)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myocardial infarction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001658",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "feature_text_as_stated": {
+     "value": "MI",
+     "span": "| TD1-205                   | none                | -             | MI (62)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD1-205                   | none                | -             | MI (62)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD1-205                   | none                | -             | MI (62)"
+    },
+    "onset_original_text": {
+     "value": "62",
+     "span": "| TD1-205                   | none                | -             | MI (62)"
+    },
+    "onset_iso8601": {
+     "value": "P62Y",
+     "span": "| TD1-205                   | none                | -             | MI (62)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Myocardial infarction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001658",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "feature_text_as_stated": {
+     "value": "AP",
+     "span": "| TD1-216                   | none                | -             | AP (47)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD1-216                   | none                | -             | AP (47)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD1-216                   | none                | -             | AP (47)"
+    },
+    "onset_original_text": {
+     "value": "47",
+     "span": "| TD1-216                   | none                | -             | AP (47)"
+    },
+    "onset_iso8601": {
+     "value": "P47Y",
+     "span": "| TD1-216                   | none                | -             | AP (47)"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Angina pectoris",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001681",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "feature_text_as_stated": {
+     "value": "CAD",
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Coronary artery atherosclerosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001677",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC | 30, intron 25 | CHD (38)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD1                       | C1477R, ivs25+1GfiC | 30, intron 25 | CHD (38)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1",
+     "span": "| TD1"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD4-201                   | unidentified        | -             | MI (<58)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD4-201                   | unidentified        | -             | MI (<58)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD4-201",
+     "span": "| TD4-201"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA5-215                  | M1091T              | 22            | MI (61)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA5-215                  | M1091T              | 22            | MI (61)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-215",
+     "span": "| FHA5-215"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA5-303                  | M1091T              | 22            | CHD (<45)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA5-303                  | M1091T              | 22            | CHD (<45)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-303",
+     "span": "| FHA5-303"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD1-363                   | C1477R              | 30            | MI (51)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD1-363                   | C1477R              | 30            | MI (51)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-363",
+     "span": "| TD1-363"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Two of the six FHA probands (FHA2-301 and FHA3-301) were referred to the clinic on the basis of CAD"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-301",
+     "span": "| FHA3-301"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA3-305                  | Del E,D 1893,94     | 41            | CHD (44)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA3-305                  | Del E,D 1893,94     | 41            | CHD (44)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA3-305",
+     "span": "| FHA3-305"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA6-201                  | P2150L              | 48            | CVA (36), fatal MI (58)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA6-201",
+     "span": "| FHA6-201"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA2-301                  | R2144X              | 48            | CAD (42), PTCA (47), femoral angioplasty (48), CABG (<50)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-301",
+     "span": "| FHA2-301"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA5-212                  | none                | -             | AP (62)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA5-212                  | none                | -             | AP (62)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA5-212",
+     "span": "| FHA5-212"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD3-109                   | none                | -             | TIA (80)                                                  | diabetic"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD3-109                   | none                | -             | TIA (80)                                                  | diabetic"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD3-109",
+     "span": "| TD3-109"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| FHA2-315                  | none                | -             | MI (51)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| FHA2-315                  | none                | -             | MI (51)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "FHA2-315",
+     "span": "| FHA2-315"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD1-205                   | none                | -             | MI (62)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD1-205                   | none                | -             | MI (62)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-205",
+     "span": "| TD1-205"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "low HDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein A-I",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "orange-colored or enlarged tonsils",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "recurrent tonsillitis or tonsillectomy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "reticulocytosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "skin lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "intestinal mucosal lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "peripheral neuropathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "reduced tendon reflexes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "reduced deep sensation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "coronary artery disease",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| TD1-216                   | none                | -             | AP (47)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| TD1-216                   | none                | -             | AP (47)"
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "non-coronary atherosclerotic arterial disease (e.g. brachiocephalic or iliac stenosis)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "glucose intolerance or impaired insulin secretion",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "low LDL cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "11086027",
+     "span": "PMID: 11086027"
+    },
+    "individual_label_in_paper": {
+     "value": "TD1-216",
+     "span": "| TD1-216"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

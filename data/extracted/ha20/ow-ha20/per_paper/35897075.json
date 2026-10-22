@@ -1,0 +1,723 @@
+{
+  "pmid": "35897075",
+  "instructions_version": "extract_v6",
+  "reports_individuals_with_tnfaip3_variant": true,
+  "relevance_note": "One in-scope child (P6) has a 6q23.3-q24.1 deletion that removes TNFAIP3 (\"The TNFAIP3 gene was involved in the deleted fragment in P6\"), and the literature table includes a previously published patient with a 6q23.2-q24.3 deletion described in reference [18] as \"TNFAIP3 haploinsufficiency\".",
+  "method_note": "Read only the paper, the schema (schema_ha20_v5.json), the rules and extract_v6.md; no script was used, every span was copied by hand from the Markdown and re-checked. Scope (D-22): the paper is a FUO/chromosomal-abnormality cohort, so only people with a TNFAIP3 involvement are in scope - P6 (3.576 Mb deletion at 6q23.3-q24.1 including TNFAIP3) and the single literature-review patient from reference [18] (6q23.2-q24.3 del; reference title states \"TNFAIP3 haploinsufficiency is the cause of autoinflammatory manifestations in a patient with a deletion of 13Mb on chromosome 6\"). The other 7 cohort patients (P1-P5, P7, P8) and the other 18 literature-review patients have chromosomal abnormalities involving other genes and get no rows; they are counted in publications.cohort_size_as_stated (145). Table 1 and Table 2 have patients as columns in the order P1-P8, with a Reference range column; Table 3 has patients as rows, so labels follow rule 3 (\"Table 3 row 1\" is the first data row, 6q23.2-q24.3 del). Symbols: the table notes define only NA/ND and the abbreviations; \"-\"/\"-\" is not defined as absent, so those cells were recorded as not reported, while \"+\" was read as present (Table 3 has no legend for \"+\"). Table 3 has stacked cells in the first column (the \"Trisomy 8\" and \"15q del\" cells are blank in later rows) and one cell of Table 1 reads \"Oral aphthousperianal abscess\" for P4, while the text attributes \"perianal, colon and intestinal ulcers\" to P5: that attribution is ambiguous, so no perianal-abscess feature was emitted for anyone (P4/P5 are out of scope in any case). publications.n_patients_reported is null because the authors never state a number of TNFAIP3-variant patients; cites_prior_report_of_same_patients is false with span null because no such statement exists (the literature-review patients are other authors' patients, recorded in source_reference_in_review). genomic_coordinates_as_stated is null for both variants because only cytobands are printed. The parents of the cohort patients (\"Their parents had no FUO, and no chromosomal abnormalities were detected.\"; Fig. 4 legend \"Father (orange), mother (gray), P6 (blue)\") are described only as a group and were not given rows; this is the main judgement call. HPO identifiers were left null (labels only).",
+  "tables": {
+    "publications": [
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "first_author": {"value": "Sun", "span": "Sun Bijun"},
+        "year": {"value": 2022, "span": "Journal: Orphanet Journal of Rare Diseases (2022)"},
+        "study_type": {"value": "case series/cohort", "span": "One hundred forty-five patients with FUO or recurrent fever were enrolled in our cohort, and trio-WES was performed."},
+        "n_patients_reported": {"value": null, "span": null},
+        "cohort_size_as_stated": {"value": 145, "span": "One hundred forty-five patients with FUO or recurrent fever were enrolled in our cohort"},
+        "cites_prior_report_of_same_patients": {"value": false, "span": null},
+        "prior_report_citation": {"value": "not reported", "span": null}
+      }
+    ],
+    "individuals": [
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "family_label_in_paper": {"value": "not reported", "span": null},
+        "is_proband": {"value": false, "span": null},
+        "sex": {"value": "female", "span": "| Gender | F | F | M | F | F | F |"},
+        "age_at_onset_original_text": {"value": "2 m", "span": "| Age at fever presentation | 10 m | 36 m | 8 m | 10 m | 24 m | 2 m |"},
+        "age_at_onset_iso8601": {"value": "P2M", "span": "| Age at fever presentation | 10 m | 36 m | 8 m | 10 m | 24 m | 2 m |"},
+        "age_at_last_evaluation_original_text": {"value": "not reported", "span": null},
+        "age_at_last_evaluation_iso8601": {"value": null, "span": null},
+        "age_at_diagnosis_original_text": {"value": "45 m", "span": "| Age at diagnosis | 56 m | 67 m | 21 m | 44 m | 60 m | 45 m |"},
+        "age_at_diagnosis_iso8601": {"value": "P45M", "span": "| Age at diagnosis | 56 m | 67 m | 21 m | 44 m | 60 m | 45 m |"},
+        "ethnicity_or_country": {"value": "China", "span": "patients with FUO who were treated at a single center in China were enrolled"},
+        "consanguinity": {"value": "not reported", "span": null},
+        "vital_status": {"value": "deceased", "span": "Unfortunately, she died of systemic inflammatory response syndrome at the age of 4.5 years."},
+        "deceased_age_iso8601": {"value": "P4Y6M", "span": "Unfortunately, she died of systemic inflammatory response syndrome at the age of 4.5 years."},
+        "cause_of_death": {"value": "systemic inflammatory response syndrome", "span": "Unfortunately, she died of systemic inflammatory response syndrome at the age of 4.5 years."},
+        "treatment_summary": {"value": "Antibiotic, long\u2013term corticosteroids, NSAIDs; prednisone, diclofenac and naproxen", "span": ["| Treatment | Antibiotic, colchicine, bacterial lysates | Antibiotic, temporary corticosteroid, bacterial lysates | Antibiotic, single\u2013dose corticosteroids during attacks | Antibiotic, temporary corticosteroid | Antibiotic, mesalazine, bacterial lysates | Antibiotic, long\u2013term corticosteroids, NSAIDs |", "Although she received prednisone, diclofenac and naproxen treatment, recurrent fever and joint swelling were still intermittent."]},
+        "disease_label_as_stated": {"value": "early-onset s-JIA", "span": "P6 clinically manifested with early-onset s-JIA"},
+        "clinical_diagnosis_basis": {"value": "s-JIA suspected on clinical features; CNV detected by trio-WES and verified with CGH or MLPA", "span": ["Systemic juvenile idiopathic arthritis (s-JIA) was suspected in P6 at the age of 3.6 years based on the presence of fever, rash, lymphadenectasis, hepatosplenomegaly, polyarthritis and a positive (1:100) titer of antinuclear antibody (ANA).", "CNVs were detected using trio-WES in these eight patients and verified with CGH (Fig. 3) or MLPA (Fig. 4c)."]},
+        "source_reference_in_review": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "family_label_in_paper": {"value": "not reported", "span": null},
+        "is_proband": {"value": false, "span": null},
+        "sex": {"value": "male", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M |"},
+        "age_at_onset_original_text": {"value": "< 1y", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M |"},
+        "age_at_onset_iso8601": {"value": null, "span": null},
+        "age_at_last_evaluation_original_text": {"value": "not reported", "span": null},
+        "age_at_last_evaluation_iso8601": {"value": null, "span": null},
+        "age_at_diagnosis_original_text": {"value": "not reported", "span": null},
+        "age_at_diagnosis_iso8601": {"value": null, "span": null},
+        "ethnicity_or_country": {"value": "not reported", "span": null},
+        "consanguinity": {"value": "not reported", "span": null},
+        "vital_status": {"value": "not reported", "span": null},
+        "deceased_age_iso8601": {"value": null, "span": null},
+        "cause_of_death": {"value": "not reported", "span": null},
+        "treatment_summary": {"value": "Methylprednisolone, etanercept", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept |"},
+        "disease_label_as_stated": {"value": "systemic autoinflammatory disease", "span": "One patient with 6q23.2-q24.3 del was previously described to have a systemic autoinflammatory disease characterized by recurrent fever, oral aphthae and perianal ulcers [18]."},
+        "clinical_diagnosis_basis": {"value": "not reported", "span": null},
+        "source_reference_in_review": {"value": "[18]", "span": "One patient with 6q23.2-q24.3 del was previously described to have a systemic autoinflammatory disease characterized by recurrent fever, oral aphthae and perianal ulcers [18]."}
+      }
+    ],
+    "variants": [
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "gene_symbol_as_stated": {"value": "TNFAIP3", "span": "The TNFAIP3 gene was involved in the deleted fragment in P6 (Fig. 4b)."},
+        "variant_original_string": {"value": "6q23.3\u2013q24.1 del", "span": "| Abnormal chromosome and gene | 7q11.23 dup | 3p26.3\u2013p26.1 del;17q12 dup | 22q11.21 del | Trisomy 8 | Trisomy 8; PTPN11: c.1508G > C | 6q23.3\u2013q24.1 del |"},
+        "transcript_as_stated": {"value": "not reported", "span": null},
+        "cdna_hgvs_as_stated": {"value": null, "span": null},
+        "protein_hgvs_as_stated": {"value": null, "span": null},
+        "genomic_coordinates_as_stated": {"value": null, "span": null},
+        "variant_type_as_stated": {"value": "large deletion/CNV", "span": "and a 3.576 Mb deletion at 6q23.3-q24.1 in P6 (Fig. 4a)"},
+        "zygosity": {"value": "heterozygous", "span": "A heterozygous deletion at 6q23.3-q24.1 was detected by the reduced NGS sequence reads in P6."},
+        "inheritance": {"value": "de novo", "span": "and a 3.576 Mb deletion at 6q23.3-q24.1 in P6 (Fig. 4a)"},
+        "parental_testing_statement": {"value": "Parents had no FUO and no chromosomal abnormalities were detected; the 6q23.3-q24.1 deletion in P6 was listed among the de novo CNVs identified.", "span": ["Their parents had no FUO, and no chromosomal abnormalities were detected.", "In patients with inflammatory fever, we identified de novo CNVs: a 7q11.23 duplication in P1; a deletion at 3p26.3-p26.1 and a duplication at 17q12 in P2; a 0.7 Mb deletion at 22q11.21 (20,733,478\u201321,461,788) without involvement of the TBX1 gene in P3; and a 3.576 Mb deletion at 6q23.3-q24.1 in P6 (Fig. 4a)."]},
+        "functional_evidence_statement": {"value": "not reported", "span": null},
+        "pathogenicity_as_stated_by_authors": {"value": "not reported", "span": null},
+        "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "gene_symbol_as_stated": {"value": "TNFAIP3", "span": "[18.] Franco-Jarava C, Wang H, Martin-Nalda A, et al, 2018, TNFAIP3 haploinsufficiency is the cause of autoinflammatory manifestations in a patient with a deletion of 13Mb on chromosome 6, Clin Immunol PMID:29572183"},
+        "variant_original_string": {"value": "6q23.2-q24.3 del", "span": "| 6q23.2-q24.3 del | Inflammatory fever |"},
+        "transcript_as_stated": {"value": "not reported", "span": null},
+        "cdna_hgvs_as_stated": {"value": null, "span": null},
+        "protein_hgvs_as_stated": {"value": null, "span": null},
+        "genomic_coordinates_as_stated": {"value": null, "span": null},
+        "variant_type_as_stated": {"value": "large deletion/CNV", "span": "| 6q23.2-q24.3 del | Inflammatory fever |"},
+        "zygosity": {"value": "not reported", "span": null},
+        "inheritance": {"value": "not reported", "span": null},
+        "parental_testing_statement": {"value": "not reported", "span": null},
+        "functional_evidence_statement": {"value": "not reported", "span": null},
+        "pathogenicity_as_stated_by_authors": {"value": "not reported", "span": null},
+        "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+      }
+    ],
+    "phenotypic_features": [
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "Recurrent fever", "span": "| Fever phenotype | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Recurrent fever |"},
+        "status": {"value": "observed", "span": "| Fever phenotype | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Recurrent fever |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Fever phenotype | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Recurrent fever |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "intermittent fever with a recurrence frequency of 7\u20138 times per year", "span": "while one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "hpo_label_candidate": {"value": "Recurrent fever", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "Arthritis", "span": "| Arthritis | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 | + |"},
+        "status": {"value": "observed", "span": "| Arthritis | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 | + |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Arthritis | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 | + |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "polyarthritis", "span": "Systemic juvenile idiopathic arthritis (s-JIA) was suspected in P6 at the age of 3.6 years based on the presence of fever, rash, lymphadenectasis, hepatosplenomegaly, polyarthritis and a positive (1:100) titer of antinuclear antibody (ANA)."},
+        "hpo_label_candidate": {"value": "Arthritis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "red maculopapules during fever", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."},
+        "status": {"value": "observed", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."},
+        "evidence_basis": {"value": "stated for this individual", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "during fever", "span": "red maculopapules during fever (P6)"},
+        "hpo_label_candidate": {"value": "Skin rash", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "frontal bossing", "span": "| Facial abnormality | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 | frontal bossing |"},
+        "status": {"value": "observed", "span": "| Facial abnormality | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 | frontal bossing |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Facial abnormality | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 | frontal bossing |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Frontal bossing", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "PDA", "span": "| Congenital anomalies | VSD/ASD | \u2013 | \u2013 | flexion deformity of finger | \u2013 | PDA |"},
+        "status": {"value": "observed", "span": "| Congenital anomalies | VSD/ASD | \u2013 | \u2013 | flexion deformity of finger | \u2013 | PDA |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Congenital anomalies | VSD/ASD | \u2013 | \u2013 | flexion deformity of finger | \u2013 | PDA |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "PDA patent ductus arteriosus", "span": "PDA patent ductus arteriosus"},
+        "hpo_label_candidate": {"value": "Patent ductus arteriosus", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "lymphadenectasis", "span": "Four patients had lymphadenectasis (P3-P6), three of whom had hepatosplenomegaly (P4-P6)."},
+        "status": {"value": "observed", "span": "Four patients had lymphadenectasis (P3-P6), three of whom had hepatosplenomegaly (P4-P6)."},
+        "evidence_basis": {"value": "stated for this individual", "span": "Four patients had lymphadenectasis (P3-P6), three of whom had hepatosplenomegaly (P4-P6)."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Lymphadenopathy", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "hepatosplenomegaly", "span": "Four patients had lymphadenectasis (P3-P6), three of whom had hepatosplenomegaly (P4-P6)."},
+        "status": {"value": "observed", "span": "Four patients had lymphadenectasis (P3-P6), three of whom had hepatosplenomegaly (P4-P6)."},
+        "evidence_basis": {"value": "stated for this individual", "span": "Four patients had lymphadenectasis (P3-P6), three of whom had hepatosplenomegaly (P4-P6)."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Hepatosplenomegaly", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "pancytopenia", "span": "Moreover, P6 was suspected to have hemophagocytic lymphohistiocytosis (HLH) at the age of 2 years because of pancytopenia, and her blood cell counts increased after corticosteroid therapy."},
+        "status": {"value": "observed", "span": "Moreover, P6 was suspected to have hemophagocytic lymphohistiocytosis (HLH) at the age of 2 years because of pancytopenia, and her blood cell counts increased after corticosteroid therapy."},
+        "evidence_basis": {"value": "stated for this individual", "span": "Moreover, P6 was suspected to have hemophagocytic lymphohistiocytosis (HLH) at the age of 2 years because of pancytopenia, and her blood cell counts increased after corticosteroid therapy."},
+        "onset_original_text": {"value": "at the age of 2 years", "span": "Moreover, P6 was suspected to have hemophagocytic lymphohistiocytosis (HLH) at the age of 2 years because of pancytopenia, and her blood cell counts increased after corticosteroid therapy."},
+        "onset_iso8601": {"value": "P2Y", "span": "Moreover, P6 was suspected to have hemophagocytic lymphohistiocytosis (HLH) at the age of 2 years because of pancytopenia, and her blood cell counts increased after corticosteroid therapy."},
+        "severity_or_detail": {"value": "her blood cell counts increased after corticosteroid therapy", "span": "her blood cell counts increased after corticosteroid therapy"},
+        "hpo_label_candidate": {"value": "Pancytopenia", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "HLH", "span": "| Blood | \u2013 | \u2013 | \u2013 | \u2013 | anemia, thrombocytopenia | HLH |"},
+        "status": {"value": "observed", "span": "| Blood | \u2013 | \u2013 | \u2013 | \u2013 | anemia, thrombocytopenia | HLH |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Blood | \u2013 | \u2013 | \u2013 | \u2013 | anemia, thrombocytopenia | HLH |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "suspected; HLH hemophagocytic lymphohistiocytosis", "span": "HLH hemophagocytic lymphohistiocytosis"},
+        "hpo_label_candidate": {"value": "Hemophagocytic lymphohistiocytosis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "developmental delay", "span": "In addition to the inflammatory manifestations, four patients (P1-P3 and P6) had developmental delay in motor or language, and two of them (P3 and P6) also presented growth retardation."},
+        "status": {"value": "observed", "span": "In addition to the inflammatory manifestations, four patients (P1-P3 and P6) had developmental delay in motor or language, and two of them (P3 and P6) also presented growth retardation."},
+        "evidence_basis": {"value": "stated for this individual", "span": "In addition to the inflammatory manifestations, four patients (P1-P3 and P6) had developmental delay in motor or language, and two of them (P3 and P6) also presented growth retardation."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "in motor or language", "span": "had developmental delay in motor or language"},
+        "hpo_label_candidate": {"value": "Global developmental delay", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "growth retardation", "span": "In addition to the inflammatory manifestations, four patients (P1-P3 and P6) had developmental delay in motor or language, and two of them (P3 and P6) also presented growth retardation."},
+        "status": {"value": "observed", "span": "In addition to the inflammatory manifestations, four patients (P1-P3 and P6) had developmental delay in motor or language, and two of them (P3 and P6) also presented growth retardation."},
+        "evidence_basis": {"value": "stated for this individual", "span": "In addition to the inflammatory manifestations, four patients (P1-P3 and P6) had developmental delay in motor or language, and two of them (P3 and P6) also presented growth retardation."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Growth delay", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "Seizures", "span": "| Central nervous system | Tourette syndrome | \u2013 | \u2013 | Seizure | \u2013 | Seizures |"},
+        "status": {"value": "observed", "span": "| Central nervous system | Tourette syndrome | \u2013 | \u2013 | Seizure | \u2013 | Seizures |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Central nervous system | Tourette syndrome | \u2013 | \u2013 | Seizure | \u2013 | Seizures |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Seizure", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "elevated CRP", "span": "| CRP (mg/L) | 87 \u2191 | 16 \u2191 | 27.18 \u2191 | 70 \u2191 | 40 \u2191 | 132 \u2191 |"},
+        "status": {"value": "observed", "span": "| CRP (mg/L) | 87 \u2191 | 16 \u2191 | 27.18 \u2191 | 70 \u2191 | 40 \u2191 | 132 \u2191 |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| CRP (mg/L) | 87 \u2191 | 16 \u2191 | 27.18 \u2191 | 70 \u2191 | 40 \u2191 | 132 \u2191 |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "CRP 132 mg/L (reference range < 8)", "span": "| CRP (mg/L) | 87 \u2191 | 16 \u2191 | 27.18 \u2191 | 70 \u2191 | 40 \u2191 | 132 \u2191 | < 8 | < 0.5 | < 8 |"},
+        "hpo_label_candidate": {"value": "Elevated C-reactive protein", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "elevated ESR", "span": "| ESR (mm/h) | 48 \u2191 | 32 \u2191 | 64 \u2191 | 44 \u2191 | 54 \u2191 | 107 \u2191 |"},
+        "status": {"value": "observed", "span": "| ESR (mm/h) | 48 \u2191 | 32 \u2191 | 64 \u2191 | 44 \u2191 | 54 \u2191 | 107 \u2191 |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| ESR (mm/h) | 48 \u2191 | 32 \u2191 | 64 \u2191 | 44 \u2191 | 54 \u2191 | 107 \u2191 |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "ESR 107 mm/h (reference range 0\u201326)", "span": "| ESR (mm/h) | 48 \u2191 | 32 \u2191 | 64 \u2191 | 44 \u2191 | 54 \u2191 | 107 \u2191 | 35\u2191 | 2 | 0\u201326 |"},
+        "hpo_label_candidate": {"value": "Elevated erythrocyte sedimentation rate", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "positive (1:100) titer of antinuclear antibody (ANA)", "span": "Systemic juvenile idiopathic arthritis (s-JIA) was suspected in P6 at the age of 3.6 years based on the presence of fever, rash, lymphadenectasis, hepatosplenomegaly, polyarthritis and a positive (1:100) titer of antinuclear antibody (ANA)."},
+        "status": {"value": "observed", "span": "Systemic juvenile idiopathic arthritis (s-JIA) was suspected in P6 at the age of 3.6 years based on the presence of fever, rash, lymphadenectasis, hepatosplenomegaly, polyarthritis and a positive (1:100) titer of antinuclear antibody (ANA)."},
+        "evidence_basis": {"value": "stated for this individual", "span": "Systemic juvenile idiopathic arthritis (s-JIA) was suspected in P6 at the age of 3.6 years based on the presence of fever, rash, lymphadenectasis, hepatosplenomegaly, polyarthritis and a positive (1:100) titer of antinuclear antibody (ANA)."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "1:100", "span": "a positive (1:100) titer of antinuclear antibody (ANA)"},
+        "hpo_label_candidate": {"value": "Antinuclear antibody positivity", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "recurrent oral aphthous ulcers", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."},
+        "status": {"value": "excluded", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."},
+        "evidence_basis": {"value": "inferred from group statement", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "ulcers occurred in P4 and P5 only", "span": "recurrent oral aphthous ulcers (P4 and P5)"},
+        "hpo_label_candidate": {"value": "Oral ulcer", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "feature_text_as_stated": {"value": "pharyngitis and tonsillitis", "span": "Pharyngitis and tonsillitis were the most frequent concomitant symptoms, which occurred in 4/6 patients (P1-P4)."},
+        "status": {"value": "excluded", "span": "Pharyngitis and tonsillitis were the most frequent concomitant symptoms, which occurred in 4/6 patients (P1-P4)."},
+        "evidence_basis": {"value": "inferred from group statement", "span": "Pharyngitis and tonsillitis were the most frequent concomitant symptoms, which occurred in 4/6 patients (P1-P4)."},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "occurred in P1-P4 only", "span": "which occurred in 4/6 patients (P1-P4)"},
+        "hpo_label_candidate": {"value": "Pharyngitis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "recurrent fever", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "several FUO during first year", "span": "recurrent fever, several FUO during first year"},
+        "hpo_label_candidate": {"value": "Recurrent fever", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "Neutrophilic dermatosis", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Neutrophilic dermatosis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "oral aphthae", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Oral ulcer", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "diarrhoea", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Diarrhea", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "perianal ulcers", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Perianal ulceration", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "Increased CRP", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "during fever", "span": "Inflammatory biomarkers (during fever)"},
+        "hpo_label_candidate": {"value": "Elevated C-reactive protein", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "Increased ESR", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "during fever", "span": "Inflammatory biomarkers (during fever)"},
+        "hpo_label_candidate": {"value": "Elevated erythrocyte sedimentation rate", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "growth retardation", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "cell marked + (the table notes do not define +)", "span": "Growth retardation"},
+        "hpo_label_candidate": {"value": "Growth delay", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "developmental delays", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "cell marked + (the table notes do not define +)", "span": "Developmental delays"},
+        "hpo_label_candidate": {"value": "Global developmental delay", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "inverted CD4/CD8 ratio", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + | inverted CD4/CD8 ratio, ANA: 1:160 + |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + | inverted CD4/CD8 ratio, ANA: 1:160 + |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + | inverted CD4/CD8 ratio, ANA: 1:160 + |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Abnormal CD4:CD8 ratio", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "feature_text_as_stated": {"value": "ANA: 1:160 +", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + | inverted CD4/CD8 ratio, ANA: 1:160 + |"},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + | inverted CD4/CD8 ratio, ANA: 1:160 + |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + | inverted CD4/CD8 ratio, ANA: 1:160 + |"},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "1:160", "span": "ANA: 1:160 +"},
+        "hpo_label_candidate": {"value": "Antinuclear antibody positivity", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      }
+    ],
+    "phenotype_checklist": [
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "oral ulcers", "span": null},
+        "status": {"value": "excluded", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."},
+        "evidence_basis": {"value": "inferred from group statement", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "genital ulcers", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "gastrointestinal ulcers or inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "recurrent fever", "span": null},
+        "status": {"value": "observed", "span": "| Fever phenotype | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Recurrent fever |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Fever phenotype | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Periodic fever | Recurrent fever |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "arthritis or arthralgia", "span": null},
+        "status": {"value": "observed", "span": "| Arthritis | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 | + |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Arthritis | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 | + |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "uveitis or other ocular inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "skin lesions (rash, folliculitis, erythema nodosum)", "span": null},
+        "status": {"value": "observed", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."},
+        "evidence_basis": {"value": "stated for this individual", "span": "The affected skin and mucosa were characterized by recurrent oral aphthous ulcers (P4 and P5) and red maculopapules during fever (P6)."}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "autoimmune thyroiditis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "type 1 diabetes", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "autoimmune hepatitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "cytopenia (autoimmune)", "span": null},
+        "status": {"value": "observed", "span": "Moreover, P6 was suspected to have hemophagocytic lymphohistiocytosis (HLH) at the age of 2 years because of pancytopenia, and her blood cell counts increased after corticosteroid therapy."},
+        "evidence_basis": {"value": "stated for this individual", "span": "Moreover, P6 was suspected to have hemophagocytic lymphohistiocytosis (HLH) at the age of 2 years because of pancytopenia, and her blood cell counts increased after corticosteroid therapy."}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "lymphoproliferation or lymphadenopathy", "span": null},
+        "status": {"value": "observed", "span": "Four patients had lymphadenectasis (P3-P6), three of whom had hepatosplenomegaly (P4-P6)."},
+        "evidence_basis": {"value": "stated for this individual", "span": "Four patients had lymphadenectasis (P3-P6), three of whom had hepatosplenomegaly (P4-P6)."}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "central nervous system involvement", "span": null},
+        "status": {"value": "observed", "span": "| Central nervous system | Tourette syndrome | \u2013 | \u2013 | Seizure | \u2013 | Seizures |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| Central nervous system | Tourette syndrome | \u2013 | \u2013 | Seizure | \u2013 | Seizures |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "recurrent infections", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "elevated inflammatory markers (CRP/ESR)", "span": null},
+        "status": {"value": "observed", "span": ["| CRP (mg/L) | 87 \u2191 | 16 \u2191 | 27.18 \u2191 | 70 \u2191 | 40 \u2191 | 132 \u2191 |", "| ESR (mm/h) | 48 \u2191 | 32 \u2191 | 64 \u2191 | 44 \u2191 | 54 \u2191 | 107 \u2191 |"]},
+        "evidence_basis": {"value": "stated for this individual", "span": ["| CRP (mg/L) | 87 \u2191 | 16 \u2191 | 27.18 \u2191 | 70 \u2191 | 40 \u2191 | 132 \u2191 |", "| ESR (mm/h) | 48 \u2191 | 32 \u2191 | 64 \u2191 | 44 \u2191 | 54 \u2191 | 107 \u2191 |"]}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "autoantibodies (ANA/other)", "span": null},
+        "status": {"value": "observed", "span": "Systemic juvenile idiopathic arthritis (s-JIA) was suspected in P6 at the age of 3.6 years based on the presence of fever, rash, lymphadenectasis, hepatosplenomegaly, polyarthritis and a positive (1:100) titer of antinuclear antibody (ANA)."},
+        "evidence_basis": {"value": "stated for this individual", "span": "Systemic juvenile idiopathic arthritis (s-JIA) was suspected in P6 at the age of 3.6 years based on the presence of fever, rash, lymphadenectasis, hepatosplenomegaly, polyarthritis and a positive (1:100) titer of antinuclear antibody (ANA)."}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "growth failure", "span": null},
+        "status": {"value": "observed", "span": "In addition to the inflammatory manifestations, four patients (P1-P3 and P6) had developmental delay in motor or language, and two of them (P3 and P6) also presented growth retardation."},
+        "evidence_basis": {"value": "stated for this individual", "span": "In addition to the inflammatory manifestations, four patients (P1-P3 and P6) had developmental delay in motor or language, and two of them (P3 and P6) also presented growth retardation."}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "pericarditis or other serositis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "interstitial lung disease", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "P6", "span": "one patient (P6) had intermittent fever with a recurrence frequency of 7\u20138 times per year"},
+        "checklist_feature": {"value": "vasculitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "oral ulcers", "span": null},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "genital ulcers", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "gastrointestinal ulcers or inflammation", "span": null},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "recurrent fever", "span": null},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "arthritis or arthralgia", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "uveitis or other ocular inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "skin lesions (rash, folliculitis, erythema nodosum)", "span": null},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "autoimmune thyroiditis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "type 1 diabetes", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "autoimmune hepatitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "cytopenia (autoimmune)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "lymphoproliferation or lymphadenopathy", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "central nervous system involvement", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "recurrent infections", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "elevated inflammatory markers (CRP/ESR)", "span": null},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "autoantibodies (ANA/other)", "span": null},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + | inverted CD4/CD8 ratio, ANA: 1:160 + |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + | + | inverted CD4/CD8 ratio, ANA: 1:160 + |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "growth failure", "span": null},
+        "status": {"value": "observed", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + |"},
+        "evidence_basis": {"value": "stated for this individual", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers | Increased CRP, ESR | Methylprednisolone, etanercept | \u2013 | + |"}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "pericarditis or other serositis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "interstitial lung disease", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35897075", "span": "PMID: 35897075"},
+        "individual_label_in_paper": {"value": "Table 3 row 1", "span": "| 6q23.2-q24.3 del | Inflammatory fever | recurrent fever, several FUO during first year | < 1y | M | Neutrophilic dermatosis, oral aphthae, diarrhoea and perianal ulcers |"},
+        "checklist_feature": {"value": "vasculitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      }
+    ]
+  }
+}

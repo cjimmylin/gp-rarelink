@@ -1,0 +1,461 @@
+<title>O1 Claim Audit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+/* Layout: an audit sheet. Sticky header with progress; one card per item; the quote is the visual centre of each card. */
+:root {
+  --paper: #f3f5f6;
+  --surface: #ffffff;
+  --ink: #17212b;
+  --muted: #5a6670;
+  --rule: #d8dee3;
+  --accent: #2c5a86;
+  --accent-soft: #e4edf6;
+  --ok: #2b7a4b;
+  --ok-soft: #e3f2e9;
+  --part: #9a6a07;
+  --part-soft: #fbf0d6;
+  --bad: #b03636;
+  --bad-soft: #f8e3e3;
+  --mark: #fff1b8;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-quote: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #11161b; --surface: #182027; --ink: #e5eaee; --muted: #9ba7b2; --rule: #2a343e;
+    --accent: #8db3da; --accent-soft: #1d2b39;
+    --ok: #6cc28f; --ok-soft: #173025; --part: #e2b456; --part-soft: #352a12; --bad: #ec8484; --bad-soft: #3a1c1e;
+    --mark: #4a4016; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #11161b; --surface: #182027; --ink: #e5eaee; --muted: #9ba7b2; --rule: #2a343e;
+  --accent: #8db3da; --accent-soft: #1d2b39;
+  --ok: #6cc28f; --ok-soft: #173025; --part: #e2b456; --part-soft: #352a12; --bad: #ec8484; --bad-soft: #3a1c1e;
+  --mark: #4a4016; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface);
+}
+.wrap {
+  max-width: 920px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--surface); border-bottom: 1px solid var(--rule);
+}
+header.top .wrap { padding-block: 14px 12px; display: grid; gap: 10px; }
+.title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+h1 { font-size: 19px; font-weight: 600; margin: 0; text-wrap: balance; }
+.save-state { font-size: 12.5px; color: var(--muted); }
+.save-state.warn { color: var(--bad); }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tab {
+  font: inherit; font-size: 14px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink);
+  padding: 6px 12px; border-radius: 6px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center;
+}
+.tab[aria-selected="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--ink); font-weight: 600; }
+.tab .count { font-family: var(--font-data); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.meter { height: 4px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+.meter > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .25s ease; }
+.tools { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 13.5px; color: var(--muted); }
+.tools label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.tools .spacer { flex: 1; }
+button.plain {
+  font: inherit; font-size: 13.5px; background: none; border: 1px solid var(--rule); color: var(--ink);
+  padding: 5px 10px; border-radius: 6px; cursor: pointer;
+}
+button:focus-visible, .tab:focus-visible, .card:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+main .wrap { padding-block: 18px 64px; display: grid; gap: 14px; }
+.intro { font-size: 14px; color: var(--muted); max-width: 68ch; display: grid; gap: 6px; }
+.intro p { margin: 0; }
+.intro b { color: var(--ink); font-weight: 600; }
+kbd { font-family: var(--font-data); font-size: 12px; border: 1px solid var(--rule); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--surface); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--rule); border-radius: 8px;
+  padding: 14px 16px 14px 14px; display: grid; gap: 10px; min-width: 0;
+}
+.card[data-r="supported"], .card[data-r="yes"] { border-left-color: var(--ok); }
+.card[data-r="partially_supported"], .card[data-r="cannot_verify"] { border-left-color: var(--part); }
+.card[data-r="unsupported"], .card[data-r="no"], .card[data-r="span_not_found"] { border-left-color: var(--bad); }
+.card-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; font-size: 13px; color: var(--muted); }
+.card-head .num { font-family: var(--font-data); font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+.chip { font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+.card-head a { color: var(--accent); text-decoration: none; }
+.card-head a:hover { text-decoration: underline; }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; margin: 0; font-size: 14px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.facts .val { font-family: var(--font-data); font-size: 13.5px; font-weight: 500; background: var(--accent-soft); padding: 0 6px; border-radius: 4px; }
+blockquote.quote {
+  margin: 0; padding: 10px 14px; border-left: 2px solid var(--accent); background: var(--paper);
+  font-family: var(--font-quote); font-size: 15.5px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; border-radius: 0 6px 6px 0;
+}
+.quote-note { font-size: 12px; color: var(--muted); margin-top: -4px; }
+details.ctx { font-size: 13.5px; }
+details.ctx summary { cursor: pointer; color: var(--accent); width: fit-content; }
+details.ctx pre {
+  margin: 8px 0 0; padding: 10px 12px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px;
+  font-family: var(--font-data); font-size: 12.5px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 340px; overflow: auto;
+}
+details.ctx pre.prose { font-family: var(--font-quote); font-size: 14px; }
+mark { background: var(--mark); color: inherit; padding: 0 1px; }
+.rate-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 7px; overflow: hidden; }
+.seg button {
+  font: inherit; font-size: 14px; padding: 7px 12px; border: 0; background: var(--surface); color: var(--ink); cursor: pointer;
+  border-right: 1px solid var(--rule); display: inline-flex; gap: 6px; align-items: center;
+}
+.seg button:last-child { border-right: 0; }
+.seg button .k { font-family: var(--font-data); font-size: 11.5px; color: var(--muted); }
+.seg button[aria-pressed="true"][data-v="supported"], .seg button[aria-pressed="true"][data-v="yes"] { background: var(--ok-soft); color: var(--ok); font-weight: 600; }
+.seg button[aria-pressed="true"][data-v="partially_supported"], .seg button[aria-pressed="true"][data-v="cannot_verify"] { background: var(--part-soft); color: var(--part); font-weight: 600; }
+.seg button[aria-pressed="true"][data-v="unsupported"], .seg button[aria-pressed="true"][data-v="no"], .seg button[aria-pressed="true"][data-v="span_not_found"] { background: var(--bad-soft); color: var(--bad); font-weight: 600; }
+.note { flex: 1 1 240px; min-width: 0; font: inherit; font-size: 14px; padding: 7px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); }
+.note::placeholder { color: var(--muted); }
+.saved { font-size: 12px; color: var(--muted); min-width: 4.5em; }
+.hpo-term { display: grid; gap: 4px; }
+.hpo-term .term { font-weight: 600; }
+.hpo-term .term code { font-family: var(--font-data); font-weight: 500; font-size: 13px; color: var(--muted); margin-left: 6px; }
+.hpo-term .def { font-size: 13.5px; color: var(--muted); max-width: 70ch; }
+.phrase { font-family: var(--font-quote); font-size: 17px; }
+.compare { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; font-size: 14px; padding: 10px 12px; border: 1px dashed var(--rule); border-radius: 6px; }
+.compare dt { color: var(--muted); }
+.compare dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.verdict { font-weight: 600; }
+.verdict[data-v="supported"] { color: var(--ok); }
+.verdict[data-v="partially_supported"] { color: var(--part); }
+.verdict[data-v="unsupported"] { color: var(--bad); }
+.done-banner { border: 1px solid var(--ok); background: var(--ok-soft); color: var(--ink); border-radius: 8px; padding: 12px 14px; font-size: 14px; }
+.copy-box { width: 100%; min-height: 120px; font-family: var(--font-data); font-size: 12px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); padding: 8px; }
+@media (max-width: 520px) {
+  .facts { grid-template-columns: 1fr; gap: 0; }
+  .facts dt { margin-top: 6px; }
+  .seg button { padding: 7px 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .meter > i { transition: none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="title-row">
+      <h1>O1 claim audit</h1>
+      <span class="save-state" id="save-state">Connecting to the shared store…</span>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-claims" aria-selected="true" aria-controls="panel-claims">Claims <span class="count" id="count-claims">0/250</span></button>
+      <button class="tab" role="tab" id="tab-hpo" aria-selected="false" aria-controls="panel-hpo">HPO terms <span class="count" id="count-hpo">0/30</span></button>
+      <button class="tab" role="tab" id="tab-final" aria-selected="false" aria-controls="panel-final" hidden>Second look <span class="count" id="count-final">0/0</span></button>
+    </div>
+    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+    <div class="tools">
+      <label><input type="checkbox" id="unrated-only"> Show only unrated</label>
+      <span class="spacer"></span>
+      <button class="plain" id="copy-btn" type="button">Copy all ratings as text</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div id="done" class="done-banner" hidden>Everything is rated. Tell Jimmy Lin that your ratings are in.</div>
+    <textarea id="copy-box" class="copy-box" hidden readonly aria-label="Ratings as text"></textarea>
+
+    <section id="panel-claims" role="tabpanel" aria-labelledby="tab-claims">
+      <div class="intro">
+        <p><b>Rate each claim against its quote and the paper.</b> Does the quote entail the value for this person? Rate on your own; no other rating or verdict is shown.</p>
+        <p><b>Supported</b>: the quote entails the value. <b>Unsupported</b>: it does not, contradicts it, or is about someone else. <b>Quote not in paper</b>: the quote cannot be found in the paper. <b>Can't verify</b>: you cannot tell from the quote and the paper (counted as unsupported, and also reported without these).</p>
+        <p>An HPO-style finding more specific than the quote allows is unsupported; a less specific one is supported. For a table row, open "Where this is in the paper" to see the headers. Keys: focus a card, then <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>. Each rating saves as you click.</p>
+      </div>
+      <div id="claims" style="display:grid; gap:14px"></div>
+    </section>
+
+    <section id="panel-hpo" role="tabpanel" aria-labelledby="tab-hpo" hidden>
+      <div class="intro">
+        <p><b>Is the HPO term right for the phrase?</b> These 30 were chosen by a model, from the pinned HPO release (2026-09-01). "Broader" means the model picked a more general term on purpose.</p>
+        <p>Keys: focus a card, then <kbd>Y</kbd> or <kbd>N</kbd>.</p>
+      </div>
+      <div id="hpo" style="display:grid; gap:14px"></div>
+    </section>
+
+    <section id="panel-final" role="tabpanel" aria-labelledby="tab-final" hidden>
+      <div class="intro">
+        <p><b>A second look at the claims where your first rating and the gatekeeper's verdict differ, or where you chose Partly.</b> The paper context is open. Give a final label and a short reason. Your first rating stays on record either way.</p>
+        <p>The gatekeeper's verdict is shown now, for comparison. "Matched by script" means no model judged it: the value appears word for word in the quote, so the pipeline marked it supported.</p>
+      </div>
+      <div id="final" style="display:grid; gap:14px"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+const DATA = /*__DATA__*/null;
+const CLAIM_CHOICES = [["supported", "Supported", "1"], ["unsupported", "Unsupported", "2"], ["span_not_found", "Quote not in paper", "3"], ["cannot_verify", "Can't verify", "4"]];
+const HPO_CHOICES = [["yes", "Yes, right term", "Y"], ["no", "No", "N"]];
+const state = { ratings: {}, hpo: {}, final: {} };
+const SECOND = (DATA && DATA.second) || [];
+const VERDICT_LABEL = { supported: "Supported", partially_supported: "Partly", unsupported: "Unsupported", span_not_found: "Quote not found" };
+const PREFIX = { ratings: "c-", hpo: "h-", final: "f-" };
+const valueKey = (coll) => (coll === "hpo" ? "ok" : "rating");
+let db = null, store = "none";
+const LS_KEY = (DATA && DATA.store_key) || "o1-audit-ratings-v1";
+
+const $ = (id) => document.getElementById(id);
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v; else if (k === "text") n.textContent = v; else n.setAttribute(k, v);
+  }
+  for (const c of kids) if (c != null) n.append(c);
+  return n;
+};
+
+function highlight(pre, text, needle) {
+  const i = needle ? text.indexOf(needle) : -1;
+  if (i < 0) { pre.textContent = text; return; }
+  pre.append(text.slice(0, i), el("mark", { text: needle }), text.slice(i + needle.length));
+}
+
+function claimCard(c, opts = {}) {
+  const coll = opts.coll || "ratings";
+  const card = el("article", { class: "card", tabindex: "0", id: PREFIX[coll] + c.id, "data-kind": coll === "final" ? "final" : "claim" });
+  const head = el("div", { class: "card-head" },
+    el("span", { class: "num", text: String(c.n).padStart(2, "0") }),
+    el("span", { class: "chip", text: c.stratum }),
+    el("a", { href: "https://pubmed.ncbi.nlm.nih.gov/" + c.pmid + "/", target: "_blank", rel: "noopener", text: "PMID " + c.pmid }),
+    el("span", { text: c.id }));
+  const facts = el("dl", { class: "facts" });
+  const add = (k, v, cls) => { if (!v) return; facts.append(el("dt", { text: k }), el("dd", {}, cls ? el("span", { class: cls, text: v }) : v)); };
+  add("Person", c.person);
+  add(c.about_kind, c.about);
+  add(c.field, c.value, "val");
+  const parts = [head, facts];
+  c.quotes.forEach((q) => parts.push(el("blockquote", { class: "quote", text: q.text })));
+  if (c.quotes.length > 1) parts.push(el("div", { class: "quote-note", text: c.quotes.length + " separate quotes were given for this value." }));
+  if (c.quotes.some((q) => q.cleaned)) parts.push(el("div", { class: "quote-note", text: "Table cells shown with | between them." }));
+  if (c.contexts.length) {
+    const box = el("details", { class: "ctx" }, el("summary", { text: c.contexts.some((x) => x.kind === "table") ? "Where this is in the paper (table header and row, or paragraph)" : "Where this is in the paper" }));
+    for (const x of c.contexts) {
+      const pre = el("pre", { class: x.kind === "text" ? "prose" : "" });
+      highlight(pre, x.text, x.kind === "text" ? x.quote : "");
+      box.append(pre);
+    }
+    if (opts.open) box.open = true;
+    parts.push(box);
+  }
+  if (opts.compare) parts.push(opts.compare);
+  parts.push(rateRow(coll, c.id, CLAIM_CHOICES, opts.placeholder || "Note (optional): what's wrong"));
+  card.append(...parts);
+  return card;
+}
+
+function hpoCard(h) {
+  const card = el("article", { class: "card", tabindex: "0", id: "h-" + h.id, "data-kind": "hpo" });
+  const head = el("div", { class: "card-head" },
+    el("span", { class: "num", text: String(h.n).padStart(2, "0") }),
+    el("span", { class: "chip", text: "Model match: " + h.grade }),
+    el("span", { text: "Feature " + h.status }),
+    el("a", { href: "https://pubmed.ncbi.nlm.nih.gov/" + h.pmid + "/", target: "_blank", rel: "noopener", text: "PMID " + h.pmid }));
+  const phrase = el("div", { class: "phrase", text: "“" + h.phrase + "”" });
+  const term = el("div", { class: "hpo-term" },
+    el("div", { class: "term" }, h.hpo_label, el("code", { text: h.hpo_id })),
+    h.definition ? el("div", { class: "def", text: h.definition }) : null);
+  card.append(head, phrase, term, rateRow("hpo", h.id, HPO_CHOICES, "Note (optional): a better term, if you know one"));
+  return card;
+}
+
+function finalCard(s) {
+  const verdict = (v) => el("span", { class: "verdict", "data-v": v, text: VERDICT_LABEL[v] || v || "not rated" });
+  const cmp = el("dl", { class: "compare" },
+    el("dt", { text: "Your first rating" }), el("dd", {}, verdict(s.first.rating), s.first.note ? " · " + s.first.note : ""),
+    el("dt", { text: "Gatekeeper" }), el("dd", {}, verdict(s.gk.verdict),
+      s.gk.source === "script" ? " · matched by script (the value appears in the quote)" : (s.gk.reason ? " · " + s.gk.reason : "")));
+  return claimCard(s, { coll: "final", open: true, compare: cmp, placeholder: "Reason for the final label" });
+}
+
+function rateRow(coll, id, choices, placeholder) {
+  const seg = el("div", { class: "seg", role: "group", "aria-label": "Rating" });
+  for (const [v, label, key] of choices) {
+    const b = el("button", { type: "button", "data-v": v, "aria-pressed": "false" }, label, el("span", { class: "k", text: key }));
+    b.addEventListener("click", () => setRating(coll, id, v));
+    seg.append(b);
+  }
+  const note = el("input", { class: "note", type: "text", id: "note-" + coll + "-" + id, placeholder, "aria-label": "Note" });
+  let t = null;
+  note.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => setNote(coll, id, note.value), 700); });
+  note.addEventListener("blur", () => { clearTimeout(t); setNote(coll, id, note.value); });
+  note.addEventListener("keydown", (e) => e.stopPropagation());
+  const saved = el("span", { class: "saved", id: "saved-" + coll + "-" + id });
+  return el("div", { class: "rate-row" }, seg, note, saved);
+}
+
+function cardFor(coll, id) { return $(PREFIX[coll] + id); }
+
+function paint(coll, id) {
+  const card = cardFor(coll, id);
+  if (!card) return;
+  const rec = state[coll][id] || {};
+  const v = rec[valueKey(coll)];
+  card.dataset.r = v || "";
+  card.querySelectorAll(".seg button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+  const note = $("note-" + coll + "-" + id);
+  if (note && document.activeElement !== note && (rec.note || "") !== note.value) note.value = rec.note || "";
+}
+
+function progress() {
+  const nc = DATA.claims.filter((c) => state.ratings[c.id]?.rating).length;
+  const nh = DATA.hpo.filter((h) => state.hpo[h.id]?.ok).length;
+  const nf = SECOND.filter((x) => state.final[x.id]?.rating).length;
+  $("count-claims").textContent = nc + "/" + DATA.claims.length;
+  $("count-hpo").textContent = nh + "/" + DATA.hpo.length;
+  $("count-final").textContent = nf + "/" + SECOND.length;
+  const total = DATA.claims.length + DATA.hpo.length + SECOND.length;
+  $("meter").style.width = (100 * (nc + nh + nf) / total) + "%";
+  $("done").hidden = !(nc === DATA.claims.length && nh === DATA.hpo.length && nf === SECOND.length);
+}
+
+// One write at a time per document.
+const chains = {};
+function write(coll, id) {
+  const rec = state[coll][id] || {};
+  const body = { [valueKey(coll)]: rec[valueKey(coll)] || "", note: rec.note || "", updated_at: new Date().toISOString() };
+  const key = coll + "/" + id;
+  const mark = $("saved-" + coll + "-" + id);
+  if (mark) mark.textContent = "Saving…";
+  chains[key] = (chains[key] || Promise.resolve()).then(async () => {
+    if (store === "db") {
+      try { await db.doc(key).set(body); }
+      catch (e) {
+        if (e && e.code === "unavailable") { await new Promise((r) => setTimeout(r, 400 + Math.random() * 600)); await db.doc(key).set(body); }
+        else throw e;
+      }
+    } else {
+      saveLocal();
+    }
+  }).then(() => { if (mark) mark.textContent = store === "db" ? "Saved" : "Saved here"; })
+    .catch((e) => {
+      if (mark) mark.textContent = "Not saved";
+      setSaveState("Not saved: " + ((e && e.message) || "the store refused the write") + ". Use Copy all ratings as text as a backup.", true);
+    });
+}
+
+function setRating(coll, id, v) {
+  state[coll][id] = { ...(state[coll][id] || {}), [valueKey(coll)]: v };
+  paint(coll, id); progress(); write(coll, id);
+}
+function setNote(coll, id, text) {
+  const cur = state[coll][id] || {};
+  if ((cur.note || "") === text) return;
+  state[coll][id] = { ...cur, note: text };
+  write(coll, id);
+}
+
+function saveLocal() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable */ }
+}
+function loadLocal() {
+  try { const s = JSON.parse(localStorage.getItem(LS_KEY) || "null"); if (s) { Object.assign(state.ratings, s.ratings || {}); Object.assign(state.hpo, s.hpo || {}); Object.assign(state.final, s.final || {}); } } catch (e) { /* ignore */ }
+}
+
+function setSaveState(text, warn) { const s = $("save-state"); s.textContent = text; s.classList.toggle("warn", !!warn); }
+
+function csvCell(s) { s = String(s ?? ""); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+function ratingsText() {
+  const lines = ["# claims", "claim_id,rating,note"];
+  for (const c of DATA.claims) { const r = state.ratings[c.id] || {}; lines.push([c.id, r.rating || "", r.note || ""].map(csvCell).join(",")); }
+  lines.push("", "# hpo", "n,hpo_id,ok,note");
+  for (const h of DATA.hpo) { const r = state.hpo[h.id] || {}; lines.push([h.n, h.hpo_id, r.ok || "", r.note || ""].map(csvCell).join(",")); }
+  if (SECOND.length) {
+    lines.push("", "# second look", "claim_id,final_rating,final_reason");
+    for (const x of SECOND) { const r = state.final[x.id] || {}; lines.push([x.id, r.rating || "", r.note || ""].map(csvCell).join(",")); }
+  }
+  return lines.join("\n");
+}
+
+function selectTab(which) {
+  for (const t of ["claims", "hpo", "final"]) {
+    $("tab-" + t).setAttribute("aria-selected", String(t === which));
+    $("panel-" + t).hidden = t !== which;
+  }
+  applyFilter();
+}
+function applyFilter() {
+  const only = $("unrated-only").checked;
+  document.querySelectorAll(".card").forEach((card) => { card.hidden = only && !!card.dataset.r; });
+}
+
+function build() {
+  const cl = $("claims"), hp = $("hpo");
+  DATA.claims.forEach((c) => cl.append(claimCard(c)));
+  DATA.hpo.forEach((h) => hp.append(hpoCard(h)));
+  SECOND.forEach((x) => $("final").append(finalCard(x)));
+  $("tab-final").hidden = !SECOND.length;
+  $("tab-hpo").hidden = !DATA.hpo.length;
+  $("tab-claims").addEventListener("click", () => selectTab("claims"));
+  $("tab-hpo").addEventListener("click", () => selectTab("hpo"));
+  $("tab-final").addEventListener("click", () => selectTab("final"));
+  $("unrated-only").addEventListener("change", applyFilter);
+  $("copy-btn").addEventListener("click", async () => {
+    const text = ratingsText();
+    try { await navigator.clipboard.writeText(text); $("copy-btn").textContent = "Copied"; setTimeout(() => ($("copy-btn").textContent = "Copy all ratings as text"), 1500); }
+    catch (e) { const box = $("copy-box"); box.value = text; box.hidden = false; box.focus(); box.select(); }
+  });
+  document.addEventListener("keydown", (e) => {
+    const card = document.activeElement && document.activeElement.closest && document.activeElement.closest(".card");
+    if (!card || e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (card.dataset.kind === "claim" || card.dataset.kind === "final") {
+      const m = CLAIM_CHOICES.find((x) => x[2] === k);
+      if (m) { e.preventDefault(); setRating(card.dataset.kind === "final" ? "final" : "ratings", card.id.slice(2), m[0]); }
+    } else {
+      const m = HPO_CHOICES.find((x) => x[2].toLowerCase() === k);
+      if (m) { e.preventDefault(); setRating("hpo", card.id.slice(2), m[0]); }
+    }
+  });
+}
+
+function repaintAll() {
+  DATA.claims.forEach((c) => paint("ratings", c.id));
+  DATA.hpo.forEach((h) => paint("hpo", h.id));
+  SECOND.forEach((x) => paint("final", x.id));
+  progress();
+}
+
+async function connect() {
+  const api = window.claude && window.claude.use ? await window.claude.use("db") : null;
+  if (!api) {
+    store = "local";
+    loadLocal(); repaintAll();
+    setSaveState("Saved only in this browser. When done, use Copy all ratings as text and send it to Jimmy Lin.", true);
+    return;
+  }
+  db = api; store = "db";
+  setSaveState("Ratings save to this page's store as you go.");
+  for (const coll of ["ratings", "hpo", "final"]) {
+    db.collection(coll).onSnapshot((snap) => {
+      for (const d of snap.docs) {
+        const body = d.data() || {};
+        state[coll][d.id] = { ...(state[coll][d.id] || {}), ...body };
+        paint(coll, d.id);
+      }
+      progress();
+    }, (e) => setSaveState("Lost the connection to the store (" + (e && e.code) + "). Reload the page; copy your ratings first.", true));
+  }
+}
+
+build();
+progress();
+connect();
+</script>

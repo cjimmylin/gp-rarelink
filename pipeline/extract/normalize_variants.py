@@ -1,4 +1,4 @@
-"""Normalize extracted TNFAIP3 variants with VariantValidator (POC_DESIGN.md §3.8, Stage 4 step 2).
+"""Normalize extracted target-gene variants (TNFAIP3 by default; per disease from configs/stage4, D-40) with VariantValidator (POC_DESIGN.md §3.8, Stage 4 step 2).
 
 For each distinct variant description in one run's per-paper JSON (target-gene
 rows with a printed variant), builds a query and calls the VariantValidator REST
@@ -80,7 +80,7 @@ LEGACY_SUB = re.compile(r"^c\.([ACGT])(\d+)([ACGT])$", re.IGNORECASE)  # c.A271T
 
 
 def v(cell):
-    return (cell or {}).get("value")
+    return cell.get("value") if isinstance(cell, dict) else None  # a cell not in {value, span} shape reads as missing
 
 
 def clean(s) -> str:
@@ -203,7 +203,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--mane", default="NM_001270508.2")
     ap.add_argument("--delay", type=float, default=1.0)
     ap.add_argument("--corrections", default="configs/hgvs_query_corrections.csv")
+    ap.add_argument("--no-config", action="store_true", help="ignore configs/stage4/<disease>.json")
     args = ap.parse_args(argv)
+    cfg_path = Path("configs/stage4") / f"{args.disease}.json"
+    if cfg_path.exists() and not args.no_config:  # D-40: gene and MANE Select per disease
+        cfg = json.loads(cfg_path.read_text())
+        args.gene, args.mane = cfg["gene"], cfg["mane_select"]
     corrections = {}
     if args.corrections and Path(args.corrections).exists():
         corrections = {r["cdna_as_extracted"]: r for r in csv.DictReader(Path(args.corrections).open())}

@@ -1,0 +1,655 @@
+{
+  "pmid": "35760412",
+  "instructions_version": "extract_v6",
+  "reports_individuals_with_tnfaip3_variant": true,
+  "relevance_note": "A case report of one girl with an individual-level description and a TNFAIP3 variant: 'It revealed a nonsense mutation in the tumor necrosis factor (TNF)-\u03b1-induced protein 3 gene, leading to the diagnosis of haploinsufficiency A20 (HA20) (Fig. 1).'",
+  "method_note": "Read only the paper, the schema, the rules and the instructions. Two in-scope people: the patient (the paper calls her 'the proband'/'our patient', role words, so label 'patient') and her father, a relative described in the text (label 'father of patient'). No table has patients as rows or columns: Table 1 is a time-course table whose columns are 'On admission', 'On hospital day 2' and 'After 9 months', so there are no ' / ' stacked cells and nothing was assigned by position; its empty cells are treated as not reported. Spans were copied by hand and re-checked against the Markdown. Uncertainties: (1) the authors state no number of patients for this report, so n_patients_reported=1 is the count of the single patient with a TNFAIP3 variant described here, and cohort_size_as_stated is null (the sentence about 'only 2 patients, including our case, have been diagnosed with HA20 in Korea [8]' is about Korea, not this study); (2) no TNFAIP3 variant is tied to the father, so he has no variants row; the only testing statement about the parents is 'We recommended NGS for her parents and younger sister, but her parents refused.', recorded in the patient's parental_testing_statement; (3) checklist item 'arthritis or arthralgia' is not reported for the father although 'arthritis' is excluded for him, and 'uveitis or other ocular inflammation' is not reported for the patient although 'no uveitis was observed', because a narrower absence never excludes a broader composite item; (4) the anal ulcer is recorded as 'gastrointestinal ulcers or inflammation'; (5) vital status, consanguinity, zygosity and inheritance are nowhere stated, so they are not reported, and vital status is left not reported even though treatment is still being considered; (6) age is printed only as 'A 9-year-old girl' at presentation, so age_at_last_evaluation_original_text is '9-year-old' and no age at diagnosis is recorded; (7) the variant is printed as 'c.547C>T' with protein 'p.Arg183^*' and the Fig. 1 legend adds 'nonsense mutation at Arg-183' (the same legend prints the typos 'TNFIP3' and 'C\u279e T', kept as printed); (8) the sentence 'the TNFAIP3 (c.547C>T, p.Arg183^*) gene mutation is already known to cause HA20 [4,6,7]' names this person and this exact variant and is recorded as the authors' pathogenicity statement; (9) is_proband=false for the father and cites_prior_report_of_same_patients=false have no supporting quote, so their span is null; (10) the review counts of 89 HA20 patients [4] and of 26 studies [5] are group-level statements with no individual detail, so they yield no rows and no in-scope persons, and Table 1's per-time-point cells were not used as patient-level evidence beyond the text statements.",
+  "tables": {
+    "publications": [
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "first_author": {"value": "Jo", "span": "Jo Kyo Jin"},
+        "year": {"value": 2023, "span": "Journal: Clinical and Experimental Pediatrics (2023)"},
+        "study_type": {"value": "case report", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "n_patients_reported": {"value": 1, "span": "It revealed a nonsense mutation in the tumor necrosis factor (TNF)-\u03b1-induced protein 3 gene, leading to the diagnosis of haploinsufficiency A20 (HA20) (Fig. 1)."},
+        "cohort_size_as_stated": {"value": null, "span": null},
+        "cites_prior_report_of_same_patients": {"value": false, "span": null},
+        "prior_report_citation": {"value": "not reported", "span": null}
+      }
+    ],
+    "individuals": [
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "family_label_in_paper": {"value": "not reported", "span": null},
+        "is_proband": {"value": true, "span": "The c.547C>T mutation of the proband was detected in the patient."},
+        "sex": {"value": "female", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "age_at_onset_original_text": {"value": "the age of 1 month", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "age_at_onset_iso8601": {"value": "P1M", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "age_at_last_evaluation_original_text": {"value": "9-year-old", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "age_at_last_evaluation_iso8601": {"value": "P9Y", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "age_at_diagnosis_original_text": {"value": "not reported", "span": null},
+        "age_at_diagnosis_iso8601": {"value": null, "span": null},
+        "ethnicity_or_country": {"value": "Korea", "span": "only 2 patients, including our case, have been diagnosed with HA20 in Korea [8]"},
+        "consanguinity": {"value": "not reported", "span": null},
+        "vital_status": {"value": "not reported", "span": null},
+        "deceased_age_iso8601": {"value": null, "span": null},
+        "cause_of_death": {"value": "not reported", "span": null},
+        "treatment_summary": {
+          "value": "tonsillectomy at 5 years of age; antibiotic treatment was ineffective; colchicine was started, and 9 months after treatment, oral and genital ulcers disappeared while the fever continued to recur; immune suppressants such as steroids and biologics are being considered",
+          "span": [
+            "Initially, the fever recurred every 1 or 2 months; however, after tonsillectomy at 5 years of age, it recurred every 3 or 4 months.",
+            "Antibiotic treatment was ineffective.",
+            "Colchicine was started, and 9 months after treatment, oral and genital ulcers disappeared. However, the fever continued to recur every 3 or 4 months.",
+            "Currently, we are considering treatments with immune suppressants such as steroids and biologics."
+          ]
+        },
+        "disease_label_as_stated": {"value": "haploinsufficiency A20 (HA20)", "span": "leading to the diagnosis of haploinsufficiency A20 (HA20) (Fig. 1)"},
+        "clinical_diagnosis_basis": {
+          "value": "genetic testing: NGS for genes related to periodic fever and autoinflammatory syndromes revealed a nonsense mutation in TNFAIP3, leading to the diagnosis of HA20; Kikuchi disease was suggested by axillary lymph node biopsy and PFAPA syndrome was suspected clinically",
+          "span": [
+            "Next-generation sequencing (NGS) for genes related to periodic fever and autoinflammatory syndromes was conducted to identify a possible genetic disorder. It revealed a nonsense mutation in the tumor necrosis factor (TNF)-\u03b1-induced protein 3 gene, leading to the diagnosis of haploinsufficiency A20 (HA20) (Fig. 1).",
+            "Axillary lymph node biopsy was performed, which demonstrated necrotizing lymphadenitis suggestive of Kikuchi disease.",
+            "Initially, we suspected Kikuchi disease with periodic fever, aphthous stomatitis, pharyngitis, and cervical adenitis (PFAPA) syndrome because, during the current episode, the fever had lasted for 10 days accompanied by tender lymphadenopathy."
+          ]
+        },
+        "source_reference_in_review": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "family_label_in_paper": {"value": "not reported", "span": null},
+        "is_proband": {"value": false, "span": null},
+        "sex": {"value": "male", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "age_at_onset_original_text": {"value": "at preschool age", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "age_at_onset_iso8601": {"value": null, "span": null},
+        "age_at_last_evaluation_original_text": {"value": "not reported", "span": null},
+        "age_at_last_evaluation_iso8601": {"value": null, "span": null},
+        "age_at_diagnosis_original_text": {"value": "not reported", "span": null},
+        "age_at_diagnosis_iso8601": {"value": null, "span": null},
+        "ethnicity_or_country": {"value": "not reported", "span": null},
+        "consanguinity": {"value": "not reported", "span": null},
+        "vital_status": {"value": "not reported", "span": null},
+        "deceased_age_iso8601": {"value": null, "span": null},
+        "cause_of_death": {"value": "not reported", "span": null},
+        "treatment_summary": {"value": "not reported", "span": null},
+        "disease_label_as_stated": {"value": "not reported", "span": null},
+        "clinical_diagnosis_basis": {"value": "not reported", "span": null},
+        "source_reference_in_review": {"value": "not reported", "span": null}
+      }
+    ],
+    "variants": [
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "gene_symbol_as_stated": {"value": "TNFAIP3", "span": "the TNFAIP3 (c.547C>T, p.Arg183^*) gene mutation"},
+        "variant_original_string": {"value": "c.547C>T", "span": "The c.547C>T variation of the proband was present in our patient"},
+        "transcript_as_stated": {"value": "not reported", "span": null},
+        "cdna_hgvs_as_stated": {"value": "c.547C>T", "span": "the TNFAIP3 (c.547C>T, p.Arg183^*) gene mutation"},
+        "protein_hgvs_as_stated": {"value": "p.Arg183^*", "span": "the TNFAIP3 (c.547C>T, p.Arg183^*) gene mutation"},
+        "genomic_coordinates_as_stated": {"value": null, "span": null},
+        "variant_type_as_stated": {
+          "value": "nonsense",
+          "span": [
+            "It revealed a nonsense mutation in the tumor necrosis factor (TNF)-\u03b1-induced protein 3 gene",
+            "p.Arg183*, nonsense mutation at Arg-183"
+          ]
+        },
+        "zygosity": {"value": "not reported", "span": null},
+        "inheritance": {"value": "not reported", "span": null},
+        "parental_testing_statement": {"value": "We recommended NGS for her parents and younger sister, but her parents refused.", "span": "We recommended NGS for her parents and younger sister, but her parents refused."},
+        "functional_evidence_statement": {"value": "not reported", "span": null},
+        "pathogenicity_as_stated_by_authors": {"value": "already known to cause HA20", "span": "the TNFAIP3 (c.547C>T, p.Arg183^*) gene mutation is already known to cause HA20 [4,6,7]"},
+        "acmg_criteria_as_stated": {"value": "not reported", "span": null}
+      }
+    ],
+    "phenotypic_features": [
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "periodic fever", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "status": {"value": "observed", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "since the age of 1 month", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "onset_iso8601": {"value": "P1M", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "severity_or_detail": {"value": "the fever recurred every 1 or 2 months; after tonsillectomy at 5 years of age, it recurred every 3 or 4 months; the peak fever temperature was 40\u00b0C, and the duration was 4\u20135 days", "span": ["Initially, the fever recurred every 1 or 2 months; however, after tonsillectomy at 5 years of age, it recurred every 3 or 4 months.", "The peak fever temperature was 40\u00b0C, and the duration was 4\u20135 days."]},
+        "hpo_label_candidate": {"value": "Recurrent fever", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "tender cervical and right axillary lymphadenopathy", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "status": {"value": "observed", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "10-day history", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "hpo_label_candidate": {"value": "Lymphadenopathy", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "oral ulcers", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "status": {"value": "observed", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "since the age of 1 month", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "onset_iso8601": {"value": "P1M", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "severity_or_detail": {"value": "oral and genital ulcers disappeared 9 months after treatment with colchicine", "span": "Colchicine was started, and 9 months after treatment, oral and genital ulcers disappeared."},
+        "hpo_label_candidate": {"value": "Oral ulcer", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "genital ulcers", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "status": {"value": "observed", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "since the age of 1 month", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "onset_iso8601": {"value": "P1M", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "severity_or_detail": {"value": "oral and genital ulcers disappeared 9 months after treatment with colchicine", "span": "Colchicine was started, and 9 months after treatment, oral and genital ulcers disappeared."},
+        "hpo_label_candidate": {"value": "Genital ulcer", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "anal ulcer", "span": "Moreover, an anal ulcer developed."},
+        "status": {"value": "observed", "span": "Moreover, an anal ulcer developed."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Anal ulcer", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "diarrhea during fever", "span": "She experienced diarrhea during fever and a skin rash appeared after the resolution of fever."},
+        "status": {"value": "observed", "span": "She experienced diarrhea during fever and a skin rash appeared after the resolution of fever."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "during fever", "span": "She experienced diarrhea during fever and a skin rash appeared after the resolution of fever."},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Diarrhea", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "skin rash", "span": "She experienced diarrhea during fever and a skin rash appeared after the resolution of fever."},
+        "status": {"value": "observed", "span": "She experienced diarrhea during fever and a skin rash appeared after the resolution of fever."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "after the resolution of fever", "span": "She experienced diarrhea during fever and a skin rash appeared after the resolution of fever."},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "appeared after the resolution of fever", "span": "She experienced diarrhea during fever and a skin rash appeared after the resolution of fever."},
+        "hpo_label_candidate": {"value": "Skin rash", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "necrotizing lymphadenitis", "span": "Axillary lymph node biopsy was performed, which demonstrated necrotizing lymphadenitis suggestive of Kikuchi disease."},
+        "status": {"value": "observed", "span": "Axillary lymph node biopsy was performed, which demonstrated necrotizing lymphadenitis suggestive of Kikuchi disease."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "suggestive of Kikuchi disease", "span": "Axillary lymph node biopsy was performed, which demonstrated necrotizing lymphadenitis suggestive of Kikuchi disease."},
+        "hpo_label_candidate": {"value": "Lymphadenitis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "increased WBC count", "span": "Initial laboratory test findings showed that the WBC count, ESR, and CRP levels were increased (Table 1)."},
+        "status": {"value": "observed", "span": "Initial laboratory test findings showed that the WBC count, ESR, and CRP levels were increased (Table 1)."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "11.82 (10^3/\u00b5L) on admission", "span": "| WBC (10^3/\u00b5L) | 11.82 | 3.95 | 3.36 |"},
+        "hpo_label_candidate": {"value": "Leukocytosis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "increased ESR", "span": "During fever, white blood cell (WBC) count, erythrocyte sedimentation rate (ESR), and C-reactive protein (CRP) levels became elevated."},
+        "status": {"value": "observed", "span": "During fever, white blood cell (WBC) count, erythrocyte sedimentation rate (ESR), and C-reactive protein (CRP) levels became elevated."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "During fever", "span": "During fever, white blood cell (WBC) count, erythrocyte sedimentation rate (ESR), and C-reactive protein (CRP) levels became elevated."},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "45 (mm/hr) on admission", "span": "| ESR (mm/hr) | 45 | 42 | 5 |"},
+        "hpo_label_candidate": {"value": "Elevated erythrocyte sedimentation rate", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "increased CRP levels", "span": "Initial laboratory test findings showed that the WBC count, ESR, and CRP levels were increased (Table 1)."},
+        "status": {"value": "observed", "span": "Initial laboratory test findings showed that the WBC count, ESR, and CRP levels were increased (Table 1)."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "During fever", "span": "During fever, white blood cell (WBC) count, erythrocyte sedimentation rate (ESR), and C-reactive protein (CRP) levels became elevated."},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "26.5 (mg/dL) on admission", "span": "| CRP (mg/dL) | 26.5 | 6.2 | 0.23 |"},
+        "hpo_label_candidate": {"value": "Elevated C-reactive protein level", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "positive ANA", "span": "| ANA | 1:640, Positive |  | 1:320, Positive |"},
+        "status": {"value": "observed", "span": "| ANA | 1:640, Positive |  | 1:320, Positive |"},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "1:640, Positive on admission; 1:320, Positive after 9 months", "span": "| ANA | 1:640, Positive |  | 1:320, Positive |"},
+        "hpo_label_candidate": {"value": "Antinuclear antibody positivity", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "uveitis", "span": "After the diagnosis of HA20, an ophthalmic examination was performed and no uveitis was observed."},
+        "status": {"value": "excluded", "span": "After the diagnosis of HA20, an ophthalmic examination was performed and no uveitis was observed."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "no uveitis was observed on ophthalmic examination", "span": "After the diagnosis of HA20, an ophthalmic examination was performed and no uveitis was observed."},
+        "hpo_label_candidate": {"value": "Uveitis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "positive ANCA", "span": "| ANCA | Negative |  | Negative |"},
+        "status": {"value": "excluded", "span": "| ANCA | Negative |  | Negative |"},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "Negative on admission and after 9 months", "span": "| ANCA | Negative |  | Negative |"},
+        "hpo_label_candidate": {"value": "Antineutrophil cytoplasmic antibody positivity", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "positive anti-RNP antibody", "span": "| Anti-RNP Ab | Negative |  | Negative |"},
+        "status": {"value": "excluded", "span": "| Anti-RNP Ab | Negative |  | Negative |"},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "Negative on admission and after 9 months", "span": "| Anti-RNP Ab | Negative |  | Negative |"},
+        "hpo_label_candidate": {"value": "Anti-RNP antibody positivity", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "positive anti-Smith antibody", "span": "| Anti-Smith Ab | Negative |  | Negative |"},
+        "status": {"value": "excluded", "span": "| Anti-Smith Ab | Negative |  | Negative |"},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "Negative on admission and after 9 months", "span": "| Anti-Smith Ab | Negative |  | Negative |"},
+        "hpo_label_candidate": {"value": "Anti-Smith antibody positivity", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "positive anti-Ro antibody", "span": "| Anti-Ro | Negative |  | Negative |"},
+        "status": {"value": "excluded", "span": "| Anti-Ro | Negative |  | Negative |"},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "Negative on admission and after 9 months", "span": "| Anti-Ro | Negative |  | Negative |"},
+        "hpo_label_candidate": {"value": "Anti-Ro antibody positivity", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "feature_text_as_stated": {"value": "positive anti-La antibody", "span": "| Anti-La | Negative |  | Negative |"},
+        "status": {"value": "excluded", "span": "| Anti-La | Negative |  | Negative |"},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": "Negative on admission and after 9 months", "span": "| Anti-La | Negative |  | Negative |"},
+        "hpo_label_candidate": {"value": "Anti-La antibody positivity", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "feature_text_as_stated": {"value": "recurrent fever", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "status": {"value": "observed", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "at preschool age", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Recurrent fever", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "feature_text_as_stated": {"value": "tonsillitis", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "status": {"value": "observed", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": "at preschool age", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Tonsillitis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "feature_text_as_stated": {"value": "recurrent diarrhea", "span": "However, he did not have a history of recurrent diarrhea or arthritis."},
+        "status": {"value": "excluded", "span": "However, he did not have a history of recurrent diarrhea or arthritis."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Diarrhea", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "feature_text_as_stated": {"value": "arthritis", "span": "However, he did not have a history of recurrent diarrhea or arthritis."},
+        "status": {"value": "excluded", "span": "However, he did not have a history of recurrent diarrhea or arthritis."},
+        "evidence_basis": {"value": "stated for this individual", "span": null},
+        "onset_original_text": {"value": null, "span": null},
+        "onset_iso8601": {"value": null, "span": null},
+        "severity_or_detail": {"value": null, "span": null},
+        "hpo_label_candidate": {"value": "Arthritis", "span": null},
+        "hpo_id_candidate": {"value": null, "span": null}
+      }
+    ],
+    "phenotype_checklist": [
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "oral ulcers", "span": null},
+        "status": {"value": "observed", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "genital ulcers", "span": null},
+        "status": {"value": "observed", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "gastrointestinal ulcers or inflammation", "span": null},
+        "status": {"value": "observed", "span": "Moreover, an anal ulcer developed."},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "recurrent fever", "span": null},
+        "status": {"value": "observed", "span": "The patient had been experiencing periodic fever and oral and genital ulcers since the age of 1 month."},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "arthritis or arthralgia", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "uveitis or other ocular inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "skin lesions (rash, folliculitis, erythema nodosum)", "span": null},
+        "status": {"value": "observed", "span": "She experienced diarrhea during fever and a skin rash appeared after the resolution of fever."},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "autoimmune thyroiditis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "type 1 diabetes", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "autoimmune hepatitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "cytopenia (autoimmune)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "lymphoproliferation or lymphadenopathy", "span": null},
+        "status": {"value": "observed", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "central nervous system involvement", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "recurrent infections", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "elevated inflammatory markers (CRP/ESR)", "span": null},
+        "status": {"value": "observed", "span": "Initial laboratory test findings showed that the WBC count, ESR, and CRP levels were increased (Table 1)."},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "autoantibodies (ANA/other)", "span": null},
+        "status": {"value": "observed", "span": "| ANA | 1:640, Positive |  | 1:320, Positive |"},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "growth failure", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "pericarditis or other serositis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "interstitial lung disease", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "patient", "span": "A 9-year-old girl presented with a 10-day history of fever and tender cervical and right axillary lymphadenopathy."},
+        "checklist_feature": {"value": "vasculitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "oral ulcers", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "genital ulcers", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "gastrointestinal ulcers or inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "recurrent fever", "span": null},
+        "status": {"value": "observed", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "evidence_basis": {"value": "stated for this individual", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "arthritis or arthralgia", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "uveitis or other ocular inflammation", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "skin lesions (rash, folliculitis, erythema nodosum)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "autoimmune thyroiditis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "type 1 diabetes", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "autoimmune hepatitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "cytopenia (autoimmune)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "lymphoproliferation or lymphadenopathy", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "central nervous system involvement", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "recurrent infections", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "elevated inflammatory markers (CRP/ESR)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "autoantibodies (ANA/other)", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "growth failure", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "pericarditis or other serositis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "interstitial lung disease", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      },
+      {
+        "pmid": {"value": "35760412", "span": "PMID: 35760412"},
+        "individual_label_in_paper": {"value": "father of patient", "span": "Detailed family history revealed that her father had recurrent fever and tonsillitis at preschool age."},
+        "checklist_feature": {"value": "vasculitis", "span": null},
+        "status": {"value": "not reported", "span": null},
+        "evidence_basis": {"value": "not reported", "span": null}
+      }
+    ]
+  }
+}

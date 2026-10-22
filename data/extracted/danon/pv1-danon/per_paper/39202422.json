@@ -1,0 +1,2949 @@
+{
+ "pmid": "39202422",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Case series of 10 cardiomyopathy patients with post-COVID myocarditis including one woman with Danon disease and her deceased son, both described individually: \"a diagnosis of Danon’s disease was confirmed: the same pathogenic mutation in a heterozygous state was detected in the LAMP2 gene as in her son\".",
+ "method_note": "Rows built by hand from reading the paper, written out by a short Python script that also checked spans. Scope: only Patient K (44-year-old woman, Danon disease) and her first son (LAMP2 mutation, HCM and WPW, died at 16) are in scope; the other 9 cohort patients have other cardiomyopathies (cohort size 10). Her father (died suddenly at 60) and second son (15, 'healthy') are not described as tested or affected with Danon disease and get no rows. Label: the paper uses 'Patient K' for two different people (the 44-year-old woman and a 39-year-old man with MYH7/MyBPC3 VUS); only the woman is in scope, so her label is 'Patient K' without a family suffix. Table 1 has patients as columns with no label row (header row is 'Sex'); column 2 (f, 44, 'Danone', LAMP2) is identified as Patient K because it is the only Danon/LAMP2 column; spans quote that row through column 2. The Table 1 genetic-findings cell for column 2 is broken across lines by the conversion ('LAMP2 p.E298' / blank line / 'Afs*38'); the protein value is recorded verbatim with its line breaks rather than joined. Patient K's genomic coordinates come from the son's printed variant (chrX:119576459_119576489del) via the sentence that she carries 'the same pathogenic mutation'; the son's protein change is left null because it is printed only in Patient K's column. Son's inheritance recorded as inherited maternal because the mother (Patient K) is stated to carry the same mutation. No genome build is attached to the coordinates (the GRCh37 statement in Methods concerns WES, not clearly this test). Patient K's vital status 'alive' rests on the Outcomes statement that the only two deaths were in AL-amyloidosis patients, plus Table 1 death row '–' (the '–' symbol is defined only for the SARS-CoV-2 rows, so it is not used alone). LGE is inferred from the group statement 'all patients showed subepicardial LGE'; note an internal contradiction: Methods say MRI of the heart in 6 patients while Results and the abstract say all patients underwent cardiac MRI. Reduced EF checklist item set observed from EF 34–41% on admission (EF 45% in June 2021) though the paper does not use the word 'reduced' for her. ECG 'no evidence of LV hypertrophy' while EchoCG shows LV hypertrophy up to 12 mm: different modalities, recorded as separate rows, not treated as a contradiction; LVH checklist observed from echo. No accessory pathway at the 2018 EP study is recorded as excluded, but the composite pre-excitation checklist item is left not reported for Patient K. 'Coronary angiography did not reveal any abnormal findings' recorded as written (excludes nothing more specific). Son's LVH checklist item set observed from the diagnosis of HCM. No stacked (' / ') cells occur; Table 1 'initial/ follow-up' EF values are defined by the row heading.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "first_author": {
+     "value": "Blagova",
+     "span": "Authors: Blagova Olga"
+    },
+    "year": {
+     "value": 2024,
+     "span": "Journal: Genes (2024)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "This case series includes 10 patients with different CMPs who had COVID-19"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "Danon’s disease (n = 1, LAMP2)"
+    },
+    "cohort_size_as_stated": {
+     "value": 10,
+     "span": "The study included 10 patients with CMP who had COVID-19"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": [
+      "Patient K, 44-year-old woman",
+      "| Sex | m | f"
+     ]
+    },
+    "age_at_onset_original_text": {
+     "value": "school age",
+     "span": "Since school age, the patient suffered from palpitations."
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "44-year-old",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P44Y",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": [
+      "Two deaths from end-stage heart failure with development of asystole were recorded in patients with AL amyloidosis. The remaining patients showed positive clinical dynamics",
+      "On EchoCG 8 months later, the LVEF was 49%"
+     ]
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "radiofrequency ablation (August 2020, without full effect); cardiotropic and anti-inflammatory therapy: methylprednisolone 24 mg/day with gradual reduction to 2 mg/day, azathioprine 100 mg/day",
+     "span": [
+      "In August 2020, radiofrequency ablation (RFA) was performed without full effect",
+      "Cardiotropic and anti-inflammatory therapy was prescribed (methylprednisolone 24 mg/day with gradual reduction to 2 mg/day, azathioprine 100 mg/day)",
+      "| Steroids | + | +"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "Danon’s disease",
+     "span": "a diagnosis of Danon’s disease was confirmed"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing (DNA diagnostics; Sanger sequencing of LAMP2) after endomyocardial biopsy for suspected storage disease",
+     "span": [
+      "According to the results of DNA diagnostics, a diagnosis of Danon’s disease was confirmed",
+      "For 2 patients with suspected syndromic diagnosis (Danon’s disease and hemochromatosis) capillary Sanger sequencing of the coding areas of the target genes (LAMP2 and HFE) was performed",
+      "an EMB was performed to rule out storage disease and/or myocarditis"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "her first son"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "He died at the age of 16 y.o. due to progressive heart failure"
+    },
+    "deceased_age_iso8601": {
+     "value": "P16Y",
+     "span": "He died at the age of 16 y.o."
+    },
+    "cause_of_death": {
+     "value": "progressive heart failure",
+     "span": [
+      "He died at the age of 16 y.o. due to progressive heart failure",
+      "confirmed Danon’s disease in the patient’s son (who died of end-stage heart failure)"
+     ]
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "Danon’s disease",
+     "span": "confirmed Danon’s disease in the patient’s son"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing (pathogenic LAMP2 mutation)",
+     "span": "pathogenic mutation was revealed on the 7th exon of the LAMP2 gene"
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": [
+      "| Genetic findings | HFA | LAMP2 p.E298\n \nAfs*38",
+      "the same pathogenic mutation in a heterozygous state was detected in the LAMP2 gene as in her son"
+     ]
+    },
+    "variant_original_string": {
+     "value": "p.E298\n \nAfs*38",
+     "span": "| Genetic findings | HFA | LAMP2 p.E298\n \nAfs*38"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.E298\n \nAfs*38",
+     "span": "| Genetic findings | HFA | LAMP2 p.E298\n \nAfs*38"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": "chrX:119576459_119576489del",
+     "span": [
+      "the same pathogenic mutation in a heterozygous state was detected in the LAMP2 gene as in her son",
+      "pathogenic mutation was revealed on the 7th exon of the LAMP2 gene (chrX:119576459_119576489del;)"
+     ]
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "the same pathogenic mutation in a heterozygous state was detected in the LAMP2 gene as in her son"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "the same pathogenic mutation in a heterozygous state was detected in the LAMP2 gene as in her son"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LAMP2",
+     "span": "pathogenic mutation was revealed on the 7th exon of the LAMP2 gene (chrX:119576459_119576489del;)"
+    },
+    "variant_original_string": {
+     "value": "chrX:119576459_119576489del",
+     "span": "pathogenic mutation was revealed on the 7th exon of the LAMP2 gene (chrX:119576459_119576489del;)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": "chrX:119576459_119576489del",
+     "span": "pathogenic mutation was revealed on the 7th exon of the LAMP2 gene (chrX:119576459_119576489del;)"
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": "the same pathogenic mutation in a heterozygous state was detected in the LAMP2 gene as in her son"
+    },
+    "parental_testing_statement": {
+     "value": "the same pathogenic LAMP2 mutation, in a heterozygous state, was detected in his mother (Patient K)",
+     "span": "the same pathogenic mutation in a heterozygous state was detected in the LAMP2 gene as in her son"
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "pathogenic mutation was revealed on the 7th exon of the LAMP2 gene (chrX:119576459_119576489del;)"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "palpitations",
+     "span": "Since school age, the patient suffered from palpitations."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Since school age, the patient suffered from palpitations."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Since school age, the patient suffered from palpitations."
+    },
+    "onset_original_text": {
+     "value": "Since school age",
+     "span": "Since school age, the patient suffered from palpitations."
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Palpitations",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001962",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "dyspnoea",
+     "span": [
+      "Since 2017, she had moderate dyspnoea",
+      "dyspnoea on walking"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Since 2017, she had moderate dyspnoea",
+      "dyspnoea on walking"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Since 2017, she had moderate dyspnoea",
+      "dyspnoea on walking"
+     ]
+    },
+    "onset_original_text": {
+     "value": "Since 2017",
+     "span": "Since 2017, she had moderate dyspnoea"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "moderate; on walking",
+     "span": [
+      "Since 2017, she had moderate dyspnoea",
+      "dyspnoea on walking"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Dyspnea",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002094",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "weakness on moderate exertion",
+     "span": "weakness on moderate exertion"
+    },
+    "status": {
+     "value": "observed",
+     "span": "weakness on moderate exertion"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "weakness on moderate exertion"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "frequent nonproductive cough",
+     "span": "frequent nonproductive cough"
+    },
+    "status": {
+     "value": "observed",
+     "span": "frequent nonproductive cough"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "frequent nonproductive cough"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cough",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012735",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "weight gain",
+     "span": "frequent nonproductive cough and weight gain"
+    },
+    "status": {
+     "value": "observed",
+     "span": "frequent nonproductive cough and weight gain"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "frequent nonproductive cough and weight gain"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Weight gain",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "frequent supraventricular extrasystoles",
+     "span": [
+      "frequent supraventricular extrasystoles were recorded on ECG",
+      "HM recorded up to 14,000 supraventricular extrasystoles"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "frequent supraventricular extrasystoles were recorded on ECG",
+      "HM recorded up to 14,000 supraventricular extrasystoles"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "frequent supraventricular extrasystoles were recorded on ECG",
+      "HM recorded up to 14,000 supraventricular extrasystoles"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "up to 14,000 supraventricular extrasystoles on HM",
+     "span": "HM recorded up to 14,000 supraventricular extrasystoles"
+    },
+    "hpo_label_candidate": {
+     "value": "Supraventricular ectopy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "additional conduction pathway",
+     "span": "Electrophysiological study in 2018 showed no data for additional conduction pathway"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Electrophysiological study in 2018 showed no data for additional conduction pathway"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Electrophysiological study in 2018 showed no data for additional conduction pathway"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "LV hypertrophy",
+     "span": [
+      "In 2018, EchoCG showed LV hypertrophy up to 17 mm",
+      "EchoCG demonstrated LV hypertrophy up to 12 mm"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In 2018, EchoCG showed LV hypertrophy up to 17 mm",
+      "EchoCG demonstrated LV hypertrophy up to 12 mm"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "In 2018, EchoCG showed LV hypertrophy up to 17 mm",
+      "EchoCG demonstrated LV hypertrophy up to 12 mm"
+     ]
+    },
+    "onset_original_text": {
+     "value": "In 2018",
+     "span": "In 2018, EchoCG showed LV hypertrophy up to 17 mm"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "up to 17 mm (2018); up to 12 mm on admission",
+     "span": [
+      "In 2018, EchoCG showed LV hypertrophy up to 17 mm",
+      "EchoCG demonstrated LV hypertrophy up to 12 mm"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Left ventricular hypertrophy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001712",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "evidence of LV hypertrophy on ECG",
+     "span": "ECG showed frequent premature supraventricular contractions, no evidence of LV hypertrophy"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "ECG showed frequent premature supraventricular contractions, no evidence of LV hypertrophy"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "ECG showed frequent premature supraventricular contractions, no evidence of LV hypertrophy"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "atrial flutter",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "status": {
+     "value": "observed",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "onset_original_text": {
+     "value": "In 2019",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Atrial flutter",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0004749",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "AF",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "status": {
+     "value": "observed",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "onset_original_text": {
+     "value": "In 2019",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Atrial fibrillation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0005110",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "CHF decompensation",
+     "span": "In June 2021, during hospitalisation for CHF decompensation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "In June 2021, during hospitalisation for CHF decompensation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "In June 2021, during hospitalisation for CHF decompensation"
+    },
+    "onset_original_text": {
+     "value": "In June 2021",
+     "span": "In June 2021, during hospitalisation for CHF decompensation"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Congestive heart failure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "bilateral hydrothorax",
+     "span": "she had bilateral hydrothorax"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she had bilateral hydrothorax"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she had bilateral hydrothorax"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pleural effusion",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002202",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "frequent PVCs",
+     "span": [
+      "frequent PVCs and non-sustained VT",
+      "3000 polytopic PVCs"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "frequent PVCs and non-sustained VT",
+      "3000 polytopic PVCs"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "frequent PVCs and non-sustained VT",
+      "3000 polytopic PVCs"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "3000 polytopic PVCs on HM",
+     "span": "HM recorded up to 14,000 supraventricular extrasystoles and 3000 polytopic PVCs"
+    },
+    "hpo_label_candidate": {
+     "value": "Premature ventricular contraction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0006682",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "non-sustained VT",
+     "span": "frequent PVCs and non-sustained VT"
+    },
+    "status": {
+     "value": "observed",
+     "span": "frequent PVCs and non-sustained VT"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "frequent PVCs and non-sustained VT"
+    },
+    "onset_original_text": {
+     "value": "In June 2021",
+     "span": "In June 2021, during hospitalisation for CHF decompensation, she had bilateral hydrothorax, EF 45%, frequent PVCs and non-sustained VT"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Nonsustained ventricular tachycardia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "EF 34–41%",
+     "span": [
+      "EF 34–41%",
+      "| LF EF, % initial/ follow-up | 21/55 | 41/49"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "EF 34–41%",
+      "| LF EF, % initial/ follow-up | 21/55 | 41/49"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "EF 34–41%",
+      "| LF EF, % initial/ follow-up | 21/55 | 41/49"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "EF 54% (2017), EF 45% (June 2021), EF 34–41% on admission; LVEF 49% 8 months later",
+     "span": [
+      "EF was 54%",
+      "EF 45%",
+      "EF 34–41%"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Reduced ejection fraction",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012664",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal findings on coronary angiography",
+     "span": "Coronary angiography did not reveal any abnormal findings"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Coronary angiography did not reveal any abnormal findings"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Coronary angiography did not reveal any abnormal findings"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "obesity",
+     "span": "obesity (BMI 35.6 kg/m^2)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "obesity (BMI 35.6 kg/m^2)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "obesity (BMI 35.6 kg/m^2)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "BMI 35.6 kg/m^2",
+     "span": "obesity (BMI 35.6 kg/m^2)"
+    },
+    "hpo_label_candidate": {
+     "value": "Obesity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001513",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "oedema of the shins",
+     "span": "oedema of the shins"
+    },
+    "status": {
+     "value": "observed",
+     "span": "oedema of the shins"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "oedema of the shins"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Edema of the lower limbs",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "rales on lung auscultation",
+     "span": "no rales on lung auscultation"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "no rales on lung auscultation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "no rales on lung auscultation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "muffled heart sounds",
+     "span": "Heart sounds were rhythmic, muffled"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Heart sounds were rhythmic, muffled"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Heart sounds were rhythmic, muffled"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "enlarged liver",
+     "span": "The liver and spleen were not enlarged."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The liver and spleen were not enlarged."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The liver and spleen were not enlarged."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002240",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "enlarged spleen",
+     "span": "The liver and spleen were not enlarged."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The liver and spleen were not enlarged."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The liver and spleen were not enlarged."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Splenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001744",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "hypochromic anaemia",
+     "span": "hypochromic anaemia (Hb 114 g/l)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "hypochromic anaemia (Hb 114 g/l)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "hypochromic anaemia (Hb 114 g/l)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Hb 114 g/l",
+     "span": "hypochromic anaemia (Hb 114 g/l)"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypochromic anemia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001931",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated Ab to cardiac conductive fibres Ag",
+     "span": "Ab to cardiac conductive fibres Ag—1:160 (N ≤ 1:40)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Ab to cardiac conductive fibres Ag—1:160 (N ≤ 1:40)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Ab to cardiac conductive fibres Ag—1:160 (N ≤ 1:40)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "1:160 (N ≤ 1:40)",
+     "span": "Ab to cardiac conductive fibres Ag—1:160 (N ≤ 1:40)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "Ab to antigens (Ag) of cardiomyocyte nuclei",
+     "span": "Ab to antigens (Ag) of cardiomyocyte nuclei—1:40 (N—abs)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Ab to antigens (Ag) of cardiomyocyte nuclei—1:40 (N—abs)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Ab to antigens (Ag) of cardiomyocyte nuclei—1:40 (N—abs)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "1:40 (N—abs)",
+     "span": "Ab to antigens (Ag) of cardiomyocyte nuclei—1:40 (N—abs)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "flattened T waves",
+     "span": "flattened T waves"
+    },
+    "status": {
+     "value": "observed",
+     "span": "flattened T waves"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "flattened T waves"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "LV diastolic dysfunction of restrictive type",
+     "span": "LV diastolic dysfunction of restrictive type (E/A 3.4"
+    },
+    "status": {
+     "value": "observed",
+     "span": "LV diastolic dysfunction of restrictive type (E/A 3.4"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "LV diastolic dysfunction of restrictive type (E/A 3.4"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "E/A 3.4, Dt 95 ms",
+     "span": "LV diastolic dysfunction of restrictive type (E/A 3.4, Dt 95 ms"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "active myocarditis",
+     "span": [
+      "Myocardial biopsy specimens (Figure 3a,c) revealed definite active myocarditis",
+      "| Biopsy | LM | LM"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Myocardial biopsy specimens (Figure 3a,c) revealed definite active myocarditis",
+      "| Biopsy | LM | LM"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Myocardial biopsy specimens (Figure 3a,c) revealed definite active myocarditis",
+      "| Biopsy | LM | LM"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "definite active myocarditis on biopsy; post-COVID",
+     "span": "Myocardial biopsy specimens (Figure 3a,c) revealed definite active myocarditis"
+    },
+    "hpo_label_candidate": {
+     "value": "Myocarditis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0012819",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "small-vessel lesions in the form of endotheliitis",
+     "span": "typical small-vessel lesions in the form of endotheliitis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "typical small-vessel lesions in the form of endotheliitis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "typical small-vessel lesions in the form of endotheliitis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "SARS-CoV-2 RNA in myocardium",
+     "span": [
+      "no SARS-Cov-2 RNA or cardiotropic virus DNA was detected by PCR",
+      "| SARS-CoV-2 RNA in myocardium (+—positive; –—negative | + | –"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "no SARS-Cov-2 RNA or cardiotropic virus DNA was detected by PCR",
+      "| SARS-CoV-2 RNA in myocardium (+—positive; –—negative | + | –"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "no SARS-Cov-2 RNA or cardiotropic virus DNA was detected by PCR",
+      "| SARS-CoV-2 RNA in myocardium (+—positive; –—negative | + | –"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "SARS-CoV-2 proteins in myocardium (IHC)",
+     "span": "| SARS-CoV-2 proteins, IHC, myocardium (+—positive; –—negative | + | +"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| SARS-CoV-2 proteins, IHC, myocardium (+—positive; –—negative | + | +"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| SARS-CoV-2 proteins, IHC, myocardium (+—positive; –—negative | + | +"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "accumulation of PAS-positive substance in cardiomyocytes",
+     "span": "accumulation of PAS-positive substance in cardiomyocytes in a patient with Danon’s disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "accumulation of PAS-positive substance in cardiomyocytes in a patient with Danon’s disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "accumulation of PAS-positive substance in cardiomyocytes in a patient with Danon’s disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "subepicardial late gadolinium enhancement (LGE)",
+     "span": [
+      "all patients showed subepicardial late gadolinium enhancement (LGE) typical of myocarditis",
+      "| MRI (+ numbers proportional to myocarditis signs intensity) | ++ | ++"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "all patients showed subepicardial late gadolinium enhancement (LGE) typical of myocarditis",
+      "| MRI (+ numbers proportional to myocarditis signs intensity) | ++ | ++"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "all patients showed subepicardial late gadolinium enhancement (LGE) typical of myocarditis",
+      "| MRI (+ numbers proportional to myocarditis signs intensity) | ++ | ++"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "pulmonary hypertension",
+     "span": "On EchoCG 8 months later, the LVEF was 49% and no signs of pulmonary hypertension were observed"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "On EchoCG 8 months later, the LVEF was 49% and no signs of pulmonary hypertension were observed"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "On EchoCG 8 months later, the LVEF was 49% and no signs of pulmonary hypertension were observed"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pulmonary hypertension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002092",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "feature_text_as_stated": {
+     "value": "HCM",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "status": {
+     "value": "observed",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertrophic cardiomyopathy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "feature_text_as_stated": {
+     "value": "Wolf–Parkinson–White phenomenon",
+     "span": "her first son was diagnosed with HCM and Wolf–Parkinson–White phenomenon"
+    },
+    "status": {
+     "value": "observed",
+     "span": "her first son was diagnosed with HCM and Wolf–Parkinson–White phenomenon"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "her first son was diagnosed with HCM and Wolf–Parkinson–White phenomenon"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Wolff-Parkinson-White syndrome",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001716",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "feature_text_as_stated": {
+     "value": "progressive heart failure",
+     "span": [
+      "He died at the age of 16 y.o. due to progressive heart failure",
+      "who died of end-stage heart failure"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "He died at the age of 16 y.o. due to progressive heart failure",
+      "who died of end-stage heart failure"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "He died at the age of 16 y.o. due to progressive heart failure",
+      "who died of end-stage heart failure"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Heart failure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001635",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In 2018, EchoCG showed LV hypertrophy up to 17 mm",
+      "EchoCG demonstrated LV hypertrophy up to 12 mm"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "In 2018, EchoCG showed LV hypertrophy up to 17 mm",
+      "EchoCG demonstrated LV hypertrophy up to 12 mm"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "EF 34–41%",
+      "| LF EF, % initial/ follow-up | 21/55 | 41/49"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "EF 34–41%",
+      "| LF EF, % initial/ follow-up | 21/55 | 41/49"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "during hospitalisation for CHF decompensation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "during hospitalisation for CHF decompensation"
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "all patients showed subepicardial late gadolinium enhancement (LGE) typical of myocarditis",
+      "| MRI (+ numbers proportional to myocarditis signs intensity) | ++ | ++"
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "all patients showed subepicardial late gadolinium enhancement (LGE) typical of myocarditis",
+      "| MRI (+ numbers proportional to myocarditis signs intensity) | ++ | ++"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "In 2019, ECG showed atrial flutter and AF."
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "frequent PVCs and non-sustained VT"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "frequent PVCs and non-sustained VT"
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "Patient K",
+     "span": "Patient K, 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The liver and spleen were not enlarged."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The liver and spleen were not enlarged."
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "left ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "her first son was diagnosed with HCM"
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "dilated or hypokinetic left ventricle (reduced ejection fraction)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "heart failure",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He died at the age of 16 y.o. due to progressive heart failure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He died at the age of 16 y.o. due to progressive heart failure"
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "right ventricular hypertrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "left ventricular outflow tract obstruction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "late gadolinium enhancement on cardiac MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "ventricular pre-excitation (short PR, delta wave or Wolff-Parkinson-White)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "her first son was diagnosed with HCM and Wolf–Parkinson–White phenomenon"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "her first son was diagnosed with HCM and Wolf–Parkinson–White phenomenon"
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "atrioventricular block",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "supraventricular tachycardia (atrial fibrillation or flutter)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "ventricular tachycardia or fibrillation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "proximal muscle weakness (skeletal myopathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "elevated creatine kinase",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability, cognitive impairment or learning difficulties",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "developmental delay (including delayed motor milestones)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "attention deficit disorder or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "mood or anxiety disorder",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "pigmentary retinopathy or retinal dystrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "myopia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "elevated liver enzymes (transaminases)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "39202422",
+     "span": "PMID: 39202422"
+    },
+    "individual_label_in_paper": {
+     "value": "first son of Patient K",
+     "span": "her first son was diagnosed with HCM"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

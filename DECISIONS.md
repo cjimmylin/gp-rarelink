@@ -21,20 +21,6 @@ How to use this file:
 
 ### Needed later
 
-**D-13 · ClinVar collection method for our submissions**
-- **The problem:** "Literature only" means no added submitter curation and recommends no classification (`clinvar_submission_docs`). Our panel-adjudicated, classified records may fit "curation" better (`grant_claim_checks.md` §12).
-- **Needed by:** before Month-4 adjudication, because it shapes what the panel records.
-- **Note:** the grant says "literature-only submissions", so switching to "curation" is a change to log here.
-
-**D-14 · Correct figures in `CONTEXT.md`**
-- **Proposed edits:**
-  - **Tangier:** change "~200 published patients" to ~100–150 (`koseki2021_tangier_review`).
-  - **Danon:** change ">100 families" to "about 100 families; ≥146 molecularly confirmed patients".
-  - **phenopacket-store:** replace "408 cohorts", which has no published source, with a dated count.
-  - **LAD-I** (new, found 2026-10-18): the impact statement says "genotypes for 184 LAD-I patients whose variants were published but never structured". 184 = 323 − 139, and the source review reports that genotype was *not* reported for those patients. If so, extraction cannot recover them. This affects how LAD-I gap closure is described. Check against `almarzanovoa2018_lad1_review`.
-  - **LAD-I ORPHA number** (new, found 2026-10-19): Mondo release 2026-10-06 cross-references LAD-I (MONDO:0007293) to Orphanet:99842, not to ORPHA 2968 as `CONTEXT.md` and the application give. Check against Orphanet; records will use Mondo's cross-reference (pre-registration §4.1, §6.2).
-- **Scope:** the disease set is unchanged; these are wording and number fixes.
-
 **D-15 · Budget tracking**
 - **Answered by the award email:** the credits are one pool on a claude.ai account, covering chat, Claude Code, Cowork and Claude Science. Cowork and Claude Code sessions on the funded account draw on that pool. There are no separate Claude Science and Claude Code allocations.
 - **Still open:**
@@ -51,6 +37,69 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-21 · D-13 and D-14 decided; D-10 audit waits on D-11; more open-weight work approved
+- **Jimmy, 2026-10-21 (question tool):**
+  - **D-13: "Curation (Recommended)".** Our ClinVar submissions use the *curation* collection method, not *literature only*, because the records are panel-adjudicated and carry a classification. This is a change from the grant's wording ("literature-only submissions"), logged here.
+  - **D-14: "Apply all (Recommended)".** `CONTEXT.md` now gives Tangier ~100–150 patients, Danon about 100 families and ≥146 confirmed patients, phenopacket-store as 731 gene folders at commit `85ffd78` (2026-10-07), and reads LAD-I's "184" as patients without a reported genotype. LAD-I's ORPHA number stays marked to check (Mondo: Orphanet:99842). Sources: `background/grant_claim_checks.md` §1–5. Disease set unchanged.
+  - **D-10 blinded audit: "Wait for D-11 (Recommended)".** Size it with the panel's hours; same raters as O1. Nothing drawn yet.
+  - **More model work: "Gatekeeper on open-weight runs" and "Open-weight memorization probe".** Gatekeeper v4 (Claude helpers) over `ow-ha20` and `ow-ssadh`, offered at about $60–90 on the gatekeeper line, so both models' unsupported rates come from the same judge (supplementary to the registered blinded audit). The WS5 probe files run on DeepSeek-V4.1-Flash, about $1–3 on the OpenRouter key.
+- **Gatekeeper cost re-estimated, then approved (Jimmy, 2026-10-21: "All papers, ~$135").** Claude's own gatekeeper pass on pv1 cost $0.0044 per judged claim (helper tokens). The open-weight runs have 28,456 claims to judge in 163 chunks (HA20 18,084 in 107; SSADH 10,372 in 56), so about $125–140, above the $60–90 first offered. Gatekeeper line; stop and ask past $160. Same launch prompt, instructions (`gatekeeper_v4.md`, frozen) and one helper per chunk as pv1. Cost reading at launch: $1,739.21 (2026-10-21 21:23 UTC).
+- **Outcome (2026-10-21, 21:55 UTC):** all 163 chunks judged, every claim has one verdict (`gatekeeper_merge.py --prefix gatekeeper_v4`). Cost $136.46 on helper tokens, under the $160 stop. Unsupported: open-weight 8.64% (HA20) and 6.14% (SSADH) of model claims, against Claude's 0.20% and 0.38%; claims with a quote only: 2.28% and 2.03% against 0.20% and 0.38%. Most open-weight unsupported claims had no quote. Helpers did not all treat an empty quote the same way, and a Claude judge may not be neutral; both are stated in the report (§6). The open-weight memorization probe ran too ($0.048): no recall of variants, fewer guesses than Claude (§7). Spend on the D-10 extraction corrected to $16.34–$20.35 (`BUDGET.md`).
+- **The OpenRouter key is shared** with the other projects in this cloud environment (Multi-Alignment and Multi-Bench sessions ran on 2026-10-21; one mentions kimi-k2.6). Key usage rose from $21.42 at 19:21 UTC to $31.31 at 21:23 UTC with nothing running here. So the key delta in `BUDGET.md` for the D-10 run may include other projects' spend; the run's own cost is re-derived from its token counts.
+- **Previous text of the two open items, kept for the record:**
+
+> **D-13 · ClinVar collection method for our submissions**
+> - **The problem:** "Literature only" means no added submitter curation and recommends no classification (`clinvar_submission_docs`). Our panel-adjudicated, classified records may fit "curation" better (`grant_claim_checks.md` §12).
+> - **Needed by:** before Month-4 adjudication, because it shapes what the panel records.
+> - **Note:** the grant says "literature-only submissions", so switching to "curation" is a change to log here.
+>
+> **D-14 · Correct figures in `CONTEXT.md`**
+> - **Proposed edits:**
+>   - **Tangier:** change "~200 published patients" to ~100–150 (`koseki2021_tangier_review`).
+>   - **Danon:** change ">100 families" to "about 100 families; ≥146 molecularly confirmed patients".
+>   - **phenopacket-store:** replace "408 cohorts", which has no published source, with a dated count.
+>   - **LAD-I** (new, found 2026-10-18): the impact statement says "genotypes for 184 LAD-I patients whose variants were published but never structured". 184 = 323 − 139, and the source review reports that genotype was *not* reported for those patients. If so, extraction cannot recover them. This affects how LAD-I gap closure is described. Check against `almarzanovoa2018_lad1_review`.
+>   - **LAD-I ORPHA number** (new, found 2026-10-19): Mondo release 2026-10-06 cross-references LAD-I (MONDO:0007293) to Orphanet:99842, not to ORPHA 2968 as `CONTEXT.md` and the application give. Check against Orphanet; records will use Mondo's cross-reference (pre-registration §4.1, §6.2).
+> - **Scope:** the disease set is unchanged; these are wording and number fixes.
+
+### 2026-10-21 · D-10 hosting: OpenRouter (Jimmy's suggestion; run approved)
+- **Jimmy, 2026-10-21:** "I have an openrouter saved already on this account - can you use that?"
+- **What fits D-10:** OpenRouter's model id `deepseek/deepseek-v4.1-flash` is the 2026-09-10 checkpoint the plan pins (OpenRouter model list, read 2026-10-21; a later snapshot, `-1017`, exists and is not used). It supports tool calls. OpenRouter is a hosted API whose name, model id and serving date the agent records, as §7.5 requires.
+- **Claude's call, for fairness:** many upstream providers serve the model at different precisions (fp4, fp8, unstated). The run pins one fp8 provider with fallbacks off (`OPENWEIGHT_PROVIDER`), and logs which provider served each call. Proposed default: `deepinfra/fp8`.
+- **Key (resolved, 2026-10-21):** Jimmy: "there is already a "openrouter.ai" secret in the env document already - can you look". The key is a network secret that the environment's egress proxy adds to requests for openrouter.ai, so the session never sees it and the agent sends no Authorization header. Key limit $50.
+- **One-paper pilot (2026-10-21):** PMID 37324276 on HA20, run `ow-ha20-pilot`: 16 calls, all served by DeepInfra, 29 minutes, $0.069. Same 4 variants as pv1; checklist agreement 0.95 on 80 shared cells; 99.4% of quotes found verbatim (`analysis/openweight/compare_ow-ha20-pilot.json`).
+- **Run approved by Jimmy, 2026-10-21** ("Run both now (Recommended)"): HA20 (85 papers, `ow-ha20`) then SSADH (40, `ow-ssadh`), 10 papers at a time, through `pipeline/extract/openweight/batch.py`. Stop and ask past $40 of key spend across both, counted from key usage $1.0689 at launch, or if anything breaks.
+- **Harness fixes during the run (Claude's call, 2026-10-21; approved by Jimmy, 2026-10-21: "ok, the three harness fixes are approved").** The three are retries, the JSON check (tools v2) and resuming cut-off replies (tools v3).
+  - Retries: the client resends a call (up to 3 times, waits 30/60/120 s) after a dropped connection or a 408/429/5xx error, including DeepInfra's in-stream "502 Network connection lost". Ten HA20 papers launched before this failed and are re-run in full.
+  - JSON check (tools v2): the frozen instructions say "Validate that your file parses as JSON". The Claude helpers did this with a shell command; the open-weight loop has no shell, and one HA20 paper (38183052) ended with a trailing comma. From now on, a write or edit of a `.json` file tells the model whether the file parses. Transcripts record `tools_version`. Papers whose output does not parse are re-run with v2; HA20 papers that finished under v1 with valid JSON are kept. SSADH runs on v2 throughout. The write-up states this.
+  - Cut-off replies (tools v3): four papers (HA20 33101300, 40574834, 41741169; SSADH 9093300) ended with no output file because the model's last reply hit the 65,536-token output limit per call and was cut off before any tool call; the loop took the cut-off text as the final reply. Claude Code asks its helpers to resume when that happens, so the loop now does the same (up to 3 times; the request is logged and counted in `continuations`). The four papers are re-run clean with v3; their failed attempts are archived.
+  - Re-runs start clean: before a failed paper is re-run, its scratch files and any partial or invalid output are moved to `runs/ow-ha20/failed_attempts/` (with the failed log and transcript), so the new attempt cannot see the earlier one's work. Two re-runs launched before this check were stopped after a few turns and restarted clean.
+  - SSADH was started at 10:05 UTC while the last two HA20 papers were still running, keeping 10 papers in flight in total.
+  - Prompt, instruction files, schema, model and provider are unchanged.
+- **Result (2026-10-21):** both runs finished; every one of the 125 papers has an output that parses. Key spend $20.35 for both runs, failed attempts included (`BUDGET.md`). Findings: `reports/openweight_comparison_findings.md` (generated by `analysis/openweight/report.py`). Still open for §7.5: the blinded audit of equal-size samples per model, sized with D-11.
+- **Cost estimate:** about $7–15 for HA20 + SSADH (125 papers) at that provider's list price. That is inside the ~$50 contingency approved under D-10. A one-paper pilot comes first.
+
+### 2026-10-21 · D-41 decided: model work while human rating waits
+- **Context:** Jimmy deferred the human rating (O1 raters, O2 triage, merge hand check, checklist-map review) and asked what model work can go ahead. Plan: `reports/plan_next_work_2026-10-21.md`. He said "go" for all of it and answered three approvals up front.
+- **Approved by Jimmy, 2026-10-21:**
+  - **WS3 gap-variant evidence dossiers:** charged to the "ClinVar/OMIM reconciliation + concordance harness" line ($6,000). Estimate $40–80; stop and ask past $100.
+  - **WS5 memorization probe, Claude side:** charged to the "Ascertainment-bias arm" line ($4,000). Pilot on one disease first, then the other five; stop and ask past $60.
+  - **WS7:** add the GPSEA package as an optional uv dependency group for the exploratory genotype–phenotype maps.
+- **Also going ahead (no spend, per the plan):** WS1 completeness, WS2 gap candidates, WS4 adjudication page (built, not shared), WS6 bias-arm prep, WS8 open-weight harness on a stub, WS9 drafts.
+- **Not changed:** the frozen plan, prompts, metrics and thresholds. Dossiers propose no classification, and helpers never see ClinVar or OMIM content (§5.3). Cost reading at the start: $1,628.03 (2026-10-21 00:50 UTC).
+
+### 2026-10-20 · D-37 decided: six-disease run approved up to $1,200
+- **Estimate** (`analysis/cost/six_disease_estimate_2026-10-20.md`, method of pre-registration §6.5):
+  - 350 papers, about 3.35M input tokens;
+  - one clean pass about $795 (extraction about 70%, gatekeeper 30%);
+  - with repairs (1.25×) about $994; upper-bound rate $876–$1,095;
+  - one full re-run (2×) about $1,590.
+- **Decision (Jimmy, 2026-10-20):** "Up to $1,200". This covers the run with repairs at the upper-bound rate, plus the 10% run-to-run repeat (plan §7.6, about $80). Claude stops and asks before any full re-run, or if the readings pass $1,200.
+- **Order:**
+  1. Prep steps, at little or no model cost: supplements for the five new corpora; the per-disease checklists, written from each disease's GeneReviews or key review (§6.5); the scripted catalogue check (§7.2.7).
+  2. The run itself, disease by disease, with concordance on each as it finishes.
+- **Billing lines:** extraction (line 1) and gatekeeper (line 2). Session readings are logged per disease in `BUDGET.md`.
 
 ### 2026-10-20 · D-36 decided: freeze extraction v6 as tested; pre-registration frozen v1.0
 - **The smoke run** (D-35; `reports/poc_smoke_v6_findings.md`, `runs/poc-ha20-v6-smoke/manifest.json`):
@@ -574,7 +623,51 @@ These were recorded on `claude/zealous-meitner-k7moex` between 18:22 and 18:36 U
 
 ## Pre-registration deviations
 
-None. The pre-registration was frozen as v1.0 on 2026-10-20.
+### 2026-10-20 · D-38 · Frozen extraction prompt and schema instantiated per disease
+- **Registered:** the frozen pipeline is `extract_v6.md`, `gatekeeper_v4.md`, `schema_ha20_v5.json` and `extraction_rules_v1.md` (§6.5). The prompt and schema name A20 haploinsufficiency and TNFAIP3. §6.5 says the six-disease schema generalizes `schema_ha20_v5.json` with a per-disease checklist written from each disease's GeneReviews or key review, but says nothing about the prompt.
+- **Change:** for each of the other five diseases, `pipeline/extract/claude_code/instantiate_disease.py` writes `prompts/extract_v6_<disease>.md` and `schema_<disease>_v5.json`. It swaps only:
+  - the disease name and gene symbol;
+  - the schema path;
+  - the 20-item checklist from `configs/checklists/<disease>.json`.
+
+  Every rule, field name, enum and example stays as frozen. The field `reports_individuals_with_tnfaip3_variant` keeps its name. Each swap must match an exact count, the frozen files' sha256 are checked first, and a diff is written to `pipeline/extract/claude_code/instantiated/<disease>.diff`: 12 changed lines per disease. The gatekeeper and the rules file are disease-neutral and used unchanged.
+- **Checklists:** written by Opus helpers under `prompts/checklist_from_review_v1.md`. Each has exactly 20 items, so the frozen prompt's "each of the 20 checklist features" stays true. Every quote is checked verbatim against its source by `check_checklist.py`. Sources:
+  - SSADH deficiency: 38452608 (2024 consensus guidelines);
+  - Danon disease: 37821174 (2023 international consensus);
+  - Tangier disease: 33994407 (Koseki 2021).
+  - Alexander disease and LAD-I: GeneReviews is behind a reCAPTCHA, and Almarza Novoa 2018 is not open. Their first sources, 39420046 (a genetics meta-analysis) and 42011429 (a treatment consensus), named only 14–16 suitable features, and the helpers stopped rather than pad. Claude's call: two more open reviews or large series each, so each checklist has three sources (recorded in `source_pmid`). AxD: 32779598 and 40520824. LAD-I: 23207660 and 33391282.
+- **Reason:** the frozen files cannot run on another disease without naming it. The swap is the smallest change that does.
+- **Approved by:** Jimmy Lin, 2026-10-20 ("Approve scripted swap").
+- **Expected effect on results:** none on HA20. For the other five, the checklist is new by design (§6.5). Everything else matches the smoke-tested pipeline.
+- **Reported where:** the six-disease results report, methods section.
+
+
+### 2026-10-20 · D-39 · AxD completeness catalogue checked with a supplement fetched after extraction
+- **Registered:** §7.2.7 (D-35): "Each candidate's suitability is checked by script before extraction starts; a candidate without a per-variant table naming source papers is dropped, and that disease reports no completeness figure." The AxD candidate is Grossi 2024 (PMID 39420046).
+- **What happened:**
+  - The pre-extraction check (`analysis/catalogue/catalogue_check_2026-10-20.md`, commit `3622d03`) dropped Grossi 2024. Its per-variant table is in the supplement, and Europe PMC answered HTTP 500 when the supplement was fetched.
+  - `pv1-axd` therefore extracted that paper from its main text only.
+  - One retry at about 19:32 UTC, after AxD extraction finished, downloaded the three supplement files (recorded in `data/literature/axd/supplementary/manifest.csv`).
+- **Change:** the supplement's per-variant table is transcribed on the harness side only, outside the extraction text. If it passes the same suitability check, AxD reports completeness under §7.2.7. Nothing is appended to the paper text `pv1-axd` read, and extraction is not re-run.
+- **Reason:** the drop came from a server error, not from the catalogue lacking a suitable table. The catalogue never reaches extraction (§5.3), so using it later cannot affect what was extracted.
+- **Approved by:** Jimmy Lin, 2026-10-20 ("Use it, log deviation").
+- **Expected effect on results:** AxD gains a completeness figure it would otherwise lack. No effect on extraction, gatekeeper or any other disease.
+- **Reported where:** the six-disease results report, beside the AxD completeness figure, saying the catalogue was added after extraction and why.
+- **Outcome (2026-10-20):** `pipeline/harness/catalogue_grossi2024.py` transcribed Supplementary Table 2 to the reference root outside the repo. It has 553 rows, 187 references and 180 protein changes, and it is suitable under `catalogue_check.judge`. `judge()` chose the allele column "REF" as the source column; with "Reference (PMID)" the share of rows with both is 0.995. The rule was not changed. Manifest: `analysis/catalogue/grossi2024_manifest_2026-10-20.json`.
+
+### 2026-10-20 · D-40 · Stage 4 (normalization, binding, phenopackets) given per-disease settings
+- **Registered:** the audit's claim pool is "every value asserted in the final (post-gatekeeper) records across the six diseases" (§7.1). Records are built by normalization (VariantValidator, MANE Select), HPO and Mondo binding and phenopacket building. At `pipeline-v1.0` those scripts assume HA20: `normalize_variants --mane NM_001270508.2`, `configs/ha20_checklist_hpo.json`, the HA20 Mondo label rule and a TNFAIP3-only HGNC table in `to_phenopackets`.
+- **Change:** the Stage 4 scripts read per-disease settings:
+  - the gene, its HGNC ID and its MANE Select transcript, read from VariantValidator and recorded with the date;
+  - a checklist-to-HPO map per disease, built from the pinned HPO release the way HA20's was, and flagged for review by Jimmy or the panel;
+  - a Mondo term per disease, from the pinned Mondo release.
+
+  HA20's settings are its existing ones, so HA20's records are built as before. No change to the four pinned files, metrics or thresholds. The model-assisted HPO binding step uses `hpo_binding_v1.md` unchanged.
+- **Reason:** Stage 4 cannot run on another disease without naming its gene, transcript, disease term and checklist terms. This follows the pattern of D-38.
+- **Approved by:** Jimmy Lin, 2026-10-20 ("Approve", the recommended option).
+- **Also decided (no deviation):** the SSADH corpus holds one study twice (37503297, a preprint; 37962671, the journal version, whose open copy is the same text). Both stay in the corpus; the cross-paper merge joins their patients, with the merge evidence recorded, and the report says so (Jimmy Lin, 2026-10-20, "Keep both, merge patients").
+- **Expected effect on results:** none on extraction or the gatekeeper. The five new diseases get records, which the audit draw and concordance need.
+- **Reported where:** the six-disease results report, methods section.
 
 Entry format once frozen:
 
