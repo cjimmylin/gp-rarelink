@@ -6,7 +6,7 @@ How to maintain it:
 - Add what a future session would need to know. Keep entries short and dated.
 - Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
 
-*Last updated 2026-10-22.*
+*Last updated 2026-10-24.*
 
 ## 1. Where things stand (2026-10-18)
 
@@ -121,6 +121,7 @@ How to maintain it:
   - **`catalogue_check.judge()` can pick an allele column named 'REF' as the source column.** Report the intended column's share beside it (done for Grossi 2024).
   - **D-39 (deviation, 2026-10-20):** the AxD catalogue's supplement (Grossi 2024) came through only after extraction. Transcribe it on the harness side for completeness; never append it to the extraction text.
   - **Supplements for the five new corpora:** fetch one paper per call (`fetch_supplementary --pmid <one>`), one process per disease. A single run over a whole corpus stops at the first Europe PMC error and writes its manifest only at the end, so it loses everything; Europe PMC zips are large and slow.
+  - **Budget by line (2026-10-24):** `analysis/cost/budget_lines.py` fills the Spent and Remaining columns in `BUDGET.md` from `analysis/cost/spend_segments.csv`, one row per stretch between session cost readings. After a new reading, add a row (start = the last row's end) and re-run. These are estimates, not billing figures.
   - **Don't wait on a process with `pgrep -f <script name>` inside a Bash loop.** The loop's own command line contains the name, so it never ends. Match the interpreter path (`pgrep -f "python3 path/to/script"`) or wait on an output file.
   - **Helper slot tracking:** at most 20 helpers at once. Record a chunk as launched only after its Agent call goes out, or the tracker overcounts.
 - **Git:**
