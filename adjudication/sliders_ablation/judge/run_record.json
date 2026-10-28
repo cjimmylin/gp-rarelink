@@ -1,0 +1,41 @@
+{
+ "study": "SLIDERS ablation pilot (D-44)",
+ "stage": "locate-and-judge support judge",
+ "instructions": "pipeline/extract/claude_code/prompts/judge_locate_v1.md",
+ "instructions_sha256": "571c15e6f3f5b70111276f3c6b524c2a9b888b360ecd77279b9c2b2a15a820aa",
+ "launch_template": "pipeline/extract/claude_code/prompts/judge_launch_v1.txt",
+ "launch_sha256": "07ee6146ccdf7e78b4fa4e32cbfc2c6be1f00ae4288b9fc4cd6233587bb47048",
+ "sample_commit": "495e1a6d1b0db233c3988a833b91fb12b59cffed",
+ "launch_commit": "495e1a6d1b0db233c3988a833b91fb12b59cffed",
+ "agent": "Claude Code Agent tool, subagent_type general-purpose, model opus, one helper per paper, at most 20 at once",
+ "arm_hidden": "the chunk CSV carries claim_id, table, individual, context, field, value only; arm and the source claim id are in judge_key.json, which helpers are told not to open",
+ "pilot_papers": [
+  "ha20_37324276",
+  "ha20_40574834",
+  "ssadh_14635103"
+ ],
+ "started_utc": "2026-10-28T17:04:56+00:00",
+ "notes": [
+  "Pilot of three helpers first to measure cost; extraction used $197.34 of the $300 ceiling.",
+  "Pilot result (3 helpers): $0.76, $1.17, $1.60 by helper tokens, mean about $1.18; the full 116-paper judge (about $137) plus extraction ($197.34) would pass the $300 ceiling. Judged within the ceiling: all 39 SSADH papers, 32 HA20 papers (2 pilots + 30 drawn with seed 42283, judge/paper_subset.json); 45 HA20 papers deferred pending Jimmy's answer on the ceiling.",
+  "Final: 71 judge helpers (32 HA20, 39 SSADH), 812 claims judged, every id once, 0 problems; 45 HA20 chunks deferred. Judge mean $1.05 per paper (HA20 $1.08, SSADH $1.02).",
+  "2026-10-28, later: Jimmy approved judging the 45 deferred HA20 papers past the $300 ceiling ('yes for both and also merge to main'); launched in waves of at most 20.",
+  "Final (after Jimmy's approval): 116 judge helpers over all 116 papers with output in both arms, 1339 claims judged, every id once, 0 problems, 0 chunks deferred. Judge $119.78; pilot total $317.13, past the original $300 ceiling as approved."
+ ],
+ "paper_subset": "adjudication/sliders_ablation/judge/paper_subset.json",
+ "finished_utc": "2026-10-28T17:44:59+00:00",
+ "helpers_run": 116,
+ "claims_judged": 1339,
+ "chunks_deferred": 0,
+ "cost_helper_tokens_usd": {
+  "judge": 119.78,
+  "direct_extraction": 197.34,
+  "total": 317.13,
+  "method": "analysis/sliders_ablation/helper_stats.py, $5.996 per weighted million tokens"
+ },
+ "session_cost_reading_usd": {
+  "value": 161.21,
+  "read_utc": "2026-10-28T17:18Z",
+  "note": "this session's own list-price reading (get_session); it lags the helper-token estimate and this session is separate from the one whose readings feed analysis/cost/spend_segments.csv"
+ }
+}
