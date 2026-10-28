@@ -1,4 +1,4 @@
-# Direct extraction instructions, v1 (GP-RareLink SLIDERS ablation, D-42)
+# Direct extraction instructions, v1 (GP-RareLink SLIDERS ablation, D-44)
 
 *The baseline arm of the SLIDERS ablation pilot (`reports/sliders_ablation_design.md`). A plain request for the final records: no evidence tables, no quotes, no rules file. Written 2026-10-28, before the run; not changed afterwards. Rendered per disease by `pipeline/extract/claude_code/direct_prompt.py` from this template.*
 

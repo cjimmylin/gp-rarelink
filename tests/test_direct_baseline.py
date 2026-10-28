@@ -1,4 +1,4 @@
-"""The direct-extraction baseline of the SLIDERS ablation (D-42): prompt rendering and conversion."""
+"""The direct-extraction baseline of the SLIDERS ablation (D-44): prompt rendering and conversion."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-# Locate-and-judge instructions, v1 (GP-RareLink SLIDERS ablation, D-42)
+# Locate-and-judge instructions, v1 (GP-RareLink SLIDERS ablation, D-44)
 
 *The support judge of the ablation pilot (`reports/sliders_ablation_design.md` §4.1). Unlike gatekeeper v4, which is handed the extractor's own quote, this judge receives values without any quote and must find the evidence itself. Written 2026-10-28, before the run; not changed afterwards.*
 

@@ -1,4 +1,4 @@
-"""Prove that the re-created inputs are the ones the SLIDERS arm read (D-42, design §3).
+"""Prove that the re-created inputs are the ones the SLIDERS arm read (D-44, design §3).
 
 This container held none of the git-ignored full text, so the HA20 and SSADH papers were re-fetched
 and re-converted on 2026-10-28. Three checks, written to analysis/sliders_ablation/input_check.json:

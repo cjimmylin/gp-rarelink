@@ -1,4 +1,4 @@
-"""Launch and finish records for the direct-extraction runs (SLIDERS ablation, D-42).
+"""Launch and finish records for the direct-extraction runs (SLIDERS ablation, D-44).
 
 The Claude Code route gives no per-call usage, so the record keeps what can be kept: the commit,
 the sha256 of the instruction and launch prompt the helpers were given, the papers, the model
@@ -50,7 +50,7 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "start":
         papers = json.loads((ROOT / f"runs/pv1-{a.disease}/manifest.json").read_text())["documents"]
         rec = {"run_id": a.run_id, "disease": a.disease, "arm": "D (direct extraction, no SLIDERS-style scaffold)",
-               "decision": "D-42 (SLIDERS ablation pilot; reports/sliders_ablation_design.md)",
+               "decision": "D-44 (SLIDERS ablation pilot; reports/sliders_ablation_design.md)",
                "route": f"Claude Code helper agents, {a.agent_model} (as pv1, D-20)", "launch_commit": commit(),
                "launched_utc": datetime.now(UTC).isoformat(timespec="seconds"),
                "papers": papers, "n_papers": len(papers), "papers_from": f"pv1-{a.disease}",

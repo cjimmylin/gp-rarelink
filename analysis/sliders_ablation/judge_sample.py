@@ -1,4 +1,4 @@
-"""Draw the locate-and-judge sample and the human audit sheets for the SLIDERS ablation (D-42, design §4.1, §4.3).
+"""Draw the locate-and-judge sample and the human audit sheets for the SLIDERS ablation (D-44, design §4.1, §4.3).
 
 Two arms per disease, scored on the same papers:
   S  the SLIDERS-style run pv1-<disease>   (claims from its claims.csv and gatekeeper_v4_claims.csv)

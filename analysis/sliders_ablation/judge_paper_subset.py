@@ -1,4 +1,4 @@
-"""Choose which sampled papers the locate-and-judge helpers judge, within the D-42 ceiling.
+"""Choose which sampled papers the locate-and-judge helpers judge, within the D-44 ceiling.
 
 The design (reports/sliders_ablation_design.md §4.1) planned one judge helper per paper on all
 116 papers. The three pilot judge helpers cost $0.76-1.60 each (mean about $1.18), so the full
@@ -36,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
     subset = {
         "seed": args.seed,
         "drawn_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-        "reason": "pilot judge helpers cost about $1.18 each; the full 116-paper judge would pass the $300 ceiling (D-42)",
+        "reason": "pilot judge helpers cost about $1.18 each; the full 116-paper judge would pass the $300 ceiling (D-44)",
         "pilot_papers_hand_picked": PILOT,
         "ssadh": {"judged": chunks["ssadh"], "deferred": []},
         "ha20": {"judged": sorted(set(PILOT["ha20"]) | set(drawn)), "random_draw": drawn,

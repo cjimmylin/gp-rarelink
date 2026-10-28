@@ -1,4 +1,4 @@
-"""Convert direct-extraction records to the five-table shape (SLIDERS ablation, D-42).
+"""Convert direct-extraction records to the five-table shape (SLIDERS ablation, D-44).
 
 The baseline helpers write one nested JSON document per paper
 (data/extracted/<disease>/<run_id>/records/<pmid>.json; format in prompts/direct_v1.md). The

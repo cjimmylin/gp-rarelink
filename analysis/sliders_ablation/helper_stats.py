@@ -1,4 +1,4 @@
-"""Per-helper token usage and wall-clock for the direct runs and the judge (SLIDERS ablation, D-42).
+"""Per-helper token usage and wall-clock for the direct runs and the judge (SLIDERS ablation, D-44).
 
 Reads the Claude Code helper transcripts of this session (one JSONL file per helper in the tasks
 directory; they disappear with the container, so the derived table is committed) and keeps the

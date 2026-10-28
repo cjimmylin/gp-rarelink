@@ -1,4 +1,4 @@
-"""Render the direct-extraction baseline instruction for one disease (SLIDERS ablation, D-42).
+"""Render the direct-extraction baseline instruction for one disease (SLIDERS ablation, D-44).
 
 The template `prompts/direct_v1.md` names the disease, the gene and the 20-item checklist
 through three placeholders. The checklist is the same list the frozen schema carries for the

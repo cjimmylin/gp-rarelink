@@ -1,4 +1,4 @@
-"""Merge and summarize the locate-and-judge verdicts of the SLIDERS ablation (D-42, design §4.1).
+"""Merge and summarize the locate-and-judge verdicts of the SLIDERS ablation (D-44, design §4.1).
 
 Inputs:
   adjudication/sliders_ablation/judge/judge_key.json        id -> arm, source claim, group, hidden span
