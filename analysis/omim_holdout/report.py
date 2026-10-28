@@ -66,6 +66,9 @@ def main(argv: list[str] | None = None) -> int:
       f"Internal report: it quotes OMIM identifiers and short variant labels, and paraphrases OMIM statements in §5; it is not for release in this form (pre-registration §11).*\n")
     w("Wilson 95% intervals throughout. The run assessed is `pv1-<disease>` (frozen pipeline v1.0, 2026-10-20). "
       "Nothing here changes a pre-registered metric or threshold; §10 says which figures are pre-registered and which are exploratory.\n")
+    w("**Status (2026-10-28, later the same day):** D-43 was decided by Dr. Lin ('go with your recommendation'). G-danon-001 is withdrawn in "
+      "`adjudication/o3_gaps/candidates.csv`, the Stage 4 settings carry isoform-sensitive regions for LAMP2 and GFAP, and the Danon run was re-normalized; "
+      "see `DECISIONS.md` (D-43, deviation entry). The figures below are those of the assessment as run before that change.\n")
 
     # ---------- 1. summary
     n_av = tot["omim_allelic_variants_for_diseases"]

@@ -21,10 +21,10 @@ How to use this file:
 
 ### Needed later
 
-**D-43 · Withdraw G-danon-001 and re-check isoform-sensitive normalizations** [proposed, 2026-10-28]
+**D-43 · Withdraw G-danon-001 and re-check isoform-sensitive normalizations** (decided 2026-10-28; see the decision log and the deviation entry)
 - **Finding:** `G-danon-001` (`NM_002294.3:c.1097_1098del`, Sugie 2018, PMID 30413001) is OMIM 309060.0001 / ClinVar 1410728, reported on LAMP2 exon 9b (the paper's table says `E9b`; LAMP2B, NM_013995). The run assumed the MANE transcript (LAMP2A, exon 9a) because the paper named no transcript, so the candidate's genomic allele X:120431457:CTT:C is an artefact, not a gap. One more LAMP2 description past c.1093 carries `transcript_assumed = yes` (`c.1150G>C`, PMID 25228319). GFAP alpha/epsilon has the same structure; its one case (Melchionda 2013) failed normalization safely.
 - **Recommendation:** withdraw G-danon-001 from the gap candidates and the adjudication page; re-normalize the two LAMP2 descriptions on NM_013995 and keep them only where the paper's exon label supports it; add per-gene isoform-sensitive regions to the Stage 4 settings (a Stage 4 change, to be logged as a deviation in the D-40 pattern). Details in `reports/omim_holdout_assessment.md` §7.
-- **Needs:** Jimmy's decision.
+- **Decided:** Jimmy Lin, 2026-10-28 ("go with your recommendation on D-43"). Carried out the same day; details under *Pre-registration deviations*.
 
 **D-15 · Budget tracking**
 - **Answered by the award email:** the credits are one pool on a claude.ai account, covering chat, Claude Code, Cowork and Claude Science. Cowork and Claude Code sessions on the funded account draw on that pool. There are no separate Claude Science and Claude Code allocations.
@@ -43,6 +43,12 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-28 · D-43 decided: G-danon-001 withdrawn; isoform-sensitive positions added to Stage 4 normalization
+
+- **Jimmy:** "go with your recommendation on D-43".
+- **Done:** (1) `G-danon-001` is marked `withdrawn` in `adjudication/o3_gaps/candidates.csv` (new columns `status`, `status_note`; no row removed, because dossiers, batches, flags and the adjudication page key on the candidate id); the same pass copies the OMIM verdict of 2026-10-28 into every row's `omim_checked` (214 absent from OMIM's allelic variants, 1 withdrawn). Script: `adjudication/o3_gaps/apply_omim_check.py`. (2) Stage 4 normalization gained an isoform rule (deviation entry below). (3) The Danon run is re-normalized under the new rule and its phenopackets rebuilt with the pinned ontology releases (checksums match the 2026-10-19 manifest); the run started 2026-10-28 16:06 UTC after a VariantValidator outage, and its before-and-after diff is recorded in the deviation entry's outcome bullet once it finishes (follow-up commit).
+- **Not done, on purpose:** the adjudication page is not changed (no publishing, Jimmy 2026-10-21); it still lists G-danon-001, so whoever adjudicates needs the candidates file or a refreshed page once publishing resumes. O2 and O3 are not re-run on a fresh ClinVar snapshot: on the right transcript the withdrawn variant is ClinVar 1410728 (uncertain significance), so it is not a gap either way, and the other candidates' standing rests on the registered 2026-10-12 release.
+- **Not changed:** the four pinned extraction files, metrics, thresholds, O2's ClinVar figures, the other five runs.
 ### 2026-10-28 · D-42 decided: OMIM reference from entry pages frozen by Jimmy; OMIM used as a human-curated holdout
 
 - **Jimmy's action and instruction:** uploaded twelve omim.org entry pages printed to PDF on 2026-10-28 ("These are frozen screenshots from OMIM as of today"): the six phenotype entries (616744, 203450, 116920, 271980, 300257, 205400) and the six gene entries (191163, 137780, 600065, 610045, 309060, 600046). Then: "can you use the omim information as a gold standard human curated hold out source to assess the outputs of our analysis in a comprehensive manner - analyzing where our work is successful, where it can be improved, and providing an extensive analysis".
@@ -686,6 +692,19 @@ These were recorded on `claude/zealous-meitner-k7moex` between 18:22 and 18:36 U
 Entry format once frozen:
 
 ```
+### 2026-10-28 · D-43 · Isoform-sensitive positions in Stage 4 normalization; G-danon-001 withdrawn
+- **Registered:** §6.2 and the Stage 4 scripts as frozen (with D-40's per-disease settings): a cDNA description whose paper names no transcript is queried on the gene's MANE Select transcript and flagged `transcript_assumed = yes`. §7.3 defines a gap variant as absent from ClinVar and not listed among OMIM's allelic variants.
+- **Finding (OMIM holdout, D-42):** LAMP2 has alternative terminal coding exons 9a, 9b and 9c, and GFAP has exon 7A (epsilon) in place of exons 8 and 9. Sugie 2018 (PMID 30413001) prints the Nishino 2000 deletion as `E9b | c.1097_1098 delAA`; the run assumed NM_002294.3 (exon 9a) and produced the genomic allele X:120431457:CTT:C, which no database holds because it is not what the paper reported. That allele was gap candidate `G-danon-001`. On NM_013995 (exon 9b) the description is OMIM 309060.0001 / ClinVar 1410728. GFAP's one case (Melchionda 2013, c.1289G>A on the epsilon isoform) failed normalization safely with a reference mismatch.
+- **Change:**
+  - `pipeline/extract/isoform_regions.py` reads the RefSeq mRNA records (E-utilities, GenBank features) and computes, per gene, the first c. position at which the MANE and alternative transcripts' exon structures differ: LAMP2 c.1094 (NM_002294.3 vs NM_013995.2 and NM_001122606.1), GFAP c.1172 (NM_002055.5 vs NM_001131019.3). It writes an `isoform_sensitive` block into `configs/stage4/danon.json` and `axd.json` with the accessions, date and exon boundaries used. The label patterns that let a paper's own words name the isoform ("E9b", "LAMP2B", "exon 9A", "epsilon", "exon 7A") are Claude's choices, flagged for review.
+  - `pipeline/extract/normalize_variants.py`: for a description with no stated transcript whose first c. position lies at or beyond that point, the paper's words around the variant (the printed string, its span, the transcript field) choose the transcript (`transcript_assumed = isoform_from_label`, reason in the new `isoform_note` column); with no such word the description gets status `isoform_ambiguous`, is not sent to VariantValidator and has no genomic key, with the candidate transcripts in `warnings`. Below the divergence point, and for the four genes without such a block, nothing changes. Unit tests: `tests/test_isoform_rule.py`.
+  - `adjudication/o3_gaps/candidates.csv`: `G-danon-001` marked withdrawn (`status`, `status_note`); `omim_checked` filled for all 215 rows from the D-42 check.
+- **Reason:** the registered assumption placed a reported variant on the wrong exon and created a false gap candidate; the paper's own exon label resolves it without any outside knowledge, and where the paper gives none the honest output is no genomic key.
+- **Approved by:** Jimmy Lin, 2026-10-28 ("go with your recommendation on D-43").
+- **Expected effect on results:** two Danon descriptions change (`c.1097_1098delAA` from 30413001 moves to NM_013995.2 and ClinVar's allele; `c.1150G>C` from 25228319, a review that names no transcript, becomes `isoform_ambiguous` and loses its genomic key; the same change stated on NM_013995.1 by 22290069, candidate `G-danon-002`, is untouched). No effect on the other five diseases. O2's Danon tier-1 overlap denominator falls by one placed variant; O3 loses one candidate.
+- **Outcome (run of 2026-10-28):** see the bullet added after the re-normalization below.
+- **Reported where:** `reports/omim_holdout_assessment.md` §7 and the six-disease results report's methods, next revision.
+
 ### YYYY-MM-DD · D-nn · Short title
 - Registered: what the frozen plan said (section)
 - Change:

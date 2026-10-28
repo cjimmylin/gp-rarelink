@@ -1,8 +1,10 @@
 # The six-disease run against OMIM as a human-curated holdout
 
-*Generated 2026-10-28 by `analysis/omim_holdout/report.py` at commit `a5e07fc` from `results_2026-10-28.json`, `av_recall_2026-10-28.csv`, `omim_cited_papers_2026-10-28.csv`, `gap_candidates_omim_check_2026-10-28.csv`, `omim_av_clinvar.csv` and the hand-judged `patient_level_judgements.csv`. OMIM source: the twelve entry pages Dr. Lin printed from omim.org on 2026-10-28 (D-42), parsed by `pipeline/harness/omim_entries.py`; ClinVar placement of OMIM's allelic variants from ClinVar E-utilities queried 2026-10-28T15:23:07Z. Internal report: it quotes OMIM identifiers and short variant labels, and paraphrases OMIM statements in §5; it is not for release in this form (pre-registration §11).*
+*Generated 2026-10-28 by `analysis/omim_holdout/report.py` at commit `475ffb6` from `results_2026-10-28.json`, `av_recall_2026-10-28.csv`, `omim_cited_papers_2026-10-28.csv`, `gap_candidates_omim_check_2026-10-28.csv`, `omim_av_clinvar.csv` and the hand-judged `patient_level_judgements.csv`. OMIM source: the twelve entry pages Dr. Lin printed from omim.org on 2026-10-28 (D-42), parsed by `pipeline/harness/omim_entries.py`; ClinVar placement of OMIM's allelic variants from ClinVar E-utilities queried 2026-10-28T15:23:07Z. Internal report: it quotes OMIM identifiers and short variant labels, and paraphrases OMIM statements in §5; it is not for release in this form (pre-registration §11).*
 
 Wilson 95% intervals throughout. The run assessed is `pv1-<disease>` (frozen pipeline v1.0, 2026-10-20). Nothing here changes a pre-registered metric or threshold; §10 says which figures are pre-registered and which are exploratory.
+
+**Status (2026-10-28, later the same day):** D-43 was decided by Dr. Lin ('go with your recommendation'). G-danon-001 is withdrawn in `adjudication/o3_gaps/candidates.csv`, the Stage 4 settings carry isoform-sensitive regions for LAMP2 and GFAP, and the Danon run was re-normalized; see `DECISIONS.md` (D-43, deviation entry). The figures below are those of the assessment as run before that change.
 
 ## 1. Summary
 

@@ -36,12 +36,27 @@ Repairs (D-26, decided 2026-10-19), each flagged on the row:
     notation typos, each with its reason) is queried in corrected form; the
     extracted string is kept in query_corrected_from.
 
+Isoform-sensitive positions (D-43, decided 2026-10-28). Some genes have
+alternative coding exons (LAMP2 exons 9a/9b/9c, GFAP exon 7A), so a cDNA
+position at or beyond the point where the isoforms diverge names different
+genomic bases on different transcripts. When a paper gives no transcript and
+the position lies in such a region (configs/stage4/<disease>.json,
+"isoform_sensitive", computed by pipeline/extract/isoform_regions.py), the
+paper's own words decide: a label naming an alternative isoform or exon
+("E9b", "LAMP2B", "epsilon", "exon 7A") selects that transcript, a label
+naming the MANE isoform keeps it (transcript_assumed = isoform_from_label,
+the reason in isoform_note); with no label the description gets status
+isoform_ambiguous and no genomic key, and the candidates are listed in
+warnings. Below the divergence point nothing changes.
+
 Status per distinct description:
   normalized    VariantValidator accepted the description unchanged;
   corrected     accepted, but the validated transcript HGVS differs from the
                 query (both kept);
   unresolvable  VariantValidator returned an error or warning instead of a
                 result (the warning is kept);
+  isoform_ambiguous  no transcript stated and the position lies where the
+                gene's coding isoforms diverge (D-43); not queried;
   protein_only, not_normalized   as above.
 
 Responses are cached on disk (data/cache/variantvalidator/, git-ignored) keyed
@@ -116,6 +131,46 @@ def transcript_of(row: dict) -> str | None:
             if m:
                 return m.group(1)
     return None
+
+
+def isoform_rule(cdna: str, labels: str, rules: list[dict]) -> tuple[str | None, str]:
+    """D-43: choose the transcript for a description whose paper names none, when its position lies where coding isoforms diverge.
+
+    Returns (transcript, note). transcript is None when the rule does not apply (note "") or when the
+    paper gives no isoform label either (note starts with "ambiguous").
+    """
+    m = re.match(r"^c\.(\*?)(-?\d+)", cdna or "")
+    if not m or int(m.group(2)) < 1 and not m.group(1):
+        return None, ""
+    pos = 10 ** 6 if m.group(1) else int(m.group(2))  # c.* positions (3' UTR) lie beyond every coding boundary
+    for rule in rules:
+        if pos < int(rule["from_cdna"]):
+            continue
+        for alt in rule.get("alternatives", []):
+            if re.search(alt["labels"], labels, re.I):
+                return alt["transcript"], f"isoform from the paper's label: {alt['name']} ({alt['transcript']})"
+        if rule.get("mane_labels") and re.search(rule["mane_labels"], labels, re.I):
+            return rule["mane"], f"isoform from the paper's label: MANE Select ({rule['mane']})"
+        alts = ", ".join(a["transcript"] for a in rule.get("alternatives", []))
+        return None, (f"ambiguous: {cdna} lies at or beyond c.{rule['from_cdna']}, where {rule['gene']} coding isoforms diverge "
+                      f"(MANE {rule['mane']}; alternatives {alts}); the paper names no transcript or isoform, so no genomic key is assigned (D-43)")
+    return None, ""
+
+
+def label_text(r: dict) -> str:
+    """The words a paper prints around a variant: the printed variant, its span, the transcript field and its span, the cDNA span."""
+    parts = []
+    for field in ("variant_original_string", "transcript_as_stated", "cdna_hgvs_as_stated"):
+        cell = r.get(field)
+        if isinstance(cell, dict):
+            val, span = cell.get("value"), cell.get("span")
+            if val not in MISSING:
+                parts.append(str(val))
+            if isinstance(span, str):
+                parts.append(span)
+            elif isinstance(span, list):
+                parts += [str(x) for x in span]
+    return " ".join(parts)
 
 
 def latest_versions(vv: "VV", gene: str) -> dict[str, str]:
@@ -206,9 +261,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--no-config", action="store_true", help="ignore configs/stage4/<disease>.json")
     args = ap.parse_args(argv)
     cfg_path = Path("configs/stage4") / f"{args.disease}.json"
+    rules: list[dict] = []
     if cfg_path.exists() and not args.no_config:  # D-40: gene and MANE Select per disease
         cfg = json.loads(cfg_path.read_text())
         args.gene, args.mane = cfg["gene"], cfg["mane_select"]
+        rules = cfg.get("isoform_sensitive", [])  # D-43
     corrections = {}
     if args.corrections and Path(args.corrections).exists():
         corrections = {r["cdna_as_extracted"]: r for r in csv.DictReader(Path(args.corrections).open())}
@@ -223,18 +280,30 @@ def main(argv: list[str] | None = None) -> int:
             prot = protein_key(v(r.get("protein_hgvs_as_stated"))) or protein_key(orig)
             key = f"{tx or ''}|{cdna or ''}|{prot or ''}|{'' if (cdna or prot) else clean(orig).lower()}"
             d = distinct.setdefault(key, {"cdna": cdna, "transcript": tx, "protein": prot, "original": orig, "rows": 0, "pmids": set(),
-                                          "legacy": legacy})
+                                          "legacy": legacy, "labels": set()})
             d["rows"] += 1
             d["pmids"].add(p.stem)
+            d["labels"].add(label_text(r))
     vv, out, c = VV(args.delay), [], Counter()
     versions = latest_versions(vv, args.gene)
     for key, d in distinct.items():
         row = {"variant_key": key, "original_string_example": d["original"], "rows": d["rows"], "pmids": " ".join(sorted(d["pmids"])),
                "query": "", "query_corrected_from": "", "transcript_assumed": "", "legacy_notation_rewritten": "yes" if d["legacy"] else "", "status": "", "hgvs_transcript": "", "hgvs_protein": "",
-               "hgvs_genomic_grch38": "", "vcf_grch38": "", "mane_hgvs_transcript": "", "mane_hgvs_protein": "", "warnings": "", "vv_version": ""}
+               "hgvs_genomic_grch38": "", "vcf_grch38": "", "mane_hgvs_transcript": "", "mane_hgvs_protein": "", "warnings": "", "vv_version": "",
+               "isoform_note": ""}
+        ambiguous = False
         if d["cdna"]:
             tx = d["transcript"] if d["transcript"] else args.mane
             row["transcript_assumed"] = "" if d["transcript"] else "yes"
+            if not d["transcript"] and rules:  # D-43
+                chosen, note = isoform_rule(d["cdna"], " ".join(sorted(d["labels"])), rules)
+                if chosen:
+                    tx, row["transcript_assumed"], row["isoform_note"] = chosen, "isoform_from_label", note
+                elif note:
+                    ambiguous, row["isoform_note"] = True, note
+        if ambiguous:
+            row["status"], row["warnings"], row["query"] = "isoform_ambiguous", row["isoform_note"], f"{args.mane}:{d['cdna']} (not sent)"
+        elif d["cdna"]:
             if tx and "." not in tx and tx in versions:  # printed without a version number
                 tx = versions[tx]
                 row["transcript_assumed"] = "version"
@@ -273,13 +342,15 @@ def main(argv: list[str] | None = None) -> int:
         w.writerows(out)
     n = len(out)
     summary = {"run_id": args.run_id, "mane_select": args.mane, "distinct_descriptions": n,
-               "status_counts": {k: c[k] for k in ("normalized", "corrected", "protein_only", "not_normalized", "unresolvable")},
+               "status_counts": {k: c[k] for k in ("normalized", "corrected", "protein_only", "not_normalized", "unresolvable", "isoform_ambiguous")},
                "row_counts": {k[5:]: c[k] for k in c if k.startswith("rows:")},
                "share_normalized_or_corrected": round((c["normalized"] + c["corrected"]) / n, 4) if n else None,
                "share_normalized_or_corrected_of_cdna": round((c["normalized"] + c["corrected"]) / max(1, c["normalized"] + c["corrected"] + c["unresolvable"]), 4),
                "transcript_assumed": sum(1 for r in out if r["transcript_assumed"] == "yes"),
                "transcript_version_assumed": sum(1 for r in out if r["transcript_assumed"] == "version"),
                "transcript_version_mapped": sum(1 for r in out if r["transcript_assumed"] == "version_mapped"),
+               "transcript_isoform_from_label": sum(1 for r in out if r["transcript_assumed"] == "isoform_from_label"),
+               "isoform_rules": [{"gene": x["gene"], "from_cdna": x["from_cdna"], "alternatives": [a["transcript"] for a in x["alternatives"]]} for x in rules],
                "query_corrected": sum(1 for r in out if r["query_corrected_from"]),
                "cdna_descriptions": c["normalized"] + c["corrected"] + c["unresolvable"],
                "api_calls": vv.calls, "cache_hits": vv.cached,
