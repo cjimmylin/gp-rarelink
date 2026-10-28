@@ -38,6 +38,16 @@ How to use this file:
 
 ## Decision log
 
+### 2026-10-28 · D-42 decided: SLIDERS ablation pilot on HA20 and SSADH deficiency (exploratory)
+- **Context:** Jimmy asked for a small two-disease pilot that does *not* use the SLIDERS framework, to measure what SLIDERS added. Design: `reports/sliders_ablation_design.md`; findings: `reports/sliders_ablation_findings.md` (generated).
+- **Jimmy, 2026-10-28 (question tool), the recommended option on all four questions:**
+  - **Baseline arm: "Direct extraction".** One Opus Claude Code helper per paper, the same model and route as the six-disease run, given the paper and a plain 60-line instruction (`pipeline/extract/claude_code/prompts/direct_v1.md`) asking for the final per-individual records with the same fields and the same 20-item three-state checklist, with no per-value quotes, no evidence-table schema, no rules file, no gatekeeper and no reconciliation step. The SLIDERS arm is the existing `pv1-ha20` and `pv1-ssadh` output, not re-run.
+  - **Diseases: HA20 + SSADH deficiency**, the same 125 papers as the D-10 open-weight comparison. HA20 is the development disease (D-18), so it is the case most favorable to the SLIDERS arm; SSADH is untuned.
+  - **Support judge: "Locate-and-judge + audit sheets".** A new Claude judge that first finds the supporting passage and then judges, run on an equal seeded sample from both arms with the SLIDERS arm's quotes hidden and the arm blinded, one helper per paper; plus equal-size human audit sheets (CSV, no pages) for the panel later. Reported as a model reading, never as the error rate.
+  - **Budget: Contingency, ceiling $300.** Estimate $110–200 (baseline extraction $90–150, judge $20–50). Stop and ask past $300.
+- **Status:** exploratory, added after the freeze. No pinned file, metric, threshold or registered analysis changes; this is not a pre-registration deviation. The report labels every figure exploratory. Both arms are scored against one fresh ClinVar snapshot (2026-10-28), so the SLIDERS arm's registered O2 figures (snapshot 2026-10-19) are not replaced.
+- **Inputs:** the git-ignored full text was re-fetched on 2026-10-28; all 125 files match the manifests' sha256. Supplements re-appended with the same scripts; ontology releases match their recorded hashes.
+
 ### 2026-10-21 · D-13 and D-14 decided; D-10 audit waits on D-11; more open-weight work approved
 - **Jimmy, 2026-10-21 (question tool):**
   - **D-13: "Curation (Recommended)".** Our ClinVar submissions use the *curation* collection method, not *literature only*, because the records are panel-adjudicated and carry a classification. This is a change from the grant's wording ("literature-only submissions"), logged here.
