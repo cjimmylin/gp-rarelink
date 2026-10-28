@@ -11,6 +11,7 @@ from pathlib import Path
 
 from . import figures
 from .data import CONFIRMATORY, DISEASES, ROOT, SHORT, load
+from .omim_section import omim_av_cell, omim_line, results_omim, supplement_omim
 from .stats import clopper_pearson, wilson
 
 OUT = ROOT / "reports/interim_paper"
@@ -82,8 +83,9 @@ def status_box(D):
     return f"""> **Status at a glance ({TODAY}; repository commit `{D['commit']}`)**
 >
 > - **Done with the frozen pipeline (`pipeline-v1.0`, pre-registration v1.0 frozen 2026-10-20):** extraction, span check and gatekeeper on {t['papers']} open-access papers across six diseases; {N(t['phenopackets'])} schema-valid GA4GH phenopackets; a 10% run-to-run repeat; concordance against a dated ClinVar snapshot; {t['gap_candidates']} gap-variant candidates with evidence dossiers; completeness against two published catalogues; memorization probes; the Claude vs open-weight comparison on two diseases.
-> - **Not yet done, and needing people:** the pre-registered 250-claim human audit (O1, the one confirmatory outcome) is drawn and its blinded rating pages are built, but nobody has rated a claim; panel adjudication of gap candidates (O3) has not started; the bias arm (O4) waits on a person listing cohort frequencies; OMIM has not been checked (no access, D-12).
-> - **Headline numbers so far** (five confirmatory diseases; six-disease figures in brackets): {N(f['papers'])} [{N(t['papers'])}] papers, {N(f['identities'])} [{N(t['identities'])}] deduplicated individuals, {N(f['with_variant'])} [{N(t['with_variant'])}] with a target-gene variant; gatekeeper v4 judged {ci_exact(f['unsupported'], f['model_claims'])} of model claims unsupported [{ci_exact(t['unsupported'], t['model_claims'])}]; {f['gap_candidates']} [{t['gap_candidates']}] gap candidates absent from ClinVar.
+> - **Not yet done, and needing people:** the pre-registered 250-claim human audit (O1, the one confirmatory outcome) is drawn and its blinded rating pages are built, but nobody has rated a claim; panel adjudication of gap candidates (O3) has not started; the bias arm (O4) waits on a person listing cohort frequencies; OMIM's clinical synopses are not yet frozen, so OMIM's phenotype half is still unassessed.
+> - **New in version 2 (D-42, D-43):** the six phenotype and six gene entry pages of OMIM, frozen 2026-10-28, were used as a human-curated holdout. The run recovered {D['omimh']['totals']['recall_all_strict']['k']} of OMIM's {D['omimh']['totals']['omim_allelic_variants_for_diseases']} disease-titled allelic variants ({D['omimh']['totals']['recall_all_strict']['share'] * 100:.0f}%); literature coverage, not reading, is the binding constraint. Every gap candidate was checked against OMIM: none is a confirmed OMIM variant, and one (G-danon-001) proved to be a transcript-isoform artefact of our own normalization and was withdrawn (D-43), which also put an isoform rule into Stage 4 and re-normalized the Danon run.
+> - **Headline numbers so far** (five confirmatory diseases; six-disease figures in brackets): {N(f['papers'])} [{N(t['papers'])}] papers, {N(f['identities'])} [{N(t['identities'])}] deduplicated individuals, {N(f['with_variant'])} [{N(t['with_variant'])}] with a target-gene variant; gatekeeper v4 judged {ci_exact(f['unsupported'], f['model_claims'])} of model claims unsupported [{ci_exact(t['unsupported'], t['model_claims'])}]; {f['gap_candidates']} [{t['gap_candidates']}] gap candidates absent from ClinVar, {f['gap_candidates_live']} [{t['gap_candidates_live']}] live after the OMIM check and the D-43 withdrawal, all absent from OMIM's allelic variants.
 > - **The one caveat that governs everything else:** the gatekeeper's rate is a filter's reading, not an error rate. In the pilot, humans found 6% unsupported where the gatekeeper found 0.04–0.3%. Until O1 is rated, no accuracy claim can be made for the frozen pipeline.
 > - **Spend:** about ${D['budget']['total']:,.0f} of $45,000 by this session's own cost readings (estimates, not billing figures), plus $16–20 for the open-weight model billed outside the award."""
 
@@ -102,7 +104,9 @@ def abstract(D):
 
 **Results.** {N(t['papers'])} papers yielded {N(t['individual_rows'])} individual rows, merged to {N(t['identities'])} identities and {N(t['phenopackets'])} valid phenopackets ({N(t['with_variant'])} with a target-gene variant; {N(t['features_observed'])} observed and {N(t['features_excluded'])} excluded HPO terms). Every one of {N(t['claims_all'])} quoted values was found verbatim in its paper. Gatekeeper v4 judged {ci_exact(f['unsupported'], f['model_claims'])} of model claims unsupported across the five confirmatory diseases; with HA20 included, {ci_exact(t['unsupported'], t['model_claims'])}. Unsupported claims cluster in a few papers, and the commonest cause is a relative's or a cited patient's variant field quoted from the proband's sentence. A 10% repeat agreed on 97–100% of checklist cells and 0.83–1.00 of variant keys. Against ClinVar's own citations, HGVS recall at tiers 1+2 ranged from {min(rec):.0f}% to {max(rec):.0f}% by disease, with misses concentrated in a handful of papers; {min(ov):.0f}–{max(ov):.0f}% of extracted tier-1 alleles were present in ClinVar; classification agreement where authors state one was 59–92%. Completeness against published catalogues was 9/9 (HA20) and 54/56 (AxD) restricted variants. {t['gap_candidates']} tier-1 alleles with gatekeeper-supported values were absent from ClinVar in two successive releases ({f['gap_candidates']} outside HA20), and {t['reclass']} supported variants sit in ClinVar only as VUS or conflicting. Neither model showed memorization of the papers. The open-weight model produced largely the same variants at about 1/15 the cost per paper and 7× the wall-clock, but left 3–4% of values without a quote and was judged unsupported on {P(owg['ha20']['open']['unsupported']['share'])} (HA20) and {P(owg['ssadh']['open']['unsupported']['share'])} (SSADH) of claims by the same Claude gatekeeper, against {P(owg['ha20']['claude']['unsupported']['share'], 2)} and {P(owg['ssadh']['claude']['unsupported']['share'], 2)} for Claude.
 
-**Gaps.** The primary outcome (O1) is unmeasured because the panel has not rated; the pilot's two 50-claim audits found 6.0% and 6.3% unsupported, above the 2% target, and each exposed an error class that the frozen pipeline now guards against but has not been re-audited for. OMIM is absent from every concordance and gap figure. Open-access-only corpora hold 14–53% of the eligible literature. The bias arm has no numbers. A costed plan to close each gap is in §5.
+**OMIM holdout (version 2).** The twelve OMIM entry pages for the six diseases were frozen on 2026-10-28 and used as a human-curated holdout (D-42). The run recovered {D['omimh']['totals']['recall_all_strict']['k']} of OMIM's {D['omimh']['totals']['omim_allelic_variants_for_diseases']} disease-titled allelic variants ({D['omimh']['totals']['recall_all_strict']['share'] * 100:.1f}%; 95% CI {D['omimh']['totals']['recall_all_strict']['ci95'][0] * 100:.1f}–{D['omimh']['totals']['recall_all_strict']['ci95'][1] * 100:.1f}), from 86% (LAD-I) to 11% (Tangier, whose variants come from closed 1999–2003 papers). Where OMIM's source paper was extracted, the variant was usually there; the misses are a scrambled table and variants stated only in prose. On the papers both cover, our records agreed with OMIM's curated statements in 12 of 23 hand comparisons, were partial in 7 and contradicted none. All 215 gap candidates were checked against OMIM: none is a confirmed OMIM variant, and one was a transcript-isoform artefact of our normalization, withdrawn under D-43 with an isoform rule added to Stage 4 ({D['totals']['all']['gap_candidates_live']} live candidates). OMIM itself has two allelic variants whose own ClinVar records contradict their text.
+
+**Gaps.** The primary outcome (O1) is unmeasured because the panel has not rated; the pilot's two 50-claim audits found 6.0% and 6.3% unsupported, above the 2% target, and each exposed an error class that the frozen pipeline now guards against but has not been re-audited for. OMIM's allelic variants are now in the concordance and gap figures, but OMIM lists selected examples, not a catalogue, and its clinical synopses are not yet frozen. Open-access-only corpora hold 14–53% of the eligible literature. The bias arm has no numbers. A costed plan to close each gap is in §5.
 
 **Conclusion.** The pipeline runs end to end on six diseases with complete provenance and stable repeats, and it finds a plausible set of database gaps. Whether its values are right at the pre-registered level is the open question, and it is a question only the human audit can answer."""
 
@@ -120,8 +124,8 @@ Variant and phenotype knowledge for rare diseases is split across ClinVar, OMIM,
 
 {table(["#", "Outcome", "Type", "Pre-specified target", "Status at " + TODAY],
        [["O1", "Unsupported-value rate, human audit of 250 claims", "primary, confirmatory", "observed rate < 2%, i.e. at most 4 of 250 (rule C, D-02)", "sample drawn (seed " + str(D['o1'].get('seed', 40250)) + "); rating pages built; **no claim rated yet**"],
-        ["O2", "Concordance with ClinVar and OMIM on gene, HGVS, classification, phenotype", "primary, estimation", "none; estimates with CIs (D-03)", "ClinVar half done on all six diseases; **OMIM not assessed** (D-12)"],
-        ["O3", "Gap closure: variants absent from both databases, adjudicated, submitted", "primary, descriptive", "none; counts by stage", f"{D['totals']['all']['gap_candidates']} ClinVar-only candidates with dossiers; **adjudication not started**"],
+        ["O2", "Concordance with ClinVar and OMIM on gene, HGVS, classification, phenotype", "primary, estimation", "none; estimates with CIs (D-03)", "ClinVar half done on all six diseases (2026-10-20); OMIM half done on 2026-10-28 against frozen entry pages (D-42; §3.7b); OMIM's phenotype half (clinical synopses) not assessed"],
+        ["O3", "Gap closure: variants absent from both databases, adjudicated, submitted", "primary, descriptive", "none; counts by stage", f"{D['totals']['all']['gap_candidates']} candidates with dossiers, checked against OMIM on 2026-10-28 (1 withdrawn, {D['totals']['all']['gap_candidates_live']} live); **adjudication not started**"],
         ["O4", "Ascertainment bias vs natural-history cohorts; memorization probe", "secondary", "none", "memorization probe done (both models); **frequency deviation waits on a person**"],
         ["O5", "Efficiency: expert-minutes per accepted record; Claude vs open-weight model", "secondary", "none", "open-weight run and gatekeeper done on 2 diseases; **blinded audit and expert-minutes not measured**"]])}
 
@@ -134,7 +138,7 @@ def methods(D):
     rows_ = []
     for d in DISEASES:
         c = D["clinvar"][d]
-        rows_.append([name(D, d) + ("\\*" if d == "ha20" else ""), D["omim"][d], D["inheritance"][d], D["system"][d],
+        rows_.append([name(D, d) + ("\\*" if d == "ha20" else ""), D["omim"][d], omim_av_cell(D, d), D["inheritance"][d], D["system"][d],
                       f"{N(c['total'])} records; {c['plp']} P/LP; {c['vus']} VUS; {c['conflicting']} conflicting", cfg[d]["mane_select"], cfg[d]["disease_mondo"]])
     return f"""## 2. Methods
 
@@ -142,9 +146,9 @@ The frozen plan (`preregistration/analysis_plan.md`, v1.0, 2026-10-20; tags `pre
 
 ### 2.1 Diseases, genes and reference counts
 
-**Table 2. The six diseases.** ClinVar counts are distinct VariationIDs on single-gene GRCh38 records in the release of 2026-10-12 (read 2026-10-19); P/LP sums Pathogenic, Likely pathogenic and Pathogenic/Likely pathogenic. OMIM allelic-variant counts are not available (D-12).
+**Table 2. The six diseases.** ClinVar counts are distinct VariationIDs on single-gene GRCh38 records in the release of 2026-10-12 (read 2026-10-19); P/LP sums Pathogenic, Likely pathogenic and Pathogenic/Likely pathogenic. OMIM allelic-variant counts are read from the gene entry pages frozen on 2026-10-28 (D-42); OMIM lists "selected examples", so they are not exhaustive.
 
-{table(["Disease (gene)", "OMIM", "Inheritance", "System", "ClinVar, single-gene records", "MANE Select", "Mondo"], rows_)}
+{table(["Disease (gene)", "OMIM", "OMIM allelic variants for the disease (gene entry)", "Inheritance", "System", "ClinVar, single-gene records", "MANE Select", "Mondo"], rows_)}
 
 \\*Development disease: every extraction rule was tuned on it during the pilot (§2.8), so its results flatter the pipeline (D-18).
 
@@ -182,13 +186,13 @@ Code under `pipeline/extract` never reads reference data; an automated test fail
 - **ClinVar** `variant_summary.txt.gz`, release 2026-10-12, read 2026-10-19 (re-read 2026-10-19 release on 2026-10-21 for the gap re-check), restricted to single-gene GRCh38 records per gene.
 - **HPO annotations** (`phenotype.hpoa`, 2026-09-02) for the phenotype-profile figure.
 - **Catalogues:** Chen 2020 Table S1 for HA20 (D-30) and Grossi 2024 Supplementary Table 2 for AxD (D-39), transcribed by script. The other four candidates were dropped by the registered suitability check (no per-variant table naming sources, or not open), so those diseases report no completeness figure.
-- **OMIM:** no access (D-12). Every O2 and O3 figure is ClinVar-only, and the OMIM half is "not yet assessed", never "absent".
+- **OMIM:** the six phenotype and six gene entry pages, printed from omim.org by Dr. Lin on 2026-10-28 (D-42) and parsed by `pipeline/harness/omim_entries.py` into the same reference root; only a manifest with checksums and counts is committed (OMIM's terms restrict redistribution). Each allelic variant was placed in ClinVar through ClinVar's own OMIM cross-references and the RCV accessions OMIM prints (E-utilities, 2026-10-28). The clinical synopsis pages are not frozen, so OMIM's phenotype half is still "not yet assessed", never "absent".
 
 ### 2.7 Outcomes and statistics
 
 - **O1.** 250 claims drawn by simple random sampling, stratified by disease in proportion to claim volume, from the model claims gatekeeper v4 judged supported (the values that survive into the records), by script with seed {D['o1'].get('seed', 40250)} and before any concordance was run. Two panel members rate blind on separate pages that never show the gatekeeper's verdict; a third resolves disagreements. Pass under rule C: at most 4 unsupported of 250, reported with the exact interval and the highest rate the audit cannot exclude. A value the rater cannot verify counts as unsupported, with a sensitivity analysis without such claims.
-- **O2.** Tier 1 = same GRCh38 allele (VCF key); tier 2 = same protein change for papers with no cDNA. HGVS recall = share of ClinVar's (PMID, variant) citation pairs, restricted to corpus PMIDs, that the run extracted from that PMID. Overlap = share of extracted tier-1 alleles present in ClinVar (not precision). Classification = authors' P/LP, VUS, B/LB vs ClinVar aggregate, among stated values. Phenotype profile = HPO annotation recall (term or descendant seen in ≥1 person) and the share of terms seen in ≥2 people that match an annotation. Wilson 95% intervals. No pass/fail threshold (D-03). Every miss counts as discordant; a seeded sample of 50 misses awaits human triage into five categories.
-- **O3.** A gap candidate is a tier-1 allele absent from the ClinVar snapshot whose identifying values the gatekeeper judged supported in at least one row. Counted by stage: candidates, adjudicated, approved, drafted, signed off, submitted, accepted. Reclassification candidates (in ClinVar only as VUS or conflicting) are exploratory.
+- **O2.** Tier 1 = same GRCh38 allele (VCF key); tier 2 = same protein change for papers with no cDNA. HGVS recall = share of ClinVar's (PMID, variant) citation pairs, restricted to corpus PMIDs, that the run extracted from that PMID. Overlap = share of extracted tier-1 alleles present in ClinVar (not precision). Classification = authors' P/LP, VUS, B/LB vs ClinVar aggregate, among stated values. Phenotype profile = HPO annotation recall (term or descendant seen in ≥1 person) and the share of terms seen in ≥2 people that match an annotation. Wilson 95% intervals. No pass/fail threshold (D-03). Every miss counts as discordant; a seeded sample of 50 misses awaits human triage into five categories. The OMIM form of HGVS recall uses OMIM's allelic-variant citations as reference pairs (a PMID in the run × an allelic variant OMIM cites to it); recall of OMIM's allelic variants anywhere in the run follows the completeness shape of §7.2.7 and is exploratory for the four diseases without a registered catalogue (§3.7b).
+- **O3.** A gap candidate is a tier-1 allele absent from the ClinVar snapshot whose identifying values the gatekeeper judged supported in at least one row, and, since 2026-10-28, not listed among OMIM's allelic variants for the gene (the registered second clause, D-42). Counted by stage: candidates, adjudicated, approved, drafted, signed off, submitted, accepted. Reclassification candidates (in ClinVar only as VUS or conflicting) are exploratory.
 - **O4.** Per disease, a human lists each held-out comparator's HPO-mappable features and cohort frequencies before literature frequencies are computed; then observed ÷ (observed + excluded) per feature, with a publication-cluster bootstrap. Memorization: closed-book recall from PMID, title and year, and guided completion of a 50-word opening, on 30 papers per disease stratified by date against the model's documented cutoff (June 2026), scored against the full-text extraction.
 - **O5.** Expert-minutes per accepted record, logged by the adjudication page. Claude vs DeepSeek-V4.1-Flash (D-10): same papers, launch prompt, frozen files, file tools and scoring; metrics are span-not-found rate, unsupported rate on a blinded audit of equal size (pending), HGVS concordance, coverage, cost and wall-clock.
 - **Intervals.** Wilson for simple proportions; exact Clopper–Pearson for the audit and for the gatekeeper shares; pooled five-disease and six-disease figures in this report use the same forms.
@@ -199,13 +203,14 @@ A one-disease pilot on HA20 (2026-10-18 to 2026-10-20) built and tuned the pipel
 
 ### 2.9 Deviations from the frozen plan
 
-Three dated deviations, each approved by Dr. Lin before it took effect, are logged in `DECISIONS.md`:
+Four dated deviations, each approved by Dr. Lin before it took effect, are logged in `DECISIONS.md`:
 
 - **D-38 (2026-10-20).** The frozen prompt and schema name HA20 and *TNFAIP3*; for the other five diseases they were instantiated by script (disease name, gene symbol, schema path, checklist only). Expected effect: none on HA20; the five checklists are new by design.
 - **D-39 (2026-10-20).** The AxD catalogue (Grossi 2024) was dropped by the pre-extraction suitability check because Europe PMC answered HTTP 500 for its supplement; the supplement arrived after `pv1-axd` finished and was transcribed on the harness side only. Nothing was appended to the paper text extraction read.
 - **D-40 (2026-10-20).** Stage 4 scripts (normalization, binding, phenopackets) read per-disease settings instead of HA20's hard-coded ones. No change to the four pinned files, metrics or thresholds.
+- **D-43 (2026-10-28).** Stage 4 normalization gained isoform-sensitive positions: where a gene has alternative coding exons (LAMP2 9a/9b/9c, GFAP 7A) and a paper names no transcript, the paper's own exon or isoform label chooses the transcript, else the description gets no genomic key. Found through the OMIM holdout (§3.7b): one gap candidate was a variant placed on the wrong LAMP2 isoform. The Danon run was re-normalized (2 of 165 descriptions changed) and its phenopackets rebuilt; the candidate was withdrawn. No change to the four pinned files, metrics or thresholds.
 
-A fourth item is a decision, not a deviation: the SSADH corpus holds one study twice (37503297, 37962671); both stay and their patients are merged with the evidence recorded.
+Two further items are decisions, not deviations: the SSADH corpus holds one study twice (37503297, 37962671); both stay and their patients are merged with the evidence recorded. And D-42 (2026-10-28) adopted the OMIM entry pages Dr. Lin froze as the project's OMIM reference, in place of the API route D-12 had planned.
 
 ### 2.10 Reproducibility
 
@@ -305,7 +310,7 @@ def results_records(D):
         dropped = sum(v for k, v in b.items() if k.startswith("gk_dropped"))
         sx = pp["sex"]
         rows_.append([lab(D, d), f"{N(s['individual_rows'])} → {N(s['identities'])} ({s['merged_pairs']})", rc.get("identities_review_only", "—"), N(s["identities_with_target_variant"]),
-                      f"{P(s['cdna_normalized_share'])} of {sc['normalized'] + sc['corrected'] + sc['not_normalized'] + sc['unresolvable']}; {sc['protein_only']} protein-only",
+                      f"{P(s['cdna_normalized_share'])} of {sc['normalized'] + sc['corrected'] + sc['not_normalized'] + sc['unresolvable'] + sc.get('isoform_ambiguous', 0)}; {sc['protein_only']} protein-only",
                       f"{P(s['feature_share_bound'])} of {N(s['feature_rows'])}", f"{N(s['phenopackets'])} ({N(s['with_interpretation'])})",
                       f"{N(s['features_observed'])} / {N(s['features_excluded'])}", s["observed_excluded_conflicts"], dropped,
                       f"{sx.get('FEMALE', 0)} F / {sx.get('MALE', 0)} M / {sx.get('UNKNOWN', 0)} unknown", f"{s['schema_valid']}, {s['validation_errors']}"])
@@ -322,6 +327,7 @@ def results_records(D):
 
 - **{N(t['identities'])} identities from {N(t['individual_rows'])} rows; {N(t['phenopackets'])} phenopackets, all schema-valid; {N(t['with_interpretation'])} carry a genomic interpretation.** Merge policy v4 made {sum(D['stage4'][d]['merged_pairs'] for d in DISEASES)} merges in all; SSADH's 58 are all the duplicate study. Tangier and LAD-I have no citation merges, which is more likely a limit of the citation route than a fact about those literatures (the dossier helpers later proposed 19 same-person groups, §3.8).
 - **Normalization** of cDNA descriptions ranges from {P(min(D['stage4'][d]['cdna_normalized_share'] for d in DISEASES))} (AxD) to {P(max(D['stage4'][d]['cdna_normalized_share'] for d in DISEASES))} (HA20). AxD papers often print cDNA without "c." ("739T→C"), and older papers use legacy numbering; 22 AxD descriptions were unresolvable. Protein-only strings (65 in AxD, 85 in HA20) can match ClinVar only at tier 2.
+- **Isoform-sensitive positions (D-43, version 2).** After the OMIM holdout exposed a LAMP2 description normalized on the wrong isoform, the Danon run was re-normalized under the new rule: {D['danon_norm']['status_counts'].get('isoform_ambiguous', 0)} description is now `isoform_ambiguous` (no genomic key) and {D['danon_norm'].get('transcript_isoform_from_label', 0)} was placed on the transcript the paper's exon label names; the other {D['danon_norm']['distinct_descriptions'] - 2} descriptions are unchanged. Table 6 and Supplementary Table S7 show the re-normalized counts.
 - **HPO binding** covers 84–93% of feature rows. The variant spectrum per disease (Supplementary Figure S2) matches expectation: missense dominates AxD (74%) and SSADH (51%); nonsense and frameshift dominate HA20 (63%) and Danon (52%).
 - **Observed–excluded conflicts** (the same term observed and excluded for one identity, from different papers or rows) are few (5–93 per disease) and are kept visible in the records rather than resolved.
 - **Sex** is unknown for 5–52% of identities by disease (SSADH highest), mostly people from review tables.
@@ -383,9 +389,9 @@ def results_o2(D):
         agree = sum(v for k, v in cc.items() if k.split(" | ")[0] == k.split(" | ")[1])
         plp_vus = cc.get("VUS | P/LP", 0)
         conf.append([lab(D, d), cc.get("P/LP | P/LP", 0), plp_vus, cc.get("P/LP | VUS", 0), sum(v for k, v in cc.items() if k.endswith("| not stated")), agree])
-    return f"""### 3.7 O2: concordance with ClinVar (primary, estimation); OMIM not assessed
+    return f"""### 3.7 O2: concordance with ClinVar (primary, estimation)
 
-Run on 2026-10-20 against the ClinVar release of 2026-10-12 (snapshot 2026-10-19), after the O1 sample was drawn. OMIM is not checked (no access, D-12). No threshold applies (D-03).
+Run on 2026-10-20 against the ClinVar release of 2026-10-12 (snapshot 2026-10-19), after the O1 sample was drawn. The OMIM half, run on 2026-10-28 against the frozen entry pages, is §3.7b. No threshold applies (D-03). These ClinVar figures predate the D-43 re-normalization of the Danon run, which moved one placed Danon variant and unplaced another (§3.4).
 
 **Table 8. Concordance with ClinVar by disease.** Wilson 95% intervals. Gene (7.2.1) is near ceiling by design. HGVS recall counts ClinVar's own (paper, variant) citation pairs; overlap is not precision. Source: `analysis/six_disease/o2/o2_<d>.json`.
 
@@ -437,11 +443,11 @@ def results_o3(D):
                   sum(D["gaps"][d]["absent_but_every_row_failed_gatekeeper"] for d in DISEASES), "", "", "", "", "", f"{t['reclass']} ({t['reclass_strong']})"])
     tri = D["triage"]
     mg = D["merges"]["by_disease"]
-    stages = table(["Stage (plan §7.3)", "Count"], [["1 Candidates", t["gap_candidates"]], ["2 Adjudicated by the panel", 0], ["3 Approved", 0], ["4 Drafted (pending adjudication)", 0],
+    stages = table(["Stage (plan §7.3)", "Count"], [["1 Candidates", f"{t['gap_candidates']} ({t['gap_candidates_live']} live after the OMIM check and D-43)"], ["2 Adjudicated by the panel", 0], ["3 Approved", 0], ["4 Drafted (pending adjudication)", 0],
                                                     ["5 Signed off", 0], ["6 Submitted", 0], ["7 Accepted", 0]])
     return f"""### 3.8 O3: gap closure (primary, descriptive) — candidates only
 
-A gap candidate is a tier-1 allele absent from the ClinVar snapshot whose identifying values (gene, strings, cDNA, protein, transcript, coordinates, person label) gatekeeper v4 judged supported in at least one row. OMIM allelic variants are not checked (D-12), so every candidate is a ClinVar gap only, and the OMIM half of the definition is unassessed.
+A gap candidate is a tier-1 allele absent from the ClinVar snapshot whose identifying values (gene, strings, cDNA, protein, transcript, coordinates, person label) gatekeeper v4 judged supported in at least one row. On 2026-10-28 every candidate was also checked against OMIM's allelic variants (D-42, §3.7b): {D['omimh']['gap_omim_absent']} are absent, and one, G-danon-001, collided with OMIM 309060.0001 by notation and proved to be a transcript-isoform artefact of our normalization; it was withdrawn under D-43, leaving {D['totals']['all']['gap_candidates_live']} live candidates. Table 11 keeps the counts as the O3 run made them.
 
 **Table 11. Gap candidates by disease.** Protein check = the paper's stated protein against the one VariantValidator predicts from the normalized cDNA (a pre-triage flag). Reclassification candidates are in ClinVar only as VUS or conflicting; "strong" is a proposed rule (≥2 papers or ≥3 deduplicated people), exploratory. Source: `adjudication/o3_gaps/summary.json`.
 
@@ -617,7 +623,7 @@ def per_disease(D):
                 f"- **Gatekeeper:** {ci_exact(r['unsupported_or_not_found']['k'], r['model_claims_judged'])} unsupported; {r['papers_with_any_unsupported']} of {r['papers']} papers; top field `{r['unsupported_top_fields'][0][0]}` ({r['unsupported_top_fields'][0][1]}).",
                 f"- **Repeat ({rp['papers_compared']} papers):** checklist {rp['checklist_agreement']:.3f}; variant keys {rp['variant_key_jaccard']:.2f}; same individual count in {rp['individual_count_matches']} of {rp['papers_compared']}.",
                 f"- **ClinVar:** HGVS recall tier 1 {CI(a['hgvs_recall_tier1'])}, tiers 1+2 {CI(a['hgvs_recall_tier12'])}; overlap {CI(a['overlap_tier1'])}; classification agreement {CI(a['classification_agreement_among_stated'])}; HPO annotation recall {CI(o['phenotype_7_2_4b']['annotation_recall'])}. O2 misses: {sum(n for _, n in miss)} in {len(miss)} papers" + (f", led by {miss[0][0]} ({miss[0][1]})." if miss else "."),
-                f"- **Gap candidates:** {g['gap_candidates']} of {g['tier1_alleles']} tier-1 alleles ({bp.get('1', 0)} in one paper, {bp.get('2', 0)} in two, {bp.get('3', 0)} in three or more); {g['gap_candidates_only_from_clinvar_cited_papers']} only from ClinVar-cited papers; protein check differs for {g['gap_candidates_protein_check'].get('differs', 0)}; {g['reclassification_candidates']} reclassification candidates ({g['reclassification_strong_proposed']} strong)."]
+                f"- **Gap candidates:** {g['gap_candidates']} of {g['tier1_alleles']} tier-1 alleles ({bp.get('1', 0)} in one paper, {bp.get('2', 0)} in two, {bp.get('3', 0)} in three or more); {g['gap_candidates_only_from_clinvar_cited_papers']} only from ClinVar-cited papers; protein check differs for {g['gap_candidates_protein_check'].get('differs', 0)}; {g['reclassification_candidates']} reclassification candidates ({g['reclassification_strong_proposed']} strong).", omim_line(D, d)]
         if inp:
             out.append("- **Input problems flagged by the helpers:** " + "; ".join(inp) + ".")
         out += extra
@@ -651,9 +657,11 @@ def discussion(D):
 
 **What the data say so far.** The pipeline runs end to end on six diseases at the scale the grant projected ({N(t['papers'])} papers against "roughly 300"), with provenance that holds on every value and repeats that are stable where the schema fixes the vocabulary. It produces {N(t['phenopackets'])} valid phenopackets, a ClinVar comparison with intervals on every figure, and {t['gap_candidates']} candidate gaps that two successive ClinVar releases confirm are absent. Three of the directional expectations stated before registration are consistent with what was seen: classification disagreement runs almost entirely in the "authors say P/LP, ClinVar says VUS" direction; proband counting and deduplication are the weak point (9 of 38 repeat papers differ in individual count; 19 unmerged same-person groups; the pilot's 6 false merges); and the extraction misses concentrate in papers ClinVar cites for variants they do not describe.
 
-**What the data do not say.** Nothing here establishes the accuracy of the frozen pipeline. The gatekeeper's {P(f['unsupported'] / f['model_claims'], 2)} is a filter's reading; the only human-rated figures (6.0%, 6.3%) come from the pilot, before the two rules those audits produced were frozen. The pre-registered test is at most 4 unsupported of 250 under rule C, and the audit's own operating characteristics mean that even a pass would leave a true rate near 2% unexcluded. The concordance figures are ClinVar-only; OMIM, half of the registered answer key, has not been assessed. Recall against ClinVar's citations is low, but the registered triage has not been done, so how much of that is extraction error, normalization error or citations that do not describe the variant is unknown. The open-weight comparison has a Claude judge and no blinded audit yet.
+**What the data do not say.** Nothing here establishes the accuracy of the frozen pipeline. The gatekeeper's {P(f['unsupported'] / f['model_claims'], 2)} is a filter's reading; the only human-rated figures (6.0%, 6.3%) come from the pilot, before the two rules those audits produced were frozen. The pre-registered test is at most 4 unsupported of 250 under rule C, and the audit's own operating characteristics mean that even a pass would leave a true rate near 2% unexcluded. Against OMIM the run recovered {D['omimh']['totals']['recall_all_strict']['share'] * 100:.0f}% of the allelic variants OMIM selected, but the misses are mostly papers the pipeline could not read, so that figure measures corpus coverage as much as extraction; OMIM's phenotype half (the clinical synopses) is still unassessed. Recall against ClinVar's citations is low, but the registered triage has not been done, so how much of that is extraction error, normalization error or citations that do not describe the variant is unknown. The open-weight comparison has a Claude judge and no blinded audit yet.
 
 **What the gatekeeper is good for.** Its value is in the records, not the metric: it removed {sum(sum(v for k, v in D['build'][d]['counts'].items() if k.startswith('gk_dropped')) for d in DISEASES):,} claims before the phenopackets were built, and its reasons name the failure modes a person should look for first (relatives' variant fields, hedged wording, cohort statements). O1 will give its accuracy against human labels, which is the number to report.
+
+**What the OMIM holdout adds (version 2).** A human-curated source read against the run's own records gives three things ClinVar's scoring could not. First, a direction: where OMIM's source paper was in the run, the curated variant was almost always in our record with the right individuals and zygosity, and the per-patient detail was richer than OMIM's summary; where it was not, the cause was access or search, not reading. Second, a correction: the OMIM check caught a gap candidate that was a transcript-isoform artefact, which the ClinVar check could not see because the wrong allele was absent from ClinVar too; the fix (D-43) is now in the pipeline. Third, a caution: OMIM itself carries legacy numbering and two allelic variants linked to the wrong ClinVar records, so any concordance figure against OMIM should footnote them, and a holdout curated by people deserves the same provenance checks as model output.
 
 **On the open-weight result.** The cheap model found the same variants and left more values without a quote. If the blinded audit confirms the gatekeeper's reading, the practical conclusion is that the scaffold's provenance rules bind differently on different models, and that span-level provenance is the cheapest place to see it.
 
@@ -663,15 +671,17 @@ def discussion(D):
 def gaps(D):
     rows_ = [
         ["G1", "**O1 human audit not rated** (primary outcome)", "O1 pass/fail; gatekeeper accuracy vs human labels (§7.1b); any accuracy claim", "Dr. Lin shares the two rater pages with two panel members (D-11); they rate; a third breaks ties", "panel: 250 claims × 2 raters at 1–3 min each ≈ 8–25 h, plus tie-break; model: $0", "1–3 weeks after sharing"],
-        ["G2", "**OMIM not assessed** (D-12)", "the OMIM half of O2 and O3; the gap definition's second clause; OMIM allelic-variant candidates (a deliverable)", "Dr. Lin submits the drafted API access request; then one harness run", "$0 model; 1–2 days of scripting once access arrives", "weeks to months (OMIM's response)"],
-        ["G3", "**Gap candidates not adjudicated** (O3 stages 2–7)", "approved variants, submission drafts, expert-minutes (O5), the gap-closure deliverable", "Dr. Lin shares the adjudication page; the panel reviews 215 dossiers; Dr. Lin signs off; submissions under *curation* (D-13)", "panel: 215 × 10–15 min ≈ 36–54 h; model: $0 (dossiers exist); LAD-I's 82 could be triaged first (likely numbering slips) to cut this", "Months 4–5 per plan"],
+        ["G2", "**OMIM's phenotype half not assessed; OMIM read from frozen pages, not an API** (D-42)", "phenotype concordance against OMIM's clinical synopses; refreshes of the OMIM reference; the OMIM submission route for approved variants", "Dr. Lin freezes the six Clinical Synopsis pages (or the API request lands); one harness run, as for the entry pages", "$0 model; about a day of scripting", "days"],
+        ["G3", "**Gap candidates not adjudicated** (O3 stages 2–7)", "approved variants, submission drafts, expert-minutes (O5), the gap-closure deliverable", "Dr. Lin shares the adjudication page; the panel reviews 214 dossiers (one withdrawn, D-43); Dr. Lin signs off; submissions under *curation* (D-13)", "panel: 214 × 10–15 min ≈ 36–54 h; model: $0 (dossiers exist); LAD-I's 82 could be triaged first (likely numbering slips) to cut this", "Months 4–5 per plan"],
         ["G4", "**O2 miss triage not done**", "the five-category breakdown of HGVS-recall misses; whether low recall is extraction error", "a panel member or Dr. Lin triages 50 sampled misses on the private page", "2–4 h of one person", "days"],
         ["G5", "**Blinded Claude vs open-weight audit not drawn**", "the registered O5 accuracy measure; the only neutral check on the gatekeeper's reading", "set the sample size with D-11; draw by seed; same raters, blind to model", "panel: 2 × n claims; for n = 100, ≈ 7–20 h; model: $0", "with G1"],
         ["G6", "**Bias arm has no numbers** (O4)", "per-disease frequency deviation; the ascertainment-bias deliverable", "a person fills four comparator sheets without looking at literature frequencies; then run `frequency_deviation.py`", "4 sheets × 1–2 h; model: $0", "days once a person is assigned"],
-        ["G7", "**Open access only** (D-32): 14–53% of each corpus has full text", "completeness denominators; recall of the paywalled literature; the gap count is a lower bound", "none within the rules; a decision to add institutional access would be a deviation and a re-run", "if reopened: extraction ≈ $2 per paper plus gatekeeper; ~300 more papers ≈ $600–900", "not planned"],
+        ["G7", "**Open access only** (D-32): 14–53% of each corpus has full text", "completeness denominators; recall of the paywalled literature; the gap count is a lower bound; 96 of the papers OMIM cites sit in our corpus with no open copy, and OMIM recall is 11% for Tangier", "none within the rules; a decision to add institutional access would be a deviation and a re-run", "if reopened: extraction ≈ $2 per paper plus gatekeeper; ~300 more papers ≈ $600–900", "not planned"],
         ["G8", "**Known extraction gaps frozen on purpose**: no hedge rule; relatives' variant fields from the proband's sentence; cohort statements applied to individuals", "a share of unsupported claims (Figure 3C); would need a v7 and a deviation", "wait for O1; if it fails or shows these classes, propose v7 (D-nn) and re-run", "full six-disease re-run ≈ $800–1,000 (extraction + gatekeeper + repeat, from this run's spend)", "after O1"],
         ["G9", "**Input conversion problems** in ~10 papers (scrambled, transposed or image-only tables; missing or truncated supplements)", "recall in those papers (e.g. SSADH 14635103: 12 of 54 families); several O2 misses", "fix the converter / refetch supplements; re-extract those papers under a logged deviation", "≈ $2–3 per paper plus gatekeeper ≈ $40–60 for 12 papers", "days; needs approval"],
-        ["G10", "**Notation and normalization**: AxD cDNA without 'c.', legacy numbering, protein-only strings (65 AxD, 85 HA20)", "tier-1 matching (recall, overlap, gap candidates for those variants)", "harness-side query corrections as in the pilot's D-26 (never in extraction); report by description type", "$0 model; 1–2 days scripting; log as a deviation", "days"],
+        ["G10", "**Notation and normalization**: AxD cDNA without 'c.', legacy numbering, protein-only strings (65 AxD, 85 HA20); variants stated only in prose carry no key", "tier-1 matching (recall, overlap, gap candidates for those variants); two OMIM allelic variants missed in extracted papers for this reason", "harness-side query corrections as in the pilot's D-26 (never in extraction); a narrow rule for prose protein changes; report by description type. The isoform rule is done (D-43)", "$0 model; 1–2 days scripting; log as a deviation", "days"],
+        ["G18", "**Historical disease names absent from the searches**: 38 of the 84 papers OMIM cites for its allelic variants were never returned (pre-gene-era names: Mo1 or LFA-1 deficiency, lysosomal glycogen storage with normal acid maltase, familial alpha-lipoprotein deficiency)", "corpus recall of the founding literature for LAD-I, Danon and Tangier; the OMIM-form recall and the restricted denominators", "add the names to `configs/diseases.yaml` and re-search; a §5.1 deviation needing Dr. Lin's approval; new hits screened as before", "$0 model for the search; screening ≈ $0.05 per record", "days"],
+        ["G19", "**Record defects the OMIM comparison surfaced, to verify**: mild autism 'not reported' for Chambliss 1998's patients; a review's LAMP2 c.1150G>C stated without a transcript; two OMIM allelic variants whose own ClinVar records contradict their text (610045.0002, 610045.0007)", "one phenotype three-state value; one Danon description; the reconciliation note any OMIM-facing submission needs", "a person checks the paper; the OMIM/ClinVar inconsistency is drafted as a note for Dr. Lin to send", "$0", "hours"],
         ["G11", "**19 proposed same-person groups unmerged**; 50-merge hand check (D-35) not done", "deduplicated counts (lower bounds on collapse 0.2–3.8%); GPSEA denominators", "a person confirms groups and checks the registered 50-merge sample; merging after the freeze is a deviation", "2–4 h of one person", "days"],
         ["G12", "**Checklist-to-HPO maps unreviewed** (five diseases)", "the HPO terms behind 20 × 5 checklist items in the phenopackets", "Dr. Lin or the panel reviews `configs/checklist_hpo/`", "1–2 h", "days"],
         ["G13", "**Memorization probe underpowered** (10 post-cutoff papers)", "the before/after comparison in §7.4.3", "none now; more post-cutoff papers accrue with time", "$0", "—"],
@@ -682,10 +692,10 @@ def gaps(D):
     ]
     plan = [
         ["1", "Settle D-11 and share the O1 pages; draw the O5 audit sample at the same time (G1, G5)", "unblocks the primary outcome and the only neutral check on the gatekeeper"],
-        ["2", "Submit the OMIM request; push the tags; register on OSF; send the drafts (G2, G16, G17)", "no cost; long lead times start now"],
+        ["2", "Freeze the OMIM clinical-synopsis pages or submit the API request (G2); push the tags; register on OSF; send the drafts (G16, G17)", "no cost; long lead times start now"],
         ["3", "Triage the 50 O2 misses and LAD-I's 82 gap candidates first (G4, part of G3)", "tells us whether low recall and the biggest gap list are real before the panel spends hours on them"],
         ["4", "Fill the four comparator sheets (G6); review the checklist maps (G12); confirm the merge groups (G11)", "small human tasks that each unblock a registered figure"],
-        ["5", "Only after O1 reads: decide on v7 and a re-run (G8), the input repairs (G9) and the notation repairs (G10)", "changes to the frozen pipeline are deviations and should answer a measured failure, not an expected one"],
+        ["5", "Only after O1 reads: decide on v7 and a re-run (G8), the input repairs (G9), the notation repairs (G10) and the historical-name re-search (G18)", "changes to the frozen pipeline are deviations and should answer a measured failure, not an expected one"],
         ["6", "Panel adjudication of the remaining candidates (G3), then drafts and sign-off", "Months 4–5 per the plan; the dossiers and the page are ready"],
     ]
     return f"""## 5. Gaps and a plan to close them
@@ -706,7 +716,7 @@ def limitations(D):
 
 - **No human-rated accuracy for the frozen pipeline.** Every support figure in §3.2 is a model's reading of a model's output.
 - **HA20 is in every table.** It is flagged and the five-disease subtotals are given, but readers comparing diseases should remember that HA20's rules were tuned on HA20's papers.
-- **ClinVar only.** OMIM, half of the registered answer key, is absent from concordance and from the gap definition.
+- **OMIM is a sample, and only its variant half is in.** OMIM's allelic variants are "selected examples", so recall against them is the meaningful direction and the O3 check is one-sided; the clinical synopses are not frozen, so the phenotype half of OMIM concordance is still unassessed; and the patient-level comparison (§3.7b) was judged by Claude, not by a panel member.
 - **Open access only.** The corpora hold 14–53% of the eligible literature; completeness and recall are measured on what was accessible.
 - **Cost figures are session estimates** with frozen readings and overlapping stages, and the open-weight key is shared.
 - **Helper-reported problems** (input conversion, self-contradicting papers, likely non-gaps) are model output, recorded as such and not verified by a person.
@@ -718,9 +728,9 @@ def availability(D):
 
 - **Repository:** `cjimmylin/gp-rarelink`, commit `{D['commit']}`. Pre-registration: `preregistration/analysis_plan.md` v1.0 (frozen 2026-10-20, D-36). Decisions and deviations: `DECISIONS.md`. Spend: `BUDGET.md`.
 - **Records:** `data/extracted/<disease>/pv1-<disease>/` holds per-paper tables, claims with spans, gatekeeper verdicts, reconciled individuals, normalized variants, HPO bindings and the phenopackets. Full-text papers are not committed.
-- **Harness outputs:** `analysis/six_disease/`, `adjudication/`, `analysis/openweight/`, `analysis/bias/`, `analysis/exploratory/`.
+- **Harness outputs:** `analysis/six_disease/`, `adjudication/`, `analysis/openweight/`, `analysis/bias/`, `analysis/exploratory/`, `analysis/omim_holdout/` (the OMIM holdout; its own report is `reports/omim_holdout_assessment.md`).
 - **This report:** `analysis/interim_paper/build.py` (text, tables), `figures.py`, `data.py` (inputs; Supplementary Table S1 lists them); output in `reports/interim_paper/`. Re-run with `uv run python -m analysis.interim_paper.build`.
-- **Reference snapshots** live outside the repository and are re-created by `pipeline/harness/snapshot_reference.py --per-gene`, `benchmark_chen2020.py` and `catalogue_grossi2024.py`; their manifests and counts are under `analysis/poc/reference_snapshot/`.
+- **Reference snapshots** live outside the repository and are re-created by `pipeline/harness/snapshot_reference.py --per-gene`, `benchmark_chen2020.py`, `catalogue_grossi2024.py` and, for the OMIM pages (which must be copied back as PDFs), `omim_entries.py`; their manifests and counts are under `analysis/poc/reference_snapshot/`.
 - **Rating and adjudication pages** are private claude.ai artifact pages built by scripts under `adjudication/`; their stores are collected by `collect_o1.py` and `apply_ratings.py`. Nothing has been published (standing instruction, 2026-10-21)."""
 
 
@@ -768,11 +778,11 @@ def supplement(D):
     for d in DISEASES:
         s, b = D["stage4"][d], D["build"][d]["counts"]
         sc = s["status_counts"]
-        rows_.append([lab(D, d), sc["normalized"], sc["corrected"], sc["protein_only"], sc["not_normalized"], sc["unresolvable"], s["mane_select"],
+        rows_.append([lab(D, d), sc["normalized"], sc["corrected"], sc["protein_only"], sc["not_normalized"], sc["unresolvable"], sc.get("isoform_ambiguous", 0), s["mane_select"],
                       b.get("feature_rows_unbound_skipped", 0), b.get("features_from_checklist_observed", 0), b.get("features_from_checklist_excluded", 0),
                       "; ".join(f"{k.replace('gk_dropped_', '')} {v}" for k, v in sorted(b.items()) if k.startswith("gk_dropped"))])
     S += ["## Supplementary Table S7. Stage 4 details: normalization status, checklist-derived terms and claims the gatekeeper removed", "",
-          table(["Disease", "Normalized", "Corrected query", "Protein-only", "Not normalized", "Unresolvable", "MANE Select", "Feature rows unbound (skipped)", "Checklist terms observed", "Checklist terms excluded", "Claims dropped by gatekeeper, by kind"], rows_), "",
+          table(["Disease", "Normalized", "Corrected query", "Protein-only", "Not normalized", "Unresolvable", "Isoform-ambiguous (D-43)", "MANE Select", "Feature rows unbound (skipped)", "Checklist terms observed", "Checklist terms excluded", "Claims dropped by gatekeeper, by kind"], rows_), "",
           f"![Supplementary Figure S2]({D['figs']['figS2']})", "", "**Supplementary Figure S2.** Variant interpretations in the phenopackets by coarse class.", "",
           f"![Supplementary Figure S3]({D['figs']['figS3']})", "", "**Supplementary Figure S3.** The ten most-observed HPO terms per disease, with the count excluded for the same term.", "",
           f"![Supplementary Figure S4]({D['figs']['figS4']})", "", "**Supplementary Figure S4.** Field coverage: the share of rows with an asserted value rather than 'not reported'.", ""]
@@ -790,12 +800,12 @@ def supplement(D):
           f"![Supplementary Figure S5]({D['figs']['figS5']})", "", "**Supplementary Figure S5.** Completeness against the two published catalogues.", ""]
     # S9 gap candidates and reclassification
     gc = D["gap_candidates"]
-    rows_ = [[r["candidate_id"], r["hgvs_c"], r["hgvs_p_predicted"], r["protein_check"], r["n_papers"], r["n_identities"], r["author_class"], r["only_clinvar_cited_papers"]] for r in gc]
+    rows_ = [[r["candidate_id"], r["hgvs_c"], r["hgvs_p_predicted"], r["protein_check"], r["n_papers"], r["n_identities"], r["author_class"], r["only_clinvar_cited_papers"], r["status"], r["omim_checked"].split(" (")[0].split(" [")[0]] for r in gc]
     rc = [[r["disease"], r["hgvs_c"], r["hgvs_p_predicted"], r["n_papers"], r["n_identities"], r["author_class"], r["clinvar_class"], r["clinvar_review_status"], r["strong_literature_support_proposed"]] for r in D["reclass"]]
     mg = [[r["disease"], r["identities"], r["n"], r["candidates"]] for r in D["merges_rows"]]
     S += ["## Supplementary Table S9. Gap candidates, reclassification candidates and proposed same-person groups", "",
-          f"**All {len(gc)} gap candidates** (`adjudication/o3_gaps/candidates.csv`; dossiers in `dossiers/`). Pending adjudication; OMIM not checked.", "",
-          table(["Candidate", "cDNA (MANE)", "Predicted protein", "Protein check", "Papers", "Identities", "Authors' class", "Only ClinVar-cited papers"], rows_), "",
+          f"**All {len(gc)} gap candidates** (`adjudication/o3_gaps/candidates.csv`; dossiers in `dossiers/`). Pending adjudication; checked against OMIM's allelic variants on 2026-10-28 (D-42): all absent except G-danon-001, withdrawn (D-43).", "",
+          table(["Candidate", "cDNA (MANE)", "Predicted protein", "Protein check", "Papers", "Identities", "Authors' class", "Only ClinVar-cited papers", "Status (D-43)", "OMIM (2026-10-28)"], rows_), "",
           f"**Reclassification candidates ({len(rc)}; exploratory).** In ClinVar only as VUS or conflicting; 'strong' is a proposed rule.", "",
           table(["Disease", "cDNA (MANE)", "Predicted protein", "Papers", "Identities", "Authors' class", "ClinVar class", "ClinVar review status", "Strong (proposed)"], rc), "",
           "**Proposed same-person groups (unconfirmed; nothing merged).**", "", table(["Disease", "Identities", "n", "Candidate"], mg), ""]
@@ -837,6 +847,7 @@ def supplement(D):
                  ["Q3", "Valid phenopackets, normalized HGVS", "100% valid; ≥ 95% cDNA normalized or flagged", "749 of 749; 97.8%: met"], ["Q4", "Unsupported values", "span match ≥ 98%; human ≤ 4% (n = 50)", "100%; 6.0% and 6.3%: not met"],
                  ["Q5", "Deduplication", "0 false merges in the hand check", "policy v3: 6 of 93: not met; v4: 0 of 50 (not independent)"], ["Q6", "Concordance harness", "table with CIs vs dated snapshots", "met (ClinVar, HPO)"],
                  ["Q7", "Completeness", "restricted recall ≥ 80%", "9 of 9: met"], ["Q8", "Cost", "six-disease projection ≤ $8,000", "$1,676–4,189: met"]]), ""]
+    S += [supplement_omim(D)]
     return "\n".join(S)
 
 
@@ -847,7 +858,9 @@ def main():
     D["figs"] = figures.make_all(D)
     head = f"""# GP-RareLink: literature-curated, database-validated genotype–phenotype records for six rare diseases
 
-## Interim report on all work to date (internal review draft)
+## Interim report on all work to date (internal review draft, version 2)
+
+*Version 2 ({TODAY}) adds the OMIM half of the answer key throughout: the twelve OMIM entry pages Dr. Lin froze on 2026-10-28 (D-42) and the D-43 correction that assessment produced. Version 1 (2026-10-27) was ClinVar-only.*
 
 *Rare Genomics Institute and the Stanford Open Virtual Assistant Lab. PI: Dr. Jimmy Lin. Methods co-lead: Prof. Monica Lam. Adjudication panel: Drs. Eva Wu, Gabriela Balderrama and Anita Chacko. Drafted by Claude Code from the repository's committed outputs on {TODAY} (commit `{D['commit']}`). Funded by Anthropic's AI for Science program (award 2026-08-31). Internal review only; not for distribution.*
 
@@ -857,7 +870,7 @@ def main():
 
 """
     main_md = "\n\n".join([head, status_box(D), abstract(D), intro(D), methods(D), results_corpus(D), results_extraction(D), results_repeat(D), results_records(D),
-                           results_o1(D), results_o2(D), results_o3(D), results_o4(D), results_o5(D), results_exploratory(D), per_disease(D), results_cost(D),
+                           results_o1(D), results_o2(D), results_omim(D), results_o3(D), results_o4(D), results_o5(D), results_exploratory(D), per_disease(D), results_cost(D),
                            discussion(D), gaps(D), limitations(D), availability(D)]) + "\n"
     (OUT / "interim_paper.md").write_text(main_md)
     (OUT / "supplement.md").write_text(supplement(D) + "\n")
