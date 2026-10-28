@@ -20,7 +20,7 @@
 | HGVS recall tiers 1+2 (2026-10-28 snapshot) | 26.9% (21/78) | 26.9% (21/78) | 15.0% (24/160) | 30.0% (48/160) |
 | Overlap with ClinVar, tier 1 | 37.9% (39/103) | 38.1% (40/105) | 87.2% (68/78) | 88.2% (75/85) |
 | Classification agreement | 82.8% (24/29) | 82.4% (28/34) | 91.8% (45/49) | 89.9% (62/69) |
-| Judge: unsupported or not found | 0.5% (1/186) | 1.6% (3/188) | 1.4% (3/218) | 0.0% (0/220) |
+| Judge: unsupported or not found | 0.7% (3/451) | 0.9% (4/450) | 1.4% (3/218) | 0.0% (0/220) |
 | Cost per paper, median ($, estimate) | 1.0776 | 1.4996 | 1.1857 | 1.3562 |
 | Cost total ($, estimate; S without gatekeeper) | 101.42 | 138.15 | 49.12 | 59.19 |
 | Wall-clock per paper, median (s) | 171.5 | 146.4 | 169.9 | 150.0 |

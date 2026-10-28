@@ -21,8 +21,8 @@
 | Phenotypic-feature rows | 5,079 | 5,798 | 1,405 | 1,563 |
 | Checklist cells marked excluded | 1.4% (235/16220; 95% CI 1.3–1.6) | 7.9% (1284/16240; 95% CI 7.5–8.3) | 0.7% (57/7900; 95% CI 0.6–0.9) | 0.9% (78/8980; 95% CI 0.7–1.1) |
 | Checklist cells not reported | 88.0% (14278/16220; 95% CI 87.5–88.5) | 80.7% (13102/16240; 95% CI 80.1–81.3) | 94.6% (7470/7900; 95% CI 94.0–95.0) | 94.5% (8489/8980; 95% CI 94.0–95.0) |
-| **Judge: unsupported or not found** | **0.5% (1/186; 95% CI 0.0–3.0)** | **1.6% (3/188; 95% CI 0.3–4.6)** | **1.4% (3/218; 95% CI 0.3–4.0)** | **0.0% (0/220; 95% CI 0.0–1.7)** |
-| Judge: not fully supported | 5.4% (10/186; 95% CI 2.6–9.7) | 7.4% (14/188; 95% CI 4.1–12.2) | 9.2% (20/218; 95% CI 5.7–13.8) | 9.1% (20/220; 95% CI 5.6–13.7) |
+| **Judge: unsupported or not found** | **0.7% (3/451; 95% CI 0.1–1.9)** | **0.9% (4/450; 95% CI 0.2–2.3)** | **1.4% (3/218; 95% CI 0.3–4.0)** | **0.0% (0/220; 95% CI 0.0–1.7)** |
+| Judge: not fully supported | 4.9% (22/451; 95% CI 3.1–7.3) | 8.4% (38/450; 95% CI 6.0–11.4) | 9.2% (20/218; 95% CI 5.7–13.8) | 9.1% (20/220; 95% CI 5.6–13.7) |
 | HGVS recall, tiers 1+2 (snapshot 2026-10-28) | 26.9% (21/78; 95% CI 18.3–37.7) | 26.9% (21/78; 95% CI 18.3–37.7) | 15.0% (24/160; 95% CI 10.3–21.3) | 30.0% (48/160; 95% CI 23.4–37.5) |
 | HGVS recall, tier 1 | 26.9% (21/78; 95% CI 18.3–37.7) | 26.9% (21/78; 95% CI 18.3–37.7) | 10.6% (17/160; 95% CI 6.7–16.4) | 15.0% (24/160; 95% CI 10.3–21.3) |
 | Overlap with ClinVar, tier 1 (not precision) | 37.9% (39/103; 95% CI 29.1–47.5) | 38.1% (40/105; 95% CI 29.4–47.6) | 87.2% (68/78; 95% CI 78.0–92.9) | 88.2% (75/85; 95% CI 79.7–93.5) |
@@ -42,30 +42,30 @@ Completeness against Chen 2020 Table S1 (HA20 only, restricted recall, primary p
 
 One Opus helper per paper judged a shuffled list of claims from both arms, with the arm hidden and arm S's quotes removed, finding the supporting passage itself (`judge_locate_v1.md`). The sample: per paper and arm, up to 2 claims from each of three field groups (variant fields; phenotype statuses and feature text; other person-level fields), drawn by seed 42281 from each arm's raw pool (arm S before the gatekeeper, because arm D is raw). **This is a model's reading, not the error rate**: the pilot's gatekeeper understated human-found error by an order of magnitude, and the judge is Claude judging Claude in both arms.
 
-**Which papers were judged.** The design planned one judge helper for each of the 116 papers with output in both arms (A20 haploinsufficiency (HA20) 77, SSADH deficiency 39). The three pilot judge helpers cost $0.76–1.60 each, and the full run on top of arm D's extraction would have passed the $300 ceiling (D-44), so within the ceiling the judge ran on all 39 SSADH papers and on 32 of 77 HA20 papers: the two pilot papers chosen by hand, plus 30 drawn with seed 42283 (`adjudication/sliders_ablation/judge/paper_subset.json`). The other 45 HA20 papers' chunks are drawn and waiting; judging them would cost about $48.38 more at the HA20 judge helpers' mean of $1.08 per paper, which needs Jimmy's decision because it passes the ceiling. **The HA20 judge figures below are on that 32-paper subset; the SSADH figures cover every paper.**
+**Which papers were judged.** The design planned one judge helper for each of the 116 papers with output in both arms (A20 haploinsufficiency (HA20) 77, SSADH deficiency 39). The three pilot judge helpers cost $0.76–1.60 each, and the full run on top of arm D's extraction would have passed the $300 ceiling (D-44), so within the ceiling the judge first ran on all 39 SSADH papers and on 32 of 77 HA20 papers: the two pilot papers chosen by hand, plus 30 drawn with seed 42283 (`adjudication/sliders_ablation/judge/paper_subset.json`). Jimmy then approved judging the remaining 45 HA20 papers past the ceiling (2026-10-28, "yes for both and also merge to main"), with the same instruction and launch text, so every paper with output in both arms is judged and the figures below cover all of them. The HA20 judge helpers' mean cost was $1.04 per paper.
 
 **A20 haploinsufficiency (HA20)**
 
 | Judge | Arm S | Arm D |
 |---|---|---|
-| Claims judged | 186 | 188 |
-| supported | 176 | 174 |
-| partially supported | 9 | 11 |
-| unsupported | 1 | 2 |
-| not found | 0 | 1 |
-| **Unsupported or not found** | **0.5% (1/186; 95% CI 0.0–3.0)** | **1.6% (3/188; 95% CI 0.3–4.6)** |
-| Not fully supported | 5.4% (10/186; 95% CI 2.6–9.7) | 7.4% (14/188; 95% CI 4.1–12.2) |
-| … unsupported or not found, variant fields | 0.0% (0/60; 95% CI 0.0–6.0) | 1.6% (1/62; 95% CI 0.0–8.7) |
-| … unsupported or not found, phenotype fields | 1.6% (1/62; 95% CI 0.0–8.7) | 3.2% (2/62; 95% CI 0.4–11.2) |
-| … unsupported or not found, other fields | 0.0% (0/64; 95% CI 0.0–5.6) | 0.0% (0/64; 95% CI 0.0–5.6) |
-| … among `excluded` statuses | 0.0% (0/5; 95% CI 0.0–52.2) | 16.7% (2/12; 95% CI 2.1–48.4) |
-| … among `observed` statuses | 0.0% (0/28; 95% CI 0.0–12.3) | 0.0% (0/25; 95% CI 0.0–13.7) |
+| Claims judged | 451 | 450 |
+| supported | 429 | 412 |
+| partially supported | 19 | 34 |
+| unsupported | 2 | 3 |
+| not found | 1 | 1 |
+| **Unsupported or not found** | **0.7% (3/451; 95% CI 0.1–1.9)** | **0.9% (4/450; 95% CI 0.2–2.3)** |
+| Not fully supported | 4.9% (22/451; 95% CI 3.1–7.3) | 8.4% (38/450; 95% CI 6.0–11.4) |
+| … unsupported or not found, variant fields | 0.0% (0/145; 95% CI 0.0–2.5) | 1.4% (2/148; 95% CI 0.2–4.8) |
+| … unsupported or not found, phenotype fields | 1.3% (2/152; 95% CI 0.2–4.7) | 1.3% (2/150; 95% CI 0.2–4.7) |
+| … unsupported or not found, other fields | 0.6% (1/154; 95% CI 0.0–3.6) | 0.0% (0/152; 95% CI 0.0–2.4) |
+| … among `excluded` statuses | 9.1% (1/11; 95% CI 0.2–41.3) | 9.1% (2/22; 95% CI 1.1–29.2) |
+| … among `observed` statuses | 0.0% (0/63; 95% CI 0.0–5.7) | 0.0% (0/64; 95% CI 0.0–5.6) |
 
-- **Difference D − S (unsupported or not found):** +1.1 points (95% CI -1.6 to +4.1); arm D is not distinguishable from the SLIDERS arm at this sample size.
-- **Judge's quoted evidence found verbatim in the paper:** S {'True': 186}, D {'True': 187, 'None': 1} (True = all quoted passages found; None = no passage quoted).
-- **Arm S, judge vs gatekeeper v4 on the same claims:** {'judge=supported|gk=supported': 175, 'judge=partially_supported|gk=supported': 8, 'judge=unsupported|gk=supported': 1, 'judge=supported|gk=partially_supported': 1, 'judge=partially_supported|gk=partially_supported': 1}.
-- **Arm S, judge's passage overlaps the extractor's hidden quote:** {'False': 38, 'True': 148}.
-- **Fields with most unsupported claims:** S {'phenotypic_features.feature_text_as_stated': 1}; D {'phenotype_checklist.status': 2, 'variants.zygosity': 1}.
+- **Difference D − S (unsupported or not found):** +0.2 points (95% CI -1.2 to +1.7); arm D is not distinguishable from the SLIDERS arm at this sample size.
+- **Judge's quoted evidence found verbatim in the paper:** S {'True': 450, 'None': 1}, D {'True': 449, 'None': 1} (True = all quoted passages found; None = no passage quoted).
+- **Arm S, judge vs gatekeeper v4 on the same claims:** {'judge=partially_supported|gk=supported': 16, 'judge=not_found|gk=supported': 1, 'judge=supported|gk=supported': 424, 'judge=supported|gk=partially_supported': 4, 'judge=supported|gk=unsupported': 1, 'judge=partially_supported|gk=unsupported': 1, 'judge=unsupported|gk=supported': 2, 'judge=partially_supported|gk=partially_supported': 2}.
+- **Arm S, judge's passage overlaps the extractor's hidden quote:** {'True': 356, 'None': 1, 'False': 94}.
+- **Fields with most unsupported claims:** S {'individuals.individual_label_in_paper': 1, 'phenotypic_features.status': 1, 'phenotypic_features.feature_text_as_stated': 1}; D {'phenotype_checklist.status': 2, 'variants.variant_type_as_stated': 1, 'variants.zygosity': 1}.
 
 **SSADH deficiency**
 
@@ -102,12 +102,12 @@ One Opus helper per paper judged a shuffled list of claims from both arms, with 
 
 ## 6. Cost and time
 
-- Arm D: 124 extraction helpers, **$197.34** by helper tokens (the six-disease run's rate, $5.996 per weighted million; an estimate, not an invoice). Judge: 71 helpers, **$74.20** (mean $1.05 per paper; A20 haploinsufficiency (HA20) $1.08, SSADH deficiency $1.02). Study total **$271.54** against the $300 ceiling (contingency, D-44). The design estimated $110–200; extraction alone came to $197.34 against its $90–150 estimate because the direct helpers wrote long nested records for cohort papers (the costliest paper, 40574834 with 62 individuals, is in `helper_stats.json`).
+- Arm D: 124 extraction helpers, **$197.34** by helper tokens (the six-disease run's rate, $5.996 per weighted million; an estimate, not an invoice). Judge: 116 helpers, **$119.78** (mean $1.03 per paper; A20 haploinsufficiency (HA20) $1.04, SSADH deficiency $1.02). Study total **$317.13** against the original $300 ceiling (contingency, D-44; Jimmy raised it on 2026-10-28 to cover the remaining HA20 judge papers). The design estimated $110–200; extraction alone came to $197.34 against its $90–150 estimate because the direct helpers wrote long nested records for cohort papers (the costliest paper, 40574834 with 62 individuals, is in `helper_stats.json`).
 - Arm S's cost on the same papers is the pv1 extraction helpers' tokens (`analysis/openweight/claude_helper_stats.json`), with its gatekeeper pass at $0.0044 per judged claim shown apart. Per paper: ha20 S $1.08 vs D $1.50 (median), wall-clock S 2.9 vs D 2.4 min; ssadh S $1.19 vs D $1.36 (median), wall-clock S 2.8 vs D 2.5 min.
 
 ## 7. Reading the results against the expectations written before the run
 
-- **A20 haploinsufficiency (HA20).** Cost per paper: arm D not cheaper ($1.50 vs $1.08 median, extraction only; arm S also pays its gatekeeper). Individuals: D 813 vs S 811; target-gene variant keys D 297 vs S 289. Excluded checklist cells: D 7.9% vs S 1.4% (more in D). Judge unsupported-or-not-found: D is not distinguishable from the SLIDERS arm at this sample size (+1.1 points (95% CI -1.6 to +4.1)). Among `excluded` statuses: D 16.7% (2/12; 95% CI 2.1–48.4) vs S 0.0% (0/5; 95% CI 0.0–52.2). HGVS recall tiers 1+2: D 26.9% (21/78; 95% CI 18.3–37.7) vs S 26.9% (21/78; 95% CI 18.3–37.7) (intervals overlap).
+- **A20 haploinsufficiency (HA20).** Cost per paper: arm D not cheaper ($1.50 vs $1.08 median, extraction only; arm S also pays its gatekeeper). Individuals: D 813 vs S 811; target-gene variant keys D 297 vs S 289. Excluded checklist cells: D 7.9% vs S 1.4% (more in D). Judge unsupported-or-not-found: D is not distinguishable from the SLIDERS arm at this sample size (+0.2 points (95% CI -1.2 to +1.7)). Among `excluded` statuses: D 9.1% (2/22; 95% CI 1.1–29.2) vs S 9.1% (1/11; 95% CI 0.2–41.3). HGVS recall tiers 1+2: D 26.9% (21/78; 95% CI 18.3–37.7) vs S 26.9% (21/78; 95% CI 18.3–37.7) (intervals overlap).
 - **SSADH deficiency.** Cost per paper: arm D not cheaper ($1.36 vs $1.19 median, extraction only; arm S also pays its gatekeeper). Individuals: D 449 vs S 395; target-gene variant keys D 196 vs S 161. Excluded checklist cells: D 0.9% vs S 0.7% (more in D). Judge unsupported-or-not-found: D is not distinguishable from the SLIDERS arm at this sample size (-1.4 points (95% CI -4.0 to +0.6)). Among `excluded` statuses: D 0.0% (0/8; 95% CI 0.0–36.9) vs S 0.0% (0/2; 95% CI 0.0–84.2). HGVS recall tiers 1+2: D 30.0% (48/160; 95% CI 23.4–37.5) vs S 15.0% (24/160; 95% CI 10.3–21.3) (intervals do not overlap). ClinVar-cited variants found by one arm and missed by the other (by VariationID and citing paper): found only by D 24 (14635103: 23, 38791277: 1); found only by S 0. So the recall gain is concentrated in one paper, 14635103: arm S recorded 12 individuals, 14 variant rows, 5 distinct cDNA strings; arm D recorded 54 individuals, 75 variant rows, 29 distinct cDNA strings. The variant strings are in the paper, but arm D assigned them to families from a table whose Markdown is scrambled (its helper said so), so the person links there are uncertain; the judge rated one such link partially supported.
 
 What the design said to conclude: if the unsupported rates are alike, the scaffold's value lies in provenance and auditability (every arm S value carries a quote a person can check; arm D's values carry none, and the judge had to find evidence for them) rather than in accuracy; if arm D's rate is higher, the scaffold also buys accuracy, and the field groups above say where.
@@ -120,7 +120,7 @@ What the design said to conclude: if the unsupported rates are alike, the scaffo
 - HA20 is the development disease; SSADH is the cleaner test.
 - Arm D is not passed through the gatekeeper, by design: the comparison is between final records as each method delivers them. Arm S's judge sample is drawn from its raw claims for the same reason.
 - Cost is estimated from helper tokens with the rate the six-disease run's session readings gave; output tokens are undercounted the same way in both arms.
-- HA20's judge sample covers 32 of the 77 papers with output in both arms (the cost ceiling); SSADH's covers all 39. The 45 remaining HA20 chunks are drawn and can be judged once Jimmy decides on the ceiling.
+- The HA20 judge ran in two waves (32 papers within the $300 ceiling, then the remaining 45 after Jimmy raised it), same instruction and launch text; SSADH in one.
 - Two diseases, 124 papers with text: a pilot, not a general finding.
 
 ## 9. Files

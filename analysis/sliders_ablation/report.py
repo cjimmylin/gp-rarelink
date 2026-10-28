@@ -166,13 +166,21 @@ def main() -> int:
         both = {d: (SAMP.get("diseases") or {}).get(d, {}).get("papers_in_both_arms") for d in D}
         mean_h = (sum(judge_cost_by["ha20"]) / len(judge_cost_by["ha20"])) if judge_cost_by.get("ha20") else None
         n_def = len((PS.get("ha20") or {}).get("deferred") or [])
-        L += [f"**Which papers were judged.** The design planned one judge helper for each of the {sum(v or 0 for v in both.values())} papers with output in both arms "
-              f"({', '.join(f'{NAME[d]} {both[d]}' for d in D)}). The three pilot judge helpers cost $0.76–1.60 each, and the full run on top of arm D's extraction "
-              f"would have passed the $300 ceiling (D-44), so within the ceiling the judge ran on all {len(PS['ssadh']['judged'])} SSADH papers and on "
-              f"{len(PS['ha20']['judged'])} of {both['ha20']} HA20 papers: the two pilot papers chosen by hand, plus {len(PS['ha20']['random_draw'])} drawn with seed "
-              f"{PS['seed']} (`adjudication/sliders_ablation/judge/paper_subset.json`). The other {n_def} HA20 papers' chunks are drawn and waiting; judging them would cost "
-              f"about {money(mean_h * n_def) if mean_h else '—'} more at the HA20 judge helpers' mean of {money(mean_h) if mean_h else '—'} per paper, which needs Jimmy's decision "
-              f"because it passes the ceiling. **The HA20 judge figures below are on that {len(PS['ha20']['judged'])}-paper subset; the SSADH figures cover every paper.**", ""]
+        later = (PS.get("ha20") or {}).get("deferred_judged_on_approval") or []
+        first = sorted(set(PS["ha20"]["judged"]) - set(later))
+        head = (f"**Which papers were judged.** The design planned one judge helper for each of the {sum(v or 0 for v in both.values())} papers with output in both arms "
+                f"({', '.join(f'{NAME[d]} {both[d]}' for d in D)}). The three pilot judge helpers cost $0.76–1.60 each, and the full run on top of arm D's extraction "
+                f"would have passed the $300 ceiling (D-44), so within the ceiling the judge first ran on all {len(PS['ssadh']['judged'])} SSADH papers and on "
+                f"{len(first)} of {both['ha20']} HA20 papers: the two pilot papers chosen by hand, plus {len(PS['ha20']['random_draw'])} drawn with seed "
+                f"{PS['seed']} (`adjudication/sliders_ablation/judge/paper_subset.json`). ")
+        if n_def == 0 and later:
+            L += [head + f"Jimmy then approved judging the remaining {len(later)} HA20 papers past the ceiling (2026-10-28, \"yes for both and also merge to main\"), "
+                  f"with the same instruction and launch text, so every paper with output in both arms is judged and the figures below cover all of them. "
+                  f"The HA20 judge helpers' mean cost was {money(mean_h) if mean_h else '—'} per paper.", ""]
+        else:
+            L += [head + f"The other {n_def} HA20 papers' chunks are drawn and waiting; judging them would cost about {money(mean_h * n_def) if mean_h else '—'} more at the "
+                  f"HA20 judge helpers' mean of {money(mean_h) if mean_h else '—'} per paper, which needs Jimmy's decision because it passes the ceiling. "
+                  f"**The HA20 judge figures below are on that {len(PS['ha20']['judged'])}-paper subset; the SSADH figures cover every paper.**", ""]
     for d in D:
         e = J["diseases"].get(d)
         if not e:
@@ -222,7 +230,7 @@ def main() -> int:
           f"- Arm D: {n_direct} extraction helpers, **{money(direct_cost)}** by helper tokens (the six-disease run's rate, $5.996 per weighted million; an estimate, not an invoice). "
           f"Judge: {n_judge} helpers, **{money(judge_cost)}** (mean {money(judge_cost / n_judge) if n_judge else '—'} per paper; "
           + ", ".join(f"{NAME[d]} {money(sum(v) / len(v))}" for d, v in judge_cost_by.items() if v) + "). "
-          f"Study total **{money(direct_cost + judge_cost)}** against the $300 ceiling (contingency, D-44). The design estimated $110–200; extraction alone came to "
+          f"Study total **{money(direct_cost + judge_cost)}** against the original $300 ceiling (contingency, D-44; Jimmy raised it on 2026-10-28 to cover the remaining HA20 judge papers). The design estimated $110–200; extraction alone came to "
           f"{money(direct_cost)} against its $90–150 estimate because the direct helpers wrote long nested records for cohort papers (the costliest paper, 40574834 with 62 individuals, is in `helper_stats.json`).",
           "- Arm S's cost on the same papers is the pv1 extraction helpers' tokens (`analysis/openweight/claude_helper_stats.json`), with its gatekeeper pass "
           "at $0.0044 per judged claim shown apart. Per paper: " + "; ".join(
@@ -271,7 +279,9 @@ def main() -> int:
           "- HA20 is the development disease; SSADH is the cleaner test.",
           "- Arm D is not passed through the gatekeeper, by design: the comparison is between final records as each method delivers them. Arm S's judge sample is drawn from its raw claims for the same reason.",
           "- Cost is estimated from helper tokens with the rate the six-disease run's session readings gave; output tokens are undercounted the same way in both arms.",
-          "- HA20's judge sample covers 32 of the 77 papers with output in both arms (the cost ceiling); SSADH's covers all 39. The 45 remaining HA20 chunks are drawn and can be judged once Jimmy decides on the ceiling.",
+          ("- The HA20 judge ran in two waves (32 papers within the $300 ceiling, then the remaining 45 after Jimmy raised it), same instruction and launch text; SSADH in one."
+           if (PS.get("ha20") or {}).get("deferred_judged_on_approval") and not (PS.get("ha20") or {}).get("deferred")
+           else "- HA20's judge sample covers 32 of the 77 papers with output in both arms (the cost ceiling); SSADH's covers all 39. The 45 remaining HA20 chunks are drawn and can be judged once Jimmy decides on the ceiling."),
           "- Two diseases, 124 papers with text: a pilot, not a general finding.", "",
           "## 9. Files", "",
           "- Design: `reports/sliders_ablation_design.md`. Decision: `DECISIONS.md` D-44.",
