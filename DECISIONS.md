@@ -21,6 +21,11 @@ How to use this file:
 
 ### Needed later
 
+**D-43 · Withdraw G-danon-001 and re-check isoform-sensitive normalizations** [proposed, 2026-10-28]
+- **Finding:** `G-danon-001` (`NM_002294.3:c.1097_1098del`, Sugie 2018, PMID 30413001) is OMIM 309060.0001 / ClinVar 1410728, reported on LAMP2 exon 9b (the paper's table says `E9b`; LAMP2B, NM_013995). The run assumed the MANE transcript (LAMP2A, exon 9a) because the paper named no transcript, so the candidate's genomic allele X:120431457:CTT:C is an artefact, not a gap. One more LAMP2 description past c.1093 carries `transcript_assumed = yes` (`c.1150G>C`, PMID 25228319). GFAP alpha/epsilon has the same structure; its one case (Melchionda 2013) failed normalization safely.
+- **Recommendation:** withdraw G-danon-001 from the gap candidates and the adjudication page; re-normalize the two LAMP2 descriptions on NM_013995 and keep them only where the paper's exon label supports it; add per-gene isoform-sensitive regions to the Stage 4 settings (a Stage 4 change, to be logged as a deviation in the D-40 pattern). Details in `reports/omim_holdout_assessment.md` §7.
+- **Needs:** Jimmy's decision.
+
 **D-15 · Budget tracking**
 - **Answered by the award email:** the credits are one pool on a claude.ai account, covering chat, Claude Code, Cowork and Claude Science. Cowork and Claude Code sessions on the funded account draw on that pool. There are no separate Claude Science and Claude Code allocations.
 - **Still open:**
@@ -37,6 +42,15 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-10-28 · D-42 decided: OMIM reference from entry pages frozen by Jimmy; OMIM used as a human-curated holdout
+
+- **Jimmy's action and instruction:** uploaded twelve omim.org entry pages printed to PDF on 2026-10-28 ("These are frozen screenshots from OMIM as of today"): the six phenotype entries (616744, 203450, 116920, 271980, 300257, 205400) and the six gene entries (191163, 137780, 600065, 610045, 309060, 600046). Then: "can you use the omim information as a gold standard human curated hold out source to assess the outputs of our analysis in a comprehensive manner - analyzing where our work is successful, where it can be improved, and providing an extensive analysis".
+- **Decided (D-42):** these pages are the project's OMIM reference, dated 2026-10-28, obtained through Jimmy's own omim.org access (a licensed route in the sense of pre-registration §6; it replaces the API route D-12 planned, which stays useful for the clinical synopses and for refreshes). Storage follows §11 and `.gitignore`: the PDFs, their text and every parsed file with OMIM prose live under the reference root outside the repository (`/home/user/gp-rarelink-reference/2026-10-28/omim/`, gone with the container; Jimmy holds the PDFs). The repo holds the manifest and counts (`analysis/poc/reference_snapshot/2026-10-28/omim_MANIFEST.json`, `omim_counts.json`) and tables that carry identifiers only.
+- **Used for:** the pre-registered OMIM items that waited on D-12: §7.2.5 corpus overlap, §7.2.2 reference pairs in the OMIM form, and the §7.3 OMIM criterion on the 215 gap candidates; plus an exploratory assessment (literature funnel, allelic-variant recall, patient-level comparison, ClinVar standing of OMIM's variants, staleness). Report: `reports/omim_holdout_assessment.md` (regenerate with `analysis/omim_holdout/report.py`); code in `pipeline/harness/omim_entries.py` and `analysis/omim_holdout/`.
+- **Results in brief:** 43 of 75 disease-titled OMIM allelic variants recovered at the genomic or protein level (57.3%; 46.1–67.9), from 85.7% (LAD-I) to 10.5% (Tangier). The binding constraint is literature coverage: of the 84 papers OMIM cites as sources for those variants, 5 were extracted, 38 are in the corpus without an open copy (D-32) and 38 were never returned by the searches (mostly pre-gene-era disease names). Where the source paper was extracted, 8 of 14 variants were recovered from it; the misses are a table scrambled in conversion (Akaboshi 2003) and variants the paper states only in prose. Patient-level comparison on the 9 shared papers: 12 agree, 7 partial, 4 missed (all the Akaboshi table), no contradiction. No gap candidate is a confirmed OMIM variant; G-danon-001 is a transcript-isoform artefact (D-43). OMIM itself has two allelic variants whose own ClinVar records do not match their description (610045.0002, 610045.0007).
+- **Not changed:** the frozen pipeline, prompts, metrics and thresholds; O2's ClinVar figures; the adjudication page; `CONTEXT.md` §4 only gains the dated OMIM allelic-variant counts in place of the proxies. The `omim_checked` column of `adjudication/o3_gaps/candidates.csv` still reads `no (D-12)`; the OMIM verdicts are in `analysis/omim_holdout/gap_candidates_omim_check_2026-10-28.csv`.
+- **Cost:** no model calls; session tokens only (helpers not used).
 
 ### 2026-10-21 · D-13 and D-14 decided; D-10 audit waits on D-11; more open-weight work approved
 - **Jimmy, 2026-10-21 (question tool):**

@@ -6,7 +6,7 @@ How to maintain it:
 - Add what a future session would need to know. Keep entries short and dated.
 - Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
 
-*Last updated 2026-10-27.*
+*Last updated 2026-10-28.*
 
 ## 1. Where things stand (2026-10-18)
 
@@ -122,6 +122,13 @@ How to maintain it:
   - **D-39 (deviation, 2026-10-20):** the AxD catalogue's supplement (Grossi 2024) came through only after extraction. Transcribe it on the harness side for completeness; never append it to the extraction text.
   - **Supplements for the five new corpora:** fetch one paper per call (`fetch_supplementary --pmid <one>`), one process per disease. A single run over a whole corpus stops at the first Europe PMC error and writes its manifest only at the end, so it loses everything; Europe PMC zips are large and slow.
   - **Interim paper (2026-10-27, internal review, not published):** `reports/interim_paper/` holds `interim_paper.md`, `supplement.md`, `figures/*.png` and `interim_paper.pdf`. Regenerate with `uv run python -m analysis.interim_paper.build` (text, tables, figures; every number read from the files in Supplementary Table S1) and then `bash analysis/interim_paper/make_pdf.sh` (pandoc to HTML, headless Chromium to PDF; no LaTeX in the container). The gaps table (§5, G1–G17) and the costed plan are the to-do list as of that date. Matplotlib only runs under `uv run python`; escape `$` in figure text or matplotlib reads it as math.
+  - **OMIM reference and holdout assessment (2026-10-28, D-42):** Jimmy froze the twelve omim.org entry pages (6 phenotype + 6 gene) as PDFs and asked for an assessment against them. They live under `/home/user/gp-rarelink-reference/2026-10-28/omim/entry_<MIM>.pdf` (outside git; gone with the container; Jimmy holds the originals). Re-create with `uv run python -m pipeline.harness.omim_entries --date 2026-10-28`, then `analysis/omim_holdout/clinvar_lookup.py` (ClinVar E-utilities, about 300 requests), `assess.py` and `report.py`. Report: `reports/omim_holdout_assessment.md`. Committed: manifest and counts in `analysis/poc/reference_snapshot/2026-10-28/` and identifier-only tables in `analysis/omim_holdout/`. D-43 (withdraw G-danon-001) is open.
+    - **Phenotype entries carry no allelic-variant list and no clinical synopsis**; the allelic variants are on the gene entries. The clinical synopsis is a separate page that has not been frozen.
+    - **ClinVar knows OMIM's numbers:** esearch accepts `600065.0001[OMIM]` and esummary's `variation_xrefs` lists the OMIM id. A dbSNP rs covers every allele at a position (c.715C>T and c.715C>G share one rs), so never place a variant by rsID alone.
+    - **OMIM labels use legacy protein numbering** (ABCA1 labels are 60 residues short of the current transcript; LAMP2 `LEU113TER` is p.Leu147Ter). Match through ClinVar's HGVS, not the label. Two OMIM allelic variants point to ClinVar records that do not match their own text (610045.0002, 610045.0007).
+    - **OMIM narratives cite papers as author-year;** resolve them through the entry's own reference list and expect ambiguity when one first author has several papers in a year.
+    - **Alternative coding exons make `transcript_assumed` dangerous:** LAMP2 9a/9b, GFAP alpha/epsilon. The LAMP2 case produced a false gap candidate (D-43).
+    - **`httpx` is in the `extract` dependency group:** `uv sync --group dev --group extract` before running anything that imports `pipeline.extract.normalize_variants` (the harness and the OMIM scripts do).
   - **Budget by line (2026-10-24):** `analysis/cost/budget_lines.py` fills the Spent and Remaining columns in `BUDGET.md` from `analysis/cost/spend_segments.csv`, one row per stretch between session cost readings. After a new reading, add a row (start = the last row's end) and re-run. These are estimates, not billing figures.
   - **Don't wait on a process with `pgrep -f <script name>` inside a Bash loop.** The loop's own command line contains the name, so it never ends. Match the interpreter path (`pgrep -f "python3 path/to/script"`) or wait on an output file.
   - **Helper slot tracking:** at most 20 helpers at once. Record a chunk as launched only after its Agent call goes out, or the tracker overcounts.
@@ -244,7 +251,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-42**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-44**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
