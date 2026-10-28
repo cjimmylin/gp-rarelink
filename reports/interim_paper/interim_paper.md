@@ -2,7 +2,7 @@
 
 ## Interim report on all work to date (internal review draft)
 
-*Rare Genomics Institute and the Stanford Open Virtual Assistant Lab. PI: Dr. Jimmy Lin. Methods co-lead: Prof. Monica Lam. Adjudication panel: Drs. Eva Wu, Gabriela Balderrama and Anita Chacko. Drafted by Claude Code from the repository's committed outputs on 2026-10-27 (commit `f384bfd`). Funded by Anthropic's AI for Science program (award 2026-08-31). Internal review only; not for distribution.*
+*Rare Genomics Institute and the Stanford Open Virtual Assistant Lab. PI: Dr. Jimmy Lin. Methods co-lead: Prof. Monica Lam. Adjudication panel: Drs. Eva Wu, Gabriela Balderrama and Anita Chacko. Drafted by Claude Code from the repository's committed outputs on 2026-10-28 (commit `a5e07fc`). Funded by Anthropic's AI for Science program (award 2026-08-31). Internal review only; not for distribution.*
 
 ![Figure 1. Study overview and status.](figures/fig1_overview.png)
 
@@ -10,7 +10,7 @@
 
 
 
-> **Status at a glance (2026-10-27; repository commit `f384bfd`)**
+> **Status at a glance (2026-10-28; repository commit `a5e07fc`)**
 >
 > - **Done with the frozen pipeline (`pipeline-v1.0`, pre-registration v1.0 frozen 2026-10-20):** extraction, span check and gatekeeper on 350 open-access papers across six diseases; 2,836 schema-valid GA4GH phenopackets; a 10% run-to-run repeat; concordance against a dated ClinVar snapshot; 215 gap-variant candidates with evidence dossiers; completeness against two published catalogues; memorization probes; the Claude vs open-weight comparison on two diseases.
 > - **Not yet done, and needing people:** the pre-registered 250-claim human audit (O1, the one confirmatory outcome) is drawn and its blinded rating pages are built, but nobody has rated a claim; panel adjudication of gap candidates (O3) has not started; the bias arm (O4) waits on a person listing cohort frequencies; OMIM has not been checked (no access, D-12).
@@ -20,7 +20,7 @@
 
 ## Abstract
 
-**Background.** Causative variants and phenotypes for rare diseases are published in case reports faster than they reach ClinVar, OMIM or structured phenotype resources. GP-RareLink asks whether an LLM-based extraction pipeline, with ClinVar and OMIM held out as the answer key, can build provenance-first genotype–phenotype records at a provable accuracy and at a scale that closes part of that gap. This interim report covers everything done between project start (2026-09-21) and 2026-10-27, for internal review. It is not a results paper: the one confirmatory outcome has not been measured yet.
+**Background.** Causative variants and phenotypes for rare diseases are published in case reports faster than they reach ClinVar, OMIM or structured phenotype resources. GP-RareLink asks whether an LLM-based extraction pipeline, with ClinVar and OMIM held out as the answer key, can build provenance-first genotype–phenotype records at a provable accuracy and at a scale that closes part of that gap. This interim report covers everything done between project start (2026-09-21) and 2026-10-28, for internal review. It is not a results paper: the one confirmatory outcome has not been measured yet.
 
 **Methods.** Six diseases (*TNFAIP3*, *ALDH5A1*, *ABCA1*, *ITGB2*, *GFAP*, *LAMP2*). A pre-registered pipeline, frozen on 2026-10-20 after a one-disease pilot on A20 haploinsufficiency (HA20), extracted per-individual tables from open-access papers with Claude Opus helper agents, checked every quoted span verbatim by script, judged every value with a second model read (gatekeeper v4), merged re-reported individuals on citations only, normalized variants with VariantValidator, bound phenotypes to HPO and built GA4GH phenopackets. A harness that extraction never sees compared the records with a dated ClinVar release and two published variant catalogues, and listed variants absent from ClinVar. A 250-claim audit sample was drawn by seed for two blinded panel raters. The same files were run on an open-weight model (DeepSeek-V4.1-Flash) for two diseases.
 
@@ -40,7 +40,7 @@ Variant and phenotype knowledge for rare diseases is split across ClinVar, OMIM,
 
 **Table 1. Pre-registered outcomes and their status.**
 
-| # | Outcome | Type | Pre-specified target | Status at 2026-10-27 |
+| # | Outcome | Type | Pre-specified target | Status at 2026-10-28 |
 |---|---|---|---|---|
 | O1 | Unsupported-value rate, human audit of 250 claims | primary, confirmatory | observed rate < 2%, i.e. at most 4 of 250 (rule C, D-02) | sample drawn (seed 40250); rating pages built; **no claim rated yet** |
 | O2 | Concordance with ClinVar and OMIM on gene, HGVS, classification, phenotype | primary, estimation | none; estimates with CIs (D-03) | ClinVar half done on all six diseases; **OMIM not assessed** (D-12) |
@@ -48,7 +48,7 @@ Variant and phenotype knowledge for rare diseases is split across ClinVar, OMIM,
 | O4 | Ascertainment bias vs natural-history cohorts; memorization probe | secondary | none | memorization probe done (both models); **frequency deviation waits on a person** |
 | O5 | Efficiency: expert-minutes per accepted record; Claude vs open-weight model | secondary | none | open-weight run and gatekeeper done on 2 diseases; **blinded audit and expert-minutes not measured** |
 
-**What this document is.** An interim report for internal review, generated by script (`analysis/interim_paper/build.py`) from the committed outputs at commit `f384bfd`, so that every number traces to a file and a date. It follows the pre-registration's reporting rules: per-disease results, intervals on proportions, HA20 flagged throughout, deviations listed (§2.9), and nothing called "high" or "accurate" without its interval and definition beside it. It is not for distribution outside the team.
+**What this document is.** An interim report for internal review, generated by script (`analysis/interim_paper/build.py`) from the committed outputs at commit `a5e07fc`, so that every number traces to a file and a date. It follows the pre-registration's reporting rules: per-disease results, intervals on proportions, HA20 flagged throughout, deviations listed (§2.9), and nothing called "high" or "accurate" without its interval and definition beside it. It is not for distribution outside the team.
 
 ## 2. Methods
 
@@ -79,7 +79,7 @@ The frozen plan (`preregistration/analysis_plan.md`, v1.0, 2026-10-20; tags `pre
 
 ### 2.3 Extraction
 
-- **Model and route.** Claude Opus, as Claude Code helper agents on the funded claude.ai account (D-17, D-20): one helper per paper, reading only the paper, the instruction file, the schema and the rules file, with no web access and an instruction to use nothing it remembers about the paper. The served model ID, instruction hashes and session cost readings are in each run manifest (`runs/pv1-<disease>/manifest.json`).
+- **Model and route.** Claude Opus, as Claude Code helper agents on the funded claude.ai account (D-17, D-20): one helper per paper, reading only the paper, the instruction file, the schema and the rules file, with no web access and an instruction to use nothing it remembers about the paper. The pilot manifests record the served model ID, `claude-opus-5-5`; the six-disease manifests recorded only the helper alias "opus" at run time, and a `served_model` line stating `claude-opus-5-5` from the session configuration was added on 2026-10-28, marked as such. Instruction hashes and session cost readings are in each run manifest (`runs/pv1-<disease>/manifest.json`).
 - **Frozen files.** `extract_v6.md` (instructions), `schema_<disease>_v5.json` (five tables: publications, individuals, variants, phenotypic_features, phenotype_checklist), `extraction_rules_v1.md` and `gatekeeper_v4.md`. For the five new diseases the prompt and schema were instantiated by script, swapping only the disease name, gene symbol, schema path and a 20-item checklist (D-38; 12 changed lines per disease, diffs committed).
 - **What a value is.** Every asserted value carries a verbatim quote from the paper. "Not reported" is a first-class output and carries no quote. Three-state phenotypes (observed / excluded / not reported) are never collapsed. Variant fields are taken only from statements about this person (D-29); values stacked in multi-patient cells are not assigned by position (D-31); a normal finding is recorded as the abnormality it rules out, marked excluded (D-27).
 - **Checklists.** Twenty disease-specific features per disease, each with the three-state status for every individual (Supplementary Table S3). HA20's came from the pilot schema; the others were written by helpers from a consensus guideline or review (SSADH 38452608; Danon 37821174; Tangier 33994407; AxD 39420046, 32779598, 40520824; LAD-I 42011429, 23207660, 33391282), every quote checked verbatim.
@@ -600,7 +600,7 @@ Items 1–4 cost no model spend and about 60–110 panel hours in total, most of
 
 ## 7. Data, code and reproducibility
 
-- **Repository:** `cjimmylin/gp-rarelink`, commit `f384bfd`. Pre-registration: `preregistration/analysis_plan.md` v1.0 (frozen 2026-10-20, D-36). Decisions and deviations: `DECISIONS.md`. Spend: `BUDGET.md`.
+- **Repository:** `cjimmylin/gp-rarelink`, commit `a5e07fc`. Pre-registration: `preregistration/analysis_plan.md` v1.0 (frozen 2026-10-20, D-36). Decisions and deviations: `DECISIONS.md`. Spend: `BUDGET.md`.
 - **Records:** `data/extracted/<disease>/pv1-<disease>/` holds per-paper tables, claims with spans, gatekeeper verdicts, reconciled individuals, normalized variants, HPO bindings and the phenopackets. Full-text papers are not committed.
 - **Harness outputs:** `analysis/six_disease/`, `adjudication/`, `analysis/openweight/`, `analysis/bias/`, `analysis/exploratory/`.
 - **This report:** `analysis/interim_paper/build.py` (text, tables), `figures.py`, `data.py` (inputs; Supplementary Table S1 lists them); output in `reports/interim_paper/`. Re-run with `uv run python -m analysis.interim_paper.build`.
