@@ -309,6 +309,14 @@ def main(argv: list[str] | None = None) -> int:
                     vd.expressions.append(HgvsExpression(syntax="hgvs.c", value=n.get("mane_hgvs_transcript") or n["hgvs_transcript"]))
                 if n.get("mane_hgvs_protein") or n.get("hgvs_protein"):
                     vd.expressions.append(HgvsExpression(syntax="hgvs.p", value=n.get("mane_hgvs_protein") or n["hgvs_protein"]))
+                # D-43: when the paper's transcript is not the MANE Select (an alternative isoform), keep its validated
+                # description too, so an exon-9b frameshift is not shown only as an intronic change on the MANE transcript
+                if n.get("hgvs_transcript") and n.get("mane_hgvs_transcript") \
+                        and n["hgvs_transcript"].split(":")[0].split(".")[0] != n["mane_hgvs_transcript"].split(":")[0].split(".")[0] \
+                        and n["hgvs_transcript"].split(":", 1)[-1] != n["mane_hgvs_transcript"].split(":", 1)[-1]:
+                    vd.expressions.append(HgvsExpression(syntax="hgvs.c", value=n["hgvs_transcript"]))
+                    if n.get("hgvs_protein") and n["hgvs_protein"] != n.get("mane_hgvs_protein"):
+                        vd.expressions.append(HgvsExpression(syntax="hgvs.p", value=n["hgvs_protein"]))
                 if n.get("hgvs_genomic_grch38"):
                     vd.expressions.append(HgvsExpression(syntax="hgvs.g", value=n["hgvs_genomic_grch38"]))
                 if n.get("vcf_grch38") and n["vcf_grch38"].count(":") == 3:
