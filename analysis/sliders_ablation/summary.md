@@ -4,30 +4,30 @@
 
 | Measure | ha20 S | ha20 D | ssadh S | ssadh D |
 |---|---|---|---|---|
-| Papers compared | 55 | 55 | 23 | 23 |
-| Individuals | 400 | 400 | 207 | 215 |
-| Variant rows | 291 | 316 | 205 | 211 |
-| Target gene variant keys | 150 | 156 | 74 | 74 |
-| Phenotypic feature rows | 2690 | 2682 | 707 | 761 |
-| Checklist cells | 8000 | 7980 | 4140 | 4300 |
-| Checklist excluded share | 1.6% (130/8000) | 3.8% (303/7980) | 0.6% (25/4140) | 0.9% (37/4300) |
-| Checklist not-reported share | 87.6% (7009/8000) | 84.5% (6746/7980) | 95.0% (3935/4140) | 94.7% (4071/4300) |
-| Found verbatim in paper: variant descriptions (target gene) | 100.0% (648/648) | 99.4% (679/683) | 100.0% (583/583) | 99.7% (590/592) |
-| Found verbatim in paper: feature text | 81.5% (2193/2690) | 87.5% (2346/2682) | 72.0% (509/707) | 72.0% (548/761) |
-| Found verbatim in paper: ages as written | 98.5% (329/334) | 85.9% (298/347) | 100.0% (101/101) | 57.7% (60/104) |
-| Found verbatim in paper: disease label | 97.4% (263/270) | 73.2% (230/314) | 100.0% (175/175) | 90.5% (172/190) |
-| Found verbatim in paper: variant pathogenicity as stated | 77.6% (59/76) | 39.8% (39/98) | 91.3% (21/23) | 89.0% (113/127) |
-| HGVS recall tiers 1+2 (2026-10-28 snapshot) | — | — | — | — |
-| Overlap with ClinVar, tier 1 | — | — | — | — |
-| Classification agreement | — | — | — | — |
-| Judge: unsupported or not found | — | — | — | — |
-| Cost per paper, median ($, estimate) | 0.9999 | 1.3381 | 1.1857 | 1.3013 |
-| Cost total ($, estimate; S without gatekeeper) | 61.52 | 78.59 | 29.23 | 30.89 |
-| Wall-clock per paper, median (s) | 171.1 | 138.3 | 158.6 | 143.7 |
+| Papers compared | 85 | 85 | 39 | 39 |
+| Individuals | 811 | 813 | 395 | 449 |
+| Variant rows | 620 | 644 | 472 | 552 |
+| Target gene variant keys | 289 | 297 | 161 | 196 |
+| Phenotypic feature rows | 5079 | 5798 | 1405 | 1563 |
+| Checklist cells | 16220 | 16240 | 7900 | 8980 |
+| Checklist excluded share | 1.4% (235/16220) | 7.9% (1284/16240) | 0.7% (57/7900) | 0.9% (78/8980) |
+| Checklist not-reported share | 88.0% (14278/16220) | 80.7% (13102/16240) | 94.6% (7470/7900) | 94.5% (8489/8980) |
+| Found verbatim in paper: variant descriptions (target gene) | 99.9% (1499/1501) | 99.0% (1524/1539) | 100.0% (1350/1350) | 94.5% (1566/1657) |
+| Found verbatim in paper: feature text | 83.7% (4253/5079) | 78.7% (4563/5798) | 68.7% (965/1405) | 68.6% (1072/1563) |
+| Found verbatim in paper: ages as written | 97.5% (637/653) | 74.8% (522/698) | 100.0% (222/222) | 59.7% (138/231) |
+| Found verbatim in paper: disease label | 98.5% (579/588) | 79.6% (507/637) | 99.4% (345/347) | 85.1% (344/404) |
+| Found verbatim in paper: variant pathogenicity as stated | 83.0% (176/212) | 38.7% (137/354) | 91.8% (123/134) | 67.4% (289/429) |
+| HGVS recall tiers 1+2 (2026-10-28 snapshot) | 26.9% (21/78) | 26.9% (21/78) | 15.0% (24/160) | 30.0% (48/160) |
+| Overlap with ClinVar, tier 1 | 37.9% (39/103) | 38.1% (40/105) | 87.2% (68/78) | 88.2% (75/85) |
+| Classification agreement | 82.8% (24/29) | 82.4% (28/34) | 91.8% (45/49) | 89.9% (62/69) |
+| Judge: unsupported or not found | 0.5% (1/186) | 1.6% (3/188) | 1.4% (3/218) | 0.0% (0/220) |
+| Cost per paper, median ($, estimate) | 1.0776 | 1.4996 | 1.1857 | 1.3562 |
+| Cost total ($, estimate; S without gatekeeper) | 101.42 | 138.15 | 49.12 | 59.19 |
+| Wall-clock per paper, median (s) | 171.5 | 146.4 | 169.9 | 150.0 |
 
 | Agreement S vs D | ha20 | ssadh |
 |---|---|---|
-| Target-gene variant keys shared / union | 148/158 (S only 2, D only 8) | 74/74 (S only 0, D only 0) |
-| Checklist status agreement on shared cells | 0.9507 of 2720 | 0.97 of 500 |
-| Label Jaccard (pooled) | 0.2051 | 0.063 |
-| Papers with the same individual count | 37/55 | 19/23 |
+| Target-gene variant keys shared / union | 286/300 (S only 3, D only 11) | 161/196 (S only 0, D only 35) |
+| Checklist status agreement on shared cells | 0.9263 of 6380 | 0.9737 of 1980 |
+| Label Jaccard (pooled) | 0.2446 | 0.1329 |
+| Papers with the same individual count | 61/85 | 29/39 |

@@ -180,7 +180,9 @@ def one(d: str, direct_stats: list[dict], s_stats: list[dict]) -> dict:
     conv = j(ROOT / f"data/extracted/{d}/{D}/conversion_summary.json") or {}
     sc = j(ROOT / f"data/extracted/{d}/{S}/span_check.json") or {}
     gk = j(ROOT / f"data/extracted/{d}/{S}/gatekeeper_v4_summary.json") or {}
-    judged = (gk.get("by_class") or {}).get("model") or gk.get("model_claims_judged") or (gk.get("counts") or {}).get("model")
+    judged = (gk.get("rates_model_claims") or {}).get("judged")  # model-class claims the gatekeeper judged
+    if not isinstance(judged, int):
+        judged = sum(v for k, v in (gk.get("verdicts") or {}).items() if k != "not_judged") or None
     s_cost = costs(d, S, used, s_stats)
     s_cost["gatekeeper_claims_judged"] = judged
     s_cost["gatekeeper_cost_usd_estimate"] = round(judged * GATEKEEPER_PER_CLAIM, 2) if isinstance(judged, int) else None
