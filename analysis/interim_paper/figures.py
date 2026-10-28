@@ -115,7 +115,7 @@ def fig_overview(D):
     W2, G2 = 22.9, 2.3
     x2 = [1 + i * (W2 + G2) for i in range(4)]
     box(x2[0], 24, W2, 13, "Reference snapshots", ["ClinVar release 2026-10-12, read 2026-10-19", "HPO annotations 2026-09-02",
-                                                   "catalogues: Chen 2020, Grossi 2024", "OMIM: no access yet (D-12)"])
+                                                   "catalogues: Chen 2020, Grossi 2024", "OMIM: 12 entry pages frozen 2026-10-28 (D-42)"])
     box(x2[1], 24, W2, 13, "O2 Concordance harness", ["gene; HGVS (tier 1 allele, tier 2 protein);", "classification; phenotype profile",
                                                       "estimates with 95% CIs, no threshold (D-03)"])
     box(x2[2], 24, W2, 13, "O3 Gap candidates", [f"{t['gap_candidates']} tier-1 alleles absent from ClinVar,", "every value gatekeeper-supported",
@@ -369,7 +369,7 @@ def fig_concordance(D):
         r = D["o2"][d]["phenotype_7_2_4b"]["annotation_recall"]
         ph.append((label(d), [(r["share"], r["ci95"][0], r["ci95"][1], r["k"], r["n"], BLUE, d == "ha20")]))
     _ci_panel(axes[1, 1], ph, "D  HPO annotation recall (phenotype.hpoa terms seen in ≥1 person)", "annotated terms recovered (%), ontology-aware")
-    fig.text(0.01, 0.0, f"Wilson 95% intervals. Hollow = HA20 (development disease). ClinVar release {D['o2']['ha20']['clinvar_variant_summary_last_modified'][:16]}, snapshot {D['o2']['ha20']['snapshot_date']}; OMIM not checked (D-12). No pass/fail threshold (D-03). Source: analysis/six_disease/o2/o2_<d>.json.",
+    fig.text(0.01, 0.0, f"Wilson 95% intervals. Hollow = HA20 (development disease). ClinVar release {D['o2']['ha20']['clinvar_variant_summary_last_modified'][:16]}, snapshot {D['o2']['ha20']['snapshot_date']}; the OMIM half is in Figure 11. No pass/fail threshold (D-03). Source: analysis/six_disease/o2/o2_<d>.json.",
              fontsize=7.2, color=MUTED)
     return save(fig, "fig6_concordance")
 
@@ -432,7 +432,7 @@ def fig_gaps(D):
     ax.set_title("C  How many papers report each candidate")
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=3)
     style(ax, "x")
-    fig.text(0.01, -0.3, f"*development disease. ClinVar snapshot {D['gaps_meta']['snapshot']}; all {D['recheck']['candidates_checked']} candidates still absent in the {D['recheck']['snapshot']} re-check. OMIM not checked (D-12). Sources: adjudication/o3_gaps/summary.json, triage_summary.json, recheck_2026-10-21.json.",
+    fig.text(0.01, -0.3, f"*development disease. ClinVar snapshot {D['gaps_meta']['snapshot']}; all {D['recheck']['candidates_checked']} candidates still absent in the {D['recheck']['snapshot']} re-check; all but one absent from OMIM's allelic variants (D-42), and that one withdrawn (D-43). Sources: adjudication/o3_gaps/summary.json, triage_summary.json, recheck_2026-10-21.json.",
              fontsize=7.2, color=MUTED)
     return save(fig, "fig7_gaps")
 
@@ -720,10 +720,57 @@ def figS_misses(D):
     return save(fig, "figS7_o2_misses")
 
 
+# --------------------------------------------------------------------------------------------- Figure 11
+def fig_omim(D):
+    """The OMIM holdout (D-42): allelic-variant recall, where OMIM's source papers stand in our funnel, and OMIM's coverage of the run's P/LP variants."""
+    per = D["omimh"]["per"]
+    fig, axes = plt.subplots(1, 3, figsize=(13, 4.3), gridspec_kw={"wspace": 0.55, "width_ratios": [1.1, 1.3, 1.0]})
+
+    def ser(r, color, hollow):
+        return (r["share"], r["ci95"][0], r["ci95"][1], r["k"], r["n"], color, hollow)
+
+    items = [(label(d), [ser(per[d]["B_allelic_variants"]["recall_unrestricted_strict"], BLUE, d == "ha20")]) for d in DISEASES]
+    items.append(("all six", [ser(D["omimh"]["totals"]["recall_all_strict"], BLUE, False)]))
+    _ci_panel(axes[0], items, "A  OMIM allelic variants recovered anywhere in the run", "allelic variants recovered at the genomic or protein level (%)")
+    # B: allelic-variant source papers by funnel status (ordinal stages, one-hue ramp)
+    stages = [("extracted", ORD4[3]), ("in corpus, no open full text", ORD4[2]), ("not found by search", ORD4[1])]
+    ax = axes[1]
+    for i, d in enumerate(DISEASES):
+        cnt = per[d]["A_literature"]["funnel_by_citation_place"].get("allelic-variant narrative", {})
+        total = sum(cnt.values())
+        left = 0
+        for name, color in stages:
+            v = cnt.get(name, 0)
+            if v:
+                ax.barh(i, v, left=left, color=color, edgecolor=SURFACE, linewidth=1.2, height=0.62, zorder=2)
+                left += v
+        other = total - left
+        if other:
+            ax.barh(i, other, left=left, color=DEEMPH, edgecolor=SURFACE, linewidth=1.2, height=0.62, zorder=2)
+        ax.text(total + 0.6, i, str(total), fontsize=6.8, color=INK2, va="center")
+    ax.set_yticks(range(len(DISEASES)))
+    ax.set_yticklabels([label(d) for d in DISEASES])
+    ax.invert_yaxis()
+    ax.set_xlabel("papers OMIM cites as sources for its allelic variants")
+    ax.set_title("B  Where OMIM's source papers stand in our corpus")
+    ax.legend(handles=[Patch(color=c, label=n) for n, c in stages] + [Patch(color=DEEMPH, label="other (excluded, held out, unclear)")], loc="lower right", fontsize=6.8)
+    style(ax, "x")
+    # C: OMIM's coverage of the ClinVar P/LP variants the run found
+    items = []
+    for d in DISEASES:
+        r = per[d]["C_clinvar"]["share_of_run_clinvar_plp_in_omim"]
+        items.append((label(d), [ser(r, BLUE, d == "ha20")]))
+    _ci_panel(axes[2], items, "C  Run's ClinVar P/LP variants that are OMIM allelic variants", "share of the run's ClinVar P/LP variants listed by OMIM (%)")
+    fig.text(0.01, -0.06, f"Wilson 95% intervals. Hollow = HA20 (development disease). OMIM entry pages frozen {D['omimh']['date']} (D-42); ClinVar placement of OMIM's variants by E-utilities the same day. "
+             "Source: analysis/omim_holdout/results_2026-10-28.json.", fontsize=7.2, color=MUTED)
+    return save(fig, "fig11_omim")
+
+
 def make_all(D) -> dict:
     return {
         "fig1": fig_overview(D), "fig2": fig_corpus(D), "fig3": fig_gatekeeper(D), "fig4": fig_repeat(D), "fig5": fig_records(D),
         "fig6": fig_concordance(D), "fig7": fig_gaps(D), "fig8": fig_openweight(D), "fig9": fig_memorization(D), "fig10": fig_budget(D),
+        "fig11": fig_omim(D),
         "figS1": figS_concentration(D), "figS2": figS_variant_spectrum(D), "figS3": figS_top_terms(D), "figS4": figS_coverage(D),
         "figS5": figS_completeness(D), "figS6": figS_gpsea(D), "figS7": figS_misses(D),
     }
