@@ -34,7 +34,7 @@ SYSTEM = {"ha20": "Auto-inflammatory", "ssadh": "Neurometabolic", "tangier": "Li
 SOURCES = {
     "run_summary": "analysis/six_disease/run_summary_2026-10-20.json",
     "repeat": "analysis/six_disease/repeat_agreement_2026-10-20.json",
-    "stage4": "analysis/six_disease/stage4_summary_2026-10-20.json",
+    "stage4": "analysis/six_disease/stage4_summary_2026-10-28.json",
     "coverage": "analysis/corpus/coverage_2026-10-20.json",
     "o2": "analysis/six_disease/o2/o2_<d>.json",
     "o2_misses": "analysis/six_disease/o2/o2_recall_misses.csv",
@@ -77,6 +77,15 @@ SOURCES = {
     "budget_lines": "BUDGET.md (Lines table)",
     "catalogue_check": "analysis/catalogue/catalogue_check_2026-10-20.json",
     "smoke_manifest": "runs/poc-ha20-v6-smoke/manifest.json",
+    "omim_results": "analysis/omim_holdout/results_2026-10-28.json",
+    "omim_av_recall": "analysis/omim_holdout/av_recall_2026-10-28.csv",
+    "omim_cited_papers": "analysis/omim_holdout/omim_cited_papers_2026-10-28.csv",
+    "omim_gap_check": "analysis/omim_holdout/gap_candidates_omim_check_2026-10-28.csv",
+    "omim_judgements": "analysis/omim_holdout/patient_level_judgements.csv",
+    "omim_av_clinvar": "analysis/omim_holdout/omim_av_clinvar.csv",
+    "omim_counts": "analysis/poc/reference_snapshot/2026-10-28/omim_counts.json",
+    "omim_manifest": "analysis/poc/reference_snapshot/2026-10-28/omim_MANIFEST.json",
+    "danon_normalization": "data/extracted/danon/pv1-danon/normalization_summary.json (re-run under D-43)",
 }
 
 
@@ -260,6 +269,21 @@ def load() -> dict:
     D["o2_tiers"] = {d: dict(tiers[d]) for d in DISEASES}
     D["o2_tier1_classes"] = {d: dict(cls[d]) for d in DISEASES}
     D["budget"] = budget()
+    # OMIM holdout (D-42) and D-43
+    om = J(SOURCES["omim_results"])
+    judg = rows(SOURCES["omim_judgements"])
+    gapcheck = {r["candidate_id"]: r for r in rows(SOURCES["omim_gap_check"])}
+    status = Counter(r["status"] for r in D["gap_candidates"])
+    live = Counter(r["disease"] for r in D["gap_candidates"] if r["status"] != "withdrawn")
+    withdrawn = [r for r in D["gap_candidates"] if r["status"] == "withdrawn"]
+    omim_absent = sum(1 for r in D["gap_candidates"] if r["omim_checked"].startswith("absent"))
+    D["omimh"] = {"per": om["per_disease"], "totals": om["totals"], "date": om["date"], "av": rows(SOURCES["omim_av_recall"]),
+                  "papers": rows(SOURCES["omim_cited_papers"]), "gapcheck": gapcheck, "judg": judg,
+                  "judg_tally": dict(Counter(r["agreement"] for r in judg)), "judg_papers": len({r["pmid"] for r in judg}),
+                  "counts": J(SOURCES["omim_counts"]), "manifest": J(SOURCES["omim_manifest"]), "av_clinvar": rows(SOURCES["omim_av_clinvar"]),
+                  "gap_status": dict(status), "gap_live": {d: live.get(d, 0) for d in DISEASES}, "withdrawn": withdrawn, "gap_omim_absent": omim_absent}
+    D["isoform_cfg"] = {d: D["stage4_cfg"][d].get("isoform_sensitive", []) for d in DISEASES}
+    D["danon_norm"] = J("data/extracted/danon/pv1-danon/normalization_summary.json")
     # derived totals
     def tot(keys, fn):
         return sum(fn(k) for k in keys)
@@ -282,6 +306,7 @@ def load() -> dict:
             "features_observed": tot(keys, lambda k: s4[k]["features_observed"]),
             "features_excluded": tot(keys, lambda k: s4[k]["features_excluded"]),
             "gap_candidates": tot(keys, lambda k: D["gaps"][k]["gap_candidates"]),
+            "gap_candidates_live": tot(keys, lambda k: D["omimh"]["gap_live"][k]),
             "tier1_alleles": tot(keys, lambda k: D["gaps"][k]["tier1_alleles"]),
             "reclass": tot(keys, lambda k: D["gaps"][k]["reclassification_candidates"]),
             "reclass_strong": tot(keys, lambda k: D["gaps"][k]["reclassification_strong_proposed"]),
