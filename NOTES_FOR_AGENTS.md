@@ -8,77 +8,17 @@ How to maintain it:
 
 *Last updated 2026-10-28.*
 
-## 1. Where things stand (2026-10-18)
+## 1. Where things stand
 
-- **Current priority: pilot first (D-18).** A one-disease proof of concept on A20 haploinsufficiency runs now, under `POC_DESIGN.md`, before the pre-registration is frozen. If you are the session executing the pilot, `POC_DESIGN.md` is your protocol; work through its §8 checklist.
-- **Phase:** Month 1 ends 2026-10-20 (provisional start 2026-09-21, D-01). The dated calendar is in `CONTEXT.md` §8.
-- **Done:**
-  - working rules: `CLAUDE.md`, `INSTRUCTIONS.md`, `CONTEXT.md`;
-  - the grant application and award email (`grant/`);
-  - background literature (`background/`, compiled 2026-10-16 in Cowork);
-  - `DECISIONS.md` and `BUDGET.md`;
-  - pre-registration draft v0.6 (`preregistration/analysis_plan.md`), not frozen. D-01 to D-07, D-18 and D-26 to D-28 are decided;
-  - a digest of the claude.ai Project chats (`docs/claude-ai-threads.md`) and the pre-grant concept chat (`background/origins/`), both added from claude.ai on 2026-10-18;
-  - **pilot Stages 0–2, built and tested offline** by the session "Rarelink POC study design" (merged from branch `claude/zealous-meitner-k7moex`). That covers:
-    - the `pipeline/` skeleton with isolation guard and tests;
-    - the corpus scripts;
-    - the SLIDERS Anthropic adapter (`pipeline/extract/sliders_adapter/`);
-    - the HA20 config and schema;
-    - 24 tests (`uv sync && uv run pytest`).
-- **Pilot Stage 3 done (2026-10-18, later):**
-  - run-1 covered 85 papers and the repeat 15;
-  - every quote was found verbatim;
-  - merges: 2 false among the 58 merges of policy v2, now policy v3;
-  - variant agreement is below 0.9 because of cohort scope.
-  - Report: `reports/poc_stage3_findings.md`. D-22 decided 2026-10-19 (instructions v3, run-2, supplementary files). Session usage reading 240.36 at the end of Stage 3.
-- **Pilot Stage 3b done (2026-10-19):**
-  - run-2 over all 85 papers is the extraction of record: 64,999 quotes, all verbatim; 799 individuals;
-  - repeat variant agreement 0.944 on strings, 0.988 on keys (gate met);
-  - fresh merge hand check: 6 false of 93, all from the sex-and-onset route; policy v4 proposed.
-  - Report: `reports/poc_stage3b_findings.md`. Session usage reading 460.75.
-  - D-23 to D-25 decided by Jimmy, 2026-10-19: merge policy v4; instructions v4 plus input fixes, checked on 10 papers, with no run-3; Stage 5 approved at about $170 after Stage 4.
-- **Pilot Stages 4 and 5 done, v4 checked (2026-10-19):**
-  - v4 check: 13 of 13 rule checks as intended; run-2 stays the extraction of record;
-  - Stage 4: 749 phenopackets, all valid; HPO binding 88.5%; normalization 92.8% of cDNA descriptions (check not met as worded, D-26);
-  - Stage 5: 8 unsupported and 305 partial of 22,003 judged values; phenopackets rebuilt without claims not judged supported.
-  - Human audit (Jimmy, first pass): 2 of 50 unsupported (4.0%, the Q4 limit), 6 partial. The gatekeeper flagged none of his 8; v2 (D-28) flags 2. D-26 repairs: 135 of 138 cDNA descriptions normalized. Report §10.
-  - **Audit ratings (collected 2026-10-19):** the 50 claims and 30 HPO bindings were rated on the private rating page https://claude.ai/artifact/WKu5hAmopKibygDb2tte6P (built by `adjudication/poc_audit/make_rating_page.py`; ratings save to the page's store). To collect them: `ArtifactData` `list` of `ratings` and `hpo` with `out_dir`, then `adjudication/poc_audit/apply_ratings.py`, then `analysis/poc/audit_metrics.py`. D-26 to D-28 decided 2026-10-19. The step-3 second look is done (`final` collection): **Q4 not met, 3 of 50 unsupported (6.0%)**; D-29 (fixes and a re-run) is open, report §10.5.
-  - **D-29 decided and run (2026-10-19):** extraction v5 (variant fields only from this person) and gatekeeper v3 (records who each quote is about) on 20 papers (`poc-ha20-v5-subset`). **Re-audit done (48 of 50 rated): final 3 unsupported (6.3%), all stacked-table readings Jimmy could not verify; 0 of 45 without them; variant stratum clean. D-31 (stacked cells) open.** Page: https://claude.ai/artifact/UHTQJ3TyT29HZ25PPdQFN8 (store collection `ratings`; collect with `apply_ratings.py --sample-dir adjudication/poc_audit_v5`, then `audit_metrics.py --run-id poc-ha20-v5-subset --gatekeeper-file gatekeeper_v3.csv --sheet adjudication/poc_audit_v5/sample.csv --out analysis/poc/audit_metrics_v5.json`). Report §10.6. (C032922 stays unsupported: Jimmy, D-30 entry.)
-  - **Stage 6 done for ClinVar and HPO (2026-10-19):** `reports/poc_stage6_findings.md`. The snapshot lives outside the repo (`/home/user/gp-rarelink-reference/<date>/`, gone when the container goes; re-create with `pipeline/harness/snapshot_reference.py`); only its manifest and counts are committed. Q7 is met on the Chen 2020 Table S1 benchmark (D-30; El Hani 2024 is paywalled here): 9 of 9 restricted. The benchmark is transcribed by `pipeline/harness/benchmark_chen2020.py` into the same reference root.
-  - **Stage 7 drafted (2026-10-19):** `reports/poc_report.md` (regenerate with `uv run python analysis/poc_report.py`). Recommendation: go with fixes (D-31 entry). Extraction v6 and gatekeeper v4 are the frozen-pipeline candidates, not yet run. Merged to `main` on Jimmy's instruction (PR #4, 2026-10-19). **Waiting on Jimmy:** review of the pilot report.
-  - **Next after his review:** fold the report's §10 into the pre-registration, done 2026-10-20: report approved, D-08 to D-12, D-17, D-19, D-32, D-33 decided (pre-registration v0.10); freeze after the panel hours and the screening check.
-  - Report: `reports/poc_stage4_5_findings.md`. Session usage reading 580.31.
-- **Items 1–5 after the pilot (2026-10-19, Jimmy: "Yes. Perform items 1-5"):**
-  - **Corpus searches and title/abstract screening are done for the five other diseases** (`configs/diseases.yaml`; `data/literature/<disease>/search.md`, generated by `analysis/corpus/corpus_summary.py`).
-    - Counts per disease are in `analysis/corpus/coverage_2026-10-19.md`. Holdouts are marked out: 2 for axd, 1 for ssadh, 2 for danon.
-    - Human 10% check and full-text screening not done.
-  - **Open full text is far below HA20's** (`analysis/corpus/coverage_2026-10-20.md`, after the Unpaywall pass). D-08, D-19 and D-32 were decided 2026-10-20.
-  - **Dated ClinVar counts** for all six genes are in `CONTEXT.md` §4 (`analysis/poc/reference_snapshot/2026-10-19/counts_<GENE>.json`).
-  - **Pre-registration v0.7.**
-  - **Message drafts** in `reports/drafts/`, for Jimmy to send.
-- **2026-10-20 (Jimmy: "do this: Still to do", plus eight answers):**
-  - **Decisions:** pilot report approved; D-09, D-11 (rater design), D-12, D-17 and D-33 decided; D-10 shortlist in `reports/drafts/d10_open_weight_shortlist.md`. Pre-registration draft v0.9. D-10 decided (DeepSeek-V4.1-Flash; HA20 + SSADH; agent harness; ~$50 contingency). Still blocking the freeze: the panel's hours (D-11). The screening check was settled by D-34.
-  - **Docling** is installed as the `pdf` dependency group with CPU torch: `uv sync --group pdf --group dev --group extract`. Then re-run `scripts/install_sliders.sh`, because a sync removes the no-deps SLIDERS install and its 2 tests skip.
-  - **Full-text screening** runs as Sonnet helpers with `screen_fulltext_v1.md`, through `claude_code_fulltext_screen.py export/import`. Import checks every evidence quote verbatim.
-  - **Human check:** the screening-check page is https://claude.ai/artifact/1JoRKB2uVCap3XAJUDw3RN, with store collections `abstract_check` and `exclusion_check`. It is built by `adjudication/screening_check/make_sample.py` and `make_page.py`.
-- **Pilot progress (2026-10-18, earlier):**
-  - **Stage 1 done.** 838 records screened; 153 in the corpus; 76 with full text, which misses the 70% gate (`data/literature/ha20/search.md`).
-  - **Stage 2 smoke test done.** Three papers, all 2,900 quotes found verbatim.
-  - **Waiting on Jimmy's gate:** the review sheet, the group-absence rule, and Stage 3 spend (`reports/poc_stage2_smoke_findings.md`).
-  - **Fix before Stage 3:** the Markdown converter's merged-cell bug, and `extract_v2`.
+The dated progress log that used to open this section (pilot stages 1-7 and their audits, the five-disease corpus, the 2026-10-20 decisions, the six-disease run and 10% repeat, the open-weight runs, the SLIDERS ablation, the merged-PR list; 2026-10-18 to 2026-10-28) moved verbatim to `docs/session-history.md`. The reports in `reports/`, the run manifests in `runs/`, `BUDGET.md` and `DECISIONS.md` are the record; open the history file only when you need what an earlier stage produced or where its rating pages are. As of 2026-10-28 the to-do list is the gaps table (§5, G1-G17) and the costed plan in `reports/interim_paper/interim_paper.md`.
+
 - **How the pilot runs (D-20).** Claude Code helper agents do the model work. No API key is needed; see the D-20 box at the top of `POC_DESIGN.md`.
-- **Network (re-tested 2026-10-18, later the same day).** The research domains are now allowed: NCBI E-utilities, PMC, Europe PMC REST, VariantValidator, ClinVar FTP and purl.obolibrary.org all answer. The europepmc.org website itself still returns 403, but the REST API works.
 - **The pre-registration is frozen (v1.0, 2026-10-20; D-36).** Tags `prereg-v1.0` and `pipeline-v1.0` sit on the same commit. From now on, any change to the plan or the four pinned files (extract_v6, gatekeeper_v4, schema_ha20_v5, extraction_rules_v1) is a deviation: it needs Jimmy's approval and an entry under *Pre-registration deviations* in `DECISIONS.md`.
-  - **Smoke run** `poc-ha20-v6-smoke`: span check clean, gatekeeper v4 judged 23 of 4,538 claims unsupported, +$53.50 (`reports/poc_smoke_v6_findings.md`).
   - **Known gap, frozen on purpose:** extraction v6 has no hedge rule, so the gatekeeper drops hedged "observed" statuses. Don't "fix" it in v6.
   - **Tags:** they point at commit `ef3133e`. This session's git access refused the tag push (HTTP 403; only the session branch is writable), so Jimmy pushes them; the commands are in `reports/drafts/osf_registration.md` §1. Don't retry the push or route around the refusal.
   - **Left for Jimmy:** the OSF registration, using `reports/drafts/osf_registration.md`. Put the DOI and date in `DECISIONS.md`, never in the frozen plan.
   - **Six-disease run approved (D-37, 2026-10-20): up to $1,200** (estimate in `analysis/cost/six_disease_estimate_2026-10-20.md`). Prep first (supplements, per-disease checklists, catalogue check), then disease by disease. Stop and ask before a full re-run or past $1,200. Read *Open decisions* in `DECISIONS.md` before starting work.
   - **D-38 (2026-10-20, a deviation):** the frozen prompt and schema are instantiated per disease by `pipeline/extract/claude_code/instantiate_disease.py` (disease name, gene, checklist only); checklists in `configs/checklists/<d>.json`, checked by `check_checklist.py`.
-  - **HA20 done (`pv1-ha20`, 2026-10-20):** 85 papers, span check clean, gatekeeper v4 judged 46 of 23,129 model claims unsupported (0.20%) and 400 partial. Manifest `runs/pv1-ha20/manifest.json`; cost reading in `BUDGET.md` (provisional).
-  - **SSADH, Tangier, LAD-I and AxD done (2026-10-20):** unsupported 37 of 9,759 (0.38%), 15 of 4,830 (0.31%), 47 of 10,864 (0.43%), 39 of 14,403 (0.27%). Manifests in `runs/pv1-<d>/manifest.json`. Run spend $553.60 after AxD (`BUDGET.md`). Danon next; Jimmy chose to start it after the five-hour usage reset (20:00 UTC) rather than run on overage.
-  - **Danon done and the 10% repeat done (2026-10-20):** Danon 110 of 17,963 unsupported (0.61%; three papers hold 60). All six: 294 of 80,948 (0.36%). Repeat (38 papers, seed 20261020): checklist 97-100% agreement; variant keys 0.83-1.00, the two dips are notation only. Run spend +$768.87 of $1,200. Report: `reports/six_disease_run_findings.md`; tables by `analysis/six_disease/run_summary.py` and `repeat_summary.py`.
-  - **D-40 done (2026-10-20):** per-disease Stage 4 settings (`configs/stage4/`, `pipeline/extract/stage4_config.py`), checklist-to-HPO maps (`configs/checklist_hpo/`), 2,836 phenopackets, all valid. Report §9 (`reports/six_disease_run_findings.md`).
   - **O1 audit sample drawn (seed 40250)** before any pv1 concordance: `adjudication/o1_audit/`. Rater pages A https://claude.ai/artifact/Jvk4nxzG79u9AchAXvwPe4 and B https://claude.ai/artifact/1VVgQNgSpyzDrsApErz8YU (store collection `ratings`, docs keyed O1-nnn). Waiting on Jimmy to share them with two panel members. Then a tie-breaker page for the disagreements.
   - **O2 done (2026-10-20):** `pipeline/harness/concordance_o2.py`, snapshot 2026-10-19 (re-create it with `snapshot_reference.py --per-gene` if the container is new). Results in `analysis/six_disease/o2/`, report §11. HGVS recall is low and concentrated in single papers. Triage sample of 50 misses: `adjudication/o2_triage/` (seed 72650), waiting on a person.
   - **2026-10-21, D-41 (plan `reports/plan_next_work_2026-10-21.md`; human rating deferred):**
@@ -117,7 +57,6 @@ How to maintain it:
   - **The isolation test rejects the token 'omim' anywhere in `pipeline/extract`.** Look up Mondo terms by name, not by cross-reference.
   - **'ß'.upper() is 'SS' in Python.** Fold Greek beta and German sharp s before upper-casing (see `reconcile.is_gene`).
   - **HPO binding helpers cost more than estimated** ($72 vs $28): they grep hp.obo repeatedly. Give them a lookup tool next time.
-  - **The session cost reading lagged again:** +$111.99 for Danon at 20:40, but Danon plus the repeat read +$210.12 at 20:55 against $206 on token estimates. Check against `helper_tokens.py`.
   - **`catalogue_check.judge()` can pick an allele column named 'REF' as the source column.** Report the intended column's share beside it (done for Grossi 2024).
   - **D-39 (deviation, 2026-10-20):** the AxD catalogue's supplement (Grossi 2024) came through only after extraction. Transcribe it on the harness side for completeness; never append it to the extraction text.
   - **Supplements for the five new corpora:** fetch one paper per call (`fetch_supplementary --pmid <one>`), one process per disease. A single run over a whole corpus stops at the first Europe PMC error and writes its manifest only at the end, so it loses everything; Europe PMC zips are large and slow.
@@ -130,13 +69,12 @@ How to maintain it:
     - **OMIM narratives cite papers as author-year;** resolve them through the entry's own reference list and expect ambiguity when one first author has several papers in a year.
     - **Alternative coding exons make `transcript_assumed` dangerous:** LAMP2 9a/9b, GFAP alpha/epsilon. The LAMP2 case produced a false gap candidate (D-43).
     - **`httpx` is in the `extract` dependency group:** `uv sync --group dev --group extract` before running anything that imports `pipeline.extract.normalize_variants` (the harness and the OMIM scripts do).
-  - **SLIDERS ablation pilot done (2026-10-28, D-44, exploratory; PR #16, merged to `main` on Jimmy's instruction):** arm D = direct extraction (one Opus helper per paper, plain 60-line prompt `pipeline/extract/claude_code/prompts/direct_v1.md`, no quotes, no rules, no gatekeeper) on the 124 HA20 + SSADH papers with text, converted to the five-table shape by `direct_to_tables.py` and scored with the same harness as pv1 on a fresh 2026-10-28 snapshot; arm-blinded locate-and-judge judge (`judge_locate_v1.md`) on a seeded sample from both arms. Design `reports/sliders_ablation_design.md`; findings `reports/sliders_ablation_findings.md` (regenerate: `summary.py`, then `report.py` in `analysis/sliders_ablation/`); cost $317.13 by helper tokens (extraction $197.34; judge $119.78 over all 116 papers after Jimmy raised the $300 ceiling). Jimmy approved (2026-10-28, "yes for both and also merge to main") judging the 45 deferred HA20 papers past the ceiling, queuing the human audit sheets in `adjudication/sliders_ablation/audit/` with O1/O5, and the merge to `main`.
   - **Ablation lessons (2026-10-28):** `setsid nohup cmd &` prints "Done" at once while the job runs, and `fetch_fulltext` writes its manifest only at the end, so check file hashes, not the manifest, mid-run. Europe PMC now serves 7 of the 125 XML files in a changed form (same text; every pv1 quote still found). `fetch_supplementary` caps files at 15 MB by default (`--max-file-mb 25` for 39167656). The open PDF host for 9093300 (repository.ubn.ru.nl) answers 403. The Agent tool allows 20 concurrent subagents: launch only as many as completion notifications you have received, or the launch is refused. A judge helper that re-reads a whole paper costs about $1 (HA20 $1.08, SSADH $1.02 mean), three times the design's guess; pilot three helpers and re-estimate before a wave. Direct-extraction helpers cost more than pv1's ($1.47 vs $1.08 median) because long nested JSON for cohort papers is output tokens at 5× weight.
   - **Budget by line (2026-10-24):** `analysis/cost/budget_lines.py` fills the Spent and Remaining columns in `BUDGET.md` from `analysis/cost/spend_segments.csv`, one row per stretch between session cost readings. After a new reading, add a row (start = the last row's end) and re-run. These are estimates, not billing figures.
   - **Don't wait on a process with `pgrep -f <script name>` inside a Bash loop.** The loop's own command line contains the name, so it never ends. Match the interpreter path (`pgrep -f "python3 path/to/script"`) or wait on an output file.
   - **Helper slot tracking:** at most 20 helpers at once. Record a chunk as launched only after its Agent call goes out, or the tracker overcounts.
 - **Git:**
-  - On `main`: PR #3 (pilot Stages 1–2), PR #4 (Stages 3–7), PR #5 (five-disease corpus, screening, D-08 to D-12, D-17, D-19, D-32, D-33, pre-registration v0.10), PR #6 (D-34, v0.11), PR #7 (D-11, D-35, v0.12), PR #8 (smoke run, freeze v1.0, D-36; merged with a merge commit so the tagged commit `ef3133e` is in `main`'s history), PR #9 (six-disease run, concordance, D-41 work, D-10 open-weight comparison, D-13, D-14; merged 2026-10-22), PR #10 (budget spend by line; merged 2026-10-24), PR #11 (notes only; merged 2026-10-24) and PR #12 (interim paper for internal review; merged 2026-10-27), PR #15 (OMIM holdout assessment, D-42; D-43 withdrawal, isoform rule and Danon re-normalization; merged 2026-10-28 on Jimmy's instruction "merge to main") and PR #16 (SLIDERS ablation pilot, D-44; merged 2026-10-28), PR #17 (interim paper version 2 with the OMIM work throughout; panel adjudication-page draft; merged 2026-10-28 on Jimmy's instruction "merge to main"), all merged with Jimmy's approval. Start new work from `main`.
+  - Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
   - Branch `claude/zealous-meitner-k7moex` (the pilot-design session) is archived and must not be merged: it commits full-text Markdown. Its one asset, Jimmy's 40 screening labels, was applied here on 2026-10-19.
 - **More than one session writes to this repo.** On 2026-10-18 a Claude Code session and claude.ai Project chats committed in parallel, and both created `DECISIONS.md` and `BUDGET.md`. So:
@@ -145,30 +83,9 @@ How to maintain it:
   - when files collide, combine both sides; never overwrite one with the other.
 - **The repo is canonical; the claude.ai Project only mirrors it** (Jimmy's decision, in `DECISIONS.md`). After changing documents here, tell Jimmy the Project mirror needs a refresh. Claude Code sessions have no access to the Project.
 
-## 2. Next steps, in order, once unblocked
+## 2. Next steps
 
-1. **Network access and the API key** (§3; D-17 for billing). Everything below depends on them.
-2. **The pilot, `POC_DESIGN.md` Stages 1–7:**
-   - corpus (runbook: `data/literature/ha20/README.md`);
-   - three-paper smoke test;
-   - two full extraction runs;
-   - phenopackets;
-   - gatekeeper, plus the 50-claim audit rated by Jimmy;
-   - ClinVar concordance and completeness;
-   - the pilot report.
-   Stay within the approved ceiling: $1,000, hard stop $1,500 (`BUDGET.md`).
-3. **Apply the merge-time notes** at the top of `POC_DESIGN.md`:
-   - report pilot results with and without ClinVar-seeded papers (D-19);
-   - remember HA20 is a development disease (D-18);
-   - log spend with the account it billed to (D-17).
-4. **In parallel, for the six-disease study:**
-   - corpus search for the other five diseases (pre-registration §5.1);
-   - reference snapshots and dated per-gene counts to replace the provisional numbers in `CONTEXT.md` §4;
-   - open-access coverage per disease (feeds D-08);
-   - outreach drafts to the Monarch and ClinVar maintainers, for Jimmy to send.
-5. **After the pilot report:** fold its findings into the pre-registration (`POC_DESIGN.md` §7 lists what it hands over), resolve the remaining open decisions, and freeze.
-
-Offered but not yet requested: a draft introduction for the program's Discourse cohort thread.
+The 2026-10-18 list (network access, the pilot stages, the parallel six-disease prep, the freeze) is done; it moved to `docs/session-history.md`. Work from the to-do list named in §1 and `reports/plan_next_work_2026-10-21.md`.
 
 ## 3. Cloud environment
 
@@ -180,6 +97,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - `api.monarchinitiative.org`
 - `omim.org`
 - `purl.obolibrary.org` (HPO and Mondo downloads)
+- **Network (re-tested 2026-10-18, later the same day).** The research domains are now allowed: NCBI E-utilities, PMC, Europe PMC REST, VariantValidator, ClinVar FTP and purl.obolibrary.org all answer. The europepmc.org website itself still returns 403, but the REST API works.
 
 **What works:**
 - `pypi.org` (pip)
@@ -199,8 +117,6 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 **The safety check on Bash can error temporarily.** On 2026-10-18 the safety check that approves Bash commands returned no verdict several times in a row. That is an error, not a refusal. Retry once; if it keeps failing, use the Read, Edit and Grep tools and the GitHub connector, which don't need it.
 - Until then, don't work around a block with mocked data or data recalled from memory.
 - Never disable TLS verification or unset the proxy.
-
-**Cowork had the same limits.** The Cowork workspace used on 2026-10-16 couldn't reach PubMed, PMC, Europe PMC, arXiv or publisher sites either. The background papers were downloaded on Jimmy's own machine with `background/fetch_papers.sh` (`background/README.md`).
 
 **Pilot lessons (2026-10-18):**
 - **Give every helper agent its own scratch directory.** Nine screening helpers shared one, and generic file names collided. One helper read another's file; it caught this itself, and a reason-vs-text check confirmed no labels were wrong.
@@ -242,11 +158,11 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
   - **Generated, not hand-written.** Regenerate the per-disease `search.md` files and the coverage table with `analysis/corpus/corpus_summary.py` after any manifest change. Don't hand-type counts into notes; one hand-typed count was already wrong once.
   - **Per-gene ClinVar counts.** Use `snapshot_reference.py --per-gene`, which writes `counts_<GENE>.json` and leaves HA20's `counts.json` alone. One gene takes about 2 minutes; most of that is streaming the release file.
   - **Running fetches in parallel works.** Two `fetch_fulltext` jobs for different diseases ran side by side without NCBI rate-limit failures; the client retries 429s.
-  - **The session cost reading froze again**, at $685.10 from 14:10 to past 14:27 UTC, while 30 screening helpers ran.
 
 **Python:**
 - The pipeline is a `uv` project (`pyproject.toml`, `uv.lock`, Python ≥ 3.11). Run `uv sync && uv run pytest`.
 - `requirements.txt` covers only the two audit scripts (scipy, which isn't preinstalled; numpy and pandas are).
+- **Docling** is installed as the `pdf` dependency group with CPU torch: `uv sync --group pdf --group dev --group extract`. Then re-run `scripts/install_sliders.sh`, because a sync removes the no-deps SLIDERS install and its 2 tests skip.
 
 ## 4. Working with Jimmy
 
@@ -254,7 +170,7 @@ Offered but not yet requested: a draft introduction for the program's Discourse 
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
-- **Decision numbers (D-nn) are never reused or renumbered.** The next free number is **D-45**. Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
+- **Decision numbers (D-nn) are never reused or renumbered.** Decisions recorded by the pilot session before the merge have no D-number; they are in the decision log as "Pilot study design approved with six decisions".
 - **Revisions vs deviations.** Until the pre-registration is frozen, a change is a revision: bump the draft version and note it in the file header and in `DECISIONS.md`. After freezing, any change is a deviation and needs Jimmy's approval.
 
 ## 5. Grant claims not to repeat uncritically
