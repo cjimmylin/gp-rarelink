@@ -264,9 +264,9 @@ Crawl of 2,200 URLs: median 1.4 s per page; 120 pages over 3 s; largest uploads 
 
 ---
 
-## 9. Not tested
+## 9. Not tested in this part
 
-Logged-in behaviour (posting, messaging, group joining, profile editing, notifications); the sign-up, password-reset and contact flows end to end (no forms were submitted, no accounts created); email delivery; the WordPress admin, WP Engine settings, backups and PHP error logs; TLS protocol and cipher configuration; load beyond 12 concurrent requests; the mobile menu interaction; the old site's logged-in sections (ebooks, patient stories, video interviews); plugin code (no file access).
+See `prelaunch_review_part2_2026-11-02.md` (same folder, same day) for TLS configuration (SSL Labs grade A), form submissions, email delivery, logged-in behaviour, the admin side and a ramped load test. Still untested after part 2: logged-in behaviour and the admin side (both need an account), email delivery end to end, the mobile menu interaction, the old site's logged-in sections (ebooks, patient stories, video interviews), plugin code (no file access).
 
 ---
 
@@ -278,6 +278,7 @@ Logged-in behaviour (posting, messaging, group joining, profile editing, notific
 - `data/wordpress_path_probe.txt`: status of 70 well-known WordPress paths and REST endpoints.
 - `data/content_inventory.json`: counts and lists of pages, groups sample, public member profiles, media.
 - `screenshots/`: homepage desktop and mobile (404), sign-up page bug, login page message, groups directory with test groups.
+- Part 2 (`prelaunch_review_part2_2026-11-02.md`) adds `data/ssllabs_*.json`, `data/obs_*.json`, `data/loadtest_results.json`, `data/loadtest.py`, `data/functional_test_results.json`, `data/functional_v3.js` and `screenshots/register_after_submit.jpg`.
 
 ## Sources for the version and vulnerability statements
 
