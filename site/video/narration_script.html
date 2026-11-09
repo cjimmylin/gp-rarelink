@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>GP-RareLink overview video: narration script</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+@page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+html { font-size: 10.5pt; }
+body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; color: #0b0b0b; background: #ffffff; max-width: 100%; margin: 0; line-height: 1.45; }
+h1 { font-size: 1.7rem; margin: 0 0 0.4rem 0; line-height: 1.2; }
+h2 { font-size: 1.25rem; margin: 1.6rem 0 0.5rem 0; border-bottom: 1px solid #e1e0d9; padding-bottom: 0.2rem; page-break-after: avoid; }
+h3 { font-size: 1.05rem; margin: 1.2rem 0 0.4rem 0; page-break-after: avoid; }
+h4 { font-size: 0.98rem; margin: 1rem 0 0.3rem 0; page-break-after: avoid; }
+p, li { font-size: 0.95rem; }
+blockquote { border-left: 3px solid #2a78d6; background: #f3f7fc; margin: 0.8rem 0; padding: 0.5rem 0.9rem; font-size: 0.92rem; }
+blockquote p { margin: 0.25rem 0; }
+code { font-family: "DejaVu Sans Mono", ui-monospace, monospace; font-size: 0.82em; background: #f3f3f1; padding: 0 0.2em; border-radius: 2px; }
+table { border-collapse: collapse; width: 100%; margin: 0.6rem 0 1rem 0; font-size: 0.72rem; page-break-inside: auto; }
+th, td { border: 1px solid #e1e0d9; padding: 0.22rem 0.35rem; vertical-align: top; text-align: left; }
+th { background: #f3f3f1; font-weight: 600; }
+tr { page-break-inside: avoid; }
+img { max-width: 100%; height: auto; display: block; margin: 0.8rem auto 0.3rem auto; page-break-inside: avoid; }
+figure { margin: 0; }
+figcaption { display: none; }
+em { color: #52514e; }
+a { color: #2a78d6; text-decoration: none; }
+.page-break { page-break-before: always; }
+hr { border: 0; border-top: 1px solid #e1e0d9; margin: 1.5rem 0; }
+</style>
+</head>
+<body>
+<h1 id="narration-script-gp-rarelink-overview-video">Narration script:
+GP-RareLink overview video</h1>
+<p><em>Generated 2026-11-09 from
+<code>analysis/dashboard/deck_data.json</code>; about 150 words a
+minute. Read each block while its slide is on screen; the video shows
+the same text as captions.</em></p>
+<h2 id="slide-1-000000-to-000029">Slide 1 (00:00:00 to 00:00:29)</h2>
+<p>Welcome. This is a short overview of GP-RareLink, a project that
+reads the published literature on rare genetic diseases with a language
+model, turns it into structured records, and checks every value against
+its source. It is funded by Anthropic&#39;s AI for Science program and run
+by the Rare Genomics Institute with the Stanford OVAL lab. You are
+seeing interim results, for internal review.</p>
+<h2 id="slide-2-000029-to-000106">Slide 2 (00:00:29 to 00:01:06)</h2>
+<p>Here is the problem. When a child with a rare disease is diagnosed,
+the responsible variant is often reported once, in a case report, and
+never submitted to the public databases. A laboratory testing the next
+child searches ClinVar and finds nothing. For Alexander disease alone, a
+2024 review counts 182 causative variants in 550 published patients, but
+ClinVar holds 76 pathogenic or likely pathogenic records for the gene.
+The knowledge exists; it is scattered across papers no database can
+query.</p>
+<h2 id="slide-3-000106-to-000147">Slide 3 (00:01:06 to 00:01:47)</h2>
+<p>So the question is whether a language model, reading with strict
+rules, can do the first pass. Two rules make the answer checkable.
+First, every value the model records must carry a verbatim quote from
+the paper, and a script confirms the quote is really there. Second, the
+databases we want to fill, ClinVar and OMIM, are never shown to the
+model. They are held out as the answer key. And the whole analysis plan
+was frozen before the main run, so what you see is what we said we would
+report.</p>
+<h2 id="slide-4-000147-to-000228">Slide 4 (00:01:47 to 00:02:28)</h2>
+<p>This is the workflow. One model reader per paper fills a structured
+form with quotes. A script checks every quote. A second model pass,
+which we call the gatekeeper, re-reads each value against its quote and
+drops the ones it cannot support. The result is one standard record per
+individual, a GA4GH phenopacket. Below the firewall, a separate harness
+compares the records with ClinVar, OMIM and two published catalogues,
+and lists the variants the databases are missing. The orange box is what
+has not happened yet: the human audit and the expert adjudication.</p>
+<h2 id="slide-5-000228-to-000253">Slide 5 (00:02:28 to 00:02:53)</h2>
+<p>We ran six diseases, chosen to span inheritance modes and organ
+systems. A20 haploinsufficiency was the development disease, so its
+numbers are flagged and the other five are the confirmatory set. Only
+open-access papers were read, which matters later: for most of these
+diseases, only a fifth to a third of the literature is open.</p>
+<h2 id="slide-6-000253-to-000321">Slide 6 (00:02:53 to 00:03:21)</h2>
+<p>The headline numbers. 350 papers became 2,836 individual records,
+1,793 of them carrying a variant in the disease gene. Every one of
+241,730 quotes was found verbatim in its paper. 466 distinct variants
+could be placed on the genome. 214 of them are in neither ClinVar nor
+OMIM. And we recovered 43 of the 75 variants OMIM lists for these
+diseases.</p>
+<h2 id="slide-7-000321-to-000402">Slide 7 (00:03:21 to 00:04:02)</h2>
+<p>First finding: the receipts hold, but the decisive check has not
+happened. The gatekeeper judged 0.43 percent of values unsupported
+across the five confirmatory diseases. That is the blue. The orange is
+what human raters found in the pilot, before the pipeline was frozen:
+around six percent. The machine&#39;s reading of its own errors is far below
+the humans&#39;. The pre-registered test is a blinded audit of 250 claims by
+two panel members. It is built, and nobody has rated a claim yet. Until
+then, no accuracy claim can be made.</p>
+<h2 id="slide-8-000402-to-000437">Slide 8 (00:04:02 to 00:04:37)</h2>
+<p>Second finding: we find what we can read. Against OMIM&#39;s listed
+variants we recovered 57 percent overall, from nearly ninety percent for
+the diseases whose literature is open to eleven percent for Tangier
+disease, whose variants come from closed papers of the early 2000s. Of
+the 84 papers OMIM cites as the sources for its variants, we could read
+5. Where we had read the source paper, the variant was usually in our
+records. Access, not reading, sets the ceiling.</p>
+<h2 id="slide-9-000437-to-000509">Slide 9 (00:04:37 to 00:05:09)</h2>
+<p>Third finding: the database gap is real. Of 466 genome-placed
+variants, 245 are in ClinVar, and 168 of those are classified pathogenic
+or likely pathogenic. 221 are absent from ClinVar; after the checks, 214
+remain as candidates, each with an evidence dossier listing every paper,
+every quote and every individual. 53 more sit in ClinVar as uncertain or
+conflicting while the papers call them pathogenic. Nothing is submitted
+without expert adjudication.</p>
+<h2 id="slide-10-000509-to-000540">Slide 10 (00:05:09 to 00:05:40)</h2>
+<p>Fourth finding: a cheaper open-weight model finds the same variants
+and loses the receipts. On identical inputs, DeepSeek found the same
+variants about 89 to 95 percent of the time at roughly one 15th of the
+cost. But it left 3.0 to 3.6 percent of its values with no quote at all,
+and the gatekeeper rejected 6.14 to 8.64 percent of its claims, against
+Claude&#39;s 0.20 to 0.38.</p>
+<h2 id="slide-11-000540-to-000604">Slide 11 (00:05:40 to 00:06:04)</h2>
+<p>Two more checks. Running a tenth of the papers twice gave the same
+checklist answers 97 to 100 percent of the time and the same variants 83
+to 100 percent of the time. And a memorization probe on 180 papers found
+no sign that either model recalled the papers from training rather than
+reading them.</p>
+<h2 id="slide-12-000604-to-000642">Slide 12 (00:06:04 to 00:06:42)</h2>
+<p>What does this mean? On accuracy: the pipeline produces records with
+complete provenance, but a human-rated error rate is the one number it
+lacks, and the audit that provides it costs no model time. On coverage:
+a decision on access to paywalled papers would change these results more
+than any change to the model. On the answer key: databases curated by
+people deserve the same scrutiny; OMIM caught one of our normalization
+errors, and we found two OMIM entries linked to the wrong ClinVar
+records.</p>
+<h2 id="slide-13-000642-to-000717">Slide 13 (00:06:42 to 00:07:17)</h2>
+<p>This is where you come in. We need two raters for the 250-claim
+audit, roughly ten to fifteen hours each, and a tie-breaker. We need
+experts to adjudicate the 214 candidates from their dossiers. We need
+people to fill four comparator sheets from natural-history cohorts. And
+we need reviewers for the methods and the paper. The dashboard has a
+short form where you can tell us who you are and how you would like to
+contribute.</p>
+<h2 id="slide-14-000717-to-000740">Slide 14 (00:07:17 to 00:07:40)</h2>
+<p>Thank you. Everything in this overview, the papers, the deck, the
+candidate list and the form, is on the dashboard. The numbers all trace
+to files in the project repository, and the report says plainly which
+questions are still open. We look forward to working with you.</p>
+</body>
+</html>
