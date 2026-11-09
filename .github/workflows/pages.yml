@@ -1,5 +1,6 @@
 # Deploy the collaborator dashboard (site/) to GitHub Pages.
-# One-time setup by the repository owner: Settings > Pages > Build and deployment > Source: "GitHub Actions".
+# The configure-pages step enables Pages itself (enablement: true). If that is refused, the owner enables it once:
+# Settings > Pages > Build and deployment > Source: "GitHub Actions".
 # The site is static: everything under site/ is committed, built by analysis/dashboard/build_site.py.
 name: Deploy dashboard to GitHub Pages
 
@@ -27,6 +28,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true   # turns Pages on for the repository if it is not yet enabled
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
