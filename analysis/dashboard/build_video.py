@@ -186,6 +186,7 @@ def main(argv=None):
     ap.add_argument("--voice", default=DEFAULT_VOICE)
     ap.add_argument("--rate", default="+0%", help="edge-tts rate, e.g. +5%%")
     ap.add_argument("--no-tts", action="store_true", help="captions only, silent track (the earlier behaviour)")
+    ap.add_argument("--crf", type=int, default=23, help="x264 quality (higher = smaller file); 26 is fine for static slides")
     a = ap.parse_args(argv)
     deck_pdf, data_path, out_dir = ROOT / a.deck_pdf, ROOT / a.data, ROOT / a.out_dir
     data = json.loads(data_path.read_text())
@@ -265,7 +266,7 @@ def main(argv=None):
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(alist), "-c", "copy", str(full_wav)], check=True)
         audio_in = ["-i", str(full_wav)]
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), *audio_in,
-                    "-vf", f"fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "medium", "-crf", "23", "-c:a", "aac", "-b:a", "96k", "-shortest",
+                    "-vf", f"fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "medium", "-crf", str(a.crf), "-c:a", "aac", "-b:a", "96k", "-shortest",
                     "-movflags", "+faststart", str(mp4)], check=True)
     (out_dir / f"{a.name}.srt").write_text("\n".join(srt))
     (out_dir / f"{a.name}_narration_script.md").write_text("\n".join(script))
