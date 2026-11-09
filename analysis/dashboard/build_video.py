@@ -36,7 +36,10 @@ LEAD = 0.6            # seconds a slide shows before its narration starts
 TAIL = 0.6            # seconds of silence after a slide's narration
 WORDS_PER_SECOND = 2.5
 MIN_CAPTION = 2.0
-MAX_CAPTION_CHARS = 150
+MAX_CAPTION_CHARS = 120
+BAND_H = 80          # caption strip below the slide; the slide is letterboxed above it so no content is hidden
+SLIDE_H = H - BAND_H
+SLIDE_W = round(SLIDE_H * 16 / 9)
 FONT_CANDIDATES = ["/usr/share/fonts/opentype/inter/Inter-Medium.otf", "/usr/share/fonts/opentype/inter/Inter-Regular.otf",
                    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]
 CACHE = ROOT / "data/cache/tts"
@@ -85,19 +88,24 @@ def wrap(draw, text, fnt, max_width):
 
 
 def frame(slide_png: Path, caption: str | None, out: Path, fnt):
-    im = Image.open(slide_png).convert("RGB").resize((W, H), Image.LANCZOS)
+    """The slide letterboxed above a fixed caption strip, so captions never cover slide content."""
+    canvas = Image.new("RGB", (W, H), (11, 11, 11))
+    slide = Image.open(slide_png).convert("RGB").resize((SLIDE_W, SLIDE_H), Image.LANCZOS)
+    canvas.paste(slide, ((W - SLIDE_W) // 2, 0))
     if caption:
-        draw = ImageDraw.Draw(im, "RGBA")
-        lines = wrap(draw, caption, fnt, W - 160)
-        line_h = 36
-        band_h = 34 + line_h * len(lines)
-        draw.rectangle([0, H - band_h, W, H], fill=(11, 11, 11, 190))
-        y = H - band_h + 16
+        draw = ImageDraw.Draw(canvas)
+        f = fnt
+        lines = wrap(draw, caption, f, W - 120)
+        if len(lines) > 2:
+            f = font(21)
+            lines = wrap(draw, caption, f, W - 100)
+        line_h = 34 if f is fnt else 29
+        y = SLIDE_H + (BAND_H - line_h * len(lines)) // 2
         for ln in lines:
-            tw = draw.textlength(ln, font=fnt)
-            draw.text(((W - tw) / 2, y), ln, font=fnt, fill=(255, 255, 255, 255))
+            tw = draw.textlength(ln, font=f)
+            draw.text(((W - tw) / 2, y), ln, font=f, fill=(255, 255, 255))
             y += line_h
-    im.save(out, "PNG")
+    canvas.save(out, "PNG")
 
 
 def srt_time(t: float) -> str:

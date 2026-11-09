@@ -120,11 +120,11 @@ def main():
 
     # ------------------------------------------------------------------ Part 0: opening
     add("title", "Reading the rare-disease literature with a language model, and checking its work",
-        "Welcome to the GP-RareLink deep dive. This is the long version of the project overview: about three quarters of an hour, following the full interim report section by section. "
+        "Welcome to the GP-RareLink deep dive. This is the long version of the project overview: just under an hour, following the full interim report section by section. "
         "GP-RareLink is run by the Rare Genomics Institute with the Stanford Open Virtual Assistant Lab and funded by Anthropic's AI for Science program. "
         "The project reads published case reports on six rare genetic diseases with a language model, turns them into structured per-individual records in which every value carries a quote from its source, "
         "and then checks those records against ClinVar and OMIM, which the model never sees. What you will hear is an interim report for internal review. The numbers are real and traceable; the conclusions are provisional, and the report says plainly which questions remain open.",
-        kicker="GP-RareLink · deep dive for collaborators", subtitle=f"Interim report, version 2, in about 45 minutes · {date.today().isoformat()}",
+        kicker="GP-RareLink · deep dive for collaborators", subtitle=f"Interim report, version 2, in just under an hour · {date.today().isoformat()}",
         note="Rare Genomics Institute with the Stanford Open Virtual Assistant Lab · funded by Anthropic's AI for Science program · internal review")
     add("bullets", "What this talk covers",
         "The talk has four parts. Part one sets out the problem and the question, and the five outcomes we committed to measure before the main run. Part two walks through the methods: how the corpus was built, how the model reads a paper, how every value is checked twice, how records are made, and how the answer key is kept behind a firewall. "
@@ -612,7 +612,7 @@ def main():
                f"Every number in this talk comes from the project repository at commit {D['commit']}. Still open: the human audit, the access decision, the adjudication of the candidates."])
 
     words = sum(len(s["narration"].split()) for s in S)
-    spec = {"title": "GP-RareLink deep dive: the interim report in about 45 minutes", "footer": "GP-RareLink · deep dive for collaborators · internal review", "date": date.today().isoformat(),
+    spec = {"title": "GP-RareLink deep dive: the interim report in just under an hour", "footer": "GP-RareLink · deep dive for collaborators · internal review", "date": date.today().isoformat(),
             "commit": D["commit"], "output": "reports/deck/gp_rarelink_deep_dive.pptx", "pages_url": PAGES_URL, "figures": figures, "slides": S}
     OUT.write_text(json.dumps(spec, indent=1))
     print(f"wrote {OUT}: {len(S)} slides, {words:,} narration words (about {words / 150:.0f} min at 150 wpm)")
