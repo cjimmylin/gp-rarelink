@@ -43,6 +43,16 @@ How to use this file:
 
 ## Decision log
 
+### 2026-11-09 · D-45 decided: collaborator dashboard on GitHub Pages; the no-publishing rule lifted for it
+
+- **Jimmy (chat, 2026-11-09):** up to six recruited experts will review the outputs. He asked for an online dashboard on GitHub Pages to share with them, with the overview, the latest interim paper as PDF and HTML, a deck from the latest data, an overview video, and a link to a platform where experts enter their names and emails and give input; for changes that help a newcomer get up to speed; and to be asked about uncertainties. Four questions were put to him; his answers:
+  - **Hosting:** GitHub Pages from this repository (a `site/` folder on `main` deployed by `.github/workflows/pages.yml`; Jimmy enables Pages with Source = GitHub Actions). The page is public to anyone with the link, so this lifts the 2026-10-21 no-publishing rule for the dashboard and the documents it carries, and for nothing else (`CLAUDE.md` amended).
+  - **Expert input:** a Google Form that Jimmy creates; Claude drafted the questions (`reports/drafts/expert_input_form.md`). The URL goes in `analysis/dashboard/site_config.json`; until then the page shows a placeholder note.
+  - **Video:** a captioned slide video built from the deck plus a word-for-word narration script with timecodes, for Jimmy to record a voice-over (no speech synthesis is available here).
+  - **Content beyond the overview, the short paper and the deck:** the version 2 full report and supplement (PDF and HTML), the variant-level list of the 214 unadjudicated candidates, and spend figures by budget line. The option "team and panel names" was not selected, so the dashboard names the PI and the two organizations only; the papers it carries keep their bylines.
+- **Built (2026-11-09):** `analysis/dashboard/` (export_deck_data.py → deck.js (pptxgenjs) → build_video.py → build_site.py; `make_all.sh` runs the chain), `reports/deck/`, `reports/video/`, `site/`, `COLLABORATING.md`. Every number on the dashboard, deck and video is read from the same result files as the interim papers. No email address appears on the site (checked by script). The SLIDERS ablation (D-44) is not on the dashboard, per the 2026-11-02 decision.
+- **Still Jimmy's:** merge to `main`; enable Pages; create the form and send Claude the link; record the voice-over if wanted; share the link with the experts.
+
 ### 2026-10-28 · D-44 decided: SLIDERS ablation pilot on HA20 and SSADH deficiency (exploratory)
 - **Context:** Jimmy asked for a small two-disease pilot that does *not* use the SLIDERS framework, to measure what SLIDERS added. Design: `reports/sliders_ablation_design.md`; findings: `reports/sliders_ablation_findings.md` (generated).
 - **Jimmy, 2026-10-28 (question tool), the recommended option on all four questions:**

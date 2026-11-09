@@ -1,0 +1,387 @@
+1
+00:00:00,800 --> 00:00:03,000
+Welcome.
+
+2
+00:00:03,000 --> 00:00:06,150
+This is a short overview of GP-RareLink,
+
+3
+00:00:06,150 --> 00:00:12,500
+a project that reads the published literature on rare genetic diseases with a language model,
+
+4
+00:00:12,500 --> 00:00:17,650
+turns it into structured records, and checks every value against its source.
+
+5
+00:00:17,650 --> 00:00:26,400
+It is funded by Anthropic's AI for Science program and run by the Rare Genomics Institute with the Stanford OVAL lab.
+
+6
+00:00:26,400 --> 00:00:29,950
+You are seeing interim results, for internal review.
+
+7
+00:00:30,750 --> 00:00:32,950
+Here is the problem.
+
+8
+00:00:32,950 --> 00:00:36,900
+When a child with a rare disease is diagnosed,
+
+9
+00:00:36,900 --> 00:00:41,650
+the responsible variant is often reported once, in a case report,
+
+10
+00:00:41,650 --> 00:00:44,800
+and never submitted to the public databases.
+
+11
+00:00:44,800 --> 00:00:49,550
+A laboratory testing the next child searches ClinVar and finds nothing.
+
+12
+00:00:49,550 --> 00:00:51,750
+For Alexander disease alone,
+
+13
+00:00:51,750 --> 00:00:56,500
+a 2024 review counts 182 causative variants in 550 published patients,
+
+14
+00:00:56,500 --> 00:01:01,650
+but ClinVar holds 76 pathogenic or likely pathogenic records for the gene.
+
+15
+00:01:01,650 --> 00:01:06,800
+The knowledge exists; it is scattered across papers no database can query.
+
+16
+00:01:07,600 --> 00:01:12,750
+So the question is whether a language model, reading with strict rules,
+
+17
+00:01:12,750 --> 00:01:15,100
+can do the first pass.
+
+18
+00:01:15,100 --> 00:01:17,850
+Two rules make the answer checkable.
+
+19
+00:01:17,850 --> 00:01:23,800
+First, every value the model records must carry a verbatim quote from the paper,
+
+20
+00:01:23,800 --> 00:01:27,750
+and a script confirms the quote is really there.
+
+21
+00:01:27,750 --> 00:01:34,500
+Second, the databases we want to fill, ClinVar and OMIM, are never shown to the model.
+
+22
+00:01:34,500 --> 00:01:38,050
+They are held out as the answer key.
+
+23
+00:01:38,050 --> 00:01:42,800
+And the whole analysis plan was frozen before the main run,
+
+24
+00:01:42,800 --> 00:01:47,550
+so what you see is what we said we would report.
+
+25
+00:01:48,350 --> 00:01:50,550
+This is the workflow.
+
+26
+00:01:50,550 --> 00:01:57,300
+One model reader per paper fills a structured form with quotes. A script checks every quote.
+
+27
+00:01:57,300 --> 00:02:01,250
+A second model pass, which we call the gatekeeper,
+
+28
+00:02:01,250 --> 00:02:06,800
+re-reads each value against its quote and drops the ones it cannot support.
+
+29
+00:02:06,800 --> 00:02:11,550
+The result is one standard record per individual, a GA4GH phenopacket.
+
+30
+00:02:11,550 --> 00:02:16,300
+Below the firewall, a separate harness compares the records with ClinVar,
+
+31
+00:02:16,300 --> 00:02:21,850
+OMIM and two published catalogues, and lists the variants the databases are missing.
+
+32
+00:02:21,850 --> 00:02:28,600
+The orange box is what has not happened yet: the human audit and the expert adjudication.
+
+33
+00:02:29,400 --> 00:02:34,550
+We ran six diseases, chosen to span inheritance modes and organ systems.
+
+34
+00:02:34,550 --> 00:02:37,300
+A20 haploinsufficiency was the development disease,
+
+35
+00:02:37,300 --> 00:02:42,850
+so its numbers are flagged and the other five are the confirmatory set.
+
+36
+00:02:42,850 --> 00:02:48,400
+Only open-access papers were read, which matters later: for most of these diseases,
+
+37
+00:02:48,400 --> 00:02:53,150
+only a fifth to a third of the literature is open.
+
+38
+00:02:53,950 --> 00:02:56,150
+The headline numbers.
+
+39
+00:02:56,150 --> 00:02:58,900
+350 papers became 2,836 individual records,
+
+40
+00:02:58,900 --> 00:03:03,250
+1,793 of them carrying a variant in the disease gene.
+
+41
+00:03:03,250 --> 00:03:08,000
+Every one of 241,730 quotes was found verbatim in its paper.
+
+42
+00:03:08,000 --> 00:03:11,950
+466 distinct variants could be placed on the genome.
+
+43
+00:03:11,950 --> 00:03:15,900
+214 of them are in neither ClinVar nor OMIM.
+
+44
+00:03:15,900 --> 00:03:21,450
+And we recovered 43 of the 75 variants OMIM lists for these diseases.
+
+45
+00:03:22,250 --> 00:03:27,400
+First finding: the receipts hold, but the decisive check has not happened.
+
+46
+00:03:27,400 --> 00:03:32,950
+The gatekeeper judged 0.43 percent of values unsupported across the five confirmatory diseases.
+
+47
+00:03:32,950 --> 00:03:35,150
+That is the blue.
+
+48
+00:03:35,150 --> 00:03:41,500
+The orange is what human raters found in the pilot, before the pipeline was frozen:
+
+49
+00:03:41,500 --> 00:03:43,700
+around six percent.
+
+50
+00:03:43,700 --> 00:03:48,850
+The machine's reading of its own errors is far below the humans'.
+
+51
+00:03:48,850 --> 00:03:54,800
+The pre-registered test is a blinded audit of 250 claims by two panel members.
+
+52
+00:03:54,800 --> 00:03:59,150
+It is built, and nobody has rated a claim yet.
+
+53
+00:03:59,150 --> 00:04:02,700
+Until then, no accuracy claim can be made.
+
+54
+00:04:03,500 --> 00:04:07,050
+Second finding: we find what we can read.
+
+55
+00:04:07,050 --> 00:04:11,000
+Against OMIM's listed variants we recovered 57 percent overall,
+
+56
+00:04:11,000 --> 00:04:18,150
+from nearly ninety percent for the diseases whose literature is open to eleven percent for Tangier disease,
+
+57
+00:04:18,150 --> 00:04:22,500
+whose variants come from closed papers of the early 2000s.
+
+58
+00:04:22,500 --> 00:04:29,250
+Of the 84 papers OMIM cites as the sources for its variants, we could read 5.
+
+59
+00:04:29,250 --> 00:04:35,200
+Where we had read the source paper, the variant was usually in our records.
+
+60
+00:04:35,200 --> 00:04:37,950
+Access, not reading, sets the ceiling.
+
+61
+00:04:38,750 --> 00:04:41,900
+Third finding: the database gap is real.
+
+62
+00:04:41,900 --> 00:04:45,450
+Of 466 genome-placed variants, 245 are in ClinVar,
+
+63
+00:04:45,450 --> 00:04:49,800
+and 168 of those are classified pathogenic or likely pathogenic.
+
+64
+00:04:49,800 --> 00:04:54,950
+221 are absent from ClinVar; after the checks, 214 remain as candidates,
+
+65
+00:04:54,950 --> 00:05:00,500
+each with an evidence dossier listing every paper, every quote and every individual.
+
+66
+00:05:00,500 --> 00:05:06,850
+53 more sit in ClinVar as uncertain or conflicting while the papers call them pathogenic.
+
+67
+00:05:06,850 --> 00:05:09,600
+Nothing is submitted without expert adjudication.
+
+68
+00:05:10,400 --> 00:05:16,350
+Fourth finding: a cheaper open-weight model finds the same variants and loses the receipts.
+
+69
+00:05:16,350 --> 00:05:18,550
+On identical inputs,
+
+70
+00:05:18,550 --> 00:05:26,900
+DeepSeek found the same variants about 89 to 95 percent of the time at roughly one 15th of the cost.
+
+71
+00:05:26,900 --> 00:05:33,250
+But it left 3.0 to 3.6 percent of its values with no quote at all,
+
+72
+00:05:33,250 --> 00:05:38,000
+and the gatekeeper rejected 6.14 to 8.64 percent of its claims,
+
+73
+00:05:38,000 --> 00:05:40,350
+against Claude's 0.20 to 0.38.
+
+74
+00:05:41,150 --> 00:05:43,350
+Two more checks.
+
+75
+00:05:43,350 --> 00:05:55,700
+Running a tenth of the papers twice gave the same checklist answers 97 to 100 percent of the time and the same variants 83 to 100 percent of the time.
+
+76
+00:05:55,700 --> 00:06:04,850
+And a memorization probe on 180 papers found no sign that either model recalled the papers from training rather than reading them.
+
+77
+00:06:05,650 --> 00:06:07,850
+What does this mean?
+
+78
+00:06:07,850 --> 00:06:11,800
+On accuracy: the pipeline produces records with complete provenance,
+
+79
+00:06:11,800 --> 00:06:16,550
+but a human-rated error rate is the one number it lacks,
+
+80
+00:06:16,550 --> 00:06:21,700
+and the audit that provides it costs no model time. On coverage:
+
+81
+00:06:21,700 --> 00:06:29,250
+a decision on access to paywalled papers would change these results more than any change to the model.
+
+82
+00:06:29,250 --> 00:06:34,400
+On the answer key: databases curated by people deserve the same scrutiny;
+
+83
+00:06:34,400 --> 00:06:37,550
+OMIM caught one of our normalization errors,
+
+84
+00:06:37,550 --> 00:06:42,700
+and we found two OMIM entries linked to the wrong ClinVar records.
+
+85
+00:06:43,500 --> 00:06:46,250
+This is where you come in.
+
+86
+00:06:46,250 --> 00:06:52,200
+We need two raters for the 250-claim audit, roughly ten to fifteen hours each,
+
+87
+00:06:52,200 --> 00:06:54,400
+and a tie-breaker.
+
+88
+00:06:54,400 --> 00:06:59,150
+We need experts to adjudicate the 214 candidates from their dossiers.
+
+89
+00:06:59,150 --> 00:07:03,900
+We need people to fill four comparator sheets from natural-history cohorts.
+
+90
+00:07:03,900 --> 00:07:08,250
+And we need reviewers for the methods and the paper.
+
+91
+00:07:08,250 --> 00:07:17,000
+The dashboard has a short form where you can tell us who you are and how you would like to contribute.
+
+92
+00:07:17,800 --> 00:07:20,000
+Thank you.
+
+93
+00:07:20,000 --> 00:07:25,950
+Everything in this overview, the papers, the deck, the candidate list and the form,
+
+94
+00:07:25,950 --> 00:07:28,150
+is on the dashboard.
+
+95
+00:07:28,150 --> 00:07:32,500
+The numbers all trace to files in the project repository,
+
+96
+00:07:32,500 --> 00:07:36,850
+and the report says plainly which questions are still open.
+
+97
+00:07:36,850 --> 00:07:40,000
+We look forward to working with you.
