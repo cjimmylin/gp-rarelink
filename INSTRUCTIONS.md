@@ -51,37 +51,7 @@ These come straight from the commitments in the grant. They outrank speed and co
 
 Create these as the work needs them; don't scaffold empty folders in advance.
 
-```
-gp-rarelink/
-├── INSTRUCTIONS.md        ← this file
-├── CONTEXT.md             ← project scope and commitments
-├── DECISIONS.md           ← dated log of decisions and pre-registration deviations
-├── BUDGET.md              ← actual credit spend vs each budget line
-├── grant/                 ← the application and award correspondence
-├── preregistration/       ← analysis plan, frozen before extraction
-├── data/
-│   ├── reference/         ← dated ClinVar/OMIM/HPO/Mondo snapshots (ground truth)
-│   ├── literature/        ← corpus manifests (PMIDs, access status) per disease
-│   └── extracted/         ← phenopackets and evidence tables per disease
-├── pipeline/              ← SLIDERS + Claude code, concordance harness
-├── adjudication/          ← gap variants and panel decisions
-├── submissions/           ← ClinVar / OMIM drafts (pending → approved)
-├── analysis/              ← concordance, bias, efficiency results
-└── reports/               ← progress updates, manuscript drafts
-```
-
 Keep `data/reference/` separate from anything the extraction pipeline reads, so ground truth can't leak into extraction by accident.
-
-## 6. Current phase checklist
-
-Update the phase as work moves on.
-
-- **Month 1 (data and setup):** gather the case-report corpus per disease; record direct, dated ClinVar/OMIM counts to replace the proxies; check open-access coverage and decide whether any substitute disease is needed; draft and freeze the pre-registration; draft outreach to Monarch and ClinVar maintainers.
-- **Month 2:** SLIDERS extraction, piloting on one disease first.
-- **Month 3:** concordance against ClinVar and OMIM.
-- **Month 4:** adjudication of gap variants.
-- **Month 5:** submissions; ascertainment-bias analysis.
-- **Month 6:** write-up for publication and review.
 
 ## 7. When to stop and ask
 

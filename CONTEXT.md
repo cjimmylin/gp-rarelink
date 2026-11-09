@@ -158,13 +158,6 @@ Cost is driven by multipliers, not corpus size: SLIDERS is agentic and re-reads 
 - Anthropic treats the application as non-confidential.
 - Acknowledge Anthropic's AI for Science program in any publication that used these credits (award email, 2026-08-31).
 
-## 11. RGI assets relevant to follow-on work
-
-- 15 years of operational service: 1,200+ families, 33 countries, 410+ sequencing/research projects, $5.26M in sequencing funded.
-- Initial partner in Illumina's iHope program (2016–present).
-- **RareShare:** 10,000+ members across 1,000+ rare-disease communities, a route to put draft records in front of people living with the condition.
-- Dedicated family advocates from first contact through program completion.
-
 ## 12. Key resources
 
 | Resource | Use |
