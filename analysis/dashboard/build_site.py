@@ -75,6 +75,15 @@ def build_documents():
     pandoc_html(ROOT / "preregistration/analysis_plan.md", paper / "analysis_plan.html", "GP-RareLink pre-registered analysis plan (v1.0, frozen 2026-10-20)", ROOT / "preregistration")
     for f in (ROOT / "reports/interim_paper_v3/figures").glob("*.png"):
         shutil.copy(f, SITE / "figures" / f.name)
+    # the grant application as submitted, with email addresses and the account identifier removed
+    app = (ROOT / "grant/GRANT_APPLICATION.md").read_text()
+    app = re.sub(r"[\w.+-]+@[\w-]+\.[\w.]+", "[email removed]", app)
+    app = re.sub(r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", "[account identifier removed]", app)
+    app = app.replace("# GP-RareLink — Grant Application (as submitted)", "# GP-RareLink — Grant Application (as submitted, 2026)\n\n*Published on the collaborator dashboard with the contact email addresses and the account identifier removed. Anthropic treats applications as non-confidential. Several figures in this text were corrected by later checks; the dashboard's \"proposal\" section lists the corrections.*")
+    tmp_app = SITE / "paper" / "_grant_application.md"
+    tmp_app.write_text(app)
+    pandoc_html(tmp_app, paper / "grant_application.html", "GP-RareLink: the grant application as submitted", ROOT / "grant")
+    tmp_app.unlink()
     shutil.copy(ROOT / "reports/deck/gp_rarelink_overview.pptx", deck / "gp_rarelink_overview.pptx")
     shutil.copy(ROOT / "reports/deck/gp_rarelink_overview.pdf", deck / "gp_rarelink_overview.pdf")
     for old in (deck / "slides").glob("*.png"):
@@ -199,6 +208,7 @@ def doc_list(cands_n):
         ("Supplement to version 2", "paper/supplement_v2.html", "HTML", "Supplementary tables S1 to S18 and figures."),
         ("Overview deck (14 slides)", "deck/deck.html", "HTML", "Also as <a href='deck/gp_rarelink_overview.pptx'>PowerPoint</a> and <a href='deck/gp_rarelink_overview.pdf'>PDF</a>; speaker notes carry the narration."),
         ("Pre-registered analysis plan (v1.0, frozen 2026-10-20)", "paper/analysis_plan.html", "HTML", "What we committed to measure, and how, before the main run."),
+        ("The grant application, as submitted", "paper/grant_application.html", "HTML", "The proposal Anthropic funded on 2026-08-31, with contact details removed; see the proposal section for the figures later corrected."),
         (f"Candidate variants ({cands_n})", "data/candidates.csv", "CSV", "Also as <a href='data/candidates.json'>JSON</a>. Unadjudicated."),
         ("Key numbers", "data/summary.json", "JSON", "The figures on this page, machine-readable. Spend by line in <a href='data/spend.json'>spend.json</a>."),
     ]
@@ -224,6 +234,85 @@ def glossary():
         ("Development disease", "A20 haploinsufficiency (HA20), on which the pipeline was built and piloted. Its results are flagged; the other five diseases form the confirmatory set."),
     ]
     return "<dl class='gloss'>" + "".join(f"<dt>{esc(t)}</dt><dd>{esc(d)}</dd>" for t, d in terms) + "</dl>"
+
+
+def proposal_section():
+    deliverables = [
+        ("GA4GH phenopackets for the six pilot diseases", f"{N(S['records'])} schema-valid phenopackets built, {N(S['with_variant'])} with a variant in the gene; the human audit of their values is pending"),
+        ("ClinVar literature-only submissions", f"{S['candidates']} candidate variants absent from ClinVar and OMIM, each with a dossier; none adjudicated or submitted yet"),
+        ("OMIM allelic-variant candidates", f"the same {S['candidates']} candidates, checked against OMIM's allelic variants on {esc(S['omim_date'])}; the submission route to OMIM is still to be settled"),
+        ("Per-gene genotype-phenotype maps", "exploratory tests run (GPSEA); Danon disease reproduces the published sex difference; no other term survives correction"),
+        ("Concordance and ascertainment-bias results, published whether favourable or not", "ClinVar concordance done for six diseases; OMIM variant half done; the bias arm waits on a person to fill four comparator sheets"),
+        ("Open-source pipeline", "the repository holds the pipeline, the harness and every analysis; access on request while the study is under internal review"),
+    ]
+    metrics = [
+        ("Concordance with ClinVar and OMIM on gene, normalized HGVS, classification and phenotype, with confidence intervals", "measured for ClinVar on six diseases and for OMIM's variants; estimates with intervals, no pass/fail by design"),
+        (f"False positives: under 2% of extracted values unsupported by their cited span, audited on {S['n_o1']} claims; abstention when evidence is thin", f"the sample is drawn and the blinded rating pages are built; no claim has been rated. The machine's own reading is {S['unsup_pct5']}% on the five confirmatory diseases"),
+        ("Gap closure: variants absent from both databases adjudicated, prepared and accepted for submission", f"{S['candidates']} candidates listed; adjudication not started"),
+        ("Bias: per-disease deviation from held-out natural-history cohorts, with a memorization probe", f"memorization probe done on {S['mem_papers']} papers for both models (no sign of recall); frequency deviation not started"),
+        ("Efficiency: expert-minutes per accepted record; Claude against an open-weight model under an identical scaffold", "open-weight comparison run on two diseases; expert-minutes wait on adjudication; the blinded audit of both models is pending"),
+    ]
+    corrections = [
+        ("Tangier disease: about 200 published patients", "sources support fewer than 100 to about 144 (decision D-14)"),
+        ("Danon disease: more than 100 published families", "about 100 families and at least 146 molecularly confirmed patients (D-14)"),
+        ("Six diseases absent from phenopacket-store's 408 cohorts", "the 408 has no published source; the store had 731 gene folders at its 2026-10-07 commit, and the six diseases are absent from it (D-14)"),
+        ("LAD-I: genotypes for 184 patients published but never structured", "probably the 184 patients without a reported genotype, which extraction cannot recover (D-14)"),
+        ("ClinVar counts from MyVariant.info and ClinVar Miner (for example 72 pathogenic or likely-pathogenic GFAP records)", f"replaced by direct counts from one dated release ({esc(S['clinvar_release'])}): GFAP {S['axd_clinvar_plp']}; all six genes in the table above"),
+        ("OMIM allelic-variant counts given as proxies (for example about 12 for GFAP)", f"read from the gene entry pages frozen on {esc(S['omim_date'])}: 75 titled for the six diseases in all"),
+    ]
+    timeline = [
+        ("1", "Obtain the literature, OMIM, ClinVar and reference data; replace proxy counts; pre-register; contact Monarch and ClinVar maintainers", "2026-09-21 to 2026-10-20", "Setup, background literature, pre-registration draft, pilot design (done); outreach drafted, not yet sent"),
+        ("2", "Extraction using SLIDERS with Claude", "2026-10-21 to 2026-11-20", "Pilot on HA20, pre-registration frozen 2026-10-20; extraction, gatekeeper and records done on all six diseases; ClinVar and OMIM concordance done early (we are here)"),
+        ("3", "Concordance analysis against ClinVar and OMIM", "2026-11-21 to 2026-12-20", "Largely done ahead of schedule; OMIM's phenotype half and the ClinVar miss triage remain"),
+        ("4", "Adjudication of gap variants", "2026-12-21 to 2027-01-20", "Dossiers and the adjudication page are ready; the human audit and adjudication need the panel"),
+        ("5", "Prepare submissions; bias analysis", "2027-01-21 to 2027-02-20", "Submission records drafted in pending form; bias arm waits on comparator sheets"),
+        ("6", "Write up results for publication and review", "2027-02-21 to 2027-03-20", "Interim reports exist (versions 2 and 3); the write-up follows the audit"),
+    ]
+    budget_split = "".join(f"<tr><td>{esc(l['n'])}</td><td>{esc(l['name'])}</td><td>${l['requested']:,.0f}</td></tr>" for l in S["spend_lines"])
+    html_ = f"""
+<section id="proposal">
+  <h2>The proposal Anthropic funded</h2>
+  <p>GP-RareLink was proposed to Anthropic's AI for Science program (rare disease program, basic science research track) and approved on 2026-08-31 for the full amount requested. What follows is the proposal as submitted, with where each commitment stands today. The <a href="paper/grant_application.html">application text</a> is on the dashboard with contact details removed.</p>
+  <div class="tiles">
+    <div class="tile"><div class="big">$45,000</div><div class="lab">in Claude usage credits over a six-month project period, the full amount requested; usable across chat, Claude Code, Cowork and Claude Science</div></div>
+    <div class="tile"><div class="big">2026-08-31</div><div class="lab">award date; first deposit scheduled for 2026-09-21, which sets the provisional project start</div></div>
+    <div class="tile"><div class="big">100 of 750+</div><div class="lab">projects selected from applications to the rare disease program, covering more than 75 named conditions</div></div>
+    <div class="tile"><div class="big">6 diseases</div><div class="lab">pilot set spanning four inheritance modes and six organ systems; six substitutes held in reserve</div></div>
+  </div>
+  <h3>The question, as submitted</h3>
+  <blockquote>Can the SLIDERS method powered by Claude build consolidated variant, phenotype and disease records from published case reports, at an accuracy we can prove, and at a scale that materially closes the gap between the literature and the databases?</blockquote>
+  <h3>The method, as proposed</h3>
+  <ul>
+    <li><b>Extraction with SLIDERS.</b> An LLM-based systematic-review method from the Stanford OVAL lab that assembles evidence tables from documents and keeps full-text excerpts as provenance, with a reconciliation step that joins fragments across papers. Claude Opus reads the case reports and emits GA4GH phenopackets; HGVS is normalized through VariantValidator and records are validated.</li>
+    <li><b>ClinVar and OMIM as ground truth, not input.</b> Concordance on gene, HGVS, classification and phenotype is measured against what those databases already assert, scored automatically with no adjudicator hours, and pre-registered before extraction.</li>
+    <li><b>Closing the gap.</b> Variants absent from both databases are adjudicated by the panel and offered as ClinVar literature-only submissions and OMIM allelic-variant candidates, each with phenotype evidence and provenance.</li>
+    <li><b>Aggregation.</b> Per gene, a genotype-phenotype map with denominators and per-publication provenance.</li>
+    <li><b>Ascertainment-bias arm.</b> Literature-derived phenotype frequencies compared with held-out natural-history cohorts, with a memorization probe per disease.</li>
+  </ul>
+  <h3>Success metrics, pre-registered, and where they stand</h3>
+  <div class="scroll"><table><thead><tr><th>Metric as proposed</th><th>Status at {esc(DATA['date'])}</th></tr></thead><tbody>{''.join(f"<tr><td>{esc(a)}</td><td>{esc(b)}</td></tr>" for a, b in metrics)}</tbody></table></div>
+  <h3>Deliverables promised, and where they stand</h3>
+  <div class="scroll"><table><thead><tr><th>Deliverable as proposed</th><th>Status at {esc(DATA['date'])}</th></tr></thead><tbody>{''.join(f"<tr><td>{esc(a)}</td><td>{esc(b)}</td></tr>" for a, b in deliverables)}</tbody></table></div>
+  <h3>Timeline, as proposed and as re-planned</h3>
+  <p>The six-month plan as submitted, the dates it implies from the provisional start of 2026-09-21 (decision D-01), and what has happened. The re-plan (D-18) put a one-disease pilot first and froze the pre-registration after it.</p>
+  <div class="scroll"><table><thead><tr><th>Month</th><th>Work as proposed</th><th>Dates</th><th>Where things stand</th></tr></thead><tbody>{''.join(f"<tr><td>{m}</td><td>{esc(w)}</td><td>{esc(d)}</td><td>{esc(st)}</td></tr>" for m, w, d, st in timeline)}</tbody></table></div>
+  <h3>Budget, as requested</h3>
+  <p>Built bottom-up: a core of about $30,000, a stretch of $9,000 to extend to all twelve candidate diseases, and $6,000 contingency; roughly 65% Claude Science and 35% Claude Code. The proposal committed to report actual spend against every line and return anything unused. Spend so far is in the <a href="#spend">spend section</a>.</p>
+  <div class="scroll"><table><thead><tr><th>Line</th><th>Budget line</th><th>Requested</th></tr></thead><tbody>{budget_split}<tr class="total"><td></td><td><b>Total</b></td><td><b>$45,000</b></td></tr></tbody></table></div>
+  <h3>Commitments the proposal made</h3>
+  <ul>
+    <li>Literature only: no patient cohort data; RGI's consented cohort is out of scope for this grant.</li>
+    <li>Provenance on every claim: a real PMID and a verbatim span.</li>
+    <li>Human sign-off before any submission to ClinVar or OMIM.</li>
+    <li>Results published whether favourable or not, including the Claude versus open-weight comparison.</li>
+    <li>No biosecurity-relevant work; the award does not exempt the project from Anthropic's Usage Policy.</li>
+    <li>Acknowledge Anthropic's AI for Science program in any publication that used the credits.</li>
+  </ul>
+  <div class="notdone soft"><h3>Figures in the proposal that later checks corrected</h3><p class="small">The application was written from secondary sources. These are the figures we no longer repeat as written; the corrections are logged as decision D-14 and in the project's context file.</p>
+  <div class="scroll"><table><thead><tr><th>As submitted</th><th>Correction</th></tr></thead><tbody>{''.join(f"<tr><td>{esc(a)}</td><td>{esc(b)}</td></tr>" for a, b in corrections)}</tbody></table></div></div>
+</section>
+"""
+    return html_
 
 
 def deck_page(slides_dir="slides", spec=DATA, out="deck.html", label="Overview deck", base="gp_rarelink_overview", lead="Fourteen slides with their narration. The same text is the video's narration and captions and the deck's speaker notes."):
@@ -285,7 +374,7 @@ def index_page(cands):
 <body>
 <header class="top">
   <a href="#top" class="brand">GP-RareLink</a>
-  <nav><a href="#start">Start here</a><a href="#problem">The problem</a><a href="#how">How it works</a><a href="#status">Status</a><a href="#findings">Findings</a><a href="#help">What we need</a><a href="#candidates">Candidates</a><a href="#documents">Documents</a><a href="#glossary">Glossary</a></nav>
+  <nav><a href="#start">Start here</a><a href="#problem">The problem</a><a href="#proposal">The proposal</a><a href="#how">How it works</a><a href="#status">Status</a><a href="#findings">Findings</a><a href="#help">What we need</a><a href="#candidates">Candidates</a><a href="#documents">Documents</a><a href="#glossary">Glossary</a></nav>
 </header>
 <main id="top">
 <section class="hero">
@@ -305,7 +394,7 @@ def index_page(cands):
   <h2>Start here: a path through the project in about an hour</h2>
   <ol class="path">
     <li><b>Watch the overview video</b> <span class="time">{video_minutes()} min</span><br>Narrated (synthetic voice) with captions. <a href="video/gp_rarelink_overview.mp4">Play</a> · <a href="video/narration_script.html">script</a>. When you have longer: the <a href="video/gp_rarelink_deep_dive.mp4">{video_minutes('gp_rarelink_deep_dive')}-minute deep dive</a> walks through the full report (<a href="deck/deep_dive.html">slides with narration</a>).</li>
-    <li><b>Read the short paper</b> <span class="time">20 min</span><br>Eight pages written for readers new to the field. <a href="paper/interim_paper_v3.html">HTML</a> · <a href="paper/interim_paper_v3.pdf">PDF</a></li>
+    <li><b>Read the short paper</b> <span class="time">20 min</span><br>Eight pages written for readers new to the field. <a href="paper/interim_paper_v3.html">HTML</a> · <a href="paper/interim_paper_v3.pdf">PDF</a>. For what was promised, see <a href="#proposal">the funded proposal</a>.</li>
     <li><b>Flip through the deck</b> <span class="time">10 min</span><br>Fourteen slides with their narration. <a href="deck/deck.html">View</a> · <a href="deck/gp_rarelink_overview.pptx">PowerPoint</a> · <a href="deck/gp_rarelink_overview.pdf">PDF</a></li>
     <li><b>Skim the full report</b> <span class="time">15 min for section 5</span><br>Fifty-eight pages with every table and interval; its section 5 lists the gaps and a costed plan to close them. <a href="paper/interim_paper_v2.html">HTML</a> · <a href="paper/interim_paper_v2.pdf">PDF</a> · <a href="paper/supplement_v2.html">supplement</a></li>
     <li><b>Explore the candidate variants</b> <span class="time">10 min</span><br>The {S['candidates']} variants that are published but absent from both databases, with their papers. <a href="#candidates">Table below</a></li>
@@ -323,6 +412,8 @@ def index_page(cands):
     <div class="card"><span class="num">3</span><h3>Decide the rules first</h3><p>Prompts, forms and the analysis plan were frozen on 2026-10-20 after a one-disease pilot (<a href="paper/analysis_plan.html">the plan</a>). Changes since are logged as numbered deviations.</p></div>
   </div>
 </section>
+
+{proposal_section()}
 
 <section id="how">
   <h2>How the pipeline works</h2>
