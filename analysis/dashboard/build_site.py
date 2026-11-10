@@ -43,10 +43,15 @@ def pandoc_html(src: Path, out: Path, title: str, resource_path: Path):
          "--css", str(PAPER_CSS), "--resource-path", str(resource_path), "-o", str(out)])
 
 
-def video_minutes() -> int:
-    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(ROOT / "reports/video/gp_rarelink_overview.mp4")],
-                         capture_output=True, text=True).stdout.strip()
+def video_minutes(name="gp_rarelink_overview") -> int:
+    f = ROOT / f"reports/video/{name}.mp4"
+    if not f.exists():
+        return 0
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(f)], capture_output=True, text=True).stdout.strip()
     return max(1, round(float(out) / 60)) if out else 0
+
+
+DEEP = json.loads((HERE / "deep_dive_data.json").read_text()) if (HERE / "deep_dive_data.json").exists() else None
 
 
 def size_mb(p: Path) -> str:
@@ -75,9 +80,20 @@ def build_documents():
     for old in (deck / "slides").glob("*.png"):
         old.unlink()
     run(["pdftoppm", "-png", "-scale-to-x", "1280", "-scale-to-y", "720", str(ROOT / "reports/deck/gp_rarelink_overview.pdf"), str(deck / "slides" / "slide")])
-    for f in ("gp_rarelink_overview.mp4", "gp_rarelink_overview.srt", "narration_script.md"):
+    for f in ("gp_rarelink_overview.mp4", "gp_rarelink_overview.srt"):
         shutil.copy(ROOT / "reports/video" / f, video / f)
-    pandoc_html(ROOT / "reports/video/narration_script.md", video / "narration_script.html", "GP-RareLink overview video: narration script", ROOT / "reports/video")
+    pandoc_html(ROOT / "reports/video/gp_rarelink_overview_narration_script.md", video / "narration_script.html", "GP-RareLink overview video: narration script", ROOT / "reports/video")
+    if (ROOT / "reports/video/gp_rarelink_deep_dive.mp4").exists():
+        for f in ("gp_rarelink_deep_dive.mp4", "gp_rarelink_deep_dive.srt"):
+            shutil.copy(ROOT / "reports/video" / f, video / f)
+        pandoc_html(ROOT / "reports/video/gp_rarelink_deep_dive_narration_script.md", video / "deep_dive_script.html", "GP-RareLink deep dive: narration script", ROOT / "reports/video")
+    if (ROOT / "reports/deck/gp_rarelink_deep_dive.pdf").exists():
+        shutil.copy(ROOT / "reports/deck/gp_rarelink_deep_dive.pptx", deck / "gp_rarelink_deep_dive.pptx")
+        shutil.copy(ROOT / "reports/deck/gp_rarelink_deep_dive.pdf", deck / "gp_rarelink_deep_dive.pdf")
+        (deck / "deep_dive_slides").mkdir(exist_ok=True)
+        for old in (deck / "deep_dive_slides").glob("*.png"):
+            old.unlink()
+        run(["pdftoppm", "-png", "-scale-to-x", "1280", "-scale-to-y", "720", str(ROOT / "reports/deck/gp_rarelink_deep_dive.pdf"), str(deck / "deep_dive_slides" / "slide")])
     (SITE / ".nojekyll").write_text("")
 
 
@@ -176,8 +192,8 @@ def form_block():
 
 def doc_list(cands_n):
     docs = [
-        (f"Overview video ({video_minutes()} min, captioned)", "video/gp_rarelink_overview.mp4", "MP4", "The deck narrated through captions; no voice track yet."),
-        ("Narration script", "video/narration_script.html", "HTML", "Word for word, with timecodes, for a voice-over."),
+        (f"Overview video ({video_minutes()} min, narrated)", "video/gp_rarelink_overview.mp4", "MP4", "The 14-slide deck with a synthetic voice (Microsoft neural text-to-speech) and captions. <a href='video/narration_script.html'>Script</a> · <a href='video/gp_rarelink_overview.srt'>subtitles</a>."),
+        (f"Deep-dive video ({video_minutes('gp_rarelink_deep_dive')} min, narrated)", "video/gp_rarelink_deep_dive.mp4", "MP4", "The full interim report, section by section, over 56 slides with the same synthetic voice and captions. <a href='video/deep_dive_script.html'>Script</a> · <a href='video/gp_rarelink_deep_dive.srt'>subtitles</a> · <a href='deck/deep_dive.html'>slides with narration</a> · <a href='deck/gp_rarelink_deep_dive.pptx'>PowerPoint</a> · <a href='deck/gp_rarelink_deep_dive.pdf'>PDF</a>."),
         ("Short paper, version 3 (8 pages)", "paper/interim_paper_v3.html", "HTML", "For readers new to the field. Also as <a href='paper/interim_paper_v3.pdf'>PDF</a>."),
         ("Full interim report, version 2 (58 pages)", "paper/interim_paper_v2.html", "HTML", "Every table, interval and method; section 5 is the gap list with costs. Also as <a href='paper/interim_paper_v2.pdf'>PDF</a>."),
         ("Supplement to version 2", "paper/supplement_v2.html", "HTML", "Supplementary tables S1 to S18 and figures."),
@@ -210,18 +226,18 @@ def glossary():
     return "<dl class='gloss'>" + "".join(f"<dt>{esc(t)}</dt><dd>{esc(d)}</dd>" for t, d in terms) + "</dl>"
 
 
-def deck_page():
-    slides = sorted((SITE / "deck/slides").glob("slide-*.png"))
+def deck_page(slides_dir="slides", spec=DATA, out="deck.html", label="Overview deck", base="gp_rarelink_overview", lead="Fourteen slides with their narration. The same text is the video's narration and captions and the deck's speaker notes."):
+    slides = sorted((SITE / "deck" / slides_dir).glob("slide-*.png"))
     parts = []
-    for i, (p, sl) in enumerate(zip(slides, DATA["slides"]), start=1):
-        parts.append(f"<section class='slide'><img src='slides/{p.name}' alt='Slide {i}' loading='lazy'><p class='narr'><b>Slide {i}.</b> {esc(sl['narration'])}</p></section>")
+    for i, (p, sl) in enumerate(zip(slides, spec["slides"]), start=1):
+        parts.append(f"<section class='slide'><img src='{slides_dir}/{p.name}' alt='Slide {i}' loading='lazy'><p class='narr'><b>Slide {i}.</b> {esc(sl['narration'])}</p></section>")
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GP-RareLink overview deck</title><link rel="stylesheet" href="../assets/style.css"></head><body class="deckpage">
-<header class="top"><a href="../">← Dashboard</a><span>Overview deck · {esc(DATA['date'])}</span>
-<span class="links"><a href="gp_rarelink_overview.pptx">PowerPoint</a> · <a href="gp_rarelink_overview.pdf">PDF</a> · <a href="../video/gp_rarelink_overview.mp4">Video</a></span></header>
-<main class="deckmain"><p class="lead">Fourteen slides with their narration. The same text is the video's captions and the deck's speaker notes.</p>{''.join(parts)}</main>
-<footer class="foot"><p>GP-RareLink · interim overview for collaborators · internal review · every number from the project repository at commit {esc(DATA['commit'])}.</p></footer></body></html>"""
-    (SITE / "deck/deck.html").write_text(page)
+<title>GP-RareLink {esc(label.lower())}</title><link rel="stylesheet" href="../assets/style.css"></head><body class="deckpage">
+<header class="top"><a href="../">← Dashboard</a><span>{esc(label)} · {esc(spec['date'])}</span>
+<span class="links"><a href="{base}.pptx">PowerPoint</a> · <a href="{base}.pdf">PDF</a> · <a href="../video/{base}.mp4">Video</a></span></header>
+<main class="deckmain"><p class="lead">{esc(lead)}</p>{''.join(parts)}</main>
+<footer class="foot"><p>GP-RareLink · {esc(label.lower())} for collaborators · internal review · every number from the project repository at commit {esc(spec['commit'])}.</p></footer></body></html>"""
+    (SITE / "deck" / out).write_text(page)
 
 
 def index_page(cands):
@@ -279,6 +295,7 @@ def index_page(cands):
   <p class="byline">A project of the Rare Genomics Institute and the Stanford Open Virtual Assistant Lab, led by Dr. Jimmy Lin. Funded by Anthropic's AI for Science program. Shared with invited collaborators; not a publication.</p>
   <div class="cta">
     <a class="btn primary" href="video/gp_rarelink_overview.mp4">Watch the {video_minutes()}-minute overview</a>
+    <a class="btn" href="video/gp_rarelink_deep_dive.mp4">Watch the {video_minutes('gp_rarelink_deep_dive')}-minute deep dive</a>
     <a class="btn" href="paper/interim_paper_v3.html">Read the 8-page paper</a>
     <a class="btn" href="#help">Tell us how you would like to help</a>
   </div>
@@ -287,7 +304,7 @@ def index_page(cands):
 <section id="start">
   <h2>Start here: a path through the project in about an hour</h2>
   <ol class="path">
-    <li><b>Watch the overview video</b> <span class="time">{video_minutes()} min</span><br>Captioned, no sound yet. <a href="video/gp_rarelink_overview.mp4">Play</a> · <a href="video/narration_script.html">read the script</a> · <a href="video/gp_rarelink_overview.srt">subtitles</a></li>
+    <li><b>Watch the overview video</b> <span class="time">{video_minutes()} min</span><br>Narrated (synthetic voice) with captions. <a href="video/gp_rarelink_overview.mp4">Play</a> · <a href="video/narration_script.html">script</a>. When you have longer: the <a href="video/gp_rarelink_deep_dive.mp4">{video_minutes('gp_rarelink_deep_dive')}-minute deep dive</a> walks through the full report (<a href="deck/deep_dive.html">slides with narration</a>).</li>
     <li><b>Read the short paper</b> <span class="time">20 min</span><br>Eight pages written for readers new to the field. <a href="paper/interim_paper_v3.html">HTML</a> · <a href="paper/interim_paper_v3.pdf">PDF</a></li>
     <li><b>Flip through the deck</b> <span class="time">10 min</span><br>Fourteen slides with their narration. <a href="deck/deck.html">View</a> · <a href="deck/gp_rarelink_overview.pptx">PowerPoint</a> · <a href="deck/gp_rarelink_overview.pdf">PDF</a></li>
     <li><b>Skim the full report</b> <span class="time">15 min for section 5</span><br>Fifty-eight pages with every table and interval; its section 5 lists the gaps and a costed plan to close them. <a href="paper/interim_paper_v2.html">HTML</a> · <a href="paper/interim_paper_v2.pdf">PDF</a> · <a href="paper/supplement_v2.html">supplement</a></li>
@@ -445,6 +462,8 @@ def main():
     (SITE / "assets/style.css").write_text(STYLE.strip() + "\n")
     (SITE / "assets/app.js").write_text(APP_JS.strip() + "\n")
     deck_page()
+    if DEEP and (SITE / "deck/deep_dive_slides").exists():
+        deck_page("deep_dive_slides", DEEP, "deep_dive.html", "Deep-dive deck", "gp_rarelink_deep_dive", f"{len(DEEP['slides'])} slides following the full interim report, with their narration. The same text is the long video's narration and captions and the deck's speaker notes.")
     index_page(cands)
     # privacy check: no email addresses anywhere in the site
     bad = []

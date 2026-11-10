@@ -1,0 +1,2483 @@
+1
+00:00:00,650 --> 00:00:03,462
+Welcome to the GP-RareLink deep dive.
+
+2
+00:00:03,462 --> 00:00:07,775
+This is the long version of the project overview: just under an hour,
+
+3
+00:00:07,775 --> 00:00:11,088
+following the full interim report section by section.
+
+4
+00:00:11,088 --> 00:00:21,062
+GP-RareLink is run by the Rare Genomics Institute with the Stanford Open Virtual Assistant Lab and funded by Anthropic's AI for Science program.
+
+5
+00:00:21,062 --> 00:00:26,515
+The project reads published case reports on six rare genetic diseases with a language model,
+
+6
+00:00:26,515 --> 00:00:32,619
+turns them into structured per-individual records in which every value carries a quote from its source,
+
+7
+00:00:32,619 --> 00:00:37,538
+and then checks those records against ClinVar and OMIM, which the model never sees.
+
+8
+00:00:37,538 --> 00:00:41,238
+What you will hear is an interim report for internal review.
+
+9
+00:00:41,238 --> 00:00:45,549
+The numbers are real and traceable; the conclusions are provisional,
+
+10
+00:00:45,549 --> 00:00:49,100
+and the report says plainly which questions remain open.
+
+11
+00:00:50,402 --> 00:00:52,065
+The talk has four parts.
+
+12
+00:00:52,065 --> 00:00:59,177
+Part one sets out the problem and the question, and the five outcomes we committed to measure before the main run.
+
+13
+00:00:59,177 --> 00:01:04,744
+Part two walks through the methods: how the corpus was built, how the model reads a paper,
+
+14
+00:01:04,744 --> 00:01:11,240
+how every value is checked twice, how records are made, and how the answer key is kept behind a firewall.
+
+15
+00:01:11,240 --> 00:01:17,874
+Part three is the results, in the order of the report: the corpus, extraction and the gatekeeper, stability,
+
+16
+00:01:17,874 --> 00:01:25,185
+the records, the human audit that has not yet happened, concordance with ClinVar, the OMIM holdout, the gap candidates,
+
+17
+00:01:25,185 --> 00:01:31,389
+the bias arm, the open-weight comparison, the exploratory analyses, one slide per disease, and spend.
+
+18
+00:01:31,389 --> 00:01:38,077
+Part four is what it all means, the gaps in the study and a costed plan to close them, and what we are asking of you.
+
+19
+00:01:38,077 --> 00:01:44,877
+If you prefer to read, the dashboard has the eight-page paper and the full report with every table and interval.
+
+20
+00:01:46,178 --> 00:01:46,966
+Part one.
+
+21
+00:01:46,966 --> 00:01:48,928
+The problem and the question.
+
+22
+00:01:50,234 --> 00:01:52,884
+Here is the problem in one example.
+
+23
+00:01:52,884 --> 00:02:01,671
+For Alexander disease, a 2024 review counts 182 distinct causative variants in 550 published patients.
+
+24
+00:02:01,671 --> 00:02:07,280
+ClinVar, the public database laboratories query when they interpret a test,
+
+25
+00:02:07,280 --> 00:02:14,084
+holds 76 pathogenic or likely pathogenic records for the gene in the release of 2026-10-12.
+
+26
+00:02:14,084 --> 00:02:17,134
+The rest were published, once, and never submitted.
+
+27
+00:02:17,134 --> 00:02:21,534
+A laboratory testing the next child searches ClinVar and finds nothing.
+
+28
+00:02:21,534 --> 00:02:29,194
+The knowledge exists, but it is scattered across thousands of papers in prose and tables that no database can query,
+
+29
+00:02:29,194 --> 00:02:31,572
+and hand curation has never kept up.
+
+30
+00:02:31,572 --> 00:02:35,728
+The project asks whether a language model, reading with strict rules,
+
+31
+00:02:35,728 --> 00:02:40,729
+can do the first pass of curation at an accuracy we can measure rather than assume,
+
+32
+00:02:40,729 --> 00:02:43,922
+and whether that closes a meaningful part of the gap.
+
+33
+00:02:45,242 --> 00:02:48,405
+Three design choices make the answer checkable.
+
+34
+00:02:48,405 --> 00:02:54,112
+First, quote everything: a value without a verbatim quote from the paper is not allowed,
+
+35
+00:02:54,112 --> 00:02:59,819
+a script confirms every quote is really in the text, and not reported is a valid answer,
+
+36
+00:02:59,819 --> 00:03:02,867
+so a paper's silence is never turned into a no.
+
+37
+00:03:02,867 --> 00:03:10,621
+Second, hold out the answer key: ClinVar and OMIM are never shown to the model, code that reads papers cannot read them,
+
+38
+00:03:10,621 --> 00:03:17,342
+a test in the repository fails if it could, and the comparison happens afterwards in a separate harness.
+
+39
+00:03:17,342 --> 00:03:20,003
+Third, decide the rules first: the prompts,
+
+40
+00:03:20,003 --> 00:03:26,439
+the forms and the analysis plan were frozen on the twentieth of October 2026, after a one-disease pilot,
+
+41
+00:03:26,439 --> 00:03:32,380
+and every change since is logged as a numbered deviation approved by the principal investigator.
+
+42
+00:03:33,698 --> 00:03:36,335
+The plan registers five outcomes.
+
+43
+00:03:36,335 --> 00:03:43,401
+O1, the only confirmatory one, is a human audit of 250 extracted values against their quoted evidence;
+
+44
+00:03:43,401 --> 00:03:46,310
+it passes if at most four are unsupported.
+
+45
+00:03:46,310 --> 00:03:51,585
+The sample is drawn and the blinded rating pages are built, but no claim has been rated.
+
+46
+00:03:51,585 --> 00:03:57,672
+O2 is concordance with ClinVar and OMIM on gene, variant, classification and phenotype,
+
+47
+00:03:57,672 --> 00:04:01,660
+reported as estimates with intervals and no pass or fail.
+
+48
+00:04:01,660 --> 00:04:10,123
+The ClinVar half is done for all six diseases and the OMIM half was done on the twenty-eighth of October against frozen entry pages.
+
+49
+00:04:10,123 --> 00:04:17,223
+O3 is gap closure: 214 candidates are listed with dossiers, none adjudicated.
+
+50
+00:04:17,223 --> 00:04:24,445
+O4 is ascertainment bias against natural-history cohorts, with a memorization probe; the probe is done,
+
+51
+00:04:24,445 --> 00:04:27,461
+the frequency comparison waits on a person.
+
+52
+00:04:27,461 --> 00:04:34,949
+O5 is efficiency and the comparison with an open-weight model; the run and gatekeeper are done on two diseases,
+
+53
+00:04:34,949 --> 00:04:36,635
+the blinded audit is not.
+
+54
+00:04:37,946 --> 00:04:38,784
+Part two.
+
+55
+00:04:38,784 --> 00:04:39,721
+Methods.
+
+56
+00:04:41,042 --> 00:04:45,494
+The six diseases were chosen to span inheritance modes and organ systems,
+
+57
+00:04:45,494 --> 00:04:49,579
+and all are absent from the main public collection of phenopackets.
+
+58
+00:04:49,579 --> 00:04:58,137
+A20 haploinsufficiency is autosomal dominant and auto-inflammatory; SSADH deficiency is recessive and neurometabolic;
+
+59
+00:04:58,137 --> 00:05:01,794
+Tangier disease is recessive and a lipid disorder;
+
+60
+00:05:01,794 --> 00:05:10,425
+leukocyte adhesion deficiency type one is recessive and immunological; Alexander disease is dominant, usually de novo,
+
+61
+00:05:10,425 --> 00:05:16,130
+and a leukodystrophy; Danon disease is X-linked and cardiac and neuromuscular.
+
+62
+00:05:16,130 --> 00:05:21,724
+The ClinVar counts are distinct variants on single-gene records in one dated release,
+
+63
+00:05:21,724 --> 00:05:29,030
+and the OMIM counts are the allelic variants on each gene's entry page, frozen on the twenty-eighth of October.
+
+64
+00:05:29,030 --> 00:05:34,755
+OMIM calls its list selected examples, so it is a sample, not a catalogue.
+
+65
+00:05:34,755 --> 00:05:41,556
+A20 haploinsufficiency was the development disease: every extraction rule was tuned on it during the pilot,
+
+66
+00:05:41,556 --> 00:05:46,705
+so its results flatter the pipeline and the other five form the confirmatory set.
+
+67
+00:05:48,026 --> 00:05:55,345
+The corpus came from PubMed searches from inception to a recorded date, gene symbol plus disease names and synonyms,
+
+68
+00:05:55,345 --> 00:05:58,626
+with backward citation searching of the key reviews.
+
+69
+00:05:58,626 --> 00:06:04,563
+No ClinVar or OMIM citation lists were used as seeds for the five new diseases.
+
+70
+00:06:04,563 --> 00:06:11,174
+Screening ran in two passes: title and abstract screening by model helpers with a logged reason per record,
+
+71
+00:06:11,174 --> 00:06:17,228
+then full-text screening of every open full text with a verbatim evidence quote checked by script;
+
+72
+00:06:17,228 --> 00:06:20,563
+a twenty-item human check settled the screening calls.
+
+73
+00:06:20,563 --> 00:06:26,934
+Eligible papers report individual-level genotype or phenotype for at least one person with the disease;
+
+74
+00:06:26,934 --> 00:06:32,501
+reviews with a per-patient table are included and their people tagged as secondary-source.
+
+75
+00:06:32,501 --> 00:06:39,774
+Access was open access only: PubMed Central, Europe PMC and open copies found through Unpaywall,
+
+76
+00:06:39,774 --> 00:06:42,501
+with no institutional subscriptions.
+
+77
+00:06:42,501 --> 00:06:52,876
+In all, 3,553 records were screened, 1,496 entered the corpus, and 421 had open full text.
+
+78
+00:06:52,876 --> 00:06:57,663
+Natural-history papers for the bias arm were held out of the extraction corpus.
+
+79
+00:06:58,970 --> 00:07:05,964
+Extraction runs as Claude Code helper agents on the funded account: one helper per paper, reading only the paper,
+
+80
+00:07:05,964 --> 00:07:09,182
+the instruction file, the schema and the rules file,
+
+81
+00:07:09,182 --> 00:07:14,257
+with no web access and an instruction to use nothing it remembers about the paper.
+
+82
+00:07:14,257 --> 00:07:21,978
+The frozen files are the extraction instructions version six, a five-table schema covering publications, individuals,
+
+83
+00:07:21,978 --> 00:07:29,632
+variants, phenotypic features and a phenotype checklist, a rules file, and the gatekeeper instructions version four.
+
+84
+00:07:29,632 --> 00:07:36,630
+For the five new diseases the prompt and schema were instantiated by script, swapping only the disease name,
+
+85
+00:07:36,630 --> 00:07:40,582
+the gene symbol, the schema path and a twenty-item checklist.
+
+86
+00:07:40,583 --> 00:07:45,578
+Every asserted value carries a verbatim quote; not reported carries no quote;
+
+87
+00:07:45,578 --> 00:07:52,585
+three-state phenotypes are never collapsed; variant fields are taken only from statements about this person;
+
+88
+00:07:52,585 --> 00:07:57,062
+values stacked in multi-patient cells are never assigned by position;
+
+89
+00:07:57,062 --> 00:08:02,383
+and a normal finding is recorded as the abnormality it rules out, marked excluded.
+
+90
+00:08:02,383 --> 00:08:09,198
+Each disease has twenty disease-specific checklist features, each with a three-state status for every individual,
+
+91
+00:08:09,198 --> 00:08:13,420
+written from a consensus guideline or review with every quote checked.
+
+92
+00:08:14,738 --> 00:08:17,101
+Every value is checked twice.
+
+93
+00:08:17,101 --> 00:08:24,657
+The span check is deterministic: it looks up every quoted span in the source text and demands a verbatim match,
+
+94
+00:08:24,657 --> 00:08:26,563
+on all values, not a sample.
+
+95
+00:08:26,563 --> 00:08:30,922
+A helper that left quotes empty was resumed for a repair-only pass,
+
+96
+00:08:30,922 --> 00:08:35,476
+and each repair was diffed to show that only the target cells changed.
+
+97
+00:08:35,476 --> 00:08:37,976
+The gatekeeper is a second model read.
+
+98
+00:08:37,976 --> 00:08:40,268
+For each claim that is not bookkeeping,
+
+99
+00:08:40,268 --> 00:08:45,088
+a helper asks whether the quote entails the value for the person the row is about.
+
+100
+00:08:45,088 --> 00:08:52,662
+It records whom the quote is actually about, this person, a named group, the cohort, another person, the paper,
+
+101
+00:08:52,662 --> 00:08:59,963
+or unclear, and gives one of four verdicts: supported, partially supported, unsupported, or span not found.
+
+102
+00:08:59,963 --> 00:09:03,826
+No value is exempted because its text matches its quote.
+
+103
+00:09:03,826 --> 00:09:09,763
+Phenopackets keep only claims judged supported, and the count removed is reported.
+
+104
+00:09:09,763 --> 00:09:16,826
+One sentence from the plan matters more than any other here: the gatekeeper is a filter, not a measure.
+
+105
+00:09:16,826 --> 00:09:22,650
+In the pilot its own unsupported rate understated the human audit's by an order of magnitude.
+
+106
+00:09:23,954 --> 00:09:27,354
+The extracted rows become records in four steps.
+
+107
+00:09:27,354 --> 00:09:33,927
+Deduplication merges only on an explicit citation tying a person to an earlier report, one to one;
+
+108
+00:09:33,927 --> 00:09:40,567
+the pilot's sex-and-onset route was dropped after it produced all six false merges of ninety-three.
+
+109
+00:09:40,567 --> 00:09:46,990
+Normalization runs every variant through VariantValidator on the MANE Select transcript for the gene,
+
+110
+00:09:46,990 --> 00:09:53,858
+keeps the original string beside the normalized form, flags transcripts that were assumed or version-mapped,
+
+111
+00:09:53,858 --> 00:09:57,991
+and passes only normalization fields, never database annotations.
+
+112
+00:09:57,991 --> 00:10:04,497
+Binding maps checklist items to HPO terms through per-disease maps built from a pinned HPO release,
+
+113
+00:10:04,497 --> 00:10:09,753
+binds free-text features first by script and then by helpers with a lookup tool,
+
+114
+00:10:09,753 --> 00:10:15,141
+and takes disease terms from Mondo by name, never through an OMIM cross-reference.
+
+115
+00:10:15,141 --> 00:10:23,923
+The output is one GA4GH phenopacket per identity, validated against the schema, with per-disease settings for gene,
+
+116
+00:10:23,923 --> 00:10:27,054
+transcript, Mondo term and checklist map.
+
+117
+00:10:28,370 --> 00:10:34,233
+Putting it together: the five blue boxes are the reading side, run by the frozen pipeline.
+
+118
+00:10:34,233 --> 00:10:40,527
+Papers go to one reader each; every value gets a quote; the script checks every quote;
+
+119
+00:10:40,527 --> 00:10:45,870
+the gatekeeper re-reads every claim; the surviving claims become records.
+
+120
+00:10:45,870 --> 00:10:48,645
+The dashed orange line is the firewall.
+
+121
+00:10:48,645 --> 00:10:54,697
+Below it, in grey, is the answer key the reader never sees: a dated ClinVar release,
+
+122
+00:10:54,697 --> 00:11:01,758
+the OMIM entry pages frozen on the twenty-eighth of October, and two published variant catalogues.
+
+123
+00:11:01,758 --> 00:11:07,745
+The comparison harness reads the records and the answer key and lists what the databases are missing.
+
+124
+00:11:07,745 --> 00:11:10,837
+The orange box on the right is what has not happened:
+
+125
+00:11:10,837 --> 00:11:14,920
+the blinded human audit and the expert adjudication of the candidates.
+
+126
+00:11:14,920 --> 00:11:18,583
+That is where you come in, and we will return to it at the end.
+
+127
+00:11:19,898 --> 00:11:23,386
+Ground-truth isolation is enforced, not promised.
+
+128
+00:11:23,386 --> 00:11:31,434
+Code under the extraction package never reads reference data, and an automated test fails if any such path, loader,
+
+129
+00:11:31,434 --> 00:11:35,423
+or even the tokens ClinVar, OMIM or harness appear there.
+
+130
+00:11:35,423 --> 00:11:42,048
+Reference snapshots live outside the repository, and only their manifests and counts are committed.
+
+131
+00:11:42,048 --> 00:11:45,698
+The harness reads the extracted records and the snapshots.
+
+132
+00:11:45,698 --> 00:11:50,383
+For ClinVar that is the variant summary file of the twelfth of October release,
+
+133
+00:11:50,383 --> 00:11:54,061
+restricted to single-gene records on the current genome build.
+
+134
+00:11:54,061 --> 00:11:57,986
+For phenotypes it uses the HPO annotation file.
+
+135
+00:11:57,986 --> 00:12:01,916
+Two published catalogues serve as completeness benchmarks,
+
+136
+00:12:01,916 --> 00:12:06,998
+Chen 2020 for A20 haploinsufficiency and Grossi 2024 for Alexander disease;
+
+137
+00:12:06,998 --> 00:12:12,148
+the other four candidate catalogues failed the registered suitability check.
+
+138
+00:12:12,148 --> 00:12:19,736
+For OMIM, the principal investigator printed the six phenotype and six gene entry pages on the twenty-eighth of October;
+
+139
+00:12:19,736 --> 00:12:21,569
+a harness script parses them,
+
+140
+00:12:21,569 --> 00:12:27,323
+and each allelic variant was placed in ClinVar through ClinVar's own OMIM cross-references.
+
+141
+00:12:27,323 --> 00:12:33,798
+OMIM's clinical synopsis pages were not frozen, so OMIM's phenotype half is not yet assessed.
+
+142
+00:12:35,114 --> 00:12:37,427
+The statistics follow the registered plan.
+
+143
+00:12:37,427 --> 00:12:37,889
+For O1,
+
+144
+00:12:37,889 --> 00:12:45,679
+250 claims were drawn by simple random sampling stratified by disease from the claims the gatekeeper judged supported,
+
+145
+00:12:45,679 --> 00:12:49,839
+by script with a fixed seed and before any concordance was run.
+
+146
+00:12:49,839 --> 00:12:57,148
+Two panel members rate blind on pages that never show the gatekeeper's verdict; a third resolves disagreements;
+
+147
+00:12:57,148 --> 00:12:59,914
+the pass rule is at most four unsupported.
+
+148
+00:12:59,914 --> 00:13:08,464
+For O2, tier one is the same genomic allele; tier two is the same protein change where a paper gives no cDNA.
+
+149
+00:13:08,464 --> 00:13:15,546
+HGVS recall is the share of ClinVar's own paper-and-variant citation pairs, restricted to corpus papers,
+
+150
+00:13:15,546 --> 00:13:18,202
+that the run extracted from that paper.
+
+151
+00:13:18,202 --> 00:13:23,764
+Overlap is the share of extracted alleles present in ClinVar, which is not precision.
+
+152
+00:13:23,764 --> 00:13:29,664
+Classification compares the authors' call with ClinVar's aggregate among stated values.
+
+153
+00:13:29,664 --> 00:13:35,114
+Intervals are Wilson for proportions and exact for the audit and the gatekeeper shares.
+
+154
+00:13:35,114 --> 00:13:40,481
+For O3, a gap candidate is a tier-one allele absent from the ClinVar snapshot,
+
+155
+00:13:40,481 --> 00:13:47,568
+with identifying values the gatekeeper judged supported in at least one row, and, since the OMIM check,
+
+156
+00:13:47,568 --> 00:13:50,389
+not listed among OMIM's allelic variants.
+
+157
+00:13:50,389 --> 00:13:58,277
+For O4, a person lists each comparator's cohort frequencies before any literature frequency is computed.
+
+158
+00:13:58,277 --> 00:14:03,589
+For O5, the open-weight model runs the same papers, prompts and scoring.
+
+159
+00:14:04,898 --> 00:14:11,006
+A one-disease pilot on A20 haploinsufficiency ran from the eighteenth to the twentieth of October:
+
+160
+00:14:11,006 --> 00:14:15,868
+two full extraction runs, a fifteen-paper repeat, a hand check of every merge,
+
+161
+00:14:15,868 --> 00:14:23,161
+two fifty-claim human audits by the principal investigator, ClinVar concordance and the Chen 2020 completeness check.
+
+162
+00:14:23,161 --> 00:14:29,186
+Its findings set the rules frozen as extraction version six and gatekeeper version four.
+
+163
+00:14:29,186 --> 00:14:33,467
+The disease was then re-extracted from scratch with the frozen pipeline;
+
+164
+00:14:33,467 --> 00:14:37,036
+the pilot's own records are not used anywhere in the report.
+
+165
+00:14:37,036 --> 00:14:41,648
+Four dated deviations followed, each approved before it took effect.
+
+166
+00:14:41,648 --> 00:14:47,123
+D-38 instantiated the frozen prompt and schema per disease.
+
+167
+00:14:47,123 --> 00:14:54,211
+D-39 transcribed the Alexander disease catalogue on the harness side after its supplement arrived late.
+
+168
+00:14:54,211 --> 00:14:59,261
+D-40 made the record-building scripts read per-disease settings.
+
+169
+00:14:59,261 --> 00:15:06,111
+And D-43, found through the OMIM holdout, added isoform-sensitive positions to normalization:
+
+170
+00:15:06,111 --> 00:15:11,563
+where a gene has alternative coding exons and a paper names no transcript,
+
+171
+00:15:11,563 --> 00:15:17,898
+the paper's own exon label chooses the transcript, or the variant gets no genomic key.
+
+172
+00:15:17,898 --> 00:15:20,036
+We will see the case that forced it.
+
+173
+00:15:21,338 --> 00:15:22,326
+Part three.
+
+174
+00:15:22,326 --> 00:15:24,688
+Results, in the order of the report.
+
+175
+00:15:25,994 --> 00:15:30,132
+The corpus table shows the binding constraint of the whole study.
+
+176
+00:15:30,132 --> 00:15:40,516
+Across the six diseases, 3,553 records were screened and 1,496 entered the corpus, but only 421 had open full text,
+
+177
+00:15:40,516 --> 00:15:47,469
+from 14 percent for Tangier disease to 53 percent for A20 haploinsufficiency.
+
+178
+00:15:47,469 --> 00:15:55,981
+Every disease cleared the registered floor of fifteen eligible primary papers, so no substitute disease was needed,
+
+179
+00:15:55,981 --> 00:15:58,719
+and 350 papers were extracted in all.
+
+180
+00:15:58,719 --> 00:16:01,719
+But paywalled papers are not a random subset.
+
+181
+00:16:01,719 --> 00:16:07,956
+For A20 haploinsufficiency they include the two largest sources of the Chen 2020 benchmark,
+
+182
+00:16:07,956 --> 00:16:13,782
+and for the other diseases the catalogue reviews' own source papers are often closed.
+
+183
+00:16:13,782 --> 00:16:20,307
+Keep this in mind for every completeness and recall figure that follows: they are measured on what could be read.
+
+184
+00:16:21,626 --> 00:16:23,651
+Now the extraction itself.
+
+185
+00:16:23,651 --> 00:16:36,301
+350 papers produced 2,948 individual rows and 2,233 variant rows, and 241,730 values with a quote.
+
+186
+00:16:36,301 --> 00:16:43,067
+The span check found every one of those quotes verbatim in its paper: zero problems in every disease,
+
+187
+00:16:43,067 --> 00:16:47,489
+so the fabricated-span count is zero by construction and by check.
+
+188
+00:16:47,489 --> 00:16:53,001
+The gatekeeper judged 80,948 model claims.
+
+189
+00:16:53,001 --> 00:17:02,560
+It found 294 unsupported, which is 0.36 percent; on the five confirmatory diseases, 0.43 percent,
+
+190
+00:17:02,560 --> 00:17:06,601
+with an exact interval from 0.38 to 0.49.
+
+191
+00:17:06,601 --> 00:17:11,839
+Per disease the share runs from 0.20 to 0.61 percent.
+
+192
+00:17:11,839 --> 00:17:17,201
+Adding partially supported verdicts gives about three percent not fully supported.
+
+193
+00:17:17,201 --> 00:17:18,840
+And the failures cluster:
+
+194
+00:17:18,840 --> 00:17:25,526
+in five of six diseases the three worst papers hold half or more of that disease's unsupported claims.
+
+195
+00:17:25,526 --> 00:17:28,988
+This is the filter's reading, and it is not an error rate.
+
+196
+00:17:30,290 --> 00:17:31,615
+Why do claims fail?
+
+197
+00:17:31,615 --> 00:17:36,806
+The commonest unsupported field in five diseases is the gene symbol on a variant row:
+
+198
+00:17:36,806 --> 00:17:43,402
+a relative's or a cited patient's variant written into the proband's row from a sentence that mentions both.
+
+199
+00:17:43,402 --> 00:17:48,158
+Extraction version five's rule, variant fields only from this person,
+
+200
+00:17:48,158 --> 00:17:53,740
+holds for probands and slips for relatives the paper says carry the same variant.
+
+201
+00:17:53,740 --> 00:17:59,897
+The second pattern is hedged wording, suggested, suspected, consistent with, typically,
+
+202
+00:17:59,897 --> 00:18:08,390
+recorded as observed or excluded; extraction version six has no hedge rule, a gap known and left in place at the freeze.
+
+203
+00:18:08,390 --> 00:18:12,140
+The third is cohort-level statements applied to individuals;
+
+204
+00:18:12,140 --> 00:18:17,515
+the cohort in general dominates the unsupported claims in Danon and Alexander disease.
+
+205
+00:18:17,515 --> 00:18:22,024
+Danon's three worst papers hold 60 of its 110 unsupported claims:
+
+206
+00:18:22,024 --> 00:18:28,821
+variant and diagnosis fields given to eight family carriers when the paper names only the proband,
+
+207
+00:18:28,821 --> 00:18:35,203
+usually mild applied to individuals, and exclusions resting on typically showed no symptoms.
+
+208
+00:18:35,203 --> 00:18:42,700
+The gatekeeper also flagged about thirty papers whose table and text disagree; those claims were judged on the table,
+
+209
+00:18:42,700 --> 00:18:45,328
+noted, and collected for the human audit.
+
+210
+00:18:46,634 --> 00:18:48,134
+How stable is the reading?
+
+211
+00:18:48,134 --> 00:18:52,066
+A random ten percent of each disease's papers, 38 in all,
+
+212
+00:18:52,066 --> 00:18:57,584
+was re-extracted with the same frozen files and compared with the run of record.
+
+213
+00:18:57,584 --> 00:19:02,889
+Checklist statuses agree on 97 to 100 percent of cells in every disease:
+
+214
+00:19:02,889 --> 00:19:08,709
+fixing the feature names removes the wording variance that free-text rows show.
+
+215
+00:19:08,709 --> 00:19:14,169
+Variant keys agree at 83 to 100 percent; the two lowest, Tangier and Danon,
+
+216
+00:19:14,169 --> 00:19:20,284
+are each one paper where both runs recorded the same variants in different notation.
+
+217
+00:19:20,284 --> 00:19:28,731
+Individual counts differ in 7 of 38 papers, from scope calls on relatives and on patients cited from earlier reports,
+
+218
+00:19:28,731 --> 00:19:32,197
+the same issue the pilot found in cohort papers.
+
+219
+00:19:32,197 --> 00:19:35,847
+That is the measure to watch when the records are used for counting people.
+
+220
+00:19:37,154 --> 00:19:38,479
+The records table.
+
+221
+00:19:38,479 --> 00:19:49,550
+2,948 rows became 2,836 identities after 112 merges, and 2,836 phenopackets, all schema-valid,
+
+222
+00:19:49,550 --> 00:19:55,204
+1,492 of them carrying a genomic interpretation.
+
+223
+00:19:55,204 --> 00:20:02,029
+SSADH deficiency's 58 merges are all the duplicate study; Tangier and LAD-I have no citation merges at all,
+
+224
+00:20:02,029 --> 00:20:07,579
+which is more likely a limit of the citation route than a fact about those literatures.
+
+225
+00:20:07,579 --> 00:20:13,847
+Normalization of cDNA descriptions ranges from 79 percent in Alexander disease,
+
+226
+00:20:13,847 --> 00:20:20,591
+where papers print cDNA without the c prefix and use legacy numbering, to 97 percent.
+
+227
+00:20:20,591 --> 00:20:24,591
+Protein-only strings can match ClinVar only at tier two.
+
+228
+00:20:24,591 --> 00:20:29,542
+HPO binding covers 84 to 93 percent of feature rows.
+
+229
+00:20:29,542 --> 00:20:35,517
+The records hold 12,679 observed and 3,371 excluded terms; conflicts,
+
+230
+00:20:35,517 --> 00:20:42,012
+the same term observed and excluded for one identity from different papers,
+
+231
+00:20:42,012 --> 00:20:46,341
+are few and are kept visible rather than resolved.
+
+232
+00:20:46,341 --> 00:20:51,442
+The gatekeeper removed 1,060 claims before the records were built.
+
+233
+00:20:52,754 --> 00:20:58,917
+A sanity check on the records: the variant spectrum per disease matches what the biology predicts.
+
+234
+00:20:58,917 --> 00:21:05,494
+Missense variants dominate Alexander disease, a gain-of-function leukodystrophy, and SSADH deficiency,
+
+235
+00:21:05,494 --> 00:21:11,233
+while nonsense and frameshift variants dominate A20 haploinsufficiency and Danon disease,
+
+236
+00:21:11,233 --> 00:21:13,554
+which are loss-of-function diseases.
+
+237
+00:21:13,554 --> 00:21:19,018
+The most frequently observed features per disease are also the expected ones:
+
+238
+00:21:19,018 --> 00:21:26,966
+oral ulcers and recurrent fever in A20 haploinsufficiency, developmental delay and seizures in SSADH deficiency,
+
+239
+00:21:26,966 --> 00:21:32,430
+low HDL cholesterol in Tangier disease, leukocytosis and omphalitis in LAD-I,
+
+240
+00:21:32,430 --> 00:21:39,029
+white matter abnormality in Alexander disease, left ventricular hypertrophy in Danon disease.
+
+241
+00:21:39,029 --> 00:21:45,828
+And the records carry not reported far more often than a value, as the three-state design requires:
+
+242
+00:21:45,828 --> 00:21:51,529
+onset age is asserted for a minority of individuals and consanguinity for very few.
+
+243
+00:21:51,529 --> 00:21:57,616
+Sex is unknown for a sizeable share of identities, mostly people from review tables.
+
+244
+00:21:58,922 --> 00:22:01,859
+Now the most important slide in the results.
+
+245
+00:22:01,859 --> 00:22:07,497
+The primary outcome, the human audit of 250 claims, has not been measured.
+
+246
+00:22:07,497 --> 00:22:13,284
+The sample is drawn, the two blinded rating pages are built, and no claim has been rated.
+
+247
+00:22:13,284 --> 00:22:17,434
+What we do have are the pilot's two audits, before the pipeline was frozen.
+
+248
+00:22:17,434 --> 00:22:22,872
+The first, fifty claims from the second pilot run, found 3 unsupported, 6.0 percent,
+
+249
+00:22:22,872 --> 00:22:27,209
+all variant fields taken from a group statement or a summary table.
+
+250
+00:22:27,209 --> 00:22:30,159
+The gatekeeper of the day flagged none of them.
+
+251
+00:22:30,159 --> 00:22:38,165
+The second, after fixes, 48 claims rated from a twenty-paper re-run, found 3 unsupported again, 6.3 percent,
+
+252
+00:22:38,165 --> 00:22:44,909
+all ages read by position from stacked multi-patient cells that the rater could not verify.
+
+253
+00:22:44,909 --> 00:22:50,972
+Each audit exposed an error class, and each class now has a rule in the frozen pipeline.
+
+254
+00:22:50,972 --> 00:22:53,997
+But nothing has been re-audited by a person since.
+
+255
+00:22:53,997 --> 00:22:58,260
+So the machine's 0.43 percent sits far below the humans' six,
+
+256
+00:22:58,260 --> 00:23:04,059
+and until the audit is rated no accuracy claim can be made for the frozen pipeline.
+
+257
+00:23:05,378 --> 00:23:07,003
+Concordance with ClinVar.
+
+258
+00:23:07,003 --> 00:23:09,865
+Gene agreement is near ceiling by design.
+
+259
+00:23:09,865 --> 00:23:16,665
+HGVS recall, the share of ClinVar's own citation pairs in our papers that the run extracted, is low:
+
+260
+00:23:16,665 --> 00:23:23,465
+at tier one from 10 to 35 percent, and from 15 to 67 percent when protein-level matches are allowed.
+
+261
+00:23:23,465 --> 00:23:28,528
+Overlap, the share of our placed variants that ClinVar already holds,
+
+262
+00:23:28,528 --> 00:23:34,765
+runs from 35 percent in LAD-I to 87 percent in SSADH deficiency, a well-covered gene.
+
+263
+00:23:34,765 --> 00:23:42,056
+Where authors state a classification, it agrees with ClinVar's aggregate 59 to 92 percent of the time,
+
+264
+00:23:42,056 --> 00:23:49,703
+and the disagreements run almost entirely in one direction: authors say pathogenic, ClinVar says uncertain.
+
+265
+00:23:49,703 --> 00:23:56,278
+HPO annotation recall, whether each annotated feature was seen in at least one person, is high.
+
+266
+00:23:56,278 --> 00:24:01,553
+The denominators matter: Tangier's recall rests on six citation pairs.
+
+267
+00:24:02,858 --> 00:24:04,383
+How to read those numbers.
+
+268
+00:24:04,383 --> 00:24:11,268
+HGVS recall is low, but it measures something specific: whether the run extracted, from a given paper,
+
+269
+00:24:11,268 --> 00:24:14,170
+a variant that ClinVar cites to that paper.
+
+270
+00:24:14,170 --> 00:24:17,283
+The misses concentrate in a handful of papers.
+
+271
+00:24:17,283 --> 00:24:22,315
+In SSADH deficiency two papers hold almost all of them: Akaboshi 2003,
+
+272
+00:24:22,315 --> 00:24:29,720
+whose table was scrambled in PDF conversion so that only a dozen of fifty-four families were extracted,
+
+273
+00:24:29,720 --> 00:24:35,470
+and Brennenstuhl 2020, which tested variants in vitro and describes no patients.
+
+274
+00:24:35,470 --> 00:24:41,815
+In LAD-I one review, a mutation update whose people are database accession numbers,
+
+275
+00:24:41,815 --> 00:24:44,795
+holds thirty-seven of forty-one misses.
+
+276
+00:24:44,795 --> 00:24:48,541
+These are scope and input problems more than reading errors,
+
+277
+00:24:48,541 --> 00:24:54,595
+but that is a hypothesis until the registered triage of fifty sampled misses is done by a person.
+
+278
+00:24:54,595 --> 00:25:01,645
+Overlap is not precision: a variant absent from ClinVar may be a real gap or a notation difference.
+
+279
+00:25:01,645 --> 00:25:09,162
+Classification disagreement runs in one direction, consistent with an expectation stated before registration:
+
+280
+00:25:09,162 --> 00:25:14,058
+authors call variants pathogenic that ClinVar still lists as uncertain.
+
+281
+00:25:15,362 --> 00:25:19,487
+Two expert catalogues give the strongest completeness check we have.
+
+282
+00:25:19,487 --> 00:25:23,015
+For A20 haploinsufficiency, Chen 2020's table:
+
+283
+00:25:23,015 --> 00:25:30,224
+100% (9 of 9) of the catalogue's variants whose source paper was in the corpus were recovered.
+
+284
+00:25:30,224 --> 00:25:40,024
+For Alexander disease, Grossi 2024's supplementary table: 96% (54 of 56), and the two misses are notation.
+
+285
+00:25:40,024 --> 00:25:43,762
+Where the pipeline read the source paper, it found the variant.
+
+286
+00:25:43,762 --> 00:25:49,601
+The unrestricted figures are lower only because most of the catalogues' source papers are paywalled,
+
+287
+00:25:49,601 --> 00:25:51,762
+which is the access constraint again.
+
+288
+00:25:51,762 --> 00:25:55,012
+The other four diseases have no registered catalogue:
+
+289
+00:25:55,012 --> 00:26:00,224
+their candidate catalogues had no per-variant table naming sources, or were not open.
+
+290
+00:26:00,224 --> 00:26:07,348
+Extending catalogue-based completeness to those diseases is one of the cheapest ways to strengthen the study,
+
+291
+00:26:07,348 --> 00:26:09,962
+and it needs no model spend to speak of.
+
+292
+00:26:11,282 --> 00:26:14,918
+OMIM entered the study on the twenty-eighth of October,
+
+293
+00:26:14,918 --> 00:26:21,398
+when the principal investigator printed the six phenotype entries and the six gene entries to PDF,
+
+294
+00:26:21,398 --> 00:26:27,282
+because omim.org refuses automated reads from our environment and no API key is in place.
+
+295
+00:26:27,282 --> 00:26:35,162
+A harness script parses each page: titles, cross-references, the allelic variants with OMIM's legacy labels,
+
+296
+00:26:35,162 --> 00:26:41,582
+their dbSNP and ClinVar accessions, the papers each narrative cites, and the edit dates.
+
+297
+00:26:41,582 --> 00:26:47,782
+The content stays outside the repository because OMIM's terms restrict redistribution.
+
+298
+00:26:47,782 --> 00:26:54,569
+The gene entries list 82 allelic variants, 75 of them titled for our six diseases.
+
+299
+00:26:54,569 --> 00:27:00,857
+OMIM calls these selected examples: a curated sample of the literature, not a catalogue.
+
+300
+00:27:00,857 --> 00:27:07,819
+So recall of OMIM's variants is the meaningful direction, and precision against OMIM is not.
+
+301
+00:27:07,819 --> 00:27:09,507
+Matching went through ClinVar.
+
+302
+00:27:09,507 --> 00:27:17,891
+Each allelic variant was placed in ClinVar through ClinVar's own OMIM cross-reference or the accessions OMIM prints;
+
+303
+00:27:17,891 --> 00:27:20,782
+ClinVar's title then gives current HGVS.
+
+304
+00:27:20,782 --> 00:27:26,476
+That was necessary because OMIM's own labels use legacy protein numbering:
+
+305
+00:27:26,476 --> 00:27:31,169
+ABCA1 labels sit sixty residues below the current transcript,
+
+306
+00:27:31,169 --> 00:27:36,632
+and a LAMP2 label reads leucine 113 where the current numbering is 147.
+
+307
+00:27:37,946 --> 00:27:46,220
+The result: the run recovered 57 percent, 43 of 75 of the variants OMIM lists for these diseases,
+
+308
+00:27:46,220 --> 00:27:50,058
+with a Wilson interval from 46 to 68 percent.
+
+309
+00:27:50,058 --> 00:27:56,987
+By disease it runs from 89 percent, 8 of 9 for A20 haploinsufficiency and 86 percent,
+
+310
+00:27:56,987 --> 00:28:02,449
+12 of 14 for LAD-I down to 11 percent, 2 of 19 for Tangier disease,
+
+311
+00:28:02,449 --> 00:28:11,333
+whose allelic variants come from the gene-discovery papers of 1999 to 2003, all in the corpus and all closed.
+
+312
+00:28:11,333 --> 00:28:18,865
+The column that explains the pattern is on the right: of the 84 papers OMIM cites as sources for these variants,
+
+313
+00:28:18,865 --> 00:28:20,008
+5 were extracted.
+
+314
+00:28:20,008 --> 00:28:25,800
+Where the source paper was in the run, the variant was recovered from it 8 times out of 14;
+
+315
+00:28:25,800 --> 00:28:27,646
+the misses have named causes.
+
+316
+00:28:28,946 --> 00:28:29,996
+Four lessons.
+
+317
+00:28:29,996 --> 00:28:38,240
+First, coverage, not reading, is the binding constraint: pooled over every paper OMIM cites for these diseases,
+
+318
+00:28:38,240 --> 00:28:46,483
+96 sit in our screened corpus with no open copy, 160 were never returned by our searches, and 9 were extracted.
+
+319
+00:28:46,483 --> 00:28:53,874
+The never-returned papers are mostly pre-1990 descriptions under earlier names for the disease:
+
+320
+00:28:53,874 --> 00:29:01,887
+LAD-I as Mo1 or LFA-1 deficiency, Danon disease as lysosomal glycogen storage with normal acid maltase,
+
+321
+00:29:01,887 --> 00:29:06,321
+Tangier disease as familial alpha-lipoprotein deficiency.
+
+322
+00:29:06,321 --> 00:29:09,708
+A search-term gap for diseases described before their gene.
+
+323
+00:29:09,708 --> 00:29:15,485
+Second, where the source paper was read, the variant was usually there: 8 of 14,
+
+324
+00:29:15,485 --> 00:29:22,200
+and the misses are a table scrambled in PDF conversion and two variants stated only in prose,
+
+325
+00:29:22,200 --> 00:29:28,771
+a glycine to an arginine at amino acid 169, which the record keeps verbatim but cannot key.
+
+326
+00:29:28,771 --> 00:29:33,727
+Third, at the patient level, for the 9 papers both OMIM and the run cover,
+
+327
+00:29:33,727 --> 00:29:40,693
+our records agreed with OMIM's curated statements 12 times, were partial 7 times, and contradicted none;
+
+328
+00:29:40,693 --> 00:29:45,046
+where they differ, the run usually has less, not something wrong.
+
+329
+00:29:45,046 --> 00:29:52,623
+Fourth, OMIM is fallible too: two allelic variants link to ClinVar records that do not match their own text,
+
+330
+00:29:52,623 --> 00:29:58,096
+and ten labels differ from ClinVar's protein change, nine by legacy numbering.
+
+331
+00:29:58,096 --> 00:30:03,033
+A holdout curated by people needs the same provenance checks as our output.
+
+332
+00:30:04,346 --> 00:30:09,133
+The OMIM check also caught an error of ours, and the story is worth a minute.
+
+333
+00:30:09,133 --> 00:30:16,336
+Every one of the 215 gap candidates was compared with its gene's allelic variants by allele, cDNA,
+
+334
+00:30:16,336 --> 00:30:18,321
+protein and notation token.
+
+335
+00:30:18,321 --> 00:30:22,678
+One Danon candidate, a two-base deletion from Sugie 2018,
+
+336
+00:30:22,678 --> 00:30:27,646
+collided with an OMIM allelic variant by its deletion token only.
+
+337
+00:30:27,646 --> 00:30:33,321
+The paper's table places the deletion on exon 9b, the LAMP2B isoform.
+
+338
+00:30:33,321 --> 00:30:37,527
+LAMP2 has alternative terminal exons 9a, 9b and 9c,
+
+339
+00:30:37,527 --> 00:30:44,783
+and because the paper named no transcript the run had assumed the standard one, exon 9a.
+
+340
+00:30:44,783 --> 00:30:50,433
+That produced a genomic allele no database holds, because it is not what the paper reported.
+
+341
+00:30:50,433 --> 00:30:58,546
+On the right transcript, the variant is OMIM 309060.0001 and a ClinVar record.
+
+342
+00:30:58,546 --> 00:31:05,821
+It was a normalization artefact, not a gap, and it was withdrawn the same day under deviation D-43.
+
+343
+00:31:05,821 --> 00:31:11,875
+A new module now computes from the RefSeq records where each gene's coding isoforms diverge,
+
+344
+00:31:11,875 --> 00:31:19,246
+and normalization lets the paper's own words choose the transcript at such positions, or assigns no genomic key.
+
+345
+00:31:19,246 --> 00:31:25,908
+The Danon run was re-normalized; exactly two of 165 descriptions changed.
+
+346
+00:31:25,908 --> 00:31:32,058
+Scoring against two independent references found an error that scoring against one could not.
+
+347
+00:31:33,362 --> 00:31:34,774
+Now the gap itself.
+
+348
+00:31:34,774 --> 00:31:41,937
+Across the six diseases the papers yielded 466 distinct variants placed on the genome.
+
+349
+00:31:41,937 --> 00:31:48,949
+245 are in ClinVar, 168 of them classified pathogenic or likely pathogenic.
+
+350
+00:31:48,949 --> 00:31:53,587
+221 are absent from ClinVar in two successive releases.
+
+351
+00:31:53,587 --> 00:32:01,117
+After dropping the alleles whose every supporting row failed the gatekeeper, checking each against OMIM,
+
+352
+00:32:01,117 --> 00:32:05,462
+and withdrawing the isoform artefact, 214 candidates remain.
+
+353
+00:32:05,462 --> 00:32:12,528
+Each has an evidence dossier written by helpers and checked by script: every paper reporting it, every quote,
+
+354
+00:32:12,528 --> 00:32:18,362
+found verbatim, the individuals, the authors' own classification, and flags for the panel.
+
+355
+00:32:18,362 --> 00:32:26,216
+Separately, 53 variants that papers classify as pathogenic sit in ClinVar only as uncertain or conflicting,
+
+356
+00:32:26,216 --> 00:32:32,674
+15 of them with evidence the harness judged strong enough to propose a reclassification.
+
+357
+00:32:32,674 --> 00:32:34,299
+All of these are candidates.
+
+358
+00:32:34,299 --> 00:32:39,199
+Nothing is submitted without adjudication and the principal investigator's sign-off.
+
+359
+00:32:40,514 --> 00:32:50,307
+By disease, the candidate list is dominated by LAD-I with 82 and A20 haploinsufficiency with 64; SSADH deficiency,
+
+360
+00:32:50,307 --> 00:32:54,601
+a well-covered gene, contributes 10 and Tangier 7.
+
+361
+00:32:54,601 --> 00:33:00,917
+The LAD-I list needs care: 66 of its 82 candidates come only from papers ClinVar itself cites,
+
+362
+00:33:00,917 --> 00:33:08,576
+most of them from one mutation update whose people are database accession numbers, and the protein check flags 10.
+
+363
+00:33:08,576 --> 00:33:12,802
+Many may be numbering or normalization slips rather than gaps.
+
+364
+00:33:12,802 --> 00:33:19,734
+Model-written flags on the dossiers mark 152 of the 215 candidates for the panel's attention:
+
+365
+00:33:19,734 --> 00:33:27,859
+possible same person reported twice, carriers not attached to a case, notation conflicts, protein mismatches,
+
+366
+00:33:27,859 --> 00:33:31,214
+review-only sources, mosaic or somatic calls.
+
+367
+00:33:31,214 --> 00:33:34,339
+These are leads for adjudication, not verdicts.
+
+368
+00:33:35,642 --> 00:33:41,558
+The bar chart shows each disease's genome-placed variants split by their standing in ClinVar:
+
+369
+00:33:41,558 --> 00:33:48,236
+pathogenic or likely pathogenic in dark blue, another classification in light blue, candidates in orange,
+
+370
+00:33:48,236 --> 00:33:50,717
+and absent but not a candidate in grey.
+
+371
+00:33:50,717 --> 00:33:56,617
+A typical candidate is a frameshift or nonsense variant reported in one or two papers,
+
+372
+00:33:56,617 --> 00:33:59,292
+with the authors calling it pathogenic.
+
+373
+00:33:59,292 --> 00:34:07,343
+The dossier gives the panel everything in one place: the normalized description, how each paper wrote it, the quotes,
+
+374
+00:34:07,343 --> 00:34:13,054
+the individuals, zygosity where stated, the authors' classification, and the flags.
+
+375
+00:34:13,054 --> 00:34:20,417
+The dashboard lists all of them with PubMed links, and the adjudication page, built and private, is ready for the panel.
+
+376
+00:34:20,417 --> 00:34:21,654
+Two cautions.
+
+377
+00:34:21,654 --> 00:34:25,154
+The list is a lower bound set by open access.
+
+378
+00:34:25,154 --> 00:34:31,852
+And it is not yet a list of real gaps: adjudication will sort real gaps from notation differences,
+
+379
+00:34:31,852 --> 00:34:33,492
+duplicates and carriers.
+
+380
+00:34:34,802 --> 00:34:36,927
+The bias arm has two parts.
+
+381
+00:34:36,927 --> 00:34:44,177
+The memorization probe asks whether the model could be extracting facts it remembers from training rather than facts it reads.
+
+382
+00:34:44,177 --> 00:34:46,811
+180 papers, thirty per disease,
+
+383
+00:34:46,811 --> 00:34:56,752
+were stratified by publication date against the model's documented training cutoff of June 2026: 10 after, 51 recent,
+
+384
+00:34:56,752 --> 00:34:57,602
+119 older.
+
+385
+00:34:57,602 --> 00:35:04,302
+Two black-box probes ran identically on both models: closed-book recall from the PMID, title and year,
+
+386
+00:35:04,302 --> 00:35:11,527
+and guided completion of a fifty-word opening, scored against the full-text extraction, never against ClinVar.
+
+387
+00:35:11,527 --> 00:35:17,427
+In the 10 post-cutoff papers neither model produced a specific recall or a correct variant.
+
+388
+00:35:17,427 --> 00:35:24,865
+Across all strata Claude claimed specific recall for 4 of 180 papers, all older and for phenotypes only;
+
+389
+00:35:24,865 --> 00:35:29,514
+the few variant hits were recurrent variants labelled as guesses.
+
+390
+00:35:29,514 --> 00:35:34,352
+The completions with longer matching runs are formulaic consent sentences.
+
+391
+00:35:34,352 --> 00:35:38,769
+The probe is small and will grow as post-cutoff papers accumulate,
+
+392
+00:35:38,769 --> 00:35:45,127
+and black-box probes can miss memorization that changes extraction without surfacing as recall.
+
+393
+00:35:45,127 --> 00:35:47,590
+But it gives no sign of memorization.
+
+394
+00:35:48,890 --> 00:35:54,015
+The second part of the bias arm, the frequency deviation, has no numbers yet.
+
+395
+00:35:54,015 --> 00:35:58,387
+The design is simple and deliberately human-first: for each disease,
+
+396
+00:35:58,387 --> 00:36:05,073
+a person lists the held-out natural-history cohort's HPO-mappable features and their cohort frequencies,
+
+397
+00:36:05,073 --> 00:36:08,030
+without looking at our literature frequencies;
+
+398
+00:36:08,030 --> 00:36:14,202
+only then does a script compute observed over observed plus excluded per feature in our records,
+
+399
+00:36:14,202 --> 00:36:18,253
+with a publication-cluster bootstrap, and report the deviation.
+
+400
+00:36:18,253 --> 00:36:27,034
+4 open comparators are fetched and a listing sheet exists for each: A20 haploinsufficiency, Alexander disease,
+
+401
+00:36:27,034 --> 00:36:29,828
+Danon disease and SSADH deficiency.
+
+402
+00:36:29,828 --> 00:36:36,434
+Three candidate comparators are paywalled and left out, and LAD-I and Tangier disease have no comparator,
+
+403
+00:36:36,434 --> 00:36:39,203
+so they are out of the bias arm by decision.
+
+404
+00:36:39,203 --> 00:36:43,065
+The script is written and tested on synthetic input only.
+
+405
+00:36:43,065 --> 00:36:46,565
+What it needs is one to two hours of a person per sheet.
+
+406
+00:36:47,882 --> 00:36:49,457
+The efficiency outcome.
+
+407
+00:36:49,457 --> 00:36:54,832
+Expert-minutes per accepted record cannot be measured until adjudication starts.
+
+408
+00:36:54,832 --> 00:37:00,816
+The model comparison is done for two diseases: DeepSeek V4.1 Flash, an open-weight model,
+
+409
+00:37:00,816 --> 00:37:07,875
+ran the same 85 A20 and 40 SSADH papers with the same launch prompt, frozen instruction files and schema,
+
+410
+00:37:07,875 --> 00:37:14,598
+through an agent loop with file tools; the outputs went through the same span check, reconciliation,
+
+411
+00:37:14,598 --> 00:37:19,170
+normalization and harness, and the same gatekeeper judged both runs.
+
+412
+00:37:19,170 --> 00:37:29,720
+The two models found largely the same variants: 261 of 294 in the union for A20, 157 of 166 for SSADH.
+
+413
+00:37:29,720 --> 00:37:35,982
+The open model cost about one 15th as much per paper and took 7 times as long.
+
+414
+00:37:35,982 --> 00:37:37,995
+Where it differed was provenance.
+
+415
+00:37:37,995 --> 00:37:46,857
+Claude left no value without a quote; the open model left 3.6 and 3.0 percent without one, which the rules forbid.
+
+416
+00:37:46,857 --> 00:37:56,857
+The gatekeeper judged 8.6 and 6.1 percent of its claims unsupported, against 0.20 and 0.38 for Claude.
+
+417
+00:37:58,178 --> 00:38:00,841
+Three readings and two cautions.
+
+418
+00:38:00,841 --> 00:38:06,216
+The readings: the method transfers, in that a much cheaper model finds the same variants;
+
+419
+00:38:06,216 --> 00:38:13,040
+the provenance rules bind differently on different models, in that the open model drops quotes the rules require;
+
+420
+00:38:13,040 --> 00:38:17,328
+and quote-level provenance is the cheapest place to see the difference.
+
+421
+00:38:17,328 --> 00:38:21,324
+Most of the gap in unsupported rates is claims with no quote at all,
+
+422
+00:38:21,324 --> 00:38:25,791
+but claims with a quote were also judged unsupported several times as often.
+
+423
+00:38:25,791 --> 00:38:32,129
+The cautions: the judge is Claude, which may not be neutral between a Claude and a non-Claude extraction,
+
+424
+00:38:32,129 --> 00:38:36,416
+and the gatekeeper helpers did not all treat empty quotes the same way.
+
+425
+00:38:36,416 --> 00:38:41,400
+The registered measure is a blinded human audit of equal samples from each model,
+
+426
+00:38:41,400 --> 00:38:45,153
+and it waits on the same panel decision as the primary audit.
+
+427
+00:38:45,153 --> 00:38:49,784
+The scaffolds also differed slightly, as the plan requires us to state:
+
+428
+00:38:49,784 --> 00:38:56,436
+the open-weight loop had no shell and no repair passes, and three harness fixes landed during its run,
+
+429
+00:38:56,436 --> 00:38:57,741
+approved and logged.
+
+430
+00:38:57,741 --> 00:39:02,503
+Two diseases, one model, one provider: not a general finding.
+
+431
+00:39:03,818 --> 00:39:07,381
+Two exploratory analyses, flagged as such.
+
+432
+00:39:07,381 --> 00:39:14,537
+First, genotype-phenotype tests with GPSEA, Fisher exact tests with Benjamini-Hochberg correction,
+
+433
+00:39:14,537 --> 00:39:16,143
+in a separate project.
+
+434
+00:39:16,143 --> 00:39:20,410
+Variant effects come from each phenopacket's own normalized HGVS,
+
+435
+00:39:20,410 --> 00:39:25,137
+only individuals with a placed variant and at least one phenotype enter,
+
+436
+00:39:25,137 --> 00:39:31,243
+and zygosity for untyped calls is an analysis assumption only; the records keep not reported.
+
+437
+00:39:31,243 --> 00:39:39,053
+In A20 haploinsufficiency, Alexander disease, SSADH deficiency and LAD-I, no term survives correction,
+
+438
+00:39:39,053 --> 00:39:42,805
+and Tangier has too few phased genotypes to test.
+
+439
+00:39:42,805 --> 00:39:48,415
+Danon disease reproduces the published sex difference: males, who are hemizygous,
+
+440
+00:39:48,415 --> 00:39:55,618
+far more often show proximal muscle weakness and left ventricular hypertrophy than heterozygous females.
+
+441
+00:39:55,618 --> 00:40:02,456
+The papers overlap with the published series, so this is a reproduction check, not an independent replication,
+
+442
+00:40:02,456 --> 00:40:09,418
+and the truncating-versus-missense arrhythmia signal rests on a handful of missense carriers and is a lead only.
+
+443
+00:40:10,730 --> 00:40:15,505
+Second, a look at what ClinVar's ABCA1 record actually contains.
+
+444
+00:40:15,505 --> 00:40:24,615
+Of 2,006 single-gene ABCA1 records in ClinVar, only 16 match variants extracted from the thirty-one Tangier papers,
+
+445
+00:40:24,615 --> 00:40:29,130
+and of the 85 pathogenic or likely pathogenic records, 7.
+
+446
+00:40:29,130 --> 00:40:34,380
+Most of the gene's ClinVar records come from testing unrelated to Tangier disease.
+
+447
+00:40:34,380 --> 00:40:40,925
+Separating the monogenic allelic series from that noise is itself one of the tests the grant proposed,
+
+448
+00:40:40,925 --> 00:40:44,967
+and it is a lower bound because the corpus is open access only.
+
+449
+00:40:44,967 --> 00:40:47,555
+Two negative results on deduplication.
+
+450
+00:40:47,555 --> 00:40:54,588
+The planned LAD-I benchmark against the duplicate cases in Almarza Novoa 2018 is not computable:
+
+451
+00:40:54,588 --> 00:41:00,155
+the review's open supplement flags only one overlap and names no case pairs.
+
+452
+00:41:00,155 --> 00:41:04,922
+And the citation-only merge route found no merges at all in Tangier and LAD-I,
+
+453
+00:41:04,922 --> 00:41:09,690
+which is more likely a limit of the route than a fact about those literatures;
+
+454
+00:41:09,690 --> 00:41:16,230
+the dossier helpers later proposed nineteen same-person groups across the candidates, which await a person.
+
+455
+00:41:17,546 --> 00:41:19,521
+A20 haploinsufficiency.
+
+456
+00:41:19,521 --> 00:41:28,808
+838 records screened, 160 in the corpus, 85 with open full text, 85 papers extracted.
+
+457
+00:41:28,808 --> 00:41:38,925
+811 rows became 769 identities, 558 with a variant in the gene; the most observed features are Oral ulcer 43 percent;
+
+458
+00:41:38,925 --> 00:41:45,496
+Recurrent fever 27 percent; Inflammatory abnormality of the skin 22 percent.
+
+459
+00:41:45,496 --> 00:41:50,308
+The gatekeeper judged 0.20 percent of claims unsupported.
+
+460
+00:41:50,308 --> 00:42:01,996
+Against ClinVar, HGVS recall at tiers one and two was 27 percent, 21 of 78 and overlap 38 percent, 39 of 103.
+
+461
+00:42:01,996 --> 00:42:10,283
+64 candidates are absent from both databases, and 89 percent, 8 of 9 of OMIM's listed variants were recovered.
+
+462
+00:42:10,283 --> 00:42:20,058
+Development disease: every rule was tuned on its pilot runs; 92 of 160 corpus papers were ClinVar-seeded (D-19).
+
+463
+00:42:20,058 --> 00:42:27,063
+Treat its figures as an upper bound Completeness vs Chen 2020: 100 percent (9 of 9) restricted;
+
+464
+00:42:27,063 --> 00:42:30,233
+most catalogue source papers are paywalled.
+
+465
+00:42:31,538 --> 00:42:32,875
+SSADH deficiency.
+
+466
+00:42:32,875 --> 00:42:42,288
+357 records screened, 171 in the corpus, 59 with open full text, 40 papers extracted.
+
+467
+00:42:42,288 --> 00:42:48,172
+421 rows became 363 identities, 243 with a variant in the gene;
+
+468
+00:42:48,172 --> 00:42:58,538
+the most observed features are Global developmental delay 25 percent; Seizure 20 percent; Hypotonia 18 percent.
+
+469
+00:42:58,538 --> 00:43:04,101
+The gatekeeper judged 0.38 percent of claims unsupported.
+
+470
+00:43:04,101 --> 00:43:15,601
+Against ClinVar, HGVS recall at tiers one and two was 15 percent, 23 of 158 and overlap 87 percent, 68 of 78.
+
+471
+00:43:15,601 --> 00:43:23,950
+10 candidates are absent from both databases, and 57 percent, 4 of 7 of OMIM's listed variants were recovered.
+
+472
+00:43:23,950 --> 00:43:33,129
+Duplicate study: the preprint and journal version are both in the corpus, their patients merged with evidence recorded;
+
+473
+00:43:33,129 --> 00:43:39,222
+the papers disagree on G176R vs G176E for one variant O2 misses are two papers:
+
+474
+00:43:39,222 --> 00:43:47,476
+a table scrambled in conversion (about 12 of 54 families extracted) and an in-vitro study with no patients.
+
+475
+00:43:48,794 --> 00:43:50,006
+Tangier disease.
+
+476
+00:43:50,006 --> 00:43:59,181
+529 records screened, 284 in the corpus, 39 with open full text, 31 papers extracted.
+
+477
+00:43:59,181 --> 00:44:04,385
+235 rows became 235 identities, 65 with a variant in the gene;
+
+478
+00:44:04,385 --> 00:44:13,785
+the most observed features are Decreased circulating HDL-C concentration 21 percent; Angina pectoris 14 percent;
+
+479
+00:44:13,785 --> 00:44:17,394
+Coronary artery atherosclerosis 13 percent.
+
+480
+00:44:17,394 --> 00:44:22,906
+The gatekeeper judged 0.31 percent of claims unsupported.
+
+481
+00:44:22,906 --> 00:44:32,956
+Against ClinVar, HGVS recall at tiers one and two was 50 percent, 3 of 6 and overlap 56 percent, 9 of 16.
+
+482
+00:44:32,956 --> 00:44:40,956
+7 candidates are absent from both databases, and 11 percent, 2 of 19 of OMIM's listed variants were recovered.
+
+483
+00:44:40,956 --> 00:44:44,756
+Smallest corpus and lowest open-access share;
+
+484
+00:44:44,756 --> 00:44:52,102
+many old papers with tables as images Only 65 of 235 identities carry an ABCA1 variant:
+
+485
+00:44:52,102 --> 00:44:57,844
+140 come from review tables and many older reports give no genotype.
+
+486
+00:44:59,112 --> 00:45:01,217
+Leukocyte adhesion deficiency I.
+
+487
+00:45:01,217 --> 00:45:09,111
+874 records screened, 274 in the corpus, 59 with open full text, 42 papers extracted.
+
+488
+00:45:09,111 --> 00:45:14,225
+508 rows became 508 identities, 328 with a variant in the gene;
+
+489
+00:45:14,225 --> 00:45:22,828
+the most observed features are Increased total leukocyte count 32 percent; Neonatal omphalitis 12 percent;
+
+490
+00:45:22,828 --> 00:45:25,426
+Pyoderma gangrenosum 11 percent.
+
+491
+00:45:25,426 --> 00:45:29,636
+The gatekeeper judged 0.43 percent of claims unsupported.
+
+492
+00:45:29,636 --> 00:45:41,214
+Against ClinVar, HGVS recall at tiers one and two was 32 percent, 19 of 60 and overlap 35 percent, 45 of 129.
+
+493
+00:45:41,214 --> 00:45:51,213
+82 candidates are absent from both databases, and 86 percent, 12 of 14 of OMIM's listed variants were recovered.
+
+494
+00:45:51,213 --> 00:45:59,776
+The gap list is dominated by one review (van de Vijver 2012) whose people are accession numbers;
+
+495
+00:45:59,776 --> 00:46:08,161
+many candidates may be numbering slips Input problem: one supplement cut at 60,000 characters,
+
+496
+00:46:08,161 --> 00:46:12,264
+so patients P75 to P127 have no clinical rows.
+
+497
+00:46:13,514 --> 00:46:15,014
+Alexander disease.
+
+498
+00:46:15,014 --> 00:46:24,739
+539 records screened, 363 in the corpus, 83 with open full text, 69 papers extracted.
+
+499
+00:46:24,739 --> 00:46:30,347
+463 rows became 456 identities, 318 with a variant in the gene;
+
+500
+00:46:30,347 --> 00:46:39,606
+the most observed features are Abnormal cerebral white matter morphology 19 percent; Seizure 16 percent;
+
+501
+00:46:39,606 --> 00:46:41,564
+Dysarthria 14 percent.
+
+502
+00:46:41,564 --> 00:46:47,264
+The gatekeeper judged 0.27 percent of claims unsupported.
+
+503
+00:46:47,264 --> 00:46:58,951
+Against ClinVar, HGVS recall at tiers one and two was 67 percent, 34 of 51 and overlap 73 percent, 49 of 67.
+
+504
+00:46:58,951 --> 00:47:07,651
+17 candidates are absent from both databases, and 69 percent, 9 of 13 of OMIM's listed variants were recovered.
+
+505
+00:47:07,651 --> 00:47:14,626
+Lowest normalization (79 percent): cDNA printed without "c.", legacy numbering;
+
+506
+00:47:14,626 --> 00:47:24,779
+65 protein-only strings match ClinVar only at tier 2 Completeness vs Grossi 2024: 96 percent (54 of 56) restricted;
+
+507
+00:47:24,779 --> 00:47:27,251
+the two misses are notation.
+
+508
+00:47:28,562 --> 00:47:29,762
+Danon disease.
+
+509
+00:47:29,762 --> 00:47:39,224
+416 records screened, 244 in the corpus, 96 with open full text, 83 papers extracted.
+
+510
+00:47:39,224 --> 00:47:44,039
+510 rows became 505 identities, 281 with a variant in the gene;
+
+511
+00:47:44,039 --> 00:47:52,523
+the most observed features are Left ventricular hypertrophy 39 percent; Hypertrophic cardiomyopathy 28 percent;
+
+512
+00:47:52,523 --> 00:47:55,274
+Congestive heart failure 20 percent.
+
+513
+00:47:55,274 --> 00:48:00,437
+The gatekeeper judged 0.61 percent of claims unsupported.
+
+514
+00:48:00,437 --> 00:48:10,599
+Against ClinVar, HGVS recall at tiers one and two was 50 percent, 10 of 20 and overlap 48 percent, 35 of 73.
+
+515
+00:48:10,599 --> 00:48:19,287
+34 candidates are absent from both databases, and 62 percent, 8 of 13 of OMIM's listed variants were recovered.
+
+516
+00:48:19,287 --> 00:48:28,709
+Highest gatekeeper unsupported share (0.61 percent): three papers hold 60 of 110 Sex difference reproduced (GPSEA):
+
+517
+00:48:28,709 --> 00:48:34,362
+males more often show myopathy and hypertrophy; a reproduction check.
+
+518
+00:48:35,666 --> 00:48:36,466
+Spend.
+
+519
+00:48:36,466 --> 00:48:46,749
+By this session's own usage readings, about 1,861 dollars of the 45,000 dollar award had been used by 2026-10-24,
+
+520
+00:48:46,749 --> 00:48:48,478
+about four percent.
+
+521
+00:48:48,478 --> 00:48:51,591
+Extraction and the gatekeeper account for most of it.
+
+522
+00:48:51,591 --> 00:48:57,804
+The readings are estimates, not billing figures: they sometimes froze for an hour, stages overlapped,
+
+523
+00:48:57,804 --> 00:49:02,541
+and whether this session runs on the funded account is still being confirmed.
+
+524
+00:49:02,541 --> 00:49:04,685
+Measured unit costs on this route:
+
+525
+00:49:04,685 --> 00:49:11,053
+about two dollars per paper for extraction and under half a cent per judged claim for the gatekeeper;
+
+526
+00:49:11,053 --> 00:49:16,853
+the six-disease run with its ten percent repeat came in well under its 1,200 dollar ceiling.
+
+527
+00:49:16,853 --> 00:49:21,453
+The open-weight compute was billed outside the award, about 20 dollars.
+
+528
+00:49:21,453 --> 00:49:28,541
+A separate exploratory pilot in another session cost about 317 dollars and is not covered in this talk.
+
+529
+00:49:28,541 --> 00:49:34,028
+The large remaining costs of the project are human hours, which the award does not fund.
+
+530
+00:49:35,330 --> 00:49:36,292
+Part four.
+
+531
+00:49:36,292 --> 00:49:39,667
+What it means, the gaps in the study, and what we need from you.
+
+532
+00:49:40,970 --> 00:49:42,145
+What the data say.
+
+533
+00:49:42,145 --> 00:49:46,947
+The pipeline runs end to end on six diseases at the scale the grant projected,
+
+534
+00:49:46,947 --> 00:49:53,595
+with provenance that holds on every value and repeats that are stable where the schema fixes the vocabulary.
+
+535
+00:49:53,595 --> 00:50:00,350
+It produces 2,836 valid phenopackets, a ClinVar comparison with intervals on every figure,
+
+536
+00:50:00,350 --> 00:50:03,803
+an OMIM check against a human-curated holdout,
+
+537
+00:50:03,803 --> 00:50:09,732
+and 214 candidate gaps that two successive ClinVar releases confirm are absent.
+
+538
+00:50:09,732 --> 00:50:15,507
+What the data do not say: nothing here establishes the accuracy of the frozen pipeline.
+
+539
+00:50:15,507 --> 00:50:21,230
+The gatekeeper's figure is a filter's reading; the only human-rated figures come from the pilot,
+
+540
+00:50:21,230 --> 00:50:24,270
+before the rules those audits produced were frozen.
+
+541
+00:50:24,270 --> 00:50:28,501
+Against OMIM the run recovered 57 percent of the listed variants,
+
+542
+00:50:28,501 --> 00:50:32,472
+but the misses are mostly papers the pipeline could not read,
+
+543
+00:50:32,472 --> 00:50:36,507
+so that figure measures corpus coverage as much as extraction.
+
+544
+00:50:36,507 --> 00:50:44,219
+The gatekeeper's value is in the records, not the metric: it removed 1,060 claims before the phenopackets were built,
+
+545
+00:50:44,219 --> 00:50:48,832
+and its reasons name the failure modes a person should look for first.
+
+546
+00:50:50,138 --> 00:50:55,025
+The OMIM holdout gave three things the ClinVar scoring could not.
+
+547
+00:50:55,025 --> 00:50:58,400
+A direction: where OMIM's source paper was in the run,
+
+548
+00:50:58,400 --> 00:51:04,150
+the curated variant was almost always in our record with the right individuals and zygosity,
+
+549
+00:51:04,150 --> 00:51:10,900
+and the per-patient detail was richer than OMIM's summary; where it was not, the cause was access or search,
+
+550
+00:51:10,900 --> 00:51:11,650
+not reading.
+
+551
+00:51:11,650 --> 00:51:17,020
+A correction: the OMIM check caught a candidate that was a transcript-isoform artefact,
+
+552
+00:51:17,020 --> 00:51:22,637
+which the ClinVar check could not see because the wrong allele was absent from ClinVar too;
+
+553
+00:51:22,637 --> 00:51:24,550
+the fix is now in the pipeline.
+
+554
+00:51:24,550 --> 00:51:31,624
+And a caution: OMIM itself carries legacy numbering and two allelic variants linked to the wrong ClinVar records,
+
+555
+00:51:31,624 --> 00:51:35,380
+so any concordance figure against OMIM should footnote them,
+
+556
+00:51:35,380 --> 00:51:40,513
+and a holdout curated by people deserves the same provenance checks as our output.
+
+557
+00:51:41,784 --> 00:51:47,593
+The report lists nineteen gaps, each with what it blocks, who acts, and a rough cost.
+
+558
+00:51:47,593 --> 00:51:50,135
+The first six need people, not models.
+
+559
+00:51:50,135 --> 00:51:55,959
+The primary audit is unrated: two panel members rate 250 claims, roughly ten to fifteen hours each,
+
+560
+00:51:55,959 --> 00:52:02,842
+and a third breaks ties; it unlocks the only confirmatory outcome and the gatekeeper's accuracy against human labels.
+
+561
+00:52:02,842 --> 00:52:09,378
+OMIM's phenotype half is unassessed: freezing the six clinical synopsis pages and one harness run would close it.
+
+562
+00:52:09,378 --> 00:52:13,009
+The 214 candidates are unadjudicated: ten to fifteen minutes each.
+
+563
+00:52:13,009 --> 00:52:16,639
+The fifty ClinVar misses await triage: two to four hours.
+
+564
+00:52:16,639 --> 00:52:19,544
+The blinded open-weight audit needs the same raters.
+
+565
+00:52:19,544 --> 00:52:24,264
+And the bias arm needs four comparator sheets, one to two hours each.
+
+566
+00:52:25,514 --> 00:52:30,564
+The remaining gaps are about access, inputs, notation and bookkeeping.
+
+567
+00:52:30,564 --> 00:52:35,490
+Open access only leaves fourteen to fifty-three percent of each corpus readable,
+
+568
+00:52:35,490 --> 00:52:38,630
+so completeness and the gap count are lower bounds;
+
+569
+00:52:38,630 --> 00:52:45,526
+adding institutional access would be a deviation and a re-run of a few hundred papers at about two dollars each.
+
+570
+00:52:45,526 --> 00:52:51,583
+Three extraction gaps were frozen on purpose and should wait for the audit's number: no hedge rule,
+
+571
+00:52:51,583 --> 00:52:57,701
+relatives' variant fields from the proband's sentence, and cohort statements applied to individuals.
+
+572
+00:52:57,701 --> 00:53:00,268
+About ten papers had conversion problems,
+
+573
+00:53:00,268 --> 00:53:06,526
+and notation issues like legacy numbering and variants stated only in prose block tier-one matching.
+
+574
+00:53:06,526 --> 00:53:15,235
+Thirty-eight of the eighty-four papers OMIM cites for its variants were never returned by our searches because they use pre-gene-era disease names,
+
+575
+00:53:15,235 --> 00:53:16,301
+a search-term gap.
+
+576
+00:53:16,301 --> 00:53:24,018
+And several bookkeeping items wait on the principal investigator: the pre-registration tags and OSF registration,
+
+577
+00:53:24,018 --> 00:53:29,139
+the budget reconciliation, and the drafted messages to Monarch and ClinVar.
+
+578
+00:53:30,408 --> 00:53:38,784
+The recommended order puts the no-cost human steps first and holds any change to the frozen pipeline until the audit gives a measured failure rate.
+
+579
+00:53:38,784 --> 00:53:45,150
+Step one: settle the panel and share the audit pages, drawing the open-weight audit sample at the same time.
+
+580
+00:53:45,150 --> 00:53:51,792
+Step two: freeze the OMIM synopsis pages or submit the API request, push the pre-registration tags, register on OSF,
+
+581
+00:53:51,792 --> 00:53:54,197
+send the drafts; no cost, long lead times.
+
+582
+00:53:54,197 --> 00:53:58,632
+Step three: triage the fifty ClinVar misses and the LAD-I candidates first,
+
+583
+00:53:58,632 --> 00:54:05,254
+because they tell us whether low recall and the biggest gap list are real before the panel spends hours on them.
+
+584
+00:54:05,254 --> 00:54:11,377
+Step four: the small human tasks that each unblock a registered figure, the comparator sheets, the checklist maps,
+
+585
+00:54:11,377 --> 00:54:12,290
+the merge groups.
+
+586
+00:54:12,290 --> 00:54:16,745
+Only after the audit reads: decide on version seven and a re-run, the input repairs,
+
+587
+00:54:16,745 --> 00:54:19,661
+the notation repairs and the historical-name re-search.
+
+588
+00:54:19,661 --> 00:54:23,347
+Then the panel adjudicates the remaining candidates, and submissions follow sign-off.
+
+589
+00:54:23,347 --> 00:54:30,048
+Steps one to four cost no model spend and about sixty to one hundred and ten panel hours in all.
+
+590
+00:54:31,298 --> 00:54:34,873
+The limitations, stated as the report states them.
+
+591
+00:54:34,873 --> 00:54:42,485
+There is no human-rated accuracy for the frozen pipeline; every support figure is a model's reading of a model's output.
+
+592
+00:54:42,485 --> 00:54:48,985
+The development disease is in every table, flagged, but its rules were tuned on its own papers.
+
+593
+00:54:48,985 --> 00:54:57,698
+OMIM is a sample and only its variant half is in; the patient-level comparison was judged by Claude, not a panel member.
+
+594
+00:54:57,698 --> 00:55:04,235
+Open access only: the corpora hold fourteen to fifty-three percent of the eligible literature.
+
+595
+00:55:04,235 --> 00:55:09,185
+Cost figures are session estimates with frozen readings and overlapping stages.
+
+596
+00:55:09,185 --> 00:55:15,085
+Helper-reported problems are model output, recorded as such and not verified by a person.
+
+597
+00:55:15,085 --> 00:55:21,473
+And one more, which the report states about itself: the author of the report is the pipeline's author.
+
+598
+00:55:21,473 --> 00:55:28,310
+Claude Code built the pipeline, ran it, and generated the report and this talk from its outputs.
+
+599
+00:55:28,310 --> 00:55:34,960
+The numbers are reproducible from the committed files; the framing is not independent of the system it describes.
+
+600
+00:55:34,960 --> 00:55:37,948
+That is one more reason the human audit decides.
+
+601
+00:55:39,266 --> 00:55:40,541
+Which brings us to you.
+
+602
+00:55:40,541 --> 00:55:45,291
+Four roles, each unlocking a registered result or a deliverable.
+
+603
+00:55:45,291 --> 00:55:51,659
+Audit raters: rate 250 extracted values against their quoted evidence on a blinded web page,
+
+604
+00:55:51,659 --> 00:55:59,966
+two raters and a tie-breaker, ten to fifteen hours each; this is the primary outcome and the first true accuracy figure.
+
+605
+00:55:59,966 --> 00:56:00,840
+Adjudicators:
+
+606
+00:56:00,840 --> 00:56:08,102
+review the 214 candidate variants from their dossiers and decide whether the evidence supports a submission,
+
+607
+00:56:08,102 --> 00:56:13,078
+ten to fifteen minutes per candidate; this is the gap-closure deliverable.
+
+608
+00:56:13,078 --> 00:56:14,102
+Cohort readers:
+
+609
+00:56:14,102 --> 00:56:22,021
+fill a comparator sheet of clinical-feature frequencies from a natural-history paper without looking at our records,
+
+610
+00:56:22,021 --> 00:56:25,366
+one to two hours per sheet; this is the bias arm.
+
+611
+00:56:25,366 --> 00:56:31,016
+And methods or domain reviewers: read the paper or the report and tell us what is wrong,
+
+612
+00:56:31,016 --> 00:56:34,291
+missing or unclear from your field's point of view.
+
+613
+00:56:34,291 --> 00:56:38,291
+Everything is published literature; there is no patient data.
+
+614
+00:56:38,291 --> 00:56:43,478
+The dashboard has a short form where you can tell us who you are and how you would like to contribute.
+
+615
+00:56:44,786 --> 00:56:45,973
+Thank you for listening.
+
+616
+00:56:45,973 --> 00:56:52,287
+Everything in this talk, the short paper, the full report and its supplement, this deck with its notes,
+
+617
+00:56:52,287 --> 00:56:55,536
+the candidate list and the form, is on the dashboard.
+
+618
+00:56:55,536 --> 00:57:00,175
+Every number traces to a file in the project repository at a stated commit,
+
+619
+00:57:00,175 --> 00:57:06,174
+and the report says plainly which questions are still open: the human audit, the access decision,
+
+620
+00:57:06,174 --> 00:57:08,586
+and the adjudication of the candidates.
+
+621
+00:57:08,586 --> 00:57:10,186
+We look forward to working with you.
