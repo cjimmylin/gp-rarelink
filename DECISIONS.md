@@ -750,6 +750,14 @@ Entry format once frozen:
 - **Outcome (re-run of 2026-10-28, 16:06–16:10 UTC, VariantValidator 4.0.1.dev7, 166 calls):** 165 distinct Danon descriptions as before; exactly 2 rows changed against the pre-D-43 file (diff kept in the session scratchpad, summarized here): `c.1097_1098delAA` (30413001) now `isoform_from_label` on NM_013995.2, allele X:120439288:CTT:C (ClinVar 1410728's allele; the MANE projection is `c.1093+2440_1093+2441del`); `c.1150G>C` (25228319) now `isoform_ambiguous`, no genomic key. Status counts: normalized 61 (was 62), corrected 39, protein_only 25, not_normalized 27, unresolvable 12, isoform_ambiguous 1. Phenopackets rebuilt with the pinned ontology releases: 505, all schema-valid, same feature counts; 5 records differ beyond the `created` date: DANON-ID0377 (the Sugie 2018 Family 1 proband) carries the corrected allele, and DANON-ID0023, 0024, 0026 and 0027 (22290069, which names NM_013995.1) gain the LAMP2B description `c.1150G>C p.(Gly384Arg)` next to the MANE projection. The individual from 25228319 shares an identity with a record whose variant was stated with its transcript, so no phenopacket lost an expression. `created` is 2026-10-28 on all 505 files, so the Danon phenopacket directory shows as fully changed in git.
 - **Reported where:** `reports/omim_holdout_assessment.md` §7 and the six-disease results report's methods, next revision.
 
+### 2026-11-14 · D-47 · Six reserve diseases added as a registered extension
+- **Registered:** §4 fixes the study to six diseases; §4.2 lists Blau syndrome, Majeed syndrome, familial LCAT deficiency, GAMT deficiency, arterial tortuosity syndrome and PAPA syndrome only as substitutes for a pilot disease with too little open full text (none was needed, D-08).
+- **Change:** the six reserve diseases are run through the frozen pipeline as an extension, under `preregistration/addendum_extension_v1.md` (committed before any extension extraction). The registered six and their outcomes are untouched; the extension has its own O1 sample (250 claims, seed 47250), O2 on a fresh ClinVar snapshot, and O3 candidates adjudicated alongside the first six. O4, the open-weight comparison, the OMIM assessment and the completeness catalogue are not extended.
+- **Reason:** more volunteer reviewers (Jimmy, 2026-11-14); the application's Stretch line ($9,000) was for exactly this.
+- **Approved by:** Jimmy Lin, on 2026-11-14 ("go with your recommendation, draft the addendum and run the checks and proceed with the analysis for all six all the way to the end").
+- **Expected effect on results:** none on the registered six. The extension's results are reported separately; any pooled 12-disease figure is exploratory.
+- **Reported where:** an extension results report, and the methods of the final paper.
+
 ### YYYY-MM-DD · D-nn · Short title
 - Registered: what the frozen plan said (section)
 - Change:
