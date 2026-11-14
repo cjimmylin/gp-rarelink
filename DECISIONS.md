@@ -53,6 +53,7 @@ How to use this file:
 - **Not extended (Claude's default, stated in the addendum):** the bias arm (O4; D-04 keeps comparators within the original six), the open-weight comparison (O5) and the OMIM holdout assessment (D-42, which needs pages Jimmy freezes by hand). New review pages are not published either (no-publishing rule); Claude prepares the data and asks before any page is created or updated.
 - **Addendum:** `preregistration/addendum_extension_v1.md`, committed before any extension extraction. Logged as a deviation below.
 - **Checks run (2026-11-14):** phenopacket-store has no folder or phenopacket path for any of the 12 genes (735 gene folders, 10,809 phenopackets, commit `ca133e6` of 2026-11-04; `analysis/extension/phenopacket_store_check_2026-11-14.json`). The open-access count is applied after full-text screening.
+- **Majeed syndrome dropped (2026-11-14, by the addendum's registered rule, §2):** after full-text screening it has 10 included primary reports with open full text, under the D-08 bar of 15 (50 papers in the corpus after title/abstract screening; 24 with open full text, of which 11 included and 13 excluded; 26 not accessible, of which Europe PMC lists 2 as free elsewhere, which could not lift it to 15). No substitute (addendum §2). Its corpus and screening stay committed and are reported. GAMT deficiency (22), PAPA (32) and arterial tortuosity syndrome (34) pass; Blau syndrome and LCAT deficiency are still being screened.
 
 ### 2026-11-10 · D-46 decided: the repository is made public (Jimmy: "Make gp-rarelink public.")
 
