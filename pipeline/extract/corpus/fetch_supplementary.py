@@ -85,7 +85,12 @@ def main(argv: list[str] | None = None) -> int:
             except httpx.HTTPError as e:
                 raise SystemExit(f"{pmid}: Europe PMC unreachable ({e}); stopping")
             if r.status_code != 200 or not r.content.startswith(b"PK"):
-                rows.append(row0 | {"file": "", "bytes": "", "sha256": "", "status": f"none (HTTP {r.status_code})"})
+                # Europe PMC wraps backend failures in an XML errorBean, sometimes with HTTP 200
+                # (2026-11-14: "Failed: HTTP error code: 503"); keep its message so an outage is not
+                # mistaken for a paper without supplementary files.
+                m = re.search(rb"<errMsg>(.*?)</errMsg>", r.content[:2000])
+                msg = f": {m.group(1).decode(errors='replace')}" if m else ""
+                rows.append(row0 | {"file": "", "bytes": "", "sha256": "", "status": f"none (HTTP {r.status_code}{msg})"})
                 continue
             kept = 0
             with zipfile.ZipFile(io.BytesIO(r.content)) as z:
