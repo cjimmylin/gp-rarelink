@@ -133,7 +133,13 @@ def main(argv: list[str] | None = None) -> int:
             try:
                 r = client.get(f"{EUROPEPMC}/{pmcid}/supplementaryFiles")
             except httpx.HTTPError as e:
-                raise SystemExit(f"{pmid}: Europe PMC unreachable ({e}); stopping")
+                got = pmc_cloud(client, pmcid, pmid, row0, out_dir, args.max_file_mb) if args.fallback_pmc_cloud else None
+                if got is None:
+                    raise SystemExit(f"{pmid}: Europe PMC unreachable ({e}); stopping")
+                rows.extend(got)
+                print(f"{pmid} {pmcid}: Europe PMC unreachable ({type(e).__name__}); "
+                      f"{sum(1 for x in got if x['status'] == 'kept')} file(s) kept (PMC Cloud Service)")
+                continue
             if (r.status_code != 200 or not r.content.startswith(b"PK")) and args.fallback_pmc_cloud:
                 got = pmc_cloud(client, pmcid, pmid, row0, out_dir, args.max_file_mb)
                 if got is not None:
