@@ -54,6 +54,14 @@ DISPLAY = {
     "ssadh": ("succinic semialdehyde dehydrogenase (SSADH) deficiency", "SSADH deficiency"),
     "danon": ("Danon disease", "Danon disease"),
     "tangier": ("Tangier disease", "Tangier disease"),
+    # Extension diseases (D-47, 2026-11-14; preregistration/addendum_extension_v1.md)
+    "blau": ("Blau syndrome (early-onset sarcoidosis)", "Blau syndrome"),
+    "majeed": ("Majeed syndrome", "Majeed syndrome"),
+    "lcat": ("familial LCAT deficiency (including fish-eye disease)", "LCAT deficiency"),
+    "gamt": ("guanidinoacetate methyltransferase (GAMT) deficiency", "GAMT deficiency"),
+    "ats": ("arterial tortuosity syndrome", "arterial tortuosity syndrome"),
+    "papa": ("PAPA syndrome (pyogenic arthritis, pyoderma gangrenosum and acne) and the PSTPIP1-associated inflammatory spectrum",
+             "PAPA syndrome"),
 }
 HA20_CHECKLIST = ("oral ulcers; genital ulcers; gastrointestinal ulcers or inflammation; recurrent fever; arthritis or "
                   "arthralgia; uveitis or other ocular inflammation; skin lesions (rash, folliculitis, erythema nodosum); "
