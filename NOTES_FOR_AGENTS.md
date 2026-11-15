@@ -176,7 +176,7 @@ The 2026-10-18 list (network access, the pilot stages, the parallel six-disease 
 
 ## 4. Working with Jimmy
 
-- **Publishing** (`CLAUDE.md`): the 2026-10-21 no-publishing rule stands except for the dashboard (D-45) and the repository itself, which Jimmy decided to make public on 2026-11-10 (D-46). So anything pushed to any branch is public: never commit what we cannot redistribute (§1, the D-46 note); artifact pages and posts remain off-limits; the existing rating and adjudication pages stay as they are.
+- **Publishing** (`CLAUDE.md`): the 2026-10-21 no-publishing rule stands except for the dashboard (D-45) and the repository itself, which Jimmy decided to make public on 2026-11-10 (D-46). So anything pushed to any branch is public: never commit what we cannot redistribute (§1, the D-46 note); artifact pages and posts remain off-limits except the D-47 extension review pages Jimmy approved on 2026-11-15 ("Ok to publish"; links in the D-48 entry); the existing rating and adjudication pages stay as they are.
 - **No contact with anyone** (`CLAUDE.md`). Draft messages; never send them. This includes questions for Prof. Lam or for Bailey at Anthropic: list the question for Jimmy instead.
 - **He wants a recommendation, not a survey of options.** He decides in short messages, e.g. "go with your recommendations on D-02 through D-07". Record each one in `DECISIONS.md` as his decision, dated, stating exactly what was accepted.
 - **He gives facts in pieces.** For example, the award email came first and its sent date in a later message. Record what's given and mark the rest *to confirm*. Never infer a date or amount and present it as fact.
