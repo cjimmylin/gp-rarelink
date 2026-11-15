@@ -118,9 +118,10 @@ def main() -> int:
           "1. **NOD2 legacy-transcript fallback adopted** for Blau (deviation D-48; registered figures reported beside it, §3).",
           "2. **G-blau-008 (formerly G-blau-005) and G-lcat-001 withdrawn** (§4).",
           "3. **No `isoform_sensitive` block for GAMT and PSTPIP1** kept (`analysis/extension/isoform_check_2026-11-15.md`).",
-          "4. **Review pages built, not published.** The no-publishing rule (`CLAUDE.md`, 2026-10-21) needs Jimmy's own word to lift. The rating and triage pages embed "
-          "paper passages, so they are not committed to this public repository; they are rebuilt on demand with the commands in "
-          "`adjudication/README_extension_pages.md`.", "",
+          "4. **Review pages built.** Jimmy then approved publishing them (\"Ok to publish\", 2026-11-15). They are private Artifacts that Jimmy shares: "
+          "O1X rater A https://claude.ai/artifact/V39NNdqsqSQJPitTggbwTQ, rater B https://claude.ai/artifact/RTVTM4wzLZZfMBPerz9Lk5, "
+          "O2X triage https://claude.ai/artifact/QvPa2dccmoBsKSLwMdhP8R, O3X adjudicator A https://claude.ai/artifact/DmbNhhc3HedW5cMKZNvpA7. "
+          "The page files embed paper passages, so they are not committed; `adjudication/README_extension_pages.md` rebuilds them.", "",
           "Still open from the helpers: SURF patients with NOD2 variants and a healthy-control carrier (41357180); people with a diagnosis but no variant in "
           "several Blau and LCAT papers; a PDF-only paper whose genetic supplementary tables were unavailable (38180755); a duplicate-publication pair in GAMT "
           "(38020815, 39006040).", ""]

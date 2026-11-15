@@ -2,10 +2,12 @@
 
 These are the concerns the six dossier helpers reported back, summarised by Claude. They are model-written pointers for the panel, not verdicts. Each one is also in the `concerns` field of the dossier it names, and that dossier carries the verbatim quotes. `check_dossiers.py --all` result: 41 dossiers, 789 quotes, all verbatim, 0 problems.
 
-## Probably not gaps
+Candidate ids changed after D-48 re-ran the gap step: the Blau ids below are the current ones (the former G-blau-002 to 005 are now 003, 004, 005 and 008).
 
-- **G-blau-005:** every paper writes c.1538T>C (M513T), which is legacy NM_022162 numbering. The candidate was read on MANE as p.Leu513Pro. On MANE numbering it would be c.1457T>C (Met486Thr). Claude reached the same conclusion from the protein check; see `reports/extension_report.md` §4. P9 in 41673771 carries the same stated variant and is not linked to this candidate, consistent with the same numbering problem.
-- **G-lcat-001:** sits on chromosome 4 because paper 31684177 stated NM_012108.3, which is not an LCAT transcript. The paper's change is p.(Ile202Thr). The same paper's Table 1 and Results give the siblings' LCAT activity values in opposite order.
+## Withdrawn (D-48)
+
+- **G-blau-008 (formerly G-blau-005):** every paper writes c.1538T>C (M513T), which is legacy NM_022162 numbering. The candidate was read on MANE as p.Leu513Pro. On MANE numbering it would be c.1457T>C (Met486Thr). Claude reached the same conclusion from the protein check; see `reports/extension_report.md` §4. P9 in 41673771 carries the same stated variant and is not linked to this candidate, consistent with the same numbering problem.
+- **G-lcat-001 (withdrawn):** sits on chromosome 4 because paper 31684177 stated NM_012108.3, which is not an LCAT transcript. The paper's change is p.(Ile202Thr). The same paper's Table 1 and Results give the siblings' LCAT activity values in opposite order.
 
 ## Contradictions inside papers
 
@@ -20,6 +22,13 @@ These are the concerns the six dossier helpers reported back, summarised by Clau
 - **G-gamt-006:** table protein p.Trp87fs*1 vs predicted p.(Trp87Ter).
 - **G-gamt-008:** the abstract calls both variants novel; the case report says the other allele was reported before.
 
+## New Blau candidates after D-48 (helper notes)
+
+- **G-blau-007 (D512V):** both parents Sanger-negative (parentage not stated as confirmed); an NF-κB reporter result is cited but its data are not shown. The paper says the patient is the D512V case of Matsuda 2020 (PMID 32647028), which it says wrongly listed polyarthritis and renal calcification for her.
+- **G-blau-009 (c.1808A>G):** one row of a review table (32637927) citing Toral-López 2018, with no sex, zygosity, protein or transcript; the legacy-numbering placement cannot be confirmed from this paper. The primary report is needed.
+- **G-blau-002 (H480R):** two affected siblings; three more affected relatives not genotyped; absent from 250 in-house exomes; no functional data.
+- **G-blau-006 (P507S):** one sporadic case; "de novo" is the authors' belief with untested parents; no functional data.
+
 ## Same person counted more than once (not merged by the pipeline)
 
 - **GAMT:** the review rows in 42885896 duplicate primary-report patients: G-gamt-001's siblings (GAMT-ID0265/0266/0267 = 0062/0063/0064), and G-gamt-002's patient (GAMT-ID0361 = 0035).
@@ -30,5 +39,5 @@ These are the concerns the six dossier helpers reported back, summarised by Clau
 
 - **LCAT:** 14 of the 20 batch-05 candidates appear only as table rows in review 34256778, with no case description. Ten of them come from its "unclassified patients" table, and three of those have every clinical field "Unk". Some of its Table 1 reference numbers don't match its reference list.
 - **G-lcat-018 / G-lcat-019:** adjacent bases in the same person, phase not reported; possibly one complex allele, so adjudicate them together.
-- **G-blau-003 / G-blau-004:** come only from Table S2 of a 13-patient treatment cohort (41673771).
+- **G-blau-004 / G-blau-005 (M491L, H496P):** come only from Table S2 of a 13-patient treatment cohort (41673771).
 - **G-gamt-004, -005, -006:** come only from supplementary table rows in 42885896, with no case description (the pipeline did not class that paper as a review, so the "only from reviews" count is 0 for GAMT).
