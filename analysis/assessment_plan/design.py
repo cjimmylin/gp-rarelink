@@ -215,6 +215,7 @@ def main() -> int:
          "## 2. The design", "",
          "The same four steps serve both plans. Each rater works alone on a private page that holds only that rater's items, and sees no one else's ratings and no gatekeeper verdict.", "",
          f"**Step 0. Calibration: all eight raters, the same items (about {A['calibration_hours_per_rater']} hours each).**",
+         "- **Two sittings (decided, D-55):** the audit claims first, before the audit and triage; the six variants just before adjudication starts.",
          f"- **Audit:** {CAL['audit_claims']} claims with a known answer, half of them unsupported. They come from outside the three audit samples: the pilot's human-labelled claims, and claims the gatekeeper removed, "
          "which Jimmy labels first as the reference. The real samples are expected to hold only a few unsupported claims, too few to tell raters apart, so this set is where ability shows.",
          f"- **Adjudication:** {CAL['adjudication_variants']} variants the runs extracted that ClinVar already classifies with settled review status, each with a dossier built the same way. Raters classify them without opening ClinVar.",
@@ -322,6 +323,7 @@ def main() -> int:
           "## 10. Decided and still open (D-55)", "",
           "1. **The design: decided** (Jimmy, 2026-11-15). Three raters per audit claim, two per triage item, two per gap candidate with a third reading on disagreement.",
           "2. **The calibration floor: decided** (Jimmy, 2026-11-15), before any calibration result exists.",
+          "   Calibration is done in two sittings (decided the same day): audit claims first, the six variants just before adjudication.",
           "3. **The panel:** two of the eight raters are panel members (Jimmy, 2026-11-15). Still to fix before adjudication starts: who gives the third reading when a panel member is one of the two adjudicators, and what counts as the panel's approval.",
           "4. **Plan A or Plan B: open.** The order of work is the same for both, so it is confirmed after calibration.",
           "5. **Hours per rater per week: open.** Jimmy: the work goes gradually. The registered window for adjudication is Month 4, 2026-12-21 to 2027-01-20, across the holidays.",
