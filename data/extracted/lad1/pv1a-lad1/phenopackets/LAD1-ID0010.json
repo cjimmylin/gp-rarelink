@@ -1,9 +1,28 @@
 {
   "id": "lad1-pv1a-lad1-LAD1-ID0010",
   "subject": {
-    "id": "LAD1-ID0010"
+    "id": "LAD1-ID0010",
+    "sex": "FEMALE"
   },
   "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002090",
+        "label": "Pneumonia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         2 | Female   |                     23 | 18-76                       | 3.6%               | ITGB2         | Compound heterozygous | exon13 c.1794dupC p.N599Qfs*93; exon7 c.850G>A, p.G284S  | Omphalitis, pneumonia"
+          }
+        }
+      ]
+    },
     {
       "type": {
         "id": "HP:0011897",
@@ -17,15 +36,15 @@
           },
           "reference": {
             "id": "PMID:32154133",
-            "description": "All five patients had typical granulocytosis."
+            "description": "|         2 | Female   |                     23 | 18-76 \u2026 Granulocytosis (\u00d710 9 /L)"
           }
         }
       ]
     },
     {
       "type": {
-        "id": "HP:0032455",
-        "label": "Reduced granulocyte CD18 level"
+        "id": "HP:0032162",
+        "label": "Unusual skin infection"
       },
       "evidence": [
         {
@@ -35,10 +54,114 @@
           },
           "reference": {
             "id": "PMID:32154133",
-            "description": "The other four patients had moderate LAD-I with the levels of CD18-expressing neutrophils being 2.4-3.6%"
+            "description": "|         2 | Female   |                     23 | 18-76                       | 3.6%               | ITGB2         | Compound heterozygous | exon13 c.1794dupC p.N599Qfs*93; exon7 c.850G>A, p.G284S  | Omphalitis, pneumonia, skin and soft tissue infection"
           }
         }
       ]
+    },
+    {
+      "type": {
+        "id": "HP:0032435",
+        "label": "Neonatal omphalitis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         2 | Female   |                     23 | 18-76                       | 3.6%               | ITGB2         | Compound heterozygous | exon13 c.1794dupC p.N599Qfs*93; exon7 c.850G>A, p.G284S  | Omphalitis"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "LAD1-ID0010-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0007293",
+          "label": "leukocyte adhesion deficiency 1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "LAD1-ID0010",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "LAD1-ID0010-var1",
+                "label": "c.1794dupC p.N599Qfs*93",
+                "description": "c.1794dupC p.N599Qfs*93",
+                "geneContext": {
+                  "valueId": "HGNC:6155",
+                  "symbol": "ITGB2"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000211.5:c.1794dup"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000202.3:p.(Asn599GlnfsTer93)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000021.9:g.44889359dup"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "21",
+                  "pos": "44889358",
+                  "ref": "T",
+                  "alt": "TG"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "LAD1-ID0010",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "LAD1-ID0010-var2",
+                "label": "c.850G>A, p.G284S",
+                "description": "c.850G>A, p.G284S",
+                "geneContext": {
+                  "valueId": "HGNC:6155",
+                  "symbol": "ITGB2"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000211.5:c.850G>A"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000202.3:p.(Gly284Ser)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000021.9:g.44900367C>T"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "21",
+                  "pos": "44900367",
+                  "ref": "C",
+                  "alt": "T"
+                }
+              }
+            }
+          }
+        ]
+      }
     }
   ],
   "diseases": [

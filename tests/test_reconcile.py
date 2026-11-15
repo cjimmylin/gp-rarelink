@@ -162,3 +162,12 @@ def test_policy_v4_does_not_merge_on_sex_and_onset_alone(tmp_path, monkeypatch):
     assert rc.main(["--disease", "ha20", "--run-id", "r4", "--policy", "v3"]) == 0
     v3 = next(csv.DictReader((run / "merges_policy_v3.csv").open()))
     assert v3["confidence"] == "strong_match" and v3["merged"] == "True" and v3["policy"] == "merge_policy_v3"
+
+
+def test_gene_aliases_cover_the_names_papers_print():
+    # D-49: ABC1 is the previous official symbol of ABCA1; 1999-2000 Tangier papers print it.
+    assert rc.is_gene("ABC1", "ABCA1")
+    assert rc.is_gene("ABCA1", "ABCA1")
+    assert not rc.is_gene("ABCA4", "ABCA1")
+    assert not rc.is_gene("ABC1", "GFAP")
+    assert rc.is_gene("CD18", "ITGB2") and rc.is_gene("SSADH", "ALDH5A1")
