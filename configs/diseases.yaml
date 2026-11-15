@@ -89,3 +89,114 @@ diseases:
     key_reviews: {koseki2021: "33994407"}
     background_keys: [koseki2021_tangier_review, puntoni2012_tangier, mercan2018_tangier_neuropathy, schaefer2016_hdl_deficiency, genereviews_tangier]
     holdouts: {}
+
+  # ---- Extension diseases (D-52, recorded as D-47 in the extension session, 2026-11-14; preregistration/addendum_extension_v1.md) ----
+  # Identifiers verified in Mondo release 2026-10-06. No holdouts: the bias arm is not
+  # extended (addendum §4). Key reviews verified in Europe PMC on 2026-11-14.
+  # Majeed syndrome was the sixth; the addendum's rule dropped it. Its entry as that session wrote it is kept in
+  # data/literature/majeed/extension_first_pass_2026-11-14/config_entry.yaml; the entry in use is under `substitutes`.
+  blau:
+    name: Blau syndrome (early-onset sarcoidosis)
+    gene: NOD2
+    omim: "186580"
+    orpha: "90340"
+    inheritance: autosomal dominant (familial or de novo)
+    definition: the granulomatous autoinflammatory disease (Blau syndrome, also called early-onset sarcoidosis or pediatric granulomatous arthritis) caused by heterozygous NOD2 variants
+    not_this_disease:
+      - NOD2 (CARD15) in Crohn disease, inflammatory bowel disease, graft-versus-host disease or other common-disease association or susceptibility studies
+      - NOD2 receptor biology, microbiome or innate-immunity studies without Blau syndrome patients
+      - adult sarcoidosis without a NOD2 variant or a Blau syndrome diagnosis
+      - Yao syndrome (NOD2-associated autoinflammatory disease with the IVS8+158 / R702W carrier pattern), which is a different condition
+    unclear_note: a granulomatous arthritis, uveitis or dermatitis patient without genetic testing who is called Blau syndrome or early-onset sarcoidosis is "unclear", so the full text decides
+    query: '("Blau syndrome"[tiab] OR "Blau''s syndrome"[tiab] OR "Blau Syndrome"[Supplementary Concept] OR "early-onset sarcoidosis"[tiab] OR "early onset sarcoidosis"[tiab] OR "juvenile systemic granulomatosis"[tiab] OR "pediatric granulomatous arthritis"[tiab] OR "paediatric granulomatous arthritis"[tiab] OR "familial granulomatous arthritis"[tiab] OR ((NOD2[tiab] OR CARD15[tiab]) AND (granulomat*[tiab] OR sarcoid*[tiab])))'
+    key_reviews: {wouters2014: "25136265", wang2025: "40456554"}
+    background_keys: [wouters2014_blau, rose2015_blau_cohort, wang2025_blau_review]
+    holdouts: {}
+  lcat:
+    name: familial LCAT deficiency (complete deficiency, Norum disease, and partial deficiency, fish-eye disease)
+    gene: LCAT
+    omim: "245900"
+    orpha: "650"
+    inheritance: autosomal recessive
+    definition: the lipoprotein disorder (corneal opacity, low HDL, and in complete deficiency anaemia and kidney disease) caused by biallelic LCAT variants; both complete (familial LCAT deficiency) and partial (fish-eye disease) forms count
+    not_this_disease:
+      - acquired LCAT deficiency (for example autoantibodies against LCAT, liver disease) without LCAT variants
+      - LCAT polymorphisms or plasma LCAT activity in association studies of lipids, coronary disease or other common conditions, without individual patients
+      - recombinant LCAT or LCAT activators studied without patients
+    unclear_note: heterozygous LCAT carriers studied for HDL or atherosclerosis are "unclear", so the full text decides
+    query: '("LCAT deficiency"[tiab] OR "lecithin-cholesterol acyltransferase deficiency"[tiab] OR "lecithin:cholesterol acyltransferase deficiency"[tiab] OR "lecithin cholesterol acyltransferase deficiency"[tiab] OR "Lecithin Cholesterol Acyltransferase Deficiency"[MeSH] OR "fish-eye disease"[tiab] OR "fish eye disease"[tiab] OR "Norum disease"[tiab] OR (LCAT[tiab] AND (mutation*[tiab] OR variant*[tiab] OR deficien*[tiab])))'
+    key_reviews: {vitali2022: "35065092"}
+    background_keys: [vitali2022_lcat]
+    holdouts: {}
+  gamt:
+    name: guanidinoacetate methyltransferase (GAMT) deficiency
+    gene: GAMT
+    omim: "612736"
+    orpha: "382"
+    inheritance: autosomal recessive
+    definition: the cerebral creatine deficiency syndrome (intellectual disability, seizures, movement disorder, raised guanidinoacetate) caused by biallelic GAMT variants
+    not_this_disease:
+      - the other cerebral creatine deficiencies, AGAT (GATM) deficiency and creatine transporter (SLC6A8) deficiency, unless the paper also describes GAMT-deficient patients
+      - guanidinoacetate or creatine metabolism studied in animals, cell models or healthy people without GAMT-deficient patients
+      - newborn screening method papers that report no individual patient
+    query: '("GAMT deficiency"[tiab] OR "guanidinoacetate methyltransferase deficiency"[tiab] OR "guanidinoacetate N-methyltransferase deficiency"[tiab] OR (GAMT[tiab] AND (deficien*[tiab] OR mutation*[tiab] OR variant*[tiab])) OR ("guanidinoacetate methyltransferase"[tiab] AND (patient*[tiab] OR deficien*[tiab])) OR ("cerebral creatine deficiency"[tiab] AND guanidinoacetate[tiab]))'
+    key_reviews: {stockleripsiroglu2014: "24268530", biagiotti2025: "41373441"}
+    background_keys: [stockleripsiroglu2014_gamt, biagiotti2025_gamt_review]
+    holdouts: {}
+  ats:
+    name: arterial tortuosity syndrome
+    gene: SLC2A10
+    omim: "208050"
+    orpha: "3342"
+    inheritance: autosomal recessive
+    definition: the connective tissue disorder (elongated and tortuous large and medium arteries, stenoses, aneurysms, skin and joint laxity) caused by biallelic SLC2A10 variants
+    not_this_disease:
+      - arterial tortuosity as an imaging finding in other conditions (Loeys-Dietz syndrome, Marfan syndrome, cutis laxa, Ehlers-Danlos syndromes, ageing) without SLC2A10 variants
+      - SLC2A10 (GLUT10) in diabetes or metabolic association studies without patients with the syndrome
+      - arterial tortuosity-bone fragility syndrome or other tortuosity syndromes caused by other genes
+    query: '("arterial tortuosity syndrome"[tiab] OR "Arterial Tortuosity Syndrome"[Supplementary Concept] OR SLC2A10[tiab] OR ("arterial tortuosity"[tiab] AND GLUT10[tiab]))'
+    key_reviews: {beyens2018: "29323665"}
+    background_keys: [beyens2018_ats]
+    holdouts: {}
+  papa:
+    name: PAPA syndrome and the PSTPIP1-associated inflammatory spectrum
+    gene: PSTPIP1
+    omim: "604416"
+    orpha: "69126"
+    inheritance: autosomal dominant
+    definition: the autoinflammatory disease caused by heterozygous PSTPIP1 variants, pyogenic sterile arthritis, pyoderma gangrenosum and acne (PAPA) and its spectrum, including PSTPIP1-associated myeloid-related proteinaemia inflammatory syndrome (PAMI, hyperzincaemia and hypercalprotectinaemia)
+    not_this_disease:
+      - pyoderma gangrenosum, hidradenitis suppurativa or acne without a PSTPIP1 variant or a PAPA diagnosis (for example PASH or PAPASH without genetic findings, or with variants only in other genes)
+      - PSTPIP1 cell-biology or inflammasome studies without patients
+    unclear_note: a patient called PAPA, PASH or PAPASH syndrome on clinical grounds whose genetic testing is not reported is "unclear", so the full text decides
+    query: '("PAPA syndrome"[tiab] OR "Pyogenic Arthritis, Pyoderma Gangrenosum, and Acne"[Supplementary Concept] OR "pyogenic arthritis, pyoderma gangrenosum and acne"[tiab] OR "pyogenic arthritis, pyoderma gangrenosum, and acne"[tiab] OR "pyogenic sterile arthritis"[tiab] OR "PAMI syndrome"[tiab] OR "PSTPIP1-associated"[tiab] OR "hyperzincaemia and hypercalprotectinaemia"[tiab] OR "hyperzincemia and hypercalprotectinemia"[tiab] OR PSTPIP1[tiab] OR "CD2BP1"[tiab])'
+    key_reviews: {genovese2020: "32618443", satoh2024: "38031879"}
+    background_keys: [genovese2020_papa_spectrum, satoh2024_pg_genetics]
+    holdouts: {}
+
+
+# Substitute diseases (pre-registration §4.2). Not part of the six-disease study:
+# a corpus here is preparation only, and any substitution or stretch extension is
+# decided separately and logged in DECISIONS.md. Scripts that loop over the six
+# read `diseases` only; the per-disease commands also look here.
+substitutes:
+  majeed:
+    name: Majeed syndrome
+    gene: LPIN2
+    omim: "609628"
+    orpha: "77297"
+    mondo: "MONDO:0012316"   # Mondo release 2026-10-06 (sha256 matches data/ontologies/2026-10-19/manifest.json); OMIM and Orphanet numbers are its cross-references
+    inheritance: autosomal recessive
+    definition: the autoinflammatory syndrome of chronic recurrent multifocal osteomyelitis (CRMO or chronic nonbacterial osteomyelitis), congenital dyserythropoietic anaemia and often neutrophilic dermatosis, caused by biallelic LPIN2 variants
+    not_this_disease:
+      - isolated CRMO or chronic nonbacterial osteomyelitis (CNO), SAPHO or DIRA without an LPIN2 variant; a CRMO cohort that sequenced LPIN2 is "unclear" unless the abstract says no patient had biallelic variants
+      - congenital dyserythropoietic anaemia types I-IV (CDAN1, SEC23B, KIF23, KLF1) without osteomyelitis or an LPIN2 variant
+      - lipin-2 or lipin family biology (phosphatidate phosphatase, lipid metabolism, Lpin2 mouse models) with no patients
+      - LPIN2 polymorphisms in association studies (lipids, diabetes, psoriasis) without individual patients
+      - the word Majeed as an author's name or another eponym
+    query: '("Majeed syndrome"[tiab] OR "Majeed syndrome"[nm] OR LPIN2[tiab] OR LPIN2[Gene Name] OR "lipin-2"[tiab] OR "lipin 2"[tiab] OR ("congenital dyserythropoietic"[tiab] AND osteomyelitis[tiab]) OR ("chronic recurrent multifocal osteomyelitis"[tiab] AND dyserythropoie*[tiab]) OR MJDS[tiab] OR (CRMO[tiab] AND CDA[tiab]))'
+    query_filter_applied: false
+    key_reviews: {ferguson2021: "33670882", chavan2021: "33993107", badiger2024: "37865862", wang2025: "41113563"}
+    key_papers: {majeed1989: "2809904", majeed2001: "11795677", ferguson2005: "15994876", almosawi2007: "17330256", ferguson2021: "33670882"}
+    background_keys: [ferguson2021_majeed]
+    holdouts: {}

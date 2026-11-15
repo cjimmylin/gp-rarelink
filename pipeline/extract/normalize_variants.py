@@ -49,6 +49,13 @@ the reason in isoform_note); with no label the description gets status
 isoform_ambiguous and no genomic key, and the candidates are listed in
 warnings. Below the divergence point nothing changes.
 
+Legacy-transcript fallback (D-48, 2026-11-15): when configs/stage4/<disease>.json
+has "legacy_transcript_fallback" ({"transcript": ..., "note": ...}), a description
+with no stated transcript that fails on MANE Select with a reference mismatch is
+sent once more on that transcript (transcript_assumed = legacy_fallback, the note
+in isoform_note). VariantValidator still checks the reference base there. Only
+Blau (NOD2, legacy NM_022162 numbering) uses it.
+
 Status per distinct description:
   normalized    VariantValidator accepted the description unchanged;
   corrected     accepted, but the validated transcript HGVS differs from the
@@ -262,10 +269,12 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     cfg_path = Path("configs/stage4") / f"{args.disease}.json"
     rules: list[dict] = []
+    fallback: dict = {}
     if cfg_path.exists() and not args.no_config:  # D-40: gene and MANE Select per disease
         cfg = json.loads(cfg_path.read_text())
         args.gene, args.mane = cfg["gene"], cfg["mane_select"]
         rules = cfg.get("isoform_sensitive", [])  # D-43
+        fallback = cfg.get("legacy_transcript_fallback") or {}  # D-48
     corrections = {}
     if args.corrections and Path(args.corrections).exists():
         corrections = {r["cdna_as_extracted"]: r for r in csv.DictReader(Path(args.corrections).open())}
@@ -317,6 +326,12 @@ def main(argv: list[str] | None = None) -> int:
             if not res["ok"] and "not in our database" in res.get("warnings", "") and versions.get(acc) and versions[acc] != tx:
                 tx = versions[acc]
                 row["transcript_assumed"] = "version_mapped"
+                row["query"] = f"{tx}:{cdna}"
+                res = trim(vv.get("GRCh38", row["query"], tx))
+            if (not res["ok"] and fallback and row["transcript_assumed"] == "yes"
+                    and "ReferenceMismatch" in res.get("warnings", "")):  # D-48
+                tx = fallback["transcript"]
+                row["transcript_assumed"], row["isoform_note"] = "legacy_fallback", fallback["note"]
                 row["query"] = f"{tx}:{cdna}"
                 res = trim(vv.get("GRCh38", row["query"], tx))
             if res["ok"]:

@@ -33,7 +33,8 @@ CONFIG = Path("configs/diseases.yaml")
 
 
 def config(disease: str) -> dict:
-    return yaml.safe_load(CONFIG.read_text())["diseases"][disease]
+    y = yaml.safe_load(CONFIG.read_text())
+    return y["diseases"].get(disease) or y.get("substitutes", {})[disease]
 
 
 def background(disease: str) -> int:

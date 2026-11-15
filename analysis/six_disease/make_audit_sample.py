@@ -47,28 +47,37 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--out-dir", default="adjudication/o1_audit")
+    ap.add_argument("--id-prefix", default="O1", help="item ids <prefix>-nnn (the D-47 extension uses O1X)")
+    ap.add_argument("--diseases", nargs="+", default=DISEASES, help="default: the registered six; the D-47 extension draws its own sample (addendum §4)")
+    ap.add_argument("--run-prefix", default="pv1", help="runs data/extracted/<d>/<prefix>-<d> (default pv1; pv1s for the exploratory Majeed run, D-54)")
+    ap.add_argument("--n", type=int, default=250, help="sample size (default 250, the registered size; D-54 gives Majeed a smaller sample at the extension audit's sampling fraction)")
+    ap.add_argument("--pool-only", action="store_true", help="print the pool sizes and draw nothing")
     a = ap.parse_args(argv)
+    N = a.n
     dest = Path(a.out_dir)
-    if (dest / "sample_key.json").exists():
+    if (dest / "sample_key.json").exists() and not a.pool_only:
         raise SystemExit(f"{dest}/sample_key.json exists; the audit sample is drawn once")
     pools, inputs = {}, {}
-    for d in DISEASES:
-        run = Path(f"data/extracted/{d}/pv1-{d}")
+    for d in a.diseases:
+        run = Path(f"data/extracted/{d}/{a.run_prefix}-{d}")
         gk = run / "gatekeeper_v4.csv"
         inputs[str(gk)] = sha(gk)
         pools[d] = sorted(r["claim_id"] for r in csv.DictReader(gk.open())
                           if r["class"] == "model" and r["verdict"] == "supported" and r["value"].strip() not in EMPTY)
     total = sum(len(p) for p in pools.values())
+    if a.pool_only:
+        print(json.dumps({"pool_sizes": {d: len(p) for d, p in pools.items()}, "pool_total": total}, indent=2))
+        return 0
     quota = {d: N * len(p) / total for d, p in pools.items()}
     alloc = {d: int(q) for d, q in quota.items()}
     for d in sorted(quota, key=lambda d: (quota[d] - alloc[d], d), reverse=True)[: N - sum(alloc.values())]:
         alloc[d] += 1
     rng = random.Random(a.seed)
-    picked = [(d, cid) for d in DISEASES for cid in sorted(rng.sample(pools[d], alloc[d]))]
+    picked = [(d, cid) for d in a.diseases for cid in sorted(rng.sample(pools[d], alloc[d]))]
     rng.shuffle(picked)  # raters see diseases mixed
     rows = []
     for n, (d, cid) in enumerate(picked, 1):
-        run = Path(f"data/extracted/{d}/pv1-{d}")
+        run = Path(f"data/extracted/{d}/{a.run_prefix}-{d}")
         g = next(r for r in csv.DictReader((run / "gatekeeper_v4.csv").open()) if r["claim_id"] == cid)
         sp = list(csv.DictReader((run / "claims.csv").open()))[int(cid[1:]) - 1]
         assert (sp["pmid"], sp["table"], sp["row"], sp["field"]) == (g["pmid"], g["table"], g["row"], g["field"]), cid
@@ -80,7 +89,7 @@ def main(argv: list[str] | None = None) -> int:
             context = (rec.get("checklist_feature") or {}).get("value", "")
         elif g["table"] == "variants":
             context = (rec.get("variant_original_string") or {}).get("value", "")
-        rows.append({"n": n, "item_id": f"O1-{n:03d}", "disease": d, "pmid": g["pmid"],
+        rows.append({"n": n, "item_id": f"{a.id_prefix}-{n:03d}", "disease": d, "pmid": g["pmid"],
                      "pubmed": f"https://pubmed.ncbi.nlm.nih.gov/{g['pmid']}/",
                      "paper_text": f"data/literature/{d}/fulltext_md/{g['pmid']}.md",
                      "individual": (rec.get("individual_label_in_paper") or {}).get("value", ""),
@@ -90,7 +99,7 @@ def main(argv: list[str] | None = None) -> int:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
         w.writeheader()
         w.writerows(rows)
-    key = {"drawn_utc": datetime.now(UTC).isoformat(timespec="seconds"), "seed": a.seed, "n": N,
+    key = {"drawn_utc": datetime.now(UTC).isoformat(timespec="seconds"), "seed": a.seed, "n": N, "run_prefix": a.run_prefix,
            "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
            "pool_rule": "gatekeeper_v4 class=model, verdict=supported, value not empty/null/not reported/unknown",
            "pool_sizes": {d: len(p) for d, p in pools.items()}, "pool_total": total, "allocation": alloc,

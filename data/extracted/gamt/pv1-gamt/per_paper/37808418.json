@@ -1,0 +1,2768 @@
+{
+ "pmid": "37808418",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Single case report of a GAMT-deficient patient with a printed GAMT variant: \"a homozygous pathogenic variant of c.327G>A silent mutation was found in the GAMT gene\".",
+ "method_note": "Read the whole paper by hand; a Python script in my scratch directory only assembled the JSON and checked spans; values were written by me. Two in-scope people: the case-report patient (label 'patient', rule 5) and one previously published patient from the Discussion with an individual-level feature ('1 study reported a patient with recurrent bone fractures ... [17]', label 'ref [17] patient', rule 4); that person has no variant, sex or age in this paper. The '3 patients with a family history of GAMT deficiency ... [19,29,31]' are a group statement citing several papers with no individual-level detail, so they get no rows. Table 1 has empty first-column cells for rows that continue the previous age; onset was taken only from rows with their own age cell (e.g. 'Developmental delay', 'ADHD' have empty age cells and get no onset). Seizure onset '5-12 y' is a range, so no ISO duration. Age at last evaluation taken from the age-17 MRI ('At age 17'). Age at onset taken as the first Table 1 symptom (6 mo failure to thrive); the paper does not label an overall onset age. Normal findings recorded under D-27: CPK normal -> elevated CPK excluded; TSH normal -> abnormal TSH excluded; comprehensive metabolic panel normal written as a whole panel ('abnormal comprehensive metabolic panel' excluded), excluding nothing more specific; head circumference 50th percentile -> microcephaly and macrocephaly excluded; 'good eye contact' -> poor eye contact excluded (does not exclude the broader autistic-features checklist item, which is observed from 'Autism' at 5 y); fetal movement normal -> abnormal fetal movement excluded. The early brain MRI (around 19 months) 'was normal' is recorded as 'abnormal brain MRI' excluded for that time only; it is a whole-investigation statement and excludes no specific MRI checklist item; the age-17 MRI showed volume loss and ventricular/sulcal prominence. MR spectroscopy voxel over 'normal-appearing white matter of right centrum semiovale' was not used to exclude white matter abnormalities (regional, narrower than the checklist item). EEG 'was unable to be obtained', so abnormal EEG is not reported. Hair pulling and biting are recorded as stated; the paper does not say whether they were self-directed or aimed at others, so self-injurious and aggressive behaviour are not reported. Hyperactivity checklist item marked observed from the table entry 'ADHD'. Absent or limited speech left not reported: the paper gives minimal babbling at 10 months and a language age of 13 mo at 3 y, but no statement of absent or limited speech. Variant type: the patient's sentence calls c.327G>A a 'silent mutation', recorded as 'other'; the Introduction's remark that the variant 'occurs at the second exon splice site' is about 'Many patients' in general, not this person, so 'splice' was not used. Genetic testing at 3 years 'showed no abnormalities'; repeat testing at 12 found the variant. Vital status not stated explicitly (left not reported). Maternal pregnancy factors (anemia, alcohol, tobacco) are not the patient's features and were not recorded. Non-breaking spaces in Table 1 cells ('Gross motor = 18 mo' etc.) are kept in the spans. No contradictions found in the paper.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "first_author": {
+     "value": "Libell",
+     "span": "Authors: Libell Joshua L"
+    },
+    "year": {
+     "value": 2023,
+     "span": "Journal: Radiology Case Reports (2023)"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "Guanidinoacetate N-methyltransferase deficiency: Case report and brief review of the literature"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "sex": {
+     "value": "male",
+     "span": "A male child was born from nonconsanguineous parents"
+    },
+    "age_at_onset_original_text": {
+     "value": "6 mo",
+     "span": "| 6 mo | Failure to thrive |"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P6M",
+     "span": "| 6 mo | Failure to thrive |"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "17",
+     "span": "At age 17, MRI brain and MR Spectroscopy were performed."
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P17Y",
+     "span": "At age 17, MRI brain and MR Spectroscopy were performed."
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "12 y",
+     "span": "| 12 y | GAMT deficiency diagnosis |"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P12Y",
+     "span": "| 12 y | GAMT deficiency diagnosis |"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "A male child was born from nonconsanguineous parents"
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "multiple seizure medications trialed, none effective; from age 14 creatine monohydrate 800 mg/kg/day and ornithine 800 mg/kg/day, continued; arginine not restricted",
+     "span": [
+      "Multiple seizure medications were trialed, however none proved effective.",
+      "at the age of 14 the patient was started on creatine monohydrate at 800 mg/kg of body weight per day, and ornithine supplementation at 800 mg/kg of body weight per day",
+      "The patient has since continued to supplement creatine and ornithine at the same rate as it previously showed clinical improvement.",
+      "The patient opted not to restrict arginine from the diet."
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "GAMT deficiency",
+     "span": "diagnosing the patient with pathogenic GAMT deficiency, a cerebral creatine deficiency syndrome"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing at age 12 (homozygous pathogenic c.327G>A in GAMT; earlier genetic testing at age 3 showed no abnormalities); MR spectroscopy reduced creatine peak further confirmed the diagnosis",
+     "span": [
+      "repeat genetic testing at age 12 was obtained. Results showed a homozygous pathogenic variant of c.327G>A silent mutation was found in the GAMT gene, diagnosing the patient with pathogenic GAMT deficiency",
+      "Genetic testing performed at 3 years of age showed no abnormalities.",
+      "MR Spectroscopy further confirmed the diagnosis in our case by showing a reduced creatine peak within the brain parenchyma."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "[17]",
+     "span": "attributed to the sedentary nature of the disease due to their motor symptoms [17]"
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "a homozygous pathogenic variant of c.327G>A silent mutation was found in the GAMT gene"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GAMT",
+     "span": "a homozygous pathogenic variant of c.327G>A silent mutation was found in the GAMT gene"
+    },
+    "variant_original_string": {
+     "value": "c.327G>A",
+     "span": "a homozygous pathogenic variant of c.327G>A silent mutation was found in the GAMT gene"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.327G>A",
+     "span": "a homozygous pathogenic variant of c.327G>A silent mutation was found in the GAMT gene"
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "other",
+     "span": "c.327G>A silent mutation"
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": "a homozygous pathogenic variant of c.327G>A silent mutation was found in the GAMT gene"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "a homozygous pathogenic variant of c.327G>A silent mutation was found in the GAMT gene"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "At 6 months of age, the patient was diagnosed with failure to thrive"
+    },
+    "feature_text_as_stated": {
+     "value": "failure to thrive",
+     "span": "At 6 months of age, the patient was diagnosed with failure to thrive"
+    },
+    "status": {
+     "value": "observed",
+     "span": "At 6 months of age, the patient was diagnosed with failure to thrive"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At 6 months of age, the patient was diagnosed with failure to thrive"
+    },
+    "onset_original_text": {
+     "value": "6 months",
+     "span": "At 6 months of age, the patient was diagnosed with failure to thrive"
+    },
+    "onset_iso8601": {
+     "value": "P6M",
+     "span": "At 6 months of age, the patient was diagnosed with failure to thrive"
+    },
+    "severity_or_detail": {
+     "value": "unable to gain adequate weight despite formula supplementation",
+     "span": "they were unable to gain adequate weight despite formula supplementation"
+    },
+    "hpo_label_candidate": {
+     "value": "Failure to thrive",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001508",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient was able to sit at 10 months, but unable to crawl or pull to stand"
+    },
+    "feature_text_as_stated": {
+     "value": "unable to crawl or pull to stand",
+     "span": "The patient was able to sit at 10 months, but unable to crawl or pull to stand"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient was able to sit at 10 months, but unable to crawl or pull to stand"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient was able to sit at 10 months, but unable to crawl or pull to stand"
+    },
+    "onset_original_text": {
+     "value": "10 months",
+     "span": "The patient was able to sit at 10 months, but unable to crawl or pull to stand"
+    },
+    "onset_iso8601": {
+     "value": "P10M",
+     "span": "The patient was able to sit at 10 months, but unable to crawl or pull to stand"
+    },
+    "severity_or_detail": {
+     "value": "later began crawling around 14-15 months of age; began to cruise at 19 months",
+     "span": [
+      "later began crawling around 14-15 months of age",
+      "At 19 months, they began to cruise"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed gross motor development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "unable to crawl or pull to stand, and had minimal babbling"
+    },
+    "feature_text_as_stated": {
+     "value": "minimal babbling",
+     "span": "unable to crawl or pull to stand, and had minimal babbling"
+    },
+    "status": {
+     "value": "observed",
+     "span": "unable to crawl or pull to stand, and had minimal babbling"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "unable to crawl or pull to stand, and had minimal babbling"
+    },
+    "onset_original_text": {
+     "value": "10 months",
+     "span": "The patient was able to sit at 10 months, but unable to crawl or pull to stand, and had minimal babbling"
+    },
+    "onset_iso8601": {
+     "value": "P10M",
+     "span": "The patient was able to sit at 10 months, but unable to crawl or pull to stand, and had minimal babbling"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated serum ammonia",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mildly elevated",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "hpo_label_candidate": {
+     "value": "Hyperammonemia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001987",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated lactic acid",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mildly elevated",
+     "span": "Serum ammonia and lactic acid levels were mildly elevated"
+    },
+    "hpo_label_candidate": {
+     "value": "Increased serum lactate",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002151",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "aldolase was mildly lowered"
+    },
+    "feature_text_as_stated": {
+     "value": "lowered aldolase",
+     "span": "aldolase was mildly lowered"
+    },
+    "status": {
+     "value": "observed",
+     "span": "aldolase was mildly lowered"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "aldolase was mildly lowered"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mildly lowered",
+     "span": "aldolase was mildly lowered"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "feature_text_as_stated": {
+     "value": "elevated creatine phosphokinase",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating creatine kinase concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003236",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal thyroid stimulating hormone",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal comprehensive metabolic panel",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Laboratory values of the patients comprehensive metabolic panel, creatine phosphokinase, and thyroid stimulating hormone were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Ultrasound and fetal movement throughout pregnancy were reported to be normal."
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal fetal movement",
+     "span": "Ultrasound and fetal movement throughout pregnancy were reported to be normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Ultrasound and fetal movement throughout pregnancy were reported to be normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Ultrasound and fetal movement throughout pregnancy were reported to be normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormal fetal movement",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "They were found to have low muscle tone and developmental delay"
+    },
+    "feature_text_as_stated": {
+     "value": "low muscle tone",
+     "span": [
+      "They were found to have low muscle tone and developmental delay",
+      "| 10 mo | Low muscle tone |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "They were found to have low muscle tone and developmental delay",
+      "| 10 mo | Low muscle tone |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "They were found to have low muscle tone and developmental delay",
+      "| 10 mo | Low muscle tone |"
+     ]
+    },
+    "onset_original_text": {
+     "value": "10 mo",
+     "span": "| 10 mo | Low muscle tone |"
+    },
+    "onset_iso8601": {
+     "value": "P10M",
+     "span": "| 10 mo | Low muscle tone |"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypotonia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001252",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "They were found to have low muscle tone and developmental delay"
+    },
+    "feature_text_as_stated": {
+     "value": "developmental delay",
+     "span": [
+      "They were found to have low muscle tone and developmental delay",
+      "|  | Developmental delay |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "They were found to have low muscle tone and developmental delay",
+      "|  | Developmental delay |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "They were found to have low muscle tone and developmental delay",
+      "|  | Developmental delay |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Global developmental delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001263",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient also had strabismus."
+    },
+    "feature_text_as_stated": {
+     "value": "strabismus",
+     "span": [
+      "The patient also had strabismus.",
+      "| 15 mo | Strabismus |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The patient also had strabismus.",
+      "| 15 mo | Strabismus |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "The patient also had strabismus.",
+      "| 15 mo | Strabismus |"
+     ]
+    },
+    "onset_original_text": {
+     "value": "15 mo",
+     "span": "| 15 mo | Strabismus |"
+    },
+    "onset_iso8601": {
+     "value": "P15M",
+     "span": "| 15 mo | Strabismus |"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Strabismus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000486",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "At 19 months, they began to cruise, most often walking on the insides of their ankles."
+    },
+    "feature_text_as_stated": {
+     "value": "walking on the insides of their ankles",
+     "span": [
+      "At 19 months, they began to cruise, most often walking on the insides of their ankles.",
+      "| 19 mo | Cruising using the inner ankles |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "At 19 months, they began to cruise, most often walking on the insides of their ankles.",
+      "| 19 mo | Cruising using the inner ankles |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "At 19 months, they began to cruise, most often walking on the insides of their ankles.",
+      "| 19 mo | Cruising using the inner ankles |"
+     ]
+    },
+    "onset_original_text": {
+     "value": "19 mo",
+     "span": "| 19 mo | Cruising using the inner ankles |"
+    },
+    "onset_iso8601": {
+     "value": "P19M",
+     "span": "| 19 mo | Cruising using the inner ankles |"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "They were noted to have a small throat and a receding chin"
+    },
+    "feature_text_as_stated": {
+     "value": "small throat",
+     "span": [
+      "They were noted to have a small throat and a receding chin",
+      "|  | Dysmorphic facial features (Small throat, Receding chin) |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "They were noted to have a small throat and a receding chin",
+      "|  | Dysmorphic facial features (Small throat, Receding chin) |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "They were noted to have a small throat and a receding chin",
+      "|  | Dysmorphic facial features (Small throat, Receding chin) |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "They were noted to have a small throat and a receding chin"
+    },
+    "feature_text_as_stated": {
+     "value": "receding chin",
+     "span": [
+      "They were noted to have a small throat and a receding chin",
+      "|  | Dysmorphic facial features (Small throat, Receding chin) |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "They were noted to have a small throat and a receding chin",
+      "|  | Dysmorphic facial features (Small throat, Receding chin) |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "They were noted to have a small throat and a receding chin",
+      "|  | Dysmorphic facial features (Small throat, Receding chin) |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Retrognathia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000278",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "weight/height less than the third percentile"
+    },
+    "feature_text_as_stated": {
+     "value": "weight/height less than the third percentile",
+     "span": "weight/height less than the third percentile"
+    },
+    "status": {
+     "value": "observed",
+     "span": "weight/height less than the third percentile"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "weight/height less than the third percentile"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "feature_text_as_stated": {
+     "value": "microcephaly",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "head circumference in the 50th percentile",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "hpo_label_candidate": {
+     "value": "Microcephaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000252",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "feature_text_as_stated": {
+     "value": "macrocephaly",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "head circumference in the 50th percentile",
+     "span": "a head circumference in the 50th percentile"
+    },
+    "hpo_label_candidate": {
+     "value": "Macrocephaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000256",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Workup including a brain MRI and at the time was normal."
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal brain MRI",
+     "span": "Workup including a brain MRI and at the time was normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Workup including a brain MRI and at the time was normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Workup including a brain MRI and at the time was normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "early brain MRI (around 19 months) normal; MRI at age 17 abnormal",
+     "span": [
+      "Workup including a brain MRI and at the time was normal.",
+      "At age 17, MRI brain and MR Spectroscopy were performed."
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "the patient was diagnosed with multiple developmental delays"
+    },
+    "feature_text_as_stated": {
+     "value": "multiple developmental delays (Global Developmental Delay)",
+     "span": [
+      "the patient was diagnosed with multiple developmental delays",
+      "| 3 y | Early Learning Accomplishment Profile (Global Developmental Delay) |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "the patient was diagnosed with multiple developmental delays",
+      "| 3 y | Early Learning Accomplishment Profile (Global Developmental Delay) |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "the patient was diagnosed with multiple developmental delays",
+      "| 3 y | Early Learning Accomplishment Profile (Global Developmental Delay) |"
+     ]
+    },
+    "onset_original_text": {
+     "value": "3 y",
+     "span": "| 3 y | Early Learning Accomplishment Profile (Global Developmental Delay) |"
+    },
+    "onset_iso8601": {
+     "value": "P3Y",
+     "span": "| 3 y | Early Learning Accomplishment Profile (Global Developmental Delay) |"
+    },
+    "severity_or_detail": {
+     "value": "Early Learning Accomplishment Profile at 3 y: gross motor 18 mo, fine motor 12 mo, cognitive 13 mo, language 13 mo, self help 15 mo, social 14 mo",
+     "span": [
+      "| 3 y | Early Learning Accomplishment Profile (Global Developmental Delay) |",
+      "|  | Gross motor = 18 mo |\n|  | Fine motor = 12 mo |\n|  | Cognitive = 13 mo |\n|  | Language = 13 mo |\n|  | Self help = 15 mo |\n|  | Social = 14 mo |"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Global developmental delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001263",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "with good eye contact"
+    },
+    "feature_text_as_stated": {
+     "value": "poor eye contact",
+     "span": "with good eye contact"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "with good eye contact"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "with good eye contact"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Poor eye contact",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000817",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "would spend time but not engage in play with others"
+    },
+    "feature_text_as_stated": {
+     "value": "would spend time but not engage in play with others",
+     "span": "would spend time but not engage in play with others"
+    },
+    "status": {
+     "value": "observed",
+     "span": "would spend time but not engage in play with others"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "would spend time but not engage in play with others"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "They exhibited a very short attention span"
+    },
+    "feature_text_as_stated": {
+     "value": "very short attention span",
+     "span": [
+      "They exhibited a very short attention span",
+      "|  | Short attention span |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "They exhibited a very short attention span",
+      "|  | Short attention span |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "They exhibited a very short attention span",
+      "|  | Short attention span |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "had behavioral issues such as hair pulling and biting"
+    },
+    "feature_text_as_stated": {
+     "value": "hair pulling",
+     "span": [
+      "had behavioral issues such as hair pulling and biting",
+      "|  | Hair pulling |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "had behavioral issues such as hair pulling and biting",
+      "|  | Hair pulling |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "had behavioral issues such as hair pulling and biting",
+      "|  | Hair pulling |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "had behavioral issues such as hair pulling and biting"
+    },
+    "feature_text_as_stated": {
+     "value": "biting",
+     "span": [
+      "had behavioral issues such as hair pulling and biting",
+      "|  | Biting |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "had behavioral issues such as hair pulling and biting",
+      "|  | Biting |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "had behavioral issues such as hair pulling and biting",
+      "|  | Biting |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient continued to have poor weight gain"
+    },
+    "feature_text_as_stated": {
+     "value": "poor weight gain",
+     "span": "The patient continued to have poor weight gain"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient continued to have poor weight gain"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient continued to have poor weight gain"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "had many food aversions"
+    },
+    "feature_text_as_stated": {
+     "value": "many food aversions",
+     "span": "had many food aversions"
+    },
+    "status": {
+     "value": "observed",
+     "span": "had many food aversions"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "had many food aversions"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "| 5 y | Autism |"
+    },
+    "feature_text_as_stated": {
+     "value": "autism",
+     "span": "| 5 y | Autism |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 5 y | Autism |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 5 y | Autism |"
+    },
+    "onset_original_text": {
+     "value": "5 y",
+     "span": "| 5 y | Autism |"
+    },
+    "onset_iso8601": {
+     "value": "P5Y",
+     "span": "| 5 y | Autism |"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Autism",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000717",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "|  | ADHD |"
+    },
+    "feature_text_as_stated": {
+     "value": "ADHD",
+     "span": "|  | ADHD |"
+    },
+    "status": {
+     "value": "observed",
+     "span": "|  | ADHD |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "|  | ADHD |"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Attention deficit hyperactivity disorder",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0007018",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "| 5-12 y | Seizures |"
+    },
+    "feature_text_as_stated": {
+     "value": "seizures",
+     "span": [
+      "| 5-12 y | Seizures |",
+      "Despite supplementation, the patient continued to have almost daily seizures"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 5-12 y | Seizures |",
+      "Despite supplementation, the patient continued to have almost daily seizures"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 5-12 y | Seizures |",
+      "Despite supplementation, the patient continued to have almost daily seizures"
+     ]
+    },
+    "onset_original_text": {
+     "value": "5-12 y",
+     "span": "| 5-12 y | Seizures |"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "shaking episodes thought to be seizures; almost daily; multiple seizure medications not effective",
+     "span": [
+      "The patient had also been experiencing shaking episodes thought to be seizures",
+      "the patient continued to have almost daily seizures",
+      "Multiple seizure medications were trialed, however none proved effective."
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001250",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Pertinent findings included generalized parenchymal volume loss"
+    },
+    "feature_text_as_stated": {
+     "value": "generalized parenchymal volume loss",
+     "span": "Pertinent findings included generalized parenchymal volume loss"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Pertinent findings included generalized parenchymal volume loss"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Pertinent findings included generalized parenchymal volume loss"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "brain parenchymal fraction of 84.1% at age 17",
+     "span": "Synthetic MRI Brain with quantitative analysis showed a brain parenchymal fraction of 84.1%"
+    },
+    "hpo_label_candidate": {
+     "value": "Cerebral atrophy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002059",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "greater than expected prominence of the ventricles and sulci for patients age"
+    },
+    "feature_text_as_stated": {
+     "value": "greater than expected prominence of the ventricles and sulci for patients age",
+     "span": "greater than expected prominence of the ventricles and sulci for patients age"
+    },
+    "status": {
+     "value": "observed",
+     "span": "greater than expected prominence of the ventricles and sulci for patients age"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "greater than expected prominence of the ventricles and sulci for patients age"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Ventriculomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002119",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "showed reduced Creatine peak, in keeping with a clinical diagnosis of GAMT deficiency"
+    },
+    "feature_text_as_stated": {
+     "value": "reduced Creatine peak on MR Spectroscopy",
+     "span": "showed reduced Creatine peak, in keeping with a clinical diagnosis of GAMT deficiency"
+    },
+    "status": {
+     "value": "observed",
+     "span": "showed reduced Creatine peak, in keeping with a clinical diagnosis of GAMT deficiency"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "showed reduced Creatine peak, in keeping with a clinical diagnosis of GAMT deficiency"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "voxels over right centrum semiovale white matter and right basal ganglia",
+     "span": "MR Spectroscopy analysis with voxel placed over the normal-appearing white matter of right centrum semiovale and gray matter (right basal ganglia) showed reduced Creatine peak"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "feature_text_as_stated": {
+     "value": "recurrent bone fractures",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "status": {
+     "value": "observed",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "attributed to the sedentary nature of the disease due to their motor symptoms",
+     "span": "attributed to the sedentary nature of the disease due to their motor symptoms"
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent fractures",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "They were found to have low muscle tone and developmental delay",
+      "the patient was diagnosed with multiple developmental delays"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "They were found to have low muscle tone and developmental delay",
+      "the patient was diagnosed with multiple developmental delays"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| 5-12 y | Seizures |",
+      "the patient continued to have almost daily seizures"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| 5-12 y | Seizures |",
+      "the patient continued to have almost daily seizures"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "They were found to have low muscle tone",
+      "| 10 mo | Low muscle tone |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "They were found to have low muscle tone",
+      "| 10 mo | Low muscle tone |"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| 5 y | Autism |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| 5 y | Autism |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "|  | ADHD |"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "|  | ADHD |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "generalized parenchymal volume loss with greater than expected prominence of the ventricles and sulci for patients age"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "generalized parenchymal volume loss with greater than expected prominence of the ventricles and sulci for patients age"
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "Here we present a case of a 17-year-old male with confirmed GAMT deficiency."
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "37808418",
+     "span": "PMID: 37808418"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [17] patient",
+     "span": "1 study reported a patient with recurrent bone fractures"
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

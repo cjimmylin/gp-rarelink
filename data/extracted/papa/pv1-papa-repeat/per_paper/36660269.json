@@ -1,0 +1,6363 @@
+{
+ "pmid": "36660269",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Case report of a man and his son 'both heterozygous for a pathogenic missense E250K mutation in the PSTPIP1 gene', plus a literature table (Table I) of previously reported E250K patients with individual-level detail.",
+ "method_note": "Read the paper manually; a short Python script in the scratch directory assembled the JSON from hand-entered values and the five Table I rows (checked against the table). Labels: index case = 'patient' (single first-hand case; role words only); his son = 'son of patient' (paper says 'his infant son'); Table I has no label column, so rows are 'Table I row 1'-'Table I row 5', with the Author (y) cell as source_reference_in_review; the previously reported E250K patient with FSGS cited to reference 10 (mentioned only in the Discussion, but with variant and feature) = 'ref ^10 patient'. Table I 'Age (y)' is unspecified; recorded as age at last evaluation/report (uncertain whether it is age at report or at onset). Table I title prints the gene as 'PTSPIP1' (typo); table notes and text print 'PSTPIP1', which was recorded with both spans. Variant for Table I and ref 10 patients is from the table title / sentence (E250K); no zygosity, inheritance or pathogenicity is given for them. Protein change printed as 'E250K' (no 'p.' prefix) and cDNA as 'c.748 glycine to adenine' (non-HGVS wording); both kept as printed. Contradiction/inconsistency: text says '6 previously reported patients with the E250K mutation' and calls this 'the seventh published case', but Table I lists only 5 previously reported patients; the ref 10 patient (Borgia 2021) is not in Table I and may or may not be the sixth. Sentence 'Additional features present in other cases with the E250K mutation include splenomegaly, bleeding diathesis, and serious cutaneous and pulmonary infections.^6' cites ref 6 for 'other cases' (plural); attribution to the Table I Lindwall row is ambiguous, so these features were not recorded for any person. Lindwall row 'osteomyelitis' recorded as observed for the checklist item 'sterile osteomyelitis or osteolytic bone lesions' though the table does not say sterile. 'hepatosplenomegaly' in Table I recorded as observed splenomegaly and hepatomegaly. For the index patient, 'absence of ... hepatosplenomegaly, pancytopenia, and growth failure' was recorded as excluded features; it was not used to exclude splenomegaly, hepatomegaly, anemia, neutropenia or thrombocytopenia separately (narrow vs broad rule), but excluded the growth failure checklist item. The index patient's renal disease is attributed by the authors to multiple other factors as well (nephrolithiasis, hypertension, sepsis, cyclosporine); recorded as observed kidney involvement as stated. Son: inheritance recorded as 'inherited paternal' because the paper states the father carries the same variant; no son features are reported beyond 'a possible autoinflammatory syndrome', so his checklist is all not reported. Group-level literature counts (16 of 63, 18 of 21) describe no individuals and were not extracted. n_patients_reported and cites_prior_report left null (no number or statement given).",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "first_author": {
+     "value": "Zhao",
+     "span": "Authors: Zhao Raymond; Novice Taylor; Konda Sasank"
+    },
+    "year": {
+     "value": 2022,
+     "span": "Journal: JAAD Case Reports (2022)"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "## Case report"
+    },
+    "n_patients_reported": {
+     "value": null,
+     "span": null
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "Notably, our patient was not formally diagnosed until adulthood"
+    },
+    "sex": {
+     "value": "male",
+     "span": "A 43-year-old man"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "43-year-old",
+     "span": "A 43-year-old man"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P43Y",
+     "span": "A 43-year-old man"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "adulthood",
+     "span": "our patient was not formally diagnosed until adulthood"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Kidney transplantation (at 34 years) for end-stage renal disease; transplant immunosuppression with mycophenolate mofetil and tacrolimus; prior chronic cyclosporine for PG; empiric vancomycin then linezolid, acyclovir and prednisone with minimal improvement; canakinumab with near complete resolution of acneiform lesions and significant improvement in arthritis",
+     "span": [
+      "The patient’s transplant immunosuppressive regimen consisted of mycophenolate mofetil 1000 mg twice daily and tacrolimus 1.5 mg daily.",
+      "chronic cyclosporine use for PG",
+      "He was treated empirically with vancomycin followed by linezolid, acyclovir, and prednisone with minimal improvement observed.",
+      "Canakinumab, an interleukin-1β inhibitor, was initiated with near complete resolution of the patient’s acneiform lesions and significant improvement in his arthritis.",
+      "received a kidney transplant at 34-years of age for end-stage renal disease"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "PAPA syndrome",
+     "span": "Both father and son were formally diagnosed with PAPA syndrome."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Genetic testing (heterozygous pathogenic missense E250K PSTPIP1 mutation) together with the clinical triad",
+     "span": [
+      "Genetic testing confirmed that the patient as well as his son were both heterozygous for a pathogenic missense E250K mutation in the PSTPIP1 gene",
+      "PAPA syndrome was deemed more likely given his classic clinical triad"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "sex": {
+     "value": "male",
+     "span": "his infant son"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "infant",
+     "span": "his infant son"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "PAPA syndrome",
+     "span": "Both father and son were formally diagnosed with PAPA syndrome."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "Genetic testing (heterozygous pathogenic missense E250K PSTPIP1 mutation)",
+     "span": [
+      "Genetic testing confirmed that the patient as well as his son were both heterozygous for a pathogenic missense E250K mutation in the PSTPIP1 gene",
+      "Both father and son were formally diagnosed with PAPA syndrome."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Effective treatment(s): Cyclosporine and tacrolimus",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis | Cyclosporine and tacrolimus |"
+    },
+    "disease_label_as_stated": {
+     "value": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Demidowich et al, 2012^4",
+     "span": "| Demidowich et al, 2012^4 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Lee et al, 2012^5 | 26, male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "26",
+     "span": "| Lee et al, 2012^5 | 26, male"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P26Y",
+     "span": "| Lee et al, 2012^5 | 26, male"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Effective treatment(s): Corticosteroids and adalimumab",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne | Corticosteroids and adalimumab |"
+    },
+    "disease_label_as_stated": {
+     "value": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Lee et al, 2012^5",
+     "span": "| Lee et al, 2012^5 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Lindwall et al, 2015^6 | 25, male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "25",
+     "span": "| Lindwall et al, 2015^6 | 25, male"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P25Y",
+     "span": "| Lindwall et al, 2015^6 | 25, male"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Effective treatment(s): None",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly | None |"
+    },
+    "disease_label_as_stated": {
+     "value": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Lindwall et al, 2015^6",
+     "span": "| Lindwall et al, 2015^6 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Omenetti et al, 2016^7 | 12, male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "12",
+     "span": "| Omenetti et al, 2016^7 | 12, male"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P12Y",
+     "span": "| Omenetti et al, 2016^7 | 12, male"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Effective treatment(s): Canakinumab",
+     "span": "| Omenetti et al, 2016^7 | 12, male | PG | Canakinumab |"
+    },
+    "disease_label_as_stated": {
+     "value": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Omenetti et al, 2016^7",
+     "span": "| Omenetti et al, 2016^7 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| Kanameishi et al, 2017^8 | 25, male"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "25",
+     "span": "| Kanameishi et al, 2017^8 | 25, male"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P25Y",
+     "span": "| Kanameishi et al, 2017^8 | 25, male"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Effective treatment(s): Corticosteroids, adalimumab, anakinra, methotrexate, and cyclosporine",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly | Corticosteroids, adalimumab, anakinra, methotrexate, and cyclosporine |"
+    },
+    "disease_label_as_stated": {
+     "value": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Kanameishi et al, 2017^8",
+     "span": "| Kanameishi et al, 2017^8 |"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "^10",
+     "span": "patients with renal dysfunction.^10"
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "gene_symbol_as_stated": {
+     "value": "PSTPIP1",
+     "span": "E250K mutation in the PSTPIP1 gene"
+    },
+    "variant_original_string": {
+     "value": "E250K mutation in the PSTPIP1 gene, specifically c.748 glycine to adenine",
+     "span": "E250K mutation in the PSTPIP1 gene, specifically c.748 glycine to adenine"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.748 glycine to adenine",
+     "span": "c.748 glycine to adenine"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E250K",
+     "span": "missense E250K mutation"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "a pathogenic missense E250K mutation"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "the patient as well as his son were both heterozygous for a pathogenic missense E250K mutation"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "a pathogenic missense E250K mutation"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "gene_symbol_as_stated": {
+     "value": "PSTPIP1",
+     "span": "E250K mutation in the PSTPIP1 gene"
+    },
+    "variant_original_string": {
+     "value": "E250K mutation in the PSTPIP1 gene, specifically c.748 glycine to adenine",
+     "span": "E250K mutation in the PSTPIP1 gene, specifically c.748 glycine to adenine"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.748 glycine to adenine",
+     "span": "c.748 glycine to adenine"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E250K",
+     "span": "missense E250K mutation"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "a pathogenic missense E250K mutation"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "the patient as well as his son were both heterozygous for a pathogenic missense E250K mutation"
+    },
+    "inheritance": {
+     "value": "inherited paternal",
+     "span": "the patient as well as his son were both heterozygous for a pathogenic missense E250K mutation"
+    },
+    "parental_testing_statement": {
+     "value": "The father (the index patient) was tested and is heterozygous for the same E250K mutation",
+     "span": "Genetic testing confirmed that the patient as well as his son were both heterozygous for a pathogenic missense E250K mutation in the PSTPIP1 gene"
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "a pathogenic missense E250K mutation"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "PSTPIP1",
+     "span": [
+      "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene",
+      "PSTPIP1 gene, proline-serine-threonine phosphatase-interacting protein gene"
+     ]
+    },
+    "variant_original_string": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "PSTPIP1",
+     "span": [
+      "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene",
+      "PSTPIP1 gene, proline-serine-threonine phosphatase-interacting protein gene"
+     ]
+    },
+    "variant_original_string": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "PSTPIP1",
+     "span": [
+      "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene",
+      "PSTPIP1 gene, proline-serine-threonine phosphatase-interacting protein gene"
+     ]
+    },
+    "variant_original_string": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "PSTPIP1",
+     "span": [
+      "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene",
+      "PSTPIP1 gene, proline-serine-threonine phosphatase-interacting protein gene"
+     ]
+    },
+    "variant_original_string": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "PSTPIP1",
+     "span": [
+      "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene",
+      "PSTPIP1 gene, proline-serine-threonine phosphatase-interacting protein gene"
+     ]
+    },
+    "variant_original_string": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E250K",
+     "span": "Pyogenic sterile arthritis, pyoderma gangrenosum, and acne syndrome patients with E250K mutations in the PTSPIP1 gene"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "gene_symbol_as_stated": {
+     "value": "PSTPIP1",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "variant_original_string": {
+     "value": "E250K",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E250K",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "end-stage renal disease",
+     "span": "a history of kidney transplantation received 9 years prior due to end-stage renal disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a history of kidney transplantation received 9 years prior due to end-stage renal disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a history of kidney transplantation received 9 years prior due to end-stage renal disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "kidney transplant at 34-years of age",
+     "span": "received a kidney transplant at 34-years of age for end-stage renal disease"
+    },
+    "hpo_label_candidate": {
+     "value": "Stage 5 chronic kidney disease",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003774",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "proteinuria",
+     "span": "A kidney biopsy performed for proteinuria prior to transplantation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "A kidney biopsy performed for proteinuria prior to transplantation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "A kidney biopsy performed for proteinuria prior to transplantation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Proteinuria",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000093",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "focal segmental glomerulosclerosis (FSGS)",
+     "span": "revealed features compatible with focal segmental glomerulosclerosis (FSGS)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "revealed features compatible with focal segmental glomerulosclerosis (FSGS)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "revealed features compatible with focal segmental glomerulosclerosis (FSGS)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "kidney biopsy prior to transplantation",
+     "span": "A kidney biopsy performed for proteinuria prior to transplantation"
+    },
+    "hpo_label_candidate": {
+     "value": "Focal segmental glomerulosclerosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000097",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "nephrolithiasis complicated by hydronephrosis",
+     "span": "nephrolithiasis complicated by hydronephrosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "nephrolithiasis complicated by hydronephrosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "nephrolithiasis complicated by hydronephrosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Nephrolithiasis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000787",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "hydronephrosis",
+     "span": "nephrolithiasis complicated by hydronephrosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "nephrolithiasis complicated by hydronephrosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "nephrolithiasis complicated by hydronephrosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hydronephrosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000126",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "hypertension",
+     "span": "hydronephrosis, hypertension, sepsis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "hydronephrosis, hypertension, sepsis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "hydronephrosis, hypertension, sepsis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000822",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "sepsis with acute tubular necrosis",
+     "span": "sepsis with acute tubular necrosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "sepsis with acute tubular necrosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "sepsis with acute tubular necrosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Sepsis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "arthritis",
+     "span": [
+      "significant improvement in his arthritis",
+      "a presumed diagnosis of juvenile idiopathic arthritis"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "significant improvement in his arthritis",
+      "a presumed diagnosis of juvenile idiopathic arthritis"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "significant improvement in his arthritis",
+      "a presumed diagnosis of juvenile idiopathic arthritis"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "presumed diagnosis of juvenile idiopathic arthritis",
+     "span": "a presumed diagnosis of juvenile idiopathic arthritis"
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "quiescent PG of the lower extremities",
+     "span": "quiescent PG of the lower extremities"
+    },
+    "status": {
+     "value": "observed",
+     "span": "quiescent PG of the lower extremities"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "quiescent PG of the lower extremities"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "quiescent; lower extremities",
+     "span": "quiescent PG of the lower extremities"
+    },
+    "hpo_label_candidate": {
+     "value": "Pyoderma gangrenosum",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "recurrent, painful acneiform eruptions",
+     "span": "a decade-long history of recurrent, painful acneiform eruptions"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a decade-long history of recurrent, painful acneiform eruptions"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a decade-long history of recurrent, painful acneiform eruptions"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "decade-long history; recurrent, painful",
+     "span": "a decade-long history of recurrent, painful acneiform eruptions"
+    },
+    "hpo_label_candidate": {
+     "value": "Acne",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001061",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "malaise",
+     "span": "a 3-week history of malaise"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a 3-week history of malaise"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a 3-week history of malaise"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "3-week history",
+     "span": "a 3-week history of malaise"
+    },
+    "hpo_label_candidate": {
+     "value": "Malaise",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "exquisitely painful cutaneous eruption on the scalp, face, chest, and back",
+     "span": "an exquisitely painful cutaneous eruption on the scalp, face, chest, and back"
+    },
+    "status": {
+     "value": "observed",
+     "span": "an exquisitely painful cutaneous eruption on the scalp, face, chest, and back"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "an exquisitely painful cutaneous eruption on the scalp, face, chest, and back"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "3-week history",
+     "span": "a 3-week history of malaise and an exquisitely painful cutaneous eruption"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "tender erythematous, folliculocentric papules, and pustules with overlying hemorrhagic crusts",
+     "span": "numerous tender erythematous, folliculocentric papules, and pustules with overlying hemorrhagic crusts scattered on the scalp, face, and trunk"
+    },
+    "status": {
+     "value": "observed",
+     "span": "numerous tender erythematous, folliculocentric papules, and pustules with overlying hemorrhagic crusts scattered on the scalp, face, and trunk"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "numerous tender erythematous, folliculocentric papules, and pustules with overlying hemorrhagic crusts scattered on the scalp, face, and trunk"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pustule",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "wedge-shaped neutrophil-rich infiltrate in the dermis with loss of the overlying epidermis",
+     "span": "Pathology revealed a wedge-shaped neutrophil-rich infiltrate in the dermis with loss of the overlying epidermis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Pathology revealed a wedge-shaped neutrophil-rich infiltrate in the dermis with loss of the overlying epidermis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Pathology revealed a wedge-shaped neutrophil-rich infiltrate in the dermis with loss of the overlying epidermis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "positive herpes simplex virus and varicella zoster virus PCR on lesional swabs",
+     "span": "Lesional swabs for herpes simplex virus and varicella zoster virus polymerase chain reaction testing were negative."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Lesional swabs for herpes simplex virus and varicella zoster virus polymerase chain reaction testing were negative."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Lesional swabs for herpes simplex virus and varicella zoster virus polymerase chain reaction testing were negative."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "bacterial (including mycobacterial) or fungal organisms on tissue culture",
+     "span": "No bacterial (including mycobacterial) or fungal organisms were isolated on the tissue culture."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "No bacterial (including mycobacterial) or fungal organisms were isolated on the tissue culture."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "No bacterial (including mycobacterial) or fungal organisms were isolated on the tissue culture."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "hepatosplenomegaly",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatosplenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001433",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "pancytopenia",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pancytopenia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001876",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "feature_text_as_stated": {
+     "value": "growth failure",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Growth delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "PG",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pyoderma gangrenosum",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "arthritis",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "splenomegaly",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Splenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001744",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "thrombocytopenia",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Thrombocytopenia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001873",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "feature_text_as_stated": {
+     "value": "pharyngeal papillomatosis",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "feature_text_as_stated": {
+     "value": "PG",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pyoderma gangrenosum",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "feature_text_as_stated": {
+     "value": "arthritis",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "feature_text_as_stated": {
+     "value": "acne",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Acne",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001061",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "feature_text_as_stated": {
+     "value": "PG",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pyoderma gangrenosum",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "feature_text_as_stated": {
+     "value": "arthritis",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "feature_text_as_stated": {
+     "value": "acne",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Acne",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001061",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "feature_text_as_stated": {
+     "value": "osteomyelitis",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Osteomyelitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002754",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "feature_text_as_stated": {
+     "value": "hepatosplenomegaly",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hepatosplenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001433",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "feature_text_as_stated": {
+     "value": "PG",
+     "span": "| Omenetti et al, 2016^7 | 12, male | PG"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Omenetti et al, 2016^7 | 12, male | PG"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Omenetti et al, 2016^7 | 12, male | PG"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pyoderma gangrenosum",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "PG",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Pyoderma gangrenosum",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "arthritis",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Arthritis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001369",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "acne",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Acne",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001061",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "feature_text_as_stated": {
+     "value": "splenomegaly",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Splenomegaly",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001744",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "feature_text_as_stated": {
+     "value": "FSGS",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Focal segmental glomerulosclerosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000097",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "pyogenic sterile arthritis or other arthritis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "significant improvement in his arthritis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "significant improvement in his arthritis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "pyoderma gangrenosum",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "quiescent PG of the lower extremities"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "quiescent PG of the lower extremities"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "acne (including cystic acne or acne conglobata)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "a decade-long history of recurrent, painful acneiform eruptions"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a decade-long history of recurrent, painful acneiform eruptions"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "hidradenitis suppurativa",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "skin or soft-tissue abscesses",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "sterile osteomyelitis or osteolytic bone lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP, ESR or SAA)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "neutropenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "growth failure or failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the absence of other PAMI features such as hepatosplenomegaly, pancytopenia, and growth failure"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "hyperzincemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "hypercalprotectinemia (elevated MRP8/14)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "inflammatory bowel disease or colitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "kidney involvement (proteinuria, hematuria or nephropathy)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "A kidney biopsy performed for proteinuria prior to transplantation",
+      "revealed features compatible with focal segmental glomerulosclerosis (FSGS)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "A kidney biopsy performed for proteinuria prior to transplantation",
+      "revealed features compatible with focal segmental glomerulosclerosis (FSGS)"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 43-year-old man with a history of kidney transplantation"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "pyogenic sterile arthritis or other arthritis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "pyoderma gangrenosum",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "acne (including cystic acne or acne conglobata)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "hidradenitis suppurativa",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "skin or soft-tissue abscesses",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "sterile osteomyelitis or osteolytic bone lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP, ESR or SAA)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "neutropenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "growth failure or failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "hyperzincemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "hypercalprotectinemia (elevated MRP8/14)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "inflammatory bowel disease or colitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "kidney involvement (proteinuria, hematuria or nephropathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "son of patient",
+     "span": "his infant son was also being treated for a possible autoinflammatory syndrome"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "pyogenic sterile arthritis or other arthritis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "pyoderma gangrenosum",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "acne (including cystic acne or acne conglobata)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "hidradenitis suppurativa",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft-tissue abscesses",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "sterile osteomyelitis or osteolytic bone lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP, ESR or SAA)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "neutropenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Demidowich et al, 2012^4 | Unknown, female | PG, arthritis, splenomegaly, thrombocytopenia, and pharyngeal papillomatosis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "growth failure or failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "hyperzincemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "hypercalprotectinemia (elevated MRP8/14)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "inflammatory bowel disease or colitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "kidney involvement (proteinuria, hematuria or nephropathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 1",
+     "span": "| Demidowich et al, 2012^4 |"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "pyogenic sterile arthritis or other arthritis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "pyoderma gangrenosum",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "acne (including cystic acne or acne conglobata)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lee et al, 2012^5 | 26, male | PG, arthritis, and acne"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "hidradenitis suppurativa",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft-tissue abscesses",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "sterile osteomyelitis or osteolytic bone lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP, ESR or SAA)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "neutropenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "growth failure or failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "hyperzincemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "hypercalprotectinemia (elevated MRP8/14)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "inflammatory bowel disease or colitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "kidney involvement (proteinuria, hematuria or nephropathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 2",
+     "span": "| Lee et al, 2012^5 |"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "pyogenic sterile arthritis or other arthritis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "pyoderma gangrenosum",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "acne (including cystic acne or acne conglobata)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "hidradenitis suppurativa",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft-tissue abscesses",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "sterile osteomyelitis or osteolytic bone lesions",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP, ESR or SAA)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "neutropenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Lindwall et al, 2015^6 | 25, male | PG, arthritis, acne, osteomyelitis, and hepatosplenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "growth failure or failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "hyperzincemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "hypercalprotectinemia (elevated MRP8/14)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "inflammatory bowel disease or colitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "kidney involvement (proteinuria, hematuria or nephropathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 3",
+     "span": "| Lindwall et al, 2015^6 |"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "pyogenic sterile arthritis or other arthritis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "pyoderma gangrenosum",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Omenetti et al, 2016^7 | 12, male | PG"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Omenetti et al, 2016^7 | 12, male | PG"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "acne (including cystic acne or acne conglobata)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "hidradenitis suppurativa",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft-tissue abscesses",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "sterile osteomyelitis or osteolytic bone lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP, ESR or SAA)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "neutropenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "growth failure or failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "hyperzincemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "hypercalprotectinemia (elevated MRP8/14)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "inflammatory bowel disease or colitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "kidney involvement (proteinuria, hematuria or nephropathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 4",
+     "span": "| Omenetti et al, 2016^7 |"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "pyogenic sterile arthritis or other arthritis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "pyoderma gangrenosum",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "acne (including cystic acne or acne conglobata)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "hidradenitis suppurativa",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "skin or soft-tissue abscesses",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "sterile osteomyelitis or osteolytic bone lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP, ESR or SAA)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "neutropenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "| Kanameishi et al, 2017^8 | 25, male | PG, arthritis, acne, and splenomegaly"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "growth failure or failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "hyperzincemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "hypercalprotectinemia (elevated MRP8/14)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "inflammatory bowel disease or colitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "kidney involvement (proteinuria, hematuria or nephropathy)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "Table I row 5",
+     "span": "| Kanameishi et al, 2017^8 |"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "pyogenic sterile arthritis or other arthritis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "pyoderma gangrenosum",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "acne (including cystic acne or acne conglobata)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "hidradenitis suppurativa",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "skin or soft-tissue abscesses",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "sterile osteomyelitis or osteolytic bone lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP, ESR or SAA)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "neutropenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "thrombocytopenia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "splenomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "hepatomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "growth failure or failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "hyperzincemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "hypercalprotectinemia (elevated MRP8/14)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "inflammatory bowel disease or colitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "kidney involvement (proteinuria, hematuria or nephropathy)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    }
+   },
+   {
+    "pmid": {
+     "value": "36660269",
+     "span": "PMID: 36660269"
+    },
+    "individual_label_in_paper": {
+     "value": "ref ^10 patient",
+     "span": "the presence of FSGS in a previously reported E250K PSTPIP1 gene mutation patient highlights"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
