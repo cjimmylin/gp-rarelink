@@ -1,0 +1,5075 @@
+{
+ "pmid": "26268900",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "The paper is a case report plus a registry cohort review; the index case had ALDH5A1 variants: \"ALDH5A1 sequencing revealed compound heterozygosity for 2 previously described mutations\".",
+ "method_note": "Read the whole paper by hand; a short Python script in the scratch directory assembled the JSON and checked spans and fields. Rows: the case-report index patient (rule 5 'patient'; 'the index case' is a role word), his deceased sister (affected relative, not tested), his mother (tested carrier), and three adult deaths described in the Discussion with individual facts: the database patient who died at 33 ('unnamed person 1'), the posthumously diagnosed woman aged 19 whose neuropathology was published in ref 8 ('ref 8 patient'), and the man in his mid-20s known by oral communication ('unnamed person 2'). The father is mentioned only as untested ('Paternal DNA was not available') and is not affected, so he has no row. The registry cohort (112 in the database, 95 with age at diagnosis, 40 adults, 25 adults with adult data) is reported only as counts; the single table is a count table (n (%)) and was not used for any individual. '1 patient age 46' and '7 patients ages 30-39 (including 1 deceased)' from the age stratification were not given rows (stratification counts only); the deceased 30-39 patient may be the same person as 'unnamed person 1' (died at 33), but the paper does not say so, so no merge. cohort_size_as_stated = 112 (database total); the adult analysis cohort is 25. n_patients_reported left null: the paper does not state how many patients have an ALDH5A1 variant. Variant strings are recorded as printed: the conversion shows 'c.1015-2A.C' and 'c.608C.G' (the '.' likely stands for '>' in the original), not corrected. Inheritance of c.1015-2A.C is 'inherited maternal' (mother stated heterozygous for it); c.608C.G is 'not reported' (trans phase is only inferred; paternal DNA unavailable). Variant type 'splice' from '(mutation of canonical splice-site)'; no class is stated for c.608C.G. 'previously described mutations' was not taken as a pathogenicity classification. Index MRI: figure 1 legend ('a patient ... at age 62') is tied to the index patient by the text 'MRI (figure 1) demonstrated ...'. Parenchymal volume loss was mapped to the checklist item 'cerebral or cerebellar atrophy'. Normal basic laboratory screening (electrolytes, renal and hepatic function) recorded as three excluded abnormalities (D-27). 'interictal EEGs did not confirm nonconvulsive status epilepticus' recorded as excluded. Age at last evaluation for the index patient is the age at death (63). The SUDEP deaths are recorded as cause_of_death only, not as phenotypic features (hedged 'consistent with'). cites_prior_report_of_same_patients = true on the basis of the ref 8 patient only. No contradictions found. No stacked cells.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "first_author": {
+     "value": "Lapalme-Remis",
+     "span": "Samuel Lapalme-Remis, MDCM, MA"
+    },
+    "year": {
+     "value": 2015,
+     "span": "Neurology ® 2015;85:861-865"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": [
+      "We report a patient diagnosed with SSADH deficiency at age 63 and review our cohort of adult patients.",
+      "we reviewed our SSADH database, acquired as a cross-sectional study, for characteristics of patients older than 18 years"
+     ]
+    },
+    "n_patients_reported": {
+     "value": null,
+     "span": null
+    },
+    "cohort_size_as_stated": {
+     "value": 112,
+     "span": "Of 112 patients in the SSADH deficiency database, 95 have a documented age at diagnosis."
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "prior_report_citation": {
+     "value": "8. Knerr I, Gibson KM, Murdoch G, et al. Neuropathology in succinic semialdehyde dehydrogenase deficiency. Pediatr Neurol 2010;42:255-258.",
+     "span": [
+      "whose neuropathology was later published 8",
+      "8. Knerr I, Gibson KM, Murdoch G, et al. Neuropathology in succinic semialdehyde dehydrogenase deficiency. Pediatr Neurol 2010;42:255-258."
+     ]
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "sex": {
+     "value": "male",
+     "span": "A 63-year-old man with long-standing intellectual disability"
+    },
+    "age_at_onset_original_text": {
+     "value": "late infancy",
+     "span": "The patient had global developmental delay from late infancy."
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "age 63",
+     "span": "The patient died at age 63 following months of persistent obtundation."
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P63Y",
+     "span": "The patient died at age 63 following months of persistent obtundation."
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "age 63 years",
+     "span": "was diagnosed with SSADH deficiency at age 63 years following hospitalization"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P63Y",
+     "span": "was diagnosed with SSADH deficiency at age 63 years following hospitalization"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "The patient died at age 63 following months of persistent obtundation."
+    },
+    "deceased_age_iso8601": {
+     "value": "P63Y",
+     "span": "The patient died at age 63 following months of persistent obtundation."
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "phenytoin; later increased phenytoin dosage and added clobazam; trials of vigabatrin and levetiracetam did not produce improvement",
+     "span": [
+      "Phenytoin was initiated.",
+      "Shortly following an increase in phenytoin dosage and addition of clobazam",
+      "Trials of vigabatrin and levetiracetam did not produce improvement."
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "was diagnosed with SSADH deficiency at age 63 years following hospitalization"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "metabolic investigations (markedly increased urinary GHB), enzymatic assay of lymphocytes showing absent SSADH, and ALDH5A1 sequencing showing compound heterozygosity",
+     "span": [
+      "metabolic investigations were undertaken and revealed markedly increased urinary GHB (285 mmol/mol creatinine)",
+      "Enzymatic assay of lymphocytes revealed absent SSADH.",
+      "ALDH5A1 sequencing revealed compound heterozygosity for 2 previously described mutations"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "sex": {
+     "value": "female",
+     "span": "a deceased sister with precocious puberty"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "a deceased sister with precocious puberty"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "sex": {
+     "value": "female",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "One other adult database patient died at age 33."
+    },
+    "deceased_age_iso8601": {
+     "value": "P33Y",
+     "span": "One other adult database patient died at age 33."
+    },
+    "cause_of_death": {
+     "value": "Death was consistent with sudden unexplained death in epilepsy (SUDEP) in the context of worsening seizure control",
+     "span": "Death was consistent with sudden unexplained death in epilepsy (SUDEP) in the context of worsening seizure control."
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": [
+      "One other adult database patient died at age 33.",
+      "Of 112 patients in the SSADH deficiency database"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "database diagnosis criteria: clinical history consistent with SSADH deficiency and one or more of enzymatic quantification study, ALDH5A1 gene sequencing, or persistent g-hydroxybutyric aciduria",
+     "span": "Diagnosis is confirmed by a clinical history consistent with SSADH deficiency and one or more of the following laboratory criteria: enzymatic quantification study, ALDH5A1 gene sequencing, or persistent g-hydroxybutyric aciduria without exogenous GHB."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "one occurred in a woman aged 19"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "diagnosed posthumously",
+     "span": "a woman aged 19 who was diagnosed posthumously"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "Both were consistent with SUDEP: one occurred in a woman aged 19"
+    },
+    "deceased_age_iso8601": {
+     "value": "P19Y",
+     "span": "Both were consistent with SUDEP: one occurred in a woman aged 19"
+    },
+    "cause_of_death": {
+     "value": "consistent with SUDEP",
+     "span": "Both were consistent with SUDEP: one occurred in a woman aged 19"
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH",
+     "span": "we know of 2 other adult SSADH patient deaths not included in the database"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "8",
+     "span": "whose neuropathology was later published 8"
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "the other occurred in a man in his mid-20s"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "the other occurred in a man in his mid-20s"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "consistent with SUDEP",
+     "span": [
+      "Both were consistent with SUDEP:",
+      "the other occurred in a man in his mid-20s"
+     ]
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH",
+     "span": "we know of 2 other adult SSADH patient deaths not included in the database"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "ALDH5A1 sequencing revealed compound heterozygosity"
+    },
+    "variant_original_string": {
+     "value": "c.1015-2A.C",
+     "span": "c.1015-2A.C (mutation of canonical splice-site)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1015-2A.C",
+     "span": "c.1015-2A.C (mutation of canonical splice-site)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "splice",
+     "span": "c.1015-2A.C (mutation of canonical splice-site)"
+    },
+    "zygosity": {
+     "value": "compound heterozygous",
+     "span": "ALDH5A1 sequencing revealed compound heterozygosity for 2 previously described mutations"
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation, consistent with mutations in trans."
+    },
+    "parental_testing_statement": {
+     "value": "His mother was identified as heterozygous for c.1015-2A.C mutation, consistent with mutations in trans. Paternal DNA was not available.",
+     "span": [
+      "His mother was identified as heterozygous for c.1015-2A.C mutation, consistent with mutations in trans.",
+      "Paternal DNA was not available."
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "ALDH5A1 sequencing revealed compound heterozygosity"
+    },
+    "variant_original_string": {
+     "value": "c.608C.G; p.(Pro203Arg)",
+     "span": "c.608C.G; p.(Pro203Arg)"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.608C.G",
+     "span": "c.608C.G; p.(Pro203Arg)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.(Pro203Arg)",
+     "span": "c.608C.G; p.(Pro203Arg)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "compound heterozygous",
+     "span": "ALDH5A1 sequencing revealed compound heterozygosity for 2 previously described mutations"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "Mother heterozygous for the other variant (c.1015-2A.C), consistent with mutations in trans; paternal DNA was not available.",
+     "span": [
+      "His mother was identified as heterozygous for c.1015-2A.C mutation, consistent with mutations in trans.",
+      "Paternal DNA was not available."
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": [
+      "ALDH5A1 sequencing revealed compound heterozygosity for 2 previously described mutations",
+      "His mother was identified as heterozygous for c.1015-2A.C mutation"
+     ]
+    },
+    "variant_original_string": {
+     "value": "c.1015-2A.C",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1015-2A.C",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "splice",
+     "span": "c.1015-2A.C (mutation of canonical splice-site)"
+    },
+    "zygosity": {
+     "value": "heterozygous",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "long-standing intellectual disability",
+     "span": "A 63-year-old man with long-standing intellectual disability"
+    },
+    "status": {
+     "value": "observed",
+     "span": "A 63-year-old man with long-standing intellectual disability"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "A 63-year-old man with long-standing intellectual disability"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001249",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "global developmental delay",
+     "span": "The patient had global developmental delay from late infancy."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient had global developmental delay from late infancy."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient had global developmental delay from late infancy."
+    },
+    "onset_original_text": {
+     "value": "late infancy",
+     "span": "The patient had global developmental delay from late infancy."
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Global developmental delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001263",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "late to walk",
+     "span": "He was late to walk"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He was late to walk"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He was late to walk"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed ability to walk",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "speech onset occurred at age 4",
+     "span": "speech onset occurred at age 4"
+    },
+    "status": {
+     "value": "observed",
+     "span": "speech onset occurred at age 4"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "speech onset occurred at age 4"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "speech onset at age 4",
+     "span": "speech onset occurred at age 4"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "Motor skills were impaired",
+     "span": "Motor skills were impaired"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Motor skills were impaired"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Motor skills were impaired"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Motor delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "obsessed with routines, orderliness, and cleanliness",
+     "span": "obsessed with routines, orderliness, and cleanliness"
+    },
+    "status": {
+     "value": "observed",
+     "span": "obsessed with routines, orderliness, and cleanliness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "obsessed with routines, orderliness, and cleanliness"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Obsessive-compulsive behavior",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000722",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "anxiety",
+     "span": [
+      "He was prone to anxiety, hoarding, and daytime drowsiness.",
+      "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "He was prone to anxiety, hoarding, and daytime drowsiness.",
+      "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "He was prone to anxiety, hoarding, and daytime drowsiness.",
+      "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Anxiety",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000739",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "hoarding",
+     "span": "He was prone to anxiety, hoarding, and daytime drowsiness."
+    },
+    "status": {
+     "value": "observed",
+     "span": "He was prone to anxiety, hoarding, and daytime drowsiness."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He was prone to anxiety, hoarding, and daytime drowsiness."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "excessive daytime somnolence",
+     "span": [
+      "He was prone to anxiety, hoarding, and daytime drowsiness.",
+      "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "He was prone to anxiety, hoarding, and daytime drowsiness.",
+      "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "He was prone to anxiety, hoarding, and daytime drowsiness.",
+      "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Excessive daytime somnolence",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001262",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "poor sleep",
+     "span": "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Sleep disturbance",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002360",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "generalized tonic-clonic seizure",
+     "span": "at age 19 he had a witnessed generalized tonic-clonic seizure"
+    },
+    "status": {
+     "value": "observed",
+     "span": "at age 19 he had a witnessed generalized tonic-clonic seizure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "at age 19 he had a witnessed generalized tonic-clonic seizure"
+    },
+    "onset_original_text": {
+     "value": "at age 19",
+     "span": "at age 19 he had a witnessed generalized tonic-clonic seizure"
+    },
+    "onset_iso8601": {
+     "value": "P19Y",
+     "span": "at age 19 he had a witnessed generalized tonic-clonic seizure"
+    },
+    "severity_or_detail": {
+     "value": "seizures approximately every 2.5 years from ages 19 to 46; cluster of generalized tonic-clonic seizures at age 46; increased frequency at age 55",
+     "span": [
+      "He continued to have seizures approximately every 2.5 years from ages 19 to 46.",
+      "At age 46 he experienced a cluster of generalized tonic-clonic seizures",
+      "increased frequency of generalized tonic-clonic seizures"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Bilateral tonic-clonic seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002069",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "clustering of seizures",
+     "span": "During this period he exhibited clustering of seizures and was never seizure-free for more than a few months."
+    },
+    "status": {
+     "value": "observed",
+     "span": "During this period he exhibited clustering of seizures and was never seizure-free for more than a few months."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "During this period he exhibited clustering of seizures and was never seizure-free for more than a few months."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "episodes of altered consciousness characterized by slow responses, decreased verbal output, and a fine motor tremor",
+     "span": "episodes of altered consciousness characterized by slow responses, decreased verbal output, and a fine motor tremor"
+    },
+    "status": {
+     "value": "observed",
+     "span": "episodes of altered consciousness characterized by slow responses, decreased verbal output, and a fine motor tremor"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "episodes of altered consciousness characterized by slow responses, decreased verbal output, and a fine motor tremor"
+    },
+    "onset_original_text": {
+     "value": "At age 46",
+     "span": "At age 46 he experienced a cluster of generalized tonic-clonic seizures and episodes of altered consciousness"
+    },
+    "onset_iso8601": {
+     "value": "P46Y",
+     "span": "At age 46 he experienced a cluster of generalized tonic-clonic seizures and episodes of altered consciousness"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "horizontal nystagmus",
+     "span": "Neurologic examination revealed horizontal nystagmus and mixed resting and action tremor."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Neurologic examination revealed horizontal nystagmus and mixed resting and action tremor."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Neurologic examination revealed horizontal nystagmus and mixed resting and action tremor."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Horizontal nystagmus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000666",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "mixed resting and action tremor",
+     "span": "Neurologic examination revealed horizontal nystagmus and mixed resting and action tremor."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Neurologic examination revealed horizontal nystagmus and mixed resting and action tremor."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Neurologic examination revealed horizontal nystagmus and mixed resting and action tremor."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Tremor",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001337",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "mildly elevated ammonia level",
+     "span": "mildly elevated ammonia level of 41 mmol/L"
+    },
+    "status": {
+     "value": "observed",
+     "span": "mildly elevated ammonia level of 41 mmol/L"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "mildly elevated ammonia level of 41 mmol/L"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "41 mmol/L; later peak 68 mmol/L",
+     "span": [
+      "mildly elevated ammonia level of 41 mmol/L",
+      "Based on elevated serum ammonia values (peak 68 mmol/L)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Hyperammonemia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001987",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal electrolytes",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal renal function",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal hepatic function",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Basic laboratory screening, including electrolytes, renal function, and hepatic function, was normal except for a mildly elevated ammonia level of 41 mmol/L."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "hypodensities in the basal ganglia",
+     "span": "Head CT showed hypodensities in the basal ganglia."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Head CT showed hypodensities in the basal ganglia."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Head CT showed hypodensities in the basal ganglia."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "diffuse background slowing with sharp and slow waves",
+     "span": "EEG showed diffuse background slowing with sharp and slow waves."
+    },
+    "status": {
+     "value": "observed",
+     "span": "EEG showed diffuse background slowing with sharp and slow waves."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "EEG showed diffuse background slowing with sharp and slow waves."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "EEG with background slowing",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "stepwise progressive decline",
+     "span": "followed by a stepwise progressive decline over the remaining"
+    },
+    "status": {
+     "value": "observed",
+     "span": "followed by a stepwise progressive decline over the remaining"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "followed by a stepwise progressive decline over the remaining"
+    },
+    "onset_original_text": {
+     "value": "At age 55",
+     "span": "At age 55 he again displayed repeated episodic disorientation, drowsiness, tremor, and increased frequency of generalized tonic-clonic seizures"
+    },
+    "onset_iso8601": {
+     "value": "P55Y",
+     "span": "At age 55 he again displayed repeated episodic disorientation, drowsiness, tremor, and increased frequency of generalized tonic-clonic seizures"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "episodic disorientation",
+     "span": "At age 55 he again displayed repeated episodic disorientation, drowsiness, tremor"
+    },
+    "status": {
+     "value": "observed",
+     "span": "At age 55 he again displayed repeated episodic disorientation, drowsiness, tremor"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At age 55 he again displayed repeated episodic disorientation, drowsiness, tremor"
+    },
+    "onset_original_text": {
+     "value": "At age 55",
+     "span": "At age 55 he again displayed repeated episodic disorientation, drowsiness, tremor"
+    },
+    "onset_iso8601": {
+     "value": "P55Y",
+     "span": "At age 55 he again displayed repeated episodic disorientation, drowsiness, tremor"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "episodes of altered level of consciousness leading to inability to self-care",
+     "span": "His final admission to hospital was at age 62 for episodes of altered level of consciousness leading to inability to self-care."
+    },
+    "status": {
+     "value": "observed",
+     "span": "His final admission to hospital was at age 62 for episodes of altered level of consciousness leading to inability to self-care."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "His final admission to hospital was at age 62 for episodes of altered level of consciousness leading to inability to self-care."
+    },
+    "onset_original_text": {
+     "value": "at age 62",
+     "span": "His final admission to hospital was at age 62 for episodes of altered level of consciousness"
+    },
+    "onset_iso8601": {
+     "value": "P62Y",
+     "span": "His final admission to hospital was at age 62 for episodes of altered level of consciousness"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "markedly increased urinary GHB",
+     "span": "revealed markedly increased urinary GHB (285 mmol/mol creatinine)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "revealed markedly increased urinary GHB (285 mmol/mol creatinine)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "revealed markedly increased urinary GHB (285 mmol/mol creatinine)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "285 mmol/mol creatinine",
+     "span": "revealed markedly increased urinary GHB (285 mmol/mol creatinine)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "increased 3,4 dihydrobutyric acid",
+     "span": "3,4 dihydrobutyric acid (620 mmol/mol creatinine)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "3,4 dihydrobutyric acid (620 mmol/mol creatinine)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "3,4 dihydrobutyric acid (620 mmol/mol creatinine)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "620 mmol/mol creatinine",
+     "span": "3,4 dihydrobutyric acid (620 mmol/mol creatinine)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "absent SSADH",
+     "span": "Enzymatic assay of lymphocytes revealed absent SSADH."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Enzymatic assay of lymphocytes revealed absent SSADH."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Enzymatic assay of lymphocytes revealed absent SSADH."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "frequent generalized tonic-clonic seizures with prolonged and progressively lengthening periods of obtundation",
+     "span": "During admission the patient exhibited frequent generalized tonic-clonic seizures with prolonged and progressively lengthening periods of obtundation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "During admission the patient exhibited frequent generalized tonic-clonic seizures with prolonged and progressively lengthening periods of obtundation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "During admission the patient exhibited frequent generalized tonic-clonic seizures with prolonged and progressively lengthening periods of obtundation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "nonconvulsive status epilepticus",
+     "span": "interictal EEGs did not confirm nonconvulsive status epilepticus"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "interictal EEGs did not confirm nonconvulsive status epilepticus"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "interictal EEGs did not confirm nonconvulsive status epilepticus"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Nonconvulsive status epilepticus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "parenchymal volume loss",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(D) Axial fluid-attenuated inversion recovery (FLAIR) sequence showing parenchymal volume loss more than expected for age."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(D) Axial fluid-attenuated inversion recovery (FLAIR) sequence showing parenchymal volume loss more than expected for age."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(D) Axial fluid-attenuated inversion recovery (FLAIR) sequence showing parenchymal volume loss more than expected for age."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "more than expected for age",
+     "span": "showing parenchymal volume loss more than expected for age"
+    },
+    "hpo_label_candidate": {
+     "value": "Cerebral atrophy",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "increased signal intensity within the dentate nuclei",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(A) Axial T2-weighted image showing increased T2 signal intensity in the bilateral dentate nuclei of the cerebellum (arrows)."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(A) Axial T2-weighted image showing increased T2 signal intensity in the bilateral dentate nuclei of the cerebellum (arrows)."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(A) Axial T2-weighted image showing increased T2 signal intensity in the bilateral dentate nuclei of the cerebellum (arrows)."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "increased signal intensity within the globus pallidi",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(B, C) Axial T2-weighted sequences showing increased signal intensity of the bilateral globi pallidi"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(B, C) Axial T2-weighted sequences showing increased signal intensity of the bilateral globi pallidi"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(B, C) Axial T2-weighted sequences showing increased signal intensity of the bilateral globi pallidi"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "dilated perivascular spaces and chronic lacunes in both basal ganglia",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "Of note, there are dilated perivascular spaces and chronic lacunes in both basal ganglia, left greater than right."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "Of note, there are dilated perivascular spaces and chronic lacunes in both basal ganglia, left greater than right."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "Of note, there are dilated perivascular spaces and chronic lacunes in both basal ganglia, left greater than right."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "left greater than right",
+     "span": "Of note, there are dilated perivascular spaces and chronic lacunes in both basal ganglia, left greater than right."
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "feature_text_as_stated": {
+     "value": "persistent obtundation",
+     "span": "The patient died at age 63 following months of persistent obtundation."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient died at age 63 following months of persistent obtundation."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient died at age 63 following months of persistent obtundation."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "feature_text_as_stated": {
+     "value": "precocious puberty",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Precocious puberty",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000826",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "feature_text_as_stated": {
+     "value": "developmental delay",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Global developmental delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "feature_text_as_stated": {
+     "value": "seizures",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001250",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "feature_text_as_stated": {
+     "value": "worsening seizure control",
+     "span": "Death was consistent with sudden unexplained death in epilepsy (SUDEP) in the context of worsening seizure control."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Death was consistent with sudden unexplained death in epilepsy (SUDEP) in the context of worsening seizure control."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Death was consistent with sudden unexplained death in epilepsy (SUDEP) in the context of worsening seizure control."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "A 63-year-old man with long-standing intellectual disability"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "A 63-year-old man with long-standing intellectual disability"
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "speech onset occurred at age 4"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "speech onset occurred at age 4"
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "He was late to walk",
+      "Motor skills were impaired"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "He was late to walk",
+      "Motor skills were impaired"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "at age 19 he had a witnessed generalized tonic-clonic seizure"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "at age 19 he had a witnessed generalized tonic-clonic seizure"
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "EEG showed diffuse background slowing with sharp and slow waves."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "EEG showed diffuse background slowing with sharp and slow waves."
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He was prone to anxiety, hoarding, and daytime drowsiness."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "He was prone to anxiety, hoarding, and daytime drowsiness."
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "obsessed with routines, orderliness, and cleanliness"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "obsessed with routines, orderliness, and cleanliness"
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Symptoms of anxiety, poor sleep, and excessive daytime somnolence persisted."
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(A) Axial T2-weighted image showing increased T2 signal intensity in the bilateral dentate nuclei of the cerebellum (arrows)."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(A) Axial T2-weighted image showing increased T2 signal intensity in the bilateral dentate nuclei of the cerebellum (arrows)."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The index case was born to nonconsanguineous parents."
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(D) Axial fluid-attenuated inversion recovery (FLAIR) sequence showing parenchymal volume loss more than expected for age."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "MRI (figure 1) demonstrated parenchymal volume loss and increased signal intensity within the dentate nuclei and globus pallidi.",
+      "(D) Axial fluid-attenuated inversion recovery (FLAIR) sequence showing parenchymal volume loss more than expected for age."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of patient",
+     "span": "Family history was notable for a deceased sister with precocious puberty, developmental delay, and seizures."
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "His mother was identified as heterozygous for c.1015-2A.C mutation"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Death was consistent with sudden unexplained death in epilepsy (SUDEP) in the context of worsening seizure control."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Death was consistent with sudden unexplained death in epilepsy (SUDEP) in the context of worsening seizure control."
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "One other adult database patient died at age 33."
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 8 patient",
+     "span": "one occurred in a woman aged 19 who was diagnosed posthumously and whose neuropathology was later published 8"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "26268900",
+     "span": "PMID: 26268900"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 2",
+     "span": "the other occurred in a man in his mid-20s (oral communication, K.M.G. and P.L.P., 2015)"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
