@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 DIS = ["gamt", "papa", "ats", "blau", "lcat"]
+CHROM = {"gamt": "19", "papa": "15", "ats": "20", "blau": "16", "lcat": "16"}
 NAME = {"gamt": "GAMT deficiency (GAMT)", "papa": "PAPA syndrome (PSTPIP1)", "ats": "Arterial tortuosity syndrome (SLC2A10)",
         "blau": "Blau syndrome (NOD2)", "lcat": "Familial LCAT deficiency (LCAT)"}
 
@@ -94,6 +95,9 @@ def main() -> int:
           "stated, the registered rule read it on MANE, where the reference base happens to match, giving p.Leu513Pro, which no paper describes. "
           "Neither rule catches this; a check of the stated protein against the prediction does (protein check: "
           f"`{next(c['protein_check'] for c in cands if c['candidate_id'] == 'G-blau-005')}`).",
+          *[f"- **{c['candidate_id']} lies off the gene** ({c['vcf_grch38']}; expected chromosome {CHROM[c['disease']]}). The paper stated transcript "
+            f"`{c['hgvs_c'].split(':')[0]}`, which is not a {c['gene']} transcript, and normalization honoured it. The gap step has no on-gene check, so this "
+            "is not a gap candidate. Flagged for Jimmy, not withdrawn." for c in cands if c['vcf_grch38'].split(':')[0] != CHROM[c['disease']]],
           "- G-blau-001 to 004: the protein check differs only by the 27-residue numbering offset (the papers stated NM_022162); placement is correct.",
           f"- LCAT: {sum(1 for c in cands if c['disease'] == 'lcat' and c['only_clinvar_cited_papers'] in ('True', 'true', 'yes', '1'))} of "
           f"{sum(1 for c in cands if c['disease'] == 'lcat')} candidates come only from papers ClinVar cites, and many come only from reviews; "
@@ -109,7 +113,8 @@ def main() -> int:
           + ", ".join(f"{d} {n}" for d, n in k["allocation"].items()) + ". No rating page has been made (no-publishing rule); it waits for Jimmy.", ""]
     L += ["## 6. Decisions and flags for Jimmy", "",
           "1. **NOD2 revised rule** (deviation, needs approval): adopt the legacy-transcript fallback for Blau, or keep the registered result and report the sensitivity beside it (current state).",
-          "2. **G-blau-005**: withdraw as a probable false candidate (as with G-danon-001 under D-43), or leave it for the panel with the note.",
+          "2. **G-blau-005 and G-lcat-001**: withdraw as false candidates (as with G-danon-001 under D-43), or leave them for the panel with the note. "
+          "An on-gene check in `gap_candidates.py` would catch G-lcat-001-type errors; it found none among the registered six's 215 candidates.",
           "3. **No `isoform_sensitive` block for GAMT and PSTPIP1** (Claude's call; `analysis/extension/isoform_check_2026-11-15.md`).",
           "4. **Scope questions** found by helpers: SURF patients with NOD2 variants and a healthy-control carrier (41357180); people with a diagnosis but no variant in several Blau and LCAT papers; a PDF-only paper whose genetic supplementary tables were unavailable (38180755); a duplicate-publication pair in GAMT (38020815, 39006040).",
           "5. **Review pages** for the O1X audit, the O2 triage sample (`adjudication/o2_triage_ext/`, all 48 misses) and the gap dossiers are not made; making them needs your go-ahead under the no-publishing rule.", ""]

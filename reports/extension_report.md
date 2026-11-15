@@ -62,10 +62,11 @@ Recheck against the same snapshot: 41 checked, 0 now in ClinVar. OMIM was not ch
 **Candidates to look at first:**
 
 - **G-blau-005 is probably not a gap.** The papers write `c.1538T>C (M513T)`, a well-known Blau allele in legacy NM_022162 numbering. With no transcript stated, the registered rule read it on MANE, where the reference base happens to match, giving p.Leu513Pro, which no paper describes. Neither rule catches this; a check of the stated protein against the prediction does (protein check: `differs (stated M513T, predicted L513P)`).
+- **G-lcat-001 lies off the gene** (4:67583648:T:C; expected chromosome 16). The paper stated transcript `NM_012108.3`, which is not a LCAT transcript, and normalization honoured it. The gap step has no on-gene check, so this is not a gap candidate. Flagged for Jimmy, not withdrawn.
 - G-blau-001 to 004: the protein check differs only by the 27-residue numbering offset (the papers stated NM_022162); placement is correct.
 - LCAT: 17 of 26 candidates come only from papers ClinVar cites, and many come only from reviews; the dossiers say which.
 
-Evidence dossiers: 2 of 41 written.
+Evidence dossiers: 21 of 41 written.
 
 ## 5. Audit sample for people (O1X)
 
@@ -74,7 +75,7 @@ Evidence dossiers: 2 of 41 written.
 ## 6. Decisions and flags for Jimmy
 
 1. **NOD2 revised rule** (deviation, needs approval): adopt the legacy-transcript fallback for Blau, or keep the registered result and report the sensitivity beside it (current state).
-2. **G-blau-005**: withdraw as a probable false candidate (as with G-danon-001 under D-43), or leave it for the panel with the note.
+2. **G-blau-005 and G-lcat-001**: withdraw as false candidates (as with G-danon-001 under D-43), or leave them for the panel with the note. An on-gene check in `gap_candidates.py` would catch G-lcat-001-type errors; it found none among the registered six's 215 candidates.
 3. **No `isoform_sensitive` block for GAMT and PSTPIP1** (Claude's call; `analysis/extension/isoform_check_2026-11-15.md`).
 4. **Scope questions** found by helpers: SURF patients with NOD2 variants and a healthy-control carrier (41357180); people with a diagnosis but no variant in several Blau and LCAT papers; a PDF-only paper whose genetic supplementary tables were unavailable (38180755); a duplicate-publication pair in GAMT (38020815, 39006040).
 5. **Review pages** for the O1X audit, the O2 triage sample (`adjudication/o2_triage_ext/`, all 48 misses) and the gap dossiers are not made; making them needs your go-ahead under the no-publishing rule.
