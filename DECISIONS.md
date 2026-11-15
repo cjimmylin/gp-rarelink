@@ -67,6 +67,7 @@ Jimmy, quoting the three recommendations put to him: "I accept your decisions". 
 - **D-51 (decided the same day in another session) and this work.** The evidence tables quote one sentence per paper, from papers whose extraction outputs were already on `main`, and from the three comparators, which are openly licensed (CC BY-NC-ND, public domain, CC BY). No extraction output from a further paper is added.
 - **`main` moved during this work** (batch 1 review, D-49 to D-51). It was merged into this branch with both sides kept; this session's spend row was re-based in `analysis/cost/spend_segments.csv`.
 - **Cost:** $27.24 by session readings ($171.80 to $199.04, line 5), which also covers the end of the earlier tagging stretch, because the counter had frozen at $171.80; the counter was last updated at 03:07 UTC, so the last part of this work is not in it. No helper agents.
+- **Merged to `main` the same day.** Jimmy: "merge to all", read as: merge all of this branch's work to `main`. No other branch was written to. The end of the work and the merge added $9.36 by the session counter ($199.04 to $208.40, line 5).
 
 ### 2026-11-15 · Comparator-cohort overlap tagged for SSADH deficiency and HA20; D-48 opened; batch-2 review fixes merged
 - **Merge.** Jimmy: "yes, merge these fixes to main". The batch-2 review corrections were merged as PR #24.
