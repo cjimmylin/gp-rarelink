@@ -1,9 +1,56 @@
 {
   "id": "lad1-pv1a-lad1-LAD1-ID0012",
   "subject": {
-    "id": "LAD1-ID0012"
+    "id": "LAD1-ID0012",
+    "sex": "FEMALE"
   },
   "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002090",
+        "label": "Pneumonia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         4 | Female   |                     13 | 19-69                       | 2.5%               | ITGB2         | Homozygous            | exon7 c.841_849del9                                      | Pneumonia"
+          }
+        },
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         4 | Engrafted     | CDC         |                           22 |                         32 | III    | Sepsis, pneumonia \u2026 | Complication "
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011450",
+        "label": "Unusual CNS infection"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         4 | Female   |                     13 | 19-69                       | 2.5%               | ITGB2         | Homozygous            | exon7 c.841_849del9                                      | Pneumonia, sepsis, intracranial infection"
+          }
+        }
+      ]
+    },
     {
       "type": {
         "id": "HP:0011897",
@@ -17,15 +64,15 @@
           },
           "reference": {
             "id": "PMID:32154133",
-            "description": "All five patients had typical granulocytosis."
+            "description": "|         4 | Female   |                     13 | 19-69 \u2026 Granulocytosis (\u00d710 9 /L)"
           }
         }
       ]
     },
     {
       "type": {
-        "id": "HP:0032455",
-        "label": "Reduced granulocyte CD18 level"
+        "id": "HP:0011946",
+        "label": "Bronchiolitis obliterans"
       },
       "evidence": [
         {
@@ -35,10 +82,92 @@
           },
           "reference": {
             "id": "PMID:32154133",
-            "description": "The other four patients had moderate LAD-I with the levels of CD18-expressing neutrophils being 2.4-3.6%"
+            "description": "|         4 | Engrafted     | CDC         |                           22 |                         32 | III    | Sepsis, pneumonia, Bronchiolitis obliterans \u2026 | Complication "
           }
         }
       ]
+    },
+    {
+      "type": {
+        "id": "HP:0100806",
+        "label": "Sepsis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         4 | Female   |                     13 | 19-69                       | 2.5%               | ITGB2         | Homozygous            | exon7 c.841_849del9                                      | Pneumonia, sepsis"
+          }
+        },
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         4 | Engrafted     | CDC         |                           22 |                         32 | III    | Sepsis \u2026 | Complication "
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "LAD1-ID0012-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0007293",
+          "label": "leukocyte adhesion deficiency 1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "LAD1-ID0012",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "LAD1-ID0012-var1",
+                "label": "c.841_849del9",
+                "description": "c.841_849del9",
+                "geneContext": {
+                  "valueId": "HGNC:6155",
+                  "symbol": "ITGB2"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000211.5:c.841_849del"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000202.3:p.(Pro281_Asp283del)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000021.9:g.44900369_44900377del"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "21",
+                  "pos": "44900367",
+                  "ref": "CGTCGTTGGG",
+                  "alt": "C"
+                },
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
     }
   ],
   "diseases": [
