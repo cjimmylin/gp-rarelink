@@ -14,6 +14,6 @@ Result of the check on 2026-11-15:
 
 By disease: AxD 31, SSADH 13, Tangier 13, LAD-I 7, Danon 5, HA20 3.
 
-The files themselves are in the git-ignored `data/literature/free_copies/hand_fetched_2026-11-14/` and disappear with the container. The durable copies are Jimmy's originals and the D-47 Drive folder. Under D-47, screening and extraction of batch 2 wait for the 2026-11-30 cut-off. The `.mhtml` pages need printing to PDF (Chromium, JavaScript off) before `to_markdown`, as was done for batch 1.
+The files themselves are in the git-ignored `data/literature/free_copies/hand_fetched_2026-11-14/` and disappear with the container. The durable copies are Jimmy's originals and the D-47 Drive folder.
 
-**Open question for Jimmy:** D-47 change 2 covers "a person opening a free PMC or publisher page in an ordinary browser". These files were fetched by Claude computer use driving Chrome. That is an ordinary browser that solved no challenge, but it is not a person. This needs recording as part of D-47 before the batch runs.
+**Update, 2026-11-15.** Jimmy asked for the batch to be processed at once, and D-47 was amended the same day (`DECISIONS.md`): batch 2 ran as `pv1a2-<d>`, and his instruction is recorded as accepting the computer-use fetch route (the question this note first raised). The four `.mhtml` pages were printed to PDF in headless Chromium (JavaScript off, offline) before conversion; the sha256 values in the manifest are of the files as received, not of those printed PDFs. Results: `reports/addendum_d47_batch2_findings.md`.
