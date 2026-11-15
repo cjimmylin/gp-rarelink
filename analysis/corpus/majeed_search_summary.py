@@ -66,11 +66,16 @@ def main() -> int:
                 c["only_in_corpus"] += inc
                 c["only_yes"] += yes
                 c["only_eligible"] += elig
+    def registered(r):  # the kind of search the six corpora used (D-35)
+        return any(x == "pubmed_query" or x.startswith("refs_") or x == "background_bibliography" for x in r["seed_sources"].split("; "))
+    extra_only = {k: [r["pmid"] for r in rows if cond(r) and not registered(r)] for k, cond in {
+        "in_corpus": lambda r: r.get("in_extraction_corpus") == "true",
+        "eligible": lambda r: r.get("fulltext_screen") == "include"}.items()}
     nopmid = {f.name: sum(1 for _ in csv.DictReader(f.open())) for f in sorted((BASE / "seeds").glob("*_nopmid.csv"))}
     ftm = json.loads((BASE / "screening" / "fulltext_mentions_log.json").read_text()) if (BASE / "screening" / "fulltext_mentions_log.json").exists() else None
     xlog = json.loads((BASE / "seeds" / "extra_sources_log.json").read_text())
     out = {"summary": s, "per_source": {k: dict(v) for k, v in per.items()}, "records_without_pmid": nopmid,
-           "fulltext_mentions": ftm, "extra_sources_runs": xlog["runs"]}
+           "fulltext_mentions": ftm, "found_only_beyond_registered_kind": extra_only, "extra_sources_runs": xlog["runs"]}
     (BASE / "search_summary.json").write_text(json.dumps(out, indent=2) + "\n")
 
     labels = dict(FAMILIES)
@@ -101,7 +106,7 @@ Every search method available to the session was used (Dr. Lin, 2026-11-15: "all
 - **Forward citations** (Europe PMC and OpenAlex) and **PubMed similar articles** (top 50 each) of five key papers: Majeed 1989, Majeed 2001, Ferguson 2005, Al-Mosawi 2007 and Ferguson 2021.
 - **Not used:** ClinVar or OMIM citation lists (pre-registration §5.1). Semantic Scholar answered 429 and Google Scholar has no API; neither was used.
 
-Records with no PMID (preprints, theses, non-indexed journals, conference abstracts) are kept beside each source in `seeds/*_nopmid.csv` for hand review and are not screened: {sum(nopmid.values())} rows over {len(nopmid)} files, with overlap between sources.
+Records with no PMID (preprints, theses, non-indexed journals, conference abstracts) are kept beside each source in `seeds/*_nopmid.csv` for hand review and are not screened: {sum(nopmid.values())} rows over {len(nopmid)} files, with overlap between sources. Of these, {sum(1 for _ in csv.DictReader((BASE / 'nopmid_candidates.csv').open())) if (BASE / 'nopmid_candidates.csv').exists() else 'n/a'} distinct records name Majeed syndrome or LPIN2 in the title (`nopmid_candidates.csv`, from `analysis/corpus/majeed_nopmid_candidates.py`), awaiting hand review.
 
 ## Records by source
 
@@ -111,9 +116,11 @@ Records with no PMID (preprints, theses, non-indexed journals, conference abstra
 |---|---|---|---|---|---|---|
 {tbl}
 
+**Beyond the registered kind of search** (PubMed query + review references + background bibliography, as for the six corpora): {len(extra_only['in_corpus'])} of {s['in_corpus']} corpus papers and {len(extra_only['eligible'])} of {s['eligible_all']} eligible papers were found only by the other sources (eligible: {', '.join(extra_only['eligible']) or 'none'}).
+
 ## Screening (title and abstract)
 
-- **Route:** Claude Code helper agents (Sonnet), batches of up to 100 records, each with its own scratch directory, following `pipeline/extract/claude_code/prompts/screen_v3.md` (v2 plus an optional `fulltext_mentions` field) with the disease block from `configs/diseases.yaml`. Launch text: `screening/launch_v1.txt`.
+- **Route:** Claude Code helper agents (Sonnet), batches of up to 100 records, each with its own scratch directory, following `pipeline/extract/claude_code/prompts/screen_v3.md` (v2 plus an optional `fulltext_mentions` field) with the disease block from `configs/diseases.yaml`. Launch text: `screening/launch_v2.txt`. A first round under `launch_v1.txt` (batches 1-3) was discarded because the helpers truncated abstracts or gave one stock reason to most rows; its labels are kept in `screening/labels_rejected_launch_v1/` and were not imported.
 - **Full-text mentions:** for records whose title and abstract name neither the disease nor the gene, `analysis/corpus/fulltext_mentions.py` added up to five sentences from the open full text that do. Counts: {json.dumps(ftm['counts']) if ftm else 'not run'}.
 - **Relevance:** {', '.join(f'{k or "unlabelled"} {v}' for k, v in sorted(s['relevance'].items()))}.
 - **In the extraction corpus:** {s['in_corpus']} (relevance yes or unclear; case report, case series/cohort or review); by study type: {', '.join(f'{k} {v}' for k, v in sorted(s['in_corpus_by_study_type'].items()))}.
