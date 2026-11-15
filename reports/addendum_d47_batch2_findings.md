@@ -107,6 +107,13 @@ Nothing here reached extraction that should not have: none of the 72 papers is a
 
 Whoever runs O4 on the combined set has to tag these individuals first.
 
+**Update, 2026-11-15 (Jimmy asked for the tagging).** Every individual of the SSADH and HA20 runs (registered, batch 1 and batch 2) now carries a comparator-overlap tag: `analysis/bias/comparator_overlap/` (evidence tables, rules and limits in its README; counts from `tags_summary_2026-11-15.json`). No literature frequency was computed and no comparator sheet was filled.
+- **SSADH, batch 2.** Of the 63 batch-2 records with a disease term, 2 are named by the comparator itself (the registry subjects who died at 63 and 33, both in Lapalme-Remis 2015), 49 come from the registry investigators' own database or studies (probable), 4 share only an investigator (possible), 2 are outside the cohort by the paper's own words, and 6 are known only through citations. None of the nine papers is free of a comparator author.
+- **SSADH, registered run.** The same check on the registered run matters more than the addendum: of its 311 records with a disease term, 115 are probable members of the comparator registry (94 of them from the natural history study and its biorepository), 108 are possible, and 63 have no link.
+- **HA20.** The note above about Fu 2026 was wrong in direction: all four of its patients carry mosaic variants, and the comparator excludes somatic variants, so they are outside the cohort. Deshayes 2021 has no link (France; no comparator clinic). In the registered run, 9 records with a disease term are probable (NIH protocol 94-HG-0105, the protocol the comparator names) and 87 are possible (patients seen at one of the comparator's clinics); the preprint does not say which of its patients were published before.
+- **AxD and Danon.** Still not tagged.
+- **Open (D-48).** Which tags are removed in the primary O4 analysis, and whether records without a disease term count as literature individuals. `analysis/bias/frequency_deviation.py` now computes every combination side by side once a sheet is filled.
+
 ## Not done in this batch
 
 - No concordance (O2) or gap-candidate (O3) analysis on the addendum records, and no cross-run deduplication against the registered pv1 records or batch 1. D-47 puts those on the combined set.

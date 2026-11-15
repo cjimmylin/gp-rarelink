@@ -21,6 +21,14 @@ How to use this file:
 
 ### Needed later
 
+**D-48 · O4: who counts as "in the comparator cohort", and who counts as a literature individual** (open; proposed by Claude 2026-11-15)
+- **Context:** plan §7.4.2 step 2 computes literature frequencies "over deduplicated individuals, excluding anyone in the comparator cohort". The comparator papers are held out, but their patients also reach the corpus through other papers. On Jimmy's request the SSADH and HA20 individuals were tagged on 2026-11-15 (`analysis/bias/comparator_overlap/`; decision log, same date). Only two people can be matched one to one; the rest are graded through their paper as stated, probable or possible. Registered run, records with a disease term: SSADH 311, of which probable 115, possible 108, no link 63, known only through citations 24, outside 1; HA20 447, of which probable 9, possible 87, no link 193, known only through citations 158.
+- **Question 1, which grades are removed.** Recommendation: the primary analysis removes `stated` and `probable`; beside it, report nobody removed and `possible` removed as well. Reason: probable members are the comparator investigators' own registry, study and trial patients, and leaving them in makes the literature resemble the cohort because it is partly the same people. `possible` rests on a shared author or clinic alone and would remove a further third of the registered SSADH set.
+- **Question 2, who is a literature individual.** The O4 script written on 2026-10-21 counts every phenopacket, including unaffected relatives and carriers (registered run: 52 of 363 SSADH records and 322 of 769 HA20 records carry no disease term). A feature recorded as excluded for a healthy parent then enters the primary denominator. Recommendation: count only records with a disease term, and report the all-records figure beside it. This narrows "deduplicated individuals" in §7.4.2, so if accepted it is logged as a deviation.
+- **Question 3, the addendum.** Recommendation: the registered run is primary and the registered run plus the D-47 addendum is reported beside it, as D-47 already says.
+- **Question 4, Danon and AxD.** Recommendation: tag Danon the same way before its sheet is used (`khedro2025_danon_prospective` is a clinic-based prospective study, so its patients may also be in case reports). Leave AxD untagged and say so: its open comparator is UK Biobank carriers, who are not the subjects of case reports.
+- **Timing:** decide before a person fills any comparator sheet. No literature frequency has been computed; `frequency_deviation.py` computes every combination side by side, so the choice of the primary one should not wait until the numbers are visible.
+
 **D-47 · Free copies found after the freeze, added as a separately reported corpus addendum** (decided 2026-11-14; see the decision log and the deviation entry)
 
 **D-43 · Withdraw G-danon-001 and re-check isoform-sensitive normalizations** (decided 2026-10-28; see the decision log and the deviation entry)
@@ -45,6 +53,15 @@ How to use this file:
 ---
 
 ## Decision log
+### 2026-11-15 · Comparator-cohort overlap tagged for SSADH deficiency and HA20; D-48 opened; batch-2 review fixes merged
+- **Merge.** Jimmy: "yes, merge these fixes to main". The batch-2 review corrections were merged as PR #24.
+- **Request.** Jimmy: "please do this: Bias arm: the SSADH patients (and possibly the HA20 ones) from comparator cohorts need tagging before O4 is computed."
+- **Done (Claude's calls on the rules).** Every phenopacket of the `pv1`, `pv1a` and `pv1a2` runs of the two diseases (1,245) carries a tag in `analysis/bias/comparator_overlap/tags_2026-11-15.csv`, built by `tag_individuals.py` from two hand-curated tables: one evidence row for each of the 140 papers, and 13 person-level rows. The README there gives the rules and limits. The comparator papers were re-fetched to the git-ignored holdouts folder and read only for how they define their cohorts (`analysis/bias/comparators_2026-11-15.json`); no comparator sheet was filled and no literature frequency was computed. The 47 quoted evidence sentences were all found again in their texts by script.
+- **What the tags rest on.** SSADH: the comparator is the Boston Children's Hospital registry (133 subjects); papers by its investigators that draw on their database, their studies or the later natural history study are graded probable, a shared author alone is graded possible. HA20: the comparator names NIH protocol 94-HG-0105 (one registered paper names it too: probable), and lists its clinics only as author affiliations (patients seen at one of them: possible); it excludes somatic variants, which puts Fu 2026's four patients and three mosaic patients of Schmitz 2026 outside it.
+- **O4 script.** `analysis/bias/frequency_deviation.py` now reads the tags and reports each comparator with and without the tagged people, for the registered run and for the registered run plus the addendum, and for all records or only those with a disease term. Its earlier behaviour (every registered phenopacket, nobody removed) is one cell of that grid. Tested on made-up data only (`tests/test_bias_overlap.py`).
+- **Not changed:** the pre-registration, the pinned files, any run output, the comparator sheets. Which cell of the grid is primary is D-48, open.
+- **Cost:** $13.23 by session readings ($158.57 to $171.80; the last reading did not move over five minutes, so it may lag), line 5; no helper agents.
+
 ### 2026-11-14 · D-47 decided: corpus addendum of free copies found after the freeze
 Jimmy: "approve D-47 with your recommendation." The 29 free copies saved by the browser run on 2026-11-14, plus free or open copies the team downloads by hand from `reports/free_copies_2026-11-14.md` until 2026-11-30, form a corpus addendum. After the cut-off, full-text screening and extraction run once on all of it with the frozen pipeline (`pv1a-<d>`), Tangier first as the extraction pilot; registered results stay primary and the combined figures are reported beside them. Subscription-only papers stay out (D-32). Full entry under *Pre-registration deviations*.
 
