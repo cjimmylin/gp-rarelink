@@ -42,6 +42,7 @@ def test_tags_cover_every_phenopacket():
     rows = list(csv.DictReader(files[-1].open()))
     seen = {(r["disease"], r["run"], r["identity"]) for r in rows}
     assert len(seen) == len(rows)
+    assert all(r["run_prefixed_id"] == f"{r['run']}-{r['identity']}" for r in rows)  # D-50
     for disease in tagger.COMPARATOR:
         for run in tagger.RUNS:
             for f in (REPO / f"data/extracted/{disease}/{run}-{disease}/phenopackets").glob("*.json"):
@@ -87,6 +88,7 @@ def test_frequency_deviation_excludes_tagged_people(tmp_path):
     out = json.loads(next((tmp_path / "analysis/bias").glob("frequency_deviation_*.json")).read_text())
     comp = out["comparators"][0]
     assert comp["status"] == "computed" and comp["overlap_tags"] == "tagged"
+    assert out["primary"] == {"run_set": "registered", "exclusion": "stated_probable", "records": "with_disease_term"}  # D-48
     assert comp["people"]["registered"] == {"all_records": 5, "with_disease_term": 4,
                                             "by_tag": {"in_cohort_possible": 1, "in_cohort_probable": 1, "no_disease_term": 1, "no_link_found": 2}}
     cell = {(a["run_set"], a["exclusion"], a["records"]): a for a in comp["analyses"]}

@@ -6,6 +6,7 @@ the same people also reach the corpus through other papers. This script turns tw
 evidence tables into one tag per phenopacket:
 
   paper_evidence.csv     one row per paper in the pv1, pv1a and pv1a2 runs (tag, rule, evidence)
+                         of SSADH deficiency, A20 haploinsufficiency and Danon disease
   person_overrides.csv   people whose tag differs from their paper's (tag, rule, evidence)
 
 Tags (README.md has the rules behind each):
@@ -26,6 +27,9 @@ How a phenopacket gets its tag:
      stated > probable > outside > possible > no_link_found; with no tagged row it is review_only.
   4. A phenopacket without a disease term is tagged no_disease_term; the tag it would otherwise
      carry is kept in tag_before_disease_check.
+
+Identities restart at 0001 in every run, so the output carries run_prefixed_id (pv1a2-SSADH-ID0001;
+D-50) beside the run and identity columns.
 
 Checks: every run paper has exactly one evidence row; every override matches a reconciled row;
 every evidence quote is looked up in the text it is said to come from, when that text is in the
@@ -51,8 +55,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 RUNS = ("pv1", "pv1a", "pv1a2")
-COMPARATOR = {"ssadh": "dibacco2019_ssadh_natural_history", "ha20": "he2026_ha20_multicenter"}
-HOLDOUT_TEXT = {"ssadh": ["30656189.md"], "ha20": ["he2026_ha20_multicenter.txt", "he2026_flat.txt"]}
+COMPARATOR = {"ssadh": "dibacco2019_ssadh_natural_history", "ha20": "he2026_ha20_multicenter", "danon": "khedro2025_danon_prospective"}
+HOLDOUT_TEXT = {"ssadh": ["30656189.md"], "ha20": ["he2026_ha20_multicenter.txt", "he2026_flat.txt"], "danon": ["41121270.md"]}
 STRENGTH = ["in_cohort_stated", "in_cohort_probable", "outside_cohort", "in_cohort_possible", "no_link_found"]
 RULES = {
     "comparator_names_person": "in_cohort_stated",
@@ -163,6 +167,8 @@ def main() -> int:
         run_pmids = set()
         for run in RUNS:
             run_dir = ROOT / f"data/extracted/{disease}/{run}-{disease}"
+            if not run_dir.exists():  # e.g. Danon has no pv1a run
+                continue
             pm = {f.stem for f in (run_dir / "per_paper").glob("*.json")}
             run_pmids |= pm
             missing = sorted(p for p in pm if (disease, p) not in papers)
@@ -197,6 +203,7 @@ def main() -> int:
                 has_disease = bool(pk.get("diseases"))
                 out_rows.append({
                     "disease": disease, "comparator_key": comparator_key, "run": run, "identity": ident,
+                    "run_prefixed_id": f"{run}-{ident}",
                     "phenopacket_id": pk.get("id", ""), "has_disease_term": "yes" if has_disease else "no",
                     "tag": tag if has_disease else "no_disease_term", "tag_before_disease_check": tag,
                     "rule": rule, "via": via, "evidence_pmid": pmid,
