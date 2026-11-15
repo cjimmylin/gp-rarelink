@@ -1,0 +1,3898 @@
+{
+ "pmid": "23430864",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Single case report of an ALDH5A1 compound heterozygote with SSADH deficiency: \"We report a patient with succinic semialdehyde dehydrogenase deficiency\".",
+ "method_note": "Read the whole paper by hand; JSON assembled with a short Python script in the scratch directory, every value from my reading, every span checked verbatim by script. In-scope people: the proband (label 'patient', single unnamed case-report patient), her brother (carrier, isolated speech delay) and both parents (each carries one of the mutations; sexes of the two parent rows are not assignable to a specific mutation, so labelled 'parent of patient' and 'parent of patient 2' with sex not reported, per the label rule for unsexed 'parents'). The Markdown renders '>' as '&gt;'; spans keep '&gt;' as in the file, values use '>' as printed in the article (c.278 G>T, c.1557 T>G). Protein descriptions appear twice: 'p.Cys93&gt;Phe' and 'p. Tyr519X' in the Case Report, 'p.Cys93Phe' and 'p.Tyr519X' in the Discussion; values use the Discussion forms, both spans given. Patient inheritance recorded as 'inherited unspecified parent' for both variants: the paper says each parent carries one mutation but not which parent carries which. The brother carries 'the maternally inherited allele', but the paper does not say which of the two variants that is, so his variant row has variant_original_string 'not reported' with inheritance 'inherited maternal'. Parent and brother zygosity left 'not reported' ('carrier'/'carried one of the mutations', no explicit 'heterozygous'). Variant types: missense from 'substitution of cysteine by phenylalanine', nonsense from 'replacement of tyrosine by a termination codon' / 'premature stop' (authors' descriptions, not the HGVS). Checklist T2 hyperintensity marked observed from 'the typical neuroradiological pattern above described' (the Introduction's increased T2 signal of dentate, pallidus, subthalamic nuclei) plus the patient's globus pallidus/dentate abnormalities; the paper does not say 'T2' in the patient's own sentence. Possible internal tension: the Discussion says the patient 'has never experienced movement disorders or psychiatric symptoms' while the Case Report and Results describe hyperactive behavior and attention deficit (and the Discussion lists hyperkineticism and inattention among psychiatric symptoms). I kept attention problems observed (explicit) and used the 'never ... psychiatric symptoms' statement to exclude anxiety, OCD traits, aggression, depression and psychotic symptoms, and the 'never ... movement disorders' statement to exclude dystonia, exertional dyskinesia and hemiballismus; ataxia left not reported ('insufficient coordination' is not called ataxia). 'There was no family history of epilepsy, motor or psychiatric disorders' used as a group statement excluding epilepsy for the brother and both parents. 'while the other investigations were normal' (karyotype, amino acids, creatine) is a group of investigations, not recorded as specific features. Table 1 (GHB levels over treatment time points) and Table 2 (neuropsychological raw scores, garbled column alignment) were not transcribed into features beyond the baseline GHB values; no stacked cells. Age at last evaluation '8.2 years' converted to P8.2Y; the patient was admitted at 4.5 years but no explicit age at diagnosis is stated, so it is not reported. The brother's '16 years old' recorded as age at last evaluation.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "first_author": {
+     "value": "Casarano",
+     "span": "M. Casarano · MG. Alessandrì"
+    },
+    "year": {
+     "value": 2011,
+     "span": "Published online: 6 September 2011"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "We report a patient with succinic semialdehyde dehydrogenase deficiency"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "We report a patient with succinic semialdehyde dehydrogenase deficiency"
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": false,
+     "span": "no other patients with an identical genotype as our have been described in the literature"
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "We report a patient with succinic semialdehyde dehydrogenase deficiency"
+    },
+    "sex": {
+     "value": "female",
+     "span": "A 8.2 years old girl"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "8.2 years",
+     "span": "A 8.2 years old girl"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P8.2Y",
+     "span": "A 8.2 years old girl"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "second child of unrelated healthy parents"
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "vigabatrin at low dose (25 mg/kg per day); pyridoxine supplementation (300 mg/day) in conjunction with the same dosage of vigabatrin; speech therapy",
+     "span": [
+      "a treatment with vigabatrin at low dose (25 mg/kg per day) was started",
+      "we implemented a pyridoxine supplementation (300 mg/day) in conjunction with the same dosage of vigabatrin",
+      "after a static course period and speech therapy"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "succinic semialdehyde dehydrogenase deficiency",
+     "span": "We report a patient with succinic semialdehyde dehydrogenase deficiency"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "both biochemical/enzymatic and genetic: markedly increased urinary GHB, strongly decreased SSADH activity in lymphocytes confirming the suspected diagnosis, and ALDH5A1 DNA investigation identifying two pathogenic mutations",
+     "span": [
+      "The organic acids analysis revealed a marked increased excretion of GHB (311 mmol/mol creatine; controls &lt; 5)",
+      "SSADH activity in the patient's lymphocytes was strongly decreased (48 pmol/min per mg protein; controls 1,907-3,901 pmol/min per mg protein) confirming the suspected diagnosis.",
+      "DNA investigation of the SSADH gene (ALDH5A1) performed in the patient and her family identified two pathogenic mutations"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "sex": {
+     "value": "male",
+     "span": "Her brother, 16 years old"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "16 years old",
+     "span": "Her brother, 16 years old"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P16Y",
+     "span": "Her brother, 16 years old"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Both healthy parents carried one of the mutations"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "second child of unrelated healthy parents"
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Both healthy parents carried one of the mutations"
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "no",
+     "span": "second child of unrelated healthy parents"
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "DNA investigation of the SSADH gene (ALDH5A1)"
+    },
+    "variant_original_string": {
+     "value": "c.278 G>T",
+     "span": "c.278 G&gt;T"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.278 G>T",
+     "span": "c.278 G&gt;T"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Cys93Phe",
+     "span": [
+      "The p.Cys93Phe mutation has been identified",
+      "(p.Cys93&gt;Phe)"
+     ]
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "which results in the substitution of cysteine by phenylalanine at position 93"
+    },
+    "zygosity": {
+     "value": "compound heterozygous",
+     "span": "confirming compound-heterozygosity in their affected child"
+    },
+    "inheritance": {
+     "value": "inherited unspecified parent",
+     "span": "Both healthy parents carried one of the mutations"
+    },
+    "parental_testing_statement": {
+     "value": "Both healthy parents carried one of the mutations, confirming compound-heterozygosity in their affected child; the brother is a carrier of the maternally inherited allele",
+     "span": "Both healthy parents carried one of the mutations, confirming compound-heterozygosity in their affected child; the brother is a carrier of the maternally inherited allele."
+    },
+    "functional_evidence_statement": {
+     "value": "overexpression of the p.Cys93Phe allele in mammalian cells results in 3% SSADH activity as compared to overexpression of wildtype SSADH (Akaboshi et al. 2003)",
+     "span": "overexpression of the p.Cys93Phe allele in mammalian cells results in 3% SSADH activity as compared to overexpression of wildtype SSADH (Akaboshi et al. 2003)"
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": [
+      "Therefore, the mutation should be considered pathogenic.",
+      "identified two pathogenic mutations"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "DNA investigation of the SSADH gene (ALDH5A1)"
+    },
+    "variant_original_string": {
+     "value": "c.1557 T>G",
+     "span": "c.1557 T&gt;G"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1557 T>G",
+     "span": "c.1557 T&gt;G"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Tyr519X",
+     "span": [
+      "The p.Tyr519X mutation results in a premature stop",
+      "(p. Tyr519X)"
+     ]
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "nonsense",
+     "span": [
+      "which results in the replacement of tyrosine by a termination codon at position 519",
+      "The p.Tyr519X mutation results in a premature stop"
+     ]
+    },
+    "zygosity": {
+     "value": "compound heterozygous",
+     "span": "confirming compound-heterozygosity in their affected child"
+    },
+    "inheritance": {
+     "value": "inherited unspecified parent",
+     "span": "Both healthy parents carried one of the mutations"
+    },
+    "parental_testing_statement": {
+     "value": "Both healthy parents carried one of the mutations, confirming compound-heterozygosity in their affected child; the brother is a carrier of the maternally inherited allele",
+     "span": "Both healthy parents carried one of the mutations, confirming compound-heterozygosity in their affected child; the brother is a carrier of the maternally inherited allele."
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": [
+      "it has not been reported before, but should be considered pathogenic due to the nature of the mutation",
+      "identified two pathogenic mutations"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "DNA investigation of the SSADH gene (ALDH5A1)"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "inherited maternal",
+     "span": "the brother is a carrier of the maternally inherited allele"
+    },
+    "parental_testing_statement": {
+     "value": "the brother is a carrier of the maternally inherited allele; both healthy parents carried one of the mutations",
+     "span": [
+      "the brother is a carrier of the maternally inherited allele",
+      "Both healthy parents carried one of the mutations"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "DNA investigation of the SSADH gene (ALDH5A1)"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ALDH5A1",
+     "span": "DNA investigation of the SSADH gene (ALDH5A1)"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "mild mental retardation",
+     "span": "mild mental retardation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "mild mental retardation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "mild mental retardation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mild",
+     "span": "mild mental retardation"
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability, mild",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001256",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "severe speech delay",
+     "span": "idiopathic mental retardation with a severe speech delay"
+    },
+    "status": {
+     "value": "observed",
+     "span": "idiopathic mental retardation with a severe speech delay"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "idiopathic mental retardation with a severe speech delay"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "severe",
+     "span": "a severe speech delay"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "severe language deficit with verbal dyspraxia",
+     "span": "severe language deficit with verbal dyspraxia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "severe language deficit with verbal dyspraxia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "severe language deficit with verbal dyspraxia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "severe",
+     "span": "severe language deficit with verbal dyspraxia"
+    },
+    "hpo_label_candidate": {
+     "value": "Speech apraxia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "language development showed impressive delays, especially in expressive language",
+     "span": "Her language development showed impressive delays, especially in expressive language with sufficient speech comprehension."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her language development showed impressive delays, especially in expressive language with sufficient speech comprehension."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her language development showed impressive delays, especially in expressive language with sufficient speech comprehension."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "mild hypotonia",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "status": {
+     "value": "observed",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mild",
+     "span": "mild hypotonia"
+    },
+    "hpo_label_candidate": {
+     "value": "Hypotonia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001252",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "joint hyperlaxity",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "status": {
+     "value": "observed",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Joint hypermobility",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001382",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "insufficient coordination",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "status": {
+     "value": "observed",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "demonstrating mild hypotonia with joint hyperlaxity and insufficient coordination"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Incoordination",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "clumsiness",
+     "span": "the child presented clumsiness and difficulties in execution of oral and ideomotor praxis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the child presented clumsiness and difficulties in execution of oral and ideomotor praxis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the child presented clumsiness and difficulties in execution of oral and ideomotor praxis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Clumsiness",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002312",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "difficulties in execution of oral and ideomotor praxis",
+     "span": "the child presented clumsiness and difficulties in execution of oral and ideomotor praxis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the child presented clumsiness and difficulties in execution of oral and ideomotor praxis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the child presented clumsiness and difficulties in execution of oral and ideomotor praxis"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Apraxia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "hyperactive behavior",
+     "span": "mild mental retardation and hyperactive behavior"
+    },
+    "status": {
+     "value": "observed",
+     "span": "mild mental retardation and hyperactive behavior"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "mild mental retardation and hyperactive behavior"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hyperactivity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000752",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "attention deficit",
+     "span": "reduction of hyperactivity and attention deficit was observed"
+    },
+    "status": {
+     "value": "observed",
+     "span": "reduction of hyperactivity and attention deficit was observed"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "reduction of hyperactivity and attention deficit was observed"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "rare paroxysmal abnormalities on EEG",
+     "span": "EEG showed rare paroxysmal abnormalities"
+    },
+    "status": {
+     "value": "observed",
+     "span": "EEG showed rare paroxysmal abnormalities"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "EEG showed rare paroxysmal abnormalities"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "EEG abnormality",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002353",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "sharp waves and spikes upon the central parietal regions on EEG",
+     "span": "the EEG performed during follow-up disclosed sharp waves and spikes upon the central parietal regions, especially on the right hemisphere"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the EEG performed during follow-up disclosed sharp waves and spikes upon the central parietal regions, especially on the right hemisphere"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the EEG performed during follow-up disclosed sharp waves and spikes upon the central parietal regions, especially on the right hemisphere"
+    },
+    "onset_original_text": {
+     "value": "during follow-up",
+     "span": "the EEG performed during follow-up disclosed sharp waves and spikes upon the central parietal regions, especially on the right hemisphere"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "EEG abnormality",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002353",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "epileptic seizures",
+     "span": "no epileptic seizures were observed"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "no epileptic seizures were observed"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "no epileptic seizures were observed"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001250",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "photoparoxysmal response",
+     "span": "Intermittent photic stimulation did not provoke photoparoxysmal response"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Intermittent photic stimulation did not provoke photoparoxysmal response"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Intermittent photic stimulation did not provoke photoparoxysmal response"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Photoparoxysmal response",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "marked increased excretion of GHB",
+     "span": "The organic acids analysis revealed a marked increased excretion of GHB (311 mmol/mol creatine; controls &lt; 5)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The organic acids analysis revealed a marked increased excretion of GHB (311 mmol/mol creatine; controls &lt; 5)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The organic acids analysis revealed a marked increased excretion of GHB (311 mmol/mol creatine; controls &lt; 5)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "311 mmol/mol creatine; controls &lt; 5",
+     "span": "(311 mmol/mol creatine; controls &lt; 5)"
+    },
+    "hpo_label_candidate": {
+     "value": "4-Hydroxybutyric aciduria",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "increased GHB in blood",
+     "span": "GHB levels were markedly increased in urine (311 mmol/mol creatine), blood (204 mmol/L) and CSF (357 mmol/L)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "GHB levels were markedly increased in urine (311 mmol/mol creatine), blood (204 mmol/L) and CSF (357 mmol/L)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "GHB levels were markedly increased in urine (311 mmol/mol creatine), blood (204 mmol/L) and CSF (357 mmol/L)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "204 mmol/L",
+     "span": "blood (204 mmol/L)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "increased GHB in CSF",
+     "span": "GHB levels were markedly increased in urine (311 mmol/mol creatine), blood (204 mmol/L) and CSF (357 mmol/L)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "GHB levels were markedly increased in urine (311 mmol/mol creatine), blood (204 mmol/L) and CSF (357 mmol/L)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "GHB levels were markedly increased in urine (311 mmol/mol creatine), blood (204 mmol/L) and CSF (357 mmol/L)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "357 mmol/L",
+     "span": "CSF (357 mmol/L)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "decreased SSADH activity in lymphocytes",
+     "span": "SSADH activity in the patient's lymphocytes was strongly decreased (48 pmol/min per mg protein; controls 1,907-3,901 pmol/min per mg protein)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "SSADH activity in the patient's lymphocytes was strongly decreased (48 pmol/min per mg protein; controls 1,907-3,901 pmol/min per mg protein)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "SSADH activity in the patient's lymphocytes was strongly decreased (48 pmol/min per mg protein; controls 1,907-3,901 pmol/min per mg protein)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "48 pmol/min per mg protein; controls 1,907-3,901 pmol/min per mg protein",
+     "span": "(48 pmol/min per mg protein; controls 1,907-3,901 pmol/min per mg protein)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal motor-sensitive nerve conduction velocity of the lower limbs",
+     "span": "motor-sensitive nerve conduction velocity of the lower limbs was normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "motor-sensitive nerve conduction velocity of the lower limbs was normal"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "motor-sensitive nerve conduction velocity of the lower limbs was normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormal nerve conduction velocity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormalities involving globus pallidus bilaterally and symmetrically",
+     "span": [
+      "showed the typical neuroradiological pattern above described",
+      "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "showed the typical neuroradiological pattern above described",
+      "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "showed the typical neuroradiological pattern above described",
+      "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the globus pallidus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormalities of the subcortical white matter",
+     "span": "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+    },
+    "status": {
+     "value": "observed",
+     "span": "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of the cerebral white matter",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormalities of the cerebellar dentate nucleus",
+     "span": "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+    },
+    "status": {
+     "value": "observed",
+     "span": "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "alterations on 1 H-MRS",
+     "span": "No significant alterations were detected by 1 H-MRS."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "No significant alterations were detected by 1 H-MRS."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "No significant alterations were detected by 1 H-MRS."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "movement disorders",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormality of movement",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100022",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "psychiatric symptoms",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "mild increase in ornithine in the blood",
+     "span": "except for a mild increase in ornithine in the blood at T7"
+    },
+    "status": {
+     "value": "observed",
+     "span": "except for a mild increase in ornithine in the blood at T7"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "except for a mild increase in ornithine in the blood at T7"
+    },
+    "onset_original_text": {
+     "value": "at T7",
+     "span": "a mild increase in ornithine in the blood at T7"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "102 mmol/L; 37-96 mmol/L n.v.",
+     "span": "higher levels of blood ornithine (102 mmol/L; 37-96 mmol/L n.v.)"
+    },
+    "hpo_label_candidate": {
+     "value": "Hyperornithinemia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "visual field constriction in the right eye",
+     "span": "a visual field constriction developed in the right eye"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a visual field constriction developed in the right eye"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a visual field constriction developed in the right eye"
+    },
+    "onset_original_text": {
+     "value": "At T7",
+     "span": "At T7 the fundus oculi was still normal but a visual field constriction developed in the right eye"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Visual field defect",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001123",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal fundus oculi",
+     "span": "At T7 the fundus oculi was still normal"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "At T7 the fundus oculi was still normal"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At T7 the fundus oculi was still normal"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Abnormal fundus morphology",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "feature_text_as_stated": {
+     "value": "isolated speech delay",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "feature_text_as_stated": {
+     "value": "epilepsy",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001250",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "epilepsy",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001250",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "feature_text_as_stated": {
+     "value": "epilepsy",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Seizure",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001250",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "mild mental retardation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "mild mental retardation"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "idiopathic mental retardation with a severe speech delay",
+      "severe language deficit with verbal dyspraxia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "idiopathic mental retardation with a severe speech delay",
+      "severe language deficit with verbal dyspraxia"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "demonstrating mild hypotonia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "demonstrating mild hypotonia"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "the child presented clumsiness",
+      "insufficient coordination"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "the child presented clumsiness",
+      "insufficient coordination"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "no epileptic seizures were observed"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "no epileptic seizures were observed"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "EEG showed rare paroxysmal abnormalities",
+      "the EEG performed during follow-up disclosed sharp waves and spikes upon the central parietal regions, especially on the right hemisphere"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "EEG showed rare paroxysmal abnormalities",
+      "the EEG performed during follow-up disclosed sharp waves and spikes upon the central parietal regions, especially on the right hemisphere"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "reduction of hyperactivity and attention deficit was observed"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "reduction of hyperactivity and attention deficit was observed"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "So far the patient has never experienced movement disorders or psychiatric symptoms"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "showed the typical neuroradiological pattern above described",
+      "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus.",
+      "The most common abnormalities on MRI consist of increased T2-weighted signal involving the cerebellar dentate nuclei, globus pallidus, and subthalamic nuclei symmetrically"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "showed the typical neuroradiological pattern above described",
+      "There were abnormalities involving globus pallidus bilaterally and symmetrically, as well as abnormalities of the subcortical white matter and cerebellar dentate nucleus.",
+      "The most common abnormalities on MRI consist of increased T2-weighted signal involving the cerebellar dentate nuclei, globus pallidus, and subthalamic nuclei symmetrically"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 8.2 years old girl, second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of patient",
+     "span": "Her brother, 16 years old, presented an isolated speech delay"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "There was no family history of epilepsy, motor or psychiatric disorders."
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430864",
+     "span": "PMID: 23430864"
+    },
+    "individual_label_in_paper": {
+     "value": "parent of patient 2",
+     "span": "second child of unrelated healthy parents"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
