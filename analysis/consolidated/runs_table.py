@@ -473,7 +473,7 @@ def main() -> int:
           + (f"; {len(cross)} appear under more than one disease ({', '.join(f'{p}: {'/'.join(v)}' for p, v in cross.items())})." if cross else "; none appears under two diseases.")]
     if MC["state"] == "merged into this tree":
         L += [f"- **The five extension runs are merged into this branch** (`{MC['branch']}`; extension commit `{MC['extension_commit'][:7]}`; D-54). "
-              + ("They are on `main`." if MC["on_origin_main"] else "They are not on `main` yet: that merge waits for Jimmy's word.")
+              + ("They are on `main`." if MC["on_origin_main"] else "They reach `main` through a pull request from this branch (D-54).")
               + " Decision numbers: the extension session's D-47 and D-48 are D-52 and D-53 in `DECISIONS.md`; files that session wrote keep its numbers."]
     if MC["state"] == "not merged":
         L += [f"- **The five extension runs are not on `main`.** Their branch split from `main` on {MC['base_date']} and has "
