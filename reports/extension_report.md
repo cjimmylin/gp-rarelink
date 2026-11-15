@@ -89,5 +89,5 @@ Still open from the helpers: SURF patients with NOD2 variants and a healthy-cont
 
 ## 7. Spend
 
-Budget line 7 (Stretch, $9,000): **$595.90** by this session's cost readings, last 2026-11-15 01:08 UTC (`analysis/cost/spend_segments.csv`; list-price estimates, not billing figures). D-47 ceiling $1,500.
+Budget line 7 (Stretch, $9,000): **$596.93** by this session's cost readings, last 2026-11-15 10:55 UTC (`analysis/cost/spend_segments.csv`; list-price estimates, not billing figures). D-47 ceiling $1,500.
 
