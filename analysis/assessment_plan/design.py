@@ -190,10 +190,10 @@ def main() -> int:
 
     m = res["measured_audit_minutes"]
     L = [f"# Human assessment with eight raters: Plan A (registered six) and Plan B (all twelve) ({a.date})", "",
-         f"*A proposal for Jimmy's decision (D-55, open). Numbers come from `analysis/assessment_plan/design.py --date {a.date}` "
+         f"*Accepted by Jimmy on 2026-11-15 (D-55): the design and the calibration floor. Plan A or B and the hours per week are left open; the work goes step by step. Numbers come from `analysis/assessment_plan/design.py --date {a.date}` "
          f"(`analysis/assessment_plan/design_{a.date}.json`), which reads the committed samples and candidate tables. "
          "Time figures are planning assumptions unless marked measured; the calibration round replaces them with measured ones. "
-         "Raters are R1 to R8 here; no names are in the repository. Nothing in this plan has started, and no page is built or published.*", "",
+         "Raters are R1 to R8 here; no names are in the repository. No page is built or published yet.*", "",
          "## 1. Summary", "",
          "| | Plan A: registered six | Plan B: all twelve |", "|---|---|---|",
          f"| Extracted values audited | {A['items']['audit']} | {B['items']['audit']} |",
@@ -220,7 +220,7 @@ def main() -> int:
          f"- **Adjudication:** {CAL['adjudication_variants']} variants the runs extracted that ClinVar already classifies with settled review status, each with a dossier built the same way. Raters classify them without opening ClinVar.",
          "- **What it gives:** each rater's hit rate on unsupported claims, false-alarm rate, agreement with the reference classification, and minutes per item. Those measured minutes replace the planning figures below.",
          "- **A floor fixed in advance:** a rater who misses more than a set share of the unsupported calibration claims does not serve as one of the two registered raters of a claim; that rater's readings are still collected and reported. "
-         "The floor is Jimmy's to set before anyone sees calibration results (proposed: at least 15 of 20 unsupported claims caught, and at least 18 of 20 supported claims passed).", "",
+         "The floor (decided, D-55, before any calibration result exists): at least 15 of the 20 unsupported claims caught, and at least 18 of the 20 supported claims passed.", "",
          f"**Step 1. Audit of extracted values: every claim read by {K['audit']} raters.**",
          "- The eight raters form 56 different groups of three. Claims are dealt across those groups by a seeded script, so each rater reads the same number of claims and every pair of raters shares the same number.",
          "- **The registered analysis is kept.** For each claim the script names two of its three raters as the registered pair and the third as the tie-breaker, in rotation. "
@@ -230,7 +230,7 @@ def main() -> int:
          f"**Step 3. Adjudication of gap candidates: every candidate adjudicated by {K['adjudication']} raters independently.**",
          "- The 28 possible pairs of raters each share the same number of candidates. Each rater works through one disease at a time.",
          "- Where the two differ on the decision (approve, reject, needs discussion) or on the class across the pathogenic / uncertain line, a third rater reads the candidate. "
-         "The third reader is drawn from the raters who did best in calibration, or is a panel member.",
+         "Two of the eight raters are panel members. The third reader is a panel member who was not one of the two adjudicators, or a rater who did best in calibration; the exact rule is fixed before adjudication starts.",
          "- Nothing goes to submission without the panel's approval and Jimmy's sign-off; that is unchanged.", "",
          "### How many raters per claim", "",
          f"For the registered audit of {audit_n} claims, at {MIN['audit'][1]:g} minute per claim:", "",
@@ -305,8 +305,9 @@ def main() -> int:
           "- **Not changed:** the samples, the labels, rule C, the panel's approval and Jimmy's sign-off before any submission, and the separation of the three studies. The registered audit result is still computed from two raters and a tie-breaker per claim.",
           "- **Reported with it:** Cohen's κ was registered for two fixed raters. With rotating pairs it is reported for each pair of raters on the claims they share, with an overall agreement measure across all raters beside it.", "",
           "## 8. Order of work", "",
-          "1. Jimmy decides D-55 and tells Claude which rater is R1 to R8 (names stay with him).",
-          f"2. Claude builds the calibration set and eight calibration pages; Jimmy labels the {CAL['audit_claims'] // 2} reference claims that have no human label yet, and shares the pages.",
+          "1. Jimmy decides D-55 (done for the design and the floor) and keeps the list of which rater is R1 to R8.",
+          "2. Claude draws 60 candidate calibration claims; Jimmy labels them on a reference page, blind to the gatekeeper; the first 20 he finds unsupported and the first 20 he finds supported, in a seeded order, are the calibration set. "
+          "Claude builds the eight calibration pages and Jimmy shares them.",
           "3. Raters do calibration. Claude reports each rater's results and measured minutes, applies the floor, draws the assignments by seed and re-prices the plan.",
           "4. Claude builds each rater's audit, triage and adjudication pages; Jimmy shares them. Raters work through the audit and triage first, then adjudication by disease.",
           "5. Third readings, the panel's approval, Jimmy's sign-off.", "",
@@ -318,14 +319,13 @@ def main() -> int:
           f"- **Bias arm:** {waiting['comparator_sheets']} comparator sheets, each filled by someone who has not seen the extracted frequencies.",
           "- **Optional audit add-ons in the frozen plan** (§7.1 a and c: a sample before the gatekeeper, and a check of \"not reported\" values) and the open-weight comparison's blinded audit (§7.5); none has a sample yet. "
           f"With three raters per claim, each 100-claim add-on costs about {round(100 * K['audit'] * MIN['audit'][1] / 60 / R, 1)} hours per rater.", "",
-          "## 10. Decisions for Jimmy (D-55)", "",
-          "1. **The design:** three raters per audit claim, two per triage item, two per gap candidate with a third reading on disagreement.",
-          "2. **Plan A or Plan B,** or B confirmed after calibration as recommended.",
-          "3. **The calibration floor,** fixed before any calibration result is seen.",
-          "4. **The panel's place.** The frozen plan and the grant have the panel (Drs. Wu, Balderrama and Chacko) approve every record before submission. Are they among the eight? "
-          "If so, they are the natural third readers; if not, they approve after the volunteers' adjudications.",
-          "5. **Hours per rater per week,** which sets the calendar. The registered window for adjudication is Month 4, 2026-12-21 to 2027-01-20, across the holidays.",
-          "6. **Publishing,** when each set of pages is ready.", "",
+          "## 10. Decided and still open (D-55)", "",
+          "1. **The design: decided** (Jimmy, 2026-11-15). Three raters per audit claim, two per triage item, two per gap candidate with a third reading on disagreement.",
+          "2. **The calibration floor: decided** (Jimmy, 2026-11-15), before any calibration result exists.",
+          "3. **The panel:** two of the eight raters are panel members (Jimmy, 2026-11-15). Still to fix before adjudication starts: who gives the third reading when a panel member is one of the two adjudicators, and what counts as the panel's approval.",
+          "4. **Plan A or Plan B: open.** The order of work is the same for both, so it is confirmed after calibration.",
+          "5. **Hours per rater per week: open.** Jimmy: the work goes gradually. The registered window for adjudication is Month 4, 2026-12-21 to 2027-01-20, across the holidays.",
+          "6. **Publishing:** his explicit word for each set of pages, as they are ready.", "",
           "Building pages is publishing, so steps 2 and 4 each need Jimmy's explicit word. The twelve existing pages hold whole samples for two raters and one adjudicator and are replaced by per-rater pages; none has a rating in it.", ""]
     out = Path(f"reports/plan_human_assessment_{a.date}.md")
     out.write_text("\n".join(L) + "\n")

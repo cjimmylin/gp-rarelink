@@ -21,14 +21,14 @@ How to use this file:
 
 ### Needed later
 
-**D-55 · Human assessment with eight volunteer raters and overlapping assignments** (opened 2026-11-15; proposal in `reports/plan_human_assessment_2026-11-15.md`, numbers from `analysis/assessment_plan/design.py`)
-- **Jimmy (chat, 2026-11-15):** he has eight people willing to adjudicate, of variable ability, and wants overlapping coverage so that their ability can be compared, beyond two raters and a third; Plan A for the six registered diseases, Plan B adding the extension five and Majeed, each with time and entries covered.
-- **Proposal.** A calibration round first (all eight on the same known-answer items, with a floor fixed in advance); then every audit claim read by three raters, every triage item by two, every gap candidate by two with a third reading where they differ. The eight raters rotate through all groups, so every pair of raters shares items. The registered audit result is still computed from two named raters and a tie-breaker per claim; the extra readings are reported beside it as exploratory.
-- **Size, at the planning figures (ranges in the plan):** Plan A 514 entries (250 claims, 50 triage items, 214 gap candidates), about 21.1 hours per rater; Plan B 942 entries, about 28.6 hours per rater. Only the audit time rests on a measurement (one rater, the pilot); the adjudication time does not.
-- **Recommendation:** Plan B in Plan A's order, confirmed after calibration when measured minutes replace the planning figures.
-- **Needs Jimmy:** the design; A or B; the calibration floor; whether the panel is among the eight and who gives the third reading; hours per rater per week; and his word to publish each set of pages. For the registered six this is a deviation from §7.1, §7.2.6 and §7.3 (who rates, and how many), to be logged as one when he approves it. Nothing has been built or drawn.
+**D-55 · Human assessment with eight raters: what is still open** (design and calibration floor decided 2026-11-15; see the decision log and the deviation entry)
+- **Plan A or Plan B.** Not chosen yet. Jimmy: "We will do it gradually." The order of work is the same for both (calibration, then the registered six, then the other six), so the choice is confirmed after calibration, when measured minutes replace the planning figures.
+- **Hours per rater per week.** Not known yet (Jimmy, 2026-11-15).
+- **The panel in adjudication.** Two of the eight raters are panel members. Still to fix before adjudication starts: who gives the third reading when a panel member is one of the two adjudicators, and what counts as the panel's approval now that its membership has changed.
+- **The panel's current membership** differs from `CONTEXT.md` §3. Jimmy gave it in chat; it is not written here because the repository is public and nothing about team members goes into it that he has not put there himself. Ask him before drafting anything addressed to the panel, and before changing `CONTEXT.md` or `INSTRUCTIONS.md`.
+- **Publishing.** Each set of per-rater pages, and the reference-labelling page for the calibration claims, needs his explicit word.
 
-**Raters, adjudicators and two page changes** (opened 2026-11-15 as call 4 of the consolidation; calls 1 to 3 were decided the same day as D-54)
+**Raters, adjudicators and two page changes** (opened 2026-11-15 as call 4 of the consolidation; calls 1 to 3 were decided the same day as D-54; the rating design is D-55)
 - **Who rates.** No rating has been entered on any of the twelve review pages (four each for the registered six, the extension five and Majeed; stores read 2026-11-15; `reports/consolidated_runs_2026-11-15.md`). Before rating starts Jimmy names the O1 raters and the O3 adjudicators (extension addendum §5; D-11), records them here and shares the pages.
 - **Majeed's last two dossiers (D-54).** G-majeed-001 and G-majeed-009 have no dossier until the text of record N88 (the Wiley PDF he found by hand) is available. Majeed's four review pages are published privately (D-54) and wait to be shared, like the other eight.
 - **Two page changes need his word because they are publishing:** rebuilding the registered gap page, which predates D-42 and D-43 and still lists the withdrawn `G-danon-001`; and adding pages for adjudicators B and C (`reports/drafts/panel_adjudication_page.md`).
@@ -65,6 +65,26 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-11-15 · D-55 decided: eight raters with overlapping assignments, a calibration round and a floor
+
+- **Context.** Jimmy has eight people willing to rate and adjudicate, of variable ability, and wants overlapping coverage so that their ability can be compared. Claude proposed the design in `reports/plan_human_assessment_2026-11-15.md` (numbers from `analysis/assessment_plan/design.py`).
+- **Jimmy (chat, 2026-11-15): "I accept the design for decision one. For decision two, I agree with you."** He also said that two of the eight are members of the adjudication panel, and of the hours per week: "I don't know yet. We will do it gradually." Recorded as his decision on the design and the floor.
+- **The design, as accepted:**
+  1. **Calibration first.** All eight raters do the same known-answer items: 40 audit claims, half of them unsupported, and 6 variants with a settled ClinVar classification.
+  2. **Audit:** every claim is read by three raters. The eight rotate through all 56 groups of three, dealt by a seeded script, so that loads are equal and every pair of raters shares claims.
+  3. **Triage:** every item is read by two raters; Jimmy settles the items where they differ.
+  4. **Adjudication:** every gap candidate is adjudicated by two raters independently; a third reads it where they differ on the decision or on the class across the pathogenic / uncertain line.
+  5. **The registered audit result is kept.** For each claim the script names two of its three raters as the registered pair and the third as tie-breaker; the registered result uses the pair's labels and the tie-breaker's only where the pair disagrees. Rule C is unchanged. The majority-of-three label, agreement between pairs of raters and each rater's estimated hit and false-alarm rates are reported beside it as exploratory.
+- **The calibration floor, as accepted, fixed before any calibration result exists:** a rater serves as one of the two registered raters of a claim only after catching at least 15 of the 20 unsupported calibration claims and passing at least 18 of the 20 supported ones. A rater below the floor still rates; those readings are collected and reported, and are not used for the registered result.
+- **How the audit calibration set is built, fixed here before anything is drawn (Claude's calls within the accepted design):**
+  - **Source.** Claims of the six registered runs that are not in the registered audit sample: claims the gatekeeper removed as unsupported, and claims it kept. Only papers whose text can be restored exactly in a new container are used (JATS full text, no appended supplementary text), because the rating page shows the passage around each quote.
+  - **Candidates.** 60 claims: 36 the gatekeeper judged unsupported and 24 it judged supported, spread over the six diseases as evenly as the pools allow, in mixed order.
+  - **Reference labels.** Jimmy rates all 60 on a rating page of the usual kind, blind to the gatekeeper's verdict and to which pool a claim came from. His label is the reference; it is one person's label, and the raters' agreement with the majority of the eight is reported beside it.
+  - **The set.** The first 20 claims he labels unsupported and the first 20 he labels supported, in a seeded order. If fewer than 20 come out unsupported, a second draw is made by the same rule.
+  - **Kept out of the repository until calibration ends:** the candidate list, the seed and the reference labels, because the repository is public and the gatekeeper's verdicts in it would give the answers away. Their sha256 is committed now; the files are committed afterwards.
+- **Size at the planning figures:** Plan A 514 entries, about 21.1 hours per rater; Plan B 942 entries, about 28.6 hours per rater. Only the audit time rests on a measurement (the pilot, one rater).
+- **Not decided:** Plan A or B, the hours per week, and the panel's part in third readings and approval (see *Open decisions*). Nothing is published; each set of pages needs Jimmy's word.
 ### 2026-11-15 · Session "set 1C" closed: batch-2 converted texts saved to Drive, hash list committed, session archived
 - **Request.** Jimmy: "Is everything completed in this thread? If so, archive it." The work was complete and merged, but archiving releases the container, and the converted text of the 72 batch-2 papers (the text every extracted quote was checked against) existed only there; it cannot go on GitHub (D-46, D-51). Asked what to do first, Jimmy chose: "Save to Drive, then archive (Recommended)".
 - **Done.** (1) `analysis/corpus/free_copies/batch2_inputs_2026-11-15.csv`: sha256 of every PDF the converter read and of every converted Markdown file, identifiers only (72 papers, 4 with a PDF printed from a saved PMC page, 59 included, docling 2.140.0). (2) One zip, `D-47_batch2_converted_texts_2026-11-15.zip` (1,955,713 bytes; sha256 `632a0ed1ccc8eb5e1c89843c7f5c4e03c2a83a49783dd8bed6f920cf120358ae`), uploaded to Jimmy's private Drive folder "GP-RareLink free copies 2026-11-14" after checking that the folder's visibility is private; contents listed in `analysis/corpus/free_copies/HAND_FETCHED_2026-11-14.md`. (3) Merged to `main`, then the session was archived.
@@ -959,6 +979,15 @@ Entry format once frozen:
 - **Why:** Jimmy wants people to assess all twelve diseases together. Majeed's run used a wider search and hand-found copies after the addendum had dropped it, so it cannot enter the extension's registered audit, whose sample was drawn from the five.
 - **Effect on results:** Majeed's figures are reported on their own and labelled exploratory. Its audit is too small for the registered decision rule; its ClinVar comparison and gap candidates were seen before the audit sample was drawn.
 - **Approved by:** Jimmy Lin, 2026-11-15 ("Yes, please include the 5 reserved diseases and also the last disease as well that was run in a separate thread.").
+
+### 2026-11-15 · D-55 · Eight volunteer raters in rotating groups, with a calibration round, in place of two fixed raters and a tie-breaker
+- **Registered:** two panel members rate each audit claim independently and a third resolves disagreements, with Cohen's κ reported (§7.1); a panel member or Dr. Lin triages the sample of misses (§7.2.6); the panel adjudicates gap candidates (§7.3). The extension addendum (§5) lets volunteer reviewers take part once Jimmy names them.
+- **Change:** eight raters, two of them panel members, rate in rotating groups: three per audit claim, two per triage item, two per gap candidate with a third reading where they differ. A calibration round on known-answer items comes first, with a floor fixed in advance (D-55 decision-log entry). The same design serves the extension's audit and Majeed's if Plan B is confirmed.
+- **Kept as registered:** the samples and their seeds, the labels, the blinding to the gatekeeper, rule C, and the registered result itself, which is computed from a named pair of raters and a named tie-breaker for each claim. No submission without the panel's approval and Jimmy's sign-off.
+- **Reported differently:** Cohen's κ was registered for two fixed raters. It is reported for each pair of raters on the claims they share, with an agreement measure across all raters beside it.
+- **Why:** eight people of variable ability are available; overlapping assignments let their ability be compared and give every claim a blind third reading in place of a tie-breaker who knows the claim is disputed.
+- **Effect on results:** the registered pair for a claim is no longer the same two people throughout, so differences between raters add noise to the registered result; the floor limits it. Whether a rater passes the floor is decided from calibration items only, never from the audit samples.
+- **Approved by:** Jimmy Lin, 2026-11-15 ("I accept the design for decision one. For decision two, I agree with you.").
 
 ### YYYY-MM-DD · D-nn · Short title
 - Registered: what the frozen plan said (section)
