@@ -1,0 +1,173 @@
+"""Search log for the Majeed syndrome (LPIN2) corpus: data/literature/majeed/search.md + search_summary.json.
+
+The six registered corpora get their search.md from corpus_summary.py. Majeed is
+a substitute (pre-registration §4.2) searched on 2026-11-15 with every method
+available (Dr. Lin's request), so its log also reports, per source, how many
+records it returned, how many only it found, and how many of those passed
+screening. Everything is read from the committed files.
+
+  uv run python analysis/corpus/majeed_search_summary.py
+"""
+
+from __future__ import annotations
+
+import csv
+import json
+import re
+import sys
+from collections import Counter
+from pathlib import Path
+
+import yaml
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from corpus_summary import D08_MIN_N, pct, summarise  # noqa: E402
+
+BASE = Path("data/literature/majeed")
+
+FAMILIES = [
+    ("pubmed_query", "PubMed query (no case/patient filter)"),
+    ("epmc_search", "Europe PMC search, incl. open full text"),
+    ("openalex_search", "OpenAlex search (title, abstract, full text)"),
+    ("litvar_gene", "LitVar2, gene symbol LPIN2 (all listed variants)"),
+    ("refs", "Backward references of key reviews and Ferguson 2005 (Europe PMC)"),
+    ("cited_by", "Forward citations of five key papers (Europe PMC)"),
+    ("openalex_cited_by", "Forward citations of five key papers (OpenAlex)"),
+    ("pubmed_similar", "PubMed similar articles, top 50 per key paper"),
+    ("background_bibliography", "Project background bibliography"),
+]
+
+
+def family(src: str) -> str:
+    for key, _ in sorted(FAMILIES, key=lambda kv: -len(kv[0])):
+        if src == key or src.startswith(key + "_"):
+            return key
+    return src
+
+
+def hand_section() -> str:
+    """Copies found by hand (Dr. Lin, 2026-11-14) and the screening of non-PubMed records."""
+    dirs = sorted(BASE.glob("hand_retrieval_*"))
+    if not dirs:
+        return ""
+    res = list(csv.DictReader((dirs[-1] / "majeed_search_results.csv").open(encoding="utf-8-sig")))
+    status = Counter(r["search_status"] for r in res)
+    rows = list(csv.DictReader((BASE / "manifest.csv").open(newline="")))
+    hand = [r for r in rows if r.get("access_status") == "hand_fetched_free"]
+    hand_inc = [r["pmid"] for r in hand if r.get("fulltext_screen") == "include"]
+    lab = BASE / "screening_fulltext" / "labels_nopmid" / "nopmid_01.csv"
+    nop = list(csv.DictReader(lab.open())) if lab.exists() else []
+    nop_lines = "\n".join(f"| {r['pmid']} | {r['decision']} | {r['exclusion_reason'] or '—'} | {r['n_individuals']} | {r['note']} |" for r in nop)
+    return f"""
+## Copies found by hand ({dirs[-1].name.split('_')[-1]})
+
+Dr. Lin searched for the {len(res)} records on `reports/majeed_papers_to_find_2026-11-15.md` (free copies only). Outcome: {', '.join(f'{k} {v}' for k, v in status.most_common())}. Provenance and checksums: `{dirs[-1]}/`; files imported by `analysis/corpus/import_hand_fetched.py` (PDFs git-ignored).
+
+- **PubMed papers:** {len(hand)} copies, full-text screened under the same instructions (batch 06): {len(hand_inc)} included ({', '.join(hand_inc) or 'none'}).
+- **Records with no PMID:** {len(nop)} documents screened by one helper with the same rule (`screening_fulltext/labels_nopmid/`). They are not in the manifest and not in the counts above.
+
+| Record | Decision | Reason | Individuals | Note |
+|---|---|---|---|---|
+{nop_lines}
+
+Likely duplicates for deduplication: N76 states it is a version of the BMC Medical Genetics case report (Liu 2019, PMID 31727123, already eligible); N66 (PReS 2011 abstract, two Turkish brothers homozygous for c.1312_1313delCT) very likely describes the brothers of Herlin 2013 (PMID 23087183, same variant).
+"""
+
+
+def main() -> int:
+    cfg = yaml.safe_load(Path("configs/diseases.yaml").read_text())["substitutes"]["majeed"]
+    rows = list(csv.DictReader((BASE / "manifest.csv").open(newline="")))
+    s = summarise("majeed")
+    per: dict[str, Counter] = {k: Counter() for k, _ in FAMILIES}
+    for r in rows:
+        fams = {family(x) for x in r["seed_sources"].split("; ") if x}
+        inc = r.get("in_extraction_corpus") == "true"
+        yes = inc and r.get("relevance") == "yes"
+        elig = r.get("fulltext_screen") == "include"
+        for f in fams:
+            c = per.setdefault(f, Counter())
+            c["records"] += 1
+            c["in_corpus"] += inc
+            c["yes"] += yes
+            c["eligible"] += elig
+            if len(fams) == 1:
+                c["only"] += 1
+                c["only_in_corpus"] += inc
+                c["only_yes"] += yes
+                c["only_eligible"] += elig
+    def registered(r):  # the kind of search the six corpora used (D-35)
+        return any(x == "pubmed_query" or x.startswith("refs_") or x == "background_bibliography" for x in r["seed_sources"].split("; "))
+    extra_only = {k: [r["pmid"] for r in rows if cond(r) and not registered(r)] for k, cond in {
+        "in_corpus": lambda r: r.get("in_extraction_corpus") == "true",
+        "eligible": lambda r: r.get("fulltext_screen") == "include"}.items()}
+    nopmid = {f.name: sum(1 for _ in csv.DictReader(f.open())) for f in sorted((BASE / "seeds").glob("*_nopmid.csv"))}
+    ftm = json.loads((BASE / "screening" / "fulltext_mentions_log.json").read_text()) if (BASE / "screening" / "fulltext_mentions_log.json").exists() else None
+    xlog = json.loads((BASE / "seeds" / "extra_sources_log.json").read_text())
+    out = {"summary": s, "per_source": {k: dict(v) for k, v in per.items()}, "records_without_pmid": nopmid,
+           "fulltext_mentions": ftm, "found_only_beyond_registered_kind": extra_only, "extra_sources_runs": xlog["runs"]}
+    (BASE / "search_summary.json").write_text(json.dumps(out, indent=2) + "\n")
+
+    labels = dict(FAMILIES)
+    tbl = "\n".join(
+        f"| {labels.get(k, k)} | {v['records']} | {v['in_corpus']} | {v['eligible']} | {v['only']} | {v['only_in_corpus']} | {v['only_eligible']} |"
+        for k, v in per.items() if v)
+    acc = ", ".join(f"{k} {v}" for k, v in sorted(s["access_status_in_corpus"].items(), key=lambda kv: -kv[1]))
+    ft = s["fulltext_screen"]
+    md = f"""# {cfg['name']} (*{cfg['gene']}*) corpus search log
+
+*Generated by `analysis/corpus/majeed_search_summary.py` from this folder's files. Majeed syndrome is a substitute disease (pre-registration §4.2; Mondo {cfg['mondo']}); this corpus is preparation only and not part of the six-disease study. Search run {s['search_date']}.*
+
+## Methods
+
+Every search method available to the session was used (Dr. Lin, 2026-11-15: "all methods"). The six registered corpora used only the first and fifth rows of the table below (D-35).
+
+- **PubMed query** (`configs/diseases.yaml`, `substitutes.majeed`), Mondo synonyms included, run without the case/patient filter the six used, because for so rare a disease recall matters more than screening load:
+
+```
+{s['query']}
+```
+
+  Hits: {s['query_hits']}.
+- **Europe PMC search**, which also searches open full text (`seeds/epmc_majeed_lpin2.csv`).
+- **OpenAlex search** for "Majeed syndrome" in title, abstract or full text, and OpenAlex forward citations. Paged without an API key (cursor paging answered 401).
+- **LitVar2 by gene symbol only** (pre-registration §5.1): every PMID linked to any of the variants LitVar lists for *LPIN2*, with no filter on any database assertion.
+- **Backward citations** of the reviews Ferguson 2021, Chavan 2021, Badiger 2024 and Wang 2025, and of the gene-discovery paper Ferguson 2005 (Europe PMC reference index; partial lists are possible).
+- **Forward citations** (Europe PMC and OpenAlex) and **PubMed similar articles** (top 50 each) of five key papers: Majeed 1989, Majeed 2001, Ferguson 2005, Al-Mosawi 2007 and Ferguson 2021.
+- **Not used:** ClinVar or OMIM citation lists (pre-registration §5.1). Semantic Scholar answered 429 and Google Scholar has no API; neither was used.
+
+Records with no PMID (preprints, theses, non-indexed journals, conference abstracts) are kept beside each source in `seeds/*_nopmid.csv` for hand review and are not screened: {sum(nopmid.values())} rows over {len(nopmid)} files, with overlap between sources. Of these, {sum(1 for _ in csv.DictReader((BASE / 'nopmid_candidates.csv').open())) if (BASE / 'nopmid_candidates.csv').exists() else 'n/a'} distinct records name Majeed syndrome or LPIN2 in the title (`nopmid_candidates.csv`, from `analysis/corpus/majeed_nopmid_candidates.py`), awaiting hand review.
+
+## Records by source
+
+**Manifest:** {s['manifest_rows']} PubMed records.
+
+| Source | Records | Passed title/abstract | Eligible after full text | Found only here | of those, passed title/abstract | of those, eligible |
+|---|---|---|---|---|---|---|
+{tbl}
+
+**Beyond the registered kind of search** (PubMed query + review references + background bibliography, as for the six corpora): {len(extra_only['in_corpus'])} of {s['in_corpus']} corpus papers and {len(extra_only['eligible'])} of {s['eligible_all']} eligible papers were found only by the other sources (eligible: {', '.join(extra_only['eligible']) or 'none'}).
+
+## Screening (title and abstract)
+
+- **Route:** Claude Code helper agents (Sonnet), batches of up to 100 records, each with its own scratch directory, following `pipeline/extract/claude_code/prompts/screen_v3.md` (v2 plus an optional `fulltext_mentions` field) with the disease block from `configs/diseases.yaml`. Launch text: `screening/launch_v2.txt`. A first round under `launch_v1.txt` (batches 1-3) was discarded because the helpers truncated abstracts or gave one stock reason to most rows; its labels are kept in `screening/labels_rejected_launch_v1/` and were not imported.
+- **Full-text mentions:** for records whose title and abstract name neither the disease nor the gene, `analysis/corpus/fulltext_mentions.py` added up to five sentences from the open full text that do. Counts: {json.dumps(ftm['counts']) if ftm else 'not run'}.
+- **Relevance:** {', '.join(f'{k or "unlabelled"} {v}' for k, v in sorted(s['relevance'].items()))}.
+- **In the extraction corpus:** {s['in_corpus']} (relevance yes or unclear; case report, case series/cohort or review); by study type: {', '.join(f'{k} {v}' for k, v in sorted(s['in_corpus_by_study_type'].items()))}.
+- **Human check:** not yet done (`study_type_spotcheck.csv`).
+
+## Full text
+
+- **Fetched:** {s['fulltext']} of {s['in_corpus']} corpus papers ({pct(s['fulltext'], s['in_corpus'])}). Access status: {acc}.
+- **Free elsewhere (Europe PMC listing, not fetched):** {s['free_elsewhere_listed'] if s['free_elsewhere_listed'] is not None else 'not checked'}.
+- **Full-text screening** (`screen_fulltext_v1.md`): {', '.join(f'{k} {v}' for k, v in sorted(ft.items()))}. Exclusion reasons: {', '.join(f'{k} {v}' for k, v in sorted(s['fulltext_exclusion_reasons'].items())) or 'none'}.
+- **Eligible with full text:** {s['eligible_all']} papers, of which {s['eligible_primary']} primary reports and {s['eligible_literature_table']} with a per-patient literature table.
+- **D-08 threshold, for reference (at least {D08_MIN_N} eligible primary reports with open full text):** {'met' if s['eligible_primary'] >= D08_MIN_N else 'not met'} ({s['eligible_primary']}).
+"""
+    md += hand_section()
+    (BASE / "search.md").write_text(md)
+    print(md)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

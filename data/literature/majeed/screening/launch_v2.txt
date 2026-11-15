@@ -1,0 +1,23 @@
+Title/abstract screening for the GP-RareLink corpus: Majeed syndrome (gene LPIN2). Batch {NN}.
+
+Read and follow exactly: /home/user/gp-rarelink/pipeline/extract/claude_code/prompts/screen_v3.md
+
+Disease: Majeed syndrome. Gene: LPIN2.
+Definition: the autoinflammatory syndrome of chronic recurrent multifocal osteomyelitis (CRMO or chronic nonbacterial osteomyelitis), congenital dyserythropoietic anaemia and often neutrophilic dermatosis, caused by biallelic LPIN2 variants.
+Does not count as this disease:
+- isolated CRMO or chronic nonbacterial osteomyelitis (CNO), SAPHO or DIRA without an LPIN2 variant; a CRMO cohort that sequenced LPIN2 is "unclear" unless the abstract says no patient had biallelic variants
+- congenital dyserythropoietic anaemia types I-IV (CDAN1, SEC23B, KIF23, KLF1) without osteomyelitis or an LPIN2 variant
+- lipin-2 or lipin family biology (phosphatidate phosphatase, lipid metabolism, Lpin2 mouse models) with no patients
+- LPIN2 polymorphisms in association studies (lipids, diabetes, psoriasis) without individual patients
+- the word Majeed as an author's name or another eponym
+
+Input (read only): /home/user/gp-rarelink/data/literature/majeed/screening/work/batch_{NN}.jsonl
+Output: /home/user/gp-rarelink/data/literature/majeed/screening/labels/batch_{NN}.csv
+Scratch directory for any helper files you need (use no other): /tmp/claude-0/-home-user-gp-rarelink/7f81d167-7341-5d0a-ac55-ef30dbdc96e9/scratchpad/screen_{NN}/
+
+
+How to work (launch v2, 2026-11-15; v1 helpers took shortcuts):
+- Read every line yourself, in full: title, the WHOLE abstract and any fulltext_mentions. Do not truncate abstracts, and do not label rows with a script, keyword rule or regular expression. Read the file with the Read tool in chunks (for example 15-20 lines at a time with offset/limit) until you have read all of it.
+- Decide each paper on its own. `reason` must be specific to that paper (quote or paraphrase its own words); a reason shared word for word by many rows is not acceptable.
+- Pay particular attention to any paper whose text mentions Majeed, LPIN2, lipin-2, dyserythropoietic anaemia with osteomyelitis, or CRMO/CNO cohorts tested for LPIN2: a wrong "no" loses a paper, so when in doubt choose "unclear".
+- Write one row per input line, none missing, no extras; check the row count against the input line count before finishing. Do not change any other file, do not run git, do not look anything up online. Reply with the rows written, the counts per label, and the PMIDs labelled yes or unclear.

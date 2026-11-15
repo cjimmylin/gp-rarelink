@@ -39,6 +39,9 @@ DISEASES = {
             r"\bAlexander(['’]s)?\s+disease|\bAxD\b"),
     "danon": ("LAMP2", "Danon disease", "configs/checklist_hpo/danon.json",
               r"\bDanon|glycogen\s+storage\s+disease\s+(type\s+)?(IIb|2b)\b|LAMP-?2\s+(cardiomyopathy|deficiency|disease)"),
+    # Substitute disease, added 2026-11-15 (Jimmy's request; not part of the six-disease study)
+    "majeed": ("LPIN2", "Majeed syndrome", "configs/checklist_hpo/majeed.json",
+               r"\bMajeed|chronic\s+recurrent\s+multifocal\s+osteomyelitis\W+(and\s+|with\s+)?congenital\s+dyserythropoietic|\bCRMO\W+(and|with)\W+CDA\b|LPIN2[\s-]+(related|deficiency|associated)|\bMJDS\b"),
 }
 HA20_GROUP = "MONDO:0100222"
 OUT = Path("configs/stage4")
@@ -48,7 +51,11 @@ def load(disease: str) -> dict:
     return json.loads((OUT / f"{disease}.json").read_text())
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--disease", nargs="*", default=None, help="only these diseases (default: all; regenerating all rewrites every date)")
+    only = ap.parse_args(argv).disease
     from pipeline.extract import ontologies
     from pipeline.extract.normalize_variants import VV
     mondo = ontologies.load("mondo", ontologies.latest_dir())
@@ -56,6 +63,8 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     today = datetime.now(UTC).date().isoformat()
     for d, (gene, dname, cmap, rule) in DISEASES.items():
+        if only and d not in only:
+            continue
         r = vv.get_tool(f"tools/gene2transcripts_v2/{gene}/all/all/GRCh38")
         if "_error" in r:
             raise SystemExit(f"{gene}: {r['_error']}")

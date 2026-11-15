@@ -89,3 +89,29 @@ diseases:
     key_reviews: {koseki2021: "33994407"}
     background_keys: [koseki2021_tangier_review, puntoni2012_tangier, mercan2018_tangier_neuropathy, schaefer2016_hdl_deficiency, genereviews_tangier]
     holdouts: {}
+
+# Substitute diseases (pre-registration §4.2). Not part of the six-disease study:
+# a corpus here is preparation only, and any substitution or stretch extension is
+# decided separately and logged in DECISIONS.md. Scripts that loop over the six
+# read `diseases` only; the per-disease commands also look here.
+substitutes:
+  majeed:
+    name: Majeed syndrome
+    gene: LPIN2
+    omim: "609628"
+    orpha: "77297"
+    mondo: "MONDO:0012316"   # Mondo release 2026-10-06 (sha256 matches data/ontologies/2026-10-19/manifest.json); OMIM and Orphanet numbers are its cross-references
+    inheritance: autosomal recessive
+    definition: the autoinflammatory syndrome of chronic recurrent multifocal osteomyelitis (CRMO or chronic nonbacterial osteomyelitis), congenital dyserythropoietic anaemia and often neutrophilic dermatosis, caused by biallelic LPIN2 variants
+    not_this_disease:
+      - isolated CRMO or chronic nonbacterial osteomyelitis (CNO), SAPHO or DIRA without an LPIN2 variant; a CRMO cohort that sequenced LPIN2 is "unclear" unless the abstract says no patient had biallelic variants
+      - congenital dyserythropoietic anaemia types I-IV (CDAN1, SEC23B, KIF23, KLF1) without osteomyelitis or an LPIN2 variant
+      - lipin-2 or lipin family biology (phosphatidate phosphatase, lipid metabolism, Lpin2 mouse models) with no patients
+      - LPIN2 polymorphisms in association studies (lipids, diabetes, psoriasis) without individual patients
+      - the word Majeed as an author's name or another eponym
+    query: '("Majeed syndrome"[tiab] OR "Majeed syndrome"[nm] OR LPIN2[tiab] OR LPIN2[Gene Name] OR "lipin-2"[tiab] OR "lipin 2"[tiab] OR ("congenital dyserythropoietic"[tiab] AND osteomyelitis[tiab]) OR ("chronic recurrent multifocal osteomyelitis"[tiab] AND dyserythropoie*[tiab]) OR MJDS[tiab] OR (CRMO[tiab] AND CDA[tiab]))'
+    query_filter_applied: false
+    key_reviews: {ferguson2021: "33670882", chavan2021: "33993107", badiger2024: "37865862", wang2025: "41113563"}
+    key_papers: {majeed1989: "2809904", majeed2001: "11795677", ferguson2005: "15994876", almosawi2007: "17330256", ferguson2021: "33670882"}
+    background_keys: [ferguson2021_majeed]
+    holdouts: {}

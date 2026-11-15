@@ -70,7 +70,8 @@ def relevant_pattern(disease: str) -> re.Pattern:
         return RELEVANT
     import yaml
 
-    cfg = yaml.safe_load(Path("configs/diseases.yaml").read_text())["diseases"][disease]
+    y = yaml.safe_load(Path("configs/diseases.yaml").read_text())
+    cfg = y["diseases"].get(disease) or y.get("substitutes", {})[disease]  # substitutes: 2026-11-15
     name = cfg["name"]
     terms = [re.sub(r"\s*\(.*?\)", "", name).strip(), *re.findall(r"\((.*?)\)", name)]
     alts = "|".join(rf"\b{re.escape(t)}\b" for t in [cfg["gene"], *terms] if t)
