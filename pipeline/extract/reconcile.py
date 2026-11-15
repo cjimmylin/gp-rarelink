@@ -100,7 +100,10 @@ def v(cell):
 # Other names the six-disease papers use for a target gene (D-40; counted in the pv1 runs on
 # 2026-10-20). Greek beta is folded to B and a hyphen between letters and digits is dropped
 # first, so 'ITGβ2', 'ITGß2' and 'LAMP-2' need no entry.
-GENE_ALIASES = {"ALDH5A1": ("SSADH",), "ITGB2": ("CD18",)}
+# ABC1 is the previous official symbol of ABCA1 (HGNC:29; genenames.org and VariantValidator
+# gene2transcripts, both read 2026-11-15). Papers from 1999-2000 use it; added after the D-47
+# addendum review found nine printed variant rows dropped for it (D-49).
+GENE_ALIASES = {"ALDH5A1": ("SSADH",), "ITGB2": ("CD18",), "ABCA1": ("ABC1",)}
 
 
 def is_gene(stated, gene: str) -> bool:
