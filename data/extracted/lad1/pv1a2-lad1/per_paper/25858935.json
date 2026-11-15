@@ -1,0 +1,5162 @@
+{
+ "pmid": "25858935",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Case report of one infant with LAD-I and an ITGB2 variant: \"Genetic analysis of CD18 revealed a homozygous mutation in ITGB2, viz. c.1835G&gt;T; p.C612F\".",
+ "method_note": "Read the whole paper and wrote the JSON with a short Python script in the scratch directory; all values were transcribed by hand from my reading. In scope: the index patient; her mother (DNA extracted for testing, but no result reported, so no variant row); two previously published people with individual-level facts: the Fiorini case (ref 7; only described as 'a different mutation affecting the same amino acid' and a moderate flow-cytometry phenotype, so its variant row has variant_original_string 'not reported') and the first South American case (citation printed as '20-24' at the end of that paragraph, so the per-patient reference is uncertain; the age '4-month-old' is not stated as onset, diagnosis or last evaluation, so it was left out). Not given rows: the legal father and the presumed biological father (mother's older brother), who refused testing and is not described as affected; the paper also says DNA of the patient 'and her parents' was sent, contradicting 'DNA was extracted only from the patient and her mother'. Contradictions: the family 'reported non-consanguinity at first' but the pedigree revealed inbreeding (recorded consanguinity yes); 'showed no obvious dysmorphism' at birth vs 'facial anomalies detected during the second hospitalisation' (different time points; both rows emitted, no checklist item affected). The markdown prints '>' as '&gt;'; spans keep '&gt;' verbatim and the variant values use '>'. The variant is also printed as 'c.1835-G&gt;-T' in the Investigations section. Variant type 'missense' rests on the authors' wording 'substitution of a phenylalanine for cysteine at amino acid 612', not on the HGVS string. Inheritance left 'not reported': the mother's test result is not given. Mother's consanguinity left 'not reported': she stated her parents are first cousins 'although this could not be corroborated in the pedigree'. Mother's age ('15 ... years old') refers to the time of the infant's admission, so it was not recorded as last evaluation. Patient cause of death left 'not reported': the paper does not state it explicitly (fulminant sepsis, then limitation of treatment, then death at home 7 days after discharge); age at death not stated. Table 1 (serial haematology) uses '-' with no legend; no values taken from it beyond the text. Toxoplasma IgG '&lt;6.5' not recorded because it is unclear whether '(negative)' applies to it. Normal findings recorded as excluded abnormalities per D-27; the lab sentence about lymphocyte populations, immunoglobulins, complement and respiratory burst is split by Table 1 in the markdown, so its two parts are quoted as two separate spans. Checklist: 'otitis' and 'respiratory' infections are not specified as otitis media or lower respiratory tract, so those items are 'not reported'; 'impaired wound healing' marked observed from 'slow-healing lesions' of cutaneous candidiasis (uncertain).",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "first_author": {
+     "value": "Strickler",
+     "span": "To cite: Strickler A, Gallo S, King A, et al."
+    },
+    "year": {
+     "value": 2015,
+     "span": "Copyright 2015 BMJ Publishing Group."
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "CASE REPORT"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "we report a case of LAD-I associated with developmental delay"
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "sex": {
+     "value": "female",
+     "span": "A 55-day-old female baby"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile",
+     "span": "a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "consanguinity": {
+     "value": "yes",
+     "span": [
+      "The pedigree provided by the mother revealed inbreeding with her brother.",
+      "Only through testing we could get a history of strong inbreeding"
+     ]
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "The patient finally died at home 7 days after discharge."
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "intravenous oxacillin for 14 days; oxacillin again at re-admission; prophylactic cotrimoxazole; tracheostomy; second-line and third-line antimicrobials including imipenem, vancomycin, ceftazidim; then limitation of treatment and comfort measures (bone marrow transplantation considered, not available)",
+     "span": [
+      "Intravenous oxacillin was started and maintained for 14 days",
+      "She was treated again with oxacillin with good clinical results",
+      "despite prophylactic treatment with cotrimoxazole",
+      "so a tracheostomy was performed",
+      "no response to various second-line and third-line antimicrobials, including imipenem, vancomycin, ceftazidim and others"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "leucocyte adhesion deficiency (LAD) type 1",
+     "span": "an infant with leucocyte adhesion deficiency (LAD) type 1"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "both: clinical diagnosis based on typical clinical presentation including delayed cord separation, confirmed by sequencing of ITGB2 (homozygous mutation)",
+     "span": [
+      "The diagnosis of LAD-I in our patient was based on typical clinical presentation, including delayed cord separation.",
+      "A clinical diagnosis of LAD with developmental delay was made",
+      "In the present case, a homozygous mutation (p.C612F) of the ITGB2 gene was detected, confirming diagnosis."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "sex": {
+     "value": "female",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Mechuque, a small rural island near Quemchi-Chiloé, Chile",
+     "span": "The maternal family was fromMechuque, a small rural island near Quemchi-Chiloé, Chile."
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Fiorini; 7",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "a 4-month-old male infant"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Santiago-Chile",
+     "span": "the only child of consanguineous parents from Santiago-Chile"
+    },
+    "consanguinity": {
+     "value": "yes",
+     "span": "the only child of consanguineous parents from Santiago-Chile"
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "The patient died at the age of 4 years because of severe sepsis."
+    },
+    "deceased_age_iso8601": {
+     "value": "P4Y",
+     "span": "The patient died at the age of 4 years because of severe sepsis."
+    },
+    "cause_of_death": {
+     "value": "severe sepsis",
+     "span": "The patient died at the age of 4 years because of severe sepsis."
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "LAD-I",
+     "span": "The diagnosis of LAD-I was based on clinical findings"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "clinical findings, with flow cytometry showing low CD11 and CD18 levels",
+     "span": "The diagnosis of LAD-I was based on clinical findings, and a flow cytometry analysis detected that the CD11 and CD18 levels were low."
+    },
+    "source_reference_in_review": {
+     "value": "20-24",
+     "span": "a bone marrow or stem cell transplant option was not available. 20-24"
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ITGB2",
+     "span": "a homozygous mutation in ITGB2"
+    },
+    "variant_original_string": {
+     "value": "c.1835G>T; p.C612F",
+     "span": "c.1835G&gt;T; p.C612F"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.1835G>T",
+     "span": "c.1835G&gt;T"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.C612F",
+     "span": "c.1835G&gt;T; p.C612F"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "resulting from the substitution of a phenylalanine for cysteine at amino acid 612 ( p.C612F)"
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": [
+      "Genetic analysis of CD18 revealed a homozygous mutation in ITGB2",
+      "A homozygous mutation was identified, c.1835-G&gt;-T"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "DNA was extracted only from the patient and her mother (the presumed biological father refused testing); elsewhere the paper says DNA of the patient and her parents was sent; no parental result is reported",
+     "span": [
+      "the brother refused the test, so the DNA was extracted only from the patient and her mother",
+      "we decided to send DNA of the patient and her parents for sequence analysis to the NIH"
+     ]
+    },
+    "functional_evidence_statement": {
+     "value": "CD18/CD11 (beta2 integrin) expression by flow cytometry was normal; functional assays could not be performed",
+     "span": [
+      "CD18/CD11 expression was normal.",
+      "flow cytometric analysis of blood samples showed normal β2 integrin expression, suggesting a severe functional deficiency of the β2 integrins",
+      "We could not perform functional assays because they are not available in our country."
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "novel mutation; confirming diagnosis",
+     "span": [
+      "with a novel mutation on the integrin β 2 (ITGB2) gene",
+      "a homozygous mutation (p.C612F) of the ITGB2 gene was detected, confirming diagnosis"
+     ]
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "gene_symbol_as_stated": {
+     "value": "ITGB2",
+     "span": [
+      "a homozygous mutation (p.C612F) of the ITGB2 gene was detected",
+      "There is a reported case by Fiorini of a different mutation affecting the same amino acid."
+     ]
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "Staphylococcus aureus omphalitis",
+     "span": "admitted to the paediatric ward of our hospital with Staphylococcus aureus omphalitis"
+    },
+    "status": {
+     "value": "observed",
+     "span": "admitted to the paediatric ward of our hospital with Staphylococcus aureus omphalitis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "admitted to the paediatric ward of our hospital with Staphylococcus aureus omphalitis"
+    },
+    "onset_original_text": {
+     "value": "55-day-old",
+     "span": "A 55-day-old female baby"
+    },
+    "onset_iso8601": {
+     "value": "P55D",
+     "span": "A 55-day-old female baby"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Omphalitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "umbilical cord detached late",
+     "span": "Her umbilical cord detached late, at 1 month of age."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her umbilical cord detached late, at 1 month of age."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her umbilical cord detached late, at 1 month of age."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "at 1 month of age",
+     "span": "Her umbilical cord detached late, at 1 month of age."
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed separation of umbilical cord",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "neonatal complications",
+     "span": "presented no neonatal complications"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "presented no neonatal complications"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "presented no neonatal complications"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "obvious dysmorphism",
+     "span": "showed no obvious dysmorphism"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "showed no obvious dysmorphism"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "showed no obvious dysmorphism"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "leucocytosis with neutrophil predominance",
+     "span": "Laboratory tests at the time of admission revealed leucocytosis with neutrophil predominance (51 300/mm 3 -68%)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Laboratory tests at the time of admission revealed leucocytosis with neutrophil predominance (51 300/mm 3 -68%)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Laboratory tests at the time of admission revealed leucocytosis with neutrophil predominance (51 300/mm 3 -68%)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "51 300/mm 3 -68%",
+     "span": "leucocytosis with neutrophil predominance (51 300/mm 3 -68%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Leukocytosis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001974",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "high C reactive protein",
+     "span": "high C reactive protein (10.7 mg/dL)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "high C reactive protein (10.7 mg/dL)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "high C reactive protein (10.7 mg/dL)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "10.7 mg/dL",
+     "span": "high C reactive protein (10.7 mg/dL)"
+    },
+    "hpo_label_candidate": {
+     "value": "Elevated circulating C-reactive protein concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "hyperthermia",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Fever",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001945",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "extensive frontal scalp cellulitis",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cellulitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "marked neutrophilia",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Neutrophilia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0011897",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "never reached a normal white cell count",
+     "span": "she never reached a normal white cell count (table 1)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she never reached a normal white cell count (table 1)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she never reached a normal white cell count (table 1)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "psychomotor delay",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "status": {
+     "value": "observed",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Global developmental delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001263",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "failure to thrive",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "status": {
+     "value": "observed",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Failure to thrive",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001508",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "progressive failure to thrive up to cachexia",
+     "span": "She evolved with progressive failure to thrive up to cachexia."
+    },
+    "status": {
+     "value": "observed",
+     "span": "She evolved with progressive failure to thrive up to cachexia."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "She evolved with progressive failure to thrive up to cachexia."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cachexia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "hearing loss",
+     "span": [
+      "hearing loss, bilateral dislocated hips",
+      "Auditory brainstem response audiometry (ABR) revealed hearing loss of over 70 decibels in the right ear and 30 decibels in the left ear."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "hearing loss, bilateral dislocated hips",
+      "Auditory brainstem response audiometry (ABR) revealed hearing loss of over 70 decibels in the right ear and 30 decibels in the left ear."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "hearing loss, bilateral dislocated hips",
+      "Auditory brainstem response audiometry (ABR) revealed hearing loss of over 70 decibels in the right ear and 30 decibels in the left ear."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "over 70 decibels in the right ear and 30 decibels in the left ear",
+     "span": "hearing loss of over 70 decibels in the right ear and 30 decibels in the left ear"
+    },
+    "hpo_label_candidate": {
+     "value": "Hearing impairment",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000365",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "bilateral dislocated hips",
+     "span": [
+      "bilateral dislocated hips",
+      "Pelvic radiography showed bilateral dislocation of hips."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "bilateral dislocated hips",
+      "Pelvic radiography showed bilateral dislocation of hips."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "bilateral dislocated hips",
+      "Pelvic radiography showed bilateral dislocation of hips."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hip dislocation",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "multidirectional nystagmus without ocular fixation",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "status": {
+     "value": "observed",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Nystagmus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000639",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "pale retinas",
+     "span": "Funduscopy examination showed pale retinas"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Funduscopy examination showed pale retinas"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Funduscopy examination showed pale retinas"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "absence of cocleopalpebral reflection",
+     "span": "absence of cocleopalpebral reflection"
+    },
+    "status": {
+     "value": "observed",
+     "span": "absence of cocleopalpebral reflection"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "absence of cocleopalpebral reflection"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "developmental delay",
+     "span": "Another remarkable finding was the association with developmental delay and facial anomalies detected during the second hospitalisation."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Another remarkable finding was the association with developmental delay and facial anomalies detected during the second hospitalisation."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Another remarkable finding was the association with developmental delay and facial anomalies detected during the second hospitalisation."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Global developmental delay",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001263",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "facial anomalies",
+     "span": "Another remarkable finding was the association with developmental delay and facial anomalies detected during the second hospitalisation."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Another remarkable finding was the association with developmental delay and facial anomalies detected during the second hospitalisation."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Another remarkable finding was the association with developmental delay and facial anomalies detected during the second hospitalisation."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal brain CT scan",
+     "span": "Brain CT scan was normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Brain CT scan was normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain CT scan was normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "extensive cerebral sulci",
+     "span": "Brain MRI showed extensive cerebral sulci."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Brain MRI showed extensive cerebral sulci."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain MRI showed extensive cerebral sulci."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal abdominal, renal and bladder ultrasound",
+     "span": "Abdominal, renal and bladder ultrasound scans were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Abdominal, renal and bladder ultrasound scans were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Abdominal, renal and bladder ultrasound scans were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "hypoplasia of optic nerves",
+     "span": "Ophthalmological evaluation revealed hypoplasia of optic nerves."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Ophthalmological evaluation revealed hypoplasia of optic nerves."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Ophthalmological evaluation revealed hypoplasia of optic nerves."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Optic nerve hypoplasia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000609",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal upper airway anatomy",
+     "span": "normal anatomy of upper airways"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "normal anatomy of upper airways"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "normal anatomy of upper airways"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "vocal cord comisuritis",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "open upper oesophageal sphincter",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "gastro-oesophageal reflux disease",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "vocal cord comisuritis and an open upper oesophageal sphincter related to gastro-oesophageal reflux disease"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Gastroesophageal reflux",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002020",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal karyotype",
+     "span": "The karyotype was normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "The karyotype was normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The karyotype was normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal T4",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal thyroid-stimulating hormone (TSH)",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal criatinine kinase",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal ammonia",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "elevated lactic acid",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "T4, thyroid-stimulating hormone (TSH), criatinine kinase, ammonia and lactic acid were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal echocardiography",
+     "span": "Two-dimensional echocardiography with colour Doppler was normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Two-dimensional echocardiography with colour Doppler was normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Two-dimensional echocardiography with colour Doppler was normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "nonspecific increase of alanine and tyrosine",
+     "span": "Blood mass spectrophotometry screening showed a nonspecific increase of alanine and tyrosine."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Blood mass spectrophotometry screening showed a nonspecific increase of alanine and tyrosine."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Blood mass spectrophotometry screening showed a nonspecific increase of alanine and tyrosine."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "positive rubella IgG",
+     "span": "rubella IgG was &lt;5 (negative)"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "rubella IgG was &lt;5 (negative)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "rubella IgG was &lt;5 (negative)"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "&lt;5",
+     "span": "rubella IgG was &lt;5 (negative)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "reactive cytomegalovirus IgM / elevated CMV IgG",
+     "span": "Cytomegalovirus (CMV) IgM was reactive and CMV IgG was 3.09 (normal &lt;1.1)."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Cytomegalovirus (CMV) IgM was reactive and CMV IgG was 3.09 (normal &lt;1.1)."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Cytomegalovirus (CMV) IgM was reactive and CMV IgG was 3.09 (normal &lt;1.1)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "CMV IgG was 3.09 (normal &lt;1.1)",
+     "span": "CMV IgG was 3.09 (normal &lt;1.1)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "congenital CMV infection",
+     "span": [
+      "her neurological damage was attributed to a congenital CMV infection",
+      "were typical manifestations of congenital CMV infection"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "her neurological damage was attributed to a congenital CMV infection",
+      "were typical manifestations of congenital CMV infection"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "her neurological damage was attributed to a congenital CMV infection",
+      "were typical manifestations of congenital CMV infection"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Congenital cytomegalovirus infection",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "Bombay phenotype",
+     "span": "the patient tested negative for Bombay phenotype."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the patient tested negative for Bombay phenotype."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient tested negative for Bombay phenotype."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal lymphocyte populations",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal serum immunoglobulins",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal complement titres",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal neutrophil respiratory burst",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Lymphocyte populations by flow cytometry: CD3, CD4, CD8, CD19, CD56 and CD4/CD8, serum immunoglobulin assay, complement titres, basal and stimulated polymorphonuclear neutrophils respiratory burst with phorbol myristate acetate, basal and",
+      "stimulated MIF, and liver and kidney function were normal."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal liver function",
+     "span": "stimulated MIF, and liver and kidney function were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "stimulated MIF, and liver and kidney function were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "stimulated MIF, and liver and kidney function were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal kidney function",
+     "span": "stimulated MIF, and liver and kidney function were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "stimulated MIF, and liver and kidney function were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "stimulated MIF, and liver and kidney function were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "positive HIV serology",
+     "span": "HIV serology was negative."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "HIV serology was negative."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "HIV serology was negative."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "reduced CD18/CD11 expression",
+     "span": [
+      "CD18/CD11 expression was normal.",
+      "Flow cytometry was performed on a mononuclear cell population, showing normal results (table 2)."
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "CD18/CD11 expression was normal.",
+      "Flow cytometry was performed on a mononuclear cell population, showing normal results (table 2)."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "CD18/CD11 expression was normal.",
+      "Flow cytometry was performed on a mononuclear cell population, showing normal results (table 2)."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "otitis",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Otitis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "urinary infections",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent urinary tract infections",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "respiratory infections",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent respiratory infections",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002205",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "skin infections",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Recurrent skin infections",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "septicaemia",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "otitis, urinary, respiratory, skin infections and septicaemia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Sepsis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100806",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "infections relapsed 24 h after stopping therapy",
+     "span": "The infections responded to therapy initially but relapsed 24 h after stopping therapy."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The infections responded to therapy initially but relapsed 24 h after stopping therapy."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The infections responded to therapy initially but relapsed 24 h after stopping therapy."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "cutaneous candidiasis",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Cutaneous candidiasis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "slow-healing lesions",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "in the anterior cervical region and perianal area",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "hpo_label_candidate": {
+     "value": "Impaired wound healing",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "severe acute obstructive type A influenza laryngitis",
+     "span": "At 18 months of age she presented severe acute obstructive type A influenza laryngitis, remaining with severe respiratory stridor."
+    },
+    "status": {
+     "value": "observed",
+     "span": "At 18 months of age she presented severe acute obstructive type A influenza laryngitis, remaining with severe respiratory stridor."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At 18 months of age she presented severe acute obstructive type A influenza laryngitis, remaining with severe respiratory stridor."
+    },
+    "onset_original_text": {
+     "value": "At 18 months of age",
+     "span": "At 18 months of age she presented severe acute obstructive type A influenza laryngitis, remaining with severe respiratory stridor."
+    },
+    "onset_iso8601": {
+     "value": "P18M",
+     "span": "At 18 months of age she presented severe acute obstructive type A influenza laryngitis, remaining with severe respiratory stridor."
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "severe respiratory stridor",
+     "span": "At 18 months of age she presented severe acute obstructive type A influenza laryngitis, remaining with severe respiratory stridor."
+    },
+    "status": {
+     "value": "observed",
+     "span": "At 18 months of age she presented severe acute obstructive type A influenza laryngitis, remaining with severe respiratory stridor."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "At 18 months of age she presented severe acute obstructive type A influenza laryngitis, remaining with severe respiratory stridor."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Stridor",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "total paralysis of vocal cords with glottic lumen limitation",
+     "span": "Nasofibrolaryngoscopy showed total paralysis of vocal cords with glottic lumen limitation"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Nasofibrolaryngoscopy showed total paralysis of vocal cords with glottic lumen limitation"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Nasofibrolaryngoscopy showed total paralysis of vocal cords with glottic lumen limitation"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Vocal cord paralysis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "tracheobronchomalasia",
+     "span": "Flexible bronchoscopy also showed tracheobronchomalasia with persistent atelectasis of the right upper lobe."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Flexible bronchoscopy also showed tracheobronchomalasia with persistent atelectasis of the right upper lobe."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Flexible bronchoscopy also showed tracheobronchomalasia with persistent atelectasis of the right upper lobe."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "persistent atelectasis of the right upper lobe",
+     "span": "Flexible bronchoscopy also showed tracheobronchomalasia with persistent atelectasis of the right upper lobe."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Flexible bronchoscopy also showed tracheobronchomalasia with persistent atelectasis of the right upper lobe."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Flexible bronchoscopy also showed tracheobronchomalasia with persistent atelectasis of the right upper lobe."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Atelectasis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "fulminant sepsis due to Enterococcus faecalis, Klebsiella pneumoniae and Stenotrophomona maltophilia",
+     "span": "she presented fulminant sepsis due to Enterococcus faecalis, Klebsiella pneumoniae and Stenotrophomona maltophilia"
+    },
+    "status": {
+     "value": "observed",
+     "span": "she presented fulminant sepsis due to Enterococcus faecalis, Klebsiella pneumoniae and Stenotrophomona maltophilia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "she presented fulminant sepsis due to Enterococcus faecalis, Klebsiella pneumoniae and Stenotrophomona maltophilia"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Sepsis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100806",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "feature_text_as_stated": {
+     "value": "weight 5 kg",
+     "span": "Her weight was 5 kg."
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her weight was 5 kg."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her weight was 5 kg."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "feature_text_as_stated": {
+     "value": "moderate and consistent flow cytometry phenotype",
+     "span": "That patient, unlike our case, presented with a moderate and consistent flow cytometry phenotype."
+    },
+    "status": {
+     "value": "observed",
+     "span": "That patient, unlike our case, presented with a moderate and consistent flow cytometry phenotype."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "That patient, unlike our case, presented with a moderate and consistent flow cytometry phenotype."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "feature_text_as_stated": {
+     "value": "low CD11 and CD18 levels by flow cytometry",
+     "span": "a flow cytometry analysis detected that the CD11 and CD18 levels were low"
+    },
+    "status": {
+     "value": "observed",
+     "span": "a flow cytometry analysis detected that the CD11 and CD18 levels were low"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "a flow cytometry analysis detected that the CD11 and CD18 levels were low"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "feature_text_as_stated": {
+     "value": "severe sepsis",
+     "span": "The patient died at the age of 4 years because of severe sepsis."
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient died at the age of 4 years because of severe sepsis."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient died at the age of 4 years because of severe sepsis."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Sepsis",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0100806",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her umbilical cord detached late, at 1 month of age."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Her umbilical cord detached late, at 1 month of age."
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "admitted to the paediatric ward of our hospital with Staphylococcus aureus omphalitis"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "admitted to the paediatric ward of our hospital with Staphylococcus aureus omphalitis"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "leucocytosis with neutrophil predominance (51 300/mm 3 -68%)",
+      "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "leucocytosis with neutrophil predominance (51 300/mm 3 -68%)",
+      "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia",
+      "otitis, urinary, respiratory, skin infections and septicaemia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "she was re-admitted with hyperthermia, extensive frontal scalp cellulitis and marked neutrophilia",
+      "otitis, urinary, respiratory, skin infections and septicaemia"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "otitis, urinary, respiratory, skin infections and septicaemia",
+      "she presented fulminant sepsis due to Enterococcus faecalis, Klebsiella pneumoniae and Stenotrophomona maltophilia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "otitis, urinary, respiratory, skin infections and septicaemia",
+      "she presented fulminant sepsis due to Enterococcus faecalis, Klebsiella pneumoniae and Stenotrophomona maltophilia"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient presented cutaneous candidiasis characterised by slow-healing lesions in the anterior cervical region and perianal area"
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation.",
+      "She evolved with progressive failure to thrive up to cachexia."
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "At that time, she also showed psychomotor delay, failure to thrive, hearing loss, bilateral dislocated hips and multidirectional nystagmus without ocular fixation.",
+      "She evolved with progressive failure to thrive up to cachexia."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "A 55-day-old female baby from a rural insular area near Puerto Montt (Isla Huar-Cheuquear), Chile"
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "mother of patient",
+     "span": "Her mother and her legal father were 15 and 26 years old, respectively."
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 7 patient",
+     "span": "There is a reported case by Fiorini of a different mutation affecting the same amino acid. 7"
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "delayed umbilical cord separation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "omphalitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "leukocytosis or neutrophilia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "absence of pus formation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "skin or soft tissue infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "necrotic skin ulcers or pyoderma gangrenosum-like lesions",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "impaired wound healing",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "periodontitis or gingivitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "tooth loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "lower respiratory tract infection",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "otitis media",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "sepsis",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The patient died at the age of 4 years because of severe sepsis."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "The patient died at the age of 4 years because of severe sepsis."
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "meningitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "colitis or gastrointestinal inflammatory disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "diarrhea",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "fungal infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "bcg vaccine complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "failure to thrive",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "25858935",
+     "span": "PMID: 25858935"
+    },
+    "individual_label_in_paper": {
+     "value": "ref 20-24 patient",
+     "span": "The first case notified in South America was a 4-month-old male infant"
+    },
+    "checklist_feature": {
+     "value": "autoimmune complications",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

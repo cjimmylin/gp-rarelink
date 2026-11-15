@@ -10,7 +10,9 @@ question 3 asks Jimmy where these belong).
 These are estimates, not billing figures: the readings are list-price figures the session reports
 about itself, they sometimes freeze or lag, and whether the session runs on the funded account is
 D-15's open question. OpenRouter spend (D-10) is billed outside the award and is not counted.
-Other sessions (e.g. "Rarelink POC study design") are not in these readings.
+Since 2026-11-15 the file also chains in the counters of other sessions that worked on this
+repository (rows say which session; readings in analysis/cost/session_costs_<date>.csv). Sessions
+still running, and sessions that span several repositories, are listed in BUDGET.md, not counted here.
 
   python3 analysis/cost/budget_lines.py            # rewrite BUDGET.md
   python3 analysis/cost/budget_lines.py --check    # print only

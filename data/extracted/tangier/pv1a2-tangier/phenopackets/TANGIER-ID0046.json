@@ -1,0 +1,167 @@
+{
+  "id": "tangier-pv1a2-tangier-TANGIER-ID0046",
+  "subject": {
+    "id": "TANGIER-ID0046",
+    "sex": "FEMALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001952",
+        "label": "Glucose intolerance"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:25308558",
+            "description": "the heterozygous parents had a more mild impairment in glucose tolerance \u2026 with the two heterozygous parents displaying an intermediate phenotype (Fig. 6a)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003233",
+        "label": "Decreased circulating HDL-C concentration"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:25308558",
+            "description": "Both parents displayed low HDL-C (7th and 11th percentile for age and gender in the father and mother, respectively)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:6001516",
+        "label": "Impaired first-phase insulin secretion"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:25308558",
+            "description": "with a lesser reduction in the heterozygous parents (Fig. 6b)"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "TANGIER-ID0046-interpretation",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0008783",
+          "label": "Tangier disease"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "TANGIER-ID0046",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "TANGIER-ID0046-var1",
+                "label": "c.3112C>T",
+                "description": "c.3112C>T",
+                "geneContext": {
+                  "valueId": "HGNC:29",
+                  "symbol": "ABCA1"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_005502.4:c.3112C>T"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_005493.2:p.(Gln1038Ter)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000009.12:g.104819715G>A"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "9",
+                  "pos": "104819715",
+                  "ref": "G",
+                  "alt": "A"
+                },
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-11-15T00:00:00Z",
+    "createdBy": "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:25308558"
+      }
+    ]
+  }
+}

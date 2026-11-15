@@ -1,0 +1,2935 @@
+{
+ "pmid": "41801095",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "A somatic-mutation cohort study that describes four patients with somatic TNFAIP3 mutations at individual level: \"We reported the first four patients with HA20 with somatic TNFAIP3 mutations.\"",
+ "method_note": "Read the whole paper by hand; a short script in the scratch directory only assembled the JSON and copied table cells verbatim. Scope: of 2,912 cohort patients, four (P23-P26) carry somatic TNFAIP3 mutations; all other Table 1 patients (UBA1, KRAS, NRAS, NLRP3, CARD14, NFKBIA, NLRC4, STING1) are out of scope. Table 1 is a rotated table whose Markdown conversion is badly garbled: patients are columns, row labels are shifted, and cells spill into neighbouring columns and rows. I read the continuation table (P15-P30) by column index, using the Patient ID row (P23 = data column 8, P24 = 9, P25 = 10, P26 = 11) and accepted a value only where it sits in that patient's own column; P24 and P26 are also tied to TNFAIP3 by the Figure 3 legend. Variants: column 8 holds 'NM_001270508.2: c.130_137del:' (P23) and column 9 'c.577G>T; E193*' (P24, after a spilled 'p.R45Tfs*53'). Column 10 holds two variants, 'NM_001270508.2: c.820delC' and 'NM_001270508.2: c.1156A>T; K386*', and 'p.P274Hfs*13' sits in the WES VAF row of column 11; column 11 (P26) holds no variant. Under the no-positional-reading rule (D-31) I did not split column 10 between P25 and P26: both have variant rows with variant 'not reported'. The protein 'p.R45Tfs*53' spilled into P24's column, so P23's protein is left null. Sex: column 11 reads 'Female (type III) sclerosis Female' (P26 and the next patient); both values are female, so P26 is recorded female. Clinical symptoms: P23 'Frequent diarrhea' (column 8, after P22's spilled 'lupus nephritis'), P24 'Recurrent oral ulcers' (column 9), P25 oral ulcers (column 10 holds 'Recurrent ... oral ulcers' and 'Severe oral ulcers three or four times once a year', both oral ulcers but possibly one of them P26's). P26 gets no symptom because nothing sits in its column; the text's 'Three patients presented with oral ulcers, and one patient experienced recurrent diarrhea' gives counts without names and was not used to assign. Ages ('Age at sampling, y') are scrambled between the Patient ID and age rows and left not reported; sampling age is not an onset or last-evaluation age anyway. Zygosity 'mosaic' from the named group of four patients with somatic TNFAIP3 mutations; pathogenicity from the statement on pathogenic somatic mutations in TNFAIP3; variant type not stated per variant (Figure 2D gives only cohort-level types). Not given rows: the 'affected children' to whom gonosomal mosaicism was transmitted 'in three of these families' are described only collectively (pedigrees in Figure 3A, not in the text), so neither their number nor their parent is known; and the previously published 'healthy individual with no symptoms' with somatic TNFAIP3 mutations (ref 44) is mentioned in passing without a variant, sex or age. is_proband left null: the text says samples came 'from the probands' without saying which people are probands in the four families. cites_prior_report is true because the paper says patient P34 (NLRC4, out of scope) was reported previously (ref 15); it does not say this for the TNFAIP3 patients. Text 'recurrent diarrhea' versus table 'Frequent diarrhea' is a wording difference, not a contradiction.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "first_author": {
+     "value": "Fu",
+     "span": "Jinjian Fu, BS"
+    },
+    "year": {
+     "value": 2026,
+     "span": "Vol. 78, No. 9, September 2026"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "A total of 2,912 patients were enrolled in the present study"
+    },
+    "n_patients_reported": {
+     "value": 4,
+     "span": "We reported the first four patients with HA20 with somatic TNFAIP3 mutations."
+    },
+    "cohort_size_as_stated": {
+     "value": 2912,
+     "span": "A total of 2,912 patients were enrolled in the present study"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": "The 2021 diagnostic findings were reported previously, 15"
+    },
+    "prior_report_citation": {
+     "value": "15. Wang J, Ye Q, Zheng W, et al. Low-ratio somatic NLRC4 mutation causes late-onset autoinflammatory disease. Ann Rheum Dis 2022; 81(8):1173-1178.",
+     "span": [
+      "The 2021 diagnostic findings were reported previously, 15",
+      "15. Wang J, Ye Q, Zheng W, et al. Low-ratio somatic NLRC4 mutation causes late-onset autoinflammatory disease. Ann Rheum Dis 2022; 81(8):1173-1178."
+     ]
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": [
+      "| Male                              |",
+      "| P23 27                            |"
+     ]
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Chinese",
+     "span": "Landscape of Somatic Mutations in a Large Cohort of Chinese Patients With Immune Dysregulations"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "We reported the first four patients with HA20 with somatic TNFAIP3 mutations."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: somatic TNFAIP3 mutation found on reanalysis of WES data and confirmed by targeted sequencing",
+     "span": [
+      "We first identified somatic TNFAIP3 mutations in four families",
+      "Targeted sequencing confirmed that the VAF of mutant TNFAIP3 allele ranges from 5% to 20% in different types of cells and tissues"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": [
+      "| Recurrent oral ulcers Male                  |",
+      "| P24                                         |"
+     ]
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Chinese",
+     "span": "Landscape of Somatic Mutations in a Large Cohort of Chinese Patients With Immune Dysregulations"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "We reported the first four patients with HA20 with somatic TNFAIP3 mutations."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: somatic TNFAIP3 mutation found on reanalysis of WES data and confirmed by targeted sequencing",
+     "span": [
+      "We first identified somatic TNFAIP3 mutations in four families",
+      "Targeted sequencing confirmed that the VAF of mutant TNFAIP3 allele ranges from 5% to 20% in different types of cells and tissues"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": [
+      "| oral ulcers Female Severe oral ulcers three or four times once a year |",
+      "| P25 40                                                                |"
+     ]
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Chinese",
+     "span": "Landscape of Somatic Mutations in a Large Cohort of Chinese Patients With Immune Dysregulations"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "We reported the first four patients with HA20 with somatic TNFAIP3 mutations."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: somatic TNFAIP3 mutation found on reanalysis of WES data and confirmed by targeted sequencing",
+     "span": [
+      "We first identified somatic TNFAIP3 mutations in four families",
+      "Targeted sequencing confirmed that the VAF of mutant TNFAIP3 allele ranges from 5% to 20% in different types of cells and tissues"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": [
+      "| Female (type III) sclerosis Female |",
+      "| P26                                |"
+     ]
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "Chinese",
+     "span": "Landscape of Somatic Mutations in a Large Cohort of Chinese Patients With Immune Dysregulations"
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "HA20",
+     "span": "We reported the first four patients with HA20 with somatic TNFAIP3 mutations."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "genetic testing: somatic TNFAIP3 mutation found on reanalysis of WES data and confirmed by targeted sequencing",
+     "span": [
+      "We first identified somatic TNFAIP3 mutations in four families",
+      "Targeted sequencing confirmed that the VAF of mutant TNFAIP3 allele ranges from 5% to 20% in different types of cells and tissues"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": [
+      "| TNFAIP3                           |",
+      "| P23 27                            |"
+     ]
+    },
+    "variant_original_string": {
+     "value": "NM_001270508.2: c.130_137del",
+     "span": [
+      "| NM_001270508.2: c.130_137del:     |",
+      "| P23 27                            |"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "NM_001270508.2",
+     "span": [
+      "| NM_001270508.2: c.130_137del:     |",
+      "| P23 27                            |"
+     ]
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.130_137del",
+     "span": [
+      "| NM_001270508.2: c.130_137del:     |",
+      "| P23 27                            |"
+     ]
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "mosaic",
+     "span": [
+      "We first identified somatic TNFAIP3 mutations in four families",
+      "Pedigrees of four families with four patients carrying TNFAIP3 somatic mutations"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "Pathogenic somatic mutations in TNFAIP3 were discovered first in patients with autoinflammatory diseases."
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+    },
+    "variant_original_string": {
+     "value": "NM_001270508.2: c.577G>T; E193*",
+     "span": [
+      "p.R45Tfs*53 NM_001270508.2: c.577G>T; E193*",
+      "| P24                                         |"
+     ]
+    },
+    "transcript_as_stated": {
+     "value": "NM_001270508.2",
+     "span": [
+      "p.R45Tfs*53 NM_001270508.2: c.577G>T; E193*",
+      "| P24                                         |"
+     ]
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.577G>T",
+     "span": [
+      "p.R45Tfs*53 NM_001270508.2: c.577G>T; E193*",
+      "| P24                                         |"
+     ]
+    },
+    "protein_hgvs_as_stated": {
+     "value": "E193*",
+     "span": [
+      "p.R45Tfs*53 NM_001270508.2: c.577G>T; E193*",
+      "| P24                                         |"
+     ]
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "mosaic",
+     "span": [
+      "We first identified somatic TNFAIP3 mutations in four families",
+      "Pedigrees of four families with four patients carrying TNFAIP3 somatic mutations"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "Pathogenic somatic mutations in TNFAIP3 were discovered first in patients with autoinflammatory diseases."
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": [
+      "| TNFAIP3                                                               |",
+      "| P25 40                                                                |"
+     ]
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "mosaic",
+     "span": [
+      "We first identified somatic TNFAIP3 mutations in four families",
+      "Pedigrees of four families with four patients carrying TNFAIP3 somatic mutations"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "Pathogenic somatic mutations in TNFAIP3 were discovered first in patients with autoinflammatory diseases."
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "gene_symbol_as_stated": {
+     "value": "TNFAIP3",
+     "span": "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "mosaic",
+     "span": [
+      "We first identified somatic TNFAIP3 mutations in four families",
+      "Pedigrees of four families with four patients carrying TNFAIP3 somatic mutations"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "Pathogenic somatic mutations in TNFAIP3 were discovered first in patients with autoinflammatory diseases."
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "feature_text_as_stated": {
+     "value": "Frequent diarrhea",
+     "span": [
+      "| lupus nephritis Frequent diarrhea |",
+      "| P23 27                            |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| lupus nephritis Frequent diarrhea |",
+      "| P23 27                            |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| lupus nephritis Frequent diarrhea |",
+      "| P23 27                            |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Frequent",
+     "span": [
+      "| lupus nephritis Frequent diarrhea |",
+      "| P23 27                            |"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Diarrhea",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002014",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "Recurrent oral ulcers",
+     "span": [
+      "| Recurrent oral ulcers Male                  |",
+      "| P24                                         |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Recurrent oral ulcers Male                  |",
+      "| P24                                         |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Recurrent oral ulcers Male                  |",
+      "| P24                                         |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Recurrent",
+     "span": [
+      "| Recurrent oral ulcers Male                  |",
+      "| P24                                         |"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Oral ulcer",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "feature_text_as_stated": {
+     "value": "oral ulcers",
+     "span": [
+      "| oral ulcers Female Severe oral ulcers three or four times once a year |",
+      "| P25 40                                                                |"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| oral ulcers Female Severe oral ulcers three or four times once a year |",
+      "| P25 40                                                                |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| oral ulcers Female Severe oral ulcers three or four times once a year |",
+      "| P25 40                                                                |"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Oral ulcer",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "feature_text_as_stated": {
+     "value": "lymphoma",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Lymphoma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002665",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "lymphoma",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Lymphoma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002665",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "feature_text_as_stated": {
+     "value": "lymphoma",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Lymphoma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002665",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "feature_text_as_stated": {
+     "value": "lymphoma",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": "None of the four patients showed evidence of lymphoma (Table 1)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Lymphoma",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002665",
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P23",
+     "span": "| P23 27                            |"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| Recurrent oral ulcers Male                  |",
+      "| P24                                         |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| Recurrent oral ulcers Male                  |",
+      "| P24                                         |"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P24",
+     "span": [
+      "| P24                                         |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P24"
+     ]
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "| oral ulcers Female Severe oral ulcers three or four times once a year |",
+      "| P25 40                                                                |"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "| oral ulcers Female Severe oral ulcers three or four times once a year |",
+      "| P25 40                                                                |"
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P25",
+     "span": "| P25 40                                                                |"
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "oral ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "genital ulcers",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "gastrointestinal ulcers or inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "recurrent fever",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "arthritis or arthralgia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "uveitis or other ocular inflammation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "skin lesions (rash, folliculitis, erythema nodosum)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoimmune thyroiditis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "type 1 diabetes",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoimmune hepatitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "cytopenia (autoimmune)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "lymphoproliferation or lymphadenopathy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "central nervous system involvement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "recurrent infections",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "elevated inflammatory markers (CRP/ESR)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "autoantibodies (ANA/other)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "growth failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "pericarditis or other serositis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "interstitial lung disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "41801095",
+     "span": "PMID: 41801095"
+    },
+    "individual_label_in_paper": {
+     "value": "P26",
+     "span": [
+      "| P26                                |",
+      "Proportions of TNFAIP3 somatic mutations in different sources of samples of P26"
+     ]
+    },
+    "checklist_feature": {
+     "value": "vasculitis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
