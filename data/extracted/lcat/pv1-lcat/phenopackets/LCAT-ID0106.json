@@ -1,0 +1,184 @@
+{
+  "id": "lcat-pv1-lcat-LCAT-ID0106",
+  "subject": {
+    "id": "LCAT-ID0106",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P75Y"
+      }
+    },
+    "sex": "FEMALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0025433",
+        "label": "Decreased lecithin cholesterol acyl transferase level"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:31164121",
+            "description": "plasma samples from her mother and sister (carriers of the p.V333\u2009M variant), showed reductions of 67 and 83% reductions in plasma LCAT activity, respectively"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003119",
+        "label": "Abnormal circulating lipid concentration"
+      },
+      "excluded": true,
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:31164121",
+            "description": "were apparently healthy, with normal plasma lipid profile and without any clinical features of total or partial LCAT deficiency"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003233",
+        "label": "Decreased circulating HDL-C concentration"
+      },
+      "excluded": true,
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:31164121",
+            "description": "relatives show normal plasma HDL-cholesterol levels"
+          }
+        },
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:31164121",
+            "description": "relatives show normal plasma HDL-cholesterol levels"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "LCAT-ID0106-interpretation",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0018999",
+          "label": "LCAT deficiency"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "LCAT-ID0106",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "LCAT-ID0106-var1",
+                "label": "c.997G\u2009>\u2009A",
+                "description": "c.997G\u2009>\u2009A",
+                "geneContext": {
+                  "valueId": "HGNC:6522",
+                  "symbol": "LCAT"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000229.2:c.997G>A"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000220.1:p.(Val333Met)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000016.10:g.67940230C>T"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "16",
+                  "pos": "67940230",
+                  "ref": "C",
+                  "alt": "T"
+                },
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-11-15T00:00:00Z",
+    "createdBy": "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:31164121"
+      }
+    ]
+  }
+}
