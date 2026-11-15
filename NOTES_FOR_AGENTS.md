@@ -75,6 +75,7 @@ The dated progress log that used to open this section (pilot stages 1-7 and thei
   - **Budget by line (2026-10-24):** `analysis/cost/budget_lines.py` fills the Spent and Remaining columns in `BUDGET.md` from `analysis/cost/spend_segments.csv`, one row per stretch between session cost readings. After a new reading, add a row (start = the last row's end) and re-run. These are estimates, not billing figures.
   - **Don't wait on a process with `pgrep -f <script name>` inside a Bash loop.** The loop's own command line contains the name, so it never ends. Match the interpreter path (`pgrep -f "python3 path/to/script"`) or wait on an output file.
   - **Helper slot tracking:** at most 20 helpers at once. Record a chunk as launched only after its Agent call goes out, or the tracker overcounts.
+  - **D-47 batch 2 files received (2026-11-15):** 72 hand-fetched free copies (via Claude computer use in Chrome) arrived as uploads. They are checked, and the identifier-only manifest is `analysis/corpus/free_copies/hand_fetched_2026-11-14.csv` (see `HAND_FETCHED_2026-11-14.md` there). The files sit in the git-ignored `data/literature/free_copies/hand_fetched_2026-11-14/` and vanish with the container, so re-fetch them from Jimmy or Drive and check them against the sha256 column. Uploads larger than a few files: ask for several zips of about 25 MB each, sent up to 5 per message. Never push the papers to GitHub (D-46).
 - **Git:**
   - Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
