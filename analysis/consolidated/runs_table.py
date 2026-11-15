@@ -57,10 +57,14 @@ O2_FILE = {"registered": "analysis/six_disease/o2/o2_{d}.json", "extension": "an
            "exploratory": "analysis/majeed/o2/o2_{d}.json"}
 O3_FILE = {"registered": "adjudication/o3_gaps/candidates.csv", "extension": "adjudication/o3_gaps_ext/candidates.csv",
            "exploratory": "analysis/majeed/o3/candidates.csv"}
+# Majeed's dossiers: the committed copies (quotes from held-back papers withheld, D-51); the full ones are local only
 O3_DOSSIERS = {"registered": "adjudication/o3_gaps/dossiers", "extension": "adjudication/o3_gaps_ext/dossiers",
-               "exploratory": "analysis/majeed/o3/dossiers"}
-O1_KEY = {"registered": "adjudication/o1_audit/sample_key.json", "extension": "adjudication/o1x_audit/sample_key.json"}
-O2T_SAMPLE = {"registered": "adjudication/o2_triage/sample.csv", "extension": "adjudication/o2_triage_ext/sample.csv"}
+               "exploratory": "adjudication/majeed/o3/dossiers_public"}
+O1_KEY = {"registered": "adjudication/o1_audit/sample_key.json", "extension": "adjudication/o1x_audit/sample_key.json",
+          "exploratory": "adjudication/majeed/o1m_audit/sample_key.json"}
+O2T_SAMPLE = {"registered": "adjudication/o2_triage/sample.csv", "extension": "adjudication/o2_triage_ext/sample.csv",
+              "exploratory": "adjudication/majeed/o2_triage/sample.csv"}
+MAJEED_FIRST_PASS = "data/literature/majeed/extension_first_pass_2026-11-14/manifest.csv"
 EXT_PATHS = ["data/extracted", "data/literature", "adjudication", "analysis/extension", "analysis/poc", "runs",
              "preregistration/addendum_extension_v1.md"]
 
@@ -127,7 +131,10 @@ def run_stats(T: Trees, d: str, run_id: str, kind: str) -> dict | None:
     norm, bind, build, span = jload(run / need[3]), jload(run / need[4]), jload(run / need[5]), jload(run / need[6])
     papers = sorted(p.stem for p in (run / "per_paper").glob("*.json"))
     n_papers = span["n_papers"]
-    out.update(papers=n_papers, papers_committed=len(papers), paper_ids=sorted(span.get("per_paper", {})) or papers)
+    # "committed" counts tracked files: a run folder restored from a private copy also holds files that are not public (D-51)
+    tracked = (lambda sub_: len([x for x in git("ls-files", str(run / sub_)).split("\n") if x.endswith(".json")])) if src == "main" else None
+    out.update(papers=n_papers, papers_committed=tracked("per_paper") if tracked else len(papers),
+               paper_ids=sorted(span.get("per_paper", {})) or papers)
     out.update(people_rows=rec["individuals_before_merging"], identities=rec["identities_after_merging"],
                with_gene_variant=rec["identities_with_target_gene_variant"], merged_pairs=rec.get("merged_pairs"))
     out.update(span_found_rate=span["span_found_rate"], span_problems=span["n_problems"])
@@ -140,7 +147,8 @@ def run_stats(T: Trees, d: str, run_id: str, kind: str) -> dict | None:
     out.update(phenopackets=val["phenopackets"], schema_valid=val["schema_valid"], validation_errors=len(val["errors"]),
                with_interpretation=build["counts"].get("with_interpretation"))
     pk = sorted((run / "phenopackets").glob("*.json"))
-    out["phenopackets_committed"] = len(pk)
+    out["phenopackets_committed"] = tracked("phenopackets") if tracked else len(pk)
+    out["counted_from_private_copy"] = len(pk) == val["phenopackets"] and out["phenopackets_committed"] != val["phenopackets"]
     if len(pk) == val["phenopackets"]:
         with_dis = with_feat = 0
         for p in pk:
@@ -165,7 +173,19 @@ def run_stats(T: Trees, d: str, run_id: str, kind: str) -> dict | None:
 def merge_check(T: Trees) -> dict:
     """What a merge of the extension branch into this tree would hit, without doing it."""
     if not T.ext_commit:
-        return {"state": "merged or not found"}
+        ext = None
+        try:
+            ext = git("rev-parse", "--verify", f"{T.ext_ref}^{{commit}}") if T.ext_ref else None
+        except subprocess.CalledProcessError:
+            pass
+        on_main = None
+        if ext:
+            try:
+                on_main = subprocess.run(["git", "merge-base", "--is-ancestor", ext, "origin/main"]).returncode == 0
+            except Exception:
+                on_main = None
+        return {"state": "merged into this tree" if ext else "extension ref not found", "extension_commit": ext,
+                "on_origin_main": on_main, "branch": git("rev-parse", "--abbrev-ref", "HEAD")}
     p = subprocess.run(["git", "merge-tree", "--write-tree", "--name-only", "--no-messages", "HEAD", T.ext_commit],
                        capture_output=True, text=True)
     files = [x for x in p.stdout.strip().split("\n")[1:] if x]
@@ -319,10 +339,11 @@ def main() -> int:
     res["papers_in_more_than_one_disease"] = {p: sorted(v) for p, v in sorted(where.items()) if len(v) > 1}
     res["papers_distinct_all"] = len(where)
     res["merge_check"] = MC = merge_check(T)
-    mj_ext = (T.ext / "data/literature/majeed/manifest.csv") if T.ext is not None else None
+    mj_ext = (T.ext / "data/literature/majeed/manifest.csv") if T.ext is not None else Path(MAJEED_FIRST_PASS)
     res["majeed_corpus_on_extension_branch"] = (
-        {"records": len(rows(mj_ext)), "included_at_full_text": sum(1 for r in rows(mj_ext) if r.get("fulltext_screen") == "include")}
-        if mj_ext is not None and mj_ext.exists() else None)
+        {"records": len(rows(mj_ext)), "included_at_full_text": sum(1 for r in rows(mj_ext) if r.get("fulltext_screen") == "include"),
+         "read_from": "extension branch" if T.ext is not None else MAJEED_FIRST_PASS}
+        if mj_ext.exists() else None)
 
     out_json = Path(f"analysis/consolidated/runs_table_{a.date}.json")
     slim = json.loads(json.dumps(res))
@@ -381,7 +402,8 @@ def main() -> int:
     L += ["", "Sums across runs are plain sums. Identities are merged within a run only: nobody has been matched across the registered run and the "
           "addendum batches, or across diseases, and phenopacket IDs restart in every run (D-50), so the summed identities are an upper bound on people. "
           "\"With a disease term\" and \"with any feature\" are counted from the phenopacket files; a record without either holds identity fields only "
-          "(relatives, or people whose only claims the gatekeeper removed).", ""]
+          "(relatives, or people whose only claims the gatekeeper removed). Where a run says some files are not public, those two columns were counted "
+          "from the full run folder restored from the private copy (D-51); in a checkout without it they read \"not counted\".", ""]
 
     L += ["## 3. ClinVar comparison (O2) and gap candidates (O3), by disease", "",
           "| Disease | Run compared | ClinVar snapshot | Gene correct | HGVS recall, tiers 1+2 | Overlap, tier 1 | Classification agreement | Gap candidates | Withdrawn | Left for the panel | Evidence dossiers | OMIM checked |",
@@ -398,7 +420,7 @@ def main() -> int:
           "Overlap is not precision; precision comes from the human audit.", ""]
 
     L += ["## 4. What is prepared for human assessment, by disease", "",
-          "| Disease | Audit sample (claims of 250) | ClinVar-miss triage items | Gap candidates for the panel | Dossiers written |",
+          "| Disease | Audit sample (claims) | ClinVar-miss triage items | Gap candidates for the panel | Dossiers written |",
           "|---|---|---|---|---|"]
     for D in res["diseases"]:
         o1, o2t, g = D.get("o1_sample"), D.get("o2_triage"), D.get("o3")
@@ -442,6 +464,10 @@ def main() -> int:
     L += ["## 7. State of the consolidation", "",
           f"- **Distinct papers:** {res['papers_distinct_all']} across all runs in section 1"
           + (f"; {len(cross)} appear under more than one disease ({', '.join(f'{p}: {'/'.join(v)}' for p, v in cross.items())})." if cross else "; none appears under two diseases.")]
+    if MC["state"] == "merged into this tree":
+        L += [f"- **The five extension runs are merged into this branch** (`{MC['branch']}`; extension commit `{MC['extension_commit'][:7]}`; D-54). "
+              + ("They are on `main`." if MC["on_origin_main"] else "They are not on `main` yet: that merge waits for Jimmy's word.")
+              + " Decision numbers: the extension session's D-47 and D-48 are D-52 and D-53 in `DECISIONS.md`; files that session wrote keep its numbers."]
     if MC["state"] == "not merged":
         L += [f"- **The five extension runs are not on `main`.** Their branch split from `main` on {MC['base_date']} and has "
               f"{MC['commits_only_on_extension']} commits `main` lacks; `main` has {MC['commits_only_on_main']} the branch lacks. "
@@ -456,13 +482,14 @@ def main() -> int:
     if any(not_open.values()):
         L += [f"- **Licences (D-51).** By the manifests' licence field, {sum(not_open.values())} of the {sum(r['papers'] for _, r in ext_runs)} extension papers "
               f"name no Creative Commons licence ({', '.join(f'{d} {n}' for d, n in not_open.items() if n)}). Their extraction outputs, with quotes, "
-              "are on the extension branch, which is public. D-51 (recorded on `main` after most of those pushes) holds back such outputs from further pushes until D-16 is settled."]
+              "were already public on the extension branch" + (", and were merged as they are under D-54, which records the exception; D-51 binds later pushes and D-16 is still to settle."
+                 if MC["state"] == "merged into this tree" else ". D-51 (recorded on `main` after most of those pushes) holds back such outputs from further pushes until D-16 is settled.")]
     if no_manifest:
         L += [f"- **Run records.** {len(no_manifest)} runs have a launch record but no `manifest.json` (finish time, document list): "
               + ", ".join(f"`{x}`" for x in no_manifest) + "."]
     if res["majeed_corpus_on_extension_branch"]:
         x = res["majeed_corpus_on_extension_branch"]
-        L += [f"- **Majeed syndrome has two histories.** On the extension branch its corpus has {x['records']} records and {x['included_at_full_text']} papers "
+        L += [f"- **Majeed syndrome has two histories.** The extension session's first-pass corpus (`{x['read_from']}`) has {x['records']} records and {x['included_at_full_text']} papers "
               "included at full text, and the addendum's own rule dropped it (fewer than 15 eligible primary reports with open full text). On `main` a wider "
               f"search ({mj['corpus']['records']} records) plus copies found by hand gave the {mjr.get('papers')} documents of `pv1s-majeed`, run as exploratory, "
               f"outside the addendum. {mjr.get('papers', 0) - mjr.get('papers_committed', 0)} of those documents' outputs and "
@@ -485,15 +512,27 @@ def main() -> int:
         return [D for D in res["diseases"] if D["group"] == g]
 
     W = []
-    for g, label in (("registered", "registered six"), ("extension", "extension five")):
+    for g, label in (("registered", "registered six"), ("extension", "extension five"), ("exploratory", "Majeed (exploratory)")):
         o1 = sum(D.get("o1_sample", {}).get("claims", 0) for D in grp(g))
         tr = sum(D.get("o2_triage", {}).get("items", 0) for D in grp(g))
         pc = sum(D.get("o3", {}).get("for_panel", 0) for D in grp(g))
-        st = {p["page"].split(",")[0].replace("O1X", "O1").replace("O2X", "O2").replace("O3X", "O3"): p for p in (stores["pages"] if stores else []) if p["study"] == label}
-        W += [(label, "Audit of extracted values (O1), two raters each", f"{o1} claims", "two rater pages", "0 rated" if stores else "not read"),
-              (label, "Triage of ClinVar misses (O2)", f"{tr} items", "one page", "0 rated" if stores else "not read"),
-              (label, "Adjudication of gap candidates (O3)", f"{pc} candidates", "one page (adjudicator A)", "0 decided" if stores else "not read")]
-    W.append(("Majeed", "Adjudication of gap candidates (O3)", f"{mj.get('o3', {}).get('for_panel', 0)} candidates", "no dossiers, no page; no audit or triage sample", "—"))
+        nd = sum(D.get("o3", {}).get("dossiers", 0) for D in grp(g))
+        nc = sum(D.get("o3", {}).get("candidates", 0) for D in grp(g))
+        pages = [p for p in (stores["pages"] if stores else []) if p["study"] == label]
+
+        def prep(kind: str, none: str) -> tuple[str, str]:
+            mine = [p for p in pages if kind in p["page"]]
+            if not stores:
+                return none, "stores not read"
+            if not mine:
+                return none, "—"
+            done = sum(p["with_a_rating"] for p in mine)
+            return f"{len(mine)} page{'s' if len(mine) != 1 else ''} ({', '.join(p['page'].split(', ')[-1] for p in mine)})" if len(mine) > 1 or ", " in mine[0]["page"] else "1 page", f"{done} returned"
+        if o1:
+            W.append((label, "Audit of extracted values, two raters each", f"{o1} claims", *prep("audit", "sample drawn, no page")))
+        if tr:
+            W.append((label, "Triage of ClinVar misses", f"{tr} items", *prep("triage", "sample drawn, no page")))
+        W.append((label, "Adjudication of gap candidates", f"{pc} candidates ({nd} of {nc} with a dossier)", *prep("adjudication", "no page")))
     n, k = filled("adjudication/addendum_d47/batch1_claims_to_rate.csv", "human")
     W.append(("addendum batch 1", "Disputed gatekeeper verdicts", f"{n} claims", "CSV sheet", f"{k} rated"))
     n, k = filled("adjudication/addendum_d47/batch1_exclusions_to_rate.csv", "human")

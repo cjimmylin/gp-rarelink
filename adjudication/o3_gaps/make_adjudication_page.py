@@ -34,6 +34,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--root", default=str(HERE), help="candidate folder (D-47 extension: adjudication/o3_gaps_ext)")
     ap.add_argument("--store-prefix", default="o3-adjudication", help="D-47 extension: o3x-adjudication")
     ap.add_argument("--exclude-withdrawn", action="store_true", help="leave out candidates whose status is withdrawn")
+    ap.add_argument("--title", default=None, help="page heading (default: Gap-variant adjudication, adjudicator <X>)")
+    ap.add_argument("--tab-title", default=None, help="browser-tab title (default: Gap Variant Adjudication <X>)")
     a = ap.parse_args(argv)
     src = Path(a.root)
     cands = list(csv.DictReader((src / "candidates.csv").open()))
@@ -67,11 +69,11 @@ def main(argv: list[str] | None = None) -> int:
                     "dossier": dossier})
     order = ["ssadh", "tangier", "lad1", "axd", "danon", "ha20", "gamt", "papa", "ats", "blau", "lcat"]  # HA20 last: development disease (D-18)
     out.sort(key=lambda c: (order.index(c["disease"]) if c["disease"] in order else 99, c["id"]))
-    data = {"title": f"Gap-variant adjudication, adjudicator {a.adjudicator}", "adjudicator": a.adjudicator,
+    data = {"title": a.title or f"Gap-variant adjudication, adjudicator {a.adjudicator}", "adjudicator": a.adjudicator,
             "snapshot": summary["snapshot"], "store_key": f"{a.store_prefix}-{a.adjudicator}-v1", "candidates": out}
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (HERE / "adjudication_page_template.html").read_text().replace("/*__DATA__*/null", blob)
-    page = page.replace("<title>Gap Variant Adjudication</title>", f"<title>Gap Variant Adjudication {a.adjudicator}</title>")
+    page = page.replace("<title>Gap Variant Adjudication</title>", f"<title>{a.tab_title or f'Gap Variant Adjudication {a.adjudicator}'}</title>")
     Path(a.out).write_text(page)
     print(json.dumps({"adjudicator": a.adjudicator, "candidates": len(out), "without_dossier": missing,
                       "bytes": len(page.encode())}))
