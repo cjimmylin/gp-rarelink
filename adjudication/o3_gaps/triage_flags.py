@@ -41,9 +41,12 @@ RULES = {
 
 
 def main(argv: list[str] | None = None) -> int:
+    global ROOT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--recheck-summary", default=None)
+    ap.add_argument("--root", default=str(ROOT), help="candidate folder (default adjudication/o3_gaps; the D-47 extension uses adjudication/o3_gaps_ext)")
     a = ap.parse_args(argv)
+    ROOT = Path(a.root)
     newly = set()
     if a.recheck_summary and Path(a.recheck_summary).exists():
         newly = set(json.loads(Path(a.recheck_summary).read_text()).get("now_in_clinvar", []))

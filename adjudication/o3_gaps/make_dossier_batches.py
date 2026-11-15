@@ -29,10 +29,13 @@ ROOT = Path("adjudication/o3_gaps")
 
 
 def main(argv: list[str] | None = None) -> int:
+    global ROOT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--max-candidates", type=int, default=20)
     ap.add_argument("--max-papers", type=int, default=8)
+    ap.add_argument("--root", default=str(ROOT), help="candidate folder (default adjudication/o3_gaps; the D-47 extension uses adjudication/o3_gaps_ext)")
     args = ap.parse_args(argv)
+    ROOT = Path(args.root)
     ev = [json.loads(l) for l in (ROOT / "evidence_rows.jsonl").open()]
     by_d = defaultdict(list)
     for e in ev:
