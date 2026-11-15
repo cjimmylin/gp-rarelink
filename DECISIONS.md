@@ -21,6 +21,13 @@ How to use this file:
 
 ### Needed later
 
+**D-55 · Human assessment with eight volunteer raters and overlapping assignments** (opened 2026-11-15; proposal in `reports/plan_human_assessment_2026-11-15.md`, numbers from `analysis/assessment_plan/design.py`)
+- **Jimmy (chat, 2026-11-15):** he has eight people willing to adjudicate, of variable ability, and wants overlapping coverage so that their ability can be compared, beyond two raters and a third; Plan A for the six registered diseases, Plan B adding the extension five and Majeed, each with time and entries covered.
+- **Proposal.** A calibration round first (all eight on the same known-answer items, with a floor fixed in advance); then every audit claim read by three raters, every triage item by two, every gap candidate by two with a third reading where they differ. The eight raters rotate through all groups, so every pair of raters shares items. The registered audit result is still computed from two named raters and a tie-breaker per claim; the extra readings are reported beside it as exploratory.
+- **Size, at the planning figures (ranges in the plan):** Plan A 514 entries (250 claims, 50 triage items, 214 gap candidates), about 21.1 hours per rater; Plan B 942 entries, about 28.6 hours per rater. Only the audit time rests on a measurement (one rater, the pilot); the adjudication time does not.
+- **Recommendation:** Plan B in Plan A's order, confirmed after calibration when measured minutes replace the planning figures.
+- **Needs Jimmy:** the design; A or B; the calibration floor; whether the panel is among the eight and who gives the third reading; hours per rater per week; and his word to publish each set of pages. For the registered six this is a deviation from §7.1, §7.2.6 and §7.3 (who rates, and how many), to be logged as one when he approves it. Nothing has been built or drawn.
+
 **Raters, adjudicators and two page changes** (opened 2026-11-15 as call 4 of the consolidation; calls 1 to 3 were decided the same day as D-54)
 - **Who rates.** No rating has been entered on any of the twelve review pages (four each for the registered six, the extension five and Majeed; stores read 2026-11-15; `reports/consolidated_runs_2026-11-15.md`). Before rating starts Jimmy names the O1 raters and the O3 adjudicators (extension addendum §5; D-11), records them here and shares the pages.
 - **Majeed's last two dossiers (D-54).** G-majeed-001 and G-majeed-009 have no dossier until the text of record N88 (the Wiley PDF he found by hand) is available. Majeed's four review pages are published privately (D-54) and wait to be shared, like the other eight.

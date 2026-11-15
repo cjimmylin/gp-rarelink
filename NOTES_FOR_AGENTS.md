@@ -107,6 +107,7 @@ The dated progress log that used to open this section (pilot stages 1-7 and thei
     - **Dossiers paraphrase their papers.** Under D-51 a dossier that draws on a paper that is not openly licensed stays local as a whole; withholding only its quotes left runs of 30 to 45 characters of the paper in statements and concerns. Scan a public copy for 30-character runs shared with the held-back text before committing.
     - **`get_session` returned no cost counter for this session** (no `usage` field); helper cost was estimated from the helpers' transcripts with the weights in `analysis/majeed/helper_costs.py`.
     - **Re-running `concordance_o2` for Majeed with the HPO annotation file present also computes the phenotype figures** the committed Majeed result lists as not computed (16 of 18 annotated terms recalled). They are not in any report yet.
+  - **Eight-rater assessment plan (2026-11-15, D-55, open):** `reports/plan_human_assessment_2026-11-15.md` from `python3 -I analysis/assessment_plan/design.py --date <d>`. It is a proposal: no calibration set, assignment or page exists yet, and the per-rater pages need Jimmy's word to publish. Raters are R1 to R8; keep their names out of the repository. The only measured time is the pilot audit (0.37 and 0.65 minutes per rating, one rater); adjudication time is an assumption until the calibration round. The extension's triage sample has 48 rows, 2 of which stopped being misses after the NOD2 fallback (D-53).
 - **Git:**
   - Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
