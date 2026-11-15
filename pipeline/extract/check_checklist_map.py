@@ -7,6 +7,7 @@ Checks:
   - the map has exactly the checklist's item names as keys (the names the schema uses);
   - every term exists in the pinned HPO release and is not obsolete;
   - each item has an 'observed' term or null, an 'excluded' list and a 'note';
+  - an item with no term at all is an error unless it carries "unmapped": true (then a warning);
 Exits non-zero on any error.
 """
 
@@ -35,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
     if m.get("hpo_release") != hp.version:
         errors.append(f"hpo_release {m.get('hpo_release')} != pinned {hp.version}")
     for name, it in items.items():
-        if set(it) - {"observed", "excluded", "note"} or "excluded" not in it or "observed" not in it or not it.get("note"):
+        if set(it) - {"observed", "excluded", "note", "unmapped"} or "excluded" not in it or "observed" not in it or not it.get("note"):
             errors.append(f"{name}: needs exactly observed, excluded, note")
             continue
         for tid in ([it["observed"]] if it["observed"] else []) + list(it["excluded"]):
@@ -44,7 +45,10 @@ def main(argv: list[str] | None = None) -> int:
             elif hp.terms[tid].obsolete:
                 errors.append(f"{name}: {tid} is obsolete")
         if not it["excluded"] and not it["observed"]:
-            errors.append(f"{name}: no terms at all")
+            if it.get("unmapped") is True:  # explicit: no HPO term of the item's scope exists (2026-11-15, Majeed)
+                warnings.append(f"{name}: marked unmapped; the checklist item asserts no HPO term")
+            else:
+                errors.append(f"{name}: no terms at all")
     print(json.dumps({"disease": a.disease, "map": a.map, "items": len(items), "errors": errors, "warnings": warnings}, indent=2))
     return 1 if errors else 0
 
