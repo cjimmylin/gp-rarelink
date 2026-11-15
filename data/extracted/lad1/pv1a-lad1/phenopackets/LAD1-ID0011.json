@@ -1,9 +1,46 @@
 {
   "id": "lad1-pv1a-lad1-LAD1-ID0011",
   "subject": {
-    "id": "LAD1-ID0011"
+    "id": "LAD1-ID0011",
+    "sex": "MALE"
   },
   "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000010",
+        "label": "Recurrent urinary tract infections"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         3 | Male     |                      8 | 14-66                       | 3.4%               | ITGB2         | Compound heterozygous | exon13 c.1788C>A, p.C596X; exon7 c.817G>A, p.G273R       | Omphalitis, pneumonia, skin and soft tissue infection, urinary tract infection"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002090",
+        "label": "Pneumonia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         3 | Male     |                      8 | 14-66                       | 3.4%               | ITGB2         | Compound heterozygous | exon13 c.1788C>A, p.C596X; exon7 c.817G>A, p.G273R       | Omphalitis, pneumonia"
+          }
+        }
+      ]
+    },
     {
       "type": {
         "id": "HP:0011897",
@@ -17,15 +54,15 @@
           },
           "reference": {
             "id": "PMID:32154133",
-            "description": "All five patients had typical granulocytosis."
+            "description": "|         3 | Male     |                      8 | 14-66 \u2026 Granulocytosis (\u00d710 9 /L)"
           }
         }
       ]
     },
     {
       "type": {
-        "id": "HP:0032455",
-        "label": "Reduced granulocyte CD18 level"
+        "id": "HP:0032162",
+        "label": "Unusual skin infection"
       },
       "evidence": [
         {
@@ -35,10 +72,114 @@
           },
           "reference": {
             "id": "PMID:32154133",
-            "description": "The other four patients had moderate LAD-I with the levels of CD18-expressing neutrophils being 2.4-3.6%"
+            "description": "|         3 | Male     |                      8 | 14-66                       | 3.4%               | ITGB2         | Compound heterozygous | exon13 c.1788C>A, p.C596X; exon7 c.817G>A, p.G273R       | Omphalitis, pneumonia, skin and soft tissue infection"
           }
         }
       ]
+    },
+    {
+      "type": {
+        "id": "HP:0032435",
+        "label": "Neonatal omphalitis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:32154133",
+            "description": "|         3 | Male     |                      8 | 14-66                       | 3.4%               | ITGB2         | Compound heterozygous | exon13 c.1788C>A, p.C596X; exon7 c.817G>A, p.G273R       | Omphalitis"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "LAD1-ID0011-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0007293",
+          "label": "leukocyte adhesion deficiency 1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "LAD1-ID0011",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "LAD1-ID0011-var1",
+                "label": "c.1788C>A, p.C596X",
+                "description": "c.1788C>A, p.C596X",
+                "geneContext": {
+                  "valueId": "HGNC:6155",
+                  "symbol": "ITGB2"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000211.5:c.1788C>A"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000202.3:p.(Cys596Ter)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000021.9:g.44889365G>T"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "21",
+                  "pos": "44889365",
+                  "ref": "G",
+                  "alt": "T"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "LAD1-ID0011",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "LAD1-ID0011-var2",
+                "label": "c.817G>A, p.G273R",
+                "description": "c.817G>A, p.G273R",
+                "geneContext": {
+                  "valueId": "HGNC:6155",
+                  "symbol": "ITGB2"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000211.5:c.817G>A"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000202.3:p.(Gly273Arg)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000021.9:g.44900400C>T"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "21",
+                  "pos": "44900400",
+                  "ref": "C",
+                  "alt": "T"
+                }
+              }
+            }
+          }
+        ]
+      }
     }
   ],
   "diseases": [
