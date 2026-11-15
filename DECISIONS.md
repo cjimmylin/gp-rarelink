@@ -53,6 +53,12 @@ How to use this file:
 ---
 
 ## Decision log
+### 2026-11-15 · Session "set 1C" closed: batch-2 converted texts saved to Drive, hash list committed, session archived
+- **Request.** Jimmy: "Is everything completed in this thread? If so, archive it." The work was complete and merged, but archiving releases the container, and the converted text of the 72 batch-2 papers (the text every extracted quote was checked against) existed only there; it cannot go on GitHub (D-46, D-51). Asked what to do first, Jimmy chose: "Save to Drive, then archive (Recommended)".
+- **Done.** (1) `analysis/corpus/free_copies/batch2_inputs_2026-11-15.csv`: sha256 of every PDF the converter read and of every converted Markdown file, identifiers only (72 papers, 4 with a PDF printed from a saved PMC page, 59 included, docling 2.140.0). (2) One zip, `D-47_batch2_converted_texts_2026-11-15.zip` (1,955,713 bytes; sha256 `632a0ed1ccc8eb5e1c89843c7f5c4e03c2a83a49783dd8bed6f920cf120358ae`), uploaded to Jimmy's private Drive folder "GP-RareLink free copies 2026-11-14" after checking that the folder's visibility is private; contents listed in `analysis/corpus/free_copies/HAND_FETCHED_2026-11-14.md`. (3) Merged to `main`, then the session was archived.
+- **Left open, none of it this session's to finish:** the claude.ai Project mirror (this session cannot reach the Project; Jimmy has the list of documents changed on `main` since 2026-11-14 and a prompt for a Project chat); the comparator sheets, which a person fills; the 54-claim audit list for batch 2 (`analysis/corpus/free_copies/batch2_audit_list_2026-11-15.csv`); D-16.
+- **Cost:** $8.64 by the session counter ($208.40 to $217.04, unassigned): the merge of the bias-arm work, the mirror and repository-status questions, and this close-out. The counter read $217.04 at the last reading before archiving; anything after it is not counted.
+
 ### 2026-11-15 · D-48 decided: how O4 removes comparator-cohort members and who counts as a literature individual; Danon tagged
 Jimmy, quoting the three recommendations put to him: "I accept your decisions". What was accepted:
 - **1. Which grades are removed.** The primary analysis removes people tagged `in_cohort_stated` ("named") and `in_cohort_probable`. Beside it the report shows nobody removed, and `in_cohort_possible` removed as well.
