@@ -28,17 +28,17 @@ Records with no PMID (preprints, theses, non-indexed journals, conference abstra
 
 | Source | Records | Passed title/abstract | Eligible after full text | Found only here | of those, passed title/abstract | of those, eligible |
 |---|---|---|---|---|---|---|
-| PubMed query (no case/patient filter) | 211 | 69 | 15 | 80 | 3 | 0 |
-| Europe PMC search, incl. open full text | 483 | 99 | 20 | 158 | 4 | 1 |
-| OpenAlex search (title, abstract, full text) | 381 | 89 | 19 | 64 | 3 | 0 |
+| PubMed query (no case/patient filter) | 211 | 69 | 17 | 80 | 3 | 0 |
+| Europe PMC search, incl. open full text | 483 | 99 | 22 | 158 | 4 | 1 |
+| OpenAlex search (title, abstract, full text) | 381 | 89 | 21 | 64 | 3 | 0 |
 | LitVar2, gene symbol LPIN2 (all listed variants) | 294 | 33 | 14 | 239 | 0 | 0 |
-| Backward references of key reviews and Ferguson 2005 (Europe PMC) | 159 | 33 | 7 | 91 | 0 | 0 |
-| Forward citations of five key papers (Europe PMC) | 398 | 92 | 12 | 1 | 0 | 0 |
-| Forward citations of five key papers (OpenAlex) | 432 | 94 | 12 | 24 | 0 | 0 |
-| PubMed similar articles, top 50 per key paper | 169 | 32 | 9 | 103 | 1 | 0 |
+| Backward references of key reviews and Ferguson 2005 (Europe PMC) | 159 | 33 | 9 | 91 | 0 | 0 |
+| Forward citations of five key papers (Europe PMC) | 398 | 92 | 14 | 1 | 0 | 0 |
+| Forward citations of five key papers (OpenAlex) | 432 | 94 | 14 | 24 | 0 | 0 |
+| PubMed similar articles, top 50 per key paper | 169 | 32 | 11 | 103 | 1 | 0 |
 | Project background bibliography | 1 | 1 | 1 | 0 | 0 | 0 |
 
-**Beyond the registered kind of search** (PubMed query + review references + background bibliography, as for the six corpora): 57 of 131 corpus papers and 5 of 20 eligible papers were found only by the other sources (eligible: 28750028, 31431992, 36330067, 40249417, 41437329).
+**Beyond the registered kind of search** (PubMed query + review references + background bibliography, as for the six corpora): 57 of 131 corpus papers and 5 of 22 eligible papers were found only by the other sources (eligible: 28750028, 31431992, 36330067, 40249417, 41437329).
 
 ## Screening (title and abstract)
 
@@ -50,8 +50,27 @@ Records with no PMID (preprints, theses, non-indexed journals, conference abstra
 
 ## Full text
 
-- **Fetched:** 70 of 131 corpus papers (53.4%). Access status: paywalled 58, europepmc_xml 47, pmc_efetch_xml 18, publisher_pdf 5, not_found 3.
+- **Fetched:** 79 of 131 corpus papers (60.3%). Access status: paywalled 49, europepmc_xml 47, pmc_efetch_xml 18, hand_fetched_free 9, publisher_pdf 5, not_found 3.
 - **Free elsewhere (Europe PMC listing, not fetched):** 7.
-- **Full-text screening** (`screen_fulltext_v1.md`): exclude 50, include 20, not_accessible 61. Exclusion reasons: no_individual_data 3, not_disease 17, not_english 1, review_no_new_individuals 29.
-- **Eligible with full text:** 20 papers, of which 15 primary reports and 4 with a per-patient literature table.
-- **D-08 threshold, for reference (at least 15 eligible primary reports with open full text):** met (15).
+- **Full-text screening** (`screen_fulltext_v1.md`): exclude 57, include 22, not_accessible 52. Exclusion reasons: no_individual_data 3, not_disease 19, not_english 1, review_no_new_individuals 34.
+- **Eligible with full text:** 22 papers, of which 17 primary reports and 4 with a per-patient literature table.
+- **D-08 threshold, for reference (at least 15 eligible primary reports with open full text):** met (17).
+
+## Copies found by hand (2026-11-14)
+
+Dr. Lin searched for the 88 records on `reports/majeed_papers_to_find_2026-11-15.md` (free copies only). Outcome: pdf_not_retrieved 24, access_required 19, pdf_downloaded 15, browser_security_block 14, navigation_failed 6, historical_chapter_not_retrieved 2, table_fragment 2, related_version_available 1, free_html_found 1, browser_download_block 1, related_translation_record 1, pdf_lead_not_retrieved 1, free_reader_found_pdf_blocked 1. Provenance and checksums: `data/literature/majeed/hand_retrieval_2026-11-14/`; files imported by `analysis/corpus/import_hand_fetched.py` (PDFs git-ignored).
+
+- **PubMed papers:** 9 copies, full-text screened under the same instructions (batch 06): 2 included (15994876, 33993107).
+- **Records with no PMID:** 7 documents screened by one helper with the same rule (`screening_fulltext/labels_nopmid/`). They are not in the manifest and not in the counts above.
+
+| Record | Decision | Reason | Individuals | Note |
+|---|---|---|---|---|
+| N64 | exclude | not_disease | 0 | Conference abstract; psoriasis patients and yeast expression of Lipin2 variants, no Majeed syndrome patient. |
+| N66 | include | — | 2 | Conference abstract (poster, PReS 2011); two brothers with homozygous c.1312_1313delCT; document does not name another publication as reporting the same patients. |
+| N76 | include | — | unclear | Preprint of a case report (one new patient) plus Table 1 of fourteen earlier patients; the document says it is a version of the BMC Med Genet paper doi 10.1186/s12881-019-0919-3; table rows are garbled so total count unclear. |
+| N82 | exclude | no_individual_data | 0 | Definition entry (NCI Thesaurus via Qeios), one page, no patients. |
+| N84 | exclude | no_individual_data | 0 | Definition entry (Orphanet via Qeios), one page, no patients. |
+| N88 | include | — | 1 | Article (letter to the editor) with one new patient plus cell experiments. |
+| additional_reference | exclude | review_no_new_individuals | 0 | Book chapter (GeneReviews); aggregate summaries only, no per-patient table. |
+
+Likely duplicates for deduplication: N76 states it is a version of the BMC Medical Genetics case report (Liu 2019, PMID 31727123, already eligible); N66 (PReS 2011 abstract, two Turkish brothers homozygous for c.1312_1313delCT) very likely describes the brothers of Herlin 2013 (PMID 23087183, same variant).

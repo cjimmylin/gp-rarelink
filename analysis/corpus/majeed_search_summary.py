@@ -45,6 +45,35 @@ def family(src: str) -> str:
     return src
 
 
+def hand_section() -> str:
+    """Copies found by hand (Dr. Lin, 2026-11-14) and the screening of non-PubMed records."""
+    dirs = sorted(BASE.glob("hand_retrieval_*"))
+    if not dirs:
+        return ""
+    res = list(csv.DictReader((dirs[-1] / "majeed_search_results.csv").open(encoding="utf-8-sig")))
+    status = Counter(r["search_status"] for r in res)
+    rows = list(csv.DictReader((BASE / "manifest.csv").open(newline="")))
+    hand = [r for r in rows if r.get("access_status") == "hand_fetched_free"]
+    hand_inc = [r["pmid"] for r in hand if r.get("fulltext_screen") == "include"]
+    lab = BASE / "screening_fulltext" / "labels_nopmid" / "nopmid_01.csv"
+    nop = list(csv.DictReader(lab.open())) if lab.exists() else []
+    nop_lines = "\n".join(f"| {r['pmid']} | {r['decision']} | {r['exclusion_reason'] or '—'} | {r['n_individuals']} | {r['note']} |" for r in nop)
+    return f"""
+## Copies found by hand ({dirs[-1].name.split('_')[-1]})
+
+Dr. Lin searched for the {len(res)} records on `reports/majeed_papers_to_find_2026-11-15.md` (free copies only). Outcome: {', '.join(f'{k} {v}' for k, v in status.most_common())}. Provenance and checksums: `{dirs[-1]}/`; files imported by `analysis/corpus/import_hand_fetched.py` (PDFs git-ignored).
+
+- **PubMed papers:** {len(hand)} copies, full-text screened under the same instructions (batch 06): {len(hand_inc)} included ({', '.join(hand_inc) or 'none'}).
+- **Records with no PMID:** {len(nop)} documents screened by one helper with the same rule (`screening_fulltext/labels_nopmid/`). They are not in the manifest and not in the counts above.
+
+| Record | Decision | Reason | Individuals | Note |
+|---|---|---|---|---|
+{nop_lines}
+
+Likely duplicates for deduplication: N76 states it is a version of the BMC Medical Genetics case report (Liu 2019, PMID 31727123, already eligible); N66 (PReS 2011 abstract, two Turkish brothers homozygous for c.1312_1313delCT) very likely describes the brothers of Herlin 2013 (PMID 23087183, same variant).
+"""
+
+
 def main() -> int:
     cfg = yaml.safe_load(Path("configs/diseases.yaml").read_text())["substitutes"]["majeed"]
     rows = list(csv.DictReader((BASE / "manifest.csv").open(newline="")))
@@ -134,6 +163,7 @@ Records with no PMID (preprints, theses, non-indexed journals, conference abstra
 - **Eligible with full text:** {s['eligible_all']} papers, of which {s['eligible_primary']} primary reports and {s['eligible_literature_table']} with a per-patient literature table.
 - **D-08 threshold, for reference (at least {D08_MIN_N} eligible primary reports with open full text):** {'met' if s['eligible_primary'] >= D08_MIN_N else 'not met'} ({s['eligible_primary']}).
 """
+    md += hand_section()
     (BASE / "search.md").write_text(md)
     print(md)
     return 0
