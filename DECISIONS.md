@@ -53,6 +53,18 @@ How to use this file:
 ---
 
 ## Decision log
+
+### 2026-11-15 · Majeed syndrome run with the frozen pipeline (`pv1s-majeed`; Jimmy's request; exploratory, outside the six-disease study)
+
+- **Request:** Jimmy, 2026-11-15: "can you process the whole workflow with these additional papers" (after the Majeed search and the free copies he found by hand). This also answers the open item of the search entry below (taking Majeed further).
+- **What ran:** `pipeline-v1.0` unchanged: extraction v6 and gatekeeper v4 instantiated for Majeed under D-38 (disease name, gene, checklist only), Stage 4 (VariantValidator on MANE Select NM_001375808.2, HPO and Mondo binding), phenopackets, then ClinVar concordance (O2) and gap candidates (O3) on the harness side against a fresh LPIN2 snapshot (2026-11-15; ClinVar release of 2026-11-09). Run id `pv1s-majeed` (s = substitute), so no registered `pv1` or `pv1a` output is touched. Reported on its own, never pooled with the six.
+- **Documents (24):** the 22 eligible PubMed papers plus two eligible records with no PMID, N66 (PReS 2011 abstract) and N88 (Han 2025). N76 left out: it states it is the preprint of Liu 2019 (PMID 31727123), which is in the set.
+- **Checklist (Claude's call):** the first helper stopped because Ferguson 2021 alone supports only about 15 features; following the LAD-I precedent, two more openly licensed reviews were added (Wang 2025, Haşlak 2025). Chavan 2021 was not used as a source because its quotes could not be pushed (D-51). One item (warmth or redness over bone or joint) has no HPO term of its scope and is marked unmapped.
+- **Estimate and ceiling (Claude):** $65–85 at the measured rates, Stretch line; ceiling $120, stop and ask past it.
+- **D-51:** 5 of the 22 PubMed papers are free to read but not openly licensed (15994876, 23087183, 23917160, 27252506, 33993107), and N66 names no licence. Their extraction outputs (quotes) are not pushed: `data/extracted/majeed/` is git-ignored and `analysis/majeed/d51_public_files.py` stages only what quotes open documents; withheld quotes in the O3 table are replaced by a count.
+- **Outcome:** gatekeeper v4 on 5,161 model claims, 0.68% unsupported (35; 95% CI 0.47–0.94%), 3.7% not fully supported; 158 phenopackets, all schema-valid (131 public); O2: gene 141/141, overlap 12/24 alleles, classification agreement 5/8; O3: 12 gap candidates and 1 reclassification candidate (c.2207G>A p.Arg736His, ClinVar conflicting), all *pending adjudication*. Four gatekeeper chunks whose helpers assigned verdicts by script were judged again by fresh helpers under a stricter launch text; the first files are set aside. Spend about $92 on helper tokens. Report: `reports/majeed_pv1s_findings.md` (`analysis/majeed/report.py`).
+- **Code (no pinned file changed):** `instantiate_disease.py` and `supplementary_to_text.py` read a disease under `substitutes:`; `stage4_config.py` gained a Majeed entry and a `--disease` filter; `check_checklist_map.py` accepts `"unmapped": true` as a warning; `gap_candidates.py` gained `--run-prefix` and `--out` (defaults unchanged).
+
 ### 2026-11-15 · D-48 decided: how O4 removes comparator-cohort members and who counts as a literature individual; Danon tagged
 Jimmy, quoting the three recommendations put to him: "I accept your decisions". What was accepted:
 - **1. Which grades are removed.** The primary analysis removes people tagged `in_cohort_stated` ("named") and `in_cohort_probable`. Beside it the report shows nobody removed, and `in_cohort_possible` removed as well.
