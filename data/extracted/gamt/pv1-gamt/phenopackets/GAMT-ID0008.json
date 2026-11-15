@@ -1,0 +1,195 @@
+{
+  "id": "gamt-pv1-gamt-GAMT-ID0008",
+  "subject": {
+    "id": "GAMT-ID0008",
+    "sex": "MALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000736",
+        "label": "Short attention span"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:23234264",
+            "description": "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%) \u2026 Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000750",
+        "label": "Delayed speech and language development"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:23234264",
+            "description": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%) \u2026 Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:23234264",
+            "description": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%) \u2026 Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0040419",
+        "label": "Elevated urine guanidinoacetic acid level"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:23234264",
+            "description": "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold \u2026 Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "GAMT-ID0008-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0012999",
+          "label": "guanidinoacetate methyltransferase deficiency"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "GAMT-ID0008",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "GAMT-ID0008-var1",
+                "label": "c.299_311dup13",
+                "description": "c.299_311dup13",
+                "geneContext": {
+                  "valueId": "HGNC:4136",
+                  "symbol": "GAMT"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_000156.6:c.299_311dup"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_000147.1:p.(Arg105GlyfsTer26)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000019.10:g.1399811_1399823dup"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "19",
+                  "pos": "1399808",
+                  "ref": "T",
+                  "alt": "TGGGGCCCAGTCCC"
+                },
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0012999",
+        "label": "guanidinoacetate methyltransferase deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-11-15T00:00:00Z",
+    "createdBy": "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:23234264"
+      }
+    ]
+  }
+}

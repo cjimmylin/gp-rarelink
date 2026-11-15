@@ -1,0 +1,203 @@
+{
+  "id": "papa-pv1-papa-PAPA-ID0282",
+  "subject": {
+    "id": "PAPA-ID0282",
+    "sex": "MALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001061",
+        "label": "Acne"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38259483",
+            "description": "one patient (ID 9 in Supplementary Table S2) received 100 mg/day of anakinra alongside prednisone and isotretinoin \u2026 fully controlling PG and improving acne"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0025452",
+        "label": "Pyoderma gangrenosum"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38259483",
+            "description": "one patient (ID 9 in Supplementary Table S2) received 100 mg/day of anakinra alongside prednisone and isotretinoin \u2026 fully controlling PG and improving acne"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0033605",
+        "label": "Pustular rash"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38259483",
+            "description": "The PAC syndrome patient showed symptoms of ulcerative colitis and a recalcitrant pustular rash"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0100279",
+        "label": "Ulcerative colitis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38259483",
+            "description": "The PAC syndrome patient showed symptoms of ulcerative colitis and a recalcitrant pustular rash"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001369",
+        "label": "Arthritis"
+      },
+      "excluded": true,
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38259483",
+            "description": "All five patients exhibited PG, and all except the PAC syndrome patient had arthritis"
+          }
+        },
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:38259483",
+            "description": "All five patients exhibited PG, and all except the PAC syndrome patient had arthritis"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PAPA-ID0282-interpretation",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0011462",
+          "label": "pyogenic arthritis-pyoderma gangrenosum-acne syndrome"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PAPA-ID0282",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PAPA-ID0282-var1",
+                "label": "G403R",
+                "description": "G403R",
+                "geneContext": {
+                  "valueId": "HGNC:9580",
+                  "symbol": "PSTPIP1"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "p.G403R"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:1061002",
+        "label": "polymorphous adenocarcinoma"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-11-15T00:00:00Z",
+    "createdBy": "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:38259483"
+      }
+    ]
+  }
+}
