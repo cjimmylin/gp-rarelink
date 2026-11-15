@@ -60,50 +60,49 @@ def main() -> int:
     s = Path("analysis/extension/o2/o2_summary.md").read_text().split("\n")
     L += [x for x in s if x.startswith("|")][:7] + [""]
     n2 = j("analysis/extension/nod2/summary.json")
-    rev = [x for x in Path("analysis/extension/nod2/o2_revised_rule/o2_summary.md").read_text().split("\n") if x.startswith("| blau")]
-    L += ["### Blau: NOD2 numbering (registered rule vs a proposed revised rule)", "",
+    L += ["### Blau: NOD2 numbering (D-48)", "",
           f"Under the registered rule a cDNA description with no stated transcript is read on MANE Select {n2['mane_select']}. "
           f"{n2['revised_rule_candidates']} Blau descriptions failed there with a reference mismatch because the paper used the older "
-          f"{n2['legacy_transcript']} numbering (R334W is c.1000C>T there). Re-read on {n2['legacy_transcript']}, all {n2['revised_rule_placed_on_legacy']} place "
-          f"({n2['registered_rule_normalized']} → {n2['revised_rule_normalized']} of {n2['non_protein_only']} non-protein descriptions). "
-          "This is a sensitivity analysis on the harness side; the registered run is unchanged, and adopting the rule would be a deviation that needs Jimmy's approval.", "",
+          f"{n2['legacy_transcript']} numbering (R334W is c.1000C>T there). D-48 (decided by Claude under Jimmy's delegation, 2026-11-15) adds a fallback "
+          f"for Blau only: after a reference mismatch the description is sent once more on {n2['legacy_transcript']}. All {n2['revised_rule_placed_on_legacy']} "
+          "then place, each agreeing with the paper's own protein change, 27 residues higher. The table above uses the fallback; the registered-rule "
+          "figures are kept in `analysis/extension/registered_rule/` and shown here.", "",
           "| Rule | HGVS recall, tier 1 | HGVS recall, tiers 1+2 | Overlap, tier 1 | Classification agreement |", "|---|---|---|---|---|"]
-    b = j("analysis/extension/o2/o2_blau.json")["all_papers"]
     w = lambda x: "—" if x.get("share") is None else f"{100 * x['share']:.1f}% ({x['k']}/{x['n']})"
-    L.append(f"| Registered | {w(b['hgvs_recall_tier1'])} | {w(b['hgvs_recall_tier12'])} | {w(b['overlap_tier1'])} | {w(b['classification_agreement_among_stated'])} |")
-    if rev:
-        c = [x.strip() for x in rev[0].split("|")[1:-1]]
-        L.append(f"| Revised (sensitivity) | {c[2]} | {c[3]} | {c[4]} | {c[5]} |")
+    for label, path in (("Registered (pipeline v1.0)", "analysis/extension/registered_rule/o2/o2_blau.json"), ("D-48 fallback (adopted)", "analysis/extension/o2/o2_blau.json")):
+        b = j(path)["all_papers"]
+        L.append(f"| {label} | {w(b['hgvs_recall_tier1'])} | {w(b['hgvs_recall_tier12'])} | {w(b['overlap_tier1'])} | {w(b['classification_agreement_among_stated'])} |")
     miss = [r for r in csv.DictReader(open("analysis/extension/o2/o2_recall_misses.csv")) if r["disease"] == "blau"]
     prot_only = sum(1 for r in miss if not r["extracted_alleles_in_pmid"] and r["extracted_proteins_in_pmid"])
-    L += ["", f"Of the {len(miss)} Blau recall misses, {prot_only} come from papers whose extraction holds only protein changes, written in the legacy "
-          "numbering (R334W, E383K, R587C), which is 27 residues higher than ClinVar's MANE numbering (p.Arg307Trp, p.Glu356Lys, p.Arg560Cys). "
-          "Neither rule can place a protein-only description, and the tier-2 protein match compares MANE numbers, so these are numbering misses, "
+    L += ["", f"Of the {len(miss)} Blau recall misses that remain, {prot_only} come from papers whose extraction holds only protein changes, written in the legacy "
+          "numbering (R334W, E383K, R587C), 27 residues higher than ClinVar's MANE numbering (p.Arg307Trp, p.Glu356Lys, p.Arg560Cys). "
+          "A protein-only description cannot be placed, and the tier-2 protein match compares MANE numbers, so these are numbering misses, "
           "not reading errors (`analysis/extension/o2/o2_recall_misses.csv`).", ""]
     # gaps
     g = j("adjudication/o3_gaps_ext/summary.json")
+    g0 = {x["disease"]: x for x in j("analysis/extension/registered_rule/summary.json")["diseases"]}
     rc = j("adjudication/o3_gaps_ext/recheck_2026-11-14.json")
     cands = list(csv.DictReader(open("adjudication/o3_gaps_ext/candidates.csv")))
+    wd = [c for c in cands if c.get("status") == "withdrawn"]
     L += ["## 4. Gap candidates (O3 stage 1)", "",
-          "| Disease | Tier-1 alleles | Absent from ClinVar | Gap candidates (gatekeeper-supported) | Only from ClinVar-cited papers | Only from reviews |", "|---|---|---|---|---|---|"]
+          "| Disease | Tier-1 alleles | Absent from ClinVar | Gap candidates (gatekeeper-supported) | Withdrawn (D-48) | Left for the panel | Registered rule (before D-48) | Only from ClinVar-cited papers | Only from reviews |",
+          "|---|---|---|---|---|---|---|---|---|"]
     for x in g["diseases"]:
-        L.append(f"| {x['disease']} | {x['tier1_alleles']} | {x['absent_from_clinvar_before_gatekeeper']} | {x['gap_candidates']} | "
-                 f"{x['gap_candidates_only_from_clinvar_cited_papers']} | {x['gap_candidates_only_from_reviews']} |")
-    L += ["", f"Recheck against the same snapshot: {rc['candidates_checked']} checked, {len(rc['now_in_clinvar'])} now in ClinVar. OMIM was not checked (D-12).", "",
-          "**Candidates to look at first:**", "",
-          "- **G-blau-005 is probably not a gap.** The papers write `c.1538T>C (M513T)`, a well-known Blau allele in legacy NM_022162 numbering. With no transcript "
-          "stated, the registered rule read it on MANE, where the reference base happens to match, giving p.Leu513Pro, which no paper describes. "
-          "Neither rule catches this; a check of the stated protein against the prediction does (protein check: "
-          f"`{next(c['protein_check'] for c in cands if c['candidate_id'] == 'G-blau-005')}`).",
-          *[f"- **{c['candidate_id']} lies off the gene** ({c['vcf_grch38']}; expected chromosome {CHROM[c['disease']]}). The paper stated transcript "
-            f"`{c['hgvs_c'].split(':')[0]}`, which is not a {c['gene']} transcript, and normalization honoured it. The gap step has no on-gene check, so this "
-            "is not a gap candidate. Flagged for Jimmy, not withdrawn." for c in cands if c['vcf_grch38'].split(':')[0] != CHROM[c['disease']]],
-          "- G-blau-001 to 004: the protein check differs only by the 27-residue numbering offset (the papers stated NM_022162); placement is correct.",
+        nw = sum(1 for c in wd if c["disease"] == x["disease"])
+        L.append(f"| {x['disease']} | {x['tier1_alleles']} | {x['absent_from_clinvar_before_gatekeeper']} | {x['gap_candidates']} | {nw} | {x['gap_candidates'] - nw} | "
+                 f"{g0[x['disease']]['gap_candidates']} | {x['gap_candidates_only_from_clinvar_cited_papers']} | {x['gap_candidates_only_from_reviews']} |")
+    L += ["", f"Recheck against the same snapshot: {rc['candidates_checked']} checked, {len(rc['now_in_clinvar'])} now in ClinVar. OMIM was not checked (D-12). "
+          "Candidate ids are positional, so the D-48 re-run renumbered the Blau ids; the earlier Blau dossiers were carried over by genomic position "
+          "(002→003, 003→004, 004→005, 005→008).", "",
+          "**Withdrawn (D-48; rows and dossiers kept, reason in `status_note`):**", ""]
+    L += [f"- **{c['candidate_id']}** ({c['vcf_grch38']}): {c['status_note']}" for c in wd]
+    L += ["", "**Other points for the panel:**", "",
+          "- Blau candidates: the papers number NOD2 on NM_022162, so their protein numbers are 27 above the candidates' MANE numbers; placement is correct.",
           f"- LCAT: {sum(1 for c in cands if c['disease'] == 'lcat' and c['only_clinvar_cited_papers'] in ('True', 'true', 'yes', '1'))} of "
           f"{sum(1 for c in cands if c['disease'] == 'lcat')} candidates come only from papers ClinVar cites, and "
           f"{next(x['gap_candidates_only_from_reviews'] for x in g['diseases'] if x['disease'] == 'lcat')} only from reviews (mostly table rows of one "
           "systematic review, 34256778, with no case description).",
-          "- The dossier helpers' own notes for the panel (contradictions inside papers, likely duplicate people, unclear phase) are in "
+          "- The dossier helpers' own notes (contradictions inside papers, likely duplicate people, unclear phase) are in "
           "`adjudication/o3_gaps_ext/helper_notes_2026-11-15.md`.", ""]
     dd = sorted(Path("adjudication/o3_gaps_ext/dossiers").glob("*.json"))
     ck = Path("adjudication/o3_gaps_ext/check_summary.json")
@@ -113,14 +112,18 @@ def main() -> int:
     L += ["## 5. Audit sample for people (O1X)", "",
           f"{sum(k['allocation'].values())} claims drawn with seed {k['seed']} from a pool of {k['pool_total']:,} after all five runs and gatekeeper passes "
           "finished and before any extension concordance was computed (`adjudication/o1x_audit/`). Allocation: "
-          + ", ".join(f"{d} {n}" for d, n in k["allocation"].items()) + ". No rating page has been made (no-publishing rule); it waits for Jimmy.", ""]
-    L += ["## 6. Decisions and flags for Jimmy", "",
-          "1. **NOD2 revised rule** (deviation, needs approval): adopt the legacy-transcript fallback for Blau, or keep the registered result and report the sensitivity beside it (current state).",
-          "2. **G-blau-005 and G-lcat-001**: withdraw as false candidates (as with G-danon-001 under D-43), or leave them for the panel with the note. "
-          "An on-gene check in `gap_candidates.py` would catch G-lcat-001-type errors; it found none among the registered six's 215 candidates.",
-          "3. **No `isoform_sensitive` block for GAMT and PSTPIP1** (Claude's call; `analysis/extension/isoform_check_2026-11-15.md`).",
-          "4. **Scope questions** found by helpers: SURF patients with NOD2 variants and a healthy-control carrier (41357180); people with a diagnosis but no variant in several Blau and LCAT papers; a PDF-only paper whose genetic supplementary tables were unavailable (38180755); a duplicate-publication pair in GAMT (38020815, 39006040).",
-          "5. **Review pages** for the O1X audit, the O2 triage sample (`adjudication/o2_triage_ext/`, all 48 misses) and the gap dossiers are not made; making them needs your go-ahead under the no-publishing rule.", ""]
+          + ", ".join(f"{d} {n}" for d, n in k["allocation"].items()) + ".", ""]
+    L += ["## 6. Decisions (D-48, 2026-11-15) and review pages", "",
+          "Jimmy delegated the four open decisions (\"For the 4 decisions, you can decide for me\"). Claude decided:", "",
+          "1. **NOD2 legacy-transcript fallback adopted** for Blau (deviation D-48; registered figures reported beside it, §3).",
+          "2. **G-blau-008 (formerly G-blau-005) and G-lcat-001 withdrawn** (§4).",
+          "3. **No `isoform_sensitive` block for GAMT and PSTPIP1** kept (`analysis/extension/isoform_check_2026-11-15.md`).",
+          "4. **Review pages built, not published.** The no-publishing rule (`CLAUDE.md`, 2026-10-21) needs Jimmy's own word to lift. The rating and triage pages embed "
+          "paper passages, so they are not committed to this public repository; they are rebuilt on demand with the commands in "
+          "`adjudication/README_extension_pages.md`.", "",
+          "Still open from the helpers: SURF patients with NOD2 variants and a healthy-control carrier (41357180); people with a diagnosis but no variant in "
+          "several Blau and LCAT papers; a PDF-only paper whose genetic supplementary tables were unavailable (38180755); a duplicate-publication pair in GAMT "
+          "(38020815, 39006040).", ""]
     seg = [r for r in csv.DictReader(open("analysis/cost/spend_segments.csv")) if r["line"] == "7"]
     spent = sum(float(r["end_usd"]) - float(r["start_usd"]) for r in seg)
     L += ["## 7. Spend", "",

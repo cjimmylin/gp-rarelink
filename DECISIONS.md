@@ -44,6 +44,15 @@ How to use this file:
 
 ## Decision log
 
+### 2026-11-15 · D-48 decided by Claude under Jimmy's delegation: NOD2 legacy-transcript fallback adopted; two false gap candidates withdrawn; isoform call kept; review pages built but not published
+
+- **Jimmy (chat, 2026-11-15): "For the 4 decisions, you can decide for me".** The four are those listed in `reports/extension_report.md` §6. Recorded as his delegation. Claude's decisions:
+  1. **NOD2 legacy-transcript fallback adopted for Blau (deviation, below).** `configs/stage4/blau.json` carries `legacy_transcript_fallback` (NM_022162.3). `normalize_variants.py` uses it only after a description with no stated transcript fails on MANE Select with a reference mismatch. Blau was re-normalized and its phenopackets rebuilt (507, 0 errors). 19 descriptions changed, each matching the sensitivity analysis exactly. Every one of them agrees with the paper's own protein, offset by 27 residues. The registered-rule outputs are kept in `analysis/extension/registered_rule/` and are reported beside the new ones. Reason: the fallback recovers the paper's own allele where the registered rule leaves it unplaced. VariantValidator still checks the reference base, and no other disease is affected.
+  2. **G-blau-005 (now G-blau-008, at 16:50711530:T:C) and G-lcat-001 withdrawn** (`adjudication/o3_gaps_ext/apply_withdrawals.py`; `status` column, same form as D-43). Both rest on a placement the papers do not support (reasons in `status_note`). Rows and dossiers are kept.
+  3. **No `isoform_sensitive` block for GAMT and PSTPIP1:** kept as decided on 2026-11-15.
+  4. **Review pages: built as files, not published.** The no-publishing rule in `CLAUDE.md` (2026-10-21) needs Jimmy's own word to lift, so a delegated decision does not cover it. The page files are prepared in the repository so they can go up as soon as he says so.
+- **Knock-on:** the gap candidates were re-run (41 → 45; Blau 5 → 9, including the withdrawn one), and candidate ids shift because they are positional. The four earlier Blau dossiers were carried over by genomic position (002→003, 003→004, 004→005, 005→008); four new dossiers were written. ClinVar recheck: 45 checked, 0 now in ClinVar. O2 re-run: Blau HGVS recall 1/22 → 3/22; tier-1 overlap 8/13 → 17/27.
+
 ### 2026-11-14 · D-47 decided: extend the study to the six reserve diseases (12 in all), run to gap candidates, so people assess all 12 together
 
 - **Context:** Jimmy reported more human volunteers and asked how many diseases had been assessed and which to add. Claude recommended the six reserve diseases already named in the application (`CONTEXT.md` §4) and the frozen plan (§4.2), in the registered order: Blau syndrome (*NOD2*), Majeed syndrome (*LPIN2*), familial LCAT deficiency (*LCAT*), GAMT deficiency (*GAMT*), arterial tortuosity syndrome (*SLC2A10*), PAPA syndrome (*PSTPIP1*); funded from budget line 7 (Stretch, $9,000, unspent); estimated at roughly $150–250 per disease, $1,000–1,500 for six (session readings of the first run); registered as a separate addendum before extraction, with results reported apart from the primary six; checked first for phenopacket-store absence and for at least 15 accessible eligible primary reports (the D-08 bar); one disease piloted and the cost re-estimated before the rest.
@@ -60,7 +69,7 @@ How to use this file:
   - **Child-table label spans filled by script** (`analysis/extension/fill_label_spans.py`): the label quote is copied from the person's own individuals row only when exactly one row has that label. This is what the earlier repair-only resumes did by hand, and every change is logged in `label_span_fill.json`. Label claims are bookkeeping claims the gatekeeper does not judge, and no value is marked supported by script (D-28).
   - **No `isoform_sensitive` block for GAMT and PSTPIP1** (`analysis/extension/isoform_check_2026-11-15.md`): a block would have marked every PSTPIP1 description without a transcript as ambiguous.
   - **Harness options, defaults unchanged:** `concordance_o2.py --triage-dir/--title`, `--root` on the dossier scripts, and the five extension diseases added to `make_dossier_batches.py`. The O2 triage sample for the extension went to `adjudication/o2_triage_ext/` (seed 72650; all 48 misses, because there were fewer than 50).
-- **Open, for Jimmy (proposed, not applied):**
+- **Open, for Jimmy (resolved on 2026-11-15 by D-48, under his delegation; see the D-48 entry above):**
   - **[D-48 proposed] NOD2 legacy-transcript fallback.** Under the registered rule, 19 Blau cDNA descriptions written in legacy NM_022162 numbering fail on MANE. A fallback to NM_022162.3 after a reference mismatch places all 19 (`analysis/extension/nod2/`). Blau HGVS recall goes from 1/22 to 3/22 and the tier-1 overlap denominator from 13 to 27. Recall stays low because 20 of the 21 misses are protein-only descriptions in legacy numbering, 27 residues above MANE. Adopting the fallback is a deviation. Until Jimmy decides, the registered result stands and the sensitivity analysis is reported beside it.
   - **G-blau-005, probable false gap candidate.** `c.1538T>C (M513T)` is in legacy numbering, but it was read on MANE, where the reference base also matches, giving p.Leu513Pro. Neither rule catches this. The options are to withdraw it as with G-danon-001 (D-43; a deviation), or to leave it for the panel with the note. It stays in `candidates.csv` until Jimmy decides. The Blau dossier helper reached the same conclusion on its own.
   - **G-lcat-001 is off the gene.** It sits at 4:67583648. Paper 31684177 states transcript NM_012108.3, which is not an LCAT transcript, and normalization honoured it. The paper's change is p.Ile202Thr on LCAT. `gap_candidates.py` has no on-gene check; a chromosome check finds no such case among the registered six's 215 candidates. Same options as G-blau-005. Adding an on-gene check to the harness would be a deviation for the registered O3 procedure.
@@ -768,6 +777,14 @@ Entry format once frozen:
 - **Approved by:** Jimmy Lin, on 2026-11-14 ("go with your recommendation, draft the addendum and run the checks and proceed with the analysis for all six all the way to the end").
 - **Expected effect on results:** none on the registered six. The extension's results are reported separately; any pooled 12-disease figure is exploratory.
 - **Reported where:** an extension results report, and the methods of the final paper.
+
+### 2026-11-15 · D-48 · NOD2 legacy-transcript fallback in Stage 4 normalization (Blau, extension only)
+- **Registered:** a cDNA description with no stated transcript is normalized on MANE Select only (pipeline v1.0; D-43 added an isoform rule for labelled alternative exons).
+- **Change:** for Blau only (`configs/stage4/blau.json`, `legacy_transcript_fallback`), a description that fails on MANE with a reference mismatch is sent once more on NM_022162.3. Two extension gap candidates are withdrawn: G-blau-008 (formerly G-blau-005), placed on MANE by a chance reference match, and G-lcat-001, placed off the gene by a paper's wrong transcript.
+- **Reason:** most of the Blau literature numbers NOD2 on NM_022162 (27 residues above MANE). The registered rule left 19 of 38 cDNA descriptions unplaced.
+- **Approved by:** Claude, under Jimmy's delegation of 2026-11-15 ("For the 4 decisions, you can decide for me").
+- **Expected effect on results:** none on the registered six (the config exists only for Blau). Blau: cDNA descriptions normalized 18 → 37 of 38. O2 HGVS recall 1/22 → 3/22. Recall stays low because 20 of the 21 misses are protein-only descriptions in legacy numbering. Gap candidates 5 → 9, of which 1 is withdrawn.
+- **Reported where:** `reports/extension_report.md`, with the registered-rule figures beside the new ones (`analysis/extension/registered_rule/`).
 
 ### YYYY-MM-DD · D-nn · Short title
 - Registered: what the frozen plan said (section)

@@ -60,8 +60,10 @@ def passages(md: str, name: str, limit: int = 4) -> list[str]:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--sample-dir", default=str(HERE), help="D-47 extension: adjudication/o2_triage_ext")
+    ap.add_argument("--store-key", default="o2-triage-v1", help="D-47 extension: o2x-triage-v1")
     a = ap.parse_args(argv)
-    rows = list(csv.DictReader((HERE / "sample.csv").open()))
+    rows = list(csv.DictReader((Path(a.sample_dir) / "sample.csv").open()))
     items = []
     for r in rows:
         md_path = ROOT / f"data/literature/{r['disease']}/fulltext_md/{r['pmid']}.md"
@@ -71,7 +73,7 @@ def main(argv: list[str] | None = None) -> int:
                       "passages": passages(md, r["clinvar_name"]), "paper_found": bool(md)})
     style = (ROOT / "adjudication/o3_gaps/adjudication_page_template.html").read_text()
     style = style[style.index("<style>"):style.index("</style>") + 8]
-    data = json.dumps({"items": items, "cats": CATS, "store_key": "o2-triage-v1"}, ensure_ascii=False).replace("</", "<\\/")
+    data = json.dumps({"items": items, "cats": CATS, "store_key": a.store_key}, ensure_ascii=False).replace("</", "<\\/")
     page = TEMPLATE.replace("/*__STYLE__*/", style).replace("/*__DATA__*/null", data)
     Path(a.out).write_text(page)
     print(json.dumps({"items": len(items), "with_passages": sum(bool(i["passages"]) for i in items),

@@ -31,21 +31,27 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--adjudicator", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--only-with-dossier", action="store_true")
+    ap.add_argument("--root", default=str(HERE), help="candidate folder (D-47 extension: adjudication/o3_gaps_ext)")
+    ap.add_argument("--store-prefix", default="o3-adjudication", help="D-47 extension: o3x-adjudication")
+    ap.add_argument("--exclude-withdrawn", action="store_true", help="leave out candidates whose status is withdrawn")
     a = ap.parse_args(argv)
-    cands = list(csv.DictReader((HERE / "candidates.csv").open()))
+    src = Path(a.root)
+    cands = list(csv.DictReader((src / "candidates.csv").open()))
     meta = {}
-    for b in sorted((HERE / "batches").glob("batch_*.json")):
+    for b in sorted((src / "batches").glob("batch_*.json")):
         doc = json.loads(b.read_text())
         for c in doc["candidates"]:
             meta[c["candidate_id"]] = {"disease_name": doc["disease_name"], "inheritance": doc["inheritance"]}
-    summary = json.loads((HERE / "summary.json").read_text())
+    summary = json.loads((src / "summary.json").read_text())
     triage = {}
-    if (HERE / "triage.csv").exists():  # pre-adjudication pointers from triage_flags.py
-        for t in csv.DictReader((HERE / "triage.csv").open()):
+    if (src / "triage.csv").exists():  # pre-adjudication pointers from triage_flags.py
+        for t in csv.DictReader((src / "triage.csv").open()):
             triage[t["candidate_id"]] = json.loads(t["evidence"] or "{}")
     out, missing = [], 0
     for c in cands:
-        f = HERE / "dossiers" / f"{c['candidate_id']}.json"
+        if a.exclude_withdrawn and c.get("status") == "withdrawn":
+            continue
+        f = src / "dossiers" / f"{c['candidate_id']}.json"
         dossier = json.loads(f.read_text()) if f.exists() else None
         if dossier is None:
             missing += 1
@@ -59,10 +65,10 @@ def main(argv: list[str] | None = None) -> int:
                     "original_strings": c["original_strings"], "protein_check": c["protein_check"],
                     "only_reviews": c.get("n_non_review_papers") == "0", "flags": triage.get(c["candidate_id"], {}),
                     "dossier": dossier})
-    order = ["ssadh", "tangier", "lad1", "axd", "danon", "ha20"]  # HA20 last: development disease (D-18)
+    order = ["ssadh", "tangier", "lad1", "axd", "danon", "ha20", "gamt", "papa", "ats", "blau", "lcat"]  # HA20 last: development disease (D-18)
     out.sort(key=lambda c: (order.index(c["disease"]) if c["disease"] in order else 99, c["id"]))
     data = {"title": f"Gap-variant adjudication, adjudicator {a.adjudicator}", "adjudicator": a.adjudicator,
-            "snapshot": summary["snapshot"], "store_key": f"o3-adjudication-{a.adjudicator}-v1", "candidates": out}
+            "snapshot": summary["snapshot"], "store_key": f"{a.store_prefix}-{a.adjudicator}-v1", "candidates": out}
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (HERE / "adjudication_page_template.html").read_text().replace("/*__DATA__*/null", blob)
     page = page.replace("<title>Gap Variant Adjudication</title>", f"<title>Gap Variant Adjudication {a.adjudicator}</title>")

@@ -7,16 +7,16 @@
 | gamt | 81 | 8 | 8 | 0 | 0 | 0 | 7 (0) |
 | papa | 11 | 1 | 1 | 0 | 0 | 0 | 5 (0) |
 | ats | 27 | 1 | 1 | 0 | 0 | 0 | 6 (2) |
-| blau | 13 | 5 | 5 | 0 | 1 | 0 | 2 (0) |
+| blau | 27 | 10 | 9 | 1 | 1 | 0 | 2 (0) |
 | lcat | 50 | 27 | 26 | 1 | 17 | 18 | 9 (2) |
-| **all** | 182 | 42 | 41 | 1 | 18 | 18 | 29 (4) |
+| **all** | 196 | 47 | 45 | 2 | 18 | 18 | 29 (4) |
 
 **Protein check** (the paper's stated protein against VariantValidator's prediction from the normalized cDNA; a pre-triage flag, not a verdict):
 
 - gamt: agrees 6, differs 1, no stated protein 1
 - papa: no stated protein 1
 - ats: agrees 1
-- blau: differs 5
+- blau: differs 8, no stated protein 1
 - lcat: agrees 5, differs 4, no stated protein 17
 
 **Papers per candidate** (3 means 3 or more):
@@ -24,5 +24,5 @@
 - gamt: 1: 6, 2: 2
 - papa: 2: 1
 - ats: 1: 1
-- blau: 1: 4, 2: 1
+- blau: 1: 8, 2: 1
 - lcat: 1: 24, 2: 2
