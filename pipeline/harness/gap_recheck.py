@@ -25,10 +25,13 @@ OUT = Path("adjudication/o3_gaps")
 
 
 def main(argv: list[str] | None = None) -> int:
+    global OUT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--snapshot", required=True)
     ap.add_argument("--manifests", default="analysis/poc/reference_snapshot")
+    ap.add_argument("--out", default=str(OUT), help="output folder (default adjudication/o3_gaps; the D-47 extension uses adjudication/o3_gaps_ext)")
     a = ap.parse_args(argv)
+    OUT = Path(a.out)
     snap = Path(a.snapshot)
     date = snap.name
     cands = list(csv.DictReader((OUT / "candidates.csv").open()))

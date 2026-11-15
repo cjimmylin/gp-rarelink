@@ -1,0 +1,19 @@
+Build the checklist-to-HPO map for one disease (D-40 procedure; the six existing maps under configs/checklist_hpo/ were made the same way).
+
+Disease key: majeed (Majeed syndrome, gene LPIN2).
+Checklist (20 items): /home/user/gp-rarelink/configs/checklists/majeed.json
+Model of the output format and level of care: /home/user/gp-rarelink/configs/checklist_hpo/tangier.json (read its "description" and a few items).
+Output: /home/user/gp-rarelink/configs/checklist_hpo/majeed.json
+Scratch directory (use no other): {scratch}
+
+Rules:
+- Keys of "items" are exactly the 20 checklist names, spelled as in the checklist.
+- For each item give "observed" (the one HPO term a phenopacket may assert when the item is observed, or null when the item is a composite or no HPO term has the same scope), "excluded" (every term a phenopacket may mark excluded when the item is explicitly absent) and "note" (one sentence naming the term(s) and why).
+- Find terms ONLY with the pinned HPO release through the lookup tool, run from /home/user/gp-rarelink:
+    uv run python -m pipeline.extract.hpo_lookup search "<words>"
+    uv run python -m pipeline.extract.hpo_lookup show HP:nnnnnnn
+    uv run python -m pipeline.extract.hpo_lookup is-ancestor HP:a HP:b
+  Do not read phenotype.hpoa or any disease annotation file, and do not use OMIM, Orphanet or ClinVar. Choose terms of the same scope as the item; do not pick a broader parent for "observed".
+- Top-level fields: "description" (adapt Tangier's wording to majeed, dated 2026-11-15), "hpo_release" (copy Tangier's), "items".
+- Then run: uv run python -m pipeline.extract.check_checklist_map --disease majeed --map configs/checklist_hpo/majeed.json --checklist configs/checklists/majeed.json  and fix anything it reports.
+Change no other file, do not run git, do not look anything up online. Reply in under 150 words with any item where the choice was close.

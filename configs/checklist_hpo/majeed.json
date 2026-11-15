@@ -1,0 +1,153 @@
+{
+  "description": "HPO terms for the 20 majeed checklist items (configs/checklists/majeed.json), chosen on 2026-11-15 by a Claude helper from the pinned HPO release by name and synonym search and hierarchy checks (pipeline/extract/hpo_lookup.py), D-40. 'observed' is the term a phenopacket may assert when the item is observed; null where the item is a composite, or has no HPO term of the same scope, so the specific feature rows carry it instead. 'excluded' lists every term a phenopacket may mark excluded when the item is explicitly absent. Flagged for review by Jimmy or the panel; not a pre-registered choice.",
+  "hpo_release": "hp/releases/2026-09-01",
+  "items": {
+    "chronic recurrent multifocal osteomyelitis": {
+      "observed": null,
+      "excluded": [
+        "HP:0002754"
+      ],
+      "note": "Osteomyelitis (EXACT 'Bone infection'). HPO has no chronic, recurrent, multifocal, sterile or nonbacterial osteomyelitis term, and Osteomyelitis is broader (single episodes) and worded as infectious, so observed is null; it is excluded only because these papers state the absence of CRMO as no osteomyelitis or no bone lesions, which strictly does not rule out an unrelated infectious osteomyelitis: review."
+    },
+    "bone pain": {
+      "observed": "HP:0002653",
+      "excluded": [
+        "HP:0002653"
+      ],
+      "note": "Bone pain (EXACT 'Bone pain'; no children)."
+    },
+    "joint pain": {
+      "observed": "HP:0002829",
+      "excluded": [
+        "HP:0002829"
+      ],
+      "note": "Arthralgia (EXACT 'Joint pain'); Arthralgia/arthritis is its child."
+    },
+    "joint or limb swelling": {
+      "observed": null,
+      "excluded": [
+        "HP:0001386",
+        "HP:0001785",
+        "HP:0001225",
+        "HP:0025131"
+      ],
+      "note": "Joint swelling, plus Ankle swelling, Wrist swelling and Finger swelling, which are not its descendants in HPO. HPO has no limb swelling term (Peripheral edema means fluid edema and is not used), so observed is null."
+    },
+    "warmth or redness over bone or joint": {
+      "observed": null,
+      "excluded": [],
+      "note": "HPO has no term for local warmth or for redness over a bone or joint; Erythema (any skin or mucosal redness) is broader and would wrongly exclude the erythema of Sweet syndrome, and Arthritis is broader in another direction, so no term is asserted or excluded (marked unmapped, 2026-11-15).",
+      "unmapped": true
+    },
+    "joint contractures": {
+      "observed": "HP:0034392",
+      "excluded": [
+        "HP:0034392"
+      ],
+      "note": "Joint contracture (EXACT 'Contracture'); Flexion contracture, Limb joint contracture and the site-specific contractures are descendants."
+    },
+    "osteonecrosis": {
+      "observed": "HP:0010885",
+      "excluded": [
+        "HP:0010885"
+      ],
+      "note": "Avascular necrosis (EXACT 'Osteonecrosis', 'Aseptic bone necrosis')."
+    },
+    "recurrent fever": {
+      "observed": "HP:0001954",
+      "excluded": [
+        "HP:0001954"
+      ],
+      "note": "Recurrent fever (EXACT 'Episodic fever', 'Intermittent fever'); Periodic fever and Non-periodic recurrent fever are its children."
+    },
+    "microcytic anemia": {
+      "observed": "HP:0001935",
+      "excluded": [
+        "HP:0001935"
+      ],
+      "note": "Microcytic anemia; Hypochromic microcytic anemia is its child."
+    },
+    "dyserythropoiesis on bone marrow": {
+      "observed": "HP:0031688",
+      "excluded": [
+        "HP:0031688"
+      ],
+      "note": "Erythroid dysplasia (synonym 'Dyserythropoiesis', not EXACT), a morphology finding of the erythroid lineage; Erythroid hyperplasia is not used because hyperplasia alone is not dyserythropoiesis, and the 'CDA' anemia terms are anemia terms, not marrow findings."
+    },
+    "neutrophilic dermatosis (Sweet syndrome)": {
+      "observed": "HP:0031234",
+      "excluded": [
+        "HP:0031234",
+        "HP:0033167"
+      ],
+      "note": "Neutrophilic infiltration of the skin (under Inflammatory abnormality of the skin), the defining finding of a neutrophilic dermatosis; HPO has no Sweet syndrome or neutrophilic dermatosis term. Neutrophilic urticarial dermatosis (under Urticaria) is a narrower neutrophilic dermatosis outside it and is excluded as well; review whether the scope is the same."
+    },
+    "failure to thrive": {
+      "observed": "HP:0001508",
+      "excluded": [
+        "HP:0001508"
+      ],
+      "note": "Failure to thrive (under Decreased body weight; not under Growth delay)."
+    },
+    "growth delay": {
+      "observed": "HP:0001510",
+      "excluded": [
+        "HP:0001510"
+      ],
+      "note": "Growth delay (EXACT 'Growth retardation', 'Poor growth'); Short stature and Postnatal growth retardation are descendants, Failure to thrive is not."
+    },
+    "hepatomegaly": {
+      "observed": "HP:0002240",
+      "excluded": [
+        "HP:0002240"
+      ],
+      "note": "Hepatomegaly; Hepatosplenomegaly is a descendant."
+    },
+    "splenomegaly": {
+      "observed": "HP:0001744",
+      "excluded": [
+        "HP:0001744"
+      ],
+      "note": "Splenomegaly; Hepatosplenomegaly is a descendant."
+    },
+    "paravertebral mass": {
+      "observed": "HP:6000660",
+      "excluded": [
+        "HP:6000660"
+      ],
+      "note": "Paravertebral mass (under Abnormality of the vertebral column). Extramedullary hematopoiesis is its usual cause in this disease but a different finding, so it is not used."
+    },
+    "neonatal jaundice": {
+      "observed": "HP:0006579",
+      "excluded": [
+        "HP:0006579"
+      ],
+      "note": "Prolonged neonatal jaundice, which has 'Neonatal jaundice' as an EXACT synonym; Neonatal hyperbilirubinemia is a laboratory finding and is not used. Review whether 'prolonged' narrows the scope."
+    },
+    "elevated inflammatory markers (ESR/CRP)": {
+      "observed": null,
+      "excluded": [
+        "HP:0003565",
+        "HP:0011227"
+      ],
+      "note": "Elevated erythrocyte sedimentation rate and Elevated circulating C-reactive protein concentration; their common parent Acute phase response is broader (ferritin, hepcidin, serum amyloid A), so observed is null."
+    },
+    "elevated proinflammatory cytokines": {
+      "observed": null,
+      "excluded": [
+        "HP:6000374",
+        "HP:0030783",
+        "HP:0033178",
+        "HP:6000239"
+      ],
+      "note": "Increased circulating interleukin 1beta, interleukin 6 and interleukin 8 concentration and Elevated circulating tumor necrosis factor alpha concentration (the cytokines the checklist quotes name). Abnormal circulating cytokine concentration also covers decreased levels, and HPO has no general increased-cytokine term, so observed is null."
+    },
+    "neutropenia": {
+      "observed": "HP:0001875",
+      "excluded": [
+        "HP:0001875"
+      ],
+      "note": "Decreased total neutrophil count (EXACT 'Neutropenia'); cyclic, transient, persistent and autoimmune neutropenia are descendants."
+    }
+  }
+}

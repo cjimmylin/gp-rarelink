@@ -54,6 +54,14 @@ DISPLAY = {
     "ssadh": ("succinic semialdehyde dehydrogenase (SSADH) deficiency", "SSADH deficiency"),
     "danon": ("Danon disease", "Danon disease"),
     "tangier": ("Tangier disease", "Tangier disease"),
+    # Extension diseases (D-52, recorded as D-47 in the extension session, 2026-11-14; preregistration/addendum_extension_v1.md)
+    "blau": ("Blau syndrome (early-onset sarcoidosis)", "Blau syndrome"),
+    "lcat": ("familial LCAT deficiency (including fish-eye disease)", "LCAT deficiency"),
+    "gamt": ("guanidinoacetate methyltransferase (GAMT) deficiency", "GAMT deficiency"),
+    "ats": ("arterial tortuosity syndrome", "arterial tortuosity syndrome"),
+    "papa": ("PAPA syndrome (pyogenic arthritis, pyoderma gangrenosum and acne) and the PSTPIP1-associated inflammatory spectrum",
+             "PAPA syndrome"),
+    "majeed": ("Majeed syndrome", "Majeed syndrome"),  # substitute, 2026-11-15 (Jimmy's request; not the six-disease study)
 }
 HA20_CHECKLIST = ("oral ulcers; genital ulcers; gastrointestinal ulcers or inflammation; recurrent fever; arthritis or "
                   "arthralgia; uveitis or other ocular inflammation; skin lesions (rash, folliculitis, erythema nodosum); "
@@ -98,7 +106,8 @@ def instantiate(disease: str) -> dict:
     for p, h in FROZEN_SHA.items():
         if sha(p) != h:
             raise SystemExit(f"{p} does not match its frozen sha256")
-    gene = yaml.safe_load(Path("configs/diseases.yaml").read_text())["diseases"][disease]["gene"]
+    y = yaml.safe_load(Path("configs/diseases.yaml").read_text())
+    gene = (y["diseases"].get(disease) or y.get("substitutes", {})[disease])["gene"]  # substitutes: 2026-11-15
     name, short = DISPLAY[disease]
     items = checklist(disease)
 

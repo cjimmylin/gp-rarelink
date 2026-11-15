@@ -1,0 +1,21 @@
+Full-text screening for the GP-RareLink corpus: Majeed syndrome (gene LPIN2). Batch {NN}.
+
+Read and follow exactly: /home/user/gp-rarelink/pipeline/extract/claude_code/prompts/screen_fulltext_v1.md
+
+Disease: Majeed syndrome. Gene: LPIN2.
+Definition: the autoinflammatory syndrome of chronic recurrent multifocal osteomyelitis (CRMO or chronic nonbacterial osteomyelitis), congenital dyserythropoietic anaemia and often neutrophilic dermatosis, caused by biallelic LPIN2 variants.
+Does not count as this disease:
+- isolated CRMO or chronic nonbacterial osteomyelitis (CNO), SAPHO or DIRA without an LPIN2 variant
+- congenital dyserythropoietic anaemia types I-IV (CDAN1, SEC23B, KIF23, KLF1) without osteomyelitis or an LPIN2 variant
+- lipin-2 or lipin family biology (phosphatidate phosphatase, lipid metabolism, Lpin2 mouse models) with no patients
+- LPIN2 polymorphisms in association studies, or a single heterozygous LPIN2 variant that the paper does not present as causing Majeed syndrome
+- the word Majeed as an author's name or another eponym
+
+Papers (read only): the Markdown files listed one per line in /home/user/gp-rarelink/data/literature/majeed/screening_fulltext/work/batch_{NN}.txt (paths are relative to /home/user/gp-rarelink).
+Output: /home/user/gp-rarelink/data/literature/majeed/screening_fulltext/labels/batch_{NN}.csv
+Scratch directory (use no other): /tmp/claude-0/-home-user-gp-rarelink/7f81d167-7341-5d0a-ac55-ef30dbdc96e9/scratchpad/ftscreen_{NN}/
+
+How to work:
+- Many of these papers are cohorts or reviews of autoinflammatory or bone disease in which Majeed syndrome is one diagnosis among many. Search each file for Majeed, LPIN2, lipin and dyserythropoie and read those passages and any tables around them closely: a single table row describing one Majeed patient makes the paper an include. Read the rest of each paper far enough to be sure.
+- Decide every paper yourself; do not assign labels by script or keyword rule. The evidence_quote must be copied character for character from the Markdown file.
+- Write one row per listed file, none missing. Do not change any other file, do not run git, do not look anything up online. Reply with the rows written, counts per decision and exclusion reason, and the included PMIDs with n_individuals.

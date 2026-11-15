@@ -1,0 +1,5682 @@
+{
+ "pmid": "23234264",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "French PCD screening cohort that lists each GAMT-deficient patient's homozygous GAMT variant in Table 2 (e.g. \"| e2 | c.289C > T | p.Q97X | 1 | - | This study |\"), so individual genotypes are identifiable.",
+ "method_note": "Hand-built with a short script from my reading; all spans checked verbatim. Cohort of 6,353 screened; 7 GAMT-deficient patients from 6 families (6 index + 1 brother found by familial inquiry); SLC6A8-deficient patients are out of scope (no rows). Individuals: Table 2 has no patient-label column, so the GAMT-variant carriers are labelled 'Table 2 row k' (k = data row after the two-line header, i.e. c.289C>T = row 1 ... c.577C>T = row 5). Row 2 (c.299_311dup13, '2^a', footnote 'Two affected siblings') covers two people: I labelled one 'Table 2 row 2' and the other 'brother of Table 2 row 2', because the only GAMT sib pair must be the family of the '1 brother affected with GAMT deficiency' found after familial inquiry (7 patients / 6 families, only one family with two). The 7th patient (GAMT gene not studied; 'DNA analysis was rejected by the parents') is 'unnamed person 1' and has no variant row. Table 2 'Reference' column gives the first description of each MUTATION (e.g. 'Dhar et al., 2009 [27]'), not a source for the patient (column header: 'Number of patients identified in this study'), so source_reference_in_review is 'not reported' for all. Zygosity homozygous taken from each person's Table 2 row (Homozygous column). Inheritance left 'not reported': text says 'presumed (parents not available for study) or confirmed (parents were heterozygous for the mutation)' without saying which patients; for c.391+15G>T only 'segregation of this mutation in his parents' is stated (recorded in parental_testing_statement). Variant type only where the abstract names the variant (nonsense c.289C>T, c.577C>T; splicing c.391+15G>T); the text's 'missense (n = 1) ... frame shift (n = 2)' is a list and was not assigned. is_proband left null for the six index patients ('index patients' is only a group term); false for the brother. Clinical features: only features given for ALL GAMT patients ('intellectual disability (100%) and speech delay (100%)', 'attention deficit (100%)', urine GAA:creatinine 'increased for all patients') were assigned to each of the 7 as 'inferred from group statement'; features with <100% frequency (epilepsy 57%, hypotonia 43%, aggressive behaviour 86%, autistic behaviour 43%, etc.) and Table 1 '+/++/+++' grades were not assigned to anyone. Table 1 '-' (defined as absence in all patients) appears in the GAMT column only under 'Signs leading to consult' (Autistic behavior), which is not a feature statement, so nothing was excluded. Speech delay was not mapped to the checklist item 'absent or limited speech'. Contradictions/inconsistencies: Methods and Results say GAMT activity was measured in lymphoblasts, while the Discussion says c.391+15G>T was 'linked with decreased GAMT activity in cultured fibroblasts'; Discussion says 'Five mutations were identified for GAMT gene in 6 unrelated families' but Table 2 shows 5 variants in 5 families (6 patients); the text says 'frame shift (n = 2)' whereas Table 1 lists the corresponding class as 'Duplication 2/6'. n_patients_reported = 6 (patients with a GAMT variant); 7 were diagnosed.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "first_author": {
+     "value": "Cheillan",
+     "span": "Authors: Cheillan David"
+    },
+    "year": {
+     "value": 2012,
+     "span": "Journal: Orphanet Journal of Rare Diseases (2012)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "In this paper we present the results of a large retrospective study of urinary screening for PCD on 6,353 patients"
+    },
+    "n_patients_reported": {
+     "value": 6,
+     "span": "The GAMT gene was studied in 6 of the 7 patients. In each case, patients had presumed (parents not available for study) or confirmed (parents were heterozygous for the mutation) homozygous mutations (Table 2)."
+    },
+    "cohort_size_as_stated": {
+     "value": 6353,
+     "span": "Urine guanidinoacetate (GAA) and creatine:creatinine ratios were measured in a cohort of 6,353 subjects"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "GAMT deficiency",
+     "span": "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "urinary screening (GAA and creatine:creatinine ratios) with biochemical abnormality confirmed on a second sample; diagnosis confirmed by genetic analysis (GAMT gene studied)",
+     "span": [
+      "A patient was considered “at risk of PCD” (AGAT, GAMT or SLC6A8 deficiency) when the biochemical abnormality was confirmed on this second sample.",
+      "Diagnosis was confirmed by genetic analysis in 17 patients.",
+      "The GAMT gene was studied in 6 of the 7 patients."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "GAMT deficiency",
+     "span": "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "urinary screening (GAA and creatine:creatinine ratios) with biochemical abnormality confirmed on a second sample; diagnosis confirmed by genetic analysis (GAMT gene studied)",
+     "span": [
+      "A patient was considered “at risk of PCD” (AGAT, GAMT or SLC6A8 deficiency) when the biochemical abnormality was confirmed on this second sample.",
+      "Diagnosis was confirmed by genetic analysis in 17 patients.",
+      "The GAMT gene was studied in 6 of the 7 patients."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": false,
+     "span": "Three additional affected sibs were identified after familial inquiries (1 brother affected with GAMT deficiency"
+    },
+    "sex": {
+     "value": "male",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "GAMT deficiency",
+     "span": "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "identified after familial inquiries; diagnosis confirmed by genetic analysis (GAMT gene studied)",
+     "span": [
+      "Three additional affected sibs were identified after familial inquiries (1 brother affected with GAMT deficiency and 2 brothers with SLC6A8 deficiency in two different families).",
+      "Diagnosis was confirmed by genetic analysis in 17 patients.",
+      "The GAMT gene was studied in 6 of the 7 patients."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "by the segregation of this mutation in his parents"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "GAMT deficiency",
+     "span": "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "urinary screening (GAA and creatine:creatinine ratios) with biochemical abnormality confirmed on a second sample; diagnosis confirmed by genetic analysis (GAMT gene studied)",
+     "span": [
+      "A patient was considered “at risk of PCD” (AGAT, GAMT or SLC6A8 deficiency) when the biochemical abnormality was confirmed on this second sample.",
+      "Diagnosis was confirmed by genetic analysis in 17 patients.",
+      "The GAMT gene was studied in 6 of the 7 patients."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "GAMT deficiency",
+     "span": "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "urinary screening (GAA and creatine:creatinine ratios) with biochemical abnormality confirmed on a second sample; diagnosis confirmed by genetic analysis (GAMT gene studied)",
+     "span": [
+      "A patient was considered “at risk of PCD” (AGAT, GAMT or SLC6A8 deficiency) when the biochemical abnormality was confirmed on this second sample.",
+      "Diagnosis was confirmed by genetic analysis in 17 patients.",
+      "The GAMT gene was studied in 6 of the 7 patients."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "GAMT deficiency",
+     "span": "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "urinary screening (GAA and creatine:creatinine ratios) with biochemical abnormality confirmed on a second sample; diagnosis confirmed by genetic analysis (GAMT gene studied)",
+     "span": [
+      "A patient was considered “at risk of PCD” (AGAT, GAMT or SLC6A8 deficiency) when the biochemical abnormality was confirmed on this second sample.",
+      "Diagnosis was confirmed by genetic analysis in 17 patients.",
+      "The GAMT gene was studied in 6 of the 7 patients."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "GAMT deficiency",
+     "span": "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "DNA analysis rejected by the parents; diagnosis confirmed by the absence of a creatine peak in brain 1H-MRS, the urinary profile and the deficiency of protein activities",
+     "span": [
+      "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents and the diagnosis was confirmed by the absence of a creatine peak in brain ^1H-MRS, the urinary profile and the deficiency of protein activities."
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GAMT",
+     "span": "Mutations in theGAMTgene"
+    },
+    "variant_original_string": {
+     "value": "c.289C > T",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.289C > T",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Q97X",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "nonsense",
+     "span": "2 nonsense [c.577C > T and c.289C > T]"
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": [
+      "| e2 | c.289C > T | p.Q97X | 1 | - | This study |",
+      "| Exon (e)/Intron (i) | Nucleotide | Amino acid | Homozygous | Heterozygous | Reference |"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "new PCD-causing mutation",
+     "span": "Seven new PCD-causing mutations were discovered (2 nonsense [c.577C > T and c.289C > T]"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GAMT",
+     "span": "Mutations in theGAMTgene"
+    },
+    "variant_original_string": {
+     "value": "c.299_311dup13",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.299_311dup13",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.R105GfsX26",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": [
+      "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |",
+      "| Exon (e)/Intron (i) | Nucleotide | Amino acid | Homozygous | Heterozygous | Reference |",
+      "Two affected siblings. Nucleotide numbering starting at the first adenine of the translation initiation codon ATG. ^a Two affected siblings."
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GAMT",
+     "span": "Mutations in theGAMTgene"
+    },
+    "variant_original_string": {
+     "value": "c.299_311dup13",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.299_311dup13",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.R105GfsX26",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": [
+      "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |",
+      "| Exon (e)/Intron (i) | Nucleotide | Amino acid | Homozygous | Heterozygous | Reference |",
+      "Two affected siblings. Nucleotide numbering starting at the first adenine of the translation initiation codon ATG. ^a Two affected siblings."
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GAMT",
+     "span": "Mutations in theGAMTgene"
+    },
+    "variant_original_string": {
+     "value": "c.391 + 15G > T",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.391 + 15G > T",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.(?)",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "splice",
+     "span": "1 splicing [c.391 + 15G > T]"
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": [
+      "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |",
+      "| Exon (e)/Intron (i) | Nucleotide | Amino acid | Homozygous | Heterozygous | Reference |"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "considered pathogenic by the segregation of this mutation in his parents",
+     "span": "by the segregation of this mutation in his parents"
+    },
+    "functional_evidence_statement": {
+     "value": "linked with decreased GAMT activity in cultured fibroblasts; considered pathogenic by the creation of an alternative splicing donor site in intron 3 (Alamut software)",
+     "span": [
+      "because it was linked with decreased GAMT activity in cultured fibroblasts",
+      "was considered pathogenic by the creation of an alternative splicing donor site in intron 3 (Alamut software)"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic",
+     "span": "The new mutation c391 + 15G > T was considered pathogenic"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GAMT",
+     "span": "Mutations in theGAMTgene"
+    },
+    "variant_original_string": {
+     "value": "c.506G > A",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.506G > A",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.C169Y",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": [
+      "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |",
+      "| Exon (e)/Intron (i) | Nucleotide | Amino acid | Homozygous | Heterozygous | Reference |"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GAMT",
+     "span": "Mutations in theGAMTgene"
+    },
+    "variant_original_string": {
+     "value": "c.577C > T",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.577C > T",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.Q193X",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "nonsense",
+     "span": "2 nonsense [c.577C > T and c.289C > T]"
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": [
+      "| e6 | c.577C > T | p.Q193X | 1 | - | This study |",
+      "| Exon (e)/Intron (i) | Nucleotide | Amino acid | Homozygous | Heterozygous | Reference |"
+     ]
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "new PCD-causing mutation",
+     "span": "Seven new PCD-causing mutations were discovered (2 nonsense [c.577C > T and c.289C > T]"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "intellectual disability",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001249",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "speech delay",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "attention deficit",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "GAA:creatinine ratio (U-GAA/CTN) was increased",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "exceeded the upper control limits by 1.8- to 7.2-fold (range for the group)",
+     "span": "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "feature_text_as_stated": {
+     "value": "intellectual disability",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001249",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "feature_text_as_stated": {
+     "value": "speech delay",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "feature_text_as_stated": {
+     "value": "attention deficit",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "feature_text_as_stated": {
+     "value": "GAA:creatinine ratio (U-GAA/CTN) was increased",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "exceeded the upper control limits by 1.8- to 7.2-fold (range for the group)",
+     "span": "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "feature_text_as_stated": {
+     "value": "intellectual disability",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001249",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "feature_text_as_stated": {
+     "value": "speech delay",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "feature_text_as_stated": {
+     "value": "attention deficit",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "feature_text_as_stated": {
+     "value": "GAA:creatinine ratio (U-GAA/CTN) was increased",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "exceeded the upper control limits by 1.8- to 7.2-fold (range for the group)",
+     "span": "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "intellectual disability",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001249",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "speech delay",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "attention deficit",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "GAA:creatinine ratio (U-GAA/CTN) was increased",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "exceeded the upper control limits by 1.8- to 7.2-fold (range for the group)",
+     "span": "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "feature_text_as_stated": {
+     "value": "intellectual disability",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001249",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "feature_text_as_stated": {
+     "value": "speech delay",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "feature_text_as_stated": {
+     "value": "attention deficit",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "feature_text_as_stated": {
+     "value": "GAA:creatinine ratio (U-GAA/CTN) was increased",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "exceeded the upper control limits by 1.8- to 7.2-fold (range for the group)",
+     "span": "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "intellectual disability",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001249",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "speech delay",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "attention deficit",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "feature_text_as_stated": {
+     "value": "GAA:creatinine ratio (U-GAA/CTN) was increased",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "exceeded the upper control limits by 1.8- to 7.2-fold (range for the group)",
+     "span": "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "feature_text_as_stated": {
+     "value": "intellectual disability",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Intellectual disability",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001249",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "feature_text_as_stated": {
+     "value": "speech delay",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "The predominant clinical signs at diagnosis were intellectual disability (100%) and speech delay (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Delayed speech and language development",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000750",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "feature_text_as_stated": {
+     "value": "attention deficit",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "100%",
+     "span": "Behavioral disturbances were noticed in all patients essentially under the form of attention deficit (100%)"
+    },
+    "hpo_label_candidate": {
+     "value": "Short attention span",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000736",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "feature_text_as_stated": {
+     "value": "GAA:creatinine ratio (U-GAA/CTN) was increased",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "exceeded the upper control limits by 1.8- to 7.2-fold (range for the group)",
+     "span": "In urine, the GAA:creatinine ratio (U-GAA/CTN) was increased for all patients and exceeded the upper control limits by 1.8- to 7.2-fold"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "feature_text_as_stated": {
+     "value": "absence of a creatine peak in brain ^1H-MRS",
+     "span": "the diagnosis was confirmed by the absence of a creatine peak in brain ^1H-MRS"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the diagnosis was confirmed by the absence of a creatine peak in brain ^1H-MRS"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the diagnosis was confirmed by the absence of a creatine peak in brain ^1H-MRS"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "feature_text_as_stated": {
+     "value": "deficiency of protein activities",
+     "span": "the urinary profile and the deficiency of protein activities"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the urinary profile and the deficiency of protein activities"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the urinary profile and the deficiency of protein activities"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 1",
+     "span": "| e2 | c.289C > T | p.Q97X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 2",
+     "span": "| e2 | c.299_311dup13 | p.R105GfsX26 | 2^a | - | Dhar et al., 2009 [27] |"
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "brother of Table 2 row 2",
+     "span": "1 brother affected with GAMT deficiency"
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 3",
+     "span": "| i3 | c.391 + 15G > T | p.(?) | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 4",
+     "span": "| e5 | c.506G > A | p.C169Y | 1 | - | Caldeira Araujo et al., 2005 [63] |"
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 2 row 5",
+     "span": "| e6 | c.577C > T | p.Q193X | 1 | - | This study |"
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "developmental delay or intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    },
+    "evidence_basis": {
+     "value": "inferred from group statement",
+     "span": [
+      "The predominant clinical signs at diagnosis were intellectual disability (100%)",
+      "Seven patients from 6 unrelated families were diagnosed with GAMT deficiency."
+     ]
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "developmental regression",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "absent or limited speech",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "abnormal eeg",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "chorea, choreoathetosis or ballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "tremor",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "spasticity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "stereotypies (stereotypic hand movements or behaviours)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "autistic features (poor eye contact, impaired social communication)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "hyperactivity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "aggressive behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "self-injurious behaviour",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "globus pallidus or basal ganglia lesions on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "white matter or brainstem signal abnormalities on mri",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "cerebral atrophy or ventriculomegaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23234264",
+     "span": "PMID: 23234264"
+    },
+    "individual_label_in_paper": {
+     "value": "unnamed person 1",
+     "span": "For the other 2 patients (1 with GAMT deficiency and 1 with SLC6A8 deficiency), DNA analysis was rejected by the parents"
+    },
+    "checklist_feature": {
+     "value": "hearing loss",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}

@@ -50,16 +50,16 @@ Chunks judged twice (see *Gatekeeper write refusals*): 8 chunks, 1192 claims, ve
 | Danon disease | 22 | 8 (1) | 85.5% of 282 | 22 (8) | 22, 0 errors | 505 (212) |
 | LAD-I | 41 | 11 (1) | 69.1% of 236 | 41 (6) | 41, 0 errors | 508 (299) |
 | SSADH deficiency | 87 | 14 (12) | 98.6% of 347 | 87 (8) | 87, 0 errors | 363 (174) |
-| Tangier disease | 91 | 12 (11) | 88.2% of 516 | 91 (17) | 91, 0 errors | 235 (53) |
-| **Total** | **446** | | | **446 (153)** | | |
+| Tangier disease | 91 | 13 (11) | 88.2% of 516 | 91 (18) | 91, 0 errors | 235 (53) |
+| **Total** | **446** | | | **446 (154)** | | |
 
-Addendum so far (batch 1 + batch 2): 106 + 446 = 552 phenopackets, 11 + 153 = 164 with an interpretation (batch 1 from batch1_summary_2026-11-15.json).
+Addendum so far (batch 1 + batch 2): 115 + 446 = 561 phenopackets, 19 + 154 = 173 with an interpretation (batch 1 from batch1_summary_2026-11-15.json).
 
 <!-- /numbers -->
 
 ## What to take from this
 
-1. **Batch 2 adds 446 phenopackets, 153 with a genetic interpretation.** Alexander disease supplies most of both: 196 phenopackets and 109 interpretations. All 446 are schema-valid. 21 of the 59 included papers have no variant row (AxD 8, Tangier 6, SSADH 4, LAD-I 3; `batch2_review`). Nine were published before 2000 (AxD 1976, 1979, 1984, 1990; Tangier 1971, 1975, 1985, 1996; LAD-I 1996). The other twelve (2001–2021) report a diagnosis without printing a variant: by MRI, biopsy or an unnamed positive gene test (AxD), by clinical and lipid findings (Tangier), by enzyme assay or unspecified mutation analysis (four SSADH cohort papers), or by flow cytometry or a transplant registry (LAD-I).
+1. **Batch 2 adds 446 phenopackets, 154 with a genetic interpretation** (153 when this report was written; one Tangier record gained its interpretation when Stage 4 was re-run for D-49 on 2026-11-15, and the tables above were regenerated on 2026-11-15). Alexander disease supplies most of both: 196 phenopackets and 109 interpretations. All 446 are schema-valid. 21 of the 59 included papers have no variant row (AxD 8, Tangier 6, SSADH 4, LAD-I 3; `batch2_review`). Nine were published before 2000 (AxD 1976, 1979, 1984, 1990; Tangier 1971, 1975, 1985, 1996; LAD-I 1996). The other twelve (2001–2021) report a diagnosis without printing a variant: by MRI, biopsy or an unnamed positive gene test (AxD), by clinical and lipid findings (Tangier), by enzyme assay or unspecified mutation analysis (four SSADH cohort papers), or by flow cytometry or a transplant registry (LAD-I).
 2. **A quarter of the records hold identity fields only.** Count the 446 as records, not as characterized patients (`batch2_review`):
    - 322 carry a disease term. Of the 124 that do not, 101 have a relative's label (parents, siblings and other tested or affected relatives).
    - 158 have no phenotypic feature, and 115 have neither a feature nor an interpretation: SSADH 47 of 87, LAD-I 28 of 41, AxD 20, Tangier 17, Danon 3, HA20 0.
@@ -106,6 +106,14 @@ Nothing here reached extraction that should not have: none of the 72 papers is a
 - **AxD and Danon.** Not checked person by person (comparators `mura2021_axd_italian`, `gagliardi2024_axd_ukb`, `boucek2011_danon_natural_history`, `khedro2025_danon_prospective`).
 
 Whoever runs O4 on the combined set has to tag these individuals first.
+
+**Update, 2026-11-15 (Jimmy asked for the tagging).** Every individual of the SSADH and HA20 runs (registered, batch 1 and batch 2) now carries a comparator-overlap tag: `analysis/bias/comparator_overlap/` (evidence tables, rules and limits in its README; counts from `tags_summary_2026-11-15.json`). No literature frequency was computed and no comparator sheet was filled.
+- **SSADH, batch 2.** Of the 63 batch-2 records with a disease term, 2 are named by the comparator itself (the registry subjects who died at 63 and 33, both in Lapalme-Remis 2015), 49 come from the registry investigators' own database or studies (probable), 4 share only an investigator (possible), 2 are outside the cohort by the paper's own words, and 6 are known only through citations. None of the nine papers is free of a comparator author.
+- **SSADH, registered run.** The same check on the registered run matters more than the addendum: of its 311 records with a disease term, 115 are probable members of the comparator registry (94 of them from the natural history study and its biorepository), 108 are possible, and 63 have no link.
+- **HA20.** The note above about Fu 2026 was wrong in direction: all four of its patients carry mosaic variants, and the comparator excludes somatic variants, so they are outside the cohort. Deshayes 2021 has no link (France; no comparator clinic). In the registered run, 9 records with a disease term are probable (NIH protocol 94-HG-0105, the protocol the comparator names) and 87 are possible (patients seen at one of the comparator's clinics); the preprint does not say which of its patients were published before.
+- **Danon (tagged later the same day).** The comparator is nine male patients enrolled in San Diego in 2019. Two registered papers share an author with it; their two first-hand patients are outside the cohort (one died before 2019, one is far too old), and no batch-2 Danon paper has any link. Nobody in the Danon runs is tagged as in the cohort.
+- **AxD.** Left untagged by decision (D-48): the open comparator is UK Biobank carriers.
+- **Decided (D-48, 2026-11-15).** The primary O4 analysis uses the registered run, counts only records with a disease term, and removes people tagged stated or probable; the other combinations, including the registered run plus this addendum, are reported beside it (`analysis/bias/frequency_deviation.py`). The deviation entry is in `DECISIONS.md`.
 
 ## Not done in this batch
 

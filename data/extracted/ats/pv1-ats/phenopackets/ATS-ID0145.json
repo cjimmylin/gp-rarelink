@@ -1,0 +1,218 @@
+{
+  "id": "ats-pv1-ats-ATS-ID0145",
+  "subject": {
+    "id": "ATS-ID0145",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P8M"
+      }
+    },
+    "sex": "MALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001679",
+        "label": "Abnormal aortic morphology"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:42589462",
+            "description": "| P3 | M/8 months | \u2026 Aberrant origin of aortic side branches reported in this patient."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002301",
+        "label": "Hemiplegia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:42589462",
+            "description": "| P3 | M/8 months | Right-sided hemiplegia."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0005116",
+        "label": "Arterial tortuosity"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:42589462",
+            "description": "| P3 | M/8 months | \u2026 Generalized arterial tortuosity. Aberrant origin of aortic side branches reported in this patient."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0005294",
+        "label": "Arterial dissection"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:42589462",
+            "description": "| P3 | M/8 months | \u2026 Vascular imaging showed internal left carotid artery dissection."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0007392",
+        "label": "Excessive wrinkled skin"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0007539",
+            "label": "author statement supported from referenced clinical study used in automatic assertion"
+          },
+          "reference": {
+            "id": "PMID:42589462",
+            "description": "| P3 | M/8 months | \u2026 Wrinkling of the skin of hands and feet."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "ATS-ID0145-interpretation",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0008818",
+          "label": "arterial tortuosity syndrome"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "ATS-ID0145",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "ATS-ID0145-var1",
+                "label": "c.425G > T/p.(Gly142Val)",
+                "description": "c.425G > T/p.(Gly142Val)",
+                "geneContext": {
+                  "valueId": "HGNC:13444",
+                  "symbol": "SLC2A10"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_030777.4:c.425G>T"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_110404.1:p.(Gly142Val)"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000020.11:g.46725461G>T"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "20",
+                  "pos": "46725461",
+                  "ref": "G",
+                  "alt": "T"
+                },
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0008818",
+        "label": "arterial tortuosity syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-11-15T00:00:00Z",
+    "createdBy": "GP-RareLink pipeline-v1.0 (Claude Code route, D-20; Stage 4 settings D-40)",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2026-09-01",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.obo",
+        "version": "releases/2026-10-06",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "releases/2026-07-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "releases/2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "not pinned",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:42589462"
+      }
+    ]
+  }
+}

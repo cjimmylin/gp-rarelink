@@ -60,8 +60,12 @@ def passages(md: str, name: str, limit: int = 4) -> list[str]:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--sample-dir", default=str(HERE), help="D-47 extension: adjudication/o2_triage_ext")
+    ap.add_argument("--store-key", default="o2-triage-v1", help="D-47 extension: o2x-triage-v1")
+    ap.add_argument("--title", default=None, help="page heading (default: O2 miss triage)")
+    ap.add_argument("--tab-title", default=None, help="browser-tab title (default: O2 Miss Triage)")
     a = ap.parse_args(argv)
-    rows = list(csv.DictReader((HERE / "sample.csv").open()))
+    rows = list(csv.DictReader((Path(a.sample_dir) / "sample.csv").open()))
     items = []
     for r in rows:
         md_path = ROOT / f"data/literature/{r['disease']}/fulltext_md/{r['pmid']}.md"
@@ -71,8 +75,13 @@ def main(argv: list[str] | None = None) -> int:
                       "passages": passages(md, r["clinvar_name"]), "paper_found": bool(md)})
     style = (ROOT / "adjudication/o3_gaps/adjudication_page_template.html").read_text()
     style = style[style.index("<style>"):style.index("</style>") + 8]
-    data = json.dumps({"items": items, "cats": CATS, "store_key": "o2-triage-v1"}, ensure_ascii=False).replace("</", "<\\/")
+    data = json.dumps({"items": items, "cats": CATS, "store_key": a.store_key}, ensure_ascii=False).replace("</", "<\\/")
     page = TEMPLATE.replace("/*__STYLE__*/", style).replace("/*__DATA__*/null", data)
+    if a.title:
+        page = page.replace("<h1>O2 miss triage</h1>", f"<h1>{a.title}</h1>")
+    if a.tab_title:
+        page = page.replace("<title>O2 Miss Triage</title>", f"<title>{a.tab_title}</title>")
+    page = page.replace("0 of 50 triaged", f"0 of {len(items)} triaged")
     Path(a.out).write_text(page)
     print(json.dumps({"items": len(items), "with_passages": sum(bool(i["passages"]) for i in items),
                       "papers_missing": sum(not i["paper_found"] for i in items), "bytes": len(page.encode())}))

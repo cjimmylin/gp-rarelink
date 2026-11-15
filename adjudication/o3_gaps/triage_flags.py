@@ -15,6 +15,7 @@ Flags are pointers for the panel, not verdicts; every flag cites where it came f
   mosaic_or_somatic      a concern mentions mosaicism or a somatic finding
   possible_existing_record  a concern mentions an existing database accession (SCV/RCV/VCV)
   newly_in_clinvar       the allele has a GRCh38 record in a newer ClinVar snapshot (--recheck)
+  no_dossier             no dossier file exists for the candidate
 Keyword flags come from model-written concerns; they can be wrong in either direction.
 
   python3 -I adjudication/o3_gaps/triage_flags.py [--recheck-summary adjudication/o3_gaps/recheck_<date>.json]
@@ -41,18 +42,24 @@ RULES = {
 
 
 def main(argv: list[str] | None = None) -> int:
+    global ROOT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--recheck-summary", default=None)
+    ap.add_argument("--root", default=str(ROOT), help="candidate folder (default adjudication/o3_gaps; the D-47 extension uses adjudication/o3_gaps_ext)")
     a = ap.parse_args(argv)
+    ROOT = Path(a.root)
     newly = set()
     if a.recheck_summary and Path(a.recheck_summary).exists():
         newly = set(json.loads(Path(a.recheck_summary).read_text()).get("now_in_clinvar", []))
     rows, tally = [], Counter()
     for c in csv.DictReader((ROOT / "candidates.csv").open()):
         cid = c["candidate_id"]
-        d = json.loads((ROOT / "dossiers" / f"{cid}.json").read_text())
+        f = ROOT / "dossiers" / f"{cid}.json"
+        d = json.loads(f.read_text()) if f.exists() else {}
         concerns = [str(x) for x in d.get("concerns") or []]
         flags = {}
+        if not f.exists():   # e.g. two Majeed candidates whose only paper's text is not available (D-54)
+            flags["no_dossier"] = "no evidence dossier: the paper text was not available when dossiers were written"
         if c["protein_check"].startswith("differs"):
             flags["protein_mismatch"] = c["protein_check"]
         if c.get("n_non_review_papers") == "0":

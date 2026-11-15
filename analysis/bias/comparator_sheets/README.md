@@ -26,4 +26,4 @@
 
 **Paywalled, so left out under D-32:** Mura 2021 (AxD, PMID 34865968), Boucek 2011 (Danon, PMID 21415759) and Aeschlimann 2018 (HA20, PMID 29317407). **No comparator exists for LAD-I or Tangier** (§7.4.1, D-35): the bias arm leaves those two out.
 
-When a sheet is filled, run `uv run python analysis/bias/frequency_deviation.py`.
+When a sheet is filled, run `uv run python analysis/bias/frequency_deviation.py`. It removes people the comparator cohort also holds, using the tags in `analysis/bias/comparator_overlap/` (SSADH, HA20 and Danon; Alexander disease is left untagged). The primary analysis was fixed by decision D-48 on 2026-11-15, before any sheet was filled.

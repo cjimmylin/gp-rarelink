@@ -33,7 +33,7 @@ from make_rating_page import FIELD_LABELS, clean_html_cells, context_for, is_htm
 TABLES = {"variants": "Variant", "phenotypic_features": "Feature", "phenotype_checklist": "Checklist item",
           "individuals": "Person", "publications": "Paper"}
 DISEASE = {"ha20": "A20 haploinsufficiency", "ssadh": "SSADH deficiency", "tangier": "Tangier disease",
-           "lad1": "LAD-I", "axd": "Alexander disease", "danon": "Danon disease"}
+           "lad1": "LAD-I", "axd": "Alexander disease", "danon": "Danon disease", "majeed": "Majeed syndrome"}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -41,7 +41,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--rater", required=True, help="A, B or C (C: tie-breaker, built later from the disagreements)")
     ap.add_argument("--out", required=True)
     ap.add_argument("--sample-dir", default=str(HERE))
+    ap.add_argument("--store-prefix", default="o1-audit", help="D-47 extension: o1x-audit")
     ap.add_argument("--template", default=str(HERE / "rating_page_template.html"))
+    ap.add_argument("--tab-title", default=None, help="browser-tab title, two to four words (default: O1 Audit Rater <X>)")
+    ap.add_argument("--title", default=None, help="page heading and tab title (default: O1 claim audit, rater <X>); used for the exploratory Majeed audit (D-54)")
     a = ap.parse_args(argv)
     rows = list(csv.DictReader((Path(a.sample_dir) / "sample.csv").open()))
     forbidden = [c for c in rows[0] if re.search(r"gatekeeper|verdict|reason|about", c, re.I)]
@@ -69,11 +72,11 @@ def main(argv: list[str] | None = None) -> int:
             "quotes": quotes, "contexts": [c for c in contexts if c["text"]],
             "context_missing": [c["quote"][:80] for c in contexts if not c["text"]],
         })
-    title = f"O1 claim audit, rater {a.rater}"
-    data = {"claims": claims, "hpo": [], "second": [], "store_key": f"o1-audit-rater-{a.rater}-v1"}
+    title = a.title or f"O1 claim audit, rater {a.rater}"
+    data = {"claims": claims, "hpo": [], "second": [], "store_key": f"{a.store_prefix}-rater-{a.rater}-v1"}
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (Path(a.template).read_text().replace("/*__DATA__*/null", blob)
-            .replace("<title>O1 Claim Audit</title>", f"<title>O1 Audit Rater {a.rater}</title>")
+            .replace("<title>O1 Claim Audit</title>", f"<title>{a.tab_title or f'O1 Audit Rater {a.rater}'}</title>")
             .replace("<h1>O1 claim audit</h1>", f"<h1>{title}</h1>"))
     Path(a.out).write_text(page)
     missing = {c["id"]: c["context_missing"] for c in claims if c["context_missing"]}
