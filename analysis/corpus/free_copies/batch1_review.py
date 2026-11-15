@@ -96,12 +96,20 @@ def local_inputs(scr: dict, date: str) -> dict | None:
                     i = mn.find(sp, i + 1)
             q = round(sum(mask) / len(mn), 3)
         html = ROOT / f"data/literature/free_copies/{d}/{p}.html"
+        pub = ROOT / f"data/literature/free_copies/{d}/{p}.publisher.pdf"
+        web = ROOT / f"data/literature/free_copies/{d}/webpage_version"
+        note = ""
+        if pub.exists() and sha(pub) == sha(pdf):
+            note = (f"publisher PDF fetched 2026-11-15; it replaces the web-page version read first "
+                    f"(printed PDF sha256 {sha(web / (p + '.printed.pdf'))}, Markdown sha256 {sha(web / (p + '.md'))})")
+        elif html.exists():
+            note = f"PDF printed from the saved web page (html sha256 {sha(html)}) in headless Chromium"
         mm = json.loads(mj.read_text())
         rows.append({"disease": d, "pmid": p, "screening": s["decision"], "europepmc_availability": meta[(d, p)]["europepmc_availability"],
                      "source_host": status[(d, p)]["source_host"], "pdf_sha256": sha(pdf), "pdf_bytes": pdf.stat().st_size, "pdf_pages": pages,
                      "markdown_sha256": sha(md), "markdown_chars": len(m), "converter": mm.get("converter", ""), "tokens_estimate": mm.get("tokens", ""),
                      "share_pdf_words_in_markdown": share, "share_markdown_quoted": q if q is not None else "",
-                     "note": f"PDF printed from the saved web page (html sha256 {sha(html)}) in headless Chromium" if html.exists() else ""})
+                     "note": note})
         cov[f"{d}:{p}"] = {"share_pdf_words_in_markdown": share, "share_markdown_quoted": q, "availability": meta[(d, p)]["europepmc_availability"], "screening": s["decision"]}
     with (ROOT / f"analysis/corpus/free_copies/batch1_inputs_{date}.csv").open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]))
