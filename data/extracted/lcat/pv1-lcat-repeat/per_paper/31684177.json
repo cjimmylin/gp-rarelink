@@ -1,0 +1,4651 @@
+{
+ "pmid": "31684177",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "The paper describes three FLD patients with homozygous LCAT variants: \"Genetic analysis revealed new missense homozygous mutations, p.(Ile202Thr) in both siblings and p.(Arg171Glu) in the other patient\".",
+ "method_note": "Read the whole paper; values typed by hand into a small Python builder (scratch dir) and spans checked verbatim by script. Labels: the paper calls the patients 'first/second/third case' (Table 1 headers 'First Case', 'Second Case', 'Third Case'; Tables 2-3 'Second case', 'Third case'), also 'first/second/third patient', 'Patient 3', 'patient 2'; Figure S1 legend gives pedigree positions I.1 (first case) and I.3 (second case). Table 1 has patients as columns (First Case, Second Case, Third Case, Reference Values). Contradictions: (1) Table 1 exogenous LCAT activity is 0.05 / 1.7 / 1.35 nmol/h*mL and endogenous FER 1.50 / 1.40 / 1.90 for cases 1/2/3, whereas the Results text gives 1.70, 0.05 and 1.35 nmol/h*mL and FER 1.40%, 1.5% and 1.9% 'respectively' (first and second cases swapped); both are quoted in functional_evidence_statement. (2) First case: Table 1 'Currently age' 88, but the text says hemodialysis at 75 and death 12 years later; age at death (87 by arithmetic) is not stated directly, so deceased_age_iso8601 is null; age 88 recorded as last evaluation from Table 1. (3) Second case: FPLC text says both siblings had lower LDL-cholesterol than the control, while NMR Table 2 gives her LDL-C 107.44 vs control population 81.5 and Table 1 apoB 131 (reference 73-109); checklist low LDL kept observed from the explicit FPLC statement, flagged. Second case LpX: 'suggesting the presence of some LpX' is hedged, so lipoprotein x left not reported. First case LpX not tested (Figure 5 and NMR used only cases 2 and 3); the Discussion's general attribution of LpX to 'subjects with renal disease' was not used for him. Lab values in Table 1 (e.g. third case apoA-I 30, apoB 35, triglycerides 181; second case triglycerides 158) that the text does not interpret were not turned into features; they appear only as detail on features the text states. Third case biopsy 'thickening of capillary walls' and capillary lipid deposits were not mapped to the glomerular basement membrane checklist item (the paper does not say basement membrane); mesangial deposits/expansion mapped to the mesangial item. 'Renal disease' / 'mild impaired renal function' mapped to the checklist item chronic kidney disease or renal failure. Relatives: genetic analysis 'was extended to all available family members of the siblings (Figure S1)', but no relative is described individually, so no relative rows. Discussion: ref [30] (Rial-Crestelo D et al.) family with one member diagnosed FLD and 'their sister' with FED carrying the same LCAT mutation; included as two literature individuals (sister has a stated sex; the FLD member is an affected relative described in relation to her); no variant printed, so variant rows have variant_original_string 'not reported'. Variants in other people only as groups or without individuals (ref [22] heterozygotes with hypoalphalipoproteinemia; Taramelli ref [6]; p.(Pro34Gln) [25], p.(Pro34Leu) [26]) got no rows. The PLS-DA individual 'later diagnosed with extreme HDL deficiency' has no LCAT link and is out of scope. Transcript NM_012108.3 is printed in Methods for the LCAT sequencing and applied to all three variant rows. is_proband null for all (no proband/index wording). Note for review: the paper prints c.512G>A with p.(Arg171Glu); recorded as printed.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "first_author": {
+     "value": "Lamiquiz-Moneo",
+     "span": "Authors: Lamiquiz-Moneo Itziar"
+    },
+    "year": {
+     "value": 2019,
+     "span": "Journal of Clinical Medicine (2019)"
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "We present three cases, two of them siblings, with LCAT deficiency"
+    },
+    "n_patients_reported": {
+     "value": 3,
+     "span": "We report three FLD patients"
+    },
+    "cohort_size_as_stated": {
+     "value": 3,
+     "span": "We present three cases, two of them siblings, with LCAT deficiency"
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": false,
+     "span": "This study reports three new cases of LCAT deficiency, not previously described."
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "when he was 65 years old"
+    },
+    "age_at_onset_original_text": {
+     "value": "since his mid-forties",
+     "span": "proteinuria since his mid-forties"
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "88",
+     "span": "| Currently age, years | 88"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P88Y",
+     "span": "| Currently age, years | 88"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "65",
+     "span": "| Age at diagnosis, years | 65"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P65Y",
+     "span": "| Age at diagnosis, years | 65"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "deceased",
+     "span": "he died 12 years later"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "hemodialysis from the age of 75",
+     "span": "He developed progressive renal disease requiring hemodialysis at the age of 75"
+    },
+    "disease_label_as_stated": {
+     "value": "FLD",
+     "span": [
+      "We report three FLD patients",
+      "familial lecithin–cholesterol acyltransferase (LCAT) deficiency (FLD)"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "plasma LCAT activity (nearly absent cholesterol esterification rate, FER below reference) and Sanger sequencing of LCAT (homozygous c.605T>C)",
+     "span": [
+      "The cholesterol esterification rate in serum, as a measure of endogenous LCAT activity, in all cases, was nearly absent",
+      "All patients reported null endogenous LCAT activity",
+      "Genetic analysis of both siblings revealed a homozygous mutation c.605T>C"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "The second patient, sister of the first patient, was a 78-year-old female"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "84 years old",
+     "span": "Currently, she is 84 years old"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P84Y",
+     "span": "Currently, she is 84 years old"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "78",
+     "span": "| Age at diagnosis, years | 65 | 78"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P78Y",
+     "span": "| Age at diagnosis, years | 65 | 78"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": "Currently, she is 84 years old, asymptomatic"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "FLD",
+     "span": [
+      "We report three FLD patients",
+      "familial lecithin–cholesterol acyltransferase (LCAT) deficiency (FLD)"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "plasma LCAT activity (nearly absent cholesterol esterification rate, FER below reference) and Sanger sequencing of LCAT (homozygous c.605T>C)",
+     "span": [
+      "The cholesterol esterification rate in serum, as a measure of endogenous LCAT activity, in all cases, was nearly absent",
+      "All patients reported null endogenous LCAT activity",
+      "Genetic analysis of both siblings revealed a homozygous mutation c.605T>C"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "The third patient was a 38-year-old male"
+    },
+    "age_at_onset_original_text": {
+     "value": "from the age of 20",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol and abnormal results of urinalysis from the age of 20"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P20Y",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol and abnormal results of urinalysis from the age of 20"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "39",
+     "span": "| Currently age, years | 88 | 84 | 39"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P39Y",
+     "span": "| Currently age, years | 88 | 84 | 39"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "38",
+     "span": "| Age at diagnosis, years | 65 | 78 | 38"
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": "P38Y",
+     "span": "| Age at diagnosis, years | 65 | 78 | 38"
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "FLD",
+     "span": [
+      "We report three FLD patients",
+      "familial lecithin–cholesterol acyltransferase (LCAT) deficiency (FLD)"
+     ]
+    },
+    "clinical_diagnosis_basis": {
+     "value": "plasma LCAT activity (nearly absent cholesterol esterification rate, FER below reference) and Sanger sequencing of LCAT (homozygous c.512G>A)",
+     "span": [
+      "The cholesterol esterification rate in serum, as a measure of endogenous LCAT activity, in all cases, was nearly absent",
+      "All patients reported null endogenous LCAT activity",
+      "Genetic analysis in the third case showed a homozygous mutation c.512G>A"
+     ]
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "FLD",
+     "span": "one member was diagnosed as FLD"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Rial-Crestelo D et al. [30]",
+     "span": "Rial-Crestelo D et al. [30]"
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "their sister was found to have FED"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "not reported",
+     "span": null
+    },
+    "disease_label_as_stated": {
+     "value": "FED",
+     "span": "their sister was found to have FED"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "Rial-Crestelo D et al. [30]",
+     "span": "Rial-Crestelo D et al. [30]"
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LCAT",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr)"
+    },
+    "variant_original_string": {
+     "value": "c.605T > C p.(Ile202Thr)",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr)"
+    },
+    "transcript_as_stated": {
+     "value": "NM_012108.3",
+     "span": "LCAT (NM_012108.3)"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.605T > C",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.(Ile202Thr)",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "Genetic analysis revealed new missense homozygous mutations, p.(Ile202Thr) in both siblings and p.(Arg171Glu) in the other patient"
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": "Genetic analysis of both siblings revealed a homozygous mutation c.605T>C"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "Plasma cholesterol esterification rate nearly absent (endogenous LCAT activity null); Table 1: exogenous LCAT activity 0.05 nmol/h*mL (reference 23.0–57.0), endogenous FER 1.50 %/h (reference >3.50%). The text gives 1.70 nmol/h*mL and FER 1.40% for this case (contradiction with Table 1).",
+     "span": [
+      "The cholesterol esterification rate in serum, as a measure of endogenous LCAT activity, in all cases, was nearly absent",
+      "| Exogenous LCAT activity (nmol/h*mL) | 0.05",
+      "| Endogenous LCAT activity (Fractional esterification rate, %/h) | 1.50",
+      "(1.70 nmol/h*mL, 0.05 nmol/h*mL and 1.35 nmol/h*mL, respectively)",
+      "with an FER of 1.40%, 1.5% and 1.9% per hour, respectively"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic (by bioinformatic analysis: Polyphen-2, MutationTaster and Predict SNP)",
+     "span": "Both mutations have been classified as pathogenic by bioinformatic analysis (Polyphen-2 [19], MutationTaster [20] and Predict SNP [21])"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr) | c.605T > C p.(Ile202Thr)"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LCAT",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr) | c.605T > C p.(Ile202Thr)"
+    },
+    "variant_original_string": {
+     "value": "c.605T > C p.(Ile202Thr)",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr) | c.605T > C p.(Ile202Thr)"
+    },
+    "transcript_as_stated": {
+     "value": "NM_012108.3",
+     "span": "LCAT (NM_012108.3)"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.605T > C",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr) | c.605T > C p.(Ile202Thr)"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.(Ile202Thr)",
+     "span": "| LCAT genetic analysis | c.605T > C p.(Ile202Thr) | c.605T > C p.(Ile202Thr)"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "Genetic analysis revealed new missense homozygous mutations, p.(Ile202Thr) in both siblings and p.(Arg171Glu) in the other patient"
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": "Genetic analysis of both siblings revealed a homozygous mutation c.605T>C"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "Plasma cholesterol esterification rate nearly absent (endogenous LCAT activity null); Table 1: exogenous LCAT activity 1.7 nmol/h*mL (reference 23.0–57.0), endogenous FER 1.40 %/h (reference >3.50%). The text gives 0.05 nmol/h*mL and FER 1.5% for this case (contradiction with Table 1).",
+     "span": [
+      "The cholesterol esterification rate in serum, as a measure of endogenous LCAT activity, in all cases, was nearly absent",
+      "| Exogenous LCAT activity (nmol/h*mL) | 0.05 | 1.7",
+      "| Endogenous LCAT activity (Fractional esterification rate, %/h) | 1.50 | 1.40",
+      "(1.70 nmol/h*mL, 0.05 nmol/h*mL and 1.35 nmol/h*mL, respectively)",
+      "with an FER of 1.40%, 1.5% and 1.9% per hour, respectively"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic (by bioinformatic analysis: Polyphen-2, MutationTaster and Predict SNP)",
+     "span": "Both mutations have been classified as pathogenic by bioinformatic analysis (Polyphen-2 [19], MutationTaster [20] and Predict SNP [21])"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| c.512G > A p.(Arg171Glu) |"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LCAT",
+     "span": "Genetic analysis in the third case showed a homozygous mutation c.512G>A"
+    },
+    "variant_original_string": {
+     "value": "c.512G > A p.(Arg171Glu)",
+     "span": "| c.512G > A p.(Arg171Glu) |"
+    },
+    "transcript_as_stated": {
+     "value": "NM_012108.3",
+     "span": "LCAT (NM_012108.3)"
+    },
+    "cdna_hgvs_as_stated": {
+     "value": "c.512G > A",
+     "span": "| c.512G > A p.(Arg171Glu) |"
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.(Arg171Glu)",
+     "span": "| c.512G > A p.(Arg171Glu) |"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "missense",
+     "span": "Genetic analysis revealed new missense homozygous mutations, p.(Ile202Thr) in both siblings and p.(Arg171Glu) in the other patient"
+    },
+    "zygosity": {
+     "value": "homozygous",
+     "span": "Genetic analysis in the third case showed a homozygous mutation c.512G>A"
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "Plasma cholesterol esterification rate nearly absent (endogenous LCAT activity null); exogenous LCAT activity 1.35 nmol/h*mL (reference 23.0–57.0), endogenous FER 1.90 %/h (text: 1.9%; reference >3.50%).",
+     "span": [
+      "The cholesterol esterification rate in serum, as a measure of endogenous LCAT activity, in all cases, was nearly absent",
+      "| Exogenous LCAT activity (nmol/h*mL) | 0.05 | 1.7 | 1.35",
+      "| Endogenous LCAT activity (Fractional esterification rate, %/h) | 1.50 | 1.40 | 1.90",
+      "with an FER of 1.40%, 1.5% and 1.9% per hour, respectively"
+     ]
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "pathogenic (by bioinformatic analysis: Polyphen-2, MutationTaster and Predict SNP)",
+     "span": "Both mutations have been classified as pathogenic by bioinformatic analysis (Polyphen-2 [19], MutationTaster [20] and Predict SNP [21])"
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "carrying the same LCAT mutation"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LCAT",
+     "span": "carrying the same LCAT mutation"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "gene_symbol_as_stated": {
+     "value": "LCAT",
+     "span": "their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "variant_original_string": {
+     "value": "not reported",
+     "span": null
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "extremely low plasma concentration of HDL cholesterol",
+     "span": "The first patient was referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol, corneal opacities and progressive renal disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The first patient was referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol, corneal opacities and progressive renal disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "HDL cholesterol 7 mg/dL (reference 40–60)",
+     "span": "| HDL cholesterol mg/dL | 7"
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased HDL cholesterol concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003233",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "corneal opacities",
+     "span": "The first patient was referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol, corneal opacities and progressive renal disease"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The first patient was referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol, corneal opacities and progressive renal disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Corneal opacity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0007957",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "progressive renal disease",
+     "span": [
+      "The first patient was referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol, corneal opacities and progressive renal disease",
+      "only one of the siblings developed renal disease, at 45 years of age"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The first patient was referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol, corneal opacities and progressive renal disease",
+      "only one of the siblings developed renal disease, at 45 years of age"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": "at 45 years of age",
+     "span": "only one of the siblings developed renal disease, at 45 years of age"
+    },
+    "onset_iso8601": {
+     "value": "P45Y",
+     "span": "only one of the siblings developed renal disease, at 45 years of age"
+    },
+    "severity_or_detail": {
+     "value": "requiring hemodialysis at the age of 75; creatinine 5.35 mg/dL",
+     "span": [
+      "He developed progressive renal disease requiring hemodialysis at the age of 75",
+      "| Creatinine, mg/dL | 5.35"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "low plasma levels of total cholesterol",
+     "span": "He reported low plasma levels of total cholesterol, HDL cholesterol, moderately elevated TG and proteinuria since his mid-forties"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He reported low plasma levels of total cholesterol, HDL cholesterol, moderately elevated TG and proteinuria since his mid-forties"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "total cholesterol 119 mg/dL (reference 150–219)",
+     "span": "| Total cholesterol, mg/dL | 119"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "moderately elevated TG",
+     "span": "He reported low plasma levels of total cholesterol, HDL cholesterol, moderately elevated TG and proteinuria since his mid-forties"
+    },
+    "status": {
+     "value": "observed",
+     "span": "He reported low plasma levels of total cholesterol, HDL cholesterol, moderately elevated TG and proteinuria since his mid-forties"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "moderately elevated; triglycerides 245 mg/dL (reference 30–149)",
+     "span": [
+      "moderately elevated TG",
+      "| Triglycerides, mg/dL | 245"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertriglyceridemia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002155",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "proteinuria",
+     "span": [
+      "He reported low plasma levels of total cholesterol, HDL cholesterol, moderately elevated TG and proteinuria since his mid-forties",
+      "the patient demonstrated progressive proteinuria"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "He reported low plasma levels of total cholesterol, HDL cholesterol, moderately elevated TG and proteinuria since his mid-forties",
+      "the patient demonstrated progressive proteinuria"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": "since his mid-forties",
+     "span": "proteinuria since his mid-forties"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "progressive; 1.95 g/L",
+     "span": [
+      "the patient demonstrated progressive proteinuria",
+      "| Proteinuria, g/L | 1.95"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Proteinuria",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000093",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "diabetes",
+     "span": "the patient demonstrated progressive proteinuria, without other pathologies, such as diabetes or hypertension"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the patient demonstrated progressive proteinuria, without other pathologies, such as diabetes or hypertension"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Diabetes mellitus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000819",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "hypertension",
+     "span": "the patient demonstrated progressive proteinuria, without other pathologies, such as diabetes or hypertension"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the patient demonstrated progressive proteinuria, without other pathologies, such as diabetes or hypertension"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypertension",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000822",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "substantial reduction in the levels of apo A-I and apo A-II",
+     "span": "Agarose gel electrophoresis and immunoblotting for apo A-I and apo A-II of HDL-containing FPLC fractions showed a substantial reduction in the levels of both apolipoproteins in the two patients"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Agarose gel electrophoresis and immunoblotting for apo A-I and apo A-II of HDL-containing FPLC fractions showed a substantial reduction in the levels of both apolipoproteins in the two patients"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "deficient in α-migrating lipoproteins",
+     "span": "both siblings were deficient in α-migrating lipoproteins"
+    },
+    "status": {
+     "value": "observed",
+     "span": "both siblings were deficient in α-migrating lipoproteins"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "pre-β-migrating particles virtually absent",
+     "span": [
+      "both siblings were deficient in α-migrating lipoproteins",
+      "pre-β-migrating particles were virtually absent"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "both siblings were deficient in α-migrating lipoproteins",
+      "pre-β-migrating particles were virtually absent"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "accumulation of lipids, with a mobility intermediate between those of β- and pre-β-migrating particles",
+     "span": "An accumulation of lipids, with a mobility intermediate between those of β- and pre-β-migrating particles, appeared in the first patient"
+    },
+    "status": {
+     "value": "observed",
+     "span": "An accumulation of lipids, with a mobility intermediate between those of β- and pre-β-migrating particles, appeared in the first patient"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "feature_text_as_stated": {
+     "value": "lower LDL-cholesterol levels than the control",
+     "span": "both siblings had lower LDL-cholesterol levels, but higher LDL-triglyceride levels, than the control"
+    },
+    "status": {
+     "value": "observed",
+     "span": "both siblings had lower LDL-cholesterol levels, but higher LDL-triglyceride levels, than the control"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "extremely low plasma concentration of HDL cholesterol",
+     "span": [
+      "was a 78-year-old female, that was also referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol",
+      "Her blood lipid values confirmed severe hypoalphalipoproteinemia"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "was a 78-year-old female, that was also referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol",
+      "Her blood lipid values confirmed severe hypoalphalipoproteinemia"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "severe hypoalphalipoproteinemia; HDL cholesterol 14 mg/dL (reference 40–60)",
+     "span": [
+      "severe hypoalphalipoproteinemia",
+      "| HDL cholesterol mg/dL | 7 | 14"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased HDL cholesterol concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003233",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "corneal opacity",
+     "span": [
+      "This patient reported that she had suffered from corneal opacity during the last 30 years",
+      "Physical examination showed corneal opacity (Figure 1A)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "This patient reported that she had suffered from corneal opacity during the last 30 years",
+      "Physical examination showed corneal opacity (Figure 1A)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "during the last 30 years",
+     "span": "she had suffered from corneal opacity during the last 30 years"
+    },
+    "hpo_label_candidate": {
+     "value": "Corneal opacity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0007957",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "proteinuria",
+     "span": [
+      "her renal function remains within normal values, including urinalysis without proteinuria",
+      "| Proteinuria, g/L | 1.95 | Negative"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "her renal function remains within normal values, including urinalysis without proteinuria",
+      "| Proteinuria, g/L | 1.95 | Negative"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Proteinuria",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000093",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "renal disease",
+     "span": [
+      "her renal function remains within normal values",
+      "| Renal disease | Yes | No"
+     ]
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "her renal function remains within normal values",
+      "| Renal disease | Yes | No"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "substantial reduction in the levels of apo A-I and apo A-II",
+     "span": "Agarose gel electrophoresis and immunoblotting for apo A-I and apo A-II of HDL-containing FPLC fractions showed a substantial reduction in the levels of both apolipoproteins in the two patients"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Agarose gel electrophoresis and immunoblotting for apo A-I and apo A-II of HDL-containing FPLC fractions showed a substantial reduction in the levels of both apolipoproteins in the two patients"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "deficient in α-migrating lipoproteins",
+     "span": "both siblings were deficient in α-migrating lipoproteins"
+    },
+    "status": {
+     "value": "observed",
+     "span": "both siblings were deficient in α-migrating lipoproteins"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "pre-β-migrating particles virtually absent",
+     "span": [
+      "both siblings were deficient in α-migrating lipoproteins",
+      "pre-β-migrating particles were virtually absent"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "both siblings were deficient in α-migrating lipoproteins",
+      "pre-β-migrating particles were virtually absent"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "lower LDL-cholesterol levels than the control",
+     "span": "both siblings had lower LDL-cholesterol levels, but higher LDL-triglyceride levels, than the control"
+    },
+    "status": {
+     "value": "observed",
+     "span": "both siblings had lower LDL-cholesterol levels, but higher LDL-triglyceride levels, than the control"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "null value of small HDL particles",
+     "span": "The NMR-Liposcale test, performed in serum from the second and third patients, revealed a distinctive lipoprotein profile, with null value of small HDL particles"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The NMR-Liposcale test, performed in serum from the second and third patients, revealed a distinctive lipoprotein profile, with null value of small HDL particles"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "under the limit of detection (<0.01µmol/L)",
+     "span": "under the limit of detection (<0.01µmol/L)"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "higher values of VLDL (large, medium and small)",
+     "span": "Both patients presented higher values of VLDL (large, medium and small), especially in the third case"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Both patients presented higher values of VLDL (large, medium and small), especially in the third case"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "feature_text_as_stated": {
+     "value": "highly enriched in free cholesterol",
+     "span": [
+      "serum from LCAT deficiency patients was highly enriched in free cholesterol",
+      "Cholesterol composition in the second case was 67% free and 33% esterified"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "serum from LCAT deficiency patients was highly enriched in free cholesterol",
+      "Cholesterol composition in the second case was 67% free and 33% esterified"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "67% free and 33% esterified cholesterol (controls 28% free, 72% esterified)",
+     "span": [
+      "Cholesterol composition in the second case was 67% free and 33% esterified",
+      "mean cholesterol composition in control serum was 28% free and 72% esterified"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "corneal opacity",
+     "span": [
+      "The third patient was a 38-year-old male who had suffered from corneal opacity",
+      "Physical examination showed corneal opacity (Figure 1B)"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "The third patient was a 38-year-old male who had suffered from corneal opacity",
+      "Physical examination showed corneal opacity (Figure 1B)"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": "from the age of 20",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol and abnormal results of urinalysis from the age of 20"
+    },
+    "onset_iso8601": {
+     "value": "P20Y",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol and abnormal results of urinalysis from the age of 20"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Corneal opacity",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0007957",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "low levels of HDL cholesterol",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol"
+    },
+    "status": {
+     "value": "observed",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": "from the age of 20",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol and abnormal results of urinalysis from the age of 20"
+    },
+    "onset_iso8601": {
+     "value": "P20Y",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol and abnormal results of urinalysis from the age of 20"
+    },
+    "severity_or_detail": {
+     "value": "HDL cholesterol 13 mg/dL (reference 40–60)",
+     "span": "| HDL cholesterol mg/dL | 7 | 14 | 13"
+    },
+    "hpo_label_candidate": {
+     "value": "Decreased HDL cholesterol concentration",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0003233",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal results of urinalysis",
+     "span": "abnormal results of urinalysis from the age of 20"
+    },
+    "status": {
+     "value": "observed",
+     "span": "abnormal results of urinalysis from the age of 20"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": "from the age of 20",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol and abnormal results of urinalysis from the age of 20"
+    },
+    "onset_iso8601": {
+     "value": "P20Y",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol and abnormal results of urinalysis from the age of 20"
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "proteinuria",
+     "span": "Urinalysis revealed proteinuria"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Urinalysis revealed proteinuria"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "0.77 g/L",
+     "span": "| Proteinuria, g/L | 1.95 | Negative | 0.77"
+    },
+    "hpo_label_candidate": {
+     "value": "Proteinuria",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0000093",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "mild impaired renal function",
+     "span": [
+      "blood analysis showed mild impaired renal function",
+      "| Renal disease | Yes | No | Yes"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "blood analysis showed mild impaired renal function",
+      "| Renal disease | Yes | No | Yes"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "mild; creatinine 2.07 mg/dL; early renal disease",
+     "span": [
+      "| Creatinine, mg/dL | 5.35 | 0.88 | 2.07",
+      "the third case being a young man with early renal disease"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "thickening of capillary walls",
+     "span": "The renal biopsy specimen revealed a thickening of capillary walls"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The renal biopsy specimen revealed a thickening of capillary walls"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "foamy lipid deposits at the capillary and mesangial levels",
+     "span": "the presence of foamy lipid deposits at the capillary and mesangial levels (Figure 2)"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the presence of foamy lipid deposits at the capillary and mesangial levels (Figure 2)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "expansion of the mesangium",
+     "span": [
+      "(B) shows detail of glomerular involvement, with expansion of the mesangium",
+      "The renal biopsy specimen revealed"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "(B) shows detail of glomerular involvement, with expansion of the mesangium",
+      "The renal biopsy specimen revealed"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "null value of small HDL particles",
+     "span": "The NMR-Liposcale test, performed in serum from the second and third patients, revealed a distinctive lipoprotein profile, with null value of small HDL particles"
+    },
+    "status": {
+     "value": "observed",
+     "span": "The NMR-Liposcale test, performed in serum from the second and third patients, revealed a distinctive lipoprotein profile, with null value of small HDL particles"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "0.01 µmol/L",
+     "span": "and 0.01 µmol/L, respectively"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "higher values of VLDL (large, medium and small)",
+     "span": "Both patients presented higher values of VLDL (large, medium and small), especially in the third case"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Both patients presented higher values of VLDL (large, medium and small), especially in the third case"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "large amount of free cholesterol",
+     "span": [
+      "showed a large amount of free cholesterol in Patient 3",
+      "serum from LCAT deficiency patients was highly enriched in free cholesterol",
+      "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "showed a large amount of free cholesterol in Patient 3",
+      "serum from LCAT deficiency patients was highly enriched in free cholesterol",
+      "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "98% free and 2% esterified cholesterol (controls 28% free, 72% esterified)",
+     "span": [
+      "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX",
+      "mean cholesterol composition in control serum was 28% free and 72% esterified"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "feature_text_as_stated": {
+     "value": "LpX",
+     "span": [
+      "the presence of particles migrating toward the cathode with reverse electrophoretic mobility compared to other lipoproteins, which correspond to LpX particle",
+      "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "the presence of particles migrating toward the cathode with reverse electrophoretic mobility compared to other lipoproteins, which correspond to LpX particle",
+      "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "high levels of LpX",
+     "span": "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The first patient was referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol, corneal opacities and progressive renal disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "low hdl cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "The first patient was referred to our Lipid Unit for an extremely low plasma concentration of HDL cholesterol, corneal opacities and progressive renal disease"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein a-i or a-ii",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Agarose gel electrophoresis and immunoblotting for apo A-I and apo A-II of HDL-containing FPLC fractions showed a substantial reduction in the levels of both apolipoproteins in the two patients"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He reported low plasma levels of total cholesterol, HDL cholesterol, moderately elevated TG and proteinuria since his mid-forties"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "elevated unesterified (free) cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "reduced cholesteryl ester fraction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "low ldl cholesterol or apolipoprotein b",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "both siblings had lower LDL-cholesterol levels, but higher LDL-triglyceride levels, than the control"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "lipoprotein x",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "proteinuria",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He reported low plasma levels of total cholesterol, HDL cholesterol, moderately elevated TG and proteinuria since his mid-forties"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "hematuria",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "nephrotic syndrome",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "chronic kidney disease or renal failure",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "He developed progressive renal disease requiring hemodialysis at the age of 75"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "atherosclerotic cardiovascular disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular sclerosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "mesangial expansion or mesangial lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular basement membrane thickening or lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular foam cells",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "podocyte foot process effacement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "First case",
+     "span": "| First Case |"
+    },
+    "checklist_feature": {
+     "value": "tubular atrophy or interstitial fibrosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Physical examination showed corneal opacity (Figure 1A)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "low hdl cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Her blood lipid values confirmed severe hypoalphalipoproteinemia"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein a-i or a-ii",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Agarose gel electrophoresis and immunoblotting for apo A-I and apo A-II of HDL-containing FPLC fractions showed a substantial reduction in the levels of both apolipoproteins in the two patients"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "elevated unesterified (free) cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "serum from LCAT deficiency patients was highly enriched in free cholesterol",
+      "Cholesterol composition in the second case was 67% free and 33% esterified"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "reduced cholesteryl ester fraction",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Cholesterol composition in the second case was 67% free and 33% esterified",
+      "mean cholesterol composition in control serum was 28% free and 72% esterified"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "low ldl cholesterol or apolipoprotein b",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "both siblings had lower LDL-cholesterol levels, but higher LDL-triglyceride levels, than the control"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "lipoprotein x",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "proteinuria",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": "her renal function remains within normal values, including urinalysis without proteinuria"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "hematuria",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "nephrotic syndrome",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "chronic kidney disease or renal failure",
+     "span": null
+    },
+    "status": {
+     "value": "excluded",
+     "span": [
+      "her renal function remains within normal values",
+      "| Renal disease | Yes | No"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "atherosclerotic cardiovascular disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular sclerosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "mesangial expansion or mesangial lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular basement membrane thickening or lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular foam cells",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "podocyte foot process effacement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Second case",
+     "span": "| Second case |"
+    },
+    "checklist_feature": {
+     "value": "tubular atrophy or interstitial fibrosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Physical examination showed corneal opacity (Figure 1B)"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "low hdl cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "who had suffered from corneal opacity, low levels of HDL cholesterol"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein a-i or a-ii",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "elevated unesterified (free) cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "showed a large amount of free cholesterol in Patient 3",
+      "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "reduced cholesteryl ester fraction",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX",
+      "mean cholesterol composition in control serum was 28% free and 72% esterified"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "low ldl cholesterol or apolipoprotein b",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "lipoprotein x",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "the presence of particles migrating toward the cathode with reverse electrophoretic mobility compared to other lipoproteins, which correspond to LpX particle",
+      "the third case had 98% free and 2% esterified cholesterol composition, confirming the presence of high levels of LpX"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "proteinuria",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Urinalysis revealed proteinuria"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "hematuria",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "nephrotic syndrome",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "chronic kidney disease or renal failure",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "blood analysis showed mild impaired renal function"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "atherosclerotic cardiovascular disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular sclerosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "mesangial expansion or mesangial lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "the presence of foamy lipid deposits at the capillary and mesangial levels (Figure 2)",
+      "(B) shows detail of glomerular involvement, with expansion of the mesangium"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular basement membrane thickening or lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "glomerular foam cells",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "podocyte foot process effacement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "Third case",
+     "span": "| Third case |"
+    },
+    "checklist_feature": {
+     "value": "tubular atrophy or interstitial fibrosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "low hdl cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein a-i or a-ii",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "elevated unesterified (free) cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "reduced cholesteryl ester fraction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "low ldl cholesterol or apolipoprotein b",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "lipoprotein x",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "proteinuria",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "hematuria",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "nephrotic syndrome",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "chronic kidney disease or renal failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "atherosclerotic cardiovascular disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "glomerular sclerosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "mesangial expansion or mesangial lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "glomerular basement membrane thickening or lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "glomerular foam cells",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "podocyte foot process effacement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "ref [30] patient",
+     "span": "Rial-Crestelo D et al. [30] reported the case of one family, in which one member was diagnosed as FLD"
+    },
+    "checklist_feature": {
+     "value": "tubular atrophy or interstitial fibrosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "corneal opacity",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "low hdl cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "low apolipoprotein a-i or a-ii",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "hypertriglyceridemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "elevated unesterified (free) cholesterol",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "reduced cholesteryl ester fraction",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "low ldl cholesterol or apolipoprotein b",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "lipoprotein x",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "anemia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "proteinuria",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "hematuria",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "nephrotic syndrome",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "chronic kidney disease or renal failure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "atherosclerotic cardiovascular disease",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "glomerular sclerosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "mesangial expansion or mesangial lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "glomerular basement membrane thickening or lipid deposits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "glomerular foam cells",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "podocyte foot process effacement",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "31684177",
+     "span": "PMID: 31684177"
+    },
+    "individual_label_in_paper": {
+     "value": "sister of ref [30] patient",
+     "span": "while their sister was found to have FED, carrying the same LCAT mutation"
+    },
+    "checklist_feature": {
+     "value": "tubular atrophy or interstitial fibrosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
