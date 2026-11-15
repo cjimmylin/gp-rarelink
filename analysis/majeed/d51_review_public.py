@@ -7,8 +7,9 @@ to read but not openly licensed:
 This script writes what may be committed:
   adjudication/majeed/o1m_audit/sample_public.csv   rows from held-back documents keep their
         identifiers; person label, context, value and span are withheld
-  adjudication/majeed/o3/dossiers_public/*.json     every quote from a held-back document is
-        replaced by a note giving its length; statements and quotes from open documents stay
+  adjudication/majeed/o3/dossiers_public/*.json     only the dossiers that read open documents
+        alone, unchanged; a dossier that draws on a held-back document stays local as a whole,
+        because its statements paraphrase that paper (listed with its sha256 in the summary)
   adjudication/majeed/d51_review_public.json        what was withheld, by document
 
 Held-back documents come from analysis/majeed/d51_public_files.json (the run's own D-51 record).
@@ -72,45 +73,29 @@ def main() -> int:
 
     src, dst = ROOT / "o3/dossiers", ROOT / "o3/dossiers_public"
     if src.exists():
+        import hashlib
         dst.mkdir(parents=True, exist_ok=True)
-        per, total = {}, Counter()
+        for old in dst.glob("*.json"):
+            old.unlink()
+        public, held_back = [], {}
         for f in sorted(src.glob("G-majeed-*.json")):
+            d = json.loads(f.read_text())
             c = Counter()
-            d = redact(json.loads(f.read_text()), held, c)
-            if c:
-                d["d51_note"] = (f"{sum(c.values())} quote(s) from documents not openly licensed ({', '.join(sorted(c))}) are withheld in this "
-                                 "public copy; the full dossier is on the adjudication page and in the private copy.")
-            (dst / f.name).write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n")
-            per[f.stem] = sum(c.values())
-            total.update(c)
-        summary["dossiers"] = {"written": len(per), "with_withheld_quotes": sum(1 for v in per.values() if v),
-                               "quotes_withheld": sum(total.values()), "quotes_withheld_by_document": dict(sorted(total.items()))}
-        # no quote from a held-back document may remain: check every string of every public dossier against the full ones
-        leaks = 0
-        for f in sorted(src.glob("G-majeed-*.json")):
-            full, pub = json.loads(f.read_text()), (dst / f.name).read_text()
-
-            def held_quotes(node, pm=""):
-                if isinstance(node, dict):
-                    p2 = str(node.get("pmid", pm))
-                    for k, v in node.items():
-                        if k == "quote" and p2 in held and isinstance(v, str):
-                            yield v
-                        elif k == "quotes" and p2 in held and isinstance(v, list):
-                            for q in v:
-                                yield q if isinstance(q, str) else q.get("quote", "")
-                        else:
-                            yield from held_quotes(v, p2)
-                elif isinstance(node, list):
-                    for x in node:
-                        yield from held_quotes(x, pm)
-            for q in held_quotes(full):
-                if len(q) > 20 and json.dumps(q, ensure_ascii=False)[1:-1] in pub:
-                    leaks += 1
-        summary["dossiers"]["held_back_quotes_still_present"] = leaks
+            redact(d, held, c)                                   # counts quotes that come from held-back documents
+            papers = {str(x) for x in d.get("papers_read") or []}
+            n_quotes = f.read_text().count('"quote"')
+            if c or papers & held:
+                # a dossier that draws on a held-back document is kept out whole: its statements paraphrase that paper
+                held_back[f.stem] = {"papers_read": sorted(papers), "held_back_papers": sorted(papers & held),
+                                     "quotes_from_held_back_papers": sum(c.values()),
+                                     "sha256": hashlib.sha256(f.read_bytes()).hexdigest()}
+            else:
+                (dst / f.name).write_text(f.read_text())
+                public.append(f.stem)
+        summary["dossiers"] = {"written": len(public) + len(held_back), "public": public, "held_back": held_back}
     (ROOT / "d51_review_public.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(json.dumps(summary, indent=1))
-    return 1 if summary.get("dossiers", {}).get("held_back_quotes_still_present") else 0
+    return 0
 
 
 if __name__ == "__main__":

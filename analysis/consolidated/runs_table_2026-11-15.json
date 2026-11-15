@@ -2004,7 +2004,8 @@
    },
    "o3": {
     "candidates": 12,
-    "dossiers": 0,
+    "dossiers": 10,
+    "dossiers_public": 4,
     "for_panel": 12,
     "omim_checked": [
      "no (D-12)"
@@ -2767,24 +2768,24 @@
    "task": "Adjudication of gap candidates"
   },
   {
-   "form": "sample drawn, no page",
+   "form": "2 page files built, not published",
    "returned": "\u2014",
    "set": "Majeed (exploratory)",
    "size": "27 claims",
    "task": "Audit of extracted values, two raters each"
   },
   {
-   "form": "sample drawn, no page",
-   "returned": "\u2014",
+   "form": "1 page",
+   "returned": "0 returned",
    "set": "Majeed (exploratory)",
    "size": "50 items",
    "task": "Triage of ClinVar misses"
   },
   {
-   "form": "no page",
+   "form": "1 page file built, not published",
    "returned": "\u2014",
    "set": "Majeed (exploratory)",
-   "size": "12 candidates (0 of 12 with a dossier)",
+   "size": "12 candidates (10 of 12 with a dossier)",
    "task": "Adjudication of gap candidates"
   },
   {
@@ -2823,7 +2824,7 @@
    "task": "Comparator listing sheets, one per held-out cohort paper"
   }
  ],
- "main_commit": "a10717498a7a4a972a61ab57cf4d20965e2dcde8",
+ "main_commit": "6a33bbfaabf19ae5c70fde78516fcfcf237975b2",
  "majeed_corpus_on_extension_branch": {
   "included_at_full_text": 11,
   "read_from": "data/literature/majeed/extension_first_pass_2026-11-14/manifest.csv",
@@ -3014,12 +3015,13 @@
   ]
  },
  "review_stores": {
-  "how": "ArtifactData list on each review page's store (limit 1000), by the consolidation session. Not re-runnable by script: read the stores again and write a new dated file.",
+  "how": "ArtifactData list on each published review page's store (limit 1000), by the consolidation session. Not re-runnable by script: read the stores again and write a new dated file. Pages marked published: false exist only as local files.",
   "pages": [
    {
     "collection": "ratings",
     "documents": 0,
     "page": "O1 audit, rater A",
+    "published": true,
     "study": "registered six",
     "with_a_rating": 0
    },
@@ -3027,6 +3029,7 @@
     "collection": "ratings",
     "documents": 0,
     "page": "O1 audit, rater B",
+    "published": true,
     "study": "registered six",
     "with_a_rating": 0
    },
@@ -3034,6 +3037,7 @@
     "collection": "triage",
     "documents": 0,
     "page": "O2 triage",
+    "published": true,
     "study": "registered six",
     "with_a_rating": 0
    },
@@ -3042,6 +3046,7 @@
     "documents": 1,
     "note": "One document, G-ssadh-001, last updated 2026-10-24: opened (about 31 active minutes) with no classification, decision or note entered.",
     "page": "O3 gap adjudication, adjudicator A",
+    "published": true,
     "study": "registered six",
     "with_a_rating": 0
    },
@@ -3049,6 +3054,7 @@
     "collection": "ratings",
     "documents": 0,
     "page": "O1X audit, rater A",
+    "published": true,
     "study": "extension five",
     "with_a_rating": 0
    },
@@ -3056,6 +3062,7 @@
     "collection": "ratings",
     "documents": 0,
     "page": "O1X audit, rater B",
+    "published": true,
     "study": "extension five",
     "with_a_rating": 0
    },
@@ -3063,6 +3070,7 @@
     "collection": "triage",
     "documents": 0,
     "page": "O2X triage",
+    "published": true,
     "study": "extension five",
     "with_a_rating": 0
    },
@@ -3070,7 +3078,42 @@
     "collection": "adjudications",
     "documents": 0,
     "page": "O3X gap adjudication, adjudicator A",
+    "published": true,
     "study": "extension five",
+    "with_a_rating": 0
+   },
+   {
+    "collection": "ratings",
+    "documents": null,
+    "note": "Majeed's two rater pages and its adjudication page are built as local files and not published: the session's permission check refused the publish calls, and the no-publishing rule needs Jimmy's own word.",
+    "page": "claim audit, rater A",
+    "published": false,
+    "study": "Majeed (exploratory)",
+    "with_a_rating": 0
+   },
+   {
+    "collection": "ratings",
+    "documents": null,
+    "page": "claim audit, rater B",
+    "published": false,
+    "study": "Majeed (exploratory)",
+    "with_a_rating": 0
+   },
+   {
+    "collection": "triage",
+    "documents": 0,
+    "note": "Majeed's triage page was published as a private Artifact (visible to its owner only) before the permission check refused the other pages; store read once after publishing: empty.",
+    "page": "ClinVar miss triage",
+    "published": true,
+    "study": "Majeed (exploratory)",
+    "with_a_rating": 0
+   },
+   {
+    "collection": "adjudications",
+    "documents": null,
+    "page": "gap adjudication, adjudicator A",
+    "published": false,
+    "study": "Majeed (exploratory)",
     "with_a_rating": 0
    }
   ],

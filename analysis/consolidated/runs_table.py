@@ -271,6 +271,10 @@ def main() -> int:
             n_dos = len([p for p in dd.glob(f"G-{d}-*.json")]) if dd else 0
             D["o3"] = {"source": csrc, "candidates": len(cand), "withdrawn": len(wd), "for_panel": len(cand) - len(wd),
                        "dossiers": n_dos, "omim_checked": sorted({r.get("omim_checked", "") for r in cand})}
+            pubrec = Path("adjudication/majeed/d51_review_public.json")
+            if group == "exploratory" and pubrec.exists() and "dossiers" in jload(pubrec):
+                x = jload(pubrec)["dossiers"]          # written counts the local ones too; only some are public (D-51)
+                D["o3"].update(dossiers=x["written"], dossiers_public=len(x["public"]))
         # human review samples
         if group in O1_KEY:
             k, ksrc = T.find(O1_KEY[group])
@@ -411,7 +415,8 @@ def main() -> int:
     for D in res["diseases"]:
         o, g = D.get("o2"), D.get("o3")
         L.append(f"| {D['name']} | " + (f"`{o['run_id']}` | {o['snapshot_date']} | {wil(o['gene'])} | {wil(o['hgvs_recall_tier12'])} | {wil(o['overlap_tier1'])} | {wil(o['classification_agreement'])}" if o else "not run | — | — | — | — | —")
-                 + " | " + (f"{g['candidates']} | {g['withdrawn']} | {g['for_panel']} | {g['dossiers']} of {g['candidates']}" if g else "not run | — | — | —")
+                 + " | " + (f"{g['candidates']} | {g['withdrawn']} | {g['for_panel']} | {g['dossiers']} of {g['candidates']}"
+                            + (f" ({g['dossiers_public']} public)" if "dossiers_public" in g else "") if g else "not run | — | — | —")
                  + f" | {'holdout assessment only (D-42)' if D['group'] == 'registered' else 'no'} |")
     g_all = [D["o3"] for D in res["diseases"] if "o3" in D]
     L += ["", f"Gap candidates in all: {sum(g['candidates'] for g in g_all)}, of which {sum(g['withdrawn'] for g in g_all)} withdrawn and "
@@ -426,11 +431,12 @@ def main() -> int:
         o1, o2t, g = D.get("o1_sample"), D.get("o2_triage"), D.get("o3")
         L.append(f"| {D['name']} | " + (f"{o1['claims']} (sample of {o1['sample_total']}, seed {o1['seed']})" if o1 else "none drawn") + " | "
                  + (str(o2t["items"]) if o2t else "none drawn") + " | " + (str(g["for_panel"]) if g else "—") + " | "
-                 + (f"{g['dossiers']} of {g['candidates']}" if g else "—") + " |")
+                 + (f"{g['dossiers']} of {g['candidates']}" + (f" ({g['dossiers_public']} public)" if g and "dossiers_public" in g else "") if g else "—") + " |")
     if stores:
         L += ["", f"**Ratings entered on the review pages so far** (stores read {stores['read_on']}; `{sp}`):", "",
-              "| Study | Page | Documents in the store | With a rating or decision |", "|---|---|---|---|"]
-        L += [f"| {p['study']} | {p['page']} | {p['documents']} | {p['with_a_rating']} |" for p in stores["pages"]]
+              "| Study | Page | Published | Documents in the store | With a rating or decision |", "|---|---|---|---|---|"]
+        L += [f"| {p['study']} | {p['page']} | {'yes, private' if p.get('published', True) else 'no (local file)'} | "
+              f"{p['documents'] if p.get('published', True) else '—'} | {p['with_a_rating'] if p.get('published', True) else '—'} |" for p in stores["pages"]]
         notes = [p["note"] for p in stores["pages"] if p.get("note")]
         L += [""] + [f"- {n}" for n in notes]
     L += ["", "## 5. Other runs over the same papers", "",
@@ -459,7 +465,8 @@ def main() -> int:
     mj = next(D for D in res["diseases"] if D["disease"] == "majeed")
     mjr = mj["runs"][0] if mj["runs"] else {}
     add = [r for D in res["diseases"] for r in D["runs"] if r["kind"].startswith("addendum")]
-    rated = sum(p["with_a_rating"] for p in stores["pages"]) if stores else None
+    pub = [p for p in stores["pages"] if p.get("published", True)] if stores else []
+    rated = sum(p["with_a_rating"] for p in pub) if stores else None
     cross = res["papers_in_more_than_one_disease"]
     L += ["## 7. State of the consolidation", "",
           f"- **Distinct papers:** {res['papers_distinct_all']} across all runs in section 1"
@@ -497,7 +504,8 @@ def main() -> int:
     L += [f"- **Addendum batches.** {sum(r['papers'] for r in add)} papers and {sum(r['phenopackets'] for r in add)} phenopackets for the registered six "
           "have no ClinVar comparison, no gap candidates, no audit sample and no matching of people against the registered runs yet (D-47: after the 2026-11-30 cut-off)."]
     if rated is not None:
-        L += [f"- **Human ratings returned:** {rated} across the {len(stores['pages'])} review pages (section 4)."]
+        L += [f"- **Human ratings returned:** {rated} across the {len(pub)} published review pages (section 4); "
+              f"{len(stores['pages']) - len(pub)} more page files are built and not published."]
     L += [""]
     # ------------------------------------------------------------ section 8
     def filled(path: str, col_part: str) -> tuple[int, int]:
@@ -526,6 +534,8 @@ def main() -> int:
                 return none, "stores not read"
             if not mine:
                 return none, "—"
+            if not all(p.get("published", True) for p in mine):
+                return f"{len(mine)} page file{'s' if len(mine) != 1 else ''} built, not published", "—"
             done = sum(p["with_a_rating"] for p in mine)
             return f"{len(mine)} page{'s' if len(mine) != 1 else ''} ({', '.join(p['page'].split(', ')[-1] for p in mine)})" if len(mine) > 1 or ", " in mine[0]["page"] else "1 page", f"{done} returned"
         if o1:
