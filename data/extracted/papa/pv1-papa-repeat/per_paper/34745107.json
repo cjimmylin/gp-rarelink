@@ -3,7 +3,7 @@
  "instructions_version": "extract_v6",
  "reports_individuals_with_tnfaip3_variant": true,
  "relevance_note": "Case series of three Chinese patients with PSTPIP1 variants plus a literature table of 36 published cases: \"Gene testing identified a heterozygous c.356A>G, p.Tyr119Cys (p.Y119C) variation in the PSTPIP1 gene\".",
- "method_note": "test",
+ "method_note": "Read the whole paper by hand; a Python script (scratch dir) assembled the JSON, parsed the 36 rows of Table 2 from the Markdown (cells split on '|', checked against the table by eye) and verified every span verbatim. Scope: Patients 1-3 (first-hand), the mother and uncle of Patient 2 (affected relatives), and the 36 previously published cases in Table 2 (labelled 'Table 2 #<case no.>' from the bare 'Case no.' column; source_reference_in_review = the Author cell). Blank Author cells in Table 2 (cases 9-12, 20-23, 26-27, 31-32) were read as continuing the author above (Omenetti, Demidowich, Schellevis, Tallon); the span quoted is that author's first row. Table 2 prints no gene name: gene PSTPIP1 is supported by Table 1's 'PSTPIP1 variations' row listing the same protein labels; for case 1 (intronic c. variants) only by reference [2]'s title. Table 2 cases 15, 16, 28, 31, 32 have a blank Variants cell and get no variant row. Table 2 lists only present features, so literature checklist items are observed or not reported; 'resembling IBD' (case 7) was left not reported for the IBD item; 'pyogenic osteomyelitis' (case 2) and 'osteomyelitis' (case 14) were counted under sterile osteomyelitis; 'OM'/'recurrent otitis' not counted as recurrent infections. Table 1 has patients as columns (headers 'Patient 1', 'Patient 2', 'Patient 3' after the 'Literature (n = 63)' column); '–' cells in the triad rows are undefined and were ignored; 'No' cells read as stated absence. Identity assumption: the cousin of Patient 2 'with recurrent arthritis accompanied by fever' in the pedigree text is taken to be Patient 3 (the text says Patient 3 is her cousin, and the variant was found in exactly 'the four affected kindreds': Patient 2, mother, uncle, cousin), so no separate cousin row. The variant, zygosity (heterozygous) for mother, uncle and Patient 3 come from that named-group sentence; Patient 2's inheritance is recorded as inherited maternal because her affected mother is one of the four affected carriers (not a sentence naming the mother as carrier). Patient 1's parents (deceased, cirrhosis and cerebellar atrophy, no autoinflammatory history) were not given rows (neither tested nor affected); 'other healthy members' of family 2 tested negative but are not individually described. Laberko et al.'s five E250K PAMI patients are a group mention without individual facts: no rows. Normal CBC/urinalysis/biochemistry panels were recorded as excluded 'abnormal <panel>' rows and were not used to exclude anemia, cytopenias or kidney involvement (whole-investigation rule). Contradictions: Patient 2 'Hypochromic microcytic anemia (Hb 86g/L)' vs 'The CBC, urine analysis, and complete biochemistry panel were normal' (anemia checklist kept observed, since the normal-CBC row names the panel not anemia); Table 1 'Surgery history: Synovectomy' for Patients 2 and 3 while the text reports arthroscopy with pathology; Table 1 lists 'Pustular rash' for Patient 1 while the text describes blister-like rashes. Age at last evaluation is the age at presentation (49, 34, 26 years); Patient 1 had a further 1-year follow-up. n_patients_reported counts the authors' three patients; the review's 76 literature patients are not all PSTPIP1-positive. is_proband for Patients 1 and 2 from the pedigree legends ('Arrow, proband').",
  "tables": {
   "publications": [
    {
@@ -19512,12 +19512,12 @@
      "span": null
     },
     "status": {
-     "value": "observed",
-     "span": "| 7 | E250K | PG, severe cystic acne, arthritis, proteinuria, splenomegaly, and resembling IBD |"
+     "value": "not reported",
+     "span": null
     },
     "evidence_basis": {
-     "value": "stated for this individual",
-     "span": "| 7 | E250K | PG, severe cystic acne, arthritis, proteinuria, splenomegaly, and resembling IBD |"
+     "value": "not reported",
+     "span": null
     }
    },
    {
