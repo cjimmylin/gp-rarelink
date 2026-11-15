@@ -1,0 +1,5791 @@
+{
+ "pmid": "20041601",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "The paper reports per-patient sex, age, medications and sleep-study results for 10 patients with SSADH deficiency: \"Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency.\"",
+ "method_note": "Worked by reading the whole paper; a short Python script in my scratch directory assembled the rows and took table-row prefixes as spans, and I checked its output against Tables 1-4 by eye. Scope: all 10 enrolled patients have \"confirmed SSADH deficiency\" and get rows; no relatives are described. No ALDH5A1 variant (and no gene name) is printed and no variant is tied to any person (diagnosis was by \"enzymatic assay, mutation analysis, or both\" for the group), so the variants table is empty. Labels: the PID column of Table 1 holds bare numbers, so patients get 'Table 1 #<n>'; the text uses its own singular labels 'patient #3' (twice; once 'patient 3') and 'patient #10', so those two follow rule 1. Other patients appear in the text only in plural lists ('patients 2, 3, 7, and 10', 'patients 5 and 6', 'patients 7 and 10'), which I did not treat as singular labels. Patients 3, 7 and 10 were each studied twice (rows marked * = CNMC); age at last evaluation is the later study age, taken from Table 3 (header 'Age (years)'); treatment_summary lists the Table 1 medications per study. Contradictions: (1) patient 6 is 'F' in Table 1 but 'M' in Table 3 (the text says 7 male, 3 female, which matches Table 3); sex left 'not reported'. (2) The text gives 'age range 11-27 years' but Tables 1 and 3 list patients 1 and 2 at age 10. (3) The text says the repeat studies were 'separated by 3 years', but patient 10's ages are 23 and 27. (4) Table 4 orders the starred and unstarred rows of patients 3, 7 and 10 differently from Tables 1-3; I read PLMI per the row labels as printed (3* = 10.9, 8 = 14.1, 10 = 6.1), which matches 'Three patients had periodic leg movement indices greater than 5.0/h'. Table 2 is garbled in the conversion (its first data row is merged with the caption and the last with the footnote, and 'Bold: >2 SD' marking is lost), so I used no value from Table 2 except nothing; REM-latency and REM% findings come only from sentences naming patients. Not recorded: group statements without names ('Five patients had decreased mean sleep latency', 'prolonged by 2 SD in 8 of 13 recordings', 'There was no evidence for significant sleep related respiratory disturbances', '5 of the 8 patients with decreased REM percentage were on no medications'); PLMI values below 5 and SOREM counts of 0 were not turned into 'excluded' rows; patients 5 and 6 'did not tolerate the daytime recordings' is not a phenotype. Medications (methylphenidate, levetiracetam, carbamazepine, antidepressants) were not used to infer ADHD, seizures or mood features. Checklist 'sleep disturbances' left 'not reported' for everyone: the paper reports polysomnographic findings (REM latency, REM%, MSLT latency, PLMI), not a clinical sleep complaint for any named patient; the 40% questionnaire figure refers to an earlier database, not these patients. No stacked ' / ' cells occur (the '3/5'-style cells in Table 3 are nap ratios for one patient).",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "first_author": {
+     "value": "Pearl",
+     "span": "Pearl PL; Shamim S"
+    },
+    "year": {
+     "value": 2009,
+     "span": "SLEEP 2009;32(12):1645-1648."
+    },
+    "study_type": {
+     "value": "case series/cohort",
+     "span": "Patients with SSADH deficiency were recruited for comprehensive clinical, imaging, and neurophysiologic studies."
+    },
+    "n_patients_reported": {
+     "value": 10,
+     "span": "Ten patients were enrolled into the study (7 male, 3 female, age range 11-27 years; Table 1)."
+    },
+    "cohort_size_as_stated": {
+     "value": 10,
+     "span": "Ten patients were enrolled into the study (7 male, 3 female, age range 11-27 years; Table 1)."
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": null,
+     "span": null
+    },
+    "prior_report_citation": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| 1                                            | M"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "10 years",
+     "span": "| 1                                                   | M                                                   |                                                          10"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P10Y",
+     "span": "| 1                                                   | M                                                   |                                                          10"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "none (medications at the time of the sleep study)",
+     "span": "| 1                                            | M                                            | 10                                           | 1                                                     | none                                                  |"
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| 2*                                           | M"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "10 years",
+     "span": "| 2*                                                  | M                                                   |                                                          10"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P10Y",
+     "span": "| 2*                                                  | M                                                   |                                                          10"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "none (medications at the time of the sleep study)",
+     "span": "| 2*                                           | M                                            | 10                                           | 2                                                     | none                                                  |"
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| 3                                            | F"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "14 years",
+     "span": "| 3                                                   | F                                                   |                                                          14"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P14Y",
+     "span": "| 3                                                   | F                                                   |                                                          14"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "methylphenidate (at the study at age 11); none (at the study at age 14)",
+     "span": [
+      "| 3*                                           | F                                            | 11                                           | 2                                                     | methylphenidate                                       |",
+      "| 3                                            | F                                            | 14                                           | 3                                                     | none                                                  |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| 4                                            | M"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "11 years",
+     "span": "| 4                                                   | M                                                   |                                                          11"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P11Y",
+     "span": "| 4                                                   | M                                                   |                                                          11"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "none (medications at the time of the sleep study)",
+     "span": "| 4                                            | M                                            | 11                                           | 1                                                     | none                                                  |"
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| 5                                            | M"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "12 years",
+     "span": "| 5**                                                 | M                                                   |                                                          12"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P12Y",
+     "span": "| 5**                                                 | M                                                   |                                                          12"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "trazodone, stopped 1 wk before study (medications at the time of the sleep study)",
+     "span": "| 5                                            | M                                            | 12                                           | 3                                                     | trazodone, stopped 1 wk before study                  |"
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "12 years",
+     "span": "| 6**                                                 | M                                                   |                                                          12"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P12Y",
+     "span": "| 6**                                                 | M                                                   |                                                          12"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "levetiracetam (medications at the time of the sleep study)",
+     "span": "| 6                                            | F                                            | 12                                           | 4                                                     | levetiracetam                                         |"
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| 7                                            | F"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "16 years",
+     "span": "| 7                                                   | F                                                   |                                                          16"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P16Y",
+     "span": "| 7                                                   | F                                                   |                                                          16"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "methylphenidate (at the study at age 13); none (at the study at age 16)",
+     "span": [
+      "| 7*                                           | F                                            | 13                                           | 3                                                     | methylphenidate                                       |",
+      "| 7                                            | F                                            | 16                                           | 4                                                     | none                                                  |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| 8                                            | M"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "14 years",
+     "span": "| 8                                                   | M                                                   |                                                          14"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P14Y",
+     "span": "| 8                                                   | M                                                   |                                                          14"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "methylphenidate, citalopram, polyethylene glycol (medications at the time of the sleep study)",
+     "span": "| 8                                            | M                                            | 14                                           | 2                                                     | methylphenidate, citalopram, polyethylene glycol      |"
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "female",
+     "span": "| 9                                            | F"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "19 years",
+     "span": "| 9                                                   | F                                                   |                                                          19"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P19Y",
+     "span": "| 9                                                   | F                                                   |                                                          19"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "aripiprazole, benztropine, citalo- pram, metformin (medications at the time of the sleep study)",
+     "span": "| 9                                            | F                                            | 19                                           | 5                                                     | aripiprazole, benztropine, citalo- pram, metformin    |"
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": null,
+     "span": null
+    },
+    "sex": {
+     "value": "male",
+     "span": "| 10                                           | M"
+    },
+    "age_at_onset_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "27 years",
+     "span": "| 10                                                  | M                                                   |                                                          27"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P27Y",
+     "span": "| 10                                                  | M                                                   |                                                          27"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "not reported",
+     "span": null
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "carbamazepine, resperidone, fluoxetine (at the study at age 23); carbamazepine, fluoxetine, levothyroxine, risperidone (at the study at age 27)",
+     "span": [
+      "| 10*                                          | M                                            | 23                                           | 5                                                     | carbamazepine, resperidone, fluoxetine                |",
+      "| 10                                           | M                                            | 27                                           | 5                                                     | carbamazepine, fluoxetine, levothyroxine, risperidone |"
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "SSADH deficiency",
+     "span": "Sleep recordings were obtained in 10 patients with confirmed SSADH deficiency."
+    },
+    "clinical_diagnosis_basis": {
+     "value": "consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both (stated for all patients)",
+     "span": "Diagnosis of SSADH deficiency in all patients was based on a consistent phenotype, 4-hydroxybutyric aciduria, and confirmation utilizing enzymatic assay, mutation analysis, or both."
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "feature_text_as_stated": {
+     "value": "REM latency was prolonged",
+     "span": "In the third patient studied twice (patient #3), the REM latency was prolonged on the first study and borderline prolonged (by 1 SD) on the repeat study."
+    },
+    "status": {
+     "value": "observed",
+     "span": "In the third patient studied twice (patient #3), the REM latency was prolonged on the first study and borderline prolonged (by 1 SD) on the repeat study."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "In the third patient studied twice (patient #3), the REM latency was prolonged on the first study and borderline prolonged (by 1 SD) on the repeat study."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "prolonged on the first study and borderline prolonged (by 1 SD) on the repeat study",
+     "span": "In the third patient studied twice (patient #3), the REM latency was prolonged on the first study and borderline prolonged (by 1 SD) on the repeat study."
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "feature_text_as_stated": {
+     "value": "latency to stage REM prolonged by 2 standard deviations",
+     "span": "This latency was prolonged by 2 standard deviations (SD) in 8 of 13 recordings (Table 2). This finding was consistent in 2 patients studied twice (patients 7 and 10)."
+    },
+    "status": {
+     "value": "observed",
+     "span": "This latency was prolonged by 2 standard deviations (SD) in 8 of 13 recordings (Table 2). This finding was consistent in 2 patients studied twice (patients 7 and 10)."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "This latency was prolonged by 2 standard deviations (SD) in 8 of 13 recordings (Table 2). This finding was consistent in 2 patients studied twice (patients 7 and 10)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "consistent in both studies",
+     "span": "This latency was prolonged by 2 standard deviations (SD) in 8 of 13 recordings (Table 2). This finding was consistent in 2 patients studied twice (patients 7 and 10)."
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "feature_text_as_stated": {
+     "value": "latency to stage REM prolonged by 2 standard deviations",
+     "span": "This latency was prolonged by 2 standard deviations (SD) in 8 of 13 recordings (Table 2). This finding was consistent in 2 patients studied twice (patients 7 and 10)."
+    },
+    "status": {
+     "value": "observed",
+     "span": "This latency was prolonged by 2 standard deviations (SD) in 8 of 13 recordings (Table 2). This finding was consistent in 2 patients studied twice (patients 7 and 10)."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "This latency was prolonged by 2 standard deviations (SD) in 8 of 13 recordings (Table 2). This finding was consistent in 2 patients studied twice (patients 7 and 10)."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "consistent in both studies",
+     "span": "This latency was prolonged by 2 standard deviations (SD) in 8 of 13 recordings (Table 2). This finding was consistent in 2 patients studied twice (patients 7 and 10)."
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "feature_text_as_stated": {
+     "value": "low percent REM",
+     "span": "This included one patient studied twice (patient 3), with a low percent REM on the second study and a borderline-low percent REM on the first study."
+    },
+    "status": {
+     "value": "observed",
+     "span": "This included one patient studied twice (patient 3), with a low percent REM on the second study and a borderline-low percent REM on the first study."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "This included one patient studied twice (patient 3), with a low percent REM on the second study and a borderline-low percent REM on the first study."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "low percent REM on the second study and a borderline-low percent REM on the first study",
+     "span": "This included one patient studied twice (patient 3), with a low percent REM on the second study and a borderline-low percent REM on the first study."
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "feature_text_as_stated": {
+     "value": "decreased mean sleep latency",
+     "span": "One (patient #10) had decreased mean sleep latency by 2 SD on both studies"
+    },
+    "status": {
+     "value": "observed",
+     "span": "One (patient #10) had decreased mean sleep latency by 2 SD on both studies"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "One (patient #10) had decreased mean sleep latency by 2 SD on both studies"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "by 2 SD on both studies",
+     "span": "One (patient #10) had decreased mean sleep latency by 2 SD on both studies"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "feature_text_as_stated": {
+     "value": "decreased sleep latency",
+     "span": "the other (patient #3) had a decreased sleep latency by 2 SD on one study"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the other (patient #3) had a decreased sleep latency by 2 SD on one study"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the other (patient #3) had a decreased sleep latency by 2 SD on one study"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "by 2 SD on one study and by 1.5 SD on the repeat",
+     "span": [
+      "the other (patient #3) had a decreased sleep latency by 2 SD on one study",
+      "and by 1.5 SD on the repeat."
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "feature_text_as_stated": {
+     "value": "periodic leg movement index greater than 5.0/h",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 3*                               | 10.9"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 3*                               | 10.9"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 3*                               | 10.9"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "PLMI 10.9 (study at CNMC)",
+     "span": "| 3*                               | 10.9"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "feature_text_as_stated": {
+     "value": "periodic leg movement index greater than 5.0/h",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 8                                | 14.1"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 8                                | 14.1"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 8                                | 14.1"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "PLMI 14.1",
+     "span": "| 8                                | 14.1"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "feature_text_as_stated": {
+     "value": "periodic leg movement index greater than 5.0/h",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 10                               | 6.1"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 10                               | 6.1"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Three patients had periodic leg movement indices greater than 5.0/h (Table 4).",
+      "| 10                               | 6.1"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "PLMI 6.1",
+     "span": "| 10                               | 6.1"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "feature_text_as_stated": {
+     "value": "sleep onset rapid eye movement (SOREM) episodes",
+     "span": [
+      "Two MSLTs had 2 sleep onset rapid eye movement (SOREM) episodes.",
+      "| 3*                                                  | F                                                   |                                                          11 | 3.4                                                                      | 5/5                                                                                     | 2/5"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Two MSLTs had 2 sleep onset rapid eye movement (SOREM) episodes.",
+      "| 3*                                                  | F                                                   |                                                          11 | 3.4                                                                      | 5/5                                                                                     | 2/5"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Two MSLTs had 2 sleep onset rapid eye movement (SOREM) episodes.",
+      "| 3*                                                  | F                                                   |                                                          11 | 3.4                                                                      | 5/5                                                                                     | 2/5"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "2/5 naps (study at CNMC)",
+     "span": "| 3*                                                  | F                                                   |                                                          11 | 3.4                                                                      | 5/5                                                                                     | 2/5"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "feature_text_as_stated": {
+     "value": "sleep onset rapid eye movement (SOREM) episodes",
+     "span": [
+      "Two MSLTs had 2 sleep onset rapid eye movement (SOREM) episodes.",
+      "| 4                                                   | M                                                   |                                                          11 | 6.9                                                                      | 5/5                                                                                     | 2/5"
+     ]
+    },
+    "status": {
+     "value": "observed",
+     "span": [
+      "Two MSLTs had 2 sleep onset rapid eye movement (SOREM) episodes.",
+      "| 4                                                   | M                                                   |                                                          11 | 6.9                                                                      | 5/5                                                                                     | 2/5"
+     ]
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": [
+      "Two MSLTs had 2 sleep onset rapid eye movement (SOREM) episodes.",
+      "| 4                                                   | M                                                   |                                                          11 | 6.9                                                                      | 5/5                                                                                     | 2/5"
+     ]
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "2/5 naps",
+     "span": "| 4                                                   | M                                                   |                                                          11 | 6.9                                                                      | 5/5                                                                                     | 2/5"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #1",
+     "span": "| 1"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #2",
+     "span": "| 2*"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #3",
+     "span": "| 3*"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #4",
+     "span": "| 4"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #5",
+     "span": "| 5"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #6",
+     "span": "| 6"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #7",
+     "span": "| 7*"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #8",
+     "span": "| 8"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "Table 1 #9",
+     "span": "| 9"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "intellectual disability",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "speech or language impairment",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "hypotonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "gross or fine motor deficits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "seizures or epilepsy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "EEG abnormality (background slowing or epileptiform activity)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "ataxia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "dystonia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "exertional dyskinesia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "hemiballismus",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "autism spectrum disorder or autistic behaviors",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "attention problems or ADHD",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "anxiety",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "obsessive-compulsive traits",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "aggression or disruptive behavior",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "sleep disturbances",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "depression or mood fluctuation",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "psychotic symptoms (hallucinations or delusions)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "T2 hyperintensity of globus pallidus, subthalamic or dentate nuclei on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "20041601",
+     "span": "PMID: 20041601"
+    },
+    "individual_label_in_paper": {
+     "value": "patient #10",
+     "span": "| 10*"
+    },
+    "checklist_feature": {
+     "value": "cerebral or cerebellar atrophy",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ]
+ }
+}
