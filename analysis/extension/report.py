@@ -100,11 +100,14 @@ def main() -> int:
             "is not a gap candidate. Flagged for Jimmy, not withdrawn." for c in cands if c['vcf_grch38'].split(':')[0] != CHROM[c['disease']]],
           "- G-blau-001 to 004: the protein check differs only by the 27-residue numbering offset (the papers stated NM_022162); placement is correct.",
           f"- LCAT: {sum(1 for c in cands if c['disease'] == 'lcat' and c['only_clinvar_cited_papers'] in ('True', 'true', 'yes', '1'))} of "
-          f"{sum(1 for c in cands if c['disease'] == 'lcat')} candidates come only from papers ClinVar cites, and many come only from reviews; "
-          "the dossiers say which.", ""]
+          f"{sum(1 for c in cands if c['disease'] == 'lcat')} candidates come only from papers ClinVar cites, and "
+          f"{next(x['gap_candidates_only_from_reviews'] for x in g['diseases'] if x['disease'] == 'lcat')} only from reviews (mostly table rows of one "
+          "systematic review, 34256778, with no case description).",
+          "- The dossier helpers' own notes for the panel (contradictions inside papers, likely duplicate people, unclear phase) are in "
+          "`adjudication/o3_gaps_ext/helper_notes_2026-11-15.md`.", ""]
     dd = sorted(Path("adjudication/o3_gaps_ext/dossiers").glob("*.json"))
     ck = Path("adjudication/o3_gaps_ext/check_summary.json")
-    L += [f"Evidence dossiers: {len(dd)} of {len(cands)} written" + (f"; check: `{json.dumps(j(ck).get('totals', j(ck)))[:300]}`" if ck.exists() else "") + ".", ""]
+    L += [f"Evidence dossiers: {len(dd)} of {len(cands)} written" + (f"; check_dossiers: {j(ck)['quotes']} quotes, all verbatim ({j(ck)['quotes_lenient_only']} lenient-only), {j(ck)['problems']} problems" if ck.exists() else "") + ".", ""]
     # O1X
     k = j("adjudication/o1x_audit/sample_key.json")
     L += ["## 5. Audit sample for people (O1X)", "",
@@ -118,6 +121,11 @@ def main() -> int:
           "3. **No `isoform_sensitive` block for GAMT and PSTPIP1** (Claude's call; `analysis/extension/isoform_check_2026-11-15.md`).",
           "4. **Scope questions** found by helpers: SURF patients with NOD2 variants and a healthy-control carrier (41357180); people with a diagnosis but no variant in several Blau and LCAT papers; a PDF-only paper whose genetic supplementary tables were unavailable (38180755); a duplicate-publication pair in GAMT (38020815, 39006040).",
           "5. **Review pages** for the O1X audit, the O2 triage sample (`adjudication/o2_triage_ext/`, all 48 misses) and the gap dossiers are not made; making them needs your go-ahead under the no-publishing rule.", ""]
+    seg = [r for r in csv.DictReader(open("analysis/cost/spend_segments.csv")) if r["line"] == "7"]
+    spent = sum(float(r["end_usd"]) - float(r["start_usd"]) for r in seg)
+    L += ["## 7. Spend", "",
+          f"Budget line 7 (Stretch, $9,000): **${spent:,.2f}** by this session's cost readings, last {seg[-1]['end_reading']} "
+          "(`analysis/cost/spend_segments.csv`; list-price estimates, not billing figures). D-47 ceiling $1,500.", ""]
     out = Path("reports/extension_report.md")
     out.write_text("\n".join(L) + "\n")
     print(out.read_text())
