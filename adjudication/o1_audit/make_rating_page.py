@@ -41,6 +41,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--rater", required=True, help="A, B or C (C: tie-breaker, built later from the disagreements)")
     ap.add_argument("--out", required=True)
     ap.add_argument("--sample-dir", default=str(HERE))
+    ap.add_argument("--store-prefix", default="o1-audit", help="D-47 extension: o1x-audit")
     ap.add_argument("--template", default=str(HERE / "rating_page_template.html"))
     a = ap.parse_args(argv)
     rows = list(csv.DictReader((Path(a.sample_dir) / "sample.csv").open()))
@@ -70,7 +71,7 @@ def main(argv: list[str] | None = None) -> int:
             "context_missing": [c["quote"][:80] for c in contexts if not c["text"]],
         })
     title = f"O1 claim audit, rater {a.rater}"
-    data = {"claims": claims, "hpo": [], "second": [], "store_key": f"o1-audit-rater-{a.rater}-v1"}
+    data = {"claims": claims, "hpo": [], "second": [], "store_key": f"{a.store_prefix}-rater-{a.rater}-v1"}
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (Path(a.template).read_text().replace("/*__DATA__*/null", blob)
             .replace("<title>O1 Claim Audit</title>", f"<title>O1 Audit Rater {a.rater}</title>")

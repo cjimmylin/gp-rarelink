@@ -21,24 +21,34 @@ from collections import defaultdict
 from pathlib import Path
 
 INHERITANCE = {"ha20": "autosomal dominant", "axd": "autosomal dominant (mostly de novo)", "danon": "X-linked dominant",
-               "ssadh": "autosomal recessive", "tangier": "autosomal recessive", "lad1": "autosomal recessive"}
+               "ssadh": "autosomal recessive", "tangier": "autosomal recessive", "lad1": "autosomal recessive",
+               # D-47 extension
+               "gamt": "autosomal recessive", "papa": "autosomal dominant", "ats": "autosomal recessive",
+               "blau": "autosomal dominant", "lcat": "autosomal recessive"}
 DISEASE_NAME = {"ha20": "A20 haploinsufficiency", "axd": "Alexander disease", "danon": "Danon disease",
                 "ssadh": "succinic semialdehyde dehydrogenase deficiency", "tangier": "Tangier disease",
-                "lad1": "leukocyte adhesion deficiency type I"}
+                "lad1": "leukocyte adhesion deficiency type I",
+                "gamt": "guanidinoacetate methyltransferase deficiency",
+                "papa": "PAPA syndrome (pyogenic sterile arthritis, pyoderma gangrenosum and acne)",
+                "ats": "arterial tortuosity syndrome", "blau": "Blau syndrome",
+                "lcat": "familial LCAT deficiency (including fish-eye disease)"}
 ROOT = Path("adjudication/o3_gaps")
 
 
 def main(argv: list[str] | None = None) -> int:
+    global ROOT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--max-candidates", type=int, default=20)
     ap.add_argument("--max-papers", type=int, default=8)
+    ap.add_argument("--root", default=str(ROOT), help="candidate folder (default adjudication/o3_gaps; the D-47 extension uses adjudication/o3_gaps_ext)")
     args = ap.parse_args(argv)
+    ROOT = Path(args.root)
     ev = [json.loads(l) for l in (ROOT / "evidence_rows.jsonl").open()]
     by_d = defaultdict(list)
     for e in ev:
         by_d[e["disease"]].append(e)
     batches = []
-    for d in ["ha20", "ssadh", "tangier", "lad1", "axd", "danon"]:
+    for d in ["ha20", "ssadh", "tangier", "lad1", "axd", "danon", "gamt", "papa", "ats", "blau", "lcat"]:
         # greedy: order candidates by their most-shared paper, then fill batches
         share = defaultdict(int)
         for e in by_d[d]:

@@ -193,12 +193,14 @@ def write_csv(path: Path, rows: list[dict]) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
+    global OUT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--snapshot", required=True)
     ap.add_argument("--diseases", nargs="*", default=DISEASES)
     ap.add_argument("--run-prefix", default="pv1", help="score data/extracted/<d>/<prefix>-<d> (default pv1; added 2026-11-15 for pv1s-majeed)")
-    ap.add_argument("--out", default=str(OUT), help="output folder (default adjudication/o3_gaps; use another folder for any non-registered run)")
+    ap.add_argument("--out", default=str(OUT), help="output folder (default adjudication/o3_gaps; use another folder for any non-registered run; the extension uses adjudication/o3_gaps_ext)")
     args = ap.parse_args(argv)
+    OUT = Path(args.out)
     snap = Path(args.snapshot)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
