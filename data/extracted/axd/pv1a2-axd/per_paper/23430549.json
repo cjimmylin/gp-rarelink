@@ -1,0 +1,1613 @@
+{
+ "pmid": "23430549",
+ "instructions_version": "extract_v6",
+ "reports_individuals_with_tnfaip3_variant": true,
+ "relevance_note": "Single-patient follow-up case report of a woman with a GFAP variant and Alexander disease: \"The patient is a 44-year-old woman carrying the p.R70Q and p.D157N GFAP mutations with adult-onset AxD\".",
+ "method_note": "Read the whole paper by hand; a short Python script only assembled the JSON and checked spans. One in-scope person, the single unnamed patient of the case report (label 'patient'); the paper states she was reported before (Sechi et al. 2010a), so cites_prior_report is true. Two GFAP variants are printed only as protein strings (p.R70Q and p.D157N); the paper gives no zygosity, phase (cis/trans), inheritance, variant class or classification beyond calling them 'mutations', so those fields are 'not reported'. Age 44 is taken as age at report ('The patient is a 44-year-old woman'). Feature onsets 'After about 16 months', 'After 3.5 years' and 'After 7 months of therapy' are times relative to the study or therapy start, not ages, so onset_iso8601 is null for them. Eye movement recording was normal and there was no oscillopsia at the beginning of the study, but both later became abnormal; these are time-dependent, not contradictions, so no excluded rows were emitted for them and the checklist item is observed. 'Palatal myoclonus' was mapped to the checklist item 'palatal tremor' (the paper never uses the word tremor). High signal in the pyramidal tracts of the medulla is imaging, not a clinical pyramidal sign, so 'spasticity or pyramidal signs' is not reported. MMSE score of 30 is stated but the paper does not call it normal, so 'cognitive decline' is not reported. EEG without epileptiform activity does not exclude the broader item 'seizures' (left not reported); the myoclonic jerks in the upper limbs (an adverse event during ceftriaxone) were not called seizures by the authors. Normal periodic laboratory controls, ECG and EEG were recorded as excluded abnormalities under D-27. Periventricular high signal was not described as a rim, so 'periventricular rim' is not reported. No contradictions found.",
+ "tables": {
+  "publications": [
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "first_author": {
+     "value": "Sechi",
+     "span": "GianPietro Sechi · Isabella Ceccherini"
+    },
+    "year": {
+     "value": 2012,
+     "span": "Published online: 13 October 2012"
+    },
+    "study_type": {
+     "value": "case report",
+     "span": "This case report provides Class IVevidence that intravenous cycles of ceftriaxone"
+    },
+    "n_patients_reported": {
+     "value": 1,
+     "span": "in a patient with adult-onset Alexander's disease"
+    },
+    "cohort_size_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "cites_prior_report_of_same_patients": {
+     "value": true,
+     "span": [
+      "Previously, we reported the successful clinical outcome related to a 20-month course of intravenous, cyclical ceftriaxone in a patient with an adult form of AxD and a rapidly progressive clinical course (Sechi et al. 2010a). Here we studied the tolerability and therapeutic effects of cycles of ceftriaxone in this patient"
+     ]
+    },
+    "prior_report_citation": {
+     "value": "Sechi et al. 2010a; Sechi GP, Matta M, Deiana GA et al (2010a) Ceftriaxone has a therapeutic role in Alexander disease. Prog Neuropsychopharmacol Biol Psychiatry 34:416-417",
+     "span": [
+      "carrying the p.R70Q and p.D157N GFAP mutations with adult-onset AxD (Sechi et al. 2010a)",
+      "Sechi GP, Matta M, Deiana GA et al (2010a) Ceftriaxone has a therapeutic role in Alexander disease. Prog Neuropsychopharmacol Biol Psychiatry 34:416-417"
+     ]
+    }
+   }
+  ],
+  "individuals": [
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "family_label_in_paper": {
+     "value": "not reported",
+     "span": null
+    },
+    "is_proband": {
+     "value": true,
+     "span": "The patient is a 44-year-old woman"
+    },
+    "sex": {
+     "value": "female",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "age_at_onset_original_text": {
+     "value": "from the age of 38 years",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "age_at_onset_iso8601": {
+     "value": "P38Y",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "age_at_last_evaluation_original_text": {
+     "value": "44-year-old",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "age_at_last_evaluation_iso8601": {
+     "value": "P44Y",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "age_at_diagnosis_original_text": {
+     "value": "not reported",
+     "span": null
+    },
+    "age_at_diagnosis_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "ethnicity_or_country": {
+     "value": "not reported",
+     "span": null
+    },
+    "consanguinity": {
+     "value": "not reported",
+     "span": null
+    },
+    "vital_status": {
+     "value": "alive",
+     "span": "The patient did not complain of oscillopsia, rated herself as definitively improved, and declared a progressively better quality of life (Rankin score, 1)"
+    },
+    "deceased_age_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "cause_of_death": {
+     "value": "not reported",
+     "span": null
+    },
+    "treatment_summary": {
+     "value": "Intravenous ceftriaxone 2 g daily, for 3 weeks monthly during the initial 4 months, then for 15 days monthly, for 4 years (via a chronic subcutaneously implanted port); a probiotic preparation (FlorVis-gg, Lactobacillus rhamnosus) by mouth once daily among the ceftriaxone cycles; miconazole for a mycotic vaginal infection; the patient refused any therapy for myoclonic jerks.",
+     "span": [
+      "for the following 4 years, after intravenous ceftriaxone 2 g daily, for 3 weeks monthly during the initial 4 months, then for 15 days monthly",
+      "Among the ceftriaxone cycles, a probiotic preparation was administered by mouth once daily: FlorVis-gg, containing 6 milliards of Lactobacillus rhamnosus.",
+      "Intravenous ceftriaxone was administered by a chronic subcutaneously implanted port on the chest.",
+      "After 7 months of therapy, the patient had a mycotic vaginal infection treated with miconazole.",
+      "The patient refused any therapy for myoclonic jerks."
+     ]
+    },
+    "disease_label_as_stated": {
+     "value": "adult-onset AxD",
+     "span": "carrying the p.R70Q and p.D157N GFAP mutations with adult-onset AxD"
+    },
+    "clinical_diagnosis_basis": {
+     "value": "not reported",
+     "span": null
+    },
+    "source_reference_in_review": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "variants": [
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GFAP",
+     "span": "carrying the p.R70Q and p.D157N GFAP mutations"
+    },
+    "variant_original_string": {
+     "value": "p.R70Q",
+     "span": "carrying the p.R70Q and p.D157N GFAP mutations"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.R70Q",
+     "span": "carrying the p.R70Q and p.D157N GFAP mutations"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "gene_symbol_as_stated": {
+     "value": "GFAP",
+     "span": "carrying the p.R70Q and p.D157N GFAP mutations"
+    },
+    "variant_original_string": {
+     "value": "p.D157N",
+     "span": "carrying the p.R70Q and p.D157N GFAP mutations"
+    },
+    "transcript_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "cdna_hgvs_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "protein_hgvs_as_stated": {
+     "value": "p.D157N",
+     "span": "carrying the p.R70Q and p.D157N GFAP mutations"
+    },
+    "genomic_coordinates_as_stated": {
+     "value": null,
+     "span": null
+    },
+    "variant_type_as_stated": {
+     "value": "not reported",
+     "span": null
+    },
+    "zygosity": {
+     "value": "not reported",
+     "span": null
+    },
+    "inheritance": {
+     "value": "not reported",
+     "span": null
+    },
+    "parental_testing_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "functional_evidence_statement": {
+     "value": "not reported",
+     "span": null
+    },
+    "pathogenicity_as_stated_by_authors": {
+     "value": "not reported",
+     "span": null
+    },
+    "acmg_criteria_as_stated": {
+     "value": "not reported",
+     "span": null
+    }
+   }
+  ],
+  "phenotypic_features": [
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "dysarthria",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "status": {
+     "value": "observed",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "onset_original_text": {
+     "value": "from the age of 38 years",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "onset_iso8601": {
+     "value": "P38Y",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "severity_or_detail": {
+     "value": "worsened progressively, from mild to marked at clinical rating scales before therapy; improved from marked to mild after about 4 years of ceftriaxone",
+     "span": [
+      "the patient's gait ataxia and the dysarthria worsened progressively, from mild to marked at clinical rating scales",
+      "the gait ataxia and the dysarthria showed a definite improvement from marked to mild at clinical rating scales"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Dysarthria",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0001260",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "gait ataxia",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "status": {
+     "value": "observed",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "onset_original_text": {
+     "value": "from the age of 38 years",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "onset_iso8601": {
+     "value": "P38Y",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "severity_or_detail": {
+     "value": "worsened progressively, from mild to marked at clinical rating scales before therapy; improved from marked to mild after about 4 years of ceftriaxone",
+     "span": [
+      "the patient's gait ataxia and the dysarthria worsened progressively, from mild to marked at clinical rating scales",
+      "the gait ataxia and the dysarthria showed a definite improvement from marked to mild at clinical rating scales"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Gait ataxia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": "HP:0002066",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "palatal myoclonus",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "status": {
+     "value": "observed",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "onset_original_text": {
+     "value": "from the age of 38 years",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "onset_iso8601": {
+     "value": "P38Y",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "severity_or_detail": {
+     "value": "spread, after about 10 months, from the soft palate to lingual and lower facial muscles; undetectable after about 4 years of ceftriaxone",
+     "span": [
+      "the palatal myoclonus spread, after about 10 months, from the soft palate to lingual and lower facial muscles",
+      "after about 4 years it was undetectable"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Palatal myoclonus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "evoked nystagmus",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "status": {
+     "value": "observed",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "onset_original_text": {
+     "value": "from the age of 40 years",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "onset_iso8601": {
+     "value": "P40Y",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "severity_or_detail": {
+     "value": "horizontal left gaze evoked nystagmus with waveform-type pendular-like mixed",
+     "span": "horizontal left gaze evoked nystagmus with waveform-type pendular-like mixed were present"
+    },
+    "hpo_label_candidate": {
+     "value": "Gaze-evoked nystagmus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "oscillopsia",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "status": {
+     "value": "observed",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "onset_original_text": {
+     "value": "from the age of 40 years",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "onset_iso8601": {
+     "value": "P40Y",
+     "span": "evoked nystagmus/oscillopsia from the age of 40 years"
+    },
+    "severity_or_detail": {
+     "value": "severe oscillopsia; rated mild after about 2 years of ceftriaxone; no complaint after about 4 years",
+     "span": [
+      "the patient complained of severe oscillopsia",
+      "The patient rated her oscillopsia as mild."
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": "Oscillopsia",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "bilateral hypometric horizontal saccades",
+     "span": "bilateral hypometric horizontal saccades and horizontal left gaze evoked nystagmus"
+    },
+    "status": {
+     "value": "observed",
+     "span": "bilateral hypometric horizontal saccades and horizontal left gaze evoked nystagmus"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "bilateral hypometric horizontal saccades and horizontal left gaze evoked nystagmus"
+    },
+    "onset_original_text": {
+     "value": "After about 16 months",
+     "span": "After about 16 months, at EMR, bilateral hypometric horizontal saccades"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": "Hypometric saccades",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "high signal-intensity areas posteriorly in the periventricular white matter",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "bilateral; did not reverse but did not progress further on follow-up",
+     "span": [
+      "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter",
+      "the signal-intensity changes on brain MRI did not reverse but did not progress further"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "high signal-intensity areas in pyramidal tracts of the medulla",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "bilateral",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "high signal-intensity areas in cerebellar white matter",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla, and cerebellar white matter"
+    },
+    "status": {
+     "value": "observed",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla, and cerebellar white matter"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla, and cerebellar white matter"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "bilateral; deep cerebellar white matter",
+     "span": [
+      "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla, and cerebellar white matter",
+      "deep cerebellar white matter (arrows)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "atrophy in involved areas",
+     "span": "the signal-intensity changes on brain MRI did not reverse but did not progress further or show atrophy in involved areas"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "the signal-intensity changes on brain MRI did not reverse but did not progress further or show atrophy in involved areas"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the signal-intensity changes on brain MRI did not reverse but did not progress further or show atrophy in involved areas"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "on follow-up brain MRI after about 4 years of ceftriaxone",
+     "span": "On follow-up examination, the signal-intensity changes on brain MRI did not reverse but did not progress further or show atrophy in involved areas"
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "myoclonic jerks in upper limbs",
+     "span": "the patient occasionally complained of single, right or left myoclonic jerks in upper limbs, about seven times a week"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the patient occasionally complained of single, right or left myoclonic jerks in upper limbs, about seven times a week"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the patient occasionally complained of single, right or left myoclonic jerks in upper limbs, about seven times a week"
+    },
+    "onset_original_text": {
+     "value": "After 3.5 years",
+     "span": "After 3.5 years, mainly during ceftriaxone cycles, the patient occasionally complained of single, right or left myoclonic jerks in upper limbs"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "single, right or left; about seven times a week; mainly during ceftriaxone cycles",
+     "span": "After 3.5 years, mainly during ceftriaxone cycles, the patient occasionally complained of single, right or left myoclonic jerks in upper limbs, about seven times a week"
+    },
+    "hpo_label_candidate": {
+     "value": "Myoclonus",
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "epileptiform activity on EEG",
+     "span": "EEG showed a normal background rhythm without epileptiform activity"
+    },
+    "status": {
+     "value": "excluded",
+     "span": "EEG showed a normal background rhythm without epileptiform activity"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "EEG showed a normal background rhythm without epileptiform activity"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "mycotic vaginal infection",
+     "span": "After 7 months of therapy, the patient had a mycotic vaginal infection treated with miconazole."
+    },
+    "status": {
+     "value": "observed",
+     "span": "After 7 months of therapy, the patient had a mycotic vaginal infection treated with miconazole."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "After 7 months of therapy, the patient had a mycotic vaginal infection treated with miconazole."
+    },
+    "onset_original_text": {
+     "value": "After 7 months of therapy",
+     "span": "After 7 months of therapy, the patient had a mycotic vaginal infection"
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "disability preventing a completely independent way of life",
+     "span": "the gait ataxia, the oscillopsia, and the dysarthria prevented a completely"
+    },
+    "status": {
+     "value": "observed",
+     "span": "the gait ataxia, the oscillopsia, and the dysarthria prevented a completely"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "the gait ataxia, the oscillopsia, and the dysarthria prevented a completely"
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": "Rankin score, 3 after 2 years without therapy; Rankin score, 1 after about 4 years of ceftriaxone",
+     "span": [
+      "independent way of life (Rankin score, 3)",
+      "declared a progressively better quality of life (Rankin score, 1)"
+     ]
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal white and red blood cell counts",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal glucose",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal creatinine",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal serum electrolytes",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal liver function tests",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal ECG",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "feature_text_as_stated": {
+     "value": "abnormal EEG",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "status": {
+     "value": "excluded",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Periodic controls, of white and red blood cell counts, glucose, creatinine, serum electrolytes, liver function tests, ECG, and EEG were normal."
+    },
+    "onset_original_text": {
+     "value": null,
+     "span": null
+    },
+    "onset_iso8601": {
+     "value": null,
+     "span": null
+    },
+    "severity_or_detail": {
+     "value": null,
+     "span": null
+    },
+    "hpo_label_candidate": {
+     "value": null,
+     "span": null
+    },
+    "hpo_id_candidate": {
+     "value": null,
+     "span": null
+    }
+   }
+  ],
+  "phenotype_checklist": [
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "seizures",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "macrocephaly or megalencephaly",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "developmental delay",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "hydrocephalus or raised intracranial pressure",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "dysphagia",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "dysarthria or dysphonia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "limb weakness",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "spasticity or pyramidal signs",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "ataxia or cerebellar signs",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "palatal tremor",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "dysarthria, gait ataxia, and palatal myoclonus from the age of 38 years"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "recurrent vomiting",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "autonomic dysfunction (orthostatic hypotension, bladder or bowel dysfunction, sleep apnea)",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "cognitive decline",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "eye movement abnormality or diplopia",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "bilateral hypometric horizontal saccades and horizontal left gaze evoked nystagmus"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "bilateral hypometric horizontal saccades and horizontal left gaze evoked nystagmus"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "scoliosis",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "cerebral white matter abnormality",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter"
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "periventricular rim",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "basal ganglia or thalamic abnormality",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "contrast enhancement on MRI",
+     "span": null
+    },
+    "status": {
+     "value": "not reported",
+     "span": null
+    },
+    "evidence_basis": {
+     "value": "not reported",
+     "span": null
+    }
+   },
+   {
+    "pmid": {
+     "value": "23430549",
+     "span": "PMID: 23430549"
+    },
+    "individual_label_in_paper": {
+     "value": "patient",
+     "span": "The patient is a 44-year-old woman"
+    },
+    "checklist_feature": {
+     "value": "medulla or cervical spinal cord atrophy or signal abnormality",
+     "span": null
+    },
+    "status": {
+     "value": "observed",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla"
+    },
+    "evidence_basis": {
+     "value": "stated for this individual",
+     "span": "Brain MRI revealed bilateral, high signal-intensity areas posteriorly in the periventricular white matter, pyramidal tracts of the medulla"
+    }
+   }
+  ]
+ }
+}
