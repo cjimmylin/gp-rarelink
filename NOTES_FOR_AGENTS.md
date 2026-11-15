@@ -6,7 +6,7 @@ How to maintain it:
 - Add what a future session would need to know. Keep entries short and dated.
 - Decisions belong in `DECISIONS.md`, spend in `BUDGET.md` and commitments in `CONTEXT.md`. This file points to those; it doesn't repeat them.
 
-*Last updated 2026-11-14.*
+*Last updated 2026-11-15.*
 
 ## 1. Where things stand
 
@@ -80,6 +80,7 @@ The dated progress log that used to open this section (pilot stages 1-7 and thei
   - **Helper slot tracking:** at most 20 helpers at once. Record a chunk as launched only after its Agent call goes out, or the tracker overcounts.
   - **D-47 batch 2 files received (2026-11-15):** 72 hand-fetched free copies (via Claude computer use in Chrome) arrived as uploads. They are checked, and the identifier-only manifest is `analysis/corpus/free_copies/hand_fetched_2026-11-14.csv` (see `HAND_FETCHED_2026-11-14.md` there). The files sit in the git-ignored `data/literature/free_copies/hand_fetched_2026-11-14/` and vanish with the container, so re-fetch them from Jimmy or Drive and check them against the sha256 column. Uploads larger than a few files: ask for several zips of about 25 MB each, sent up to 5 per message. Never push the papers to GitHub (D-46).
   - **D-47 batch 2 done (2026-11-15; Jimmy: run it now):** runs `pv1a2-<d>` for all six diseases; report `reports/addendum_d47_batch2_findings.md` (tables from `python3 -I analysis/corpus/free_copies/batch2_summary.py --date <d>`). Screening for batch 2 lives in `addendum_d47/batch2/` (`addendum_screen.py --subdir batch2`), because the import re-checks every label quote against Markdown that may not be in the container. Lessons: auto mode now flags gatekeeper helpers' bulk-write scripts, sometimes only through a SECURITY WARNING on the report rather than the helper's own words, so treat a flagged report as a refused write and re-judge (8 of 68 chunks); Docling prints '>' as '.' and '+'/'−' as '1'/'2' in some PDFs (`conversion_coverage.py` measures text loss per paper); Docling on 4 CPUs while 15–20 helpers run took about 35 minutes for 608 pages with three converter processes; take a `get_session` reading mid-run, since the seven-day limit can switch to overage partway through.
+  - **D-47 batch 2 merged and reviewed (2026-11-15):** PR #23 merged to `main` on Jimmy's word; the review's checks are in `analysis/corpus/free_copies/batch2_review.py` (run it on any addendum batch before writing the report: it counts `about` against `verdict`, identity-only phenopackets and quote coverage, and writes the human-audit list). Lessons: 45 softened verdicts sat in three chunks and the first report missed 33 of them; a quarter of the batch-2 records hold identity fields only; before O4, tag addendum individuals who belong to a comparator cohort (SSADH papers from the comparator's own group are in batch 2). `validate` writes its warning lines in no fixed order, so `validation_report.json` differs between identical re-runs; the phenopackets do not.
 - **Git:**
   - Start new work from `main`.
   - Merge to `main` only when Jimmy says so.
