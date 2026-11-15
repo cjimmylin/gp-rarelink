@@ -13,6 +13,12 @@ Labels come from data/literature/<disease>/addendum_d47/labels/*.csv, written by
 helpers under pipeline/extract/claude_code/prompts/screen_fulltext_v1.md.
 
   uv run python analysis/corpus/free_copies/addendum_screen.py --disease tangier
+
+Batch 2 (D-47 amendment of 2026-11-15) keeps its labels and decisions in a subfolder,
+so that the quote check never needs batch 1's Markdown:
+
+  uv run python analysis/corpus/free_copies/addendum_screen.py --disease tangier --subdir batch2
+  -> data/literature/<disease>/addendum_d47/batch2/{labels/,screening.csv,screening_log.json}
 """
 from __future__ import annotations
 
@@ -40,9 +46,10 @@ COLS = ["pmid", "decision", "exclusion_reason", "study_type", "n_individuals", "
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--disease", required=True)
+    ap.add_argument("--subdir", default="", help="batch subfolder under addendum_d47 (batch 2: 'batch2')")
     a = ap.parse_args()
     base = Path("data/literature") / a.disease
-    add = base / "addendum_d47"
+    add = base / "addendum_d47" / a.subdir if a.subdir else base / "addendum_d47"
     files = sorted((add / "labels").glob("*.csv"))
     labels, problems = {}, []
     for f in files:
@@ -80,7 +87,7 @@ def main() -> int:
                         "study_type": lab["study_type"].lower()})
     run = {
         "date": datetime.now(UTC).date().isoformat(),
-        "decision": "D-47 corpus addendum",
+        "decision": "D-47 corpus addendum" + (f" ({a.subdir})" if a.subdir else ""),
         "route": "claude_code (D-20)",
         "prompt_file": str(PROMPT),
         "prompt_sha256": hashlib.sha256(PROMPT.read_bytes()).hexdigest(),
