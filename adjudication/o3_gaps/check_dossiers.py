@@ -127,11 +127,14 @@ def check_batch(batch_path: Path) -> dict:
 
 
 def main(argv: list[str] | None = None) -> int:
+    global ROOT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--batch")
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--only-mine", action="store_true", help="accepted for the helpers' convenience; same as --batch")
+    ap.add_argument("--root", default=str(ROOT), help="candidate folder (default adjudication/o3_gaps; the D-47 extension uses adjudication/o3_gaps_ext)")
     args = ap.parse_args(argv)
+    ROOT = Path(args.root)
     if args.all:
         res = [check_batch(p) for p in sorted((ROOT / "batches").glob("batch_*.json"))]
         summ = {"batches": len(res), "candidates": sum(r["candidates"] for r in res), "dossiers": sum(r["dossiers"] for r in res),

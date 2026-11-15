@@ -39,10 +39,21 @@ DISEASES = {
             r"\bAlexander(['’]s)?\s+disease|\bAxD\b"),
     "danon": ("LAMP2", "Danon disease", "configs/checklist_hpo/danon.json",
               r"\bDanon|glycogen\s+storage\s+disease\s+(type\s+)?(IIb|2b)\b|LAMP-?2\s+(cardiomyopathy|deficiency|disease)"),
+    # Extension diseases (D-52, recorded as D-47 in the extension session, 2026-11-14). Mondo names checked against release 2026-10-06.
+    "blau": ("NOD2", "Blau syndrome", "configs/checklist_hpo/blau.json",
+             r"\bBlau|early[\s-]+onset\s+sarcoidosis|juvenile\s+systemic\s+granulomatosis|(pa?ediatric|familial)\s+granulomatous\s+arthritis"),
+    "lcat": ("LCAT", "LCAT deficiency", "configs/checklist_hpo/lcat.json",
+             r"\bLCAT\s+deficiency|lecithin[\s:-]+cholesterol\s+acyl\s*-?transferase\s+deficiency|fish[\s-]+eye\s+disease|\bNorum"),
+    "gamt": ("GAMT", "guanidinoacetate methyltransferase deficiency", "configs/checklist_hpo/gamt.json",
+             r"\bGAMT\s+deficiency|guanidino\s*-?acetate\s+(N-)?methyl\s*-?transferase\s+deficiency"),
+    "ats": ("SLC2A10", "arterial tortuosity syndrome", "configs/checklist_hpo/ats.json", r"arterial\s+tortuosity\s+syndrome"),
+    "papa": ("PSTPIP1", "pyogenic arthritis-pyoderma gangrenosum-acne syndrome", "configs/checklist_hpo/papa.json",
+             r"\bPAPA\b|pyogenic\s+(sterile\s+)?arthritis[,\s]+pyoderma|\bPAMI\b|PSTPIP1[\s-]+associated"),
     # Substitute disease, added 2026-11-15 (Jimmy's request; not part of the six-disease study)
     "majeed": ("LPIN2", "Majeed syndrome", "configs/checklist_hpo/majeed.json",
                r"\bMajeed|chronic\s+recurrent\s+multifocal\s+osteomyelitis\W+(and\s+|with\s+)?congenital\s+dyserythropoietic|\bCRMO\W+(and|with)\W+CDA\b|LPIN2[\s-]+(related|deficiency|associated)|\bMJDS\b"),
 }
+EXTENSION = ("blau", "majeed", "lcat", "gamt", "ats", "papa")
 HA20_GROUP = "MONDO:0100222"
 OUT = Path("configs/stage4")
 
@@ -53,9 +64,11 @@ def load(disease: str) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     import argparse
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--disease", nargs="*", default=None, help="only these diseases (default: all; regenerating all rewrites every date)")
-    only = ap.parse_args(argv).disease
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--diseases", "--disease", dest="diseases", nargs="*", choices=sorted(DISEASES), default=None,
+                    help="write only these slugs (default: all, which rewrites every config and its read date; "
+                         "the extension used --diseases " + " ".join(EXTENSION) + ", the Majeed run --disease majeed)")
+    args = ap.parse_args(argv)
     from pipeline.extract import ontologies
     from pipeline.extract.normalize_variants import VV
     mondo = ontologies.load("mondo", ontologies.latest_dir())
@@ -63,7 +76,7 @@ def main(argv: list[str] | None = None) -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     today = datetime.now(UTC).date().isoformat()
     for d, (gene, dname, cmap, rule) in DISEASES.items():
-        if only and d not in only:
+        if args.diseases and d not in args.diseases:
             continue
         r = vv.get_tool(f"tools/gene2transcripts_v2/{gene}/all/all/GRCh38")
         if "_error" in r:

@@ -1,0 +1,15 @@
+# Majeed gap candidates: what the dossier helper flagged (2026-11-15)
+
+*From the hand-back report of the one helper that wrote the ten dossiers (batch_01; Opus; instructions `dossier_instructions_v1.md`). Pointers for the panel, not verdicts. Written without quoting the papers that are not openly licensed (D-51); the dossiers themselves carry the quotes. Checked by `check_dossiers.py`: 235 quotes, all verbatim, 0 problems. The helper read the instruction file, the batch file and the four paper texts, and nothing else (confirmed from its transcript: 6 files read, 10 written); it reports no web or database lookup.*
+
+**No dossier:** G-majeed-001 and G-majeed-009 rest on one document only (record N88, a 2025 Wiley paper found by hand). Its text is not in the container and the publisher refuses automated download, so no dossier could be written or checked. The extracted rows and their quotes, which were checked against the paper when the run was made, are in the evidence rows.
+
+**Two people, four candidates (open papers):**
+- **G-majeed-002 and G-majeed-003** are the two alleles of one girl (PMID 41113563); phase is shown by testing both parents. The authors give a class for 002 without ACMG criteria. For 003 there is an RNA study showing exon skipping; the paper does not say whether the skip is in frame. Another variant at the same donor site appears in that paper's review table and is a different variant.
+- **G-majeed-007 and G-majeed-011** are the two alleles of one girl (PMID 39255247); phase is shown by inheritance from each parent. The authors give ACMG criteria for both. The functional assay used her own cells, so it reflects both variants together. A different nearby four-base deletion in the review table of 41113563 must not be merged with G-majeed-011.
+
+**Candidates that draw on papers not openly licensed (dossiers kept local):**
+- **G-majeed-004** (27252506 and the review 41113563): the paper's stated protein and the predicted protein differ in notation and may describe the same immediate stop; the panel should confirm. Two cousins in one kindred. The paper is inconsistent about one person's label, and does not say which parents were tested. Two rows of the review table are almost certainly the same two cousins and were not merged by the pipeline.
+- **G-majeed-005, -006, -008, -010, -012** (33993107 and the review 41113563): five patients of one series, each also re-tabulated as a row of the review and not merged by the pipeline. For three of the five the review row disagrees with the source on a clinical feature. Parents were not tested for 005 and only one parent for 010, so homozygosity is unconfirmed there. The source names its ACMG classes for some variants only by count, so which variant holds which class is unclear for 008 and 012. The source uses the older transcript NM_014646. Splice predictions are reported for 006 and 012 without an RNA study.
+
+**For every candidate whose second paper is 41113563:** that paper is a review table and adds no independent evidence.

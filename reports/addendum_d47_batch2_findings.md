@@ -50,16 +50,16 @@ Chunks judged twice (see *Gatekeeper write refusals*): 8 chunks, 1192 claims, ve
 | Danon disease | 22 | 8 (1) | 85.5% of 282 | 22 (8) | 22, 0 errors | 505 (212) |
 | LAD-I | 41 | 11 (1) | 69.1% of 236 | 41 (6) | 41, 0 errors | 508 (299) |
 | SSADH deficiency | 87 | 14 (12) | 98.6% of 347 | 87 (8) | 87, 0 errors | 363 (174) |
-| Tangier disease | 91 | 12 (11) | 88.2% of 516 | 91 (17) | 91, 0 errors | 235 (53) |
-| **Total** | **446** | | | **446 (153)** | | |
+| Tangier disease | 91 | 13 (11) | 88.2% of 516 | 91 (18) | 91, 0 errors | 235 (53) |
+| **Total** | **446** | | | **446 (154)** | | |
 
-Addendum so far (batch 1 + batch 2): 106 + 446 = 552 phenopackets, 11 + 153 = 164 with an interpretation (batch 1 from batch1_summary_2026-11-15.json).
+Addendum so far (batch 1 + batch 2): 115 + 446 = 561 phenopackets, 19 + 154 = 173 with an interpretation (batch 1 from batch1_summary_2026-11-15.json).
 
 <!-- /numbers -->
 
 ## What to take from this
 
-1. **Batch 2 adds 446 phenopackets, 153 with a genetic interpretation.** Alexander disease supplies most of both: 196 phenopackets and 109 interpretations. All 446 are schema-valid. 21 of the 59 included papers have no variant row (AxD 8, Tangier 6, SSADH 4, LAD-I 3; `batch2_review`). Nine were published before 2000 (AxD 1976, 1979, 1984, 1990; Tangier 1971, 1975, 1985, 1996; LAD-I 1996). The other twelve (2001–2021) report a diagnosis without printing a variant: by MRI, biopsy or an unnamed positive gene test (AxD), by clinical and lipid findings (Tangier), by enzyme assay or unspecified mutation analysis (four SSADH cohort papers), or by flow cytometry or a transplant registry (LAD-I).
+1. **Batch 2 adds 446 phenopackets, 154 with a genetic interpretation** (153 when this report was written; one Tangier record gained its interpretation when Stage 4 was re-run for D-49 on 2026-11-15, and the tables above were regenerated on 2026-11-15). Alexander disease supplies most of both: 196 phenopackets and 109 interpretations. All 446 are schema-valid. 21 of the 59 included papers have no variant row (AxD 8, Tangier 6, SSADH 4, LAD-I 3; `batch2_review`). Nine were published before 2000 (AxD 1976, 1979, 1984, 1990; Tangier 1971, 1975, 1985, 1996; LAD-I 1996). The other twelve (2001–2021) report a diagnosis without printing a variant: by MRI, biopsy or an unnamed positive gene test (AxD), by clinical and lipid findings (Tangier), by enzyme assay or unspecified mutation analysis (four SSADH cohort papers), or by flow cytometry or a transplant registry (LAD-I).
 2. **A quarter of the records hold identity fields only.** Count the 446 as records, not as characterized patients (`batch2_review`):
    - 322 carry a disease term. Of the 124 that do not, 101 have a relative's label (parents, siblings and other tested or affected relatives).
    - 158 have no phenotypic feature, and 115 have neither a feature nor an interpretation: SSADH 47 of 87, LAD-I 28 of 41, AxD 20, Tangier 17, Danon 3, HA20 0.
