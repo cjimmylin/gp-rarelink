@@ -92,6 +92,8 @@ def main() -> int:
     ap.add_argument("--draw", type=int, default=1, help="1 for the first draw; 2, 3, ... for a further draw by the same rule when the reference labels give fewer than 20 unsupported claims")
     ap.add_argument("--n-unsupported", type=int, default=36, help="candidates from the claims the gatekeeper removed (first draw: 36)")
     ap.add_argument("--n-supported", type=int, default=24, help="candidates from the claims the gatekeeper kept (first draw: 24)")
+    ap.add_argument("--exclude-field", action="append", default=[], help="leave claims of this field out of both pools (third draw; the field is named in the private rule file, not here)")
+    ap.add_argument("--allow-earlier-papers", action="store_true", help="papers of earlier draws may be used again; their claims may not (third draw: the pool of unused papers was nearly empty)")
     a = ap.parse_args()
     out = PRIV / ("audit_candidates" if a.draw == 1 else f"audit_candidates_draw{a.draw}")
     if (out / "key.json").exists():
@@ -120,7 +122,8 @@ def main() -> int:
         inputs[str(run / "gatekeeper_v4.csv")] = sha(run / "gatekeeper_v4.csv")
         ok_paper = {p for p in {r["pmid"] for r in gk} if man.get(p, {}).get("fulltext_format") == "nxml" and p not in supp}
         elig = [r for r in gk if r["class"] == "model" and r["value"].strip() not in EMPTY and r["claim_id"] not in in_sample[d] and r["pmid"] in ok_paper
-                and (d, r["claim_id"]) not in earlier_claims and (d, r["pmid"]) not in earlier_papers]
+                and (d, r["claim_id"]) not in earlier_claims and (a.allow_earlier_papers or (d, r["pmid"]) not in earlier_papers)
+                and r["field"] not in a.exclude_field]
         data[d] = {"run": run, "man": man, "claims": claims,
                    "unsupported": [r for r in elig if r["verdict"] == "unsupported"], "supported": [r for r in elig if r["verdict"] == "supported"]}
         pools[d] = {k: len(data[d][k]) for k in ("unsupported", "supported")}
@@ -188,6 +191,7 @@ def main() -> int:
     (out / "seed.txt").write_text(seed + "\n")
     (out / "key.json").write_text(json.dumps({
         "date": a.date, "draw": a.draw, "rule": "DECISIONS.md D-55; analysis/assessment_plan/calibration_audit.py", "seed_file": "seed.txt",
+        "options": {"n_unsupported": a.n_unsupported, "n_supported": a.n_supported, "exclude_field": a.exclude_field, "allow_earlier_papers": a.allow_earlier_papers},
         "items": [{"item_id": r["item_id"], "disease": c["disease"], "claim_id": c["claim_id"], "pool": c["pool"]} for r, c in zip(rows, chosen)],
         "text_restore": {f"{d}:{p}": v["status"] for (d, p), v in sorted(text.log.items())}, "inputs_sha256": inputs}, indent=1) + "\n")
     by = Counter((c["pool"], c["disease"]) for c in chosen)
@@ -195,6 +199,7 @@ def main() -> int:
               "candidates": len(chosen), "by_pool": dict(Counter(c["pool"] for c in chosen)),
               "by_pool_and_disease": {f"{p}:{d}": n for (p, d), n in sorted(by.items())},
               "eligible_pool_sizes": pools, "candidates_passed_over": dict(rejected),
+              "fields_left_out": len(a.exclude_field), "papers_of_earlier_draws_allowed": a.allow_earlier_papers,
               "papers_restored": dict(Counter(v["status"] for v in text.log.values())),
               "sha256": {"sample.csv": sha(out / "sample.csv"), "key.json": sha(out / "key.json"), "seed.txt": sha(out / "seed.txt")},
               "note": f"The three files are in {out}/ (git-ignored) and in the private package handed to Jimmy. "
@@ -202,6 +207,10 @@ def main() -> int:
     name = f"commitment_{a.date}.json" if a.draw == 1 else f"commitment_draw{a.draw}_{a.date}.json"
     Path(f"adjudication/calibration/{name}").write_text(json.dumps(commit, indent=1) + "\n")
     print(json.dumps({k: commit[k] for k in ("candidates", "by_pool", "by_pool_and_disease", "candidates_passed_over", "papers_restored")}, indent=1))
+    rule = PRIV / "set_rule.json"
+    if rule.exists():                                  # the private statement of an amended rule, fixed before this draw
+        commit["sha256"]["set_rule.json"] = sha(rule)
+        Path(f"adjudication/calibration/{name}").write_text(json.dumps(commit, indent=1) + "\n")
     print("fields:", dict(Counter(c["field"] for c in chosen).most_common(12)))
     return 0
 

@@ -7,6 +7,13 @@ exist, the calibration set: the first 20 claims labelled unsupported and the fir
 supported, in item order (the order the seeded draw gave them). Only the two clear labels
 count; "cannot verify" and "quote not in paper" are left out of the set.
 
+Amended 2026-11-16 on Jimmy's word (DECISIONS.md, D-55): one kind of claim filled half of the
+unsupported side, so that kind is capped. The field and the cap are in the private rule file
+(private/set_rule.json, sha256 committed with the third draw) and are read from there, because
+naming them here would hint at the answers. With the rule file present, the unsupported side is
+the other claims in item order up to 20 minus the cap, then claims of the capped field to make
+20; the supported side is unchanged. Without the file the first rule applies.
+
 Publicly it writes counts only, with the sha256 of the private files
 (adjudication/calibration/reference_labels_<date>.json). Item-level labels stay private until
 calibration ends.
@@ -44,6 +51,18 @@ def main() -> int:
     lab_file = PRIV / "reference_labels.json"
     lab_file.write_text(json.dumps(canon, indent=1, sort_keys=True) + "\n")
     uns = [i["item_id"] for i in items if canon.get(i["item_id"], {}).get("rating") == "unsupported"]
+    rule_file = PRIV / "set_rule.json"
+    rule = json.loads(rule_file.read_text()) if rule_file.exists() else None
+    field = {}
+    for f in sorted(PRIV.glob("audit_candidates*/sample.csv")):
+        for r in csv.DictReader(f.open(newline="")):
+            field[r["item_id"]] = r["field"]
+    if rule:
+        other = [c for c in uns if field[c] != rule["cap_field"]][:NEED - rule["cap"]]
+        capped = [c for c in uns if field[c] == rule["cap_field"]][:NEED - len(other)]
+        uns_set = sorted(other + capped) if len(other) + len(capped) >= NEED else []
+    else:
+        uns_set = uns[:NEED]
     sup = [i["item_id"] for i in items if canon.get(i["item_id"], {}).get("rating") == "supported"]
     out = {"date": a.date, "decision": "D-55", "candidates": len(items), "labelled": len(rated),
            "by_draw": {str(d): sum(1 for i in items if i["draw"] == d) for d in sorted({i["draw"] for i in items})},
@@ -64,8 +83,13 @@ def main() -> int:
     out["sittings"] = [{"ratings": len(s), "minutes": round((s[-1] - s[0]).total_seconds() / 60, 1),
                         "median_seconds_between_ratings": round(statistics.median([(b - x).total_seconds() for x, b in zip(s, s[1:])])) if len(s) > 1 else None}
                        for s in sittings]
-    if len(uns) >= NEED and len(sup) >= NEED:
-        chosen = uns[:NEED] + sup[:NEED]
+    out["set_rule"] = "amended rule (private/set_rule.json)" if rule else "first rule"
+    if rule:
+        out["sha256"]["set_rule.json"] = hashlib.sha256(rule_file.read_bytes()).hexdigest()
+        out["unsupported_outside_the_capped_kind"] = sum(1 for c in uns if field[c] != rule["cap_field"])
+        out["places_for_the_capped_kind"] = (NEED - min(NEED - rule["cap"], out["unsupported_outside_the_capped_kind"]))
+    if len(uns_set) >= NEED and len(sup) >= NEED:
+        chosen = uns_set + sup[:NEED]
         ref = {c: canon[c]["rating"] for c in chosen}
         rows = {}
         for f in sorted(PRIV.glob("audit_candidates*/sample.csv")):
