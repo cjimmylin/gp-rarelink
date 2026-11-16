@@ -38,7 +38,8 @@ Can the **SLIDERS** method, powered by Claude, build consolidated variant ↔ ph
 | **Prof. Monica Lam** (PhD) | Co-lead, AI methods | Director, Stanford Open Virtual Assistant Lab (OVAL); NAE member; ACM Fellow. Created WikiChat (Wikimedia 2024 Research Award), STORM, SLIDERS, SatIR (with Mayo Clinic). |
 | **Dr. Eva Wu** | Adjudication panel | PhD scientist |
 | **Dr. Gabriela Balderrama** | Adjudication panel | PhD scientist |
-| **Dr. Anita Chacko** | Adjudication panel | PhD scientist |
+
+*Adjudication panel as of 2026-11-15: Dr. Eva Wu and Dr. Gabriela Balderrama (Jimmy, 2026-11-15; `DECISIONS.md` D-55).*
 
 **Organizations:** Rare Genomics Institute (raregenomics.org) and the Stanford CS OVAL Lab (oval.cs.stanford.edu).
 

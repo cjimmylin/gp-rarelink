@@ -15,7 +15,7 @@ These come straight from the commitments in the grant. They outrank speed and co
 3. **Keep ClinVar and OMIM out of the extraction step.** They are the ground truth we score against. Never feed database assertions into extraction prompts, few-shot examples or reconciliation logic, or the concordance measurement is contaminated. If a change would leak ground truth, stop and flag it.
 4. **Respect the pre-registration.** Once the analysis plan is registered, do not change metrics, thresholds (e.g., the < 2% unsupported-value target, the 250-claim audit) or disease selection without logging it as a deviation in `DECISIONS.md` with a reason and date.
 5. **Report results whether favourable or not.** Do not soften, cherry-pick or omit negative findings, including the Claude vs open-weight comparison.
-6. **No submission without human sign-off.** Draft ClinVar and OMIM submissions, but mark each one *pending adjudication* until the RGI panel (Drs. Wu, Balderrama, Chacko) approves it.
+6. **No submission without human sign-off.** Draft ClinVar and OMIM submissions, but mark each one *pending adjudication* until the RGI panel (Drs. Wu and Balderrama, as of 2026-11-15) approves it.
 7. **Literature only.** Do not request, ingest or reason over RGI's patient cohort or any identifiable patient data. If the work starts to need it, stop and raise it; it's out of scope for this grant.
 8. **Watch for memorization.** When a result looks too good, consider whether the model already knew the answer from training data. The ascertainment-bias arm includes a memorization probe for this reason.
 
