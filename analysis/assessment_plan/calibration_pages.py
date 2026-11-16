@@ -6,6 +6,11 @@ key, so no rater's ratings can mix with another's. The pages carry no reference 
 gatekeeper information. They are written to the git-ignored private folder; publishing them
 is a separate step that needs Jimmy's word.
 
+Each page numbers its claims by the rater's own order (R3-01 to R3-40). The candidates' own
+item numbers are not shown: the public record says how the set was formed in item order, so a
+candidate's number would hint at its label. The mapping back is kept privately beside each
+rater's sample (map.json) and is what the scoring reads.
+
   uv run python analysis/assessment_plan/calibration_pages.py
 
 Reads adjudication/calibration/private/calibration_set/sample.csv (written by
@@ -17,6 +22,7 @@ import csv
 import hashlib
 import json
 import random
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -38,7 +44,8 @@ def main() -> int:
             w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
             w.writeheader()
             for n, x in enumerate(order, 1):
-                w.writerow({**x, "n": n})
+                w.writerow({**x, "n": n, "item_id": f"{r}-{n:02d}"})
+        (d / "map.json").write_text(json.dumps({f"{r}-{n:02d}": x["item_id"] for n, x in enumerate(order, 1)}, indent=1) + "\n")
         page = PRIV / "pages" / f"o1cal_{r}.html"
         res = subprocess.run([sys.executable, "adjudication/o1_audit/make_rating_page.py", "--rater", r, "--sample-dir", str(d),
                               "--store-prefix", "o1cal", "--title", f"Calibration claims, rater {r}", "--tab-title", f"Calibration Rater {r}",
@@ -46,6 +53,7 @@ def main() -> int:
         info = json.loads(res.stdout[res.stdout.index("{"):])
         out["pages"][r] = {"file": str(page), "claims": info["claims"], "quote_parts_not_located": info["quote_parts_not_located"],
                            "store_key": f"o1cal-rater-{r}-v1", "first_items": [x["item_id"] for x in order[:3]],
+                           "candidate_numbers_on_page": len(set(re.findall(r"CAL-[0-9]{3}", page.read_text()))),
                            "sha256": hashlib.sha256(page.read_bytes()).hexdigest()}
     print(json.dumps({r: {k: v for k, v in p.items() if k != "sha256"} for r, p in out["pages"].items()}, indent=1))
     (PRIV / "raters" / "pages.json").write_text(json.dumps(out, indent=1) + "\n")

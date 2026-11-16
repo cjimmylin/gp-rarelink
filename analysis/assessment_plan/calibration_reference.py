@@ -14,6 +14,11 @@ naming them here would hint at the answers. With the rule file present, the unsu
 the other claims in item order up to 20 minus the cap, then claims of the capped field to make
 20; the supported side is unchanged. Without the file the first rule applies.
 
+Amended a second time the same day, again on his word: with papers of earlier draws allowed in
+the third draw, two pairs of claims in the set rested on the same quote of the same paper. With
+private/set_rule_2.json present, a claim with the same paper and quote as an earlier claim of
+its side (in item order) is skipped and the next claim takes its place.
+
 Publicly it writes counts only, with the sha256 of the private files
 (adjudication/calibration/reference_labels_<date>.json). Item-level labels stay private until
 calibration ends.
@@ -33,6 +38,7 @@ from pathlib import Path
 
 PRIV = Path("adjudication/calibration/private")
 NEED = 20
+PRIVATE_KEYS = {"unsupported_outside_the_capped_kind", "of_which_usable_after_repeats", "places_for_the_capped_kind"}
 
 
 def main() -> int:
@@ -53,17 +59,33 @@ def main() -> int:
     uns = [i["item_id"] for i in items if canon.get(i["item_id"], {}).get("rating") == "unsupported"]
     rule_file = PRIV / "set_rule.json"
     rule = json.loads(rule_file.read_text()) if rule_file.exists() else None
-    field = {}
+    field, quote = {}, {}
     for f in sorted(PRIV.glob("audit_candidates*/sample.csv")):
         for r in csv.DictReader(f.open(newline="")):
             field[r["item_id"]] = r["field"]
+            quote[r["item_id"]] = (r["disease"], r["pmid"], r["span"])
+    rule2_file = PRIV / "set_rule_2.json"
+    rule2 = json.loads(rule2_file.read_text()) if rule2_file.exists() else None
+    sup = [i["item_id"] for i in items if canon.get(i["item_id"], {}).get("rating") == "supported"]
+
+    def no_repeats(seq: list[str]) -> tuple[list[str], list[str]]:
+        """Item order kept; a claim with the same paper and quote as an earlier one of the same side is left out."""
+        if not (rule2 and rule2.get("skip_same_paper_same_quote")):
+            return seq, []
+        seen, kept, left_out = set(), [], []
+        for c in seq:
+            (left_out if quote[c] in seen else kept).append(c)
+            seen.add(quote[c])
+        return kept, left_out
+
+    uns_side, uns_rep = no_repeats(uns)
+    sup_side, sup_rep = no_repeats(sup)
     if rule:
-        other = [c for c in uns if field[c] != rule["cap_field"]][:NEED - rule["cap"]]
-        capped = [c for c in uns if field[c] == rule["cap_field"]][:NEED - len(other)]
+        other = [c for c in uns_side if field[c] != rule["cap_field"]][:NEED - rule["cap"]]
+        capped = [c for c in uns_side if field[c] == rule["cap_field"]][:NEED - len(other)]
         uns_set = sorted(other + capped) if len(other) + len(capped) >= NEED else []
     else:
-        uns_set = uns[:NEED]
-    sup = [i["item_id"] for i in items if canon.get(i["item_id"], {}).get("rating") == "supported"]
+        uns_set = uns_side[:NEED]
     out = {"date": a.date, "decision": "D-55", "candidates": len(items), "labelled": len(rated),
            "by_draw": {str(d): sum(1 for i in items if i["draw"] == d) for d in sorted({i["draw"] for i in items})},
            "labels": dict(Counter(canon[i["item_id"]]["rating"] for i in rated)),
@@ -83,13 +105,18 @@ def main() -> int:
     out["sittings"] = [{"ratings": len(s), "minutes": round((s[-1] - s[0]).total_seconds() / 60, 1),
                         "median_seconds_between_ratings": round(statistics.median([(b - x).total_seconds() for x, b in zip(s, s[1:])])) if len(s) > 1 else None}
                        for s in sittings]
-    out["set_rule"] = "amended rule (private/set_rule.json)" if rule else "first rule"
+    out["set_rule"] = ("amended twice (private/set_rule.json, set_rule_2.json)" if rule and rule2 else
+                       "amended rule (private/set_rule.json)" if rule else "first rule")
+    if rule2:
+        out["sha256"]["set_rule_2.json"] = hashlib.sha256(rule2_file.read_bytes()).hexdigest()
+        out["labelled_claims_that_repeat_a_quote_of_their_paper"] = {"unsupported": len(uns_rep), "supported": len(sup_rep)}
     if rule:
         out["sha256"]["set_rule.json"] = hashlib.sha256(rule_file.read_bytes()).hexdigest()
         out["unsupported_outside_the_capped_kind"] = sum(1 for c in uns if field[c] != rule["cap_field"])
-        out["places_for_the_capped_kind"] = (NEED - min(NEED - rule["cap"], out["unsupported_outside_the_capped_kind"]))
-    if len(uns_set) >= NEED and len(sup) >= NEED:
-        chosen = uns_set + sup[:NEED]
+        out["of_which_usable_after_repeats"] = sum(1 for c in uns_side if field[c] != rule["cap_field"])
+        out["places_for_the_capped_kind"] = NEED - min(NEED - rule["cap"], out["of_which_usable_after_repeats"])
+    if len(uns_set) >= NEED and len(sup_side) >= NEED:
+        chosen = uns_set + sup_side[:NEED]
         ref = {c: canon[c]["rating"] for c in chosen}
         rows = {}
         for f in sorted(PRIV.glob("audit_candidates*/sample.csv")):
@@ -112,7 +139,9 @@ def main() -> int:
     else:
         out["calibration_set"] = None
         out["short_of"] = {"unsupported": max(0, NEED - len(uns)), "supported": max(0, NEED - len(sup))}
-    Path(f"adjudication/calibration/reference_labels_{a.date}.json").write_text(json.dumps(out, indent=1) + "\n")
+    (PRIV / "reference_summary.json").write_text(json.dumps(out, indent=1) + "\n")     # the full summary stays private
+    public = {k: v for k, v in out.items() if k not in PRIVATE_KEYS}                  # the cap's size is not published
+    Path(f"adjudication/calibration/reference_labels_{a.date}.json").write_text(json.dumps(public, indent=1) + "\n")
     print(json.dumps(out, indent=1))
     return 0
 
