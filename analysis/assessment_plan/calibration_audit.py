@@ -89,10 +89,17 @@ class Text:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", required=True)
+    ap.add_argument("--draw", type=int, default=1, help="1 for the first draw; 2, 3, ... for a further draw by the same rule when the reference labels give fewer than 20 unsupported claims")
+    ap.add_argument("--n-unsupported", type=int, default=36, help="candidates from the claims the gatekeeper removed (first draw: 36)")
+    ap.add_argument("--n-supported", type=int, default=24, help="candidates from the claims the gatekeeper kept (first draw: 24)")
     a = ap.parse_args()
-    out = PRIV / "audit_candidates"
+    out = PRIV / ("audit_candidates" if a.draw == 1 else f"audit_candidates_draw{a.draw}")
     if (out / "key.json").exists():
         raise SystemExit(f"{out}/key.json exists; the candidates are drawn once")
+    earlier = [json.loads(k.read_text()) for k in sorted(PRIV.glob("audit_candidates*/key.json"))]
+    earlier_claims = {(i["disease"], i["claim_id"]) for e in earlier for i in e["items"]}
+    earlier_papers = {(r["disease"], r["pmid"]) for f in sorted(PRIV.glob("audit_candidates*/sample.csv")) for r in csv.DictReader(f.open(newline=""))}
+    first_n = 1 + sum(len(e["items"]) for e in earlier)
     out.mkdir(parents=True, exist_ok=True)
     seed = secrets.token_hex(16)
     rng = random.Random(seed)
@@ -112,7 +119,8 @@ def main() -> int:
         claims = list(csv.DictReader((run / "claims.csv").open(newline="")))
         inputs[str(run / "gatekeeper_v4.csv")] = sha(run / "gatekeeper_v4.csv")
         ok_paper = {p for p in {r["pmid"] for r in gk} if man.get(p, {}).get("fulltext_format") == "nxml" and p not in supp}
-        elig = [r for r in gk if r["class"] == "model" and r["value"].strip() not in EMPTY and r["claim_id"] not in in_sample[d] and r["pmid"] in ok_paper]
+        elig = [r for r in gk if r["class"] == "model" and r["value"].strip() not in EMPTY and r["claim_id"] not in in_sample[d] and r["pmid"] in ok_paper
+                and (d, r["claim_id"]) not in earlier_claims and (d, r["pmid"]) not in earlier_papers]
         data[d] = {"run": run, "man": man, "claims": claims,
                    "unsupported": [r for r in elig if r["verdict"] == "unsupported"], "supported": [r for r in elig if r["verdict"] == "supported"]}
         pools[d] = {k: len(data[d][k]) for k in ("unsupported", "supported")}
@@ -153,9 +161,15 @@ def main() -> int:
         return got
 
     short = Counter()
+    total = {"unsupported": a.n_unsupported, "supported": a.n_supported}
     for pool in ("unsupported", "supported"):
+        order = DISEASES[:]
+        if a.draw > 1:
+            rng.shuffle(order)                         # which diseases get the remainder is part of the seeded draw
+        quota = {d: total[pool] // len(DISEASES) + (1 if i < total[pool] % len(DISEASES) else 0) for i, d in enumerate(order)}
+        assert a.draw > 1 or quota == {d: QUOTA[pool] for d in DISEASES}
         for d in DISEASES:
-            short[pool] += QUOTA[pool] - take(d, pool, QUOTA[pool])
+            short[pool] += quota[d] - take(d, pool, quota[d])
         while short[pool] > 0:                         # fill a shortfall from the disease with the most claims left
             d = max(DISEASES, key=lambda x: len(data[x][pool]))
             if not data[d][pool] or not take(d, pool, 1):
@@ -166,26 +180,27 @@ def main() -> int:
     rng.shuffle(chosen)
     rows = [{"n": n, "item_id": f"CAL-{n:03d}", "disease": c["disease"], "pmid": c["pmid"], "pubmed": f"https://pubmed.ncbi.nlm.nih.gov/{c['pmid']}/",
              "paper_text": f"data/literature/{c['disease']}/fulltext_md/{c['pmid']}.md", "individual": c["individual"], "context": c["context"],
-             "table": c["table"], "field": c["field"], "value": c["value"], "span": c["span"]} for n, c in enumerate(chosen, 1)]
+             "table": c["table"], "field": c["field"], "value": c["value"], "span": c["span"]} for n, c in enumerate(chosen, first_n)]
     with (out / "sample.csv").open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
         w.writeheader()
         w.writerows(rows)
     (out / "seed.txt").write_text(seed + "\n")
     (out / "key.json").write_text(json.dumps({
-        "date": a.date, "rule": "DECISIONS.md D-55; analysis/assessment_plan/calibration_audit.py", "seed_file": "seed.txt",
+        "date": a.date, "draw": a.draw, "rule": "DECISIONS.md D-55; analysis/assessment_plan/calibration_audit.py", "seed_file": "seed.txt",
         "items": [{"item_id": r["item_id"], "disease": c["disease"], "claim_id": c["claim_id"], "pool": c["pool"]} for r, c in zip(rows, chosen)],
         "text_restore": {f"{d}:{p}": v["status"] for (d, p), v in sorted(text.log.items())}, "inputs_sha256": inputs}, indent=1) + "\n")
     by = Counter((c["pool"], c["disease"]) for c in chosen)
-    commit = {"date": a.date, "decision": "D-55", "what": "audit calibration candidates for Jimmy's reference labels; private until calibration ends",
+    commit = {"date": a.date, "decision": "D-55", "draw": a.draw, "what": "audit calibration candidates for Jimmy's reference labels; private until calibration ends",
               "candidates": len(chosen), "by_pool": dict(Counter(c["pool"] for c in chosen)),
               "by_pool_and_disease": {f"{p}:{d}": n for (p, d), n in sorted(by.items())},
               "eligible_pool_sizes": pools, "candidates_passed_over": dict(rejected),
               "papers_restored": dict(Counter(v["status"] for v in text.log.values())),
               "sha256": {"sample.csv": sha(out / "sample.csv"), "key.json": sha(out / "key.json"), "seed.txt": sha(out / "seed.txt")},
-              "note": "The three files are in adjudication/calibration/private/audit_candidates/ (git-ignored) and in the private package handed to Jimmy. "
+              "note": f"The three files are in {out}/ (git-ignored) and in the private package handed to Jimmy. "
                       "They are committed when calibration has ended; these values let anyone check that they were not changed."}
-    Path(f"adjudication/calibration/commitment_{a.date}.json").write_text(json.dumps(commit, indent=1) + "\n")
+    name = f"commitment_{a.date}.json" if a.draw == 1 else f"commitment_draw{a.draw}_{a.date}.json"
+    Path(f"adjudication/calibration/{name}").write_text(json.dumps(commit, indent=1) + "\n")
     print(json.dumps({k: commit[k] for k in ("candidates", "by_pool", "by_pool_and_disease", "candidates_passed_over", "papers_restored")}, indent=1))
     print("fields:", dict(Counter(c["field"] for c in chosen).most_common(12)))
     return 0
