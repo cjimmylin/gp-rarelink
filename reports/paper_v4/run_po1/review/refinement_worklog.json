@@ -1,0 +1,67 @@
+{
+  "v1": {
+    "round": 1,
+    "scores_before": {
+      "Originality": 3.0,
+      "Quality": 2.0,
+      "Clarity": 2.0,
+      "Significance": 3.0,
+      "Soundness": 2.0,
+      "Presentation": 2.0,
+      "Contribution": 2.0,
+      "Overall": 5.0,
+      "Confidence": 4.0
+    },
+    "scores_after": {
+      "Originality": 3.0,
+      "Quality": 2.0,
+      "Clarity": 3.0,
+      "Significance": 3.0,
+      "Soundness": 2.0,
+      "Presentation": 3.0,
+      "Contribution": 2.0,
+      "Overall": 4.0,
+      "Confidence": 4.0
+    },
+    "deltas": {
+      "Originality": 0.0,
+      "Quality": 0.0,
+      "Clarity": 1.0,
+      "Significance": 0.0,
+      "Soundness": 0.0,
+      "Presentation": 1.0,
+      "Contribution": 0.0
+    },
+    "total_gain": 2.0,
+    "total_drop": 0,
+    "outcome": "REJECTED_SCORE_DECREASE",
+    "accept": false,
+    "continue": false,
+    "agent_plan": {
+      "addressed_weaknesses": [
+        "W1 (headline numbers invite a stronger reading): abstract and introduction reframed as a provenance-and-feasibility report; accuracy evidence now leads with the pilot human audits (6.0%, 3/50; 6.3%, 3/48) and puts the gatekeeper's pilot detection (2 of 6, 1 of 4) beside its 0.43% share, which is called a screen of measured low sensitivity, not an error rate; quote coverage is stated as a pipeline invariant (an unquoted value is not emitted) confirmed by the span check; abstract states what the pending O1, triage and adjudication results will decide.",
+        "W2 (recall/coverage/gaps over-interpreted): O2 now gives per-disease recall denominators (78, 158, 6, 60, 51, 20), separates measured facts (misses concentrated in single papers; 28 of 50 sampled misses with no position/residue found by script) from hypothesised causes for triage to test; restricted vs unrestricted catalogue recall contrasted (reading vs access); OMIM section labels the access conclusion as resting on the source-paper counts and notes reading accuracy rests on 14 variants; O3 retitled 'none yet shown to be real', with the three placement artefacts named; deduplication effect on person counts added (19 proposed groups: 3.8% of HA20 identities, 0.2-1.2% elsewhere, a lower bound; 9 of 38 repeat papers differ); every gap count now says registered six (214) or all twelve (269).",
+        "W3 (presentation): D-nn codes removed from all main-text prose, tables and captions (kept in appendix tables, with a pointer in the Reproducibility Statement and the deviations caption); three figures re-rendered without codes in their labels (new *_v1.png from plot_v1.py); Section 4 opens by stating 4.1-4.6 are the registered six only and 4.7 is everything else; extension, exploratory and addendum results are gathered in 4.7 under the line 'none of these results enters a registered figure'; compact done/pending status table added (Table 1); human-assessment procedure figure and detailed design moved to Appendix F; limitations split into ten that change interpretation (including O1 sampling only gatekeeper-supported claims, single-person calibration reference with two amendments, balanced 20/20 calibration set) and a condensed list of further and procedural limitations, none deleted."
+      ],
+      "integrated_answers": [
+        "Q1 (O1 if the audit lands at 2-4%; gatekeeper sensitivity): O1 samples released records, so the gatekeeper's misses enter it directly; rule C passes a 2% pipeline with probability 0.44 and a 3% one with 0.13; gatekeeper sensitivity on O1 will be reported as \\HR{o1_gatekeeper_sens}.",
+        "Q2 (recall restricted to open full text): recall is computed only over ClinVar citation pairs of extracted (open full-text) papers, so access does not lower it; a split by kind of ClinVar citation has not been computed (stated); triage breakdown pending.",
+        "Q4 (plan if rule C fails): the result is reported as computed; any fix would be a logged deviation, re-run and reported beside the registered result, which stays primary.",
+        "Q5 (human labels on removed claims): the PI's calibration labels on 65 gatekeeper-removed claims (34 supported, 26 unsupported) are reported as the only such evidence, explicitly not a rate."
+      ],
+      "actions_taken": [
+        "Rewrote abstract, introduction (new 'What this report can and cannot claim' paragraph and Table 1 status at a glance), Section 4 structure (4.1 provenance and scale; 4.2 accuracy evidence: pilot audits, screen, pending O1; 4.3 O2; 4.4 OMIM; 4.5 O3; 4.6 O4/O5; 4.7 beside the registered study), discussion, limitations and conclusion.",
+        "Replaced D-nn codes in main text with plain descriptions; table and figure captions updated; re-rendered fig_pipeline_overview_v1, fig_o2_concordance_v1, fig_gatekeeper_by_run_v1 (label-only change; originals untouched).",
+        "Moved the human assessment figure and the detailed design (calibration rule, amendments, counting rule, main assessment) to Appendix F; moved model-ID provenance to the Reproducibility Statement; moved Majeed search detail to Appendix D; DRBench/AA-Omniscience correction now points to Appendix I.",
+        "Kept author block, \\input{human_results.tex}, every human result as \\HR{id} from the listed ids only; no numbers outside experimental_log.md; no rater identity, capped kind or cap size, verbatim paper quotes or SLIDERS ablation.",
+        "po.py check: no unknown cite keys, no missing figures, balanced environments; po.py compile: ok, 28 pages, 0 overfull hboxes, no undefined references; main text (Conclusion) ends on page 10."
+      ],
+      "ignored_requests": [
+        "Q3: comparison with single-pass Claude extraction without gatekeeper, LitVar or AVADA on the same papers (no such experiment in the log).",
+        "Q5: a non-Claude judge on a subsample (not run; not promised).",
+        "Recall restricted to non-curation ClinVar citations and dedup-adjusted person counts beyond the logged 19-group bound (not computed; stated as not computed).",
+        "Any value, range or direction for pending human results (all remain \\HR placeholders)."
+      ]
+    }
+  }
+}
