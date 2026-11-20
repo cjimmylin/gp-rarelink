@@ -799,7 +799,7 @@ Numbers are given in §2 with their sources; this section lists each limitation 
 | `o1_unsupported_ci` | Its exact 95% interval | O1 audit pages |
 | `o1_rule_c` | Whether the pre-registered decision rule C is met (at most 4 of 250 unsupported) | O1 audit pages |
 | `o1_kappa_range` | Range of Cohen's kappa over pairs of raters on shared claims | O1 audit pages |
-| `o1_gatekeeper_sens` | Share of human-unsupported claims the gatekeeper had also removed | O1 audit pages |
+| `o1_gatekeeper_sens` | Of the 40 calibration claims, those the raters' majority labels unsupported, and how many of them the gatekeeper had removed (exploratory: the calibration set is not a random sample; the O1 audit cannot measure this, because it samples only claims the gatekeeper kept) | `calibration_score.py` |
 | `o1_by_disease` | Unsupported claims by disease (table) | O1 audit pages |
 | `o1x_unsupported` | Extension audit (O1X), five reserve diseases: unsupported of 250 | O1X pages (Plan B only) |
 | `o1m_unsupported` | Majeed audit: unsupported of 27 | Majeed pages (Plan B only) |
