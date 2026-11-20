@@ -1,7 +1,7 @@
 """fig_human_assessment: design diagram of the D-55 human assessment (experimental_log.md §4).
 
 Design only: no results, no rater identities. Every number is copied from the log
-(§4, §4.1, §4.2, §4.3, §7). Coordinates are in inches on a 7 x 4.4 in canvas.
+(§4, §4.1, §4.2, §4.3, §7). Coordinates are in inches on a 7 x 4.5 in canvas.
 """
 import math
 import os
@@ -12,7 +12,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, Polygon, Circle, FancyArrowPatch
 
-W, H = 7.0, 4.4
+W, H = 7.0, 4.5
 FS = 8          # body text, pt
 FS_HEAD = 9     # band titles
 LS = 1.2        # line spacing
@@ -84,8 +84,8 @@ def line(xs, ys, color=ARROW, lw=1.0, z=3):
 
 
 # ---------------------------------------------------------------- stage bands
-S1 = (2.50, 4.37)
-S2 = (0.02, 2.38)
+S1 = (2.60, 4.47)
+S2 = (0.02, 2.48)
 for (y0, y1) in (S1, S2):
     ax.add_patch(FancyBboxPatch((0.03, y0), W - 0.06, y1 - y0,
                                 boxstyle="round,pad=0,rounding_size=0.08",
@@ -95,7 +95,7 @@ txt(0.12, S1[1] - 0.12, "Stage 1: Calibration (due 2026-11-22)", size=FS_HEAD,
 txt(1.32, S2[1] - 0.12, "Stage 2: Main assessment", size=FS_HEAD, weight="bold", ha="left")
 
 # ---------------------------------------------------------------- stage 1
-y0s, y1s = 2.58, 4.12
+y0s, y1s = 2.68, 4.22
 ym1 = (y0s + y1s) / 2
 
 titled(0.10, y0s, 1.42, y1s, "Reference labels",
@@ -110,14 +110,14 @@ titled(1.60, y0s, 3.00, y1s, "Fixed set rule",
 rx0, rx1 = 3.18, 4.68
 box(rx0, y0s, rx1, y1s, C["sky"], fill_f=0.85)
 rxm = (rx0 + rx1) / 2
-r, sp = 0.105, 0.255
-gy_top = y1s - 0.20
+r, sp = 0.105, 0.24
+gy_top = y1s - 0.17
 for i in range(9):
     cx = rxm + (i % 3 - 1) * sp
     cy = gy_top - (i // 3) * sp
     ax.add_patch(Circle((cx, cy), r, fc="white", ec=C["sky"], lw=1.0, zorder=4))
     txt(cx, cy, f"R{i + 1}", size=FS, z=6)
-txt(rxm, y0s + 0.08, "same 40 claims,\neach in own order;\nno reference label,\n"
+txt(rxm, y0s + 0.06, "same 40 claims,\neach in own order;\nno reference label,\n"
     "gatekeeper verdict\nor source pool shown", va="bottom",
     within=(rx0 + 0.05, y0s + 0.04, rx1 - 0.05, gy_top - 2 * sp - r - 0.02))
 
@@ -133,7 +133,7 @@ for xa, xb in [(1.42, 1.60), (3.00, 3.18), (4.68, dx - hw)]:
     arrow((xa, ym1), (xb, ym1))
 
 # ---------------------------------------------------------------- connector to stage 2
-dec = (0.10, 0.72, 1.16, 1.56)
+dec = (0.10, 0.76, 1.16, 1.60)
 xm_dec = (dec[0] + dec[2]) / 2
 yc = (S1[0] + S2[1]) / 2
 line([dx, dx], [dy - hh, yc])
@@ -143,8 +143,8 @@ arrow((xm_dec, yc), (xm_dec, dec[3]))
 # ---------------------------------------------------------------- stage 2
 titled(*dec, "PI decides", "after calibration:\nwho goes on;\nPlan A or\nPlan B", C["purple"])
 
-pa = (1.32, 1.16, 2.62, 2.14)
-pb = (1.32, 0.10, 2.62, 1.08)
+pa = (1.32, 1.22, 2.62, 2.24)
+pb = (1.32, 0.10, 2.62, 1.12)
 titled(*pa, "Plan A",
        "registered six\n250 audit claims\n50 ClinVar misses\n214 gap candidates", C["blue"])
 titled(*pb, "Plan B",
@@ -161,7 +161,7 @@ arrow((xj, ym_b), (pb[0], ym_b))
 
 # three tracks
 tx0, tx1 = 2.82, 5.80
-lanes = {"audit": (1.06, 2.14), "triage": (0.60, 1.00), "adj": (0.08, 0.54)}
+lanes = {"audit": (1.16, 2.24), "triage": (0.72, 1.10), "adj": (0.08, 0.68)}
 mids = {k: (v[0] + v[1]) / 2 for k, v in lanes.items()}
 xc = 2.72
 line([pa[2], xc], [ym_a, ym_a])
@@ -184,9 +184,9 @@ for (px, py) in pts:
     ax.add_patch(Circle((px, py), 0.045, fc="white", ec="#1b6e55", lw=0.9, zorder=4))
 lane_in = (tx0 + 0.70, a0 + 0.05, tx1 - 0.05, a1 - 0.05)
 tx_a = tx0 + 0.72
-txt(tx_a, a1 - 0.09, "(a) Audit", weight="bold", ha="left", va="top",
+txt(tx_a, a1 - 0.07, "(a) Audit", weight="bold", ha="left", va="top",
     color=TITLE_COL[C["green"]], within=lane_in)
-txt(tx_a, a1 - 0.09 - LINE,
+txt(tx_a, a1 - 0.07 - LINE,
     "Each claim read by 3 raters in rotating,\n"
     "overlapping groups of three (84 groups\n"
     "with nine raters); equal loads; every\n"
@@ -206,16 +206,17 @@ txt(tx0 + 0.12, (t0 + t1) / 2 - LINE / 2, "2 raters per item; PI settles differe
 # (c) gap adjudication
 g0, g1 = lanes["adj"]
 box(tx0, g0, tx1, g1, C["verm"])
-txt(tx0 + 0.12, (g0 + g1) / 2 + LINE / 2, "(c) Gap adjudication", weight="bold", ha="left",
+g_top = (g0 + g1) / 2 + 2 * LINE + 0.01
+txt(tx0 + 0.12, g_top - LINE / 2, "(c) Gap adjudication", weight="bold", ha="left",
     color=TITLE_COL[C["verm"]], within=(tx0, g0, tx1 - 0.05, g1))
-txt(tx0 + 0.12, (g0 + g1) / 2 - LINE / 2,
+txt(tx0 + 0.12, g_top - LINE,
     "2 raters per candidate; a third where they differ\non the decision or across the "
-    "pathogenic / uncertain line", ha="left", va="center",
+    "pathogenic /\nuncertain line", ha="left", va="top",
     within=(tx0, g0 + 0.03, tx1 - 0.05, g1))
 
 # collector to sign-off
 xs = 5.89
-fx0, fx1 = 5.98, 6.92
+fx0, fx1 = 5.97, 6.94
 for m in mids.values():
     line([tx1, xs], [m, m])
 line([xs, xs], [min(mids.values()), max(mids.values())])

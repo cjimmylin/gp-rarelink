@@ -108,12 +108,12 @@ for (a0, a1), (b0, b1) in zip(xs[:-1], xs[1:]):
     arrow([(a1, TMID), (b0, TMID)])
 
 # ---------------------------------------------------------------- bottom lane
-BY0, BY1 = 0.24, 1.02
+BY0, BY1 = 0.21, 1.02
 ref = (0.06, 1.12)
-o2 = (1.34, 2.36, 0.68, BY1)
-o3 = (1.34, 2.36, BY0, 0.58)
-dos = (2.58, 3.66, BY0, 0.76)
-ppl = (3.88, 5.44, BY0, BY1)
+o2 = (1.28, 2.40, 0.68, BY1)
+o3 = (1.28, 2.40, BY0, 0.58)
+dos = (2.58, 3.62, BY0, 0.79)
+ppl = (3.80, 5.46, BY0, BY1)
 box(ref[0], ref[1], BY0, BY1, "Held-out reference",
     "ClinVar snapshot\n(dated release);\nOMIM entry pages\nfrozen 2026-10-28", ORANGE, "white")
 box(*o2, "O2 concordance", "with ClinVar, OMIM", ORANGE, "white")
@@ -136,7 +136,11 @@ RUN_HI, RUN_LO = 1.31, 1.13
 x_out = (xs[5][0] + xs[5][1]) / 2
 x_o2o3 = (o2[0] + o2[1]) / 2
 # Output -> O2 (and through O2's column to O3): records into the harness
-arrow([(x_out, TY0), (x_out, RUN_HI), (x_o2o3, RUN_HI), (x_o2o3, o2[3])])
+grp = FancyBboxPatch((o2[0] - 0.04, o3[2] - 0.035), o2[1] - o2[0] + 0.08,
+                     o2[3] - o3[2] + 0.07, boxstyle="round,pad=0,rounding_size=0.05",
+                     fc="none", ec=ORANGE, lw=0.8, ls=(0, (3, 2)), zorder=2)
+ax.add_patch(grp)
+arrow([(x_out, TY0), (x_out, RUN_HI), (x_o2o3, RUN_HI), (x_o2o3, o2[3] + 0.035)])
 ax.text((x_o2o3 + 2.95) / 2, RUN_HI + 0.015, "phenopackets", fontsize=FS, va="bottom",
         ha="center", zorder=7)
 # Gatekeeper -> People: the O1 claim pool; drawn over the other route with a white gap
@@ -145,8 +149,6 @@ x_pp = ppl[0] + 0.30
 arrow([(x_gk, TY0), (x_gk, RUN_LO), (x_pp, RUN_LO), (x_pp, ppl[3])], halo=True, z=8)
 ax.text((x_gk + x_pp) / 2 + 0.05, RUN_LO + 0.015, "supported claims", fontsize=FS,
         va="bottom", ha="center", zorder=9)
-# O2 column continues to O3 (records feed both)
-arrow([(o2[0] - 0.10, RUN_HI - 0.0), (o2[0] - 0.10, y_o3), (o3[0], y_o3)]) if False else None
 
 # ---------------------------------------------------------------- overflow check
 fig.canvas.draw()
