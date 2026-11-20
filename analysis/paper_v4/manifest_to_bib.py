@@ -21,7 +21,14 @@ def esc(s: str) -> str:
 def authors(s: str) -> str:
     # manifest style "Joshi H, Shethia P, Lam MS" -> "Joshi, H. and Shethia, P. and Lam, M. S."
     out = []
-    for a in [x.strip() for x in s.replace(";", ",").split(",") if x.strip()]:
+    s = re.sub(r"\([^)]*\)", "", s)            # drop parenthetical notes such as "(incl. ...)"
+    for a in [x.strip().rstrip(".") for x in s.replace(";", ",").split(",") if x.strip()]:
+        if "et al" in a.lower():
+            name = re.sub(r"(?i)\s*et al\.?", "", a).strip()
+            if name:                                     # "Lansdon LA et al" -> the named author, then "others"
+                out.append(authors(name))
+            out.append("others")
+            continue
         if a.lower() in ("et al", "et al."):
             out.append("others")
             continue
