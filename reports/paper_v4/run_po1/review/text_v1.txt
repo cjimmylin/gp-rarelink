@@ -1,0 +1,3341 @@
+Published as a conference paper at ICLR 2025
+GP-RARELINK:
+PROVENANCE-FIRST
+GENOTYPE–
+PHENOTYPE RECORDS FROM RARE-DISEASE CASE
+REPORTS, SCORED AGAINST HELD-OUT DATABASES
+(INTERIM REPORT, VERSION 4)
+Jimmy Lin
+Rare Genomics Institute
+Monica S. Lam
+Stanford University, Open Virtual Assistant Lab
+ABSTRACT
+Rare-disease variants described in case reports often never reach ClinVar or
+OMIM. GP-RareLink asks whether an LLM-based systematic-review method
+(SLIDERS), run with Claude, can turn case reports into variant–phenotype–
+disease records that a person can check value by value, at a demonstrable ac-
+curacy. This interim report establishes provenance and feasibility; it does not yet
+establish accuracy. Claude Opus writes per-person records in which every value
+carries the PMID and a verbatim quote and phenotypes are three-state; a second
+Claude read (the gatekeeper) removes claims their quote does not support; Clin-
+Var and OMIM are held out of extraction and used only to score it; plan and
+pipeline were frozen on 2026-10-20. The only human audits so far, two single-
+rater pilot audits on the development disease before the freeze, found 6.0% (3/50)
+and 6.3% (3/48) of claims unsupported, above the 2% target, and the gatekeeper
+flagged only 2 of 6 and 1 of 4 of the claims the rater rejected. In six registered
+diseases, 350 papers gave 2,836 schema-valid GA4GH Phenopackets; all 241,730
+asserted values carry a verbatim quote, which holds by construction and was con-
+firmed by a span check. The gatekeeper judged 0.43% (248/57,819) of claims
+unsupported in the five confirmatory diseases: a screen of measured low sensi-
+tivity, not an error rate. HGVS recall against ClinVar is 10.1%–35.0% at tier 1,
+causes untriaged; 57.3% (43/75) of OMIM’s allelic variants are recovered; 214
+gap candidates in the registered six (269 across all twelve diseases studied) await
+adjudication, and none is yet shown to be a real gap. The pending 250-claim hu-
+man audit ( pending: o1_unsupported_n of 250 unsupported;
+pending: o1_unsupported_pct ;
+exact 95% CI
+pending: o1_unsupported_ci ) will decide whether the registered pipeline
+meets the 2% target; triage and adjudication will decide what the misses and can-
+didates mean.
+1
+INTRODUCTION
+Rare diseases together affect an estimated 3.5–5.9% of the population (Wakap et al., 2019) and
+diagnosis in Europe takes close to five years on average (Faye et al., 2024); a diagnosis often depends
+on finding evidence that already exists. That evidence is fragmented across ClinVar (Landrum et al.,
+2025), OMIM (Amberger et al., 2019), the Human Phenotype Ontology (HPO) (Gargano et al.,
+2024), Mondo (Vasilevsky et al., 2025) and Monarch’s phenopacket-store (Danis et al., 2025), while
+most individual patients are described only in case reports. A laboratory querying ClinVar cannot
+see a causative variant that was published but never submitted: in one curated gene, 24% of the
+pathogenic variants found in PubMed articles were absent from every database examined (Lyons
+et al., 2023), and a full-text study reports more than 60,000 likely disease-causing HGMD variants
+absent from ClinVar (Birgmeier et al., 2020). Non-standard variant names hide evidence (Freeman
+et al., 2024; Lansdon et al., 2026), and phenotype detail in first reports is often superficial (AlMail
+et al., 2024).
+1
+Published as a conference paper at ICLR 2025
+Table 1: Status at a glance, registered six unless stated (2026-11-20). “Done” gives what is mea-
+sured, with denominators; “pending” cells print a marker until people’s ratings fill them. Gatekeeper
+figures are model readings, not error rates.
+Outcome
+Done (measured)
+Pending (what people will decide)
+Provenance
+241,730 values, all with a verbatim quote; 0 span-check
+problems (an unquoted value is not emitted)
+–
+O1 accuracy (pri-
+mary)
+250 claims drawn (seed 40250) before any concordance; pi-
+lot audits 6.0% (3/50), 6.3% (3/48), pre-freeze
+pending: o1_unsupported_n
+of
+250;
+rule
+C
+pending: o1_rule_c
+Gatekeeper screen
+removed as unsupported 0.43% (248/57,819, five confirma-
+tory); pilot detection 2 of 6 and 1 of 4
+caught on O1: pending: o1_gatekeeper_sens
+O2 ClinVar
+tier-1 HGVS recall 10.1%–35.0%; tier-1 overlap 35%–87%
+(not precision)
+50 misses: pending: o2_triage_breakdown
+OMIM holdout
+57.3% (43/75) allelic variants recovered; phenotype half not
+assessed
+–
+O3 gap candidates
+214 left for the panel, all with dossiers (269 in all twelve)
+accepted pending: o3_accepted
+O4 bias
+memorization probe on 180 papers; primary denominators
+fixed; no sheet filled
+pending: o4_deviation
+O5 efficiency
+open-weight run screened by the gatekeeper; pilot 0.37–0.65
+min per rating
+pending: o5_minutes_per_record ;
+pending: o5_openweight_audit
+Calibration
+40 claims (20/20) and floor fixed; 9 raters invited, due 2026-
+11-22
+at floor: pending: cal_raters_pass
+Alexander disease shows the size of the gap: a 2024 systematic review reports 550 patients and
+182 causative GFAP variants (Grossi et al., 2024), against 76 pathogenic or likely pathogenic (P/LP)
+single-gene GFAP records in ClinVar’s release of 2026-10-12 and 13 allelic variants in OMIM’s gene
+entry (frozen 2026-10-28). None of the twelve genes studied here has a phenopacket-store folder
+(commit ca133e6, 2026-11-04). LLM evaluation in rare disease has mostly targeted diagnosis,
+where LLMs trail a traditional decision-support tool on phenopacket-derived cases (Reese et al.,
+2026) and leakage puts most studies at high risk of bias (Nguyen et al., 2026); building case-level
+records with an error rate measured by people has received less attention.
+GP-RareLink asks whether SLIDERS (Joshi et al., 2026), a systematic-review method that builds
+evidence tables with verbatim excerpts as provenance and reconciles them with a code-writing agent,
+can, run with Claude, build such records at an accuracy we can demonstrate. Every extracted value
+carries a verbatim quote and the PMID; phenotypes are three-state and “not reported” is never col-
+lapsed into “excluded”; a second Claude read, the gatekeeper, removes values their quote does not
+support; the output is GA4GH Phenopackets v2. ClinVar and OMIM are never read by extraction,
+so that afterwards they can score it (O2) and expose variants absent from both (gap candidates, O3).
+People decide what counts: an audit of values against their quotes (O1, primary: fewer than 2% un-
+supported in 250 claims), a triage of ClinVar misses and adjudication of gap candidates; nothing goes
+to a database without the panel’s approval and the PI’s sign-off. The registered study is six diseases
+(Table 2); its pooled headline figures exclude HA20, the development disease. Five reserve diseases
+run under a separately pre-registered extension, one exploratory disease and a corpus addendum of
+free copies found after the freeze are reported apart and never pooled with it (Section 4.7).
+What this report can and cannot claim.
+This is version 4 of an internal interim report, written
+before any person has rated output of the frozen pipeline; every human result is a boxed placeholder
+that a script fills (Table 1). It is a report on provenance and feasibility. The only accuracy evidence
+from people is two pre-freeze single-rater pilot audits, both above target (Section 4.2). We contribute
+(i) a provenance-first pipeline from case reports to validated phenopackets, run frozen on the regis-
+tered six (350 papers, 2,836 phenopackets) and, apart, on six more diseases; (ii) a database-held-out
+evaluation whose human parts (audit sample, triage sample, 214 gap candidates in the registered six
+with evidence dossiers) are drawn and waiting for people; and (iii) an account of what is not yet
+known, stated so that the pending results can settle it.
+2
+Published as a conference paper at ICLR 2025
+Table 2: The twelve diseases (inheritance; papers in the main run). Only the registered six form the
+registered study; the extension five (separately pre-registered) and Majeed (exploratory) are reported
+beside it. Mondo identifiers and transcripts are in Appendix A.
+Registered six
+Extension five and exploratory Majeed (not registered)
+A20 haploinsufficiency, HA20 (TNFAIP3), dev.
+AD
+85
+Blau syndrome (NOD2)
+AD
+68
+SSADH deficiency (ALDH5A1)
+AR
+40
+Familial LCAT deficiency (LCAT)
+AR
+50
+Tangier disease (ABCA1)
+AR
+31
+GAMT deficiency (GAMT)
+AR
+23
+Leukocyte adhesion def. I, LAD-I (ITGB2)
+AR
+42
+Arterial tortuosity, ATS (SLC2A10)
+AR
+34
+Alexander disease, AxD (GFAP)
+AD / de novo
+69
+PAPA syndrome (PSTPIP1)
+AD
+34
+Danon disease (LAMP2)
+XLD
+83
+Majeed syndrome (LPIN2); exploratory
+AR
+24
+2
+RELATED WORK
+Variant and phenotype extraction.
+tmVar 3.0 normalizes variant mentions (Wei et al., 2022) and
+LitVar 2.0 indexes about 15 million variants against papers (Allot et al., 2023); its ClinVar links are
+kept out of our extraction. AVADA recovered 59% of HGMD’s disease-causing variants from full
+text (Birgmeier et al., 2020); PubMind finds about 10% of its mapped variants in ClinVar (Wang &
+Wang, 2025); and when GPT-4o, Claude Opus 4 and DeepSeek-V3 extracted disease genes from full
+text, disease and phenotype fields were error-prone for all three (Yin et al., 2025). One result bears
+on our proband counting and is unfavorable for Claude: among five models counting probands for
+PS4, Claude Sonnet 4 had the lowest exact-count concordance (73.0%, against 91.1% for the best)
+and the lowest stability (Murugan et al., 2026). For HPO, RAG-HPO reached a best F1 of 0.78 on
+112 case reports (Garcia et al., 2025); GPT recognition was non-deterministic (Groza et al., 2024).
+The 97.6% HPO precision for Claude Sonnet 4.5 quoted in the project’s application (Larsen et al.,
+2026) comes from four synthetic clinical notes in a tool-augmented condition (80.7% without tools),
+with recall 65.3%, and Claude was not top on precision or F1. GP-RareLink is compared with no
+tagger; its contribution is the quoted, three-state per-person record and its held-out evaluation.
+Evidence synthesis and claim verification.
+LLM extraction for evidence synthesis has been re-
+viewed systematically (Shankar et al., 2026): numeric fields fare worse than text (Kataoka et al.,
+2025), reproducibility fell from 94.1% to 77.2% when information was not reported (Jensen et al.,
+2025), and otto-SR reached 93.1% extraction accuracy against 79.7% for humans (Cao et al., 2025).
+SLIDERS comes from the Lam lab, whose WikiChat grounds and verifies claims (Semnani et al.,
+2023).
+AIS defines support by a cited span (Rashkin et al., 2023), the gatekeeper’s criterion;
+FActScore checks atomic claims (Min et al., 2023), our audit unit; self-verification of cited spans im-
+proved clinical extraction (Gero et al., 2023); and clinical fact-checkers have been validated against
+clinician labels (Chung et al., 2026). But ungrounded self-correction fails (Huang et al., 2024) and
+LLM judges favor their own generations (Zheng et al., 2023; Panickssery et al., 2024). The appli-
+cation’s “DRBench” and AA-Omniscience figures are corrected in Appendix I (Rao et al., 2026; Du
+et al., 2025; Jackson et al., 2025).
+Audits, reference databases and memorization.
+Rare-error audits need score or exact intervals
+(Brown et al., 2001), and small numerators bound what a sample can certify (Hanley et al., 1983).
+A fair open-weight comparison fixes the scaffold (Dorfner et al., 2024). Reference databases are
+imperfect ground truth: literature-only ClinVar entries were 8.8% of submissions but 31.4% of
+outlier classifications (Yang et al., 2017), ClinVar pathogenic calls have been re-examined (Wright
+et al., 2021), and disease annotations are incomplete (Connelly et al., 2026); database overlap with
+a method’s inputs inflates accuracy (Grimm et al., 2015). Literature cohorts are phenotype-first
+(Wright et al., 2024) and reuse patients (Shivakumar et al., 2026). Membership tests need log-
+probabilities unavailable for Claude (Shi et al., 2024) and confound date shift (Duan et al., 2024), so
+we use black-box guided completion (Golchin & Surdeanu, 2024) with training cutoffs as a natural
+experiment (Roberts et al., 2024).
+3
+Published as a conference paper at ICLR 2025
+Figure 1: GP-RareLink pipeline and its database-held-out evaluation. Top: extraction, frozen with
+pre-registration v1.0 on 2026-10-20; an isolation test keeps ClinVar and OMIM out. Bottom: the
+harness reads a dated ClinVar snapshot and OMIM pages frozen on 2026-10-28 only after extraction,
+to score concordance (O2) and list gap candidates (O3) with dossiers that propose no classification;
+people audit supported claims (O1), triage ClinVar misses and adjudicate candidates.
+3
+METHODOLOGY
+Diseases, corpus and access.
+The registered study is the six diseases of the frozen pre-registration
+(Elhani et al., 2024; Didiasova et al., 2020; Koseki et al., 2021; Almarza Novoa et al., 2018; Bram-
+batti et al., 2019). Five reserve diseases (Wouters et al., 2014; Vitali et al., 2022; Stockler-Ipsiroglu
+et al., 2014; Beyens et al., 2018; Hajialigol et al., 2022) were run under an extension addendum
+committed before their extraction; Majeed syndrome (Ferguson et al., 2021) failed that addendum’s
+floor (10 eligible open reports, under 15), was searched more widely and run on 24 documents as an
+exploratory disease. The corpus came from PubMed (inception to 2026-10-18/19 for the registered
+six, 2026-11-14 for the extension) with gene, disease names and a case filter, plus backward citation
+search through Europe PMC (Rosonovski et al., 2023). No database citation list seeded a corpus ex-
+cept HA20’s pilot corpus (92 of 160 papers, tagged; O2 is reported with and without them). Sonnet
+helpers screened with logged reasons (full-text inclusion needed a script-checked quote); a PI check
+agreed with 14 of 15 inclusions (exact 95% CI 68–100%) and 5 of 5 exclusions (48–100%). Access
+is open only: PMC, Europe PMC and Unpaywall copies, no institutional access, no pages behind
+a bot check; supplements capped at 60,000 characters per file. Every registered disease cleared the
+substitution floor of 15 eligible reports; natural-history comparator papers are held out.
+Extraction.
+SLIDERS (Joshi et al., 2026) is run as a home-built version by Claude Code helper
+agents on the funded claude.ai account, not the public code. One Claude Opus helper per paper reads
+only its paper, the instructions, the schema and the rules, with no web access and an instruction to
+use nothing it remembers about the paper (run provenance in the Reproducibility Statement). Four
+files were pinned at the freeze; per disease a script swaps only the disease name, gene, schema
+path and a 20-item checklist. Every value carries the PMID and a verbatim quote, confirmed by a
+deterministic span check; “not reported” carries no quote, and a value without a quote is not emitted,
+so complete quote coverage is a property of the pipeline rather than a finding. Normal findings are
+recorded as the excluded abnormality, variant fields come only from statements about this person,
+and stacked multi-patient cells are not read by position. One gap was frozen on purpose: extraction
+has no rule for hedged wording, so hedged statuses are removed by the gatekeeper and end as “not
+reported”.
+Gatekeeper.
+Gatekeeper v4 is a separate Claude Opus read, one helper per chunk of up to 350
+claims. It asks whether the quote entails the value for the person the row is about (Rashkin et al.,
+2023), records whom the quote is about (this person, a named group, the cohort, another person, the
+paper, unclear) and returns supported, partially supported, unsupported or span not found; no value is
+exempted by script matching, and phenopackets keep only supported claims. “Unsupported” below
+counts unsupported and span not found; “not fully supported” adds partially supported. Because a
+4
+Published as a conference paper at ICLR 2025
+model judging its own family’s output can be biased (Zheng et al., 2023), the gatekeeper’s share is a
+screen evaluated against human labels, never an error rate.
+Records.
+People are merged only on an explicit one-to-one citation to an earlier report (a sex-
+and-onset route made all 6 false merges of 93 in the pilot and was dropped). VariantValidator 4.0.1
+(Freeman et al., 2018) normalizes variants to HGVS (Hart et al., 2024) on MANE Select (Morales
+et al., 2022), keeping the paper’s original string; only its normalization fields enter the pipeline.
+Where a gene has alternative coding exons (LAMP2, GFAP), the paper’s own exon label chooses
+the transcript, else no genomic key is given (a post-freeze change); for Blau, a reference mismatch
+on MANE triggers one retry on legacy NM_022162.3. Features are bound to HPO (2026-09-01) and
+diseases to Mondo (2026-10-06) by name, never by OMIM cross-reference, and one Phenopacket v2
+(Jacobsen et al., 2022) per identity is validated (Danis et al., 2023). Post-freeze changes are logged
+deviations (Appendix E).
+Held-out ground truth and outcomes.
+An automated test fails if any reference path or the tokens
+“clinvar”, “omim” or “harness” appear in the extraction code; snapshots live outside the repository,
+and database citation seeds, annotation files, LitVar’s ClinVar links, database fields in VariantVal-
+idator responses and comparator papers are kept out. References: ClinVar release 2026-10-12 (read
+2026-10-19) for the registered six and of 09 Nov 2026 for the rest; OMIM’s entry pages frozen
+by the PI on 2026-10-28 (clinical synopses not frozen); HPO annotations on the harness side only
+(Appendix A). O1: 250 claims sampled from all gatekeeper-supported claims, stratified by disease,
+seeded, drawn before any concordance; raters never see the gatekeeper’s verdict, and an unverifiable
+value counts as unsupported. O1 thus measures error in the released records, after the screen; claims
+the gatekeeper removed are outside it. Rule C passes if at most 4 are unsupported; P(pass) is 0.99,
+0.89, 0.68, 0.44 and 0.13 at true rates of 0.5%, 1%, 1.5%, 2% and 3%, and with 0, 1 or 2 unsup-
+ported the exact two-sided 95% upper bound is 1.46%, 2.21% or 2.86%, so a pass does not prove a
+rate below 2%. O2: tier 1 = same GRCh38 allele, tier 2 = same protein change for papers with no
+cDNA; HGVS recall = share of ClinVar’s (PMID, variant) pairs for extracted PMIDs that the run ex-
+tracted from that PMID, so recall is computed only on papers with open full text; overlap = share of
+extracted tier-1 alleles in ClinVar (not precision); no threshold. O3: a gap candidate is a gatekeeper-
+supported tier-1 allele absent from ClinVar and (registered six) from OMIM; it is a candidate, not a
+finding, until adjudicated; submissions will use ClinVar’s curation method. O4: literature frequen-
+cies against held-out cohorts with a publication-cluster bootstrap (Efron, 1979) (2,000 resamples,
+seed 7425; records with a disease term, comparator members removed), plus a memorization probe.
+O5: expert minutes per accepted record, and Claude against an open-weight model under an identi-
+cal scaffold. Intervals: Wilson (Wilson, 1927) for proportions, exact Clopper–Pearson (Clopper &
+Pearson, 1934) for audit and gatekeeper shares.
+Human assessment.
+Since 2026-11-15 the audit is done by volunteer raters in rotating groups
+after a calibration round with a floor, replacing two fixed raters and a tie-breaker (design in Ap-
+pendix F). Nine raters, none identified, rate 40 calibration claims that the PI labelled (20 unsup-
+ported, 20 supported, chosen by a rule fixed before any label and amended twice before any rater
+saw anything); only a rater who catches at least 15 of the 20 unsupported and passes at least 18 of
+the 20 supported serves as a registered rater. Each audit claim is read by 3 raters, with a registered
+pair and tie-breaker per claim and rule C unchanged; Cohen’s κ (Cohen, 1960) is reported per pair.
+Misses are triaged and candidates adjudicated under ACMG/AMP (Richards et al., 2015) by 2 raters
+each, a third where they differ. The PI then chooses Plan A (registered six: 250 claims, 50 misses,
+214 candidates) or Plan B (all twelve: 527, 146, 269).
+4
+EXPERIMENTS
+Sections 4.1–4.6 report the registered six only; Section 4.7 reports everything else.
+4.1
+REGISTERED SIX: PROVENANCE AND SCALE
+All 241,730 asserted values have a quote the span check found verbatim (Table 3); this confirms
+the pipeline invariant and shows no quote was altered, not that the values are right. 2,948 rows
+became 2,836 identities through 112 citation merges (SSADH’s 58 all join a preprint and its journal
+5
+Published as a conference paper at ICLR 2025
+Table 3: Registered six (frozen pipeline, runs of 2026-10-20). Span-check problems are 0 in every
+row. Gatekeeper shares (counts; exact 95% CI) are a screen by a second model read, not error rates.
+HA20 is the development disease.
+Disease
+Papers
+Indiv. rows
+Values quoted
+Claims judged
+Unsupported
+Not fully supported
+Phenopackets (interp.)
+HA20 (dev.)
+85
+811
+67,863
+23,129
+0.20% (46; 0.15–0.27)
+1.93% (446; 1.75–2.11)
+769 (499)
+SSADH
+40
+421
+31,370
+9,759
+0.38% (37; 0.27–0.52)
+2.86% (279; 2.54–3.21)
+363 (174)
+Tangier
+31
+235
+16,762
+4,830
+0.31% (15; 0.17–0.51)
+4.49% (217; 3.93–5.12)
+235 (53)
+LAD-I
+42
+508
+36,280
+10,864
+0.43% (47; 0.32–0.57)
+3.47% (377; 3.13–3.83)
+508 (299)
+AxD
+69
+463
+40,773
+14,403
+0.27% (39; 0.19–0.37)
+3.55% (512; 3.26–3.87)
+456 (255)
+Danon
+83
+510
+48,682
+17,963
+0.61% (110; 0.50–0.74)
+3.07% (552; 2.83–3.34)
+505 (212)
+Five confirmatory
+265
+2,137
+173,867
+57,819
+0.43% (248; 0.38–0.49)
+3.35% (1,937; 3.20–3.50)
+–
+All six
+350
+2,948
+241,730
+80,948
+0.36% (294; 0.32–0.41)
+2.94% (2,383; 2.83–3.06)
+2,836 (1,492)
+Figure 2: Gatekeeper shares per main run: (a) unsupported or span not found; (b) not fully supported
+(adding partially supported); exact 95% CIs where available (open circles: none in the log); claims
+judged at right. Registered six with pooled five confirmatory and all six (diamonds); extension five
+and Majeed apart; addendum not shown. A screen, not an error rate: no comparison with the 2%
+target is possible.
+version); all 2,836 phenopackets are schema-valid, 1,492 carry an interpretation, and they hold
+12,679 observed and 3,371 excluded HPO terms; 485 (17%) hold identity fields only. HPO binding
+covers 84%–93% of feature rows and cDNA normalization ranges from 78.9% (AxD) to 96.7%
+(HA20) (our sources differ on the denominators, so we give percentages only); “not reported” far
+outnumbers values. Identities are an upper bound on people: 9 of 38 repeat papers differ in individual
+count, and if all 19 proposed same-person groups (unmerged, awaiting a person) were confirmed,
+3.8% of HA20 identities would collapse and 0.2%–1.2% elsewhere, itself a lower bound because
+only the gap candidates’ papers were examined. A 10% repeat (38 papers, seed 20261020, no
+gatekeeper) agreed on 97%–100% of checklist cells and on variant keys at 0.92–1.00 in four diseases
+(0.83 Tangier, 0.86 Danon, one paper each using a different notation), but only 0.43–0.71 on free-text
+feature rows; the individual-count differences come from scope calls on relatives and cited patients,
+the weakness reported for proband counting elsewhere (Murugan et al., 2026).
+4.2
+ACCURACY EVIDENCE SO FAR: TWO PILOT AUDITS, AND A SCREEN
+Human audits (pilot, pre-freeze).
+The only human ratings of extracted claims are two pilot audits
+on HA20 by one rater: 6.0% (3/50; exact 95% CI 1.3%–16.5%) and 6.3% (3/48; 1.3%–17.2%)
+unsupported, both above the pilot’s own 4% gate. Each exposed an error class (variant fields taken
+from a group statement; ages read by position from stacked cells) for which a rule was frozen;
+variant fields were 0 of 20 unsupported in the re-audit against 3 of 20 before, but the frozen pipeline
+has not been re-audited. Without the 3 claims the rater could not verify, the re-audit found 0 of 45.
+Both audits used earlier pipeline versions, and labels in the second-look tab are not independent of
+the gatekeeper’s reasons.
+6
+Published as a conference paper at ICLR 2025
+Figure 3: ClinVar concordance (O2): HGVS recall at tier 1 (same GRCh38 allele) and tiers 1+2
+(adding protein matches for papers with no cDNA), and tier-1 overlap (extracted alleles in ClinVar;
+not precision); Wilson 95% intervals, n/N at right. Registered six, extension five and Majeed use
+different snapshots and are not pooled. * Danon predates the isoform re-normalization of 2026-10-
+28. † Blau with the legacy NOD2 transcript retry (4.5%, 1/22, at tier 1 under the registered rule).
+No threshold applies.
+The gatekeeper is a low-sensitivity screen.
+In those audits earlier gatekeeper versions flagged
+only 2 of the 6 and 1 of the 4 claims the person rejected (no false flags) and found 0.036% and
+0.34% unsupported against the person’s 6.0% and 6.3%. Its registered shares (Figure 2) are 0.43%
+(248/57,819; 0.38–0.49) pooled over the five confirmatory diseases and 0.36% (294/80,948) with
+HA20; it removed 1,060 claims before the phenopackets were built. They are what a second model
+read catches, not error rates. The PI’s calibration labels also disagree with it in both directions: of 65
+candidates it removed he labelled 34 supported, 26 unsupported, 4 not verifiable and 1 quote not in
+paper; of 34 it kept, 30 supported, 3 unsupported, 1 not verifiable (candidates chosen for variety and
+labelled by one person, so not rates either). What the screen’s removals show is where extraction
+fails (measured by counting verdicts): in five of six diseases the three worst papers hold half or more
+of the unsupported claims (Danon’s three hold 60 of 110; one paper gave a proband’s variant and
+diagnosis fields to eight family carriers, 35 claims); the commonest unsupported field in five diseases
+is a variant row’s gene symbol quoted from a sentence about someone else; then hedged wording
+recorded as observed or excluded (the frozen gap) and cohort statements applied to individuals.
+O1, the primary outcome (pending).
+250 of the 78,564 gatekeeper-supported claims (HA20
+72, SSADH 30, Tangier 15, LAD-I 33, AxD 44, Danon 56) were drawn on 2026-10-20 with
+seed 40250, before any concordance. The audit found
+pending: o1_unsupported_n of 250 unsupported
+( pending: o1_unsupported_pct ; exact 95% CI
+pending: o1_unsupported_ci ); rule C:
+pending: o1_rule_c ; Co-
+hen’s κ over rater pairs:
+pending: o1_kappa_range ; share of human-unsupported claims the gatekeeper
+had also removed:
+pending: o1_gatekeeper_sens (by disease in Appendix C). This result decides whether
+the frozen pipeline meets the registered target. Because O1 samples the released records, the gate-
+keeper’s low sensitivity enters it directly: a pipeline whose true residual rate is 2% passes rule C
+with probability 0.44, and one at 3% with probability 0.13. Whatever the result, it is reported as
+computed; any fix would be a logged deviation, re-run and reported beside the registered result,
+which stays primary.
+4.3
+O2: CONCORDANCE WITH CLINVAR
+The extracted gene matches the disease gene in 97.9%–100% of registered variant rows. HGVS
+recall (Figure 3) is low, 10.1%–35.0% at tier 1 and 14.6%–66.7% with protein matches, over ClinVar
+citation pairs of extracted papers only (HA20 78, SSADH 158, Tangier 6, LAD-I 60, AxD 51,
+Danon 20), so the denominators are small for Tangier and Danon. Every miss counts as discordant
+until triaged. Measured: misses sit in single papers: the founding HA20 paper (PMID 26642243)
+holds 52 of HA20’s 57; a LAD-I mutation update (22134107) 37 of 41; in SSADH two papers
+(14635103, 33203024) 68 and 53 of 135; and for 28 of the 50 sampled misses a script found no
+7
+Published as a conference paper at ICLR 2025
+Figure 4: (a) Corpus funnel, registered six (title/abstract corpus; open full text; eligible; extracted).
+(b) OMIM allelic variants recovered anywhere in the run (tiers 1+2), Wilson 95% intervals: 43 of
+75 pooled (57.3%, 46.1–67.9); below, where OMIM’s 84 source papers for them sit (5 extracted, 38
+in corpus without an open copy, 38 never returned by the searches, 3 not in corpus).
+mention of the variant’s position or residue in the paper text. Hypothesised, for triage to test: that
+ClinVar cites the HA20 founding paper for variants it does not describe; that an SSADH table
+was scrambled in conversion (helper-reported, unverified); that the 53 misses of the other SSADH
+paper, an in-vitro study with no patients, are variants with no person to extract. The triage will
+give
+pending: o2_triage_breakdown . A split of recall by kind of ClinVar citation has not been computed.
+Overlap is 35%–87% and is not precision. Classification agreement among stated values is 59%–
+92%, and the disagreements run one way (authors P/LP, ClinVar VUS), as expected in advance;
+this is not evidence about extraction error. Against published catalogues, recall restricted to source
+papers in the corpus is 9 of 9 (HA20) and 54 of 56 (AxD; the two misses are notation), against 90.6%
+(29/32) and 53.8% (91/169) unrestricted: the restricted figures measure reading, the unrestricted
+mostly access. Full tables, with and without ClinVar-cited papers, are in Appendix B.
+4.4
+OMIM AS A HUMAN-CURATED HOLDOUT, AND THE ACCESS CONSTRAINT
+Open full text exists for 421 of 1,496 registered corpus papers (28%), from 13.7% (Tangier) to
+53.1% (HA20) (Figure 4a), in line with the partial reach of open access (Piwowar et al., 2018);
+paywalled papers are not a random subset, so every count here is a lower bound on a selected
+literature. The runs recover 57.3% (43/75; 46.1–67.9) of OMIM’s allelic variants, 58.7% (44/75)
+counting a notation-level match, but 10.5% (2/19) for Tangier, whose 17 misses all have no source
+paper in the run (Figure 4b). Measured: of OMIM’s 84 source papers for these variants only 5 were
+extracted, 38 are in the corpus without an open copy and 38 were never returned by the searches;
+where the source paper was extracted, 8 of 14 variants were recovered from it (misses: a table
+scrambled in conversion, and two variants stated only in prose). Our reading of this, that literature
+access bounds recovery more than reading does, rests on these counts; reading accuracy on OMIM’s
+own papers rests on 14 variants. At patient level, judged by Claude and not by a panel member, 12
+of 23 comparisons agree, 7 partially, 4 are missed and none contradicts OMIM. OMIM is fallible too
+(two allelic variants link to non-matching ClinVar records; legacy numbering), and only its variant
+half is assessed.
+4.5
+O3: GAP CANDIDATES, NONE YET SHOWN TO BE REAL
+The registered six give 215 candidates, 214 after one withdrawal (Table 4); all 215 were still absent
+by allele from the next ClinVar release, and 214 are absent from OMIM. No candidate is yet shown
+to be a real gap, and three of 272 across all twelve diseases have already proved to be placement
+artefacts (a Danon deletion on the wrong LAMP2 isoform; a Blau and an LCAT variant read on
+the wrong transcript). LAD-I’s 82 registered candidates need most care: 66 come only from papers
+ClinVar cites for ITGB2 and 34 only from reviews, so a numbering slip is as likely as a true gap.
+8
+Published as a conference paper at ICLR 2025
+Table 4: Gap candidates by study (stage 1). Only the first row is the registered study. The last row
+holds pending results. Nothing has been adjudicated or submitted.
+Study
+Candidates
+Withdrawn
+Left for the panel
+Individuals behind them
+Registered six
+215
+1
+214
+372
+Extension five (not registered)
+45
+2
+43
+72
+Majeed (exploratory)
+12
+0
+12
+22
+All twelve
+272
+3
+269
+–
+Pending:
+adjudicated
+pending: o3_adjudicated ;
+accepted
+pending: o3_accepted ;
+by
+class
+pending: o3_class_split ; records prepared pending: o3_submissions
+Dossiers for all 215 hold 4,725 quotes, all verbatim, on case count, segregation, de novo status,
+functional evidence and variant type, and propose no classification; population frequency is left to
+the panel because gnomAD (Karczewski et al., 2020) is not reachable from the environment. 152 of
+215 carry a triage flag (most often “possible same person twice”, 77). Adjudication will decide how
+many of the 214 are true gap variants with phenotype evidence ( pending: o3_accepted ).
+4.6
+O4 AND O5
+Memorization and bias.
+On 180 papers (10 after Claude’s June 2026 cutoff, 51 recent, 119 older),
+closed-book recall and guided completion of a 50-word opening, scored with ROUGE-L (Lin &
+Hovy, 2002) and 5-gram overlap, were run identically on both models. Claude claimed specific
+recall for 4 older papers (phenotypes only); its 4 variant hits were guesses of recurrent variants.
+Neither model reproduced the papers’ variants or text, but the after-cutoff stratum has 10 papers
+and black-box probes can miss memorization that changes extraction. Frequency deviation has not
+started (no comparator sheet filled); primary denominators were fixed first (records with a disease
+term, comparator members removed: SSADH 363 →311 →196, HA20 769 →447 →438, Danon
+505 →322). Deviations:
+pending: o4_deviation .
+Claude against an open-weight model.
+DeepSeek-V4.1-Flash (DeepSeek-AI et al., 2026) ran on
+the same 125 papers (HA20, SSADH) with the same prompt and frozen files in a file-tool agent loop.
+Its quotes were not found for 3.86% and 2.98% of values (Claude 0.00%), 2,003 and 991 values had
+no quote, and the gatekeeper judged 8.64% and 6.14% of its claims unsupported (Claude 0.20%
+and 0.38%), 2.28% and 2.03% among claims with a quote. HGVS recall overlaps within intervals
+(HA20 26.9% vs 19.2%; SSADH 14.6% vs 15.2%). Median cost per paper was $0.07 against
+Claude’s estimated $1.08 and $1.19, and median time 20.9 and 19.2 minutes against 2.9. The judge
+is Claude; empty quotes were handled unevenly; the scaffold differed in stated ways; the scope
+is two diseases, one model, one provider (Appendix H). The registered blinded audit is pending:
+pending: o5_openweight_audit ; expert minutes per accepted record:
+pending: o5_minutes_per_record (the only
+measured rating times are the pilot’s 0.37 and 0.65 minutes per rating). Exploratory GPSEA maps
+(Rekerle et al., 2026) with Benjamini–Hochberg correction (Benjamini & Hochberg, 1995) found
+no significant term in five diseases; Danon reproduces the published sex difference (Boucek et al.,
+2011), a check on overlapping papers, not a replication.
+4.7
+BESIDE THE REGISTERED STUDY: EXTENSION, EXPLORATORY DISEASE AND CORPUS
+ADDENDUM
+None of these results enters a registered figure. Extension five (separately pre-registered before ex-
+traction; bias arm, open-weight comparison and OMIM check not extended): 209 papers, 1,617 valid
+phenopackets, gatekeeper 0.25%–0.86%, tier-1 recall 13.6% (Blau, where 17 of the 19 remaining
+misses are protein-only descriptions in legacy NOD2 numbering) to 80.0% (ATS), and 43 candidates
+left for the panel. Majeed (exploratory; its ClinVar comparison and candidates were read before its
+27-claim audit sample was drawn): 24 documents, 158 phenopackets, gatekeeper 0.68% (35/5,161),
+tier-1 recall 6.6% (5/76), 12 candidates; outputs of 6 documents that are not openly licensed are held
+back. Corpus addendum (free copies found after the freeze, PDF-converted with Docling (Auer
+et al., 2024); not deduplicated or matched to the registered runs; no concordance yet): 82 papers,
+9
+Published as a conference paper at ICLR 2025
+561 phenopackets; batch 1 (23 papers) 2.5% unsupported, mostly Tangier (60/1,262) from 1970s
+group statements applied to named people; batch 2 (59 papers) 0.4%, or 0.8% counting strictly
+45 softened “other person” verdicts. Pending: audits
+pending: o1x_unsupported of 250 (extension)
+and
+pending: o1m_unsupported of 27 (Majeed) under Plan B; addendum ratings
+pending: add_b1_ratings
+and
+pending: add_b2_audit (Appendix D). Estimated spend: $3,263.08 of $45,000 (session readings of
+2026-11-15, not billing; Appendix G).
+5
+DISCUSSION AND LIMITATIONS
+Measured: complete provenance (by construction, and checked), valid three-state records from 350
+papers, and held-out concordance and gap candidates. Not yet known, and to be decided by the
+pending results: whether released values meet the 2% target (O1:
+pending: o1_unsupported_pct ); how
+much of the low recall is extraction failure rather than citation, conversion or numbering (triage);
+which of the 214 registered candidates are true gaps (adjudication); and the bias deviations. The
+only human evidence, the pilot audits, sits an order of magnitude above the gatekeeper’s shares, so
+those shares are not read as accuracy.
+Limitations that change interpretation.
+(1) No human-rated accuracy exists for the frozen
+pipeline; both pilot audits missed 2% (one rater, HA20, earlier versions), their error classes are
+guarded against but not re-audited, and even a pass under rule C leaves a true rate near 2% unex-
+cluded. (2) The gatekeeper is a same-family judge with measured low sensitivity (2 of 6, 1 of 4)
+and may favor Claude; its procedure was uneven in later runs (scripted verdict files, three addendum
+chunks judged once, one sentence judged both ways, softened verdicts, Majeed chunks changed on
+re-judging). (3) O1 samples only gatekeeper-supported claims, so it measures released records, not
+extraction before the screen. (4) Calibration rests on one person’s reference labels, with a set rule
+amended twice after they were seen (before any rater saw anything), and the set is balanced 20/20,
+unlike the audit pool, so calibration catch rates do not carry over to audit prevalence. (5) Frozen
+extraction gaps remain (no hedge rule; relatives’ variant fields from the proband’s sentence; cohort
+statements applied to individuals) and drive higher addendum rates (batch 1 Tangier 4.8%, batch 2
+HA20 3.2%). (6) HGVS recall is low and untriaged, and overlap is not precision. (7) Open access
+only (14%–53% per registered corpus), so the gap count is a lower bound on a non-random subset;
+111 addendum papers and Majeed’s founding reports remain unretrieved. (8) Deduplication is the
+weak point: besides the figures above, the pilot made 6 false merges of 93, the registered 50-merge
+hand check is not done, and addendum records are unmatched. (9) HA20 is the development disease
+(rules tuned on it; 92 of 160 papers ClinVar-seeded), so its figures flatter the pipeline. (10) The
+open-weight comparison has no human audit.
+Further limitations.
+About 10 registered papers had conversion problems and addendum PDFs
+OCR damage (helper-reported, unverified); the candidate script has no on-gene check; OMIM was
+not checked for the extension or Majeed; the bias arm has no numbers, no comparator for LAD-I and
+Tangier, 3 paywalled comparators and many SSADH individuals probably in the comparator reg-
+istry. Procedural loose ends: no licence is settled for public outputs that carry verbatim quotes;
+unredacted open-weight transcripts remain in the 2026-10-21 to 2026-11-10 history unless it is
+rewritten; registered manifests record only the alias “opus”, five extension runs lack a manifest,
+the registered gap page still lists the withdrawn Danon candidate, and the pre-registration tags are
+not pushed nor the OSF registration made; costs are session estimates. Claude Code built and ran
+the pipeline and drafted this report: the numbers are reproducible, the framing is not independent.
+6
+CONCLUSION
+A frozen, pre-registered, provenance-first pipeline turned 350 papers in six registered diseases into
+records whose every value is quoted and checkable; held-out concordance, an OMIM holdout and
+214 registered gap candidates with dossiers are ready for people. Accuracy is not yet shown: the
+only human audits missed target, and the primary audit is pending (rule C:
+pending: o1_rule_c ). Cali-
+bration closes 2026-11-22; adjudication is scheduled for 2026-12-21 to 2027-01-20. Results will be
+published whether favorable or not.
+10
+Published as a conference paper at ICLR 2025
+ETHICS STATEMENT
+Literature only; no patient data are used. Raters are volunteers, are not identified, and per-rater
+results stay private until the PI decides. No variant is submitted before the adjudication panel’s
+approval and the PI’s sign-off. This report quotes no paper verbatim, and outputs of papers that are
+not openly licensed are held back.
+REPRODUCIBILITY STATEMENT
+Every number comes from committed scripts with dated inputs. The pipeline files are frozen; seeds
+are recorded (O1 40250, extension audit 47250, Majeed audit 54250, triage 72650, repeat 20261020,
+bootstrap 7425); snapshots are dated with checksums; VariantValidator 4.0.1, HPO 2026-09-01
+and Mondo 2026-10-06 are pinned. Model provenance: pilot manifests record the served model
+claude-opus-5-5; registered-run manifests recorded only the alias “opus” at run time, and a
+served_model line from the session configuration was added on 2026-10-28, marked as such;
+no sampling parameters are set on this route; the training cutoff recorded at the freeze is June 2026.
+Tags prereg-v1.0 and pipeline-v1.0 sit on ef3133e but are not yet pushed, and the OSF
+registration is not yet made. Decision codes (D-nn) that the project log uses are listed in Appendix E.
+Human results are filled by a script into human_results.tex.
+ACKNOWLEDGMENTS
+This work used usage credits from Anthropic’s AI for Science program (Rare Disease track).
+REFERENCES
+A. Allot, C. . H. Wei, L. Phan, T. Hefferon, M. Landrum, H. L. Rehm, and Z. Lu. Tracking genetic
+variants in the biomedical literature using LitVar 2.0.
+Nat Genet 55(6):901-903, 2023.
+doi:
+10.1038/s41588-023-01414-x.
+A. AlMail, A. Jamjoom, A. Pan, et al. Consensus reporting guidelines to address gaps in descriptions
+of ultra-rare genetic conditions. npj Genom Med 9:27, 2024. doi: 10.1038/s41525-024-00408-w.
+PMID 38582909.
+E. Almarza Novoa, S. Kasbekar, A. J. Thrasher, D. B. Kohn, J. Sevilla, T. Nguyen, J. D. Schwartz,
+and J. A. Bueren. Leukocyte adhesion deficiency-I: a comprehensive review of all published
+cases. J Allergy Clin Immunol Pract 6(4):1418-1420.e10, 2018. doi: 10.1016/j.jaip.2017.12.008.
+PMID 29371071.
+J. S. Amberger, C. A. Bocchini, A. F. Scott, and A. Hamosh. OMIM.org: leveraging knowledge
+across phenotype-gene relationships. Nucleic Acids Res 47(D1):D1038-D1043, 2019. doi: 10.
+1093/nar/gky1151. PMID 30445645.
+Christoph Auer, Maksym Lysak, Ahmed Nassar, Michele Dolfi, Nikolaos Livathinos, Panos Vage-
+nas, Cesar Berrospi Ramis, Matteo Omenetti, Fabian Lindlbauer, Kasper Dinkla, et al. Docling
+Technical Report. arXiv preprint arXiv:2408.09869, 2024.
+Yoav Benjamini and Yosef Hochberg. Controlling the False Discovery Rate: A Practical and Pow-
+erful Approach to Multiple Testing. Journal of the Royal Statistical Society Series B: Statistical
+Methodology, 57:289–300, 1995. doi: 10.1111/j.2517-6161.1995.tb02031.x.
+A. Beyens et al. Arterial tortuosity syndrome: 40 new families and literature review. Genet Med
+20(10):1236-1245, 2018. doi: 10.1038/gim.2017.253. PMID 29323665.
+J. Birgmeier, C. A. Deisseroth, L. E. Hayward, L. M. T. Galhardo, A. P. Tierno, K. A. Jagadeesh,
+P. D. Stenson, D. N. Cooper, J. A. Bernstein, M. Haeussler, and G. Bejerano. AVADA: toward
+automated pathogenic variant evidence retrieval directly from the full-text literature. Genet Med
+22(2):362-370, 2020. doi: 10.1038/s41436-019-0643-6. PMID 31467448.
+11
+Published as a conference paper at ICLR 2025
+D. Boucek, J. Jirikowic, and M. Taylor. Natural history of Danon disease. Genet Med 13(6):563-568,
+2011. doi: 10.1097/GIM.0b013e31820ad795. PMID 21415759.
+M. Brambatti, O. Caspi, A. Maolo, E. Koshi, B. Greenberg, M. R. G. Taylor, and E. D. Adler. Danon
+disease: gender differences in presentation and outcomes. Int J Cardiol 286:92-98, 2019. doi:
+10.1016/j.ijcard.2019.01.020. PMID 30857840.
+L. D. Brown, T. T. Cai, and A. DasGupta. Interval Estimation for a Binomial Proportion. Stat Sci
+16(2), 2001. doi: 10.1214/ss/1009213286.
+J. R. Burnett, A. J. Hooper, S. P. A. McCormick, and R. A. Hegele. Tangier Disease (GeneReviews;
+posted 21 Nov 2019). GeneReviews NBK549920, 2019. PMID 31751110.
+C. Cao, R. Arora, P. Cento, others, and N. Bobrovitz. Automation of Systematic Reviews with Large
+Language Models. medRxiv preprint, 2025. doi: 10.1101/2025.06.13.25329541.
+Philip Chung, Akshay Swaminathan, Alex J. Goodell, Yeasul Kim, S. Momsen Reincke, Lichy Han,
+Ben Deverett, Mohammad Amin Sadeghi, Abdel-Badih Ariss, Marc Ghanem, et al. Verifying
+Facts in Patient Care Documents Generated by Large Language Models Using Electronic Health
+Records. NEJM AI, 3, 2026. doi: 10.1056/aidbp2500418.
+C. J. Clopper and E. S. Pearson.
+THE USE OF CONFIDENCE OR FIDUCIAL LIMITS IL-
+LUSTRATED IN THE CASE OF THE BINOMIAL.
+Biometrika, 26:404–413, 1934.
+doi:
+10.1093/biomet/26.4.404.
+Jacob Cohen. A Coefficient of Agreement for Nominal Scales. Educational and Psychological
+Measurement, 20:37–46, 1960. doi: 10.1177/001316446002000104.
+E. Connelly, B. Laraway, K. R. Mullen, C. J. Mungall, M. A. Haendel, and E. G. Hurwitz. A custom
+phenotypic profile for Fanconi anemia: addressing gaps in existing disease annotations. medRxiv
+preprint, 2026. doi: 10.64898/2026.02.10.26346018.
+D. Danis, J. Jacobsen, A. Wagner, others, M. Haendel, and P. Robinson. Phenopacket-tools: Build-
+ing and validating GA4GH Phenopackets.
+PLoS One 18(5):e0285433, 2023.
+doi: 10.1371/
+journal.pone.0285433. PMID 37196000.
+D. Danis, M. J. Bamshad, Y. Bridges, others, M. A. Haendel, and P. N. Robinson. A corpus of
+GA4GH phenopackets: case-level phenotyping for genomic diagnostics and discovery. HGG
+Adv 6(1):100371, 2025. doi: 10.1016/j.xhgg.2024.100371. PMID 39394689.
+DeepSeek-AI, Anyi Xu, Bangcai Lin, Bing Xue, Bingxuan Wang, Bingzheng Xu, Bochao Wu,
+Bowei Zhang, Chaofan Lin, Chen Dong, et al. DeepSeek-V4: Towards Highly Efficient Million-
+Token Context Intelligence. arXiv preprint arXiv:2606.19348, 2026.
+M. L. DiBacco, J. B. Roullet, K. Kapur, M. N. Brown, D. C. Walters, K. M. Gibson, and P. L. Pearl.
+Age-related phenotype and biomarker changes in SSADH deficiency. Ann Clin Transl Neurol
+6(1):114-120, 2019. doi: 10.1002/acn3.696. PMID 30656189.
+M. Didiasova, A. Banning, H. Brennenstuhl, S. Jung-Klawitter, C. Cinquemani, T. Opladen, and
+R. Tikkanen. Succinic semialdehyde dehydrogenase deficiency: an update. Cells 9(2):477, 2020.
+doi: 10.3390/cells9020477. PMID 32093054.
+F. J. Dorfner, L. Jurgensen, L. Donle, et al. Comparing commercial and open-source large language
+models for labeling chest radiograph reports. Radiology 313(1):e241139, 2024. doi: 10.1148/
+radiol.241139.
+M. Du, B. Xu, C. Zhu, X. Wang, and Z. Mao. DeepResearch Bench: A Comprehensive Benchmark
+for Deep Research Agents. arXiv preprint, 2025. doi: 10.48550/arXiv.2506.11763.
+M. Duan, A. Suri, N. Mireshghallah, S. Min, W. Shi, L. Zettlemoyer, Y. Tsvetkov, Y. Choi, D. Evans,
+and H. Hajishirzi. Do Membership Inference Attacks Work on Large Language Models? arXiv
+preprint, 2024.
+12
+Published as a conference paper at ICLR 2025
+B. Efron. Bootstrap Methods: Another Look at the Jackknife. The Annals of Statistics, 7:1–26,
+1979. doi: 10.1214/aos/1176344552.
+I. Elhani, Q. Riller, G. Boursier, V. Hentgen, F. Rieux-Laucat, and S. Georgin-Lavialle. A20 hap-
+loinsufficiency: a systematic review of 177 cases. J Invest Dermatol 144(6):1282-1294.e8, 2024.
+doi: 10.1016/j.jid.2023.12.007. PMID 38128752.
+Fatoumata Faye, Claudia Crocione, Roberta Anido de Peña, Simona Bellagambi, Luciana Escati
+Peñaloza, Amy Hunter, Lene Jensen, Cor Oosterwijk, Eva Schoeters, Daniel de Vicente, et al.
+Time to diagnosis and determinants of diagnostic delays of people living with a rare disease:
+results of a Rare Barometer retrospective patient survey. European Journal of Human Genetics,
+32:1116–1126, 2024. doi: 10.1038/s41431-024-01604-z.
+P. J. Ferguson et al. Majeed Syndrome: A Review of the Clinical, Genetic and Immunologic Fea-
+tures. Biomolecules 11(3):367, 2021. doi: 10.3390/biom11030367. PMID 33670882.
+P. J. Freeman, R. K. Hart, L. J. Gretton, A. J. Brookes, and R. Dalgleish. VariantValidator: Accurate
+validation, mapping, and formatting of sequence variation descriptions. Hum Mutat 39(1):61-68,
+2018. doi: 10.1002/humu.23348. PMID 28967166.
+P. J. Freeman, J. F. Wagstaff, I. F. A. C. Fokkema, G. R. Cutting, H. L. Rehm, A. C. Davies, J. T.
+den Dunnen, L. J. Gretton, and R. Dalgleish. Standardizing variant naming in literature with
+VariantValidator to increase diagnostic rates. Nat Genet 56(11):2284-2286, 2024. doi: 10.1038/
+s41588-024-01938-w. PMID 39358598.
+D. Gagliardi, C. Wade, A. Tucci, H. Houlden, J. Chataway, F. Barkhof, and D. S. Lynch. Analysis of
+GFAP variants in UK Biobank suggests underdiagnosis or incomplete penetrance of adult-onset
+Alexander disease. J Neurol Neurosurg Psychiatry (online 6 Dec 2024), 2024. doi: 10.1136/
+jnnp-2024-335089. PMID 39643430.
+B. T. Garcia, L. Westerfield, P. Yelemali, N. Gogate, E. A. Rivera-Munoz, H. Du, M. Dawood,
+A. Jolly, J. R. Lupski, and J. E. Posey. Improving automated deep phenotyping through large
+language models using retrieval-augmented generation. Genome Med 17(1):91, 2025. doi: 10.
+1186/s13073-025-01521-w. PMID 40826123.
+M. A. Gargano, N. Matentzoglu, B. Coleman, others, and P. N. Robinson. The Human Phenotype
+Ontology in 2024: phenotypes around the world. Nucleic Acids Res 52(D1):D1333-D1346, 2024.
+doi: 10.1093/nar/gkad1005. PMID 37953324.
+Z. Gero, C. Singh, H. Cheng, T. Naumann, M. Galley, J. Gao, and H. Poon.
+Self-Verification
+Improves Few-Shot Clinical Information Extraction. arXiv preprint, 2023.
+S. Golchin and M. Surdeanu. Time Travel in LLMs: Tracing Data Contamination in Large Language
+Models. ICLR 2024, 2024.
+Dominik G. Grimm, ChloéAgathe Azencott, Fabian Aicheler, Udo Gieraths, Daniel G. MacArthur,
+Kaitlin E. Samocha, David N. Cooper, Peter D. Stenson, Mark J. Daly, Jordan W. Smoller, et al.
+The Evaluation of Tools Used to Predict the Impact of Missense Variants Is Hindered by Two
+Types of Circularity. Human Mutation, 36:513–523, 2015. doi: 10.1002/humu.22768.
+A. Grossi, F. Rosamilia, S. Carestiato, E. Salsano, I. Ceccherini, and T. Bachetti. A systematic
+review and meta-analysis of GFAP gene variants in Alexander disease. Sci Rep 14:24341, 2024.
+doi: 10.1038/s41598-024-75383-4. PMID 39420046.
+T. Groza, H. Caufield, D. Gration, G. Baynam, M. A. Haendel, P. N. Robinson, C. J. Mungall, and
+J. T. Reese. An evaluation of GPT models for phenotype concept recognition. BMC Med Inform
+Decis Mak 24(1), 2024. doi: 10.1186/s12911-024-02439-w. PMID 38297371.
+A. Hajialigol et al. Systematic review of PAPA and PAPA-like syndromes. Immunol Genet J 5(1):20-
+29, 2022. doi: 10.18502/igj.v5i1.14066.
+J. A. Hanley et al. If nothing goes wrong, is everything all right? Interpreting zero numerators.
+JAMA 249(13):1743, 1983. doi: 10.1001/jama.1983.03330370053031.
+13
+Published as a conference paper at ICLR 2025
+R. K. Hart, I. F. A. C. Fokkema, M. DiStefano, R. Hastings, J. F. J. Laros, R. Taylor, A. H. Wagner,
+and J. T. den Dunnen. HGVS Nomenclature 2024: improvements to community engagement,
+usability, and computability. Genome Med 16:149, 2024. doi: 10.1186/s13073-024-01421-5.
+PMID 39702242.
+J. Huang, X. Chen, S. Mishra, H. S. Zheng, A. W. Yu, X. Song, and D. Zhou. Large Language
+Models Cannot Self-Correct Reasoning Yet. ICLR 2024, 2024.
+D. Jackson, W. Keating, G. Cameron, and M. Hill-Smith. AA-Omniscience: Evaluating Cross-
+Domain Knowledge Reliability in Large Language Models. arXiv preprint, 2025.
+J. O. B. Jacobsen, M. Baudis, others, M. A. Haendel, and P. N. Robinson. The GA4GH Phenopacket
+schema defines a computable representation of clinical data. Nat Biotechnol 40(6):817-820, 2022.
+doi: 10.1038/s41587-022-01357-4. PMID 35705716.
+Mette Motzfeldt Jensen, Mathias Brix Danielsen, Johannes Riis, Karoline Assifuah Kristjansen,
+Stig Andersen, Yoshiro Okubo, and Martin Grønbech Jørgensen. ChatGPT-4o can serve as the
+second rater for data extraction in systematic reviews. PLOS ONE, 20:e0313401, 2025. doi:
+10.1371/journal.pone.0313401.
+H. Joshi, P. Shethia, J. Dao, and M. S. Lam. SLIDERS: Systematic Reviews via Automated Evidence
+Synthesis and Reconciliation. arXiv preprint (v1 24 Apr 2026; v2 9 Jul 2026), 2026.
+Konrad J. Karczewski, Laurent C. Francioli, Grace Tiao, Beryl B. Cummings, Jessica Alföldi,
+Qingbo Wang, Ryan L. Collins, Kristen M. Laricchia, Andrea Ganna, Daniel P. Birnbaum, et al.
+The mutational constraint spectrum quantified from variation in 141,456 humans. Nature, 581:
+434–443, 2020. doi: 10.1038/s41586-020-2308-7.
+Y. Kataoka, T. Takayama, K. Yoshimura, others, and T. A. Furukawa. Automating the data extraction
+process for systematic reviews using GPT-4o and o3. Res Synth Methods 17(1):42-62 (online 17
+Sep 2025), 2025. doi: 10.1017/rsm.2025.10030.
+M. Koseki et al. Current diagnosis and management of Tangier disease. J Atheroscler Thromb
+28(8):802-810, 2021. doi: 10.5551/jat.RV17053. PMID 33994407.
+M. J. Landrum, S. Chitipiralla, K. Kaur, others, and B. L. Kattman. ClinVar: updates to support
+classifications of both germline and somatic variants. Nucleic Acids Res 53(D1):D1313-D1321,
+2025. doi: 10.1093/nar/gkae1090. PMID 39578691.
+L. A. Lansdon et al. Universal presence of gene/variant nomenclature errors in journal manuscript
+submissions. Clin Chem 72(6):652-661, 2026. doi: 10.1093/clinchem/hvag010.
+M. Larsen, I. M. Campbell, L. A. Orlando, P. Robinson, and N. A. Walton. Extraction of Human
+Phenotype Ontology (HPO) Concepts from Clinical Notes Utilizing LLMs with Model Context
+Protocol (MCP). medRxiv preprint, 2026. doi: 10.64898/2026.05.23.26353963. PMID 42245026.
+Chin-Yew Lin and Eduard Hovy. Manual and automatic evaluation of summaries. In Proceedings
+of the ACL-02 Workshop on Automatic Summarization -, 2002. doi: 10.3115/1118162.1118168.
+Erica L. Lyons, Daniel Watson, Mohammad S. Alodadi, Sharie J. Haugabook, Gregory J. Tawa,
+Fady Hannah-Shmouni, Forbes D. Porter, Jack R. Collins, Elizabeth A. Ottinger, and Uma S.
+Mudunuri. Rare disease variant curation from literature: assessing gaps with creatine transport
+deficiency in focus. BMC Genomics, 24, 2023. doi: 10.1186/s12864-023-09561-5.
+S. Min, K. Krishna, X. Lyu, M. Lewis, W. Yih, P. W. Koh, M. Iyyer, L. Zettlemoyer, and H. Ha-
+jishirzi. FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text
+Generation. EMNLP 2023, 2023.
+J. Morales, S. Pujar, J. E. Loveland, others, A. Frankish, F. Cunningham, and T. D. Murphy. A joint
+NCBI and EMBL-EBI transcript set for clinical genomics and research. Nature 604(7905):310-
+315, 2022. doi: 10.1038/s41586-022-04558-8. PMID 35388217.
+14
+Published as a conference paper at ICLR 2025
+M. Murugan, B. Yuan, J. Stephen, others, and E. Venner. Performance Characteristics of Reasoning
+LLMs for Evidence Extraction from Clinical Genomics Literature. medRxiv preprint, 2026. doi:
+10.64898/2026.02.18.26346543.
+M. . H. Nguyen, C. . T. Yang, T. A. Cassini, others, and C. Shyr. Diagnostic Accuracy of Large
+Language Models for Rare Diseases: A Systematic Review and Meta-Analysis. medRxiv preprint,
+2026. doi: 10.64898/2026.03.26.26349194.
+Arjun Panickssery, Samuel R. Bowman, and Shi Feng. LLM Evaluators Recognize and Favor Their
+Own Generations. arXiv preprint arXiv:2404.13076, 2024.
+Heather Piwowar, Jason Priem, Vincent Larivière, Juan Pablo Alperin, Lisa Matthias, Bree Nor-
+lander, Ashley Farley, Jevin West, and Stefanie Haustein.
+The state of OA: a large-scale
+analysis of the prevalence and impact of Open Access articles.
+PeerJ, 6:e4375, 2018.
+doi:
+10.7717/peerj.4375.
+Jason Priem, Heather Piwowar, and Richard Orr. OpenAlex: A fully-open index of scholarly works,
+authors, venues, institutions, and concepts. arXiv preprint arXiv:2205.01833, 2022.
+D. Rao, E. Wong, and C. Callison-Burch. Detecting and Correcting Reference Hallucinations in
+Commercial LLMs and Deep Research Agents. arXiv preprint, 2026.
+H. Rashkin, V. Nikolaev, M. Lamm, L. Aroyo, M. Collins, D. Das, S. Petrov, G. S. Tomar, I. Turc,
+and D. Reitter. Measuring Attribution in Natural Language Generation Models. Comput Linguist
+49(4):777-840, 2023. doi: 10.1162/coli_a_00486.
+J. T. Reese, L. Chimirri, Y. Bridges, D. Danis, J. H. Caufield, others, C. J. Mungall, and P. N. Robin-
+son. Systematic benchmarking demonstrates large language models have not reached the diagnos-
+tic accuracy of traditional rare-disease decision support tools. Eur J Hum Genet 34(4):498-504,
+2026. doi: 10.1038/s41431-026-02054-5.
+L. Rekerle, D. Danis, others, M. A. Haendel, and P. N. Robinson. GA4GH phenopacket-driven
+characterization of genotype-phenotype correlations in Mendelian disorders. Am J Hum Genet
+113(1):57-70, 2026. doi: 10.1016/j.ajhg.2025.12.001. PMID 41443197.
+S. Richards, N. Aziz, S. Bale, others, and H. L. Rehm. Standards and guidelines for the interpretation
+of sequence variants: a joint consensus recommendation of the ACMG and AMP. Genet Med
+17(5):405-424, 2015. doi: 10.1038/gim.2015.30. PMID 25741868.
+M. Roberts, H. Thakur, C. Herlihy, C. White, and S. Dooley. Data Contamination Through the Lens
+of Time. ICLR 2024, 2024.
+Summer Rosonovski, Maria Levchenko, Rajat Bhatnagar, Umamageswari Chandrasekaran, Lynne
+Faulk, Islam Hassan, Matt Jeffryes, Syed Irtaza Mubashar, Maaly Nassar, Madhumiethaa
+Jayaprabha Palanisamy, et al. Europe PMC in 2023. Nucleic Acids Research, 52:D1668–D1676,
+2023. doi: 10.1093/nar/gkad1085.
+S. J. Semnani, V. Z. Yao, H. C. Zhang, and M. S. Lam. WikiChat: Stopping the Hallucination of
+Large Language Model Chatbots by Few-Shot Grounding on Wikipedia. Findings of EMNLP
+2023, 2023. doi: 10.18653/v1/2023.findings-emnlp.157.
+Ravi Shankar, Amaevia Lim, and Xu Qian. Performance of large language models in data extraction
+for evidence synthesis: A systematic review. Journal of Biomedical Informatics, 181:105086,
+2026. doi: 10.1016/j.jbi.2026.105086.
+W. Shi, A. Ajith, M. Xia, Y. Huang, D. Liu, T. Blevins, D. Chen, and L. Zettlemoyer. Detecting
+Pretraining Data from Large Language Models. ICLR 2024, 2024.
+K. Shivakumar, H. Abida, E. Sun, O. Ma, J. Day, and L. Gupta. Addressing cohort reliance in rare
+diseases literature: a scoping review of myositis research. Rheumatology, 2026. doi: 10.1093/
+rheumatology/keag013. PMID 41546378.
+15
+Published as a conference paper at ICLR 2025
+S. Stockler-Ipsiroglu et al. Guanidinoacetate methyltransferase (GAMT) deficiency: outcomes in
+48 individuals and recommendations for diagnosis, treatment and monitoring. Mol Genet Metab
+111(1):16-25, 2014. doi: 10.1016/j.ymgme.2013.10.018. PMID 24268530.
+K. Sugie and I. Nishino.
+History and perspective of LAMP-2 deficiency (Danon disease).
+Biomolecules 14(10):1272, 2024. doi: 10.3390/biom14101272. PMID 39456205.
+N. A. Vasilevsky, S. Toro, N. Matentzoglu, others, C. J. Mungall, and M. A. Haendel. Mondo:
+integrating disease terminology across communities. Genetics 232(4):iyaf215, 2025. doi: 10.
+1093/genetics/iyaf215. PMID 41052288.
+C. Vitali et al. A systematic review of the natural history and biomarkers of primary LCAT defi-
+ciency. J Lipid Res 63(3):100169, 2022. doi: 10.1016/j.jlr.2022.100169. PMID 35065092.
+Stéphanie Nguengang Wakap, Deborah M. Lambert, Annie Olry, Charlotte Rodwell, Charlotte
+Gueydan, Valérie Lanneau, Daniel Murphy, Yann Le Cam, and Ana Rath. Estimating cumu-
+lative point prevalence of rare diseases: analysis of the Orphanet database. European Journal of
+Human Genetics, 28:165–173, 2019. doi: 10.1038/s41431-019-0508-0.
+P. Wang and K. Wang. PubMind: Literature-Based Genetic Variant Extraction and Functional An-
+notation Using LLMs. bioRxiv preprint, 2025. doi: 10.1101/2025.10.13.682183.
+C. . H. Wei, A. Allot, K. Riehle, A. Milosavljevic, and Z. Lu. tmVar 3.0: an improved variant
+concept recognition and normalization tool. Bioinformatics 38(18):4449-4451, 2022. doi: 10.
+1093/bioinformatics/btac537. PMID 35904569.
+Edwin B. Wilson. Probable Inference, the Law of Succession, and Statistical Inference. Journal of
+the American Statistical Association, 22:209–212, 1927. doi: 10.1080/01621459.1927.10502953.
+C. H. Wouters, A. Maes, K. P. Foley, J. Bertin, and C. D. Rose.
+Blau syndrome, the proto-
+typic auto-inflammatory granulomatous disease. Pediatr Rheumatol 12:33, 2014. doi: 10.1186/
+1546-0096-12-33. PMID 25136265.
+C. F. Wright, R. Y. Eberhardt, P. Constantinou, M. E. Hurles, D. R. FitzPatrick, H. V. Firth, and
+DDD Study. Evaluating variants classified as pathogenic in ClinVar in the DDD Study. Genet
+Med 23(3):571-575, 2021. doi: 10.1038/s41436-020-01021-9. PMID 33149276.
+C. F. Wright, L. N. Sharp, L. Jackson, A. Murray, J. S. Ware, D. G. MacArthur, H. L. Rehm, K. A.
+Patel, and M. N. Weedon. Guidance for estimating penetrance of monogenic disease-causing
+variants in population cohorts. Nat Genet (2024), 2024. doi: 10.1038/s41588-024-01842-3.
+PMID 39075210.
+S. Yang, S. E. Lincoln, Y. Kobayashi, K. Nykamp, R. L. Nussbaum, and S. Topper. Sources of
+discordance among germ-line variant classifications in ClinVar. Genet Med 19(10):1118-1126,
+2017. doi: 10.1038/gim.2017.60. PMID 28569743.
+D. Yin, M. K. S. Leung, D. W. H. Pun, F. H. Chen, J. Y. Kwon, X. Lin, and J. W. K. Ho. Can large
+language models reliably extract human disease genes from full-text scientific literature? bioRxiv
+preprint, 2025. doi: 10.1101/2025.07.27.667022.
+L. Zheng, W. . L. Chiang, Y. Sheng, others, J. E. Gonzalez, and I. Stoica. Judging LLM-as-a-
+Judge with MT-Bench and Chatbot Arena. NeurIPS 2023 Datasets and Benchmarks, 2023. doi:
+10.48550/arXiv.2306.05685.
+16
+Published as a conference paper at ICLR 2025
+A
+REGISTERED SIX: PER-DISEASE TABLES
+Table 5: ClinVar reference counts (distinct VariationIDs on single-gene GRCh38 records; P/LP
+sums pathogenic, likely pathogenic and pathogenic/likely pathogenic; conflicting counted apart from
+VUS) and OMIM allelic variants titled for each registered disease (gene entries frozen 2026-10-28).
+The next release (snapshot 2026-10-21) was unchanged except GFAP 629 records (P/LP 76).
+Gene
+ClinVar release (read)
+Records
+P/LP
+VUS
+Conflicting
+OMIM allelic variants titled for the disease
+TNFAIP3
+2026-10-12 (2026-10-19)
+764
+99
+375
+27
+9 of 9 (191163)
+ALDH5A1
+2026-10-12 (2026-10-19)
+914
+152
+333
+53
+7 of 7 (610045)
+ABCA1
+2026-10-12 (2026-10-19)
+2,006
+85
+705
+141
+19 of 25 (600046)
+ITGB2
+2026-10-12 (2026-10-19)
+949
+87
+345
+49
+14 of 15 (600065)
+GFAP
+2026-10-12 (2026-10-19)
+627
+76
+262
+36
+13 of 13 (137780)
+LAMP2
+2026-10-12 (2026-10-19)
+986
+154
+292
+66
+13 of 13 (309060)
+Table 6: Extension and Majeed ClinVar references (variant_summary of 09 Nov 2026). Plain sums
+of P + LP + P/LP: GAMT 148, LCAT 41, NOD2 21, PSTPIP1 4, SLC2A10 54. LPIN2 (snapshot
+2026-11-15): 1051 records, 51 P/LP, 455 VUS.
+Gene
+Snapshot
+Records
+P
+LP
+P/LP
+VUS
+Conflicting
+GAMT
+2026-11-14
+718
+64
+64
+20
+266
+4
+LCAT
+2026-11-14
+373
+18
+17
+6
+153
+23
+NOD2
+2026-11-14
+1290
+14
+4
+3
+679
+143
+PSTPIP1
+2026-11-14
+851
+4
+–
+–
+384
+48
+SLC2A10
+2026-11-14
+767
+26
+14
+14
+340
+62
+Table 7: Corpus of the registered six. “Free elsewhere” is a Europe PMC listing of a free copy
+outside PMC, not fetched (an upper bound). 421 of 1,496 corpus papers (28%) have open full text,
+from 3,553 records screened.
+Disease
+Screened
+Corpus
+Open full text
++ free elsewhere
+Eligible
+Extracted
+ClinVar-seeded
+Comparator holdouts
+HA20 (dev.)
+838
+160
+85 (53.1%)
+60.0%
+not screened
+85
+92
+–
+SSADH
+357
+171
+59 (34.5%)
+46.8%
+40
+40
+–
+30656189
+Tangier
+529
+284
+39 (13.7%)
+35.6%
+31
+31
+–
+–
+LAD-I
+874
+274
+59 (21.5%)
+36.5%
+42
+42
+–
+–
+AxD
+539
+363
+83 (22.9%)
+38.8%
+69
+69
+–
+34865968, 39643430
+Danon
+416
+244
+96 (39.3%)
+47.1%
+83
+83
+–
+21415759, 41121270
+Identifiers.
+Mondo:
+HA20
+MONDO:0800045,
+SSADH
+MONDO:0010083,
+Tangier
+MONDO:0008783, LAD-I MONDO:0007293, AxD MONDO:0008752, Danon MONDO:0010281,
+Blau
+MONDO:0008523,
+LCAT
+MONDO:0018999,
+GAMT
+MONDO:0012999,
+ATS
+MONDO:0008818,
+PAPA MONDO:0011462,
+Majeed MONDO:0012316.
+MANE Select
+transcripts used: TNFAIP3 NM_001270508.2, ALDH5A1 NM_001080.3, ABCA1 NM_005502.4,
+ITGB2 NM_000211.5, GFAP NM_002055.5, LAMP2 NM_002294.3, NOD2 NM_001370466.1,
+LPIN2 NM_001375808.2 (not stated in the reports read for the other four). Ontology releases: HPO
+2026-09-01, Mondo 2026-10-06; HPO annotations 2026-09-02 (harness only).
+Whom the quote was about (unsupported claims).
+HA20 other person 14, this person 10,
+cohort general 9, named group 9, unclear 4; SSADH other person 27, this person 10; Tang-
+ier other person 11, this person 4; LAD-I other person 25, named group 13, this person 7, co-
+hort general 2; AxD cohort general 18, this person 11, other person 10; Danon cohort general
+55, this person 26, other person 21, named group 6, unclear 2. Unsupported claims in the field
+variants.gene_symbol_as_stated: HA20 17, SSADH 16, Tangier 9, LAD-I 14, AxD 21,
+Danon 22; Danon’s top unsupported field is phenotypic_features.status (25).
+Further record notes.
+AxD papers often print cDNA without “c.” and use legacy numbering (22
+AxD descriptions unresolvable). Distinct variant descriptions: HA20 280, SSADH 162, Tangier
+17
+Published as a conference paper at ICLR 2025
+Table 8: Registered six: extraction detail. “Worst 3” is the share of the disease’s unsupported claims
+held by its three worst papers.
+Disease
+Variant rows
+Span-check problems
+Claims judged
+Unsupported
+Not fully supported
+Papers with any unsupported
+Worst 3
+HA20
+620
+0
+23,129
+46
+446
+15 of 85
+37%
+SSADH
+472
+0
+9,759
+37
+279
+7 of 40
+76%
+Tangier
+82
+0
+4,830
+15
+217
+7 of 31
+60%
+LAD-I
+411
+0
+10,864
+47
+377
+12 of 42
+66%
+AxD
+343
+0
+14,403
+39
+512
+14 of 69
+51%
+Danon
+305
+0
+17,963
+110
+552
+23 of 83
+55%
+Five confirmatory
+1,613
+0
+57,819
+248
+1,937
+63 of 265
+–
+All six
+2,233
+0
+80,948
+294
+2,383
+78 of 350
+–
+Table 9: 10% repeat of the registered six (seed 20261020; 38 papers; no gatekeeper on the repeat).
+Disease
+Papers
+Same individual count
+Label Jaccard
+Variants (strings)
+Variants (folded keys)
+Checklist (cells)
+Features, label-free
+HPO status, label-free
+HA20
+9
+7 of 9
+0.69
+0.67
+0.94
+0.996 (1,300)
+0.71
+0.68
+SSADH
+4
+4 of 4
+1.00
+1.00
+1.00
+1.000 (160)
+0.43
+0.71
+Tangier
+4
+3 of 4
+0.62
+0.86
+0.83
+0.970 (200)
+0.57
+0.69
+LAD-I
+5
+3 of 5
+0.88
+0.55
+0.92
+0.998 (440)
+0.64
+0.69
+AxD
+7
+7 of 7
+0.83
+0.95
+1.00
+0.997 (1,340)
+0.69
+0.67
+Danon
+9
+7 of 9
+0.87
+0.65
+0.86
+0.996 (680)
+0.59
+0.64
+48, LAD-I 192, AxD 181, Danon 165. Missense dominates AxD (74% of interpretations) and
+SSADH (51%); nonsense and frameshift dominate HA20 (63%) and Danon (52%). Onset age is
+asserted for 3%–50% of individuals and consanguinity for 0%–30%. Tangier and LAD-I have no
+citation merges, more likely a limit of the citation route than a fact about those literatures. D-43 re-
+normalization of Danon: of 165 distinct descriptions exactly 2 changed; 505 phenopackets rebuilt,
+all valid, 5 records differ in content. Most-observed features: HA20 oral ulcer 43%, recurrent
+fever 27%; SSADH global developmental delay 25%, seizure 20%; Tangier decreased circulating
+HDL-C 21%, angina pectoris 14%; LAD-I increased total leukocyte count 32%, neonatal omphalitis
+12%; AxD abnormal cerebral white matter morphology 19%, seizure 16%; Danon left ventricular
+hypertrophy 39%, hypertrophic cardiomyopathy 28%.
+Input problems the helpers reported (unverified by a person).
+SSADH: PMID 14635103 Ta-
+ble 2 scrambled in conversion (about 12 of 54 families extracted); 38499966 table garbled, sup-
+plements S1/S2 missing. Tangier: 26713019 and 27011649 tables published as images. LAD-
+I: 33391282 supplement Table S1 cut at 60,000 characters (patients P75–P127 have no clinical
+rows). AxD: 34046764 Table 1 caption only; 32126152 Table S1 missing; 39420046 supplement ar-
+rived after extraction (D-39). Danon: 23571262, 30929317, 42366573 tables transposed or garbled;
+25228319 supplemental tables 1–2 missing. Gene-name spellings “ITGβ2”, “ITGß2” and “CD18”
+cover 148 LAD-I variant rows; the matcher accepts them.
+B
+O2 AND OMIM DETAILS
+Exploratory ABCA1 note.
+16 of 2,006 single-gene ABCA1 ClinVar records (0.8%) and 7 of 85
+P/LP records (8.2%) match variants extracted from the 31-paper Tangier corpus; 19 of 35 extracted
+variants are not in ClinVar.
+OMIM notes.
+Each allelic variant was placed in ClinVar through ClinVar’s own OMIM cross-
+references or the RCV accessions OMIM prints (E-utilities, 2026-10-28), never by dbSNP id alone.
+Pooled over every OMIM-cited paper (288): 96 sit in the screened corpus with no open copy, 160
+were never returned by the searches, 9 were extracted. Every allelic variant but one (the moved
+600065.0007) has a ClinVar record; the run’s ClinVar-matched P/LP variants are mostly not OMIM
+allelic variants (39 of 193), and the run holds 466 distinct genome-placed variants against OMIM’s
+75. Run P/LP variants that are OMIM allelic variants: HA20 26.9% (7/26), SSADH 5.5% (3/55),
+Tangier 28.6% (2/7), LAD-I 33.3% (12/36), AxD 25.0% (9/36), Danon 18.2% (6/33). 51 of the 350
+extracted papers post-date the last edit of either OMIM entry for their disease. OMIM’s own errors:
+610045.0007 links to a synonymous change at another codon and 610045.0002 to a deep-intronic
+record; 10 labels differ from ClinVar’s protein change, 9 by legacy numbering only; the complex
+18
+Published as a conference paper at ICLR 2025
+Table 10: Registered six: records. cDNA normalized is given as a percentage only, because the de-
+nominator differs between the sources (the interim report and the per-run normalization summaries);
+Danon is shown re-normalized under D-43. Protein-only = descriptions with no cDNA.
+Disease
+Rows →identities (merges)
+Review-only
+Target-gene variant
+cDNA normalized
+HPO-bound rows
+Observed / excluded
+Conflicts
+Dropped by gatekeeper
+With disease term
+Sex (F / M / unknown)
+Valid, errors
+HA20
+811 →769 (42)
+282
+558
+96.7%; 85 protein-only
+91.6% of 5,079
+3,678 / 1,018
+93
+207
+447
+348 / 246 / 175
+769, 0
+SSADH
+421 →363 (58)
+43
+243
+86.5%; 15 protein-only
+89.8% of 1,683
+1,249 / 299
+10
+151
+311
+90 / 85 / 188
+363, 0
+Tangier
+235 →235 (0)
+140
+65
+90.0%; 17 protein-only
+90.7% of 1,051
+745 / 219
+13
+117
+175
+88 / 119 / 28
+235, 0
+LAD-I
+508 →508 (0)
+194
+328
+86.5%; 7 protein-only
+84.3% of 1,862
+1,264 / 299
+5
+100
+326
+129 / 146 / 233
+508, 0
+AxD
+463 →456 (7)
+175
+318
+78.9%; 65 protein-only
+91.3% of 3,316
+2,441 / 529
+40
+221
+226
+149 / 160 / 147
+456, 0
+Danon
+510 →505 (5)
+164
+281
+89.3%; 25 protein-only
+92.8% of 4,558
+3,302 / 1,007
+48
+264
+322
+221 / 243 / 41
+505, 0
+Table 11: O2 for the registered six (run 2026-10-20; ClinVar release 2026-10-12, snapshot 2026-10-
+19); Wilson 95% intervals. Danon figures predate the D-43 re-normalization. No threshold applies
+(D-03).
+Disease
+Gene matches
+HGVS recall, tier 1
+Tiers 1+2
+Overlap, tier 1
+Classification agreement
+Condition names disease
+HPO annotation recall
+Terms in ≥2 people matching
+Corpus PMIDs cited by ClinVar
+HA20
+99.8% (558/559; 99.0–100.0)
+26.9% (21/78; 18.3–37.7)
+26.9% (21/78; 18.3–37.7)
+37.9% (39/103; 29.1–47.5)
+82.8% (24/29; 65.5–92.4)
+47.4% (27/57; 35.0–60.1)
+92.9% (13/14; 68.5–98.7)
+6.1% (19/309; 4.0–9.4)
+20.0% (17/85; 12.9–29.7)
+SSADH
+100.0% (243/243; 98.4–100.0)
+10.1% (16/158; 6.3–15.8)
+14.6% (23/158; 9.9–20.9)
+87.2% (68/78; 78.0–92.9)
+91.8% (45/49; 80.8–96.8)
+98.8% (83/84; 93.6–99.8)
+94.1% (32/34; 80.9–98.4)
+40.0% (52/130; 32.0–48.6)
+45.0% (18/40; 30.7–60.2)
+Tangier
+98.5% (65/66; 91.9–99.7)
+16.7% (1/6; 3.0–56.4)
+50.0% (3/6; 18.8–81.2)
+56.2% (9/16; 33.2–76.9)
+80.0% (8/10; 49.0–94.3)
+37.5% (6/16; 18.5–61.4)
+70.8% (17/24; 50.8–85.1)
+15.3% (15/98; 9.5–23.7)
+16.1% (5/31; 7.1–32.6)
+LAD-I
+100.0% (328/328; 98.8–100.0)
+23.3% (14/60; 14.4–35.4)
+31.7% (19/60; 21.3–44.2)
+34.9% (45/129; 27.2–43.4)
+70.0% (7/10; 39.7–89.2)
+90.4% (47/52; 79.4–95.8)
+70.6% (12/17; 46.9–86.7)
+14.4% (17/118; 9.2–21.9)
+16.7% (7/42; 8.3–30.6)
+AxD
+99.7% (318/319; 98.2–99.9)
+27.5% (14/51; 17.1–40.9)
+66.7% (34/51; 53.0–78.0)
+73.1% (49/67; 61.5–82.3)
+58.6% (17/29; 40.7–74.5)
+85.6% (95/111; 77.9–90.9)
+84.2% (16/19; 62.4–94.5)
+13.5% (36/267; 9.9–18.1)
+39.1% (27/69; 28.5–50.9)
+Danon
+97.9% (281/287; 95.5–99.0)
+35.0% (7/20; 18.1–56.7)
+50.0% (10/20; 29.9–70.1)
+47.9% (35/73; 36.9–59.2)
+78.9% (15/19; 56.7–91.5)
+89.6% (43/48; 77.8–95.5)
+87.1% (27/31; 71.1–94.9)
+15.9% (40/251; 11.9–21.0)
+18.1% (15/83; 11.3–27.7)
+LAD-I allele 600065.0006 has a component ClinVar calls benign. One OMIM phenotype statement
+from a 1998 SSADH source paper is “not reported” in the run’s rows, to be checked against the
+paper.
+C
+O1 AND O3 BY DISEASE, AND THE PENDING RESULTS
+Candidates that may not be gaps (named by the dossier helpers).
+G-ssadh-003 (a coordinate
+read literally from mixed exon/intron notation), G-axd-017 (a cDNA position probably off by one),
+G-lad1-077 (the paper cites an SCV accession not yet in the release), G-danon-002 (LAMP2B-
+numbered variants mapped to intronic MANE positions). If all 19 proposed same-person groups
+(HA20 12, Danon 5, AxD 1, LAD-I 1) were confirmed, 3.8% of HA20 identities would collapse and
+0.2%–1.2% elsewhere (a lower bound).
+D
+EXTENSION, MAJEED AND CORPUS ADDENDUM
+Majeed corpus.
+Majeed’s search added full-text search, OpenAlex (Priem et al., 2022), LitVar2
+by gene symbol and forward citations to the PubMed and backward-citation search used for the
+other diseases; no ClinVar or OMIM citation list was used.
+Blau and NOD2 numbering (D-53).
+Under the registered rule 19 Blau cDNA descriptions failed
+on MANE (NM_001370466.1) because the papers use legacy NM_022162.3 numbering; with the
+fallback all 19 place, each agreeing with the paper’s own protein, 27 residues higher. Registered
+rule vs fallback: tier-1 recall 4.5% (1/22) vs 13.6% (3/22); overlap 61.5% (8/13) vs 63.0% (17/27);
+classification 72.7% (8/11) vs 78.9% (15/19); cDNA normalized 18 →37 of 38.
+Majeed (exploratory, pv1s-majeed).
+1319 PubMed records from every search method; 131
+passed title/abstract screening; 79 had open full text, including copies found by hand; 22 eligible
+after full-text screening (17 primary reports); run on 24 documents (the eligible PubMed papers plus
+two records with no PMID). Span check 100.0% verbatim after one repair-only resume; 164 rows,
+158 identities after 6 merges; gatekeeper: supported 4971, partially supported 155, unsupported
+35 of 5161 (not fully supported 3.7%; 95% CI 3.2–4.2). 62 distinct variant descriptions, 67.7%
+normalized or corrected (91.3% of cDNA descriptions); HPO 71.1% of feature rows bound; 158
+phenopackets, all valid, 100 with an interpretation. O2 (snapshot 2026-11-15): gene correct 100.0%
+(141/141; 97.3–100.0); overlap 50.0% (12/24; 31.4–68.6); tier-1 recall 6.6% (5/76; 2.8–14.5), tiers
+1+2 10.5% (8/76; 5.4–19.4); classification 62.5% (5/8; 30.6–86.3); condition names the disease
+100.0% (19/19; 83.2–100.0). 52 corpus papers have no open copy, including the founding reports.
+19
+Published as a conference paper at ICLR 2025
+Table 12: Classification cross-tabulation (registered six) and, without ClinVar-cited papers (D-19),
+overlap, classification agreement and condition naming (recall is undefined there).
+All papers
+Without ClinVar-cited papers
+Disease
+CV P/LP, authors P/LP
+CV VUS, authors P/LP
+CV P/LP, authors VUS
+Authors state no class
+Agreeing
+Overlap, tier 1
+Classification
+Condition names disease
+HA20
+17
+2
+1
+27
+24
+33.3% (29/87; 24.3–43.8)
+85.7% (18/21; 65.4–95.0)
+48.9% (23/47; 35.3–62.8)
+SSADH
+38
+3
+1
+34
+45
+83.3% (40/48; 70.4–91.3)
+93.5% (29/31; 79.3–98.2)
+97.6% (41/42; 87.7–99.6)
+Tangier
+3
+1
+1
+6
+8
+57.1% (8/14; 32.6–78.6)
+85.7% (6/7; 48.7–97.4)
+33.3% (4/12; 13.8–60.9)
+LAD-I
+5
+3
+0
+42
+7
+40.0% (12/30; 24.6–57.7)
+62.5% (5/8; 30.6–86.3)
+100.0% (15/15; 79.6–100.0)
+AxD
+14
+4
+2
+82
+17
+69.4% (34/49; 55.5–80.5)
+66.7% (14/21; 45.4–82.8)
+87.2% (41/47; 74.8–94.0)
+Danon
+14
+3
+0
+29
+15
+41.5% (22/53; 29.3–54.9)
+80.0% (12/15; 54.8–93.0)
+90.0% (27/30; 74.4–96.5)
+Table 13: Completeness against published catalogues (secondary, descriptive; harness side only).
+Restricted = catalogue variants whose source paper is in the corpus. AxD’s two restricted misses
+(PMIDs 36425948, 26478912) are notation, not absence; the matcher was not changed after seeing
+this.
+Disease
+Catalogue
+Variants (patients)
+Restricted denominator
+Restricted recall
+Unrestricted recall
+HA20
+2020 review, Table S1 (D-30)
+32 (89)
+9
+100.0% (9/9; 70.1–100.0)
+90.6% (29/32; 75.8–96.8)
+AxD
+PMID 39420046, Suppl. Table 2 (D-39)
+183 (553)
+56
+96.4% (54/56; 87.9–99.0)
+53.8% (91/169; 46.3–61.2)
+Addendum notes.
+The batch 1 figures replace earlier ones (8,366 quoted values; 2,653 judged
+claims, 71 unsupported, 2.7%; 106 phenopackets) after the publisher PDF of one LAD-I paper
+(PMID 32154133) replaced a web page without its tables and after D-49; the batch 2 interpretations
+are 154 after the D-49 Stage 4 re-run of Tangier (153 when that report was written). Batch 1’s six
+exclusions have not been checked by a person. Of its 115 phenopackets, 85 have a disease entry
+and 30 no phenotypic feature; 14 of the 23 included papers print no variant. Batch 1’s unsupported
+claims concentrate in Tangier (two 1977 papers 25 each, a 1982 paper 9, a 1999 paper 1); its four
+AxD claims are hedged MRI statuses and LAD-I’s seven are variant fields for a carrier mother. Of
+batch 1’s 31 gatekeeper helpers, 11 had a verdict-writing script refused; seven chunks were judged
+twice (802 claims, 796 agreeing); in one 1977 Tangier paper split into two chunks the same sentence
+was judged unsupported (25 claims) in one and supported (11) in the other. At least seven of the
+63 batch-1 Tangier records repeat a person. In batch 2, 45 claims about another person were judged
+partially supported (Tangier 43, HA20 2); counted strictly, 98 of 11,990 are unsupported (0.8%), and
+the same strict count on the registered run gives 0.5% (393 of 80,948). Of batch 2’s 446 records, 322
+carry a disease term, 158 no phenotypic feature, and 115 neither a feature nor an interpretation (26%,
+against 17% in the registered run). Conversion damage: four papers keep less than 90% of their PDF
+words; “>” printed as “.” in cDNA strings in at least four papers; of 118 variant descriptions, 40
+normalized. Eight batch-2 chunks were judged twice (1,192 claims, 1,191 agreeing). Cost about
+$61 (batch 1) and $153.69 (batch 2) by session readings; 111 papers remain not retrieved.
+E
+DEVIATIONS AND DECISIONS AFTER THE FREEZE
+F
+HUMAN ASSESSMENT PLANNING
+Design (D-55).
+The PI accepted on 2026-11-15 a design of volunteer raters in rotating groups af-
+ter a calibration round with a floor, in place of two fixed raters and a tie-breaker (Figure 5); nine
+raters take part from 2026-11-16, two of them adjudication-panel members, and none is identified.
+Calibration. The PI labelled 99 candidate claims from the registered runs (outside the O1 sample;
+drawn both from claims the gatekeeper removed and claims it kept), blind to the gatekeeper and
+the source pool: 64 supported, 29 unsupported, 5 cannot verify, 1 quote not in paper. A rule fixed
+before any label took the first 20 labelled unsupported and the first 20 supported in seeded order.
+Two amendments followed his labels and preceded any rater: one kind of claim is capped on the
+unsupported side (kind and cap recorded privately with a committed checksum, since naming them
+would hint at answers), and a repeated paper and quote is skipped; both are reported wherever cali-
+bration results are. The final 40 claims come from 39 papers; 35 are shared by all three versions of
+the set, and results will also be given on them. How a rating counts was fixed before any rater en-
+tered one: an unsupported claim is caught when labelled unsupported, quote not in paper or cannot
+20
+Published as a conference paper at ICLR 2025
+Table 14: OMIM as a human-curated holdout (D-42; 2026-10-28). Recall anywhere in the run
+counts tiers 1+2. Counting the one notation-level match, pooled recall is 58.7% (44/75; 47.4–69.1).
+Disease
+Allelic variants
+Tier 1
+Tier 2
+Token only
+Not recovered
+Recall anywhere
+Source paper in run: recovered
+Source papers extracted
+Corpus PMIDs cited by OMIM
+HA20
+9
+8
+0
+0
+1
+88.9% (8/9; 56.5–98.0)
+6: 100.0% (6/6; 61.0–100.0)
+1 of 4
+3.1% (5/160; 1.3–7.1)
+SSADH
+7
+3
+1
+0
+3
+57.1% (4/7; 25.0–84.2)
+5: 0.0% (0/5; 0.0–43.4)
+2 of 4
+10.5% (18/171; 6.8–16.0)
+Tangier
+19
+0
+2
+0
+17
+10.5% (2/19; 2.9–31.4)
+0: –
+0 of 11
+11.6% (33/284; 8.4–15.9)
+LAD-I
+14
+12
+0
+0
+2
+85.7% (12/14; 60.1–96.0)
+2: 50.0% (1/2; 9.5–90.5)
+1 of 44
+4.7% (13/274; 2.8–7.9)
+AxD
+13
+8
+1
+0
+4
+69.2% (9/13; 42.4–87.3)
+0: –
+0 of 9
+5.8% (21/363; 3.8–8.7)
+Danon
+13
+7
+1
+1
+4
+61.5% (8/13; 35.5–82.3)
+1: 100.0% (1/1; 20.7–100.0)
+1 of 12
+6.1% (15/244; 3.8–9.9)
+All six
+75
+38
+5
+1
+31
+57.3% (43/75; 46.1–67.9)
+5 of 84
+Table 15: What is prepared for people (review material per disease). Audit samples: registered seed
+40250 (250 claims), extension seed 47250 (250), Majeed seed 54250 (27). The unsupported count
+by disease is pending:
+pending: o1_by_disease .
+Disease
+Audit sample (claims)
+ClinVar-miss triage items
+Gap candidates for the panel
+Dossiers written
+HA20
+72
+14
+64
+64 of 64
+AxD
+44
+4
+17
+17 of 17
+LAD-I
+33
+8
+82
+82 of 82
+SSADH
+30
+23
+10
+10 of 10
+Danon
+56
+1
+34
+35 of 35
+Tangier
+15
+0
+7
+7 of 7
+Blau
+80
+21
+8
+9 of 9
+LCAT
+38
+11
+25
+26 of 26
+GAMT
+51
+8
+8
+8 of 8
+ATS
+33
+4
+1
+1 of 1
+PAPA
+48
+4
+1
+1 of 1
+Majeed
+27
+50
+12
+10 of 12 (4 public)
+verify (the strict count without cannot verify reported beside it); a supported claim is passed only
+when labelled supported. Main assessment. Each audit claim is read by 3 raters dealt by a seeded
+script over all groups of three (84 with nine raters), with a registered pair and tie-breaker per claim
+and rule C unchanged; Cohen’s κ is reported per pair on shared claims, with an all-rater agreement
+measure beside it. Misses are triaged by 2 raters, the PI settling differences; candidates are adjudi-
+cated by 2 raters, a third where they differ on the decision or across the pathogenic / uncertain line.
+Registered, extension and Majeed studies are scored separately. Calibration results pending: fin-
+ished
+pending: cal_raters_finished of 9; meeting the floor
+pending: cal_raters_pass ; plan
+pending: plan_choice
+(all calibration fields in Table 19).
+The PI’s reference-labelling sittings for calibration took 60 ratings in 59.6 minutes (median 51 sec-
+onds between ratings), 15 in 17.2 minutes and 24 in 16.3 minutes. Gap adjudication is about 76%
+of Plan A’s time. Person-hours in all barely change with the number of raters (Plan A 171.9 with
+nine against 169.2 with eight). With nine raters, each pair shares 20 or 21 audit claims in Plan A,
+against 26 to 28 with eight; the plan report is written for eight raters and is to be regenerated for
+the final number before any audit assignment is drawn. With a cap on hours per rater, candidates
+fully adjudicated in Plan A: 8 h 38 of 214; 12 h 92; 16 h 145; 20 h 198; 24 h 214; in Plan B: 8 h 0
+of 269; 12 h 47; 16 h 100; 20 h 154; 24 h 207; 30 h 269. What 20 unsupported calibration claims
+can resolve (95% intervals): 20 of 20 caught, 83%–100%; 18 of 20, 68%–99%; 16, 56%–94%; 14,
+46%–88%; 12, 36%–81%; a set twice as large would give 36 of 40 an interval of 76%–97%. The
+registered adjudication window is Month 4 (2026-12-21 to 2027-01-20), across the holidays; hours
+per rater per week are not known. Still to fix before adjudication: who gives the third reading when
+a panel member is one of the two adjudicators, and what counts as the panel’s approval.
+G
+BUDGET BY LINE
+Readings sometimes freeze or lag, and whether the sessions ran on the funded account is open (D-
+15); the ledger of billing figures is empty. Not counted: OpenRouter spend for the open-weight
+model (billed outside the award: $16.34–$20.35 for the two runs, about $0.19 for the pilot and
+$0.048 for its memorization probe; the key is shared, so these are upper bounds), the Majeed search
+21
+Published as a conference paper at ICLR 2025
+Table 16: O3 stage 1, registered six. “Reclassification” = supported variants in ClinVar only as VUS
+or conflicting; “strong” (≥2 papers or ≥3 deduplicated people) is a proposed, exploratory rule. Live
+candidates after the OMIM check and D-43: HA20 64, SSADH 10, Tangier 7, LAD-I 82, AxD 17,
+Danon 34 (214).
+Disease
+Tier-1 alleles
+Absent from ClinVar
+Candidates
+Absent, every row failed gatekeeper
+Only ClinVar-cited papers
+Only reviews
+Protein check differs
+Papers 1 / 2 / 3+
+Authors’ class
+Reclassification (strong)
+HA20
+103
+64
+64
+0
+6
+0
+8
+43 / 14 / 7
+43 P/LP, 4 VUS, 14 not stated
+12 (6)
+SSADH
+78
+10
+10
+0
+2
+0
+1
+6 / 4 / 0
+6 P/LP, 0 VUS, 4 not stated
+15 (4)
+Tangier
+16
+7
+7
+0
+1
+0
+1
+7 / 0 / 0
+4 P/LP, 0 VUS, 3 not stated
+6 (0)
+LAD-I
+129
+84
+82
+2
+66
+34
+10
+76 / 6 / 0
+4 P/LP, 0 VUS, 78 not stated
+7 (2)
+AxD
+67
+18
+17
+1
+2
+1
+3
+15 / 2 / 0
+8 P/LP, 3 VUS, 6 not stated
+8 (2)
+Danon
+73
+38
+35
+3
+7
+0
+2
+27 / 6 / 2
+16 P/LP, 0 VUS, 19 not stated
+5 (1)
+Five confirmatory
+363
+151
+41 (9)
+All six
+466
+221
+215
+6
+53 (15)
+Table 17: O3 stage 1, extension five (D-52). ClinVar re-check against the same snapshot: 45
+checked, 0 now in ClinVar; OMIM not checked; dossiers 45 of 45 (869 quotes, all verbatim).
+LCAT’s candidates are mostly table rows of one systematic review (PMID 34256778).
+Disease
+Tier-1 alleles
+Absent from ClinVar
+Candidates
+Withdrawn (D-53)
+Left for panel
+Registered rule
+Only ClinVar-cited
+Only reviews
+GAMT
+81
+8
+8
+0
+8
+8
+0
+0
+PAPA
+11
+1
+1
+0
+1
+1
+0
+0
+ATS
+27
+1
+1
+0
+1
+1
+0
+0
+Blau
+27
+10
+9
+1
+8
+5
+1
+0
+LCAT
+50
+27
+26
+1
+25
+26
+17
+18
+session ($19.92), the consolidation session of 2026-11-15 (its two helpers about $5.50 by helper
+tokens), and claude.ai chats. The earlier total of $1,861.06 (reading of 2026-10-24) is superseded.
+Unit costs: extraction about $2 per paper by session readings ($1.08 and $1.19 median per paper
+by helper tokens on HA20 and SSADH); gatekeeper about $0.0044 per judged claim; the six regis-
+tered runs $603 for extraction plus gatekeeper over 350 documents ($1.72 per paper; $1.35–2.38 by
+disease); HPO binding helpers $72 against a $28 estimate. Per-run spend: registered gap dossiers
+$64.10 and Claude memorization probe $5.34 by helper tokens; gatekeeper on the open-weight runs
+$136.46; extension five $596.93 (ceiling $1,500); Majeed run about $92 by helper tokens (ceiling
+$120) plus about $20 for its search screening; pilot $673.89 against its $1,000 ceiling. If the first
+deposit landed on 2026-09-21, it expires 2027-03-21; unused credits are reported, not spent for the
+sake of it.
+H
+MEMORIZATION PROBE, OPEN-WEIGHT COMPARISON AND GPSEA
+Open-weight notes.
+Tier-1 overlap: HA20 37.9% (39/103) / 41.1% (37/90; 31.5–51.4), SSADH
+87.2% (68/78) for both; classification agreement HA20 82.8% (24/29) / 90.0% (18/20; 69.9–97.2),
+SSADH 91.8% (45/49) / 88.5% (46/52; 77.0–94.6). Claude-only target-gene variants 28 and open-
+weight-only 5 in HA20; 4 and 5 in SSADH. Counted with failed attempts, the open-weight runs
+cost $16.34 to $20.35 for 125 papers against Claude’s $154.21 estimate. Helpers did not all treat
+empty quotes the same way (236 HA20 and 144 SSADH empty-quote claims were judged supported
+against the row’s quote), so the open-weight unsupported rate is, if anything, a little low. Scaffold
+differences: file tools only (no shell); no repair passes for empty quotes; three harness fixes during
+the run (retries after dropped connections, a JSON parse check on writes, a resume request never
+needed), approved by the PI on 2026-10-21; 13 HA20 and 1 SSADH paper were re-run from a clean
+start. Commonest open-weight failures: a proband flag of false with no quote; checklist statuses with
+no quote; a gene symbol quoted from a background sentence; an age at examination given as onset;
+parents’ variant fields quoted from the proband’s sentence; hedged findings recorded as observed.
+Bias-arm tags (D-48).
+Tags cover 1,772 phenopackets (SSADH 464, HA20 781, Danon 527).
+Registered SSADH: of 311 records with a disease term, 115 are probable members of the comparator
+registry, 108 possible, 63 with no link. Registered HA20: 9 probable, 87 possible. Danon: nobody
+tagged as in the cohort. AxD is left untagged on purpose (its open comparator is UK Biobank
+carriers (Gagliardi et al., 2024)). Comparators: AxD UK Biobank genotype-first cohort; Danon
+a prospective cohort (PMID 41121270); HA20 a multicentre preprint; SSADH a natural-history
+registry (PMID 30656189) (DiBacco et al., 2019).
+22
+Published as a conference paper at ICLR 2025
+Table 18: Majeed gap candidates (MANE NM_001375808.2). None of the 12 is in ClinVar’s re-
+lease of 09 Nov 2026; one further variant, c.2207G>A p.(Arg736His), is a reclassification candidate
+(ClinVar conflicting). N88 is a record with no PMID whose text could not be restored.
+Candidate
+HGVS
+Predicted protein
+Protein check
+Papers; authors’ class
+G-majeed-001
+c.2534del
+p.(Gly845GlufsTer9)
+agrees
+N88; P/LP
+G-majeed-002
+c.2349del
+p.(Glu784ArgfsTer8)
+agrees
+41113563; P/LP
+G-majeed-003
+c.2327+3A>G
+p.?
+no stated protein
+41113563; P/LP
+G-majeed-004
+c.2241_2243delinsGG
+p.(Tyr747TerfsTer)
+differs (stated Y747*, predicted Y747fs)
+27252506, 41113563; not stated
+G-majeed-005
+c.2206C>T
+p.(Arg736Cys)
+agrees
+33993107, 41113563; P/LP
+G-majeed-006
+c.2174+4_2174+5del
+p.?
+no stated protein
+33993107, 41113563; VUS
+G-majeed-007
+c.2144_2145dup
+p.(Ile716ValfsTer2)
+agrees
+39255247; P/LP
+G-majeed-008
+c.2041del
+p.(Trp681GlyfsTer14)
+agrees
+33993107, 41113563; P/LP
+G-majeed-009
+c.1966A>G
+p.(Asn656Asp)
+agrees
+N88; P/LP
+G-majeed-010
+c.1961G>A
+p.(Gly654Asp)
+agrees
+33993107, 41113563; VUS
+G-majeed-011
+c.1693_1694del
+p.(Glu565LysfsTer15)
+agrees
+39255247; P/LP
+G-majeed-012
+c.1620+5G>C
+p.?
+no stated protein
+33993107, 41113563; P/LP
+Figure 5: Human assessment design (D-55; procedure only, no results). Stage 1, calibration (due
+2026-11-22): the PI labelled 99 candidate claims blind to the gatekeeper; a set rule fixed before
+any label, with two recorded amendments, selected 40 claims (20 unsupported, 20 supported, 39
+papers); nine raters rate them in their own order against a floor fixed in advance. Stage 2: the PI
+chooses who goes on and Plan A or B (planning figures); (a) audit claims read by 3 raters in rotating
+groups with a registered pair and tie-breaker per claim, rule C unchanged; (b) ClinVar misses by 2
+raters; (c) gap candidates by 2 raters, a third on disagreement. Nothing is submitted without panel
+approval and the PI’s sign-off.
+I
+PILOT GATES AND CORRECTED APPLICATION FIGURES
+Pilot audits.
+First audit (instructions v3, gatekeeper v1): 3 of 50 unsupported, 6.0% (1.3%–
+16.5%), 6 of 50 not fully supported; error class: variant fields taken from a group statement or a
+literature-summary column, answered by D-29. Re-audit (instructions v5, gatekeeper v3, 20 pa-
+pers): 3 of 48, 6.3% (1.3%–17.2%), 4 of 48 not fully supported; error class: ages read by position
+from a stacked multi-patient cell, which the rater could not verify, answered by D-31; without the 3
+unverifiable claims, 0 of 45 (0.0%–7.9%). Variant fields were clean after D-29 (0 of 20 unsupported
+in the re-audit, against 3 of 20 before). Merge policy v3 made 93 merges; a hand check found 84
+true, 6 false, 3 unclear. Measured rating time: 87 ratings in 56.7 minutes and 50 in 18.3 minutes.
+23
+Published as a conference paper at ICLR 2025
+Table 19: Pending human results (status 2026-11-20). Every value prints as a “pending” marker
+until a script fills it from the ratings. Plan B rows are rated only if the PI chooses Plan B.
+Outcome
+What it will hold
+Fixed sample
+Value
+Calibration
+Raters who rated all 40 claims, of 9 invited
+40 claims (20/20), 39
+papers
+pending: cal_raters_finished
+Raters who met the floor (≥15 of 20 caught,
+≥18 of 20 passed)
+pending: cal_raters_pass
+Median unsupported claims caught, of 20
+pending: cal_caught_median
+Median supported claims passed, of 20
+pending: cal_passed_median
+Claims (of 40) where the majority agrees
+with the reference label
+pending: cal_majority_agree
+Median minutes per calibration claim
+pending: cal_minutes_median
+Plan chosen by the PI
+Plan A or Plan B
+pending: plan_choice
+Raters going on to the main assessment
+pending: raters_main
+O1 (registered)
+Claims unsupported, of 250
+250, seed 40250
+pending: o1_unsupported_n
+The same as a percentage
+pending: o1_unsupported_pct
+Exact 95% interval
+pending: o1_unsupported_ci
+Rule C met (at most 4 of 250 unsupported)
+pending: o1_rule_c
+Range of Cohen’s κ over pairs of raters
+pending: o1_kappa_range
+Share of human-unsupported claims the
+gatekeeper had removed
+pending: o1_gatekeeper_sens
+Unsupported claims by disease
+allocation in App. C
+pending: o1_by_disease
+O1X,
+O1M
+(Plan B)
+Extension audit: unsupported of 250
+250, seed 47250
+pending: o1x_unsupported
+Majeed audit: unsupported of 27
+27, seed 54250
+pending: o1m_unsupported
+O2 triage
+Registered: counts by cause (extraction miss,
+conversion loss, not in paper, ClinVar error,
+other)
+50 of 263 misses, seed
+72650
+pending: o2_triage_breakdown
+Extension (Plan B)
+48 misses
+pending: o2x_triage_breakdown
+Majeed (Plan B)
+50 of 68 misses
+pending: o2m_triage_breakdown
+O3
+Candidates adjudicated, of those left for the
+panel
+214 (Plan A) or 269
+(Plan B)
+pending: o3_adjudicated
+Accepted as true gap variants with phenotype
+evidence
+pending: o3_accepted
+Accepted, by classification
+pending: o3_class_split
+Records prepared after panel sign-off
+pending: o3_submissions
+O4
+Per-disease deviation of literature frequen-
+cies from comparators
+4 comparator sheets
+pending: o4_deviation
+O5
+Expert minutes per accepted record
+adjudication timings
+pending: o5_minutes_per_record
+Blinded human audit of the open-weight run
+not yet drawn
+pending: o5_openweight_audit
+Addendum
+Batch 1: 42 disputed claims and 6 exclu-
+sions, rated
+48 items
+pending: add_b1_ratings
+Batch 2: the audit list, rated
+54 claims
+pending: add_b2_audit
+24
+Published as a conference paper at ICLR 2025
+Table 20: Per-run statistics for all 23 runs (2026-11-15). Identities are merged within a run only.
+The cDNA denominators are each run’s normalization-summary field. Majeed: 131 of its 158
+phenopacket files are public.
+Disease
+Run
+Papers
+Rows
+Identities
+Gene variant
+Phenopackets
+Interp.
+Disease term
+Any feature
+Claims judged
+Unsupported (95% CI)
+Not fully supp.
+cDNA normalized
+HA20
+pv1-ha20
+85
+811
+769
+558
+769
+499
+447
+606
+23,129
+0.20% (46; 0.15–0.27)
+1.9%
+96.7% of 152
+HA20
+pv1a-ha20
+1
+3
+3
+1
+3
+1
+1
+3
+49
+0.00% (0; 0.00–7.25)
+0.0%
+none
+HA20
+pv1a2-ha20
+2
+9
+9
+7
+9
+5
+9
+9
+220
+3.18% (7; 1.29–6.45)
+8.6%
+100.0% of 3
+AxD
+pv1-axd
+69
+463
+456
+318
+456
+255
+226
+303
+14,403
+0.27% (39; 0.19–0.37)
+3.6%
+78.8% of 104
+AxD
+pv1a-axd
+3
+7
+7
+3
+7
+3
+1
+5
+309
+1.29% (4; 0.35–3.28)
+2.6%
+100.0% of 2
+AxD
+pv1a2-axd
+26
+196
+196
+123
+196
+109
+165
+136
+5,947
+0.24% (14; 0.13–0.39)
+3.5%
+60.0% of 20
+LAD-I
+pv1-lad1
+42
+508
+508
+328
+508
+299
+326
+302
+10,864
+0.43% (47; 0.32–0.57)
+3.5%
+86.5% of 170
+LAD-I
+pv1a-lad1
+6
+28
+28
+12
+28
+11
+23
+15
+880
+0.80% (7; 0.32–1.63)
+3.9%
+100.0% of 9
+LAD-I
+pv1a2-lad1
+6
+41
+41
+14
+41
+6
+29
+11
+997
+0.90% (9; 0.41–1.71)
+3.4%
+100.0% of 1
+SSADH
+pv1-ssadh
+40
+421
+363
+243
+363
+174
+311
+216
+9,759
+0.38% (37; 0.27–0.52)
+2.9%
+86.5% of 141
+SSADH
+pv1a-ssadh
+3
+14
+14
+0
+14
+0
+13
+12
+349
+0.00% (0; 0.00–1.05)
+7.2%
+none
+SSADH
+pv1a2-ssadh
+9
+87
+87
+17
+87
+8
+63
+39
+1,700
+0.82% (14; 0.45–1.38)
+2.6%
+85.7% of 14
+Danon
+pv1-danon
+83
+510
+505
+281
+505
+212
+322
+445
+17,963
+0.61% (110; 0.50–0.74)
+3.1%
+89.3% of 112
+Danon
+pv1a2-danon
+5
+22
+22
+10
+22
+8
+8
+19
+1,018
+0.29% (3; 0.06–0.86)
+3.0%
+50.0% of 2
+Tangier
+pv1-tangier
+31
+235
+235
+65
+235
+53
+175
+135
+4,830
+0.31% (15; 0.17–0.51)
+4.5%
+90.0% of 20
+Tangier
+pv1a-tangier
+10
+63
+63
+4
+63
+4
+47
+50
+1,262
+4.75% (60; 3.65–6.08)
+9.5%
+none
+Tangier
+pv1a2-tangier
+11
+91
+91
+24
+91
+18
+48
+74
+2,108
+0.28% (6; 0.10–0.62)
+6.6%
+100.0% of 11
+Blau
+pv1-blau
+68
+513
+507
+358
+507
+295
+238
+433
+15,476
+0.25% (39; 0.18–0.34)
+3.6%
+97.4% of 38
+Majeed
+pv1s-majeed
+24
+164
+158
+141
+158
+100
+113
+132
+5,161
+0.68% (35; 0.47–0.94)
+3.7%
+91.3% of 46
+LCAT
+pv1-lcat
+50
+283
+282
+162
+282
+106
+119
+212
+7,623
+0.45% (34; 0.31–0.62)
+7.1%
+91.3% of 69
+GAMT
+pv1-gamt
+23
+380
+365
+279
+365
+197
+313
+332
+9,981
+0.63% (63; 0.49–0.81)
+4.8%
+95.1% of 122
+ATS
+pv1-ats
+34
+157
+152
+84
+152
+51
+103
+109
+6,268
+0.86% (54; 0.65–1.12)
+3.5%
+100.0% of 45
+PAPA
+pv1-papa
+34
+320
+311
+213
+311
+109
+211
+275
+9,146
+0.35% (32; 0.24–0.49)
+3.5%
+72.2% of 18
+All twelve
+665
+5,326
+5,172
+3,245
+5,172
+2,523
+149,442
+0.45% (675)
+Registered runs only
+350
+2,948
+2,836
+1,793
+2,836
+1,492
+80,948
+0.36% (294)
+Registered six + addendum
+432
+3,509
+3,397
+2,008
+3,397
+1,665
+95,787
+0.44% (418)
+Extension five
+209
+1,653
+1,617
+1,096
+1,617
+758
+48,494
+0.46% (222)
+Table 21: Extension five (D-52): repeat and O2 (snapshot 2026-11-14; ClinVar variant_summary of
+09 Nov 2026; Blau with the D-53 fallback). Wilson 95% intervals.
+Disease
+Repeat papers
+Variants (strings)
+Variants (keys)
+Features
+Checklist
+HGVS recall, tier 1
+Tiers 1+2
+Overlap, tier 1
+Classification
+HPO annotation recall
+Condition names disease
+GAMT
+3
+0.93
+0.98
+0.72
+0.99
+69.2% (18/26; 50.0–83.5)
+69.2% (18/26; 50.0–83.5)
+90.1% (73/81; 81.7–94.9)
+87.5% (14/16; 64.0–96.5)
+83.3% (25/30; 66.4–92.7)
+97.3% (73/75; 90.8–99.3)
+PAPA
+4
+0.90
+1.00
+0.80
+0.99
+57.1% (8/14; 32.6–78.6)
+71.4% (10/14; 45.4–88.3)
+90.9% (10/11; 62.3–98.4)
+87.5% (7/8; 52.9–97.8)
+81.2% (13/16; 57.0–93.4)
+90.5% (19/21; 71.1–97.3)
+ATS
+4
+1.00
+–
+0.72
+1.00
+80.0% (16/20; 58.4–91.9)
+80.0% (16/20; 58.4–91.9)
+96.3% (26/27; 81.7–99.3)
+90.0% (9/10; 59.6–98.2)
+80.9% (38/47; 67.5–89.6)
+92.3% (24/26; 75.9–97.9)
+Blau
+7
+0.82
+0.93
+0.63
+0.99
+13.6% (3/22; 4.7–33.3)
+13.6% (3/22; 4.7–33.3)
+63.0% (17/27; 44.2–78.5)
+78.9% (15/19; 56.7–91.5)
+85.7% (18/21; 65.4–95.0)
+90.5% (19/21; 71.1–97.3)
+LCAT
+5
+0.75
+1.00
+0.53
+0.98
+36.8% (7/19; 19.1–59.0)
+42.1% (8/19; 23.1–63.7)
+46.0% (23/50; 33.0–59.6)
+60.0% (3/5; 23.1–88.2)
+100.0% (12/12; 75.8–100.0)
+80.0% (24/30; 62.7–90.5)
+Table 22: Corpus addendum (D-47), reported beside the registered results. Batch 1: 29 browser-
+saved free copies (tables as corrected on 2026-11-15). Batch 2: 72 free copies downloaded in
+a browser driven by Claude computer use (no CAPTCHA solved). No O2, O3, audit sample or
+matching to the registered runs yet.
+Batch
+Disease
+Copies
+Included
+Values quoted
+Rows
+Judged claims
+Unsupported (exact 95% CI)
+Not fully supp.
+Phenopackets (interp.)
+1
+HA20
+2
+1
+189
+3
+49
+0 (0.0%–7.3%)
+0.0%
+3 (1)
+1
+AxD
+3
+3
+781
+7
+309
+4: 1.3% (0.4%–3.3%)
+2.6%
+7 (3)
+1
+LAD-I
+7
+6
+2454
+28
+880
+7: 0.8% (0.3%–1.6%)
+3.9%
+28 (11)
+1
+SSADH
+3
+3
+1092
+14
+349
+0: 0.0% (0.0%–1.1%)
+7.2%
+14 (0)
+1
+Tangier
+14
+10
+4483
+63
+1262
+60: 4.8% (3.6%–6.1%)
+9.5%
+63 (4)
+1
+Total
+29
+23
+8999
+115
+2849
+71: 2.5%
+115 (19)
+2
+HA20
+3
+2
+697
+9
+220
+7: 3.2% (1.3%–6.4%)
+8.6%
+9 (5)
+2
+AxD
+31
+26
+17253
+196
+5947
+14: 0.2% (0.1%–0.4%)
+3.5%
+196 (109)
+2
+Danon
+5
+5
+2509
+22
+1018
+3: 0.3% (0.1%–0.9%)
+3.0%
+22 (8)
+2
+LAD-I
+7
+6
+3188
+41
+997
+9: 0.9% (0.4%–1.7%)
+3.4%
+41 (6)
+2
+SSADH
+13
+9
+6020
+87
+1700
+14: 0.8% (0.5%–1.4%)
+2.6%
+87 (8)
+2
+Tangier
+13
+11
+6946
+91
+2108
+6: 0.3% (0.1%–0.6%)
+6.6%
+91 (18)
+2
+Total
+72
+59
+36613
+446
+11990
+53: 0.4%
+446 (154)
+25
+Published as a conference paper at ICLR 2025
+Table 23: Decisions and deviations (D-36 onward, plus D-13 and D-14). Every deviation was
+approved by the PI before it took effect unless stated. The main text describes each change in words;
+the codes are the project log’s. D-52 and D-53 were recorded as D-47 and D-48 in the extension
+session and renumbered at the merge (D-54).
+Date
+No.
+Kind
+What changed
+Effect
+2026-10-20
+D-36
+decision
+(freeze)
+Extraction v6 and gatekeeper v4 frozen;
+pre-registration v1.0; tags on ef3133e
+Hedged statuses dropped by the gate-
+keeper, end as “not reported”
+2026-10-20
+D-37
+decision
+Six-disease run approved up to $1,200
+(estimate $795; $994 with repairs)
+Run with 10% repeat: +$768.87 by
+session readings
+2026-10-20
+D-38
+deviation
+Frozen prompt and schema instantiated
+per disease by script (12 changed lines)
+None on HA20; checklists new by de-
+sign
+2026-10-20
+D-39
+deviation
+AxD catalogue used for completeness on
+the harness side
+AxD completeness 54/56;
+nothing
+reaches extraction
+2026-10-20
+D-40
+deviation
+Stage 4 reads per-disease settings
+Five diseases get records
+2026-10-21
+D-13
+decision
+ClinVar submissions use the curation col-
+lection method
+Changes the grant’s wording
+2026-10-21
+D-14
+correction
+Patient counts and the phenopacket-store
+figure corrected
+Disease set unchanged
+2026-10-21
+D-41
+decision
+Model work while human rating waits
+(dossiers, probe, GPSEA, completeness,
+bias prep)
+No change to the frozen plan
+2026-10-21
+D-10
+decision
+Open-weight run on OpenRouter (Deep-
+Infra fp8); three harness fixes; gatekeeper
+v4 on both open-weight runs
+App. H
+2026-10-28
+D-42
+decision
+OMIM reference = twelve entry pages
+frozen 2026-10-28; OMIM as a human-
+curated holdout
+OMIM half of O2 and O3’s OMIM
+clause assessed; synopses not
+2026-10-28
+D-43
+deviation
+Isoform-sensitive
+normalization
+(LAMP2,
+GFAP); G-danon-001 with-
+drawn
+Danon: 2 of 165 descriptions changed,
+5 records differ; O2 not re-run
+2026-11-09/10
+D-45,
+D-46
+decisions
+Collaborator dashboard; repository made
+public
+Paper text redacted from 141 open-
+weight transcripts (4,383 tool results)
+2026-11-14
+D-47
+deviation
+Corpus addendum of free copies found af-
+ter the freeze (cut-off 2026-11-30)
++82 papers, +561 phenopackets beside
+the registered results
+2026-11-14
+D-52
+deviation
+Extension to reserve diseases under a sep-
+arate addendum; Majeed dropped by its
+rule
+Five diseases, 209 papers, reported
+apart
+2026-11-15
+D-48
+deviation
+O4
+primary
+analysis:
+disease-term
+records, comparator members removed
+SSADH 363 →311 →196; HA20
+769 →447 →438; Danon 505 →322
+2026-11-15
+D-49
+deviation
+Old symbol ABC1 recognized as ABCA1
+Registered runs unaffected; addendum
+Tangier gains interpretations
+2026-11-15
+D-50
+decision
+Phenopacket IDs prefixed with the run
+when combined
+Files unchanged
+2026-11-15
+D-51
+decision
+No pushes of quotes from non-open pa-
+pers until D-16 is settled
+Majeed:
+6
+documents
+and
+27
+phenopackets held back
+2026-11-15
+D-53
+deviation (by
+Claude under
+delegation)
+NOD2 legacy-transcript fallback; G-blau-
+008 and G-lcat-001 withdrawn
+Blau cDNA normalized 18 →37 of
+38; recall 1/22 →3/22
+2026-11-15
+D-54
+deviation
+Majeed assessed as an exploratory twelfth
+disease
+Reported on its own; audit too small
+for a rule
+2026-11-15/16
+D-55
+deviation
+Volunteer raters in rotating groups with
+calibration and a floor; nine raters
+Registered pair and rule C kept per
+claim; κ per pair
+Table 24: Plan A and Plan B: planning figures, not measurements. Planning time per item: audit
+1 minute (range 0.5–2; the only measurement is the pilot, 0.37 and 0.65 minutes per rating, one
+rater); triage 4 minutes (2–6, assumed); adjudication 15 minutes per candidate (10–30, assumed);
+third readings on 40% of candidates. Calibration takes about 2.7 hours per rater.
+Plan A: registered six
+Plan B: all twelve
+Extracted values audited
+250
+527 (250 + 250 extension + 27 Majeed)
+ClinVar misses triaged
+50
+146 (50 + 46 + 50)
+Gap candidates adjudicated
+214
+269 (214 + 43 + 12)
+Entries covered
+514
+942
+Independent readings (eight raters)
+1278 + third readings
+2411 + third readings
+Hours per rater, eight raters (range)
+21.1 (13.7–41.9)
+28.6 (17.9–56.6)
+Rater hours in all, eight raters (range)
+169.2 (109.5–334.8)
+228.9 (143.2–453.2)
+Weeks at 2, 3, 5 hours per rater per week (eight)
+11, 8, 5
+15, 10, 6
+Hours per rater, nine raters (range)
+19.1 (12.5–37.5)
+25.7 (16.2–50.7)
+Hours per rater, seven / six / five raters
+23.8 / 27.3 / 32.2
+32.3 / 37.2 / 44.2
+26
+Published as a conference paper at ICLR 2025
+Table 25: Budget (estimates from chained session cost readings at list price, including helper agents;
+reading of 2026-11-15 16:41 UTC). Not billing figures.
+#
+Line
+Requested
+Spent (estimate)
+Remaining
+1
+Extraction across six diseases, incl. re-runs
+$8,000
+$1,246.47
+$6,753.53
+2
+Gatekeeper verification pass
+$4,000
+$644.61
+$3,355.39
+3
+ClinVar/OMIM reconciliation + concordance harness
+$6,000
+$124.78
+$5,875.22
+4
+Claude Code: pipeline, VariantValidator, dedup tooling, adjudication interface
+$6,000
+$15.46
+$5,984.54
+5
+Ascertainment-bias arm
+$4,000
+$55.17
+$3,944.83
+6
+Claude vs open-weight head-to-head
+$2,000
+$0.00
+$2,000.00
+Core subtotal
+$30,000
+$2,086.49
+$27,913.51
+7
+Stretch: extend to all 12 candidate diseases
+$9,000
+$596.93
+$8,403.07
+8
+Contingency
+$6,000
+$252.62
+$5,747.38
+Total (includes $327.04 not assigned to a line)
+$45,000
+$3,263.08
+$41,736.92
+Table 26: Memorization probe (exploratory; 180 papers, 30 per disease, stratified against Claude’s
+June 2026 cutoff). One item (Tangier 33346003) excluded because its opening was publisher boil-
+erplate. Phenotype terms: given, mapped, hits. The open-weight checkpoint’s cutoff is unknown, so
+its strata carry no meaning.
+Stratum
+Papers
+Model
+Closed book: specific / guess / none
+Variant hit papers
+Variants (hits)
+Phenotype terms
+ROUGE-L F1
+5-gram share
+Longest run
+after cutoff
+10
+Claude
+0 / 6 / 4
+0
+0 (0)
+24, 20, 12
+0.158
+0.0000
+4
+after cutoff
+10
+DeepSeek
+0 / 3 / 7
+0
+0 (0)
+9, 1, 1
+0.137
+0.0000
+4
+recent
+51
+Claude
+0 / 44 / 7
+2
+9 (2)
+163, 132, 68
+0.190
+0.0042
+7
+recent
+51
+DeepSeek
+0 / 11 / 40
+1
+4 (1)
+26, 2, 1
+0.154
+0.0017
+6
+older
+119
+Claude
+4 / 95 / 20
+2
+3 (2)
+306, 248, 153
+0.190
+0.0061
+11
+older
+119
+DeepSeek
+0 / 27 / 92
+2
+9 (2)
+68, 31, 23
+0.148
+0.0021
+7
+Table 27: Claude against DeepSeek-V4.1-Flash (HA20 and SSADH, run 2026-10-21; values Claude
+/ open-weight). Claude’s cost is an estimate from helper tokens; the open-weight cost is what the
+host reported for final attempts.
+Measure
+HA20
+SSADH
+Papers
+85
+40
+Values asserted
+67,863 / 55,317
+31,370 / 33,521
+Span-not-found rate
+0.00% / 3.86%
+0.00% / 2.98%
+Values with no quote
+0 / 2,003
+0 / 991
+Model claims judged by gatekeeper v4
+23,129 / 18,084
+9,759 / 10,372
+Supported / partially / unsupported / span not found
+22,683 / 400 / 46 / 0 vs 15,250 / 1,240 / 1,563 / 31
+9,480 / 242 / 37 / 0 vs 9,020 / 715 / 637 / 0
+Unsupported rate (exact 95% CI)
+0.20% (0.15–0.27) / 8.64% (8.24–9.06)
+0.38% (0.27–0.52) / 6.14% (5.69–6.62)
+Anything but supported
+1.93% (1.75–2.11) / 15.67% (15.14–16.21)
+2.86% (2.54–3.21) / 13.04% (12.39–13.70)
+Claims with an empty quote (judged unsupported)
+0 / 1,503 (1,185)
+0 / 591 (438)
+Unsupported rate, claims with a quote
+0.20% (0.15–0.27) / 2.28% (2.06–2.52)
+0.38% (0.27–0.52) / 2.03% (1.76–2.33)
+Papers with an unsupported claim
+15 / 71
+7 / 37
+HGVS recall, tiers 1+2
+26.9% (21/78; 18.3–37.7) / 19.2% (15/78; 12.0–29.3)
+14.6% (23/158; 9.9–20.9) / 15.2% (24/158; 10.4–21.6)
+Variant keys shared/union
+261/294 (88.8%)
+157/166 (94.6%)
+Checklist agreement (shared cells)
+95.9% of 10,720
+97.6% of 6,716
+Feature rows
+5,079 / 2,753
+1,683 / 1,439
+Cost per paper, median
+$1.08 / $0.07
+$1.19 / $0.07
+Wall-clock per paper, median (min)
+2.9 / 20.9
+2.9 / 19.2
+Cost, all papers
+$101.42 / $10.25
+$52.79 / $5.54
+27
+Published as a conference paper at ICLR 2025
+Table 28: Exploratory genotype–phenotype maps (GPSEA; Fisher exact tests, Benjamini–Hochberg
+at 0.05; individuals with a GRCh38-placed variant and at least one phenotype; zygosity for un-
+typed calls is an analysis assumption only). The Danon truncating-vs-missense signal rests on 6–8
+missense carriers and is a lead only.
+Disease
+Comparison
+Individuals
+Terms
+Significant (BH 0.05)
+HA20
+truncating vs missense
+217
+11
+0
+SSADH
+biallelic
+truncating/truncating
+vs
+truncating/other vs other/other
+77
+9
+0
+Tangier
+biallelic, as above
+16
+0
+0
+LAD-I
+biallelic, as above
+38
+3
+0
+AxD
+hotspot R79/R88/R239 vs other mis-
+sense
+83
+14
+0
+Danon
+truncating vs missense
+130
+9
+2: arrhythmia (57/59 vs 4/7; pBH 0.035); ven-
+tricular arrhythmia (45/47 vs 3/6; pBH 0.035)
+Danon
+sex (males hemizygous, females het-
+erozygous)
+130
+10
+3: proximal muscle weakness (female 1/28,
+male 11/25; pBH 0.005); left ventricular hy-
+pertrophy (25/33 vs 41/41; pBH 0.005); hy-
+pertrophic cardiomyopathy (19/24 vs 34/34;
+pBH 0.031)
+Table 29: Development pilot on HA20 (2026-10-18 to 2026-10-20, before the freeze). These are
+development results, not general findings; the pilot’s records are not used in any result table.
+Gate
+Threshold
+Result
+Q1 open-access corpus
+≥70% with full text
+53.1% (85 of 160): not met
+Q2 verbatim provenance
+every value has PMID + span
+64,999 values, 100% verbatim: met
+Q3 valid phenopackets, normalized HGVS
+100% valid; ≥95% cDNA normal-
+ized or flagged
+749 of 749; 97.8%: met
+Q4 unsupported values
+span match ≥98%; human ≤4% (n
+= 50)
+100%; 6.0% and 6.3%: not met
+Q5 deduplication
+0 false merges in the hand check
+policy v3: 6 of 93: not met; v4: 0 of 50 (not inde-
+pendent)
+Q6 concordance harness
+table with CIs vs dated snapshots
+met (ClinVar, HPO)
+Q7 completeness
+restricted recall ≥80%
+9 of 9: met
+Q8 cost
+six-disease projection ≤$8,000
+$1,676–4,189: met
+Table 30: Figures from the grant application and their corrected statements (Koseki et al., 2021;
+Burnett et al., 2019; Sugie & Nishino, 2024; Larsen et al., 2026; Rao et al., 2026; Jackson et al.,
+2025).
+Application claim
+Corrected statement
+Tangier “∼200 patients”
+Sources say fewer than 100 (GeneReviews) to about 144 (a 2021 review); use “∼100–
+150” (D-14)
+Danon “>100 families”
+About 100 families; ≥146 molecularly confirmed patients (D-14)
+“408 phenopacket-store cohorts”
+No published source; 731 gene folders at commit 85ffd78, 2026-10-07 (D-14)
+LAD-I “genotypes for 184 patients pub-
+lished but never structured”
+Probably the patients without a reported genotype (323 cases to 2017, genotype for 139),
+which extraction cannot recover (D-14)
+AxD “72 ClinVar P/LP entries; ∼12 OMIM
+allelic variants”
+76 P/LP (release 2026-10-12, read 2026-10-19); 13 OMIM allelic variants (gene entry
+frozen 2026-10-28)
+“97.6% precision on HPO extraction (Son-
+net 4.5)”
+A preprint: 4 synthetic clinical notes run ≥50 times, tool-augmented condition (80.7%
+without tools), recall 65.3%, not top on precision or F1; not case reports
+“DRBench” fabricated-citation rates 3.0% /
+3.2%
+Hallucinated-URL rates for two search-augmented Claude 3.x models (n = 641 and
+1,735 URLs) on DeepResearch Bench; not fabricated citations in general
+AA-Omniscience comparison
+Each pair is real but from different model generations; compare models from one snap-
+shot with its date
+“ClinVar literature-only submissions”
+Submissions will use the curation collection method (D-13)
+28

@@ -1,4 +1,4 @@
-"""Score the eight raters' audit calibration round against the reference labels (D-55).
+"""Score the raters' audit calibration round against the reference labels (D-55).
 
 Written on 2026-11-16, before any rater had entered a rating (all eight stores read empty that
 day), so that how a rating counts is fixed before a result exists.
@@ -46,7 +46,12 @@ from itertools import combinations
 from pathlib import Path
 
 PRIV = Path("adjudication/calibration/private")
-RATERS = [f"R{i}" for i in range(1, 9)]
+
+
+def raters() -> list[str]:
+    """Every rater who has a page: R1 to R8, and anyone added later (a ninth joined on 2026-11-16)."""
+    return sorted((p.parent.name for p in (PRIV / "raters").glob("R*/map.json")), key=lambda r: int(r[1:]))
+
 FLOOR = {"caught": 15, "passed": 18}
 NOT_SUPPORTED = {"unsupported", "span_not_found", "cannot_verify"}
 STRICT = {"unsupported", "span_not_found"}
@@ -129,7 +134,7 @@ def main() -> int:
     earlier = [json.loads(p.read_text()) for p in (PRIV / "superseded_first_set/calibration_set/reference.json", PRIV / "calibration_set_amendment1/reference.json") if p.exists()]
     common = set(reference).intersection(*[set(e) for e in earlier]) if earlier else None
     labels, times, missing = {}, {}, []
-    for r in RATERS:
+    for r in raters():
         folder = PRIV / "rater_exports" / r / "ratings"
         if not folder.exists():
             missing.append(r)

@@ -1,0 +1,39 @@
+{
+ "Thought": "Interim report with the primary outcome (250-claim audit) pending; judged as stated. Strong provenance design, honest limitations, but little human-validated accuracy; headline numbers are model screens; recall low and untriaged; no baselines.",
+ "Summary": "GP-RareLink describes a frozen, pre-registered pipeline (SLIDERS-style extraction with Claude Opus, a Claude gatekeeper, ClinVar/OMIM held out) that turns case reports into quoted, three-state GA4GH phenopackets across six registered diseases (350 papers, 2,836 phenopackets), plus extension diseases. It reports provenance coverage, gatekeeper shares, ClinVar HGVS recall (10-35%), OMIM recovery (57%), and 214 gap candidates, while explicitly stating that accuracy is not yet established: only two single-rater pilot audits (6.0%, 6.3% unsupported) exist and the primary 250-claim audit, triage, adjudication and bias results are pending.",
+ "Strengths": [
+  "Exceptionally candid framing: separates measured from pending, calls gatekeeper shares a screen not an error rate, reports unfavorable pilot audits and low gatekeeper sensitivity.",
+  "Sound evaluation design: ground-truth isolation with an automated test, pre-registration with frozen pipeline, stratified seeded audit sample drawn before concordance, operating characteristics of rule C with exact intervals.",
+  "Provenance-first records (verbatim quote + PMID on every value, three-state phenotypes) are practically useful and checkable.",
+  "Useful decomposition of why recall is low (access bounds recovery: only 5 of 84 OMIM source papers extracted), with concrete denominators and Wilson/Clopper-Pearson intervals.",
+  "Reasonable related work and careful treatment of memorization, open-weight comparison and dedup limitations."
+ ],
+ "Weaknesses": [
+  "No human-validated accuracy for the frozen pipeline: the central claim (<2% unsupported) is untested, the only audits are pre-freeze, single-rater, on the development disease and both exceeded target; the paper's contribution is therefore mostly feasibility and infrastructure.",
+  "Headline figures are weakly informative: gatekeeper rates (0.43%) are same-family model readings with measured sensitivity of 2/6 and 1/4, and rule C has low power (a true 2% rate passes with p=0.44), so even the pending result cannot certify the target.",
+  "Concordance is low and uninterpretable as-is: HGVS recall 10-35% with untriaged misses, tiny denominators (Tangier 6, Danon 20), overlap not precision, and open-access limits (28% full text) mean recall conflates access, conversion and reading; no baseline (e.g., LitVar/tmVar/AVADA or a simple LLM prompt) or ablation shows the pipeline's components matter.",
+  "Heavy reliance on helper-reported, unverified or procedurally uneven steps (scripted gatekeeper verdicts, unchecked dedup, 19 unmerged same-person groups, Claude as judge of its own output, Claude Code drafting the report), plus a development disease and calibration set whose rule was amended after labels were seen.",
+  "Presentation: dense, many placeholders, twelve diseases/runs/branches (registered, extension, exploratory, addendum) make it hard to follow what is primary; ICLR template with a project status report rather than a self-contained scientific result."
+ ],
+ "Originality": 3,
+ "Quality": 2,
+ "Clarity": 3,
+ "Significance": 3,
+ "Questions": [
+  "What is the gatekeeper's precision/recall against the 250 human labels, and would an independent-family judge change shares?",
+  "Can any baseline extractor be run on the same papers to contextualize 10-35% recall?",
+  "How will the triage separate extraction failures from citation artifacts, and will recall be re-reported on that basis?",
+  "Given rule C's low power at 2%, what additional evidence will support a claim of meeting the target?",
+  "How many identities likely represent the same patient, and how does this affect phenotype frequencies?"
+ ],
+ "Limitations": [
+  "Authors candidly list ten limitations; most important are lack of human accuracy evidence, low-sensitivity same-family gatekeeper, open-access selection bias, and weak deduplication."
+ ],
+ "Ethical Concerns": false,
+ "Soundness": 3,
+ "Presentation": 3,
+ "Contribution": 2,
+ "Overall": 5,
+ "Confidence": 4,
+ "Decision": "Reject"
+}

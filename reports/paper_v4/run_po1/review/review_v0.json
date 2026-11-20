@@ -1,0 +1,45 @@
+{
+  "Thought": "All three reviewers reject (4,5,5) for the same core reason: the registered primary outcome (250-claim human audit, <2% unsupported) is pending by design, so accuracy is untested, and the only human data (pilot, 6.0%/6.3%) missed target. Pending placeholders are deliberate and are not held against the text; what a revision can fix is how the paper frames what it has, its density, and how it interprets recall/coverage. Reviewers also disagree on the gap-candidate count (269 vs 214), which should be checked for consistency.",
+  "Summary": "The paper reports an interim evaluation of GP-RareLink, a frozen, pre-registered Claude SLIDERS-style pipeline that extracts per-person genotype-phenotype phenopackets with verbatim quotes, three-state HPO and a Claude gatekeeper, scored against held-out ClinVar and OMIM. On six registered diseases it yields 2,836 phenopackets with full quote coverage, a 0.43% gatekeeper-unsupported share, 10-35% tier-1 HGVS recall against ClinVar, 57% OMIM allelic-variant recovery and a pool of gap candidates awaiting adjudication. The primary human audit, triage, adjudication, bias and efficiency results are pending placeholders; the two pilot human audits found 6.0% and 6.3% unsupported.",
+  "Strengths": [
+    "Unusually candid and disciplined: frozen pre-registration, tested ClinVar/OMIM isolation, seeded samples drawn before concordance, dated snapshots, exact intervals, and unfavorable pilot audits reported rather than softened.",
+    "Rule C is analyzed for operating characteristics (P(pass) at several true rates, upper bounds), with the explicit caveat that a pass does not prove a rate below 2%.",
+    "Diagnostic held-out analysis: misses and unsupported claims cluster in single papers, and low recall is decomposed into citation, conversion, numbering and literature-access causes; OMIM recovery shows access, not reading, is the binding constraint.",
+    "Provenance-first design (verbatim spans, three-state phenotypes, per-value provenance) suited to curation; reproducibility via seeds, pinned ontologies and scripted number filling.",
+    "Open-weight comparison under an identical scaffold, careful related-work positioning and a long, honest limitations list."
+  ],
+  "Weaknesses": [
+    "The central claim, accuracy a person can verify, is not yet supported, and the paper's headline numbers invite a stronger reading than they bear. Full quote coverage holds by construction (values without a verbatim quote are not emitted), and the 0.43% gatekeeper share comes from a same-family judge that caught only 2/6 and 1/4 of the pilot's human-rejected claims. The only human audits were single-rater, on the development disease, with an earlier pipeline, and missed the 2% target. Without new experiments the text can be reframed as a provenance-and-feasibility report: lead with the pilot human rates, present quote coverage as a pipeline invariant, label the gatekeeper share as a lower-sensitivity screen with its measured detection rate beside it, and state in the abstract and introduction what the pending results will decide.",
+    "Recall, coverage and gap-closure results are interpreted more firmly than the evidence allows. HGVS recall of 10-35%, OMIM recovery of 57% and the pool of gap candidates are uninterpreted until triage and adjudication; the causes offered are partly asserted; only 28% of corpus papers have open full text (14% for Tangier), so counts are lower bounds on a non-random subset; HA20 is a ClinVar-seeded development disease; and deduplication is weak (6/93 false merges in pilot, 9/38 repeat papers differing, 19 unmerged groups). A text revision should add denominators and open-access-restricted figures where already computed, mark every causal explanation as hypothesis or measured, state plainly that no gap is yet shown to be real and that overlap is not precision, and show the effect of dedup uncertainty on person-level counts. The gap-candidate count is also reported inconsistently across the reviews (269 vs 214); reconcile it everywhere.",
+    "Presentation is dense and hard for an outside reader. Registered, extension, exploratory and addendum studies are mixed; internal decision codes (D-nn), run names and jargon pervade the main text; key results sit in appendices; and the paper is long on procedure relative to results. A revision can separate registered from non-registered results, replace decision codes with plain descriptions (codes in a table or footnote), move procedural detail out, add a one-page results-at-a-glance table with denominators and status (done / pending), and tighten the limitations into the few that change interpretation (same-family judge, single-rater calibration reference, balanced calibration set versus a 0.5-6% base rate, O1 sampled only from gatekeeper-supported claims, open-weight arm without human audit, procedural loose ends such as tags, OSF registration, licensing and transcripts in history)."
+  ],
+  "Originality": 3,
+  "Quality": 2,
+  "Clarity": 2,
+  "Significance": 3,
+  "Questions": [
+    "What is the human-measured unsupported rate on the frozen pipeline, and how will low gatekeeper sensitivity be handled if the audit lands at 2-4%?",
+    "After triage, what fraction of ClinVar misses are true extraction failures versus citation artifacts, and what is recall restricted to papers with open full text and non-curation citations?",
+    "How does the pipeline compare with a single-pass Claude extraction without gatekeeper, and with LitVar or AVADA, on the same papers?",
+    "What is the plan if the primary audit fails rule C, and which frozen gaps would be reported as deviation versus redesign?",
+    "Can a non-Claude judge on a subsample or human labels on removed claims address judge independence and gatekeeper false negatives?"
+  ],
+  "Limitations": [
+    "No human-rated accuracy yet for the frozen pipeline; the gatekeeper is a same-family judge with demonstrated low sensitivity.",
+    "Open-access-only corpus bounds recall and gap counts; HA20 development bias; weak deduplication, notation and isoform artefacts.",
+    "Calibration reference labelled by one PI with rule amendments; balanced calibration set is not prevalence-representative.",
+    "Licensing, unpushed tags and OSF registration, and unredacted transcripts in public history remain unresolved."
+  ],
+  "Ethical Concerns": false,
+  "Soundness": 2,
+  "Presentation": 2,
+  "Contribution": 2,
+  "Overall": 5,
+  "Confidence": 4,
+  "Decision": "Reject",
+  "_ensemble_sources": [
+    "reports/paper_v4/run_po1/review/v0_r1.json",
+    "reports/paper_v4/run_po1/review/v0_r2.json",
+    "reports/paper_v4/run_po1/review/v0_r3.json"
+  ]
+}

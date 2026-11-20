@@ -1,7 +1,7 @@
 # Draft: invitation to the audit calibration round (for Jimmy to send; not sent)
 
 *Draft of 2026-11-16 (D-55). One copy per rater, each with that rater's own link. Jimmy sends it;
-Claude contacts no one. The eight links are in `DECISIONS.md` (D-55); which person is R1 to R8
+Claude contacts no one. The links are in `DECISIONS.md` (D-55); which person is R1 to R9
 stays with Jimmy and is not written in this repository.*
 
 **Before sending, for each rater:** open that rater's page, use its Share menu, and invite the
@@ -15,7 +15,7 @@ Subject: GP-RareLink: a 40-claim calibration round (about 40 minutes)
 Dear [name],
 
 Thank you for agreeing to help rate GP-RareLink's extracted records. Before the main audit we
-are asking all eight raters to rate the same 40 claims, so that we can see how each of us reads
+are asking all raters to rate the same 40 claims, so that we can see how each of us reads
 them and settle any differences in how the labels are used.
 
 Your page: [link for this rater]
