@@ -1,0 +1,8 @@
+% Values of the human results (calibration, audit, triage, adjudication, bias sheets).
+% \HR{<id>} prints the value when it is defined here, and a boxed "pending" marker until then.
+% The ids are listed in reports/paper_v4/materials/pending_human_results.md.
+% Do not edit by hand: analysis/paper_v4/fill_human_results.py writes the definitions below.
+\makeatletter
+\newcommand{\HR}[1]{\@ifundefined{hr@#1}{\fbox{\scriptsize\textsf{pending:\,\detokenize{#1}}}}{\@nameuse{hr@#1}}}
+\makeatother
+% ---- values (none yet, 2026-11-20) ----
