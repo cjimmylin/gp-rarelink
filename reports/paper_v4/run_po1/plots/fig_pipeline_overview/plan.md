@@ -56,10 +56,21 @@ No outcome values anywhere (no rates, recalls, counts of candidates, no human re
 
 - Final size = ICLR text width: 5.5 in wide (template `\textwidth 5.5 true in`), 2.95 in high,
   so 8 pt text stays 8 pt in print. The outline asked for 21:9; that height cannot hold the
-  requested box text at ≥ 8 pt, so the figure is about 15:8.
+  requested box text at ≥ 8 pt, so the rendered figure is about 16:9 (1710 x 945 px at 300 dpi).
 - Font: Liberation Sans (Arial metrics), 8 pt body, 8 pt bold box titles, 8 pt lane labels.
 - White background. Lane tints: extraction light blue (#E8F2F9) with boxes edged #0072B2;
   harness light orange (#FDF3E1) with boxes edged #E69F00; People box edged #009E73 on
   #E6F5F0. Wall #4D4D4D with white bold text. Span-check badge: white with black edge.
 - Arrows dark grey #333333, 0.8 pt, filled heads. No grid, no shadows, no 3-D.
 - No caption or "Figure N" inside the image.
+
+## Revisions after critique (box texts as finally drawn)
+
+- Box widths refitted so all six top boxes sit inside the 5.5 in lane (round 1 overflowed it).
+- Span check body shortened to "quotes found verbatim" so the badge no longer covers it; the badge
+  reads "241,730 values, 0 span-check problems (registered six)" on four lines.
+- Gatekeeper title "4 Gatekeeper" with "v4" moved to the body ("v4: Claude re-reads every claim;
+  only claims judged 'supported' go on"); Stage 4 reads "VariantValidator (MANE Select), original
+  kept".
+- The phenopackets route now passes under the supported-claims route through a small gap instead
+  of a white halo; O2 and O3 are enclosed together (dashed) as the target of the phenopackets arrow.

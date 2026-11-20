@@ -85,7 +85,7 @@ ax.text(0.58, 0.05, "(held-out ground truth, read only after extraction)", fonts
 # ---------------------------------------------------------------- top lane
 TY0, TY1 = 1.70, 2.76
 GAP = 0.065
-widths = [0.84, 0.90, 0.88, 0.90, 0.89, 0.665]  # sums with gaps to 5.40
+widths = [0.84, 0.925, 0.88, 0.90, 0.89, 0.64]  # sums with gaps to 5.40
 xs = []
 x = (W - sum(widths) - GAP * (len(widths) - 1)) / 2
 for w in widths:
@@ -96,12 +96,12 @@ top = [
     ("1 Corpus", "PubMed +\ncitation search;\nSonnet\nscreening;\nopen access\nonly (D-32)"),
     ("2 Extraction", "1 Opus helper\nper paper;\nvalue + verbatim\nquote + PMID;\nobserved /\nexcluded /\nnot reported"),
     ("3 Span check", "quotes found\nverbatim"),
-    ("4 Gatekeeper v4", "Claude re-reads\nevery claim;\nonly claims\njudged\n‘supported’\ngo on"),
-    ("5 Stage 4", "citation-only,\n1-to-1 merges;\nVariantValidator\non MANE Select,\noriginal kept;\nHPO + Mondo"),
+    ("4 Gatekeeper", "v4: Claude\nre-reads every\nclaim; only\nclaims judged\n‘supported’\ngo on"),
+    ("5 Stage 4", "citation-only,\n1-to-1 merges;\nVariantValidator\n(MANE Select),\noriginal kept;\nHPO + Mondo"),
     ("6 Output", "GA4GH\nPheno-\npackets v2,\nschema-\nvalidated"),
 ]
 for i, ((x0, x1), (title, body)) in enumerate(zip(xs, top)):
-    badge = "241,730 values,\n0 problems\n(registered six)" if i == 2 else None
+    badge = "241,730 values,\n0 span-check\nproblems\n(registered six)" if i == 2 else None
     box(x0, x1, TY0, TY1, title, body, BLUE, "white", badge=badge)
 TMID = (TY0 + TY1) / 2
 for (a0, a1), (b0, b1) in zip(xs[:-1], xs[1:]):
@@ -149,7 +149,7 @@ ax.text((x_o2o3 + 2.95) / 2, RUN_HI + 0.015, "phenopackets", fontsize=FS, va="bo
 # Gatekeeper -> People: the O1 claim pool (the phenopackets route passes under it)
 x_pp = ppl[0] + 0.30
 arrow([(x_gk, TY0), (x_gk, RUN_LO), (x_pp, RUN_LO), (x_pp, ppl[3])], z=8)
-ax.text((x_gk + x_pp) / 2 + 0.05, RUN_LO + 0.015, "supported claims", fontsize=FS,
+ax.text((x_gk + x_pp) / 2 + 0.09, RUN_LO + 0.015, "supported claims", fontsize=FS,
         va="bottom", ha="center", zorder=9)
 
 # ---------------------------------------------------------------- overflow check
