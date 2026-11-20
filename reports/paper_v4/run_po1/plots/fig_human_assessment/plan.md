@@ -45,4 +45,5 @@ Numbers drawn (complete list): 2026-11-22, 99, 40, 20, 20, 39, 9 (R1–R9), 15 o
   adjudication #D55E00; final sign-off box #000000 edge, grey fill.
 - Stage bands as very light grey rounded panels with the stage title top-left.
 - Arrows thin dark grey (#444444), solid; plan branches labelled directly.
-- Double-column width 7 in, 16:9 (7 × 3.94 in); no caption or "Figure N" inside the image.
+- Double-column width 7 in; canvas 7 × 4.5 in (taller than 16:9, about 16:10, so every label fits at 8 pt without overflow; revised in critic round 1). No caption or "Figure N" inside the image.
+- Layout: Stage 1 band on top (left to right); a connector from the floor diamond wraps down to the PI decision node at the left of the Stage 2 band; decision branches to Plan A / Plan B boxes; both feed three stacked track boxes (audit lane tallest, with a 9-node ring and three overlapping triangles); tracks collect into the sign-off box at right. Stage 2 title placed right of the connector. plot.py prints OVERFLOW if any text leaves its box.

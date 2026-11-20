@@ -39,11 +39,11 @@ def box(x0, x1, y0, y1, title, body, edge, fill, badge=None):
     p = FancyBboxPatch((x0, y0), x1 - x0, y1 - y0, boxstyle="round,pad=0,rounding_size=0.04",
                        fc=fill, ec=edge, lw=0.9, zorder=3)
     ax.add_patch(p)
-    t = ax.text(x0 + 0.05, y1 - 0.045, title, fontsize=FS, fontweight="bold", va="top",
+    t = ax.text(x0 + 0.04, y1 - 0.045, title, fontsize=FS, fontweight="bold", va="top",
                 ha="left", zorder=4)
     boxes.append(((x0, x1, y0, y1), t))
     if body:
-        b = ax.text(x0 + 0.05, y1 - 0.19, body, fontsize=FS, va="top", ha="left",
+        b = ax.text(x0 + 0.04, y1 - 0.19, body, fontsize=FS, va="top", ha="left",
                     linespacing=1.15, zorder=4)
         boxes.append(((x0, x1, y0, y1), b))
     if badge:
@@ -84,8 +84,8 @@ ax.text(0.58, 0.05, "(held-out ground truth, read only after extraction)", fonts
 
 # ---------------------------------------------------------------- top lane
 TY0, TY1 = 1.70, 2.76
-GAP = 0.09
-widths = [0.86, 1.00, 0.86, 0.94, 0.99, 0.70]
+GAP = 0.065
+widths = [0.84, 0.90, 0.88, 0.90, 0.89, 0.665]  # sums with gaps to 5.40
 xs = []
 x = (W - sum(widths) - GAP * (len(widths) - 1)) / 2
 for w in widths:
@@ -95,13 +95,13 @@ for w in widths:
 top = [
     ("1 Corpus", "PubMed +\ncitation search;\nSonnet\nscreening;\nopen access\nonly (D-32)"),
     ("2 Extraction", "1 Opus helper\nper paper;\nvalue + verbatim\nquote + PMID;\nobserved /\nexcluded /\nnot reported"),
-    ("3 Span check", "every quote\nverbatim in\nits paper"),
-    ("4 Gatekeeper v4", "2nd Claude read\nof every claim;\nonly claims\njudged\n‘supported’\ngo on"),
+    ("3 Span check", "quotes found\nverbatim"),
+    ("4 Gatekeeper v4", "Claude re-reads\nevery claim;\nonly claims\njudged\n‘supported’\ngo on"),
     ("5 Stage 4", "citation-only,\n1-to-1 merges;\nVariantValidator\non MANE Select,\noriginal kept;\nHPO + Mondo"),
     ("6 Output", "GA4GH\nPheno-\npackets v2,\nschema-\nvalidated"),
 ]
 for i, ((x0, x1), (title, body)) in enumerate(zip(xs, top)):
-    badge = "241,730 values,\n0 span-check\nproblems\n(registered six)" if i == 2 else None
+    badge = "241,730 values,\n0 problems\n(registered six)" if i == 2 else None
     box(x0, x1, TY0, TY1, title, body, BLUE, "white", badge=badge)
 TMID = (TY0 + TY1) / 2
 for (a0, a1), (b0, b1) in zip(xs[:-1], xs[1:]):
@@ -140,17 +140,20 @@ grp = FancyBboxPatch((o2[0] - 0.04, o3[2] - 0.035), o2[1] - o2[0] + 0.08,
                      o2[3] - o3[2] + 0.07, boxstyle="round,pad=0,rounding_size=0.05",
                      fc="none", ec=ORANGE, lw=0.8, ls=(0, (3, 2)), zorder=2)
 ax.add_patch(grp)
-arrow([(x_out, TY0), (x_out, RUN_HI), (x_o2o3, RUN_HI), (x_o2o3, o2[3] + 0.035)])
+x_gk = (xs[3][0] + xs[3][1]) / 2
+HOP = 0.05  # gap where this route passes under the gatekeeper route
+ax.plot([x_out, x_out, x_gk + HOP], [TY0, RUN_HI, RUN_HI], color=INK, lw=0.8, zorder=6)
+arrow([(x_gk - HOP, RUN_HI), (x_o2o3, RUN_HI), (x_o2o3, o2[3] + 0.035)])
 ax.text((x_o2o3 + 2.95) / 2, RUN_HI + 0.015, "phenopackets", fontsize=FS, va="bottom",
         ha="center", zorder=7)
-# Gatekeeper -> People: the O1 claim pool; drawn over the other route with a white gap
-x_gk = (xs[3][0] + xs[3][1]) / 2
+# Gatekeeper -> People: the O1 claim pool (the phenopackets route passes under it)
 x_pp = ppl[0] + 0.30
-arrow([(x_gk, TY0), (x_gk, RUN_LO), (x_pp, RUN_LO), (x_pp, ppl[3])], halo=True, z=8)
+arrow([(x_gk, TY0), (x_gk, RUN_LO), (x_pp, RUN_LO), (x_pp, ppl[3])], z=8)
 ax.text((x_gk + x_pp) / 2 + 0.05, RUN_LO + 0.015, "supported claims", fontsize=FS,
         va="bottom", ha="center", zorder=9)
 
 # ---------------------------------------------------------------- overflow check
+print("top lane x-range: %.3f-%.3f of %.2f" % (xs[0][0], xs[-1][1], W))
 fig.canvas.draw()
 r = fig.canvas.get_renderer()
 inv = ax.transData.inverted()
@@ -159,5 +162,12 @@ for (x0, x1, y0, y1), t in boxes:
     if bb.x0 < x0 - 1e-3 or bb.x1 > x1 + 1e-3 or bb.y0 < y0 - 1e-3 or bb.y1 > y1 + 1e-3:
         print(f"OVERFLOW: {t.get_text()[:30]!r} text x{bb.x0:.2f}-{bb.x1:.2f} y{bb.y0:.2f}-{bb.y1:.2f}"
               f" box x{x0:.2f}-{x1:.2f} y{y0:.2f}-{y1:.2f}")
+
+ext = [t.get_window_extent(r).transformed(inv) for _, t in boxes]
+for i in range(len(ext)):
+    for j in range(i + 1, len(ext)):
+        a, b = ext[i], ext[j]
+        if a.x0 < b.x1 and b.x0 < a.x1 and a.y0 < b.y1 and b.y0 < a.y1:
+            print("TEXT OVERLAP:", repr(boxes[i][1].get_text()[:20]), repr(boxes[j][1].get_text()[:20]))
 
 fig.savefig(os.environ["PO_OUT"], dpi=300, bbox_inches="tight", facecolor="white")
