@@ -141,13 +141,13 @@ for lab, v, col in src_segments:
     left += v
 leg_handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _, _, c in src_segments]
 leg_labels = [f"{lab}: {v}" for lab, v, _ in src_segments]
-# both legends below their panels, tops aligned in figure coordinates
-leg_y = ax.get_position().y0 - 0.15
+# both legends below their panels, one column each, tops aligned (figure coordinates)
+leg_y = ax.get_position().y0 - 0.13
 fig.legend(handles, [s[0] for s in series], loc="upper left",
-           bbox_to_anchor=(ax.get_position().x0 - 0.01, leg_y), ncol=2, frameon=False,
-           handlelength=1.0, columnspacing=0.8, fontsize=8)
+           bbox_to_anchor=(ax.get_position().x0 - 0.01, leg_y), ncol=1, frameon=False,
+           handlelength=1.0, fontsize=8)
 fig.legend(leg_handles, leg_labels, loc="upper left",
-           bbox_to_anchor=(cx.get_position().x0 - 0.01, leg_y), ncol=2, frameon=False,
-           handlelength=1.0, columnspacing=0.8, fontsize=8)
+           bbox_to_anchor=(cx.get_position().x0 - 0.01, leg_y), ncol=1, frameon=False,
+           handlelength=1.0, fontsize=8)
 
 fig.savefig(os.environ["PO_OUT"], dpi=300, bbox_inches="tight", facecolor="white")

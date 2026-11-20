@@ -48,7 +48,7 @@ Direct label "k/n" beside each point.
 - in the corpus without an open copy: 38
 - never returned by the searches: 38
 - not in corpus (screened unclear/other): 3
-Segment counts labelled; legend-like labels below the bar.
+Segment counts labelled; legend entries below use the log's wording ("in corpus without an open copy").
 
 ## Style (stylist pass)
 
@@ -62,6 +62,8 @@ Segment counts labelled; legend-like labels below the bar.
   - never returned by the searches: #D55E00 (vermillion)
   - not in corpus (screened unclear/other): #999999 (grey)
   - recall points: #000000, pooled diamond #000000
-- Panel (a) legend at the top (4 entries, one row), no y-grid, light x-grid.
+- Legends (after critic rounds): one column under each panel, tops aligned; panel (a) has 4 entries,
+  panel (b)'s stacked bar has 4 entries with counts ("extracted: 5" etc.); the two 38 segments
+  also carry their count inside. No y-grid, light x-grid. Panel (a) group bars 0.22 units high.
 - Panel titles "(a) ..." and "(b) ..." as short axis titles; no caption or "Figure N" in the image.
 - Top and right spines removed.
